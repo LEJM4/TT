@@ -1,0 +1,51 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="TimeTraveller"
+config/description="2D-Action-RPG ueber einen Zeitreisenden."
+run/main_scene="res://ui/debug/setup_check.tscn"
+config/features=PackedStringArray("4.7")
+config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*res://autoload/event_bus.gd"
+InputSetup="*res://autoload/input_setup.gd"
+GameState="*res://autoload/game_state.gd"
+SaveManager="*res://autoload/save_manager.gd"
+SceneManager="*res://autoload/scene_manager.gd"
+AudioManager="*res://autoload/audio_manager.gd"
+
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=270
+window/size/window_width_override=1440
+window/size/window_height_override=810
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="player_hurtbox"
+2d_physics/layer_5="enemy_hurtbox"
+2d_physics/layer_6="interactable"
+2d_physics/layer_7="pickup"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

@@ -1,0 +1,16 @@
+# Godot 4: Zwischenspeicher, wird von Godot selbst neu erzeugt
+.godot/
+*.translation
+
+# Fertige Builds und Export-Zugangsdaten
+/builds/
+/export/
+export_credentials.cfg
+
+# Betriebssystem
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python (Ordner tools/)
+__pycache__/

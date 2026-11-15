@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://ui/debug/setup_check.gd" id="1_setup"]
+
+[node name="SetupCheck" type="Control"]
+script = ExtResource("1_setup")
