@@ -8,14 +8,14 @@
 ## Öffnen
 
 1. Godot 4.7 starten, im Projektmanager „Importieren“ wählen und diesen Ordner angeben.
-2. F5 startet das Spiel.
+2. F5 startet die Testkammer – den Raum, in dem jede Mechanik zuerst ausprobiert wird.
 
 ## Ordner
 
 | Ordner | Inhalt |
 | --- | --- |
 | `autoload/` | Globale Dienste: EventBus, Tastenbelegung, Spielstand, Szenenwechsel, Ton |
-| `components/` | Bausteine für alle: Leben, Trefferzonen, Zustandsautomat, Interaktion, Beute |
+| `components/` | Bausteine für alle: Platzhalter-Grafik, später Leben, Trefferzonen, Zustandsautomat, Interaktion, Beute |
 | `entities/` | Figuren: `player/`, `enemies/`, `npcs/` |
 | `abilities/` | Fähigkeiten: Dash, Unsichtbarkeit, Schnelligkeit, Stun |
 | `items/` | Gegenstände und Beutetabellen |
@@ -46,6 +46,13 @@ Sie steht in `autoload/input_setup.gd` und lässt sich dort ändern.
 | Tab | `inventory` |
 | M | `map` |
 | Esc | `pause` |
+
+**Entwickler-Tasten**
+
+| Eingabe | Aktion im Code | Wirkung |
+| --- | --- | --- |
+| F1 | `debug_toggle_overlay` | Debug-Anzeige ein- und ausblenden |
+| F2 | `debug_restart_room` | Raum neu starten |
 
 ## Regeln
 

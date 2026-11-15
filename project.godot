@@ -12,7 +12,7 @@ config_version=5
 
 config/name="TimeTraveller"
 config/description="2D-Action-RPG ueber einen Zeitreisenden."
-run/main_scene="res://ui/debug/setup_check.tscn"
+run/main_scene="res://levels/test_chamber/test_chamber.tscn"
 config/features=PackedStringArray("4.7")
 config/icon="res://icon.svg"
 

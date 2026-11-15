@@ -22,6 +22,8 @@ const KEY_BINDINGS := {
 	"inventory": [KEY_TAB],
 	"map": [KEY_M],
 	"pause": [KEY_ESCAPE],
+	"debug_toggle_overlay": [KEY_F1],
+	"debug_restart_room": [KEY_F2],
 }
 
 ## Aktion -> Maustasten.

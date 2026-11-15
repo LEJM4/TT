@@ -11,3 +11,8 @@ extends Node
 ## Testmeldung für den Setup-Check (M0).
 @warning_ignore("unused_signal")
 signal setup_checked(source: String)
+
+## Ein Modul meldet einen Wert für die Debug-Anzeige (M1).
+## Ein leerer Wert entfernt den Eintrag wieder.
+@warning_ignore("unused_signal")
+signal debug_value_changed(key: String, value: String)

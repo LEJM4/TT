@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://de1dhnjo5haf1"]
+
+[ext_resource type="Script" uid="uid://dm0vmuge1x7ix" path="res://levels/test_chamber/test_chamber.gd" id="1_chamber"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="2_view"]
+[ext_resource type="PackedScene" path="res://ui/debug/debug_overlay.tscn" id="3_overlay"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
+size = Vector2(480, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom"]
+size = Vector2(480, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left"]
+size = Vector2(16, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right"]
+size = Vector2(16, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_square"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pillar"]
+size = Vector2(16, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bar"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gate_top"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gate_bottom"]
+size = Vector2(48, 16)
+
+[node name="TestChamber" type="Node2D" unique_id=242313944]
+script = ExtResource("1_chamber")
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=547463599]
+collision_mask = 0
+
+[node name="Top" type="CollisionShape2D" parent="Walls" unique_id=1589914072]
+position = Vector2(240, 8)
+shape = SubResource("RectangleShape2D_top")
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls" unique_id=221423068]
+position = Vector2(240, 264)
+shape = SubResource("RectangleShape2D_bottom")
+
+[node name="Left" type="CollisionShape2D" parent="Walls" unique_id=872308923]
+position = Vector2(8, 136)
+shape = SubResource("RectangleShape2D_left")
+
+[node name="Right" type="CollisionShape2D" parent="Walls" unique_id=544585972]
+position = Vector2(472, 136)
+shape = SubResource("RectangleShape2D_right")
+
+[node name="PlaceholderView" parent="Walls" unique_id=105046374 instance=ExtResource("2_view")]
+color = Color(0.36, 0.4, 0.5, 1)
+
+[node name="Blocks" type="StaticBody2D" parent="." unique_id=1066933508]
+collision_mask = 0
+
+[node name="Square" type="CollisionShape2D" parent="Blocks" unique_id=473593692]
+position = Vector2(176, 80)
+shape = SubResource("RectangleShape2D_square")
+
+[node name="Pillar" type="CollisionShape2D" parent="Blocks" unique_id=2003066003]
+position = Vector2(360, 96)
+shape = SubResource("RectangleShape2D_pillar")
+
+[node name="Bar" type="CollisionShape2D" parent="Blocks" unique_id=235627311]
+position = Vector2(128, 200)
+shape = SubResource("RectangleShape2D_bar")
+
+[node name="GateTop" type="CollisionShape2D" parent="Blocks" unique_id=1417279201]
+position = Vector2(360, 184)
+shape = SubResource("RectangleShape2D_gate_top")
+
+[node name="GateBottom" type="CollisionShape2D" parent="Blocks" unique_id=943431091]
+position = Vector2(360, 232)
+shape = SubResource("RectangleShape2D_gate_bottom")
+
+[node name="PlaceholderView" parent="Blocks" unique_id=657745153 instance=ExtResource("2_view")]
+color = Color(0.62, 0.5, 0.36, 1)
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=577282793]
+
+[node name="Spawn1" type="Marker2D" parent="SpawnPoints" unique_id=717606394 groups=["player_spawn"]]
+position = Vector2(216, 136)
+
+[node name="Spawn2" type="Marker2D" parent="SpawnPoints" unique_id=44068127 groups=["player_spawn"]]
+position = Vector2(264, 136)
+
+[node name="DebugOverlay" parent="." unique_id=2130183334 instance=ExtResource("3_overlay")]
