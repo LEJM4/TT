@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StaminaStats" format=3]
+
+[ext_resource type="Script" path="res://components/stamina/stamina_stats.gd" id="1_stats"]
+
+[resource]
+script = ExtResource("1_stats")
+max_stamina = 100.0
+regen_per_second = 30.0
+regen_delay = 0.8
+recover_threshold = 25.0

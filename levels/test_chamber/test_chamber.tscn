@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dm0vmuge1x7ix" path="res://levels/test_chamber/test_chamber.gd" id="1_chamber"]
 [ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="2_view"]
 [ext_resource type="PackedScene" path="res://ui/debug/debug_overlay.tscn" id="3_overlay"]
+[ext_resource type="PackedScene" path="res://entities/player/player_spawner.tscn" id="4_spawner"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
 size = Vector2(480, 16)
@@ -89,5 +90,7 @@ position = Vector2(216, 136)
 
 [node name="Spawn2" type="Marker2D" parent="SpawnPoints" unique_id=44068127 groups=["player_spawn"]]
 position = Vector2(264, 136)
+
+[node name="PlayerSpawner" parent="." unique_id=970808961 instance=ExtResource("4_spawner")]
 
 [node name="DebugOverlay" parent="." unique_id=2130183334 instance=ExtResource("3_overlay")]

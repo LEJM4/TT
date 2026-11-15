@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_player"]
+[ext_resource type="Resource" path="res://data/player/movement.tres" id="2_movement"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="3_view"]
+[ext_resource type="Script" path="res://entities/player/player_input.gd" id="4_input"]
+[ext_resource type="PackedScene" path="res://components/stamina/stamina.tscn" id="5_stamina"]
+[ext_resource type="Resource" path="res://data/player/stamina.tres" id="6_stamina_stats"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(12, 12)
+
+[node name="Player" type="CharacterBody2D" groups=["players"]]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_player")
+stats = ExtResource("2_movement")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="PlaceholderView" parent="." instance=ExtResource("3_view")]
+color = Color(0.3, 0.78, 0.45, 1)
+
+[node name="PlayerInput" type="Node" parent="."]
+process_physics_priority = -1
+script = ExtResource("4_input")
+
+[node name="Stamina" parent="." instance=ExtResource("5_stamina")]
+stats = ExtResource("6_stamina_stats")
