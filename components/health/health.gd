@@ -47,9 +47,17 @@ func get_maximum() -> float:
 	return stats.max_health
 
 
-## Ist die Figur nach einem Treffer gerade unverwundbar?
+## Ist die Figur gerade unverwundbar - nach einem Treffer oder bei einem Dash?
 func is_invulnerable() -> bool:
 	return _invulnerable_left > 0.0
+
+
+## Macht die Figur für die Dauer unverwundbar, etwa bei einem Dash (M5).
+## Eine längere laufende Unverwundbarkeit bleibt bestehen.
+func make_invulnerable(seconds: float) -> void:
+	if is_dead:
+		return
+	_invulnerable_left = maxf(_invulnerable_left, seconds)
 
 
 ## Zieht Leben ab und liefert den Schaden, der wirklich ankam.

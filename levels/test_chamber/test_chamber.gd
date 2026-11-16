@@ -6,8 +6,12 @@ extends Node2D
 ##   SpawnPoints     Startpunkte für Spielfiguren (Gruppe "player_spawn")
 ##   DummyA          einzelne Übungspuppe (M4)
 ##   DummyB, DummyC  Puppenpaar: ein Hieb kann beide treffen (M4)
+##   DummyD          bewegliches Ziel: pendelt, ist nicht fest und lässt sich durchlaufen (M6);
+##                   lässt sich betäuben (M7)
 ##   DamageZone      Schadensfeld (M4)
+##   DamageStrip     schmaler Schadensstreifen zum Durchdashen (M5); lässt sich betäuben (M7)
 ##   PlayerSpawner   erzeugt die Spielfiguren (M2)
+##   ProjectileSpawner  erzeugt alle Geschosse (M6)
 ##   PlayerCamera    folgt der Spielfigur (M3); die Grenzen meldet dieses Skript
 ##   Crosshair       Fadenkreuz am Mauszeiger (M4)
 ##   DebugOverlay    Entwickler-Anzeige

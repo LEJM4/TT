@@ -7,6 +7,8 @@ extends Resource
 @export_group("Wirkung")
 ## Schaden pro Treffer.
 @export var damage := 10.0
+## So viel füllt jeder Treffer im Vorrat der Figur auf, etwa Energie. 0 schaltet das ab.
+@export var gain_per_hit := 10.0
 
 @export_group("Trefferzone")
 ## Abstand von der Mitte der Figur bis zum Beginn der Trefferzone, in Pixeln.

@@ -69,3 +69,6 @@ func _physics_process(delta: float) -> void:
 		if hurtbox.receive_hit(damage, direction):
 			_last_hit[target_id] = _clock
 			hit_landed.emit(hurtbox)
+			# Ein Zuhörer kann die Hitbox entschärft haben, etwa ein Geschoss nach seinem Treffer.
+			if not is_active:
+				return

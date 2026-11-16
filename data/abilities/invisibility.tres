@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvisibilityStats" format=3]
+
+[ext_resource type="Script" path="res://abilities/invisibility/invisibility_stats.gd" id="1_stats"]
+
+[resource]
+script = ExtResource("1_stats")
+display_name = "Unsichtbarkeit"
+cost = 40.0
+duration = 5.0
+cooldown = 8.0
+alpha = 0.3

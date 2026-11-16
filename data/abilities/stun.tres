@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StunStats" format=3]
+
+[ext_resource type="Script" path="res://abilities/stun/stun_stats.gd" id="1_stats"]
+
+[resource]
+script = ExtResource("1_stats")
+display_name = "Stun"
+cost = 30.0
+duration = 2.0
+cooldown = 6.0
+radius = 64.0

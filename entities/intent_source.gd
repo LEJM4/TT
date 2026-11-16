@@ -16,3 +16,10 @@ var wants_sneak := false
 var aim_direction := Vector2.DOWN
 ## Will die Figur angreifen? Bleibt wahr, solange die Taste gehalten wird (M4).
 var wants_attack := false
+## Will die Figur dashen? Nur in dem Physik-Schritt wahr, in dem der Wunsch kam (M5).
+var wants_dash := false
+## Will die Figur schießen? Bleibt wahr, solange die Taste gehalten wird (M6).
+var wants_shoot := false
+## Platz der Fähigkeit, die die Figur einsetzen will: 0 ist die erste, -1 heißt keine.
+## Nur in dem Physik-Schritt gesetzt, in dem der Wunsch kam (M7).
+var wants_ability := -1

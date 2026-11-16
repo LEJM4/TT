@@ -12,6 +12,20 @@
 [ext_resource type="PackedScene" path="res://components/hit_flash/hit_flash.tscn" id="10_flash"]
 [ext_resource type="PackedScene" path="res://components/melee_attack/melee_attack.tscn" id="11_melee"]
 [ext_resource type="Resource" path="res://data/player/sword.tres" id="12_sword"]
+[ext_resource type="PackedScene" path="res://components/dash/dash.tscn" id="13_dash"]
+[ext_resource type="Resource" path="res://data/player/dash.tres" id="14_dash_stats"]
+[ext_resource type="PackedScene" path="res://components/supply/supply.tscn" id="15_supply"]
+[ext_resource type="Resource" path="res://data/player/ammo.tres" id="16_ammo"]
+[ext_resource type="PackedScene" path="res://components/ranged_attack/ranged_attack.tscn" id="17_ranged"]
+[ext_resource type="Resource" path="res://data/player/bow.tres" id="18_bow"]
+[ext_resource type="PackedScene" path="res://entities/projectile/projectile.tscn" id="19_projectile"]
+[ext_resource type="Resource" path="res://data/player/energy.tres" id="20_energy"]
+[ext_resource type="PackedScene" path="res://abilities/haste/haste.tscn" id="21_haste"]
+[ext_resource type="Resource" path="res://data/abilities/haste.tres" id="22_haste_stats"]
+[ext_resource type="PackedScene" path="res://abilities/invisibility/invisibility.tscn" id="23_invisibility"]
+[ext_resource type="Resource" path="res://data/abilities/invisibility.tres" id="24_invisibility_stats"]
+[ext_resource type="PackedScene" path="res://abilities/stun/stun.tscn" id="25_stun"]
+[ext_resource type="Resource" path="res://data/abilities/stun.tres" id="26_stun_stats"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(12, 12)
@@ -53,3 +67,28 @@ shape = SubResource("RectangleShape2D_hurt")
 [node name="MeleeAttack" parent="." instance=ExtResource("11_melee")]
 stats = ExtResource("12_sword")
 target_mask = 16
+
+[node name="Dash" parent="." instance=ExtResource("13_dash")]
+stats = ExtResource("14_dash_stats")
+
+[node name="Ammo" parent="." instance=ExtResource("15_supply")]
+stats = ExtResource("16_ammo")
+
+[node name="RangedAttack" parent="." instance=ExtResource("17_ranged")]
+stats = ExtResource("18_bow")
+projectile_scene = ExtResource("19_projectile")
+target_mask = 16
+
+[node name="Energy" parent="." instance=ExtResource("15_supply")]
+stats = ExtResource("20_energy")
+
+[node name="Abilities" type="Node" parent="."]
+
+[node name="Haste" parent="Abilities" instance=ExtResource("21_haste")]
+stats = ExtResource("22_haste_stats")
+
+[node name="Invisibility" parent="Abilities" instance=ExtResource("23_invisibility")]
+stats = ExtResource("24_invisibility_stats")
+
+[node name="Stun" parent="Abilities" instance=ExtResource("25_stun")]
+stats = ExtResource("26_stun_stats")

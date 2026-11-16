@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DashStats" format=3]
+
+[ext_resource type="Script" path="res://components/dash/dash_stats.gd" id="1_stats"]
+
+[resource]
+script = ExtResource("1_stats")
+distance = 64.0
+duration = 0.2
+invulnerable_time = 0.25
+cooldown = 0.8
+buffer_time = 0.12

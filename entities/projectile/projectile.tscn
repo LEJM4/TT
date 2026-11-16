@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/projectile/projectile.gd" id="1_projectile"]
+[ext_resource type="PackedScene" path="res://components/hitbox/hitbox.tscn" id="2_hitbox"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="3_view"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hit"]
+size = Vector2(6, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_world"]
+size = Vector2(2, 2)
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource("1_projectile")
+
+[node name="Hitbox" parent="." instance=ExtResource("2_hitbox")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_hit")
+
+[node name="PlaceholderView" parent="Hitbox" instance=ExtResource("3_view")]
+color = Color(1, 0.92, 0.55, 1)
+
+[node name="WorldSensor" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSensor"]
+shape = SubResource("RectangleShape2D_world")

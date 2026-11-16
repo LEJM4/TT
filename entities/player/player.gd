@@ -1,11 +1,17 @@
 extends CharacterBody2D
-## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf).
+## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten).
 ##
 ## Die Figur führt nur Absichten aus. Woher sie kommen, bestimmt das Kind
 ## "PlayerInput" (ein IntentSource): Tasten, später Gamepad oder Netz.
 ## Sie blickt in die Zielrichtung und schlägt dorthin; laufen kann sie dabei
-## weiter. Die Zahlen stehen in data/player/: movement.tres, stamina.tres,
-## health.tres und sword.tres.
+## weiter. Geschossen wird ebenfalls in Zielrichtung; jeder Schuss kostet
+## Munition. Der Dash geht in Laufrichtung, im Stehen in Blickrichtung; solange
+## er läuft, lenkt die Figur nicht und beginnt weder Hieb noch Schuss.
+## Fähigkeiten liegen als Kinder unter "Abilities"; ihr Platz dort bestimmt
+## die Taste. Sie kosten Energie, die nur durch Schwerttreffer zurückkommt.
+## Die Zahlen stehen in data/player/: movement.tres, stamina.tres,
+## health.tres, sword.tres, dash.tres, bow.tres, ammo.tres und energy.tres;
+## die Werte der Fähigkeiten in data/abilities/.
 ##
 ## Kinder und was ohne sie passiert:
 ##   PlayerInput   Absichten    - ohne: Die Figur bleibt stehen.
@@ -14,11 +20,16 @@ extends CharacterBody2D
 ##   Hurtbox       Trefferzone  - ohne: Sie ist nicht zu treffen.
 ##   HitFlash      Aufblitzen   - ohne: Schaden wirkt, nur ohne Blinken.
 ##   MeleeAttack   Schwerthieb  - ohne: Sie kann nicht zuschlagen.
+##   Dash          Ausweichen   - ohne: Sie kann nicht dashen.
+##   RangedAttack  Fernkampf    - ohne: Sie kann nicht schießen.
+##   Ammo          Munition     - ohne: Schüsse kosten nichts.
+##   Abilities     Fähigkeiten  - ohne: Sie hat keine Fähigkeiten.
+##   Energy        Energie      - ohne: Fähigkeiten kosten nichts.
 ##
 ## Stirbt die Figur, bleibt sie stehen, wird grau und meldet es über den
 ## EventBus (player_died). Was dann geschieht, entscheidet das Level.
 
-enum MoveState { IDLE, WALK, SPRINT, SNEAK }
+enum MoveState { IDLE, WALK, SPRINT, SNEAK, DASH }
 
 ## Namen der Zustände für die Debug-Anzeige.
 const STATE_NAMES := {
@@ -26,6 +37,7 @@ const STATE_NAMES := {
 	MoveState.WALK: "Laufen",
 	MoveState.SPRINT: "Sprinten",
 	MoveState.SNEAK: "Schleichen",
+	MoveState.DASH: "Dash",
 }
 ## Abstand des Richtungspunkts von der Mitte der Figur, in Pixeln.
 const FACING_DOT_DISTANCE := 9.0
@@ -45,11 +57,18 @@ var move_state := MoveState.IDLE
 var facing := Vector2.DOWN
 ## Tot: Das Leben ist auf 0 gefallen.
 var is_dead := false
+## Faktor auf das Lauftempo; die Fähigkeit Schnelligkeit ändert ihn (M7).
+var speed_factor := 1.0
 
 @onready var _intent := get_node_or_null("PlayerInput") as IntentSource
 @onready var _stamina := get_node_or_null("Stamina") as Stamina
 @onready var _health := get_node_or_null("Health") as Health
 @onready var _melee := get_node_or_null("MeleeAttack") as MeleeAttack
+@onready var _dash := get_node_or_null("Dash") as Dash
+@onready var _ranged := get_node_or_null("RangedAttack") as RangedAttack
+@onready var _ammo := get_node_or_null("Ammo") as Supply
+@onready var _abilities := get_node_or_null("Abilities")
+@onready var _energy := get_node_or_null("Energy") as Supply
 
 
 func _ready() -> void:
@@ -58,6 +77,8 @@ func _ready() -> void:
 		stats = MovementStats.new()
 	if _health != null:
 		_health.died.connect(_on_died)
+	if _dash != null:
+		_dash.dash_finished.connect(_on_dash_finished)
 
 
 func _physics_process(delta: float) -> void:
@@ -65,23 +86,39 @@ func _physics_process(delta: float) -> void:
 	var wants_sprint := false
 	var wants_sneak := false
 	var wants_attack := false
+	var wants_dash := false
+	var wants_shoot := false
+	var wanted_ability := -1
 	if _intent != null:
 		direction = _intent.move_direction.limit_length(1.0)
 		wants_sprint = _intent.wants_sprint
 		wants_sneak = _intent.wants_sneak
 		wants_attack = _intent.wants_attack
+		wants_dash = _intent.wants_dash
+		wants_shoot = _intent.wants_shoot
+		wanted_ability = _intent.wants_ability
 		_face(_intent.aim_direction)
 
-	move_state = _pick_state(direction, wants_sprint, wants_sneak, delta)
-	var target_velocity := direction * _speed_for(move_state)
-	var rate := stats.friction
-	if direction != Vector2.ZERO:
-		rate = stats.acceleration
-	velocity = velocity.move_toward(target_velocity, rate * delta)
+	_handle_dash_wish(direction, wants_dash)
+	if _dash != null and _dash.is_dashing:
+		move_state = MoveState.DASH
+		velocity = _dash.get_velocity()
+	else:
+		move_state = _pick_state(direction, wants_sprint, wants_sneak, delta)
+		var target_velocity := direction * _speed_for(move_state)
+		var rate := stats.friction
+		if direction != Vector2.ZERO:
+			rate = stats.acceleration
+		velocity = velocity.move_toward(target_velocity, rate * delta)
 	move_and_slide()
 
-	if wants_attack and _melee != null:
-		_melee.try_attack(facing)
+	if move_state != MoveState.DASH:
+		if wants_attack and _melee != null:
+			_melee.try_attack(facing)
+		if wants_shoot and _ranged != null:
+			_ranged.try_shoot(facing)
+	if wanted_ability >= 0:
+		_use_ability(wanted_ability)
 	_report_debug_values()
 
 
@@ -99,6 +136,28 @@ func _face(direction: Vector2) -> void:
 		return
 	facing = new_facing
 	queue_redraw()
+
+
+func _handle_dash_wish(direction: Vector2, wants_dash: bool) -> void:
+	if _dash == null:
+		return
+	if wants_dash:
+		_dash.request()
+	if not _dash.has_request():
+		return
+	# In Laufrichtung; im Stehen dorthin, wohin die Figur blickt.
+	var dash_direction := direction
+	if dash_direction == Vector2.ZERO:
+		dash_direction = facing
+	_dash.try_start(dash_direction)
+
+
+func _use_ability(index: int) -> void:
+	if _abilities == null or index >= _abilities.get_child_count():
+		return
+	var ability := _abilities.get_child(index) as Ability
+	if ability != null:
+		ability.try_activate()
 
 
 func _pick_state(direction: Vector2, wants_sprint: bool, wants_sneak: bool, delta: float) -> MoveState:
@@ -120,12 +179,17 @@ func _spend_for_sprint(delta: float) -> bool:
 func _speed_for(state: MoveState) -> float:
 	match state:
 		MoveState.SPRINT:
-			return stats.sprint_speed
+			return stats.sprint_speed * speed_factor
 		MoveState.SNEAK:
-			return stats.sneak_speed
+			return stats.sneak_speed * speed_factor
 		MoveState.WALK:
-			return stats.walk_speed
+			return stats.walk_speed * speed_factor
 	return 0.0
+
+
+func _on_dash_finished() -> void:
+	# Nach dem Dash nicht nachrutschen: höchstens mit Lauftempo weiter.
+	velocity = velocity.limit_length(stats.walk_speed)
 
 
 func _on_died() -> void:
@@ -155,3 +219,31 @@ func _report_debug_values() -> void:
 	if _health != null:
 		var life := "%d / %d" % [roundi(_health.current), roundi(_health.get_maximum())]
 		EventBus.debug_value_changed.emit(prefix + " Leben", life)
+	if _dash != null:
+		var dash_state := "bereit"
+		if not _dash.is_ready():
+			dash_state = "%.1f s" % _dash.get_cooldown_left()
+		EventBus.debug_value_changed.emit(prefix + " Dash", dash_state)
+	if _ammo != null:
+		var ammo := "%d / %d" % [roundi(_ammo.current), roundi(_ammo.get_maximum())]
+		EventBus.debug_value_changed.emit(prefix + " Munition", ammo)
+	if _energy != null:
+		var energy := "%d / %d" % [roundi(_energy.current), roundi(_energy.get_maximum())]
+		EventBus.debug_value_changed.emit(prefix + " Energie", energy)
+	if _abilities != null:
+		EventBus.debug_value_changed.emit(prefix + " Fähigkeiten", _abilities_text())
+
+
+func _abilities_text() -> String:
+	var busy := PackedStringArray()
+	for index in _abilities.get_child_count():
+		var ability := _abilities.get_child(index) as Ability
+		if ability == null:
+			continue
+		if ability.is_active:
+			busy.append("%d aktiv %.1f" % [index + 1, ability.get_time_left()])
+		elif not ability.is_ready():
+			busy.append("%d Pause %.1f" % [index + 1, ability.get_cooldown_left()])
+	if busy.is_empty():
+		return "bereit"
+	return ", ".join(busy)

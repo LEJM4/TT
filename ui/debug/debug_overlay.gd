@@ -5,6 +5,8 @@ extends CanvasLayer
 ## Werte melden, ohne die Anzeige zu kennen:
 ##     EventBus.debug_value_changed.emit("Name", "Wert")
 ## Ein leerer Wert entfernt den Eintrag wieder.
+## Wird die Anzeige zu lang, lassen sich einzelne Werte im Inspektor
+## ausblenden: hidden_keys und show_mouse.
 ##
 ## Ein- und ausblenden: Aktion "debug_toggle_overlay" (F1).
 ## Abschalten: Knoten aus der Szene löschen - kein anderes Modul braucht ihn.
@@ -15,6 +17,10 @@ extends CanvasLayer
 @export var font_size := 12
 ## Ist die Anzeige beim Start sichtbar?
 @export var visible_on_start := true
+## Mausposition anzeigen?
+@export var show_mouse := true
+## Gemeldete Werte, die nicht angezeigt werden - ihre Namen, etwa "Kamera".
+@export var hidden_keys := PackedStringArray()
 
 var _values: Dictionary = {}
 var _time_left := 0.0
@@ -50,9 +56,12 @@ func _refresh() -> void:
 	var mouse := get_viewport().get_mouse_position()
 	var lines := PackedStringArray()
 	lines.append("FPS: %d" % int(Engine.get_frames_per_second()))
-	lines.append("Maus: %d, %d" % [int(mouse.x), int(mouse.y)])
+	if show_mouse:
+		lines.append("Maus: %d, %d" % [int(mouse.x), int(mouse.y)])
 	lines.append("Aktionen: %s" % _pressed_actions_text())
 	for key: String in _values:
+		if hidden_keys.has(key):
+			continue
 		lines.append("%s: %s" % [key, _values[key]])
 	lines.append("Anzeige: F1")
 	_label.text = "\n".join(lines)

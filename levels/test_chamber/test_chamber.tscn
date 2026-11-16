@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" path="res://entities/dummy/training_dummy.tscn" id="6_dummy"]
 [ext_resource type="PackedScene" path="res://world/damage_zone/damage_zone.tscn" id="7_zone"]
 [ext_resource type="PackedScene" path="res://ui/crosshair/crosshair.tscn" id="8_crosshair"]
+[ext_resource type="PackedScene" path="res://components/hitbox/hitbox.tscn" id="9_hitbox"]
+[ext_resource type="PackedScene" path="res://components/patrol_mover/patrol_mover.tscn" id="10_mover"]
+[ext_resource type="PackedScene" path="res://entities/projectile/projectile_spawner.tscn" id="11_projectiles"]
+[ext_resource type="PackedScene" path="res://components/stunnable/stunnable.tscn" id="12_stunnable"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
 size = Vector2(960, 16)
@@ -50,6 +54,9 @@ size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_square_c"]
 size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_strip"]
+size = Vector2(16, 96)
 
 [node name="TestChamber" type="Node2D" unique_id=242313944]
 script = ExtResource("1_chamber")
@@ -140,10 +147,37 @@ position = Vector2(430, 144)
 [node name="DummyC" parent="." instance=ExtResource("6_dummy")]
 position = Vector2(450, 144)
 
+[node name="DummyD" parent="." instance=ExtResource("6_dummy")]
+position = Vector2(592, 72)
+collision_layer = 0
+alive_color = Color(0.3, 0.75, 0.8, 1)
+
+[node name="PatrolMover" parent="DummyD" instance=ExtResource("10_mover")]
+
+[node name="Stunnable" parent="DummyD" instance=ExtResource("12_stunnable")]
+paused_node = NodePath("../PatrolMover")
+
 [node name="DamageZone" parent="." instance=ExtResource("7_zone")]
 position = Vector2(240, 240)
 
+[node name="DamageStrip" parent="." instance=ExtResource("9_hitbox")]
+position = Vector2(528, 120)
+collision_mask = 8
+hit_interval = 0.5
+active_on_start = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageStrip"]
+shape = SubResource("RectangleShape2D_strip")
+
+[node name="PlaceholderView" parent="DamageStrip" instance=ExtResource("2_view")]
+color = Color(0.9, 0.2, 0.2, 0.35)
+
+[node name="Stunnable" parent="DamageStrip" instance=ExtResource("12_stunnable")]
+paused_node = NodePath("..")
+
 [node name="PlayerSpawner" parent="." unique_id=970808961 instance=ExtResource("4_spawner")]
+
+[node name="ProjectileSpawner" parent="." instance=ExtResource("11_projectiles")]
 
 [node name="PlayerCamera" parent="." instance=ExtResource("5_camera")]
 position = Vector2(240, 135)
@@ -151,3 +185,5 @@ position = Vector2(240, 135)
 [node name="Crosshair" parent="." instance=ExtResource("8_crosshair")]
 
 [node name="DebugOverlay" parent="." unique_id=2130183334 instance=ExtResource("3_overlay")]
+show_mouse = false
+hidden_keys = PackedStringArray("Kamera", "Raumzeit")

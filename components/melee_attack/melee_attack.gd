@@ -6,7 +6,8 @@ extends Node2D
 ## Inspektor eine Werte-Datei (MeleeStats) und die Ebene der Ziele wählen.
 ## Die Figur ruft try_attack(richtung) auf. Der Knoten dreht sich in die
 ## Richtung und macht seine Hitbox für kurze Zeit scharf. Größe und Lage der
-## Trefferzone kommen aus der Werte-Datei.
+## Trefferzone kommen aus der Werte-Datei. Jeder Treffer füllt das Geschwister
+## mit dem Namen aus gain_supply_name auf (ein Supply), etwa die Energie.
 ##
 ## Abschalten: Knoten löschen - die Figur kann dann nicht mehr zuschlagen.
 
@@ -21,12 +22,17 @@ signal attack_finished
 @export_flags_2d_physics var target_mask := 0
 ## Farbe der Trefferzone, solange sie scharf ist.
 @export var swing_color := Color(1.0, 0.95, 0.6, 0.8)
+## Name des Geschwisters, das jeder Treffer auffüllt. Leer: keins.
+@export var gain_supply_name := "Energy"
 
 ## Läuft gerade ein Schlag?
 var is_attacking := false
+## Tempo-Faktor für die Pause zwischen zwei Hieben; über 1 geht es schneller (M7).
+var rate_factor := 1.0
 
 var _active_left := 0.0
 var _cooldown_left := 0.0
+var _gain_supply: Supply
 
 @onready var _hitbox := get_node_or_null("Hitbox") as Hitbox
 @onready var _shape_node := get_node_or_null("Hitbox/CollisionShape2D") as CollisionShape2D
@@ -39,6 +45,9 @@ func _ready() -> void:
 	if _hitbox != null:
 		_hitbox.damage = stats.damage
 		_hitbox.collision_mask = target_mask
+		_hitbox.hit_landed.connect(_on_hit_landed)
+	if not gain_supply_name.is_empty():
+		_gain_supply = get_parent().get_node_or_null(gain_supply_name) as Supply
 	if _shape_node != null:
 		var zone := RectangleShape2D.new()
 		zone.size = Vector2(stats.reach, stats.width)
@@ -48,7 +57,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if _cooldown_left > 0.0:
-		_cooldown_left -= delta
+		_cooldown_left -= delta * rate_factor
 	if not is_attacking:
 		return
 	_active_left -= delta
@@ -82,6 +91,11 @@ func _finish() -> void:
 		_hitbox.deactivate()
 	queue_redraw()
 	attack_finished.emit()
+
+
+func _on_hit_landed(_hurtbox: Hurtbox) -> void:
+	if _gain_supply != null:
+		_gain_supply.add(stats.gain_per_hit)
 
 
 func _draw() -> void:

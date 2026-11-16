@@ -12,10 +12,10 @@ Er ist eine Richtlinie, kein Zwang. Was vorgezogen oder eingeschoben wird, steht
 | | |
 | --- | --- |
 | Stand vom | 16.11.2026 |
-| In Arbeit | M4 – Zielen & Nahkampf: Dateien geliefert, der Test des Nutzers in Godot steht aus |
-| Als Nächstes | M5 – Dash |
-| Zuletzt abgeschlossen | M3 – Kamera, am 16.11.2026 |
-| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; dort liegt erst M2, M3 ist noch nicht hochgeladen |
+| In Arbeit | M7 – Fähigkeiten: Dateien geliefert, der Test des Nutzers in Godot steht aus |
+| Als Nächstes | Gate G1 – fühlt sich die Spielfigur gut an? Danach Phase 2 mit M8 – Interaktion |
+| Zuletzt abgeschlossen | M5 – Dash und M6 – Fernkampf, am 16.11.2026 |
+| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; zuletzt gelesen am 16.11.2026 vor M4, damals lag dort M2. Seither kein Abgleich, auf Wunsch des Nutzers |
 
 ## Arbeitsumgebung
 
@@ -26,7 +26,7 @@ Er ist eine Richtlinie, kein Zwang. Was vorgezogen oder eingeschoben wird, steht
 | Git-Werkzeug | GitHub Desktop |
 | Commit-Identität | `LEJM4` mit der privaten GitHub-Adresse (`…@users.noreply.github.com`) |
 | So liest Claude das Repo | per `git clone` über den Link, nur lesend – Dateien wörtlich, Grafiken als Bild |
-| So liefert Claude Dateien | jede Datei einzeln mit Pfad, dazu ein ZIP zum Entpacken nach `E:\GitHub\TT` |
+| So liefert Claude Dateien | als ZIP zum Entpacken nach `E:\GitHub\TT`; bis M4 zusätzlich jede Datei einzeln, seit M5 auf Wunsch des Nutzers nur das ZIP |
 
 ## Fahrplan in Kurzform
 
@@ -38,11 +38,11 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | | M1 Testkammer & Debug | fertig |
 | 1 – Spielfigur | M2 Bewegung | fertig |
 | | M3 Kamera | fertig |
-| | M4 Zielen & Nahkampf | im Test |
-| | M5 Dash | als Nächstes |
-| | M6 Fernkampf | offen |
-| | M7 Fähigkeiten | offen |
-| 2 – Welt & Interaktion | M8 Interaktion | offen |
+| | M4 Zielen & Nahkampf | fertig |
+| | M5 Dash | fertig |
+| | M6 Fernkampf | fertig |
+| | M7 Fähigkeiten | im Test |
+| 2 – Welt & Interaktion | M8 Interaktion | als Nächstes |
 | | M9 Zerstörbares | offen |
 | | M10 Truhen & Beute | offen |
 | | M11 Inventar & Ausrüstung | offen |
@@ -73,6 +73,9 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Datum | Was | Status |
 | --- | --- | --- |
 | 15.11.2026 | Commits laufen unter `LEJM4` mit privater GitHub-Adresse. Dafür wurde das Repo neu angelegt; die erste Historie ist gelöscht. | erledigt |
+| 16.11.2026 | Wunsch des Nutzers nach dem Test von M4: nichts mit dem Repo abgleichen, nur programmieren, nur das ZIP liefern. M4 wurde deshalb ohne eigenen Abschluss-Schritt abgeschlossen und M5 ohne vorherigen Vorschlag gebaut. Ob das dauerhaft gilt, ist offen. | für M5 so umgesetzt |
+| 16.11.2026 | Auf „weiter“ direkt nach der Lieferung von M5 hat Claude M6 gebaut, ohne dass ein Testergebnis zu M5 vorlag, wieder ohne Abgleich und nur als ZIP. Das ZIP zu M6 enthält deshalb auch alle Dateien von M5. | so umgesetzt |
+| 16.11.2026 | Auf „Ja alles passt -> weiter“ hat Claude M7 gebaut, wieder ohne Abgleich und nur als ZIP. Die Entscheidung zu Zaubern hat Claude vorläufig selbst getroffen. | so umgesetzt |
 
 ## Festlegungen
 
@@ -96,22 +99,46 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Tod | Vorläufig: Stirbt eine Spielfigur, startet der Raum nach einer Sekunde neu. Die endgültige Regel folgt mit dem Speichern in M16. | vorläufig entschieden am 16.11.2026 |
 | Zuschlagen | Die Figur läuft weiter, während sie schlägt. Geschlagen wird stufenlos in Zielrichtung; die vier Blickrichtungen betreffen später nur das Bild. | entschieden am 16.11.2026 |
 | Mauszeiger | Im Spielfenster ersetzt ihn das Fadenkreuz | entschieden am 16.11.2026 |
+| Dash | In Laufrichtung, im Stehen in Blickrichtung; währenddessen unverwundbar und nicht lenkbar; neue Hiebe erst danach; begrenzt durch eine Abklingzeit, ohne Ausdauer-Kosten | von Claude gewählt; vom Nutzer nach dem Test am 16.11.2026 mit „Ja alles passt“ bestätigt |
+| Fernkampf | Rechtsklick schießt in Zielrichtung, gehalten zwei Schüsse pro Sekunde; ein Geschoss fliegt geradeaus, trifft genau ein Ziel und endet an Wänden und Blöcken; während des Dashs fällt kein Schuss | von Claude gewählt; vom Nutzer nach dem Test am 16.11.2026 mit „Ja alles passt“ bestätigt |
+| Fernkampf-Kosten | Munition: 12 Schuss, jeder Schuss kostet 1, nichts kommt von selbst nach. Nachschub folgt mit Truhen und Beute in M10. | von Claude vorgeschlagen; vom Nutzer am 16.11.2026 mit „Ja alles passt“ bestätigt |
+| Fähigkeiten | Drei Plätze auf den Tasten 1, 2 und 3: Schnelligkeit, Unsichtbarkeit, Stun. Jede kostet Energie, wirkt eine Dauer lang und hat danach eine Abklingzeit. Der Platz unter dem Knoten `Abilities` bestimmt die Taste. | von Claude gewählt am 16.11.2026, vom Nutzer noch nicht bestätigt |
+| Energie | 100 Punkte, eine Leiste für alle Fähigkeiten. Sie füllt sich nicht von selbst, sondern laut Konzept durch Treffer: jeder Schwerttreffer bringt 10. Fläschchen und Speicherpunkte folgen später. | laut Konzept; die Zahlen hat Claude gewählt |
+| Zauber | Keine eigene Kategorie: Ein Zauber ist eine Fähigkeit wie jede andere, mit demselben Baustein und derselben Energie | vorläufig von Claude gewählt am 16.11.2026; die Entscheidung liegt beim Nutzer |
 
-Noch offen laut Plan, jeweils fällig vor dem genannten Modul: Fernkampf-Kosten (M6), Zauber (M7), Tod & Speichern endgültig (M16), Story (Phase 5), Anzahl Level (Phase 6).
+Noch offen laut Plan, jeweils fällig vor dem genannten Modul: Zauber (vorläufig gewählt, siehe oben), Tod & Speichern endgültig (M16), Story (Phase 5), Anzahl Level (Phase 6).
 
 ## Prüfungen
 
+**M7 – Fähigkeiten**
+
+- Noch nicht getestet. Claude hat die Dateien nur am Text geprüft: Verweise, Knotenpfade, Meldungen, exportierte Werte, Klassennamen und alle Aufrufe zwischen den Bausteinen.
+- Grundlage waren Claudes Lieferungen zu M5 und M6. Kein Abgleich mit dem Repo.
+
+**M6 – Fernkampf**
+
+- Getestet hat der Nutzer am 16.11.2026 in Godot. Rückmeldung: „Ja alles passt“ – die neun Punkte der Prüfliste gelten als bestanden.
+- Claude hat die Dateien nur am Text geprüft: Verweise, Knotenpfade, Meldungen, exportierte Werte und Klassennamen.
+- Nachgerechnet, nicht ausprobiert: Ein Geschoss legt je Physik-Schritt 3,7 Pixel zurück und überdeckt eine Puppe rund fünf Schritte lang; die Hitbox prüft in jedem Schritt, ein Durchfliegen ohne Treffer ist so nicht möglich. Die Reichweite von 240 Pixeln entspricht 15 Kacheln und gut einer Sekunde Flug.
+- Grundlage war Claudes M5-Lieferung. Kein Abgleich mit dem Repo.
+
+**M5 – Dash**
+
+- Getestet hat der Nutzer am 16.11.2026 in Godot, zusammen mit M6. Rückmeldung: „Ja alles passt“ – die neun Punkte der Prüfliste gelten als bestanden.
+- Claude hat die Dateien nur am Text geprüft: Verweise, Knotenpfade, Meldungen, exportierte Werte und Klassennamen.
+- Nachgerechnet, nicht ausprobiert: Ein Dash dauert 12 Physik-Schritte und legt genau 64 Pixel zurück. Der Dash durch den Schadensstreifen bleibt ohne Schaden, wenn die Mitte der Figur beim Start 5 bis 43 Pixel vor dem Streifen steht; wer den Streifen vorher berührt, wird getroffen.
+- Grundlage war Claudes M4-Lieferung. Auf Wunsch des Nutzers gab es keinen Abgleich mit dem Repo.
+
 **M4 – Zielen & Nahkampf**
 
-- Noch nicht getestet. Claude hat die Dateien nur am Text geprüft: Verweise, Knotenpfade, Meldungen, exportierte Werte und Klassennamen.
-- Nachgerechnet, nicht ausprobiert: Der Hieb trifft eine anliegende Puppe von allen vier Seiten und schräg; er reicht bis 17 Pixel Lücke zwischen Figur und Puppe; zielt das Fadenkreuz auf die Lücke im Puppenpaar, trifft ein Hieb beide; bei gehaltener Taste fallen 28 Hiebe in 10 Sekunden; das Schadensfeld trifft die Figur alle 0,6 Sekunden.
-- Grundlage war Claudes M3-Lieferung, nicht das Repo, weil M3 dort noch fehlt. Die Testkammer-Szene beim Nutzer kann davon um Kennungen abweichen, die Godot beim Speichern vergeben hat; das ZIP ersetzt sie.
+- Getestet hat der Nutzer am 16.11.2026 in Godot. Rückmeldung: „Alles passt“ – die zehn Punkte der Prüfliste gelten als bestanden.
+- Claude hat die Dateien nur am Text geprüft. Grundlage war Claudes M3-Lieferung, weil M3 damals im Repo fehlte. Ein Abgleich mit dem Repo steht aus; der Nutzer hat ihn vorerst abbestellt.
 
 **M3 – Kamera**
 
 - Getestet hat der Nutzer am 16.11.2026 in Godot 4.7.2. Alle acht Punkte der Prüfliste sind bestanden: größerer Raum, das Bild wandert mit, kein Zittern und kein Ruckeln beim Laufen, Sprinten und Schleichen, Vorausschau zur Maus, nie Blick über den Raumrand, Neustart, Vorausschau ohne Code abschaltbar, die Kammer läuft ohne `PlayerCamera`.
 - Zum Gefühl der Kamera kam keine eigene Rückmeldung; die Startwerte bleiben.
-- Claude hat die Dateien nur am Text geprüft. Abgleich mit dem Repo am 16.11.2026, zu Beginn von M4: M3 ist dort noch nicht angekommen, der letzte Commit ist `098b405` (M2). Der Abgleich wird nach dem Push nachgeholt.
+- Claude hat die Dateien nur am Text geprüft. Abgleich mit dem Repo am 16.11.2026, zu Beginn von M4: M3 ist dort noch nicht angekommen, der letzte Commit war `098b405` (M2). Der Abgleich steht aus; der Nutzer hat ihn vorerst abbestellt.
 
 **M2 – Bewegung**
 
@@ -140,14 +167,14 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 - Renderer `gl_compatibility`
 - Startszene: die Testkammer `res://levels/test_chamber/test_chamber.tscn`
 - Von Godot ergänzt: `config/features=PackedStringArray("4.7")`
-- Mit M3 vom Nutzer gesetzt: „Snap 2D Transforms to Pixel“ – alle 2D-Objekte werden auf ganze Pixel gerundet gezeichnet. Im Repo ist das noch nicht zu sehen, weil M3 dort fehlt.
+- Mit M3 vom Nutzer gesetzt: „Snap 2D Transforms to Pixel“ – alle 2D-Objekte werden auf ganze Pixel gerundet gezeichnet. Im Repo war das am 16.11.2026 noch nicht zu sehen, weil M3 dort fehlte.
 - Bewusst aus: Physik-Interpolation. Bewegung läuft im Takt von 60 Schritten pro Sekunde.
 
 ### Globale Dienste (Autoloads)
 
 | Name | Datei | Stand |
 | --- | --- | --- |
-| `EventBus` | `autoload/event_bus.gd` | aktiv, 4 Meldungen |
+| `EventBus` | `autoload/event_bus.gd` | aktiv, 5 Meldungen |
 | `InputSetup` | `autoload/input_setup.gd` | aktiv; legt die Aktionen an, `all_actions()` liefert ihre Namen |
 | `GameState` | `autoload/game_state.gd` | leer, wird in M16 und M19 gefüllt |
 | `SaveManager` | `autoload/save_manager.gd` | leer, wird in M16 gefüllt |
@@ -162,6 +189,7 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 | `debug_value_changed` | `key: String`, `value: String` | Ein Modul meldet einen Wert für die Debug-Anzeige; ein leerer Wert entfernt den Eintrag |
 | `camera_bounds_changed` | `bounds: Rect2` | Ein Level meldet seine Grenzen; Kameras bleiben innerhalb |
 | `player_died` | `player_id: int` | Das Leben einer Spielfigur ist auf 0 gefallen; was dann geschieht, entscheidet das Level |
+| `projectile_requested` | `scene: PackedScene`, `origin: Vector2`, `direction: Vector2`, `stats: Resource`, `target_mask: int` | Jemand schießt; der `ProjectileSpawner` des Levels erzeugt das Geschoss. `stats` ist ein `RangedStats` |
 
 ### Debug-Werte, die Module melden
 
@@ -172,9 +200,13 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 | `S1 Tempo` | Spielfigur | Tempo in Pixeln pro Sekunde und Zustand: Stehen, Laufen, Sprinten, Schleichen |
 | `S1 Ausdauer` | Spielfigur | Vorrat und Höchstwert, bei Erschöpfung mit Zusatz |
 | `S1 Leben` | Spielfigur | Leben und Höchstwert |
+| `S1 Dash` | Spielfigur | „bereit“ oder die Sekunden bis zum nächsten Dash |
+| `S1 Munition` | Spielfigur | Vorrat und Höchstwert |
+| `S1 Energie` | Spielfigur | Vorrat und Höchstwert |
+| `S1 Fähigkeiten` | Spielfigur | „bereit“ oder je beschäftigter Fähigkeit: Platz, „aktiv“ mit Restdauer oder „Pause“ mit Rest der Abklingzeit |
 | `Kamera` | Kamera | Bildmitte in der Welt |
 
-Der Hinweis „Neustart: F2“ ist mit M4 entfallen, damit die Anzeige bei zehn Zeilen bleibt; F2 gilt weiter.
+Der Hinweis „Neustart: F2“ ist mit M4 entfallen; F2 gilt weiter. In der Testkammer sind seit M7 die Zeilen „Maus“, „Kamera“ und „Raumzeit“ ausgeblendet, damit die Anzeige bei elf Zeilen bleibt. Einschalten lassen sie sich im Inspektor des Knotens `DebugOverlay` über `show_mouse` und `hidden_keys`.
 
 ### Eingabe-Aktionen – `autoload/input_setup.gd`
 
@@ -195,17 +227,17 @@ Der Hinweis „Neustart: F2“ ist mit M4 entfallen, damit die Anzeige bei zehn 
 | `debug_toggle_overlay` | F1 |
 | `debug_restart_room` | F2 |
 
-Genutzt werden bisher: die vier Laufrichtungen, `sprint`, `sneak`, `attack_primary` und die beiden Entwickler-Tasten.
+Genutzt werden bisher: die vier Laufrichtungen, `sprint`, `sneak`, `attack_primary`, `attack_secondary`, `dash`, `ability_1` bis `ability_3` und die beiden Entwickler-Tasten.
 
 ### Kollisions-Ebenen
 
 | Ebene | Name | Wer liegt darauf |
 | --- | --- | --- |
-| 1 | `world` | Wände und Blöcke der Testkammer |
+| 1 | `world` | Wände und Blöcke der Testkammer; Geschosse enden an ihnen |
 | 2 | `player` | Spielfigur; ihre Maske ist `world` und `enemy` |
-| 3 | `enemy` | Übungspuppen als feste Körper |
-| 4 | `player_hurtbox` | `Hurtbox` der Spielfigur; das Schadensfeld sucht hier |
-| 5 | `enemy_hurtbox` | `Hurtbox` der Übungspuppen; das Schwert sucht hier |
+| 3 | `enemy` | Übungspuppen als feste Körper; das bewegliche Ziel liegt auf keiner Ebene und lässt sich durchlaufen |
+| 4 | `player_hurtbox` | `Hurtbox` der Spielfigur; Schadensfeld und Schadensstreifen suchen hier |
+| 5 | `enemy_hurtbox` | `Hurtbox` der Übungspuppen; Schwert und Geschosse suchen hier |
 | 6 | `interactable` | – |
 | 7 | `pickup` | – |
 
@@ -217,12 +249,14 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | --- | --- | --- |
 | `player_spawn` | Startpunkte im Level (`Marker2D`) | `PlayerSpawner` |
 | `players` | jede Spielfigur | `PlayerCamera`; später Gegner und HUD |
+| `invisible` | Figuren, solange ihre Unsichtbarkeit wirkt | noch niemand; ab Phase 3 die Wahrnehmung der Gegner |
+| `stunnable` | jeder Baustein `Stunnable` | die Fähigkeit Stun |
 
 ### Globale Klassen (`class_name`)
 
 | Klasse | Datei | Art |
 | --- | --- | --- |
-| `IntentSource` | `entities/intent_source.gd` | Knoten: die Absichten einer Figur – `move_direction`, `wants_sprint`, `wants_sneak`, `aim_direction`, `wants_attack` |
+| `IntentSource` | `entities/intent_source.gd` | Knoten: die Absichten einer Figur – `move_direction`, `wants_sprint`, `wants_sneak`, `aim_direction`, `wants_attack`, `wants_dash`, `wants_shoot`, `wants_ability` |
 | `MovementStats` | `entities/movement_stats.gd` | Bauplan einer Werte-Datei für Bewegung |
 | `Stamina` | `components/stamina/stamina.gd` | Baustein Ausdauer |
 | `StaminaStats` | `components/stamina/stamina_stats.gd` | Bauplan einer Werte-Datei für Ausdauer |
@@ -233,6 +267,19 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `Hitbox` | `components/hitbox/hitbox.gd` | Baustein: teilt Treffer aus |
 | `MeleeAttack` | `components/melee_attack/melee_attack.gd` | Baustein Nahkampf-Angriff |
 | `MeleeStats` | `components/melee_attack/melee_stats.gd` | Bauplan einer Werte-Datei für einen Nahkampf-Angriff |
+| `Dash` | `components/dash/dash.gd` | Baustein Dash |
+| `DashStats` | `components/dash/dash_stats.gd` | Bauplan einer Werte-Datei für den Dash |
+| `Supply` | `components/supply/supply.gd` | Baustein Vorrat, etwa Munition |
+| `SupplyStats` | `components/supply/supply_stats.gd` | Bauplan einer Werte-Datei für einen Vorrat |
+| `RangedAttack` | `components/ranged_attack/ranged_attack.gd` | Baustein Fernkampf-Angriff |
+| `RangedStats` | `components/ranged_attack/ranged_stats.gd` | Bauplan einer Werte-Datei für einen Fernkampf-Angriff |
+| `Projectile` | `entities/projectile/projectile.gd` | Geschoss |
+| `Ability` | `abilities/ability.gd` | Grundgerüst jeder Fähigkeit |
+| `AbilityStats` | `abilities/ability_stats.gd` | Bauplan einer Werte-Datei für Fähigkeiten: Name, Kosten, Dauer, Abklingzeit |
+| `HasteStats` | `abilities/haste/haste_stats.gd` | erweitert `AbilityStats` um `speed_factor` |
+| `InvisibilityStats` | `abilities/invisibility/invisibility_stats.gd` | erweitert `AbilityStats` um `alpha` |
+| `StunStats` | `abilities/stun/stun_stats.gd` | erweitert `AbilityStats` um `radius` |
+| `Stunnable` | `components/stunnable/stunnable.gd` | Baustein: macht ein Ziel betäubbar |
 
 ### Werte-Dateien – `data/`
 
@@ -242,7 +289,14 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `data/player/stamina.tres` | `StaminaStats` | `max_stamina` 100, `regen_per_second` 30, `regen_delay` 0,8, `recover_threshold` 25 |
 | `data/player/camera.tres` | `CameraStats` | `mouse_look_factor` 0,15, `mouse_look_max` 40, `move_look_seconds` 0,12, `move_look_max` 24, `smooth_time` 0,2, `min_speed` 24 |
 | `data/player/health.tres` | `HealthStats` | `max_health` 100, `invulnerable_time` 0,6 |
-| `data/player/sword.tres` | `MeleeStats` | `damage` 10, `start_distance` 6, `reach` 18, `width` 20, `active_time` 0,12, `cooldown` 0,35 |
+| `data/player/sword.tres` | `MeleeStats` | `damage` 10, `gain_per_hit` 10, `start_distance` 6, `reach` 18, `width` 20, `active_time` 0,12, `cooldown` 0,35 |
+| `data/player/dash.tres` | `DashStats` | `distance` 64, `duration` 0,2, `invulnerable_time` 0,25, `cooldown` 0,8, `buffer_time` 0,12 |
+| `data/player/bow.tres` | `RangedStats` | `damage` 10, `projectile_speed` 220, `max_distance` 240, `spawn_distance` 8, `cooldown` 0,5, `cost` 1 |
+| `data/player/ammo.tres` | `SupplyStats` | `max_amount` 12, `regen_per_second` 0, `regen_delay` 1 |
+| `data/player/energy.tres` | `SupplyStats` | `max_amount` 100, `regen_per_second` 0, `regen_delay` 1 |
+| `data/abilities/haste.tres` | `HasteStats` | `display_name` Schnelligkeit, `cost` 30, `duration` 4, `cooldown` 6, `speed_factor` 1,5 |
+| `data/abilities/invisibility.tres` | `InvisibilityStats` | `display_name` Unsichtbarkeit, `cost` 40, `duration` 5, `cooldown` 8, `alpha` 0,3 |
+| `data/abilities/stun.tres` | `StunStats` | `display_name` Stun, `cost` 30, `duration` 2, `cooldown` 6, `radius` 64 |
 | `data/dummy/health.tres` | `HealthStats` | `max_health` 50, `invulnerable_time` 0 |
 
 Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden.
@@ -253,14 +307,30 @@ Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden.
 | --- | --- | --- | --- |
 | `PlaceholderView` | `components/placeholder_view/` | Malt die Rechtecke, Kreise und Kapseln der `CollisionShape2D`-Geschwister als Farbfläche. Platzhalter-Grafik bis Gate G2. | `color` |
 | `Stamina` | `components/stamina/` | Ausdauer-Vorrat: `spend(amount)` verbraucht und liefert, ob es ging; nach `regen_delay` füllt er sich. Bei 0 gilt `is_exhausted`, bis `recover_threshold` erreicht ist. Meldet `changed`, `exhausted`, `recovered`. | `stats` |
-| `Health` | `components/health/` | Leben. `apply_damage(amount)` ist die einzige Stelle, an der über Schaden entschieden wird: Tote und gerade Unverwundbare nehmen keinen. `reset()` füllt auf, auch nach dem Tod. Meldet `changed`, `damaged`, `died`, `revived`. | `stats` |
+| `Health` | `components/health/` | Leben. `apply_damage(amount)` ist die einzige Stelle, an der über Schaden entschieden wird: Tote und gerade Unverwundbare nehmen keinen. `make_invulnerable(seconds)` schützt für eine Dauer, etwa beim Dash. `reset()` füllt auf, auch nach dem Tod. Meldet `changed`, `damaged`, `died`, `revived`. | `stats` |
 | `Hurtbox` | `components/hurtbox/` | `Area2D`, die Treffer annimmt und an das Geschwister `Health` weiterreicht: `receive_hit(damage, direction)`. Meldet `hit_received`. Braucht eine eigene `CollisionShape2D`. | Ebene |
-| `Hitbox` | `components/hitbox/` | `Area2D`, die jede berührte `Hurtbox` trifft, solange sie scharf ist: `activate()`, `deactivate()`. Meldet `hit_landed`. Braucht eine eigene `CollisionShape2D`. | `damage`, `hit_interval`, `active_on_start`, Maske |
-| `MeleeAttack` | `components/melee_attack/` | Nahkampf-Angriff: `try_attack(richtung)` dreht die Trefferzone in die Richtung und macht sie kurz scharf. Zone und Zeiten kommen aus der Werte-Datei. Meldet `attack_started`, `attack_finished`. | `stats`, `target_mask`, `swing_color` |
+| `Hitbox` | `components/hitbox/` | `Area2D`, die jede berührte `Hurtbox` trifft, solange sie scharf ist: `activate()`, `deactivate()`. Meldet `hit_landed`; entschärft ein Zuhörer sie dabei, trifft sie in diesem Schritt nichts weiter. Braucht eine eigene `CollisionShape2D`. | `damage`, `hit_interval`, `active_on_start`, Maske |
+| `MeleeAttack` | `components/melee_attack/` | Nahkampf-Angriff: `try_attack(richtung)` dreht die Trefferzone in die Richtung und macht sie kurz scharf. Zone und Zeiten kommen aus der Werte-Datei. Jeder Treffer füllt das Geschwister `gain_supply_name` um `gain_per_hit` auf. `rate_factor` über 1 verkürzt die Pause. Meldet `attack_started`, `attack_finished`. | `stats`, `target_mask`, `swing_color`, `gain_supply_name` |
 | `HitFlash` | `components/hit_flash/` | Lässt den Elternknoten bei Schaden hell aufblitzen; solange er unverwundbar ist, blinkt er. Hört auf das Geschwister `Health`. | `flash_time`, `flash_strength`, `blink_while_invulnerable`, `blink_interval`, `blink_alpha` |
 | `DamageNumbers` | `components/damage_numbers/` | Zeigt bei Schaden die Zahl über dem Elternknoten; sie steigt auf und verblasst. Hört auf das Geschwister `Health`. | `color`, `font_size`, `outline_size`, `rise_distance`, `duration`, `start_offset` |
+| `Dash` | `components/dash/` | Kurzer, schneller Satz: `request()` merkt den Tastendruck vor, `try_start(richtung)` startet, sobald es möglich ist; solange `is_dashing` gilt, liefert `get_velocity()` das Tempo. Macht das Geschwister `Health` beim Start kurz unverwundbar. Meldet `dash_started`, `dash_finished`. | `stats` |
+| `Supply` | `components/supply/` | Zählbarer Vorrat: `spend(menge)` verbraucht und liefert, ob genug da war; `add(menge)` füllt auf. Mit `regen_per_second` über 0 füllt er sich nach `regen_delay` von selbst. Meldet `changed`. | `stats` |
+| `RangedAttack` | `components/ranged_attack/` | Fernkampf-Angriff: `try_shoot(richtung)` bezahlt aus dem Geschwister `supply_name` und bestellt das Geschoss über `projectile_requested`. Ohne `ProjectileSpawner` im Level fällt kein Schuss und nichts wird bezahlt. `rate_factor` über 1 verkürzt die Pause. Meldet `shot_fired`. | `stats`, `projectile_scene`, `target_mask`, `supply_name` |
+| `PatrolMover` | `components/patrol_mover/` | Lässt seinen Elternknoten zwischen Startpunkt und Startpunkt + `travel` pendeln. Für Dinge, die nichts wegschieben müssen. | `travel`, `speed` |
+| `Stunnable` | `components/stunnable/` | Macht seinen Elternknoten betäubbar: `apply_stun(sekunden)`, `is_stunned()`. Solange die Betäubung anhält, ruht der Knoten aus `paused_node` und um das Ziel liegt ein Ring. Steht in der Gruppe `stunnable`. Meldet `stunned`, `recovered`. | `paused_node`, `ring_radius`, `ring_color` |
 
 Die Bausteine finden das Leben über den Namen: Der Knoten muss genau `Health` heißen und neben ihnen liegen.
+
+### Fähigkeiten – `abilities/`
+
+| Fähigkeit | Ordner | Was sie tut | Einstellbar |
+| --- | --- | --- | --- |
+| `Ability` | `abilities/` | Grundgerüst: `try_activate()` prüft Bereitschaft und Vorrat, bezahlt und startet die Wirkung; nach `duration` endet sie, dann läuft `cooldown`. Erbende Skripte füllen nur `_begin_effect()` und `_end_effect()`. Meldet `activated`, `finished`. | `stats`, `supply_name` |
+| Schnelligkeit | `abilities/haste/` | Setzt bei der Figur `speed_factor` und bei ihren Kindern `rate_factor`: schneller laufen, schlagen und schießen. | `stats` |
+| Unsichtbarkeit | `abilities/invisibility/` | Macht das Bild der Figur durchscheinend und stellt sie in die Gruppe `invisible`. Gegner und Bonus-Schaden folgen in Phase 3. | `stats`, `view_name` |
+| Stun | `abilities/stun/` | Betäubt jeden `Stunnable` im Umkreis für die Dauer der Fähigkeit und zeigt einen Ring. | `stats`, `pulse_time`, `pulse_color` |
+
+Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skript erbt von `Ability`.
 
 ### Szenen
 
@@ -272,6 +342,8 @@ Die Bausteine finden das Leben über den Namen: Der Knoten muss genau `Health` h
 | `entities/player/player_camera.tscn` | `player_camera.gd` | Kamera, die der Spielfigur folgt |
 | `entities/dummy/training_dummy.tscn` | `training_dummy.gd` | Übungspuppe |
 | `world/damage_zone/damage_zone.tscn` | keins; die Szene erbt von `hitbox.tscn` | Schadensfeld |
+| `entities/projectile/projectile.tscn` | `projectile.gd` | Geschoss |
+| `entities/projectile/projectile_spawner.tscn` | `projectile_spawner.gd` | erzeugt alle Geschosse eines Levels |
 | `ui/crosshair/crosshair.tscn` | `crosshair.gd` | Fadenkreuz |
 | `ui/debug/debug_overlay.tscn` | `debug_overlay.gd` | Debug-Anzeige |
 | `components/placeholder_view/placeholder_view.tscn` | `placeholder_view.gd` | Baustein, siehe oben |
@@ -282,25 +354,41 @@ Die Bausteine finden das Leben über den Namen: Der Knoten muss genau `Health` h
 | `components/melee_attack/melee_attack.tscn` | `melee_attack.gd` | Baustein, siehe oben |
 | `components/hit_flash/hit_flash.tscn` | `hit_flash.gd` | Baustein, siehe oben |
 | `components/damage_numbers/damage_numbers.tscn` | `damage_numbers.gd` | Baustein, siehe oben |
+| `components/dash/dash.tscn` | `dash.gd` | Baustein, siehe oben |
+| `components/supply/supply.tscn` | `supply.gd` | Baustein, siehe oben |
+| `components/ranged_attack/ranged_attack.tscn` | `ranged_attack.gd` | Baustein, siehe oben |
+| `components/patrol_mover/patrol_mover.tscn` | `patrol_mover.gd` | Baustein, siehe oben |
+| `components/stunnable/stunnable.tscn` | `stunnable.gd` | Baustein, siehe oben |
+| `abilities/haste/haste.tscn` | `haste.gd` | Fähigkeit, siehe oben |
+| `abilities/invisibility/invisibility.tscn` | `invisibility.gd` | Fähigkeit, siehe oben |
+| `abilities/stun/stun.tscn` | `stun.gd` | Fähigkeit, siehe oben |
 | `ui/debug/setup_check.tscn` | `setup_check.gd` | Setup-Check aus M0; bleibt als Werkzeug |
 
 **Spielfigur im Einzelnen**
 
 - `Player` ist ein `CharacterBody2D` im schwebenden Modus, Ebene `player`, Maske `world` und `enemy`, Gruppe `players`. Körper 12 × 12 Pixel, grüner Platzhalter, weißer Punkt in Blickrichtung.
-- Kinder: `CollisionShape2D`, `PlaceholderView`, `PlayerInput` (ein `IntentSource`, läuft vor der Figur), `Stamina`, `Health`, `Hurtbox` (10 × 10 Pixel, Ebene `player_hurtbox`), `HitFlash`, `MeleeAttack` (sucht auf `enemy_hurtbox`).
+- Kinder: `CollisionShape2D`, `PlaceholderView`, `PlayerInput` (ein `IntentSource`, läuft vor der Figur), `Stamina`, `Health`, `Hurtbox` (10 × 10 Pixel, Ebene `player_hurtbox`), `HitFlash`, `MeleeAttack` (sucht auf `enemy_hurtbox`), `Dash`, `Ammo` (ein `Supply`), `RangedAttack` (Ziele auf `enemy_hurtbox`), `Energy` (ein `Supply`), `Abilities` mit den Kindern `Haste`, `Invisibility` und `Stun`.
 - Die Figur liest nur Absichten. `PlayerInput` füllt sie aus den Aktionen und aus der Mausposition; später kann eine andere Quelle dasselbe tun.
 - Blick und Hieb: Die Figur blickt stufenlos in die Zielrichtung, also zur Maus. Solange `attack_primary` gehalten wird, schlägt sie dorthin. Laufen, Sprinten und Schleichen gehen dabei weiter.
-- Zustände: Stehen, Laufen, Sprinten, Schleichen. Schleichen geht vor Sprinten. Sprinten kostet Ausdauer; ohne Vorrat läuft die Figur normal.
+- Zustände: Stehen, Laufen, Sprinten, Schleichen, Dash. Schleichen geht vor Sprinten. Sprinten kostet Ausdauer; ohne Vorrat läuft die Figur normal.
+- Dash: Ein Druck auf `dash` schnellt die Figur 64 Pixel weit – in Laufrichtung, im Stehen in Blickrichtung. Solange er läuft, lenkt sie nicht, verbraucht keine Ausdauer und beginnt keinen Hieb; ein laufender Hieb geht weiter. Danach läuft sie höchstens mit Lauftempo weiter. Halten der Taste löst keinen zweiten Dash aus.
+- Fernkampf: Solange `attack_secondary` gehalten wird, schießt die Figur in Zielrichtung, zwei Schüsse pro Sekunde, jeder kostet 1 Munition. Laufen geht dabei weiter; während des Dashs fällt kein Schuss.
+- Fähigkeiten: Ein Druck auf `ability_1`, `ability_2` oder `ability_3` setzt das erste, zweite oder dritte Kind von `Abilities` ein. Das geht jederzeit, auch im Dash. Die Figur selbst kennt keine einzelne Fähigkeit; sie bietet nur `speed_factor` an, den die Schnelligkeit setzt.
+- Energie: Fähigkeiten bezahlen aus `Energy`. Der Vorrat füllt sich nur durch Schwerttreffer, über `MeleeAttack`.
 - Tod: Fällt das Leben auf 0, bleibt die Figur stehen, wird grau und sendet `player_died`. Was dann geschieht, entscheidet das Level.
-- Einstellbar: `stats` (Werte-Datei), `player_id`, `defeated_color`. Ohne `PlayerInput` bleibt sie stehen, ohne `Stamina` sprintet sie unbegrenzt, ohne `Health` nimmt sie keinen Schaden, ohne `Hurtbox` ist sie nicht zu treffen, ohne `MeleeAttack` schlägt sie nicht zu.
-- Ein Zustandsautomat als Baustein kommt, sobald sich Zustände gegenseitig ausschließen – voraussichtlich mit dem Dash in M5. In M4 läuft der Hieb neben der Bewegung her und braucht ihn nicht.
+- Einstellbar: `stats` (Werte-Datei), `player_id`, `defeated_color`. Ohne `PlayerInput` bleibt sie stehen, ohne `Stamina` sprintet sie unbegrenzt, ohne `Health` nimmt sie keinen Schaden, ohne `Hurtbox` ist sie nicht zu treffen, ohne `MeleeAttack` schlägt sie nicht zu, ohne `Dash` dasht sie nicht, ohne `RangedAttack` schießt sie nicht, ohne `Ammo` kosten Schüsse nichts, ohne `Abilities` hat sie keine Fähigkeiten, ohne `Energy` kosten Fähigkeiten nichts.
+- Einen Zustandsautomaten als Baustein gibt es noch nicht: Der Dash bringt seinen Zeitablauf selbst mit, die Figur fragt nur `is_dashing`. Vorgesehen ist er für den ersten Gegner in M13.
 
 **Kampf im Einzelnen**
 
 - Weg eines Treffers: `Hitbox` berührt `Hurtbox` → `Hurtbox.receive_hit()` → `Health.apply_damage()`. Nur `Health` entscheidet, ob und wie viel Schaden ankommt.
 - Schwert: Die Trefferzone ist 18 Pixel lang und 20 breit und beginnt 6 Pixel vor der Mitte der Figur. Sie ist 0,12 s scharf; von Hieb zu Hieb vergehen 0,35 s. Ein Hieb trifft jedes Ziel höchstens einmal, kann aber mehrere Ziele treffen.
 - Die Trefferzone wird erst einen Physik-Schritt nach Hiebbeginn ausgewertet, weil Godot Berührungen erst dann kennt.
-- Unverwundbarkeit: Nach einem Treffer nimmt die Spielfigur 0,6 s lang keinen Schaden. Das steht als `invulnerable_time` in ihrer Werte-Datei und gilt für jede Schadensquelle.
+- Unverwundbarkeit: Nach einem Treffer nimmt die Spielfigur 0,6 s lang keinen Schaden. Das steht als `invulnerable_time` in ihrer Werte-Datei und gilt für jede Schadensquelle. Auch ein Dash schützt, 0,25 s ab seinem Beginn. Solange die Figur unverwundbar ist, blinkt sie.
+- Dash: 64 Pixel in 0,2 s, also 12 Physik-Schritte mit Tempo 320. Von Dash zu Dash vergehen 0,8 s. Ein Tastendruck kurz vor Ablauf der Pause bleibt 0,12 s lang vorgemerkt.
+- Bogen: 10 Schaden je Treffer, 0,5 s Pause zwischen zwei Schüssen, 1 Munition je Schuss. Das Geschoss entsteht 8 Pixel vor der Mitte der Figur.
+- Geschoss: fliegt mit Tempo 220 geradeaus, höchstens 240 Pixel weit. Es endet beim ersten Treffer, an Wänden und Blöcken oder am Ende der Reichweite. Schaden teilt seine `Hitbox` aus, Wände bemerkt sein `WorldSensor` über die Ebene `world`. Den Schützen kann es nicht treffen, weil es nur auf der Ziel-Ebene sucht.
+- Geschosse entstehen an genau einer Stelle: `RangedAttack` bestellt über `projectile_requested`, der `ProjectileSpawner` des Levels baut und startet. Je Level darf es nur einen geben.
 - Übungspuppe: fester Körper auf Ebene `enemy`, 12 × 12 Pixel, 50 Leben, violett. Bei 0 wird sie grau und steht nach `revive_delay` (2 s) mit vollem Leben wieder auf. Einstellbar: `revive_delay`, `alive_color`, `defeated_color`.
 - Schadensfeld: 48 × 48 Pixel, 10 Schaden, sucht auf `player_hurtbox`. Es versucht alle 0,5 s zu treffen; wegen der Unverwundbarkeit kommt der Schaden alle 0,6 s an.
 - Fadenkreuz: `CanvasLayer` auf Ebene 110, also über allem. Es versteckt den Mauszeiger im Spielfenster und läuft auch bei pausiertem Spiel. Einstellbar: `color`, `arm_length`, `gap`, `hide_system_cursor`.
@@ -325,17 +413,42 @@ Die Bausteine finden das Leben über den Namen: Der Knoten muss genau `Health` h
 - Blöcke, linke obere Ecke und Größe: `Square` (160, 64) 32 × 32; `Pillar` (352, 64) 16 × 64; `Bar` (96, 192) 64 × 16; `GateTop` (336, 176) und `GateBottom` (336, 224) je 48 × 16 mit 32 Pixeln Durchgang; `BigSquare` (640, 128) 64 × 64; `LongBar` (560, 400) 160 × 16; `PillarB` (848, 240) 16 × 96; `SquareB` (288, 368) 32 × 32; `SquareC` (784, 80) 32 × 32.
 - `SpawnPoints` enthält `Spawn1` bei (216, 136) und `Spawn2` bei (264, 136).
 - Übungspuppen, jeweils die Mitte: `DummyA` bei (440, 72) steht allein; `DummyB` bei (430, 144) und `DummyC` bei (450, 144) bilden ein Paar mit 8 Pixeln Lücke.
+- Bewegliches Ziel `DummyD`: eine türkise Übungspuppe ohne Kollisions-Ebene, Start bei (592, 72). Ihr Kind `PatrolMover` lässt sie mit Tempo 40 um 96 Pixel nach unten und zurück pendeln; ihr Kind `Stunnable` hält den `PatrolMover` bei einer Betäubung an.
 - Schadensfeld `DamageZone`: Mitte bei (240, 240).
-- Die Puppen, `DamageZone`, `PlayerSpawner`, `PlayerCamera`, `Crosshair` und `DebugOverlay` sind eingehängt und lassen sich einzeln löschen.
+- Schadensstreifen `DamageStrip`: 16 × 96 Pixel, Mitte bei (528, 120), rechts neben den Puppen; 10 Schaden, gebaut direkt aus `hitbox.tscn`. Er dient dem Test des Dashs. Sein Kind `Stunnable` schaltet ihn bei einer Betäubung ab.
+- Die Puppen, `DamageZone`, `DamageStrip`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair` und `DebugOverlay` sind eingehängt und lassen sich einzeln löschen.
+- `DebugOverlay` blendet hier „Maus“, „Kamera“ und „Raumzeit“ aus.
 - F2 und der Tod einer Figur laden die Szene neu, direkt in `test_chamber.gd`. Ab M18 übernimmt das der `SceneManager`.
 
 **Debug-Anzeige im Einzelnen**
 
 - `CanvasLayer` auf Ebene 100, läuft auch bei pausiertem Spiel. Zeigt FPS, Mausposition im Bild, gedrückte Aktionen und alle gemeldeten Werte.
-- Einstellbar: `refresh_interval` (0,1 s), `font_size` (12), `visible_on_start`.
+- Einstellbar: `refresh_interval` (0,1 s), `font_size` (12), `visible_on_start`, `show_mouse`, `hidden_keys`.
 - Im Editor zeigt die Testkammer nur die blauen Kollisionsflächen; Farben, Raster und Anzeige erscheinen erst im laufenden Spiel.
 
 ### Dateien je Modul
+
+**M7 – Fähigkeiten**
+
+- Neu: `abilities/ability.gd`, `abilities/ability_stats.gd`; `abilities/haste/` mit `haste.tscn`, `haste.gd`, `haste_stats.gd`; `abilities/invisibility/` mit `invisibility.tscn`, `invisibility.gd`, `invisibility_stats.gd`; `abilities/stun/` mit `stun.tscn`, `stun.gd`, `stun_stats.gd`
+- Neu: `components/stunnable/stunnable.tscn`, `stunnable.gd`; `data/player/energy.tres`; `data/abilities/haste.tres`, `invisibility.tres`, `stun.tres`
+- Geändert: `components/supply/supply.gd` (`add` dazu), `components/melee_attack/melee_attack.gd` und `melee_stats.gd` (Treffer füllen einen Vorrat, `rate_factor`), `components/ranged_attack/ranged_attack.gd` (`rate_factor`), `data/player/sword.tres` (`gain_per_hit`)
+- Geändert: `entities/intent_source.gd` (Fähigkeits-Wunsch), `entities/player/player_input.gd` (liest 1, 2, 3), `entities/player/player.gd` (Fähigkeiten, `speed_factor`, zwei Debug-Zeilen), `entities/player/player.tscn` (Knoten `Energy` und `Abilities`)
+- Geändert: `ui/debug/debug_overlay.gd` (Zeilen ausblenden), `levels/test_chamber/test_chamber.tscn` (zwei `Stunnable`, kürzere Anzeige), `levels/test_chamber/test_chamber.gd` (nur der Kommentar), `docs/projekt_stand.md`
+
+**M6 – Fernkampf**
+
+- Neu, Bausteine: `components/supply/` mit `supply.tscn`, `supply.gd`, `supply_stats.gd`; `components/ranged_attack/` mit `ranged_attack.tscn`, `ranged_attack.gd`, `ranged_stats.gd`; `components/patrol_mover/` mit `patrol_mover.tscn`, `patrol_mover.gd`
+- Neu: `entities/projectile/projectile.tscn`, `projectile.gd`, `projectile_spawner.tscn`, `projectile_spawner.gd`; `data/player/bow.tres`, `data/player/ammo.tres`
+- Geändert: `autoload/event_bus.gd` (eine Meldung dazu), `components/hitbox/hitbox.gd` (Abbruch nach dem Entschärfen), `entities/intent_source.gd` (Schusswunsch), `entities/player/player_input.gd` (liest den Rechtsklick), `entities/player/player.gd` (Schuss, Debug-Zeile), `entities/player/player.tscn` (Knoten `Ammo` und `RangedAttack`)
+- Geändert: `levels/test_chamber/test_chamber.tscn` (bewegliches Ziel, `ProjectileSpawner`), `levels/test_chamber/test_chamber.gd` (nur der Kommentar), `docs/projekt_stand.md`
+- Das ZIP `m6_fernkampf.zip` enthält zusätzlich alle Dateien von M5.
+
+**M5 – Dash**
+
+- Neu: `components/dash/dash.tscn`, `dash.gd`, `dash_stats.gd`; `data/player/dash.tres`
+- Geändert: `components/health/health.gd` (`make_invulnerable` dazu), `entities/intent_source.gd` (Dash-Wunsch), `entities/player/player_input.gd` (liest die Dash-Taste), `entities/player/player.gd` (Dash, Zustand, Debug-Zeile), `entities/player/player.tscn` (Knoten `Dash`)
+- Geändert: `levels/test_chamber/test_chamber.tscn` (Schadensstreifen), `levels/test_chamber/test_chamber.gd` (nur der Kommentar), `docs/projekt_stand.md`
 
 **M4 – Zielen & Nahkampf**
 
@@ -380,26 +493,26 @@ Zu jedem Skript legt Godot eine `.gd.uid`-Datei an, zu jeder Grafik und jedem To
 - Im Stamm des Pakets liegen Dateien, die der Katalog noch nicht führt: `Example 1.gif` bis `Example 4.gif`, `Example 5 ( Old Version).png`, `preview-part-1.png`, `preview-part-2.png`, `MusicCover.png`, `Palette.png`.
 - In `Actor/Character/` liegen lose `Shadow.png`, `AllPreview.png` und `AllPreview2.png`; auch sie fehlen im Katalog.
 
-## M4 im Test – Prüfliste
+## M7 im Test – Prüfliste
 
-Bestätigt am 16.11.2026 samt der drei Entscheidungen: Neustart beim Tod, Laufen beim Zuschlagen, Fadenkreuz statt Mauszeiger.
+Gebaut am 16.11.2026 ohne vorherigen Vorschlag. Die Regeln der Fähigkeiten hat Claude gewählt, die Energie folgt dem Konzept; beides steht unter „Festlegungen“.
 
 1. Godot zeigt nach dem Einlesen keine roten Fehler.
-2. F5: Rechts im Bild stehen drei violette Puppen, unten in der Mitte liegt ein rotes Feld; die Anzeige zeigt „S1 Leben: 100 / 100“.
-3. Statt des Mauszeigers ist im Spielfenster ein weißes Fadenkreuz zu sehen. Der weiße Punkt an der Figur zeigt immer dorthin, auch beim Laufen in eine andere Richtung.
-4. Linksklick: Vor der Figur blitzt in Zielrichtung kurz eine helle Fläche auf. Bei gehaltener Taste folgen knapp drei Hiebe pro Sekunde; Laufen und Sprinten gehen dabei weiter.
-5. Einzelne Puppe: je ein Hieb von links, rechts, oben und unten – jedes Mal blitzt sie auf und eine „10“ steigt auf. Aus zwei Kacheln Abstand trifft der Hieb nicht.
-6. Der fünfte Treffer, diesmal schräg, macht die Puppe grau; weitere Hiebe wirken nicht. Nach 2 Sekunden ist sie wieder violett.
-7. Puppenpaar: Fadenkreuz auf die Lücke zwischen beiden, ein Hieb – beide zeigen „10“.
-8. Rotes Feld: „S1 Leben“ sinkt etwa alle 0,6 Sekunden um 10, die Figur blitzt und blinkt. Bei 0 wird sie grau und bleibt stehen; nach 1 Sekunde startet der Raum neu mit 100 / 100.
-9. Ohne Code: `Damage` in `data/player/sword.tres` auf 25 stellen – die Puppe zeigt „25“ und wird nach zwei Treffern grau; danach zurück auf 10.
-10. Abschalt-Test: Ohne den Knoten `Crosshair` erscheint der normale Mauszeiger, alles andere läuft, keine roten Fehler.
+2. F5: Die Anzeige zeigt „S1 Energie: 100 / 100“ und „S1 Fähigkeiten: bereit“; „Maus“, „Kamera“ und „Raumzeit“ fehlen.
+3. Taste 1, Schnelligkeit: 4 Sekunden lang läuft die Figur mit Tempo 120 statt 80 und schlägt schneller. Die Energie sinkt auf 70. Die Anzeige zeigt „1 aktiv“, danach 6 Sekunden „1 Pause“; solange wirkt die Taste nicht.
+4. Taste 2, Unsichtbarkeit: 5 Sekunden lang ist die Figur durchscheinend. Die Energie sinkt um 40, danach folgen 8 Sekunden Pause.
+5. Taste 3, Stun, neben der pendelnden Puppe: Ein gelber Ring breitet sich aus, die Puppe bleibt 2 Sekunden stehen und trägt einen gelben Ring. Die Energie sinkt um 30.
+6. Stun neben dem roten Streifen: 2 Sekunden lang lässt er sich ohne Schaden durchlaufen.
+7. Bei Energie 0 wirkt keine Taste. Die Energie kommt nicht von selbst zurück; jeder Schwerttreffer auf eine Puppe bringt 10.
+8. Ohne Code: `Duration` in `data/abilities/haste.tres` auf 8 stellen – die Schnelligkeit hält 8 Sekunden; danach zurück auf 4.
+9. Austauschbar: In `entities/player/player.tscn` unter `Abilities` den Knoten `Stun` an die erste Stelle ziehen – Taste 1 löst den Stun aus; danach Strg+Z.
+10. Abschalt-Test: Ohne den Knoten `Abilities` in `entities/player/player.tscn` passiert bei 1, 2 und 3 nichts, alles andere läuft, keine roten Fehler.
 
-## Ausblick auf M5 – Dash
+## Gate G1 und Ausblick auf Phase 2
 
-Laut Plan: Ausweichen, kurze Unverwundbarkeit, Abklingzeit. Fertig, wenn der Dash im Schadensfeld schützt und kein Dauer-Dash möglich ist.
+M7 ist das letzte Modul der Phase 1. Danach steht Gate G1 an: Fühlt sich die Spielfigur gut an – Bewegen, Zielen, Zuschlagen, Ausweichen? Das beurteilt der Nutzer; nachstellen lässt sich alles ohne Code über die Werte-Dateien in `data/`.
 
-Vorbereitet ist: Die Aktion `dash` liegt auf Leertaste und Maustaste 4; `Health` kennt Unverwundbarkeit; das Schadensfeld steht in der Testkammer. Voraussichtlich kommt mit M5 der Zustandsautomat als Baustein, falls der Dash Laufen und Zuschlagen unterbricht.
+Phase 2 beginnt mit M8 – Interaktion. Laut Konzept gehören in die Testkammer dafür Truhe, Tür, Hebel und Druckplatte nebeneinander; die Aktion `interact` liegt auf E.
 
 ## Hinweise aus der bisherigen Arbeit
 
@@ -411,12 +524,19 @@ Vorbereitet ist: Die Aktion `dash` liegt auf Leertaste und Maustaste 4; `Health`
 - Szenen, die Godot schon gespeichert hat, ändert Claude nur auf Grundlage der Fassung im Repo, damit Kennungen erhalten bleiben.
 - Godot 4.7 schreibt Szenen ohne `load_steps` und mit `unique_id` je Knoten; handgeschriebene Szenen ohne beides lädt es problemlos.
 - Nach jedem bestandenen Test committen und pushen, bevor das nächste Modul eingespielt wird. Sonst kann Claude den Stand nicht im Repo nachlesen und baut auf der eigenen Lieferung auf.
+- Die `README.md` nennt den Dash unter `abilities/`. Gebaut ist er als Baustein unter `components/dash/`, weil er keine Energie kostet und eine eigene Taste hat. Die README ist bei Gelegenheit anzupassen.
 - In `hitbox.tscn`, `hurtbox.tscn` und `melee_attack.tscn` zeigt der Editor ein gelbes Warndreieck, weil dort keine Form liegt. Das ist gewollt: Die Form kommt beim Einhängen dazu, beim Schwert beim Start aus der Werte-Datei.
 
 ## Offene Punkte
 
-- M4 ist geliefert, der Test steht aus.
-- M3 ist noch nicht im Repo. Der Nutzer committet es als `M03: Kamera` und pusht; danach gleicht Claude M3 ab.
+- M7 ist geliefert, der Test steht aus.
+- Die Regeln der Fähigkeiten hat Claude gewählt; der Nutzer kann sie bestätigen oder ändern.
+- Zauber: „keine eigene Kategorie“ ist nur vorläufig gewählt. Die Entscheidung liegt beim Nutzer.
+- Gate G1 steht nach M7 an: Der Nutzer beurteilt, ob sich die Spielfigur gut anfühlt.
+- Unsichtbarkeit: Dass Gegner die Figur verlieren und ein Angriff daraus Bonus-Schaden macht, folgt mit den Gegnern in Phase 3.
+- Munition lässt sich bisher nur mit F2 auffüllen; Nachschub kommt mit Truhen und Beute in M10. Energie aus Fläschchen und Speicherpunkten folgt ebenfalls später.
+- Die Debug-Anzeige stößt an ihre Grenze; die Leisten und Fähigkeits-Symbole des HUD kommen mit M12.
+- Abgleich mit dem Repo: für M3 bis M7 offen, auf Wunsch des Nutzers ausgesetzt. Zu klären ist, ob Claude künftig wieder im Repo nachliest und ob Lieferungen dauerhaft nur als ZIP kommen.
 - Tod & Speichern: Der Neustart des Raums ist vorläufig. Was beim Tod verloren geht und wo gespeichert wird, ist vor M16 zu entscheiden.
 - Stottert die Bewegung auf einem Monitor mit mehr als 60 Hz, gibt es dafür die Physik-Interpolation als Projekteinstellung. Sie ist bewusst noch aus.
 - Der Repo-Link ist in die Projektanweisungen einzutragen, falls dort noch der Platzhalter steht.
