@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CameraStats" format=3]
+
+[ext_resource type="Script" path="res://entities/player/camera_stats.gd" id="1_stats"]
+
+[resource]
+script = ExtResource("1_stats")
+mouse_look_factor = 0.15
+mouse_look_max = 40.0
+move_look_seconds = 0.12
+move_look_max = 24.0
+smooth_time = 0.2
+min_speed = 24.0

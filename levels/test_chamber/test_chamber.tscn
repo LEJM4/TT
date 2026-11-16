@@ -4,18 +4,19 @@
 [ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="2_view"]
 [ext_resource type="PackedScene" path="res://ui/debug/debug_overlay.tscn" id="3_overlay"]
 [ext_resource type="PackedScene" path="res://entities/player/player_spawner.tscn" id="4_spawner"]
+[ext_resource type="PackedScene" path="res://entities/player/player_camera.tscn" id="5_camera"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
-size = Vector2(480, 16)
+size = Vector2(960, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom"]
-size = Vector2(480, 16)
+size = Vector2(960, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left"]
-size = Vector2(16, 240)
+size = Vector2(16, 512)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_right"]
-size = Vector2(16, 240)
+size = Vector2(16, 512)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_square"]
 size = Vector2(32, 32)
@@ -32,26 +33,42 @@ size = Vector2(48, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gate_bottom"]
 size = Vector2(48, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_big_square"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_long_bar"]
+size = Vector2(160, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pillar_b"]
+size = Vector2(16, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_square_b"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_square_c"]
+size = Vector2(32, 32)
+
 [node name="TestChamber" type="Node2D" unique_id=242313944]
 script = ExtResource("1_chamber")
+room_size = Vector2i(960, 544)
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=547463599]
 collision_mask = 0
 
 [node name="Top" type="CollisionShape2D" parent="Walls" unique_id=1589914072]
-position = Vector2(240, 8)
+position = Vector2(480, 8)
 shape = SubResource("RectangleShape2D_top")
 
 [node name="Bottom" type="CollisionShape2D" parent="Walls" unique_id=221423068]
-position = Vector2(240, 264)
+position = Vector2(480, 536)
 shape = SubResource("RectangleShape2D_bottom")
 
 [node name="Left" type="CollisionShape2D" parent="Walls" unique_id=872308923]
-position = Vector2(8, 136)
+position = Vector2(8, 272)
 shape = SubResource("RectangleShape2D_left")
 
 [node name="Right" type="CollisionShape2D" parent="Walls" unique_id=544585972]
-position = Vector2(472, 136)
+position = Vector2(952, 272)
 shape = SubResource("RectangleShape2D_right")
 
 [node name="PlaceholderView" parent="Walls" unique_id=105046374 instance=ExtResource("2_view")]
@@ -80,6 +97,26 @@ shape = SubResource("RectangleShape2D_gate_top")
 position = Vector2(360, 232)
 shape = SubResource("RectangleShape2D_gate_bottom")
 
+[node name="BigSquare" type="CollisionShape2D" parent="Blocks"]
+position = Vector2(672, 160)
+shape = SubResource("RectangleShape2D_big_square")
+
+[node name="LongBar" type="CollisionShape2D" parent="Blocks"]
+position = Vector2(640, 408)
+shape = SubResource("RectangleShape2D_long_bar")
+
+[node name="PillarB" type="CollisionShape2D" parent="Blocks"]
+position = Vector2(856, 288)
+shape = SubResource("RectangleShape2D_pillar_b")
+
+[node name="SquareB" type="CollisionShape2D" parent="Blocks"]
+position = Vector2(304, 384)
+shape = SubResource("RectangleShape2D_square_b")
+
+[node name="SquareC" type="CollisionShape2D" parent="Blocks"]
+position = Vector2(800, 96)
+shape = SubResource("RectangleShape2D_square_c")
+
 [node name="PlaceholderView" parent="Blocks" unique_id=657745153 instance=ExtResource("2_view")]
 color = Color(0.62, 0.5, 0.36, 1)
 
@@ -92,5 +129,8 @@ position = Vector2(216, 136)
 position = Vector2(264, 136)
 
 [node name="PlayerSpawner" parent="." unique_id=970808961 instance=ExtResource("4_spawner")]
+
+[node name="PlayerCamera" parent="." instance=ExtResource("5_camera")]
+position = Vector2(240, 135)
 
 [node name="DebugOverlay" parent="." unique_id=2130183334 instance=ExtResource("3_overlay")]

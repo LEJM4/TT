@@ -3,8 +3,12 @@ extends Node2D
 ##
 ## Aufbau der Szene:
 ##   Walls, Blocks   feste Körper auf der Ebene "world"; ihre Flächen malt PlaceholderView
-##   SpawnPoints     Startpunkte für Spielfiguren (Gruppe "player_spawn"), genutzt ab M2
-##   DebugOverlay    Entwickler-Anzeige; lässt sich löschen, die Kammer läuft weiter
+##   SpawnPoints     Startpunkte für Spielfiguren (Gruppe "player_spawn")
+##   PlayerSpawner   erzeugt die Spielfiguren (M2)
+##   PlayerCamera    folgt der Spielfigur (M3); die Grenzen meldet dieses Skript
+##   DebugOverlay    Entwickler-Anzeige
+## PlayerSpawner, PlayerCamera und DebugOverlay lassen sich einzeln löschen,
+## die Kammer läuft weiter.
 ##
 ## Blöcke ändern: im 2D-Editor eine CollisionShape2D unter Walls oder Blocks
 ## verschieben oder an den Griffen ziehen - die Farbe folgt der Form.
@@ -31,6 +35,7 @@ var _room_time := 0.0
 
 func _ready() -> void:
 	EventBus.debug_value_changed.emit("Neustart", "F2")
+	EventBus.camera_bounds_changed.emit(Rect2(global_position, Vector2(room_size)))
 
 
 func _process(delta: float) -> void:
