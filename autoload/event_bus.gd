@@ -16,3 +16,7 @@ signal setup_checked(source: String)
 ## Ein leerer Wert entfernt den Eintrag wieder.
 @warning_ignore("unused_signal")
 signal debug_value_changed(key: String, value: String)
+
+## Ein Level meldet seine Grenzen; Kameras bleiben innerhalb (M3).
+@warning_ignore("unused_signal")
+signal camera_bounds_changed(bounds: Rect2)
