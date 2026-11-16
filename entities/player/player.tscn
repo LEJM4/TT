@@ -6,12 +6,22 @@
 [ext_resource type="Script" path="res://entities/player/player_input.gd" id="4_input"]
 [ext_resource type="PackedScene" path="res://components/stamina/stamina.tscn" id="5_stamina"]
 [ext_resource type="Resource" path="res://data/player/stamina.tres" id="6_stamina_stats"]
+[ext_resource type="PackedScene" path="res://components/health/health.tscn" id="7_health"]
+[ext_resource type="Resource" path="res://data/player/health.tres" id="8_health_stats"]
+[ext_resource type="PackedScene" path="res://components/hurtbox/hurtbox.tscn" id="9_hurtbox"]
+[ext_resource type="PackedScene" path="res://components/hit_flash/hit_flash.tscn" id="10_flash"]
+[ext_resource type="PackedScene" path="res://components/melee_attack/melee_attack.tscn" id="11_melee"]
+[ext_resource type="Resource" path="res://data/player/sword.tres" id="12_sword"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(12, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(10, 10)
+
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 collision_layer = 2
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_player")
 stats = ExtResource("2_movement")
@@ -28,3 +38,18 @@ script = ExtResource("4_input")
 
 [node name="Stamina" parent="." instance=ExtResource("5_stamina")]
 stats = ExtResource("6_stamina_stats")
+
+[node name="Health" parent="." instance=ExtResource("7_health")]
+stats = ExtResource("8_health_stats")
+
+[node name="Hurtbox" parent="." instance=ExtResource("9_hurtbox")]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_hurt")
+
+[node name="HitFlash" parent="." instance=ExtResource("10_flash")]
+
+[node name="MeleeAttack" parent="." instance=ExtResource("11_melee")]
+stats = ExtResource("12_sword")
+target_mask = 16

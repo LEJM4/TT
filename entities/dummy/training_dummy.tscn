@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/dummy/training_dummy.gd" id="1_dummy"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="2_view"]
+[ext_resource type="PackedScene" path="res://components/health/health.tscn" id="3_health"]
+[ext_resource type="Resource" path="res://data/dummy/health.tres" id="4_health_stats"]
+[ext_resource type="PackedScene" path="res://components/hurtbox/hurtbox.tscn" id="5_hurtbox"]
+[ext_resource type="PackedScene" path="res://components/hit_flash/hit_flash.tscn" id="6_flash"]
+[ext_resource type="PackedScene" path="res://components/damage_numbers/damage_numbers.tscn" id="7_numbers"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(12, 12)
+
+[node name="TrainingDummy" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_dummy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="PlaceholderView" parent="." instance=ExtResource("2_view")]
+
+[node name="Health" parent="." instance=ExtResource("3_health")]
+stats = ExtResource("4_health_stats")
+
+[node name="Hurtbox" parent="." instance=ExtResource("5_hurtbox")]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_hurt")
+
+[node name="HitFlash" parent="." instance=ExtResource("6_flash")]
+
+[node name="DamageNumbers" parent="." instance=ExtResource("7_numbers")]

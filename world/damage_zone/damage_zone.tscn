@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://components/hitbox/hitbox.tscn" id="1_hitbox"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="2_view"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_zone"]
+size = Vector2(48, 48)
+
+[node name="DamageZone" instance=ExtResource("1_hitbox")]
+collision_mask = 8
+damage = 10.0
+hit_interval = 0.5
+active_on_start = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_zone")
+
+[node name="PlaceholderView" parent="." instance=ExtResource("2_view")]
+color = Color(0.9, 0.2, 0.2, 0.35)

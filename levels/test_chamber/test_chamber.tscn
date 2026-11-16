@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" path="res://ui/debug/debug_overlay.tscn" id="3_overlay"]
 [ext_resource type="PackedScene" path="res://entities/player/player_spawner.tscn" id="4_spawner"]
 [ext_resource type="PackedScene" path="res://entities/player/player_camera.tscn" id="5_camera"]
+[ext_resource type="PackedScene" path="res://entities/dummy/training_dummy.tscn" id="6_dummy"]
+[ext_resource type="PackedScene" path="res://world/damage_zone/damage_zone.tscn" id="7_zone"]
+[ext_resource type="PackedScene" path="res://ui/crosshair/crosshair.tscn" id="8_crosshair"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
 size = Vector2(960, 16)
@@ -128,9 +131,23 @@ position = Vector2(216, 136)
 [node name="Spawn2" type="Marker2D" parent="SpawnPoints" unique_id=44068127 groups=["player_spawn"]]
 position = Vector2(264, 136)
 
+[node name="DummyA" parent="." instance=ExtResource("6_dummy")]
+position = Vector2(440, 72)
+
+[node name="DummyB" parent="." instance=ExtResource("6_dummy")]
+position = Vector2(430, 144)
+
+[node name="DummyC" parent="." instance=ExtResource("6_dummy")]
+position = Vector2(450, 144)
+
+[node name="DamageZone" parent="." instance=ExtResource("7_zone")]
+position = Vector2(240, 240)
+
 [node name="PlayerSpawner" parent="." unique_id=970808961 instance=ExtResource("4_spawner")]
 
 [node name="PlayerCamera" parent="." instance=ExtResource("5_camera")]
 position = Vector2(240, 135)
+
+[node name="Crosshair" parent="." instance=ExtResource("8_crosshair")]
 
 [node name="DebugOverlay" parent="." unique_id=2130183334 instance=ExtResource("3_overlay")]

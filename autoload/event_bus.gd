@@ -20,3 +20,7 @@ signal debug_value_changed(key: String, value: String)
 ## Ein Level meldet seine Grenzen; Kameras bleiben innerhalb (M3).
 @warning_ignore("unused_signal")
 signal camera_bounds_changed(bounds: Rect2)
+
+## Das Leben einer Spielfigur ist auf 0 gefallen (M4).
+@warning_ignore("unused_signal")
+signal player_died(player_id: int)

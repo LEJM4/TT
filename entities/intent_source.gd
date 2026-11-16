@@ -12,3 +12,7 @@ var move_direction := Vector2.ZERO
 var wants_sprint := false
 ## Will die Figur schleichen?
 var wants_sneak := false
+## Zielrichtung als Vektor der Länge 1 (M4).
+var aim_direction := Vector2.DOWN
+## Will die Figur angreifen? Bleibt wahr, solange die Taste gehalten wird (M4).
+var wants_attack := false
