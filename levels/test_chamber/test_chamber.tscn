@@ -31,6 +31,7 @@
 [ext_resource type="Resource" path="res://data/items/bow.tres" id="29_bow"]
 [ext_resource type="Resource" path="res://data/items/leather_armor.tres" id="30_leather_armor"]
 [ext_resource type="Resource" path="res://data/items/ruby_charm.tres" id="31_ruby_charm"]
+[ext_resource type="PackedScene" path="res://ui/hud/hud.tscn" id="32_hud"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
 size = Vector2(960, 16)
@@ -342,3 +343,5 @@ show_mouse = false
 hidden_keys = PackedStringArray("Kamera", "Raumzeit")
 
 [node name="InventoryWindow" parent="." instance=ExtResource("27_inventory_window")]
+
+[node name="Hud" parent="." instance=ExtResource("32_hud")]

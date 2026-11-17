@@ -21,8 +21,8 @@
 | `items/` | Baupläne für Gegenstände, Geschosse, Ausrüstung und Beute-Listen; die Gegenstände selbst liegen in `data/items/` – Geschosse, Materialien, Schlüssel, Ausrüstung –, die Listen in `data/loot/` |
 | `world/` | Dinge der Welt: Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen |
 | `levels/` | `test_chamber/`, später die Level und die Zeitkapsel |
-| `ui/` | Oberfläche: `inventory/` das Inventarfenster, `theme/` das Holz-Thema für alle Fenster, `crosshair/`, `debug/` für Entwickler-Anzeigen; später HUD, Dialog, Menüs |
-| `data/` | Werte-Dateien (`.tres`): Balancing, Skins, Gegenstände, Effekte, Beute |
+| `ui/` | Oberfläche: `hud/` die Anzeige am Bildrand, `inventory/` das Inventarfenster, `theme/` das Holz-Thema für alle Fenster, `crosshair/`, `debug/` für Entwickler-Anzeigen; später Dialog, Menüs |
+| `data/` | Werte-Dateien (`.tres`): Balancing, Skins, Gegenstände, Effekte, Beute, Oberfläche |
 | `assets/` | Grafik und Ton – siehe `assets/README.md` |
 | `docs/` | Stand-Datei und Grafik-Katalog; von Godot ignoriert |
 | `tools/` | Hilfsskripte; von Godot ignoriert |

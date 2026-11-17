@@ -12,10 +12,10 @@ Er ist eine Richtlinie, kein Zwang. Was vorgezogen oder eingeschoben wird, steht
 | | |
 | --- | --- |
 | Stand vom | 17.11.2026 |
-| In Arbeit | M11 – Inventar & Ausrüstung: geliefert am 17.11.2026 als `m11_inventar.zip`, der Test des Nutzers steht aus |
-| Als Nächstes | nach dem Test M11 abschließen, dann M12 – HUD vorschlagen. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
-| Zuletzt abgeschlossen | M10 – Truhen & Beute, am 17.11.2026: Test bestanden. Davor am selben Tag M9 – Zerstörbares, M8 – Interaktion, A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
-| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 17.11.2026 nach dem Test von M10: noch Commit `e615355` mit M8 und der Stand-Datei aus `m8_abschluss.zip`. M9 und M10 sind getestet, aber noch nicht hochgeladen. Davor `e7909b2` mit A2, `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4`. Reihenfolge fürs Hochladen: erst M9 und M10 samt `m9_abschluss.zip` und `m10_abschluss.zip` committen, dann `m11_inventar.zip` entpacken; dessen Stand-Datei ersetzt alle früheren |
+| In Arbeit | M12 – HUD: geliefert am 17.11.2026 als `m12_hud.zip`, der Test des Nutzers steht aus |
+| Als Nächstes | nach dem Test M12 abschließen – damit ist Phase 2 fertig –, dann Phase 3 mit M13 – Erster Gegner vorschlagen. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
+| Zuletzt abgeschlossen | M11 – Inventar & Ausrüstung, am 17.11.2026: Test bestanden. Davor am selben Tag M10 – Truhen & Beute, M9 – Zerstörbares, M8 – Interaktion, A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
+| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 17.11.2026 nach dem Test von M11: Commit `1b7abfc` „m11 inventar“ mit M9, M10 und M11 samt den Stand-Dateien aus `m9_abschluss.zip` und `m10_abschluss.zip`. Der Inhalt stimmt Datei für Datei mit den Lieferungen überein; dazu hat Godot die `.uid`-Dateien der neuen Skripte angelegt. Davor `e615355` mit M8, `e7909b2` mit A2, `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4`. Vor dem Bau von M12 noch einmal gelesen: weiter `1b7abfc`, `m11_abschluss.zip` war noch nicht hochgeladen. Das muss nicht nachgeholt werden: Die Stand-Datei aus `m12_hud.zip` ersetzt alle früheren |
 
 ## Neuer Chat und Arbeitsweise
 
@@ -67,8 +67,8 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | | M8 Interaktion | fertig am 17.11.2026 |
 | | M9 Zerstörbares | fertig am 17.11.2026 – mit Aufsammeln |
 | | M10 Truhen & Beute | fertig am 17.11.2026; Beute-Listen und Aufsammeln kamen schon mit M9 |
-| | M11 Inventar & Ausrüstung | im Test – geliefert am 17.11.2026; die Logik kam mit M11a |
-| | M12 HUD | offen |
+| | M11 Inventar & Ausrüstung | fertig am 17.11.2026; die Logik kam mit M11a |
+| | M12 HUD | im Test – geliefert am 17.11.2026 |
 | 3 – Gegner & NPCs | M13 Erster Gegner | offen |
 | | M14 Gegnertypen | offen |
 | | M15 NPCs & Dialog | offen |
@@ -91,10 +91,10 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | A2 Kampf-Bilder | Hieb-Effekt, Effekte für Treffer, Tod und Stun; Baustein `EffectCue`; Pixel-Schrift für Schadenszahlen. Die Bilder der Geschosse kamen mit M11a. | vor Phase 2, nach M11a | fertig am 17.11.2026 |
 | A3 Ton | `AudioManager` füllen, Baustein `SoundCue`, Ton-Tabelle als Werte-Datei, Musik in der Testkammer | fast am Ende des Projekts, mit Phase 7 – Feinschliff; am 17.11.2026 auf Wunsch des Nutzers verschoben | offen |
 | A4 Kacheln & Räume | Kachel-Sets mit Kollision, Testkammer mit Kacheln, Anleitung zum Malen im Editor | mit M8, spätestens vor Level 1 | offen |
-| A5 Oberfläche | Schrift und Thema, Herzen, Leisten, Fähigkeits- und Tastensymbole, Dialogfeld | mit M11, M12, M15 und M20 | offen |
+| A5 Oberfläche | Schrift und Thema, Herzen, Leisten, Fähigkeits- und Tastensymbole, Dialogfeld | mit M11, M12, M15 und M20 | in Arbeit – mit M11 das Holz-Thema für Fenster, mit M12 Herzen, Energie-Kugel, Ausdauer-Leiste, Fähigkeits- und Tastensymbole; es fehlen Dialogfeld (M15) und Menüs (M20) |
 | A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | offen |
 
-Ab A1 bringt jedes neue Modul sein Bild gleich mit: M8 aus `TilesetDungeon`, `TilesetHouse` und `TilesetElement`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`. Den Ton bekommen alle Module erst mit A3, fast am Ende des Projekts.
+Ab A1 bringt jedes neue Modul sein Bild gleich mit: M8 aus `TilesetDungeon`, `TilesetHouse` und `TilesetElement`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`, M11 aus `Ui/Theme/Theme Wood` und `Items/Weapons`, M12 aus `Ui/Receptacle`, `Ui/Skill Icon` und `Ui/Input/Keyboard`. Den Ton bekommen alle Module erst mit A3, fast am Ende des Projekts.
 
 **Gates**
 
@@ -165,33 +165,40 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Beute und Aufsammeln | Topf: mit 50 % 3 Shuriken. Kiste: 5 Pfeile, mit 30 % dazu 2 Kunai. Baum: 2 Äste. Stein: 1 Stein, mit 25 % dazu 1 Dynamit. Äste und Steine sind neue Gegenstände der Art Material, Stapel 99. Die Beute springt zur Seite oder nach vorn auf einen freien Platz, mit Zahl, wenn es mehr als eins ist. Drüberlaufen sammelt ins Inventar; was nicht passt, bleibt liegen | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt, nach dem Test mit „Okay das programmierte passt“ |
 | Treffer-Arten | Jeder Treffer ist Klinge, Geschoss oder Explosion. Eine Hurtbox nimmt alle drei, außer sie ist anders eingestellt; die übrigen prallen ab | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt, nach dem Test mit „Okay das programmierte passt“ |
 | Truhen | Kleine Truhe (türkis): E öffnet sie genau einmal, der Deckel geht auf, es funkelt, die Beute springt heraus – 10 Pfeile, mit 50 % dazu 5 Shuriken. Große Truhe (rot): verschlossen; mit einem Goldschlüssel im Inventar öffnet E sie und verbraucht ihn – 15 Pfeile, 5 Kunai, 3 Dynamit. Ohne Schlüssel wackelt sie kurz, und über ihr steht eine Sekunde lang das Symbol des Schlüssels. Offen bleibt eine Truhe, bis der Raum neu lädt. Der Goldschlüssel ist ein Gegenstand der Art Schlüssel, Stapel 9 | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; das Funkeln beim Öffnen hat Claude beim Bauen ergänzt. Nach dem Test vom Nutzer mit „ja das passt alles“ bestätigt |
-| Inventarfenster | Tab öffnet und schließt es, Esc schließt es. Links die vier Ausrüstungsplätze Waffe, Fernkampf, Rüstung, Anhänger, rechts die 20 Plätze als Raster mit Symbol und Anzahl, unten Name, Art und Werte des Gewählten. Ein Klick wählt, ein Doppelklick legt an oder ab. Solange es offen ist, bleibt die Figur stehen und greift nicht an; die Welt läuft weiter. Aussehen: das Holz-Thema des Pakets, Schrift `NormalFont` | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; Esc zum Schließen hat Claude beim Bauen ergänzt. Test steht aus |
-| Ausrüstung | Angelegtes liegt nicht im Inventar; beim Anlegen wandert das Vorige zurück, Ablegen geht nur mit Platz im Inventar. Waffe: bringt die Werte des Schwerthiebs mit; ohne Waffe gelten die aus `sword.tres`. Fernkampf: mehr Aufprall-Schaden für jedes Geschoss. Rüstung: zieht von jedem Treffer etwas ab, mindestens 1 bleibt. Anhänger: mehr Leben, das aktuelle Leben bleibt. Zum Testen: Katana (beim Start angelegt, 10 Schaden, 0,35 s), Breitschwert (15, 0,5 s), Bogen (+3), Lederrüstung (−3), Rubin-Anhänger (+20 Leben) | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; Test steht aus |
+| Inventarfenster | Tab öffnet und schließt es, Esc schließt es. Links die vier Ausrüstungsplätze Waffe, Fernkampf, Rüstung, Anhänger, rechts die 20 Plätze als Raster mit Symbol und Anzahl, unten Name, Art und Werte des Gewählten. Ein Klick wählt, ein Doppelklick legt an oder ab. Solange es offen ist, bleibt die Figur stehen und greift nicht an; die Welt läuft weiter. Aussehen: das Holz-Thema des Pakets, Schrift `NormalFont` | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; Esc zum Schließen hat Claude beim Bauen ergänzt. Nach dem Test vom Nutzer mit „alles klappt“ bestätigt |
+| Ausrüstung | Angelegtes liegt nicht im Inventar; beim Anlegen wandert das Vorige zurück, Ablegen geht nur mit Platz im Inventar. Waffe: bringt die Werte des Schwerthiebs mit; ohne Waffe gelten die aus `sword.tres`. Fernkampf: mehr Aufprall-Schaden für jedes Geschoss. Rüstung: zieht von jedem Treffer etwas ab, mindestens 1 bleibt. Anhänger: mehr Leben, das aktuelle Leben bleibt. Zum Testen: Katana (beim Start angelegt, 10 Schaden, 0,35 s), Breitschwert (15, 0,5 s), Bogen (+3), Lederrüstung (−3), Rubin-Anhänger (+20 Leben) | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt, nach dem Test mit „alles klappt“ |
+| HUD | Oben links die Energie als Kugel, die sich von unten blau füllt; rechts daneben das Leben als Herzen – ein Herz sind 20 Leben, in Vierteln, solange Leben übrig ist mindestens ein Viertel –; darunter die Ausdauer als schmale Leiste, grün, rot während der Erschöpfung. Unten links die Fähigkeiten 1 bis 3 mit der Taste darunter – Stiefel, Tarnung, Blitz-Buch –: orange umrahmt, solange sie wirken, grau mit Füllung im Uhrzeigersinn in der Abklingzeit, grau ohne genug Energie; daneben das gewählte Geschoss mit seiner Anzahl. Die Debug-Anzeige steht oben rechts. Keine Zahlen an Kugel und Leiste | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; Test steht aus |
 
 Noch offen, jeweils fällig vor dem genannten Schritt: Zauber (vorläufig gewählt, siehe oben), Tod & Speichern endgültig (M16), Story (Phase 5), Anzahl Level (Phase 6).
 
 ## Prüfungen
 
+**M12 – HUD**
+
+- Geliefert am 17.11.2026 als `m12_hud.zip`. Der Test des Nutzers steht aus; die Prüfliste steht darunter und im Plan-Dokument.
+- Claude hat die Dateien am Text geprüft: Verweise in Szenen und Werte-Dateien, Knotenpfade, Signale und ihre Werte, exportierte Werte, Klassennamen und die Eigenschaften von `TextureProgressBar`, `NinePatchRect` und `HBoxContainer`. Grundlage war das Repo, Commit `1b7abfc`.
+- Nachgerechnet, nicht ausprobiert: Das HUD hat Claude mit den Bildern des Pakets als Bild nachgestellt, auch Zwischenstände – 70 von 120 Leben sind drei volle und ein halbes von sechs Herzen, 30 Energie füllen 7 der 22 Pixel der Kugel, 20 Ausdauer 12 der 62 Pixel der Leiste. Alles liegt auf ganzen Pixeln: die Kugel bei (4, 4), die Herzen ab (38, 6), die Leiste bei (39, 25), unten die Symbole ab (4, 228), 24 Pixel groß mit 4 Pixeln Abstand, die Tasten 1 Pixel darunter, die Geschoss-Zelle bei (90, 228).
+
+Prüfliste M12:
+
+1. Godot schließen, `m12_hud.zip` nach `E:\GitHub\TT` entpacken, Godot öffnen, F5. Keine roten Fehler. Oben links die blaue Kugel und fünf volle Herzen, darunter die grüne Leiste; unten links drei farbige Symbole mit den Tasten 1, 2, 3 darunter, daneben eine Zelle mit dem Pfeil und 30. Die Debug-Anzeige steht oben rechts; F1 blendet sie aus und ein.
+2. Ins rote Schadensfeld stellen: Je Treffer verschwindet ein halbes Herz. F1 „S1 Leben“ passt dazu – bei 70 sind es drei volle und ein halbes Herz.
+3. Shift halten und laufen: Die Leiste sinkt. Ist sie leer, wird sie rot; nach kurzer Pause füllt sie sich wieder und wird ab einem Viertel grün.
+4. Taste 1: Der Stiefel bekommt einen orangen Rahmen, die Kugel sinkt um knapp ein Drittel. Nach 4 s verschwindet der Rahmen; der Stiefel ist grau und füllt sich in 6 s im Uhrzeigersinn wieder mit Farbe.
+5. Gleich danach Taste 2 und Taste 3: Die Kugel ist leer. Sind die Abklingzeiten vorbei, bleiben alle drei Symbole grau.
+6. Abklingzeiten abwarten, dann Hiebe auf eine Übungspuppe: Jeder Treffer füllt die Kugel um ein Zehntel. Ab drei Treffern werden Stiefel und Blitz-Buch farbig, ab vier auch die Tarnung.
+7. Mausrad: Die Zelle wechselt zu Kunai, Shuriken, Dynamit und zurück zum Pfeil, jeweils mit Anzahl. Rechtsklick: Die Zahl sinkt um 1.
+8. Rubin-Anhänger unter den Startpunkten aufsammeln und anlegen (Tab, Doppelklick): 6 Herzen, das sechste leer. Ablegen: wieder 5.
+9. Im Schadensfeld bleiben bis zum Tod: Alle Herzen sind leer; nach einer Sekunde startet der Raum neu, und das HUD ist wieder voll.
+10. Ohne Code: in `data/ui/hud.tres` `health_per_heart` auf 10 stellen, F5 – 10 Herzen, ein Treffer nimmt ein ganzes. Danach zurück auf 20.
+11. Abschalt-Test: in `entities/player/player.tscn` den Knoten `Energy` löschen, F5 – die Kugel fehlt, die drei Symbole bleiben farbig, weil die Fähigkeiten nichts kosten; keine roten Fehler. Danach Strg+Z und Strg+S.
+12. Abschalt-Test: in `levels/test_chamber/test_chamber.tscn` den Knoten `Hud` löschen, F5 – alles läuft wie vor M12, keine roten Fehler. Danach Strg+Z und Strg+S.
+
 **M11 – Inventar & Ausrüstung**
 
-- Geliefert am 17.11.2026 als `m11_inventar.zip`. Der Test des Nutzers steht aus; die Prüfliste steht darunter und im Plan-Dokument.
+- Getestet hat der Nutzer am 17.11.2026 in Godot. Rückmeldung: „alles klappt“ – die zwölf Punkte der Prüfliste gelten als bestanden, auch Esc zum Schließen. Danach hat er M9, M10 und M11 in einem Commit hochgeladen.
 - Claude hat die Dateien am Text geprüft: Verweise in Szenen, Werte-Dateien und im Thema, Knotenpfade, Signale und ihre Werte, exportierte Werte, Klassennamen. Grundlage war das Repo, Commit `e615355`, und die Dateien aus `m9_zerstoerbares.zip` und `m10_truhen.zip`.
 - Nachgerechnet, nicht ausprobiert: Das Fenster hat Claude mit den Bildern des Holz-Themas und der Schrift als Bild nachgestellt – 268 × 196 Pixel in der Mitte der Spielfläche, Zellen 26 Pixel, Raster 5 × 4. Alles passt hinein, auch das 24 Pixel große Rüstungs-Symbol. Werte: Breitschwert 15 statt 10; Pfeil mit Bogen 13, Kunai 18, Shuriken 9; Schadensfeld mit Rüstung 7 statt 10; Leben mit Anhänger 100 von 120.
-
-Prüfliste M11:
-
-1. Godot schließen. M9 und M10 vorher committen, falls noch nicht geschehen. Dann `m11_inventar.zip` nach `E:\GitHub\TT` entpacken, Godot öffnen, F5. Keine roten Fehler.
-2. Unter den Startpunkten liegen vier Dinge: Breitschwert, Bogen, Lederrüstung (Symbol mit orangem Hintergrund) und ein roter Rubin. Drüberlaufen: F1 „S1 Beute“ meldet jedes.
-3. Tab: Das Fenster geht auf; die bewegliche Puppe pendelt weiter. Die Figur bleibt stehen, auch mit WASD, und schlägt nicht. Links das Katana auf „Waffe“, rechts das Raster mit Pfeilen, Kunai, Shuriken, Dynamit und den vier neuen Dingen, mit Zahlen.
-4. Klick auf das Breitschwert: Rahmen darum, unten „Breitschwert“, „Waffe - Schaden 15, Pause 0,5 s“ und „Doppelklick: anlegen“.
-5. Doppelklick auf das Breitschwert: Es liegt jetzt bei „Waffe“, das Katana im Raster. Tab schließt. Ein Hieb auf eine Übungspuppe zeigt 15, die Hiebe kommen langsamer.
-6. Bogen anlegen: Ein Pfeil auf eine Puppe zeigt 13 statt 10, ein Kunai 18.
-7. Rubin-Anhänger anlegen: F1 „S1 Leben“ zeigt 100 / 120. Wieder ablegen: 100 / 100.
-8. Lederrüstung anlegen und ins rote Schadensfeld stellen: „S1 Leben“ sinkt je Treffer um 7 statt um 10.
-9. Doppelklick auf einen belegten Ausrüstungsplatz legt ab; der Gegenstand liegt wieder im Raster. Esc schließt das Fenster ebenfalls.
-10. Ohne Code: in `data/player/inventory.tres` die Plätze (`slot_count`) auf 4 stellen, F5 – das Raster hat 4 Plätze, alle belegt; Doppelklick auf das Katana: Es bleibt, unten steht „Kein Platz im Inventar“. Danach zurück auf 20.
-11. F2: alles wie am Anfang – das Katana angelegt, die vier Dinge liegen wieder am Boden.
-12. Abschalt-Test: in `entities/player/player.tscn` den Knoten `Equipment` löschen, F5 – das Fenster zeigt leere Ausrüstungsplätze, Doppelklick tut nichts, die Figur schlägt wie bisher mit 10, keine roten Fehler. Danach Strg+Z und Strg+S.
 
 **M10 – Truhen & Beute**
 
@@ -374,7 +381,7 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | Gruppe | Mitglieder | Wer sie nutzt |
 | --- | --- | --- |
 | `player_spawn` | Startpunkte im Level (`Marker2D`) | `PlayerSpawner` |
-| `players` | jede Spielfigur | `PlayerCamera`; später Gegner und HUD |
+| `players` | jede Spielfigur | `PlayerCamera`, `InventoryWindow` (M11), `Hud` (M12); später Gegner |
 | `invisible` | Figuren, solange ihre Unsichtbarkeit wirkt | noch niemand; ab Phase 3 die Wahrnehmung der Gegner |
 | `stunnable` | jeder Baustein `Stunnable` | die Fähigkeit Stun |
 
@@ -441,6 +448,7 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `EquipmentData` | `items/equipment_data.gd` | erweitert `ItemData`: Platz (Waffe, Fernkampf, Rüstung, Anhänger) und Werte – `melee`, `projectile_damage_bonus`, `armor`, `max_health_bonus`; `describe()` liefert den Text fürs Fenster (M11) |
 | `Equipment` | `components/equipment/equipment.gd` | Baustein: die Ausrüstung einer Figur (M11) |
 | `EquipmentStats` | `components/equipment/equipment_stats.gd` | Bauplan einer Werte-Datei für Equipment: was beim Start angelegt ist (M11) |
+| `HudStats` | `ui/hud/hud_stats.gd` | Bauplan der Werte-Datei des HUD: Leben je Herz (M12) |
 
 ### Werte-Dateien – `data/`
 
@@ -472,9 +480,10 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `data/effects/death_smoke.tres` | `EffectData` | Tod der Puppen (A2): `FX/Smoke/Smoke/SpriteSheet.png`, 6 Bilder à 32, 12 je Sekunde, `offset` (0, −2) |
 | `data/effects/stun.tres` | `EffectData` | Betäubung (A2): `FX/Magic/Circle/SpriteSheetWhite.png`, 4 Bilder à 32, 8 je Sekunde, wiederholt sich |
 | `data/player/energy.tres` | `SupplyStats` | `max_amount` 100, `regen_per_second` 0, `regen_delay` 1 |
-| `data/abilities/haste.tres` | `HasteStats` | `display_name` Schnelligkeit, `cost` 30, `duration` 4, `cooldown` 6, `speed_factor` 1,5 |
-| `data/abilities/invisibility.tres` | `InvisibilityStats` | `display_name` Unsichtbarkeit, `cost` 40, `duration` 5, `cooldown` 8, `alpha` 0,3 |
-| `data/abilities/stun.tres` | `StunStats` | `display_name` Stun, `cost` 30, `duration` 2, `cooldown` 6, `radius` 64 |
+| `data/abilities/haste.tres` | `HasteStats` | `display_name` Schnelligkeit, `cost` 30, `duration` 4, `cooldown` 6, `speed_factor` 1,5; Symbol `Ui/Skill Icon/Items & Weapon/Boot.png` mit `BootDisabled.png` (M12) |
+| `data/abilities/invisibility.tres` | `InvisibilityStats` | `display_name` Unsichtbarkeit, `cost` 40, `duration` 5, `cooldown` 8, `alpha` 0,3; Symbol `Ui/Skill Icon/Spell/Camouflage.png` mit `CamouflageDisabled.png` (M12) |
+| `data/abilities/stun.tres` | `StunStats` | `display_name` Stun, `cost` 30, `duration` 2, `cooldown` 6, `radius` 64; Symbol `Ui/Skill Icon/Spell/BookThunder.png` mit `BookThunderDisabled.png` (M12) |
+| `data/ui/hud.tres` | `HudStats` | `health_per_heart` 20 (M12) |
 | `data/dummy/health.tres` | `HealthStats` | `max_health` 50, `invulnerable_time` 0 |
 | `data/skins/ninja_green.tres` | `CharacterSkin` | Spielfigur `NinjaGreen`: Bild 32 × 32, `offset` (0, −2), Schatten bei (0, 5), `walk_reference_speed` 80; Stehen 4 Bilder à 5/s, Laufen 4 à 8/s, Hieb 4 à 11/s, Rolle 3 à 15/s, Treffer 2 à 8/s, Tod 2 à 5/s |
 | `data/skins/bamboo_yellow.tres` | `CharacterSkin` | feste Übungspuppen, `BambooYellow`: Bild 16 × 16, `offset` (0, −2), Schatten bei (0, 5), `walk_reference_speed` 40; Stehen 1 Bild, Laufen 4 à 6/s; im Tod grau |
@@ -554,7 +563,7 @@ Die Bausteine finden das Leben über den Namen: Der Knoten muss genau `Health` h
 | Unsichtbarkeit | `abilities/invisibility/` | Macht das Bild der Figur durchscheinend – jedes Kind aus `view_names`, die es gibt – und stellt sie in die Gruppe `invisible`. Gegner und Bonus-Schaden folgen in Phase 3. | `stats`, `view_names` (Standard: `CharacterView`, `PlaceholderView`) |
 | Stun | `abilities/stun/` | Betäubt jeden `Stunnable` im Umkreis für die Dauer der Fähigkeit und zeigt einen Ring. | `stats`, `pulse_time`, `pulse_color` |
 
-Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skript erbt von `Ability`.
+Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skript erbt von `Ability`. Seit M12 steht in der Werte-Datei auch ihr Symbol fürs HUD: `icon` und die graue Fassung `icon_disabled`.
 
 ### Szenen
 
@@ -578,7 +587,9 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 | `entities/projectile/projectile.tscn` | `projectile.gd` | Geschoss; Kinder `Hitbox` mit `PlaceholderView`, `WorldSensor`, `TargetSensor`, `ExplosionHitbox`, `ProjectileView` |
 | `entities/projectile/projectile_spawner.tscn` | `projectile_spawner.gd` | erzeugt alle Geschosse eines Levels |
 | `ui/crosshair/crosshair.tscn` | `crosshair.gd` | Fadenkreuz |
-| `ui/debug/debug_overlay.tscn` | `debug_overlay.gd` | Debug-Anzeige |
+| `ui/debug/debug_overlay.tscn` | `debug_overlay.gd` | Debug-Anzeige; seit M12 oben rechts |
+| `ui/hud/hud.tscn` | `hud.gd` | HUD (M12); `CanvasLayer` auf Ebene 90 mit `EnergyOrb`, `Hearts`, `StaminaBar` und `BottomBar` mit `AbilityBar` und `AmmoSlot`; jedes Teil mit eigenem Skript in `ui/hud/` |
+| `ui/hud/ability_slot.tscn` | `ability_slot.gd` | ein Platz der Fähigkeiten-Leiste: `Icon`, `ActiveFrame`, `Key` (M12) |
 | `ui/inventory/inventory_window.tscn` | `inventory_window.gd` | Inventarfenster; `CanvasLayer` auf Ebene 105, Kind `Root` mit dem Thema `ui/theme/wood_theme.tres`, darin `Frame` (`PanelContainer`) und `Interior` (`Panel`) mit `Title`, `EquipmentTitle`, `EquipmentSlots`, `Grid`, `InfoName`, `InfoText`, `InfoHint`; die Zellen baut das Skript (M11) |
 | `components/equipment/equipment.tscn` | `equipment.gd` | Baustein, siehe oben (M11) |
 | `components/placeholder_view/placeholder_view.tscn` | `placeholder_view.gd` | Baustein, siehe oben |
@@ -671,9 +682,9 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Feld mit Zerstörbarem `DestructibleField` (M9), Ursprung (72, 328), jeweils die Mitte: `PotA` (72, 328) und `PotB` (120, 328); `CrateA` (168, 328) und `CrateB` (184, 328) Kante an Kante; `RockA` (72, 408) und `RockB` (120, 408); `Tree` mit dem Fuß des Stamms bei (176, 428), das Bild reicht von (160, 400) bis (192, 432).
 - Truhen (M10): `ChestSmall` bei (616, 488) und `ChestBig` bei (680, 488), unter dem langen Balken links vor der Interaktions-Ecke. Der Goldschlüssel ist ein von Hand gelegter `Pickup` namens `GoldKey` im linken Raum der Interaktions-Ecke, bei (792, 504).
 - Ausrüstung zum Aufsammeln (M11): Unter `StartItems` liegen vier von Hand gelegte `Pickup` – `Broadsword` (192, 176), `Bow` (216, 176), `LeatherArmor` (240, 176), `RubyCharm` (264, 176).
-- `InventoryWindow` (M11) hängt als letztes Kind in der Kammer.
+- `InventoryWindow` (M11) und `Hud` (M12) hängen als letzte Kinder in der Kammer.
 - `LootSpawner` (M9) liegt vor dem `PlayerSpawner`; so liegt Beute über dem Zerstörbaren und den Truhen, aber unter der Figur.
-- Die Puppen, `DamageZone`, `DamageStrip`, `InteractionCorner`, `DestructibleField`, `ChestSmall`, `ChestBig`, `StartItems`, `LootSpawner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair`, `DebugOverlay` und `InventoryWindow` sind eingehängt und lassen sich einzeln löschen.
+- Die Puppen, `DamageZone`, `DamageStrip`, `InteractionCorner`, `DestructibleField`, `ChestSmall`, `ChestBig`, `StartItems`, `LootSpawner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair`, `DebugOverlay`, `InventoryWindow` und `Hud` sind eingehängt und lassen sich einzeln löschen.
 - `DebugOverlay` blendet hier „Maus“, „Kamera“ und „Raumzeit“ aus.
 - F2 und der Tod einer Figur laden die Szene neu, direkt in `test_chamber.gd`. Ab M18 übernimmt das der `SceneManager`.
 
@@ -749,13 +760,34 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - `Equipment` gibt nach jeder Änderung alles weiter: die Waffe an `MeleeAttack.set_stats()`, die Summe der Fernkampf-Boni an `RangedAttack.damage_bonus`, die Summe der Rüstung an `Health.armor`, die Summe der Leben an `Health.set_bonus_maximum()`. So kann später auch ein Gegenstand mehreres zugleich können.
 - Mehrspieler: Über Angelegtes entscheidet nur `Equipment`, über den Inhalt nur das Inventar; das Fenster fragt nur an. Jede Figur hat ihr eigenes Fenster über ihre `player_id`.
 
+**HUD im Einzelnen (M12)**
+
+- `ui/hud/hud.tscn` ist ein `CanvasLayer` auf Ebene 90, unter der Debug-Anzeige (100), dem Inventarfenster (105) und dem Fadenkreuz (110). Einstellbar: `player_id` (1).
+- Die Figur findet das HUD in der Gruppe `players` an ihrer `player_id`. Erscheint sie erst später, merkt es das über `node_added` und wartet, bis sie bereit ist. Verschwindet sie, bekommen alle Teile `bind(null)` und blenden sich aus; eine neue Figur mit derselben Nummer übernimmt das HUD wieder.
+- Jedes Teil hat ein eigenes Skript in `ui/hud/` mit der Methode `bind(figur)`, liest nur und entscheidet nichts. Fehlt sein Baustein an der Figur, bleibt es ausgeblendet.
+- `EnergyOrb` (`TextureProgressBar`, 32 × 32 bei (4, 4)): Rahmen `BackgroundRed.png`, Füllung `ProgressMana.png` um (5, 5) versetzt und von unten nach oben, Glanzpunkt `Over.png`. Hört auf `changed` des Vorrats `supply_name` (Standard `Energy`). Die Füllung steigt in ganzen Pixeln, mindestens einem, solange Energie da ist.
+- `Hearts` (`Control` bei (38, 6)): malt die Herzen aus `Heart.png` im Abstand `step` (16). Leben je Herz aus `stats`, also `data/ui/hud.tres`. Hört auf `changed` von `Health`; mit dem Höchstwert ändert sich die Zahl der Herzen.
+- `StaminaBar` (`Control`, 64 × 4 bei (39, 25)) mit `Frame` (`NinePatchRect` aus `LifeBarMiniUnder.png`, Ränder 1) und `Fill` (`ColorRect`, innen 62 × 2). Farben `fill_color` (Grün des Pakets) und `exhausted_color` (Rot des Pakets). Hört auf `changed`, `exhausted` und `recovered` von `Stamina`.
+- `BottomBar` (`HBoxContainer` unten links, 6 Pixel Abstand) mit `AbilityBar` (`HBoxContainer`, 4 Pixel Abstand) und `AmmoSlot`. Die Reihe passt sich an: Mehr Fähigkeiten schieben die Zelle weiter nach rechts.
+- `AbilityBar` baut je Kind unter `Abilities` einen Platz aus `ability_slot.tscn`, die Tasten aus `key_icons` (`Key1.png` bis `Key3.png`). Ein Platz: `Icon` (`TextureProgressBar`, im Uhrzeigersinn; darunter das graue Symbol, darüber das farbige), `ActiveFrame` (Variante `InventoryFocus` des Holz-Themas) und `Key`. Er liest in jedem Bild `is_active`, `get_cooldown_left()` und die Kosten gegen den Vorrat der Fähigkeit ab.
+- `AmmoSlot` (`Panel`, Variante `InventoryCell`, 24 × 24) mit `Icon` und `Count` (Variante `CountLabel`). Hört auf `selection_changed` des `AmmoSelector` und auf `changed` des `Inventory`. Die Anzahl steht auch bei 1.
+- Alle Teile lassen die Maus durch (`mouse_filter` auf „Ignore“), damit Klicks und Mausrad bei der Figur ankommen.
+- Im Editor zeigt `hud.tscn` die Kugel, die Leiste und die Zelle; Herzen und Fähigkeiten erscheinen erst im laufenden Spiel.
+- Mehrspieler: Jedes HUD zeigt die Figur mit seiner `player_id`. Später zeigt jeder Rechner nur das HUD seiner eigenen Figur.
+
 **Debug-Anzeige im Einzelnen**
 
-- `CanvasLayer` auf Ebene 100, läuft auch bei pausiertem Spiel. Zeigt FPS, Mausposition im Bild, gedrückte Aktionen und alle gemeldeten Werte.
-- Einstellbar: `refresh_interval` (0,1 s), `font_size` (12), `visible_on_start`, `show_mouse`, `hidden_keys`.
+- `CanvasLayer` auf Ebene 100, läuft auch bei pausiertem Spiel. Zeigt FPS, Mausposition im Bild, gedrückte Aktionen und alle gemeldeten Werte. Seit M12 steht sie oben rechts, damit sie das HUD nicht verdeckt.
+- Einstellbar: `refresh_interval` (0,1 s), `font_size` (12), `visible_on_start`, `show_mouse`, `hidden_keys`, seit M12 `align_right` (an) und `edge_margin` (4).
 - Im Editor zeigt die Testkammer nur die blauen Kollisionsflächen; Farben, Raster und Anzeige erscheinen erst im laufenden Spiel.
 
 ### Dateien je Modul
+
+**M12 – HUD**
+
+- Neu: `ui/hud/` mit `hud.tscn`, `hud.gd`, `hud_stats.gd`, `hearts.gd`, `energy_orb.gd`, `stamina_bar.gd`, `ability_bar.gd`, `ability_slot.tscn`, `ability_slot.gd`, `ammo_slot.gd`; `data/ui/hud.tres`
+- Geändert: `abilities/ability_stats.gd` (`icon`, `icon_disabled`), `data/abilities/haste.tres`, `invisibility.tres`, `stun.tres` (Symbole), `ui/debug/debug_overlay.gd` (oben rechts)
+- Geändert: `levels/test_chamber/test_chamber.tscn` (`Hud`), `levels/test_chamber/test_chamber.gd` (nur der Kommentar), `README.md` (Ordner), `docs/projekt_stand.md`, `docs/asset_katalog.md`
 
 **M11 – Inventar & Ausrüstung**
 
@@ -916,8 +948,9 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 | Funkeln beim Öffnen (M10) | `FX/Magic/Spark/SpriteSheet.png`, 10 Bilder à 27 × 35 | geprüft am 17.11.2026: goldenes Funkeln mit einem großen Stern im dritten Bild; eingebaut mit M10 |
 | Fenster (M11) | `Ui/Theme/Theme Wood/`: `nine_path_panel.png`, `nine_path_panel_interior.png`, `inventory_cell.png`, `nine_path_focus.png`, `button_*.png` | geprüft am 17.11.2026; eingebaut mit M11 im Thema `ui/theme/wood_theme.tres` |
 | Ausrüstung (M11) | `Items/Weapons/Katana/Sprite.png` 6 × 14, `BigSword/Sprite.png` 7 × 16, `Bow/Sprite.png` 15 × 7; `Items/Resource/GemRed.png` 15 × 15; `Ui/Skill Icon/Items & Weapon/Armor.png` 24 × 24 | geprüft am 17.11.2026; eingebaut mit M11. Die Rüstung hat als einziges ein Symbol mit farbigem Hintergrund – eine Rüstung ohne Hintergrund hat das Paket nicht |
-| Leben im HUD | `Ui/Receptacle/Heart.png`, 5 Bilder à 16 | geprüft: leer bis voll in Viertelschritten |
-| Fähigkeits-Symbole | `Ui/Skill Icon/Spell/`, 24 × 24 | Camouflage für die Unsichtbarkeit geprüft; Schnelligkeit und Stun noch auszuwählen |
+| Leben im HUD | `Ui/Receptacle/Heart.png`, 5 Bilder à 16 | geprüft: leer bis voll in Viertelschritten; eingebaut mit M12, ein Herz sind 20 Leben |
+| Energie und Ausdauer im HUD (M12) | `Ui/Receptacle/Receptacle Sphere/BackgroundRed.png` 32 × 32 mit der Füllung `ProgressMana.png` 22 × 22 bei (5, 5) und dem Glanzpunkt `Over.png`; `Ui/Receptacle/LifeBarMiniUnder.png` 18 × 4 als Rahmen der Ausdauer-Leiste | geprüft am 17.11.2026; eingebaut mit M12 |
+| Fähigkeits-Symbole | `Ui/Skill Icon/Spell/`, 24 × 24, dazu `Ui/Input/Keyboard/Key1.png` bis `Key3.png` | eingebaut mit M12: `Items & Weapon/Boot.png` für Schnelligkeit, `Spell/Camouflage.png` für Unsichtbarkeit, `Spell/BookThunder.png` für Stun, je mit grauer Fassung `…Disabled.png`; darunter die Tasten |
 | Schrift | `Ui/Font/NormalFont.ttf` | Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt; gebaut für 9 Pixel; mit A2 für die Schadenszahlen eingebaut |
 | Geräusche | `Audio/Sounds/Whoosh & Slash/`, `Hit & Impact/`, `Magic & Skill/`, `Jump & Bounce/` | nur die Namen; anhören kann nur der Nutzer |
 | Musik | `Audio/Musics/`, 41 Stücke, etwa „2 - The Cave“ für die Steinzeit | nur die Namen |
@@ -926,7 +959,7 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 
 Gate G1 ist bestanden: Nach dem Test von A2 hat der Nutzer am 17.11.2026 geschrieben: „Alles getestet und alles funktioniert … lass uns weitermachen“. Claude wertet das als „die Spielfigur fühlt sich gut an“. Nachstellen lässt sich weiter alles ohne Code über die Werte-Dateien in `data/`. Der Ton fehlt noch; er kommt mit A3 fast am Ende des Projekts.
 
-Phase 2 läuft: M8 – Interaktion, M9 – Zerstörbares und M10 – Truhen & Beute sind fertig, M11 – Inventar & Ausrüstung ist geliefert und im Test. Mit M11 hat auch A5 – Oberfläche begonnen: das Holz-Thema für Fenster. Danach folgt laut Fahrplan M12 – HUD. Der Ton kommt erst mit A3.
+Phase 2 läuft: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & Beute und M11 – Inventar & Ausrüstung sind fertig, M12 – HUD ist geliefert und im Test. A5 – Oberfläche ist damit zum zweiten Mal gewachsen: nach dem Holz-Thema für Fenster jetzt Herzen, Energie-Kugel, Ausdauer-Leiste und Symbole. Nach M12 ist Phase 2 fertig; dann beginnt Phase 3 mit M13 – Erster Gegner. Der Ton kommt erst mit A3.
 
 ## Hinweise aus der bisherigen Arbeit
 
@@ -944,6 +977,7 @@ Phase 2 läuft: M8 – Interaktion, M9 – Zerstörbares und M10 – Truhen & Be
 - Godot speichert offene Szenen, sobald F5 das Spiel startet. Wer zum Testen etwas in einer Szene ändert, stellt es danach zurück, bevor er committet; nach Strg+Z also noch einmal Strg+S.
 - Geerbte Szenen wie `pot.tscn` oder `chest_small.tscn` übernehmen ihre Kinder aus der Grundszene. Löschen lassen sich diese Kinder nur dort, in `destructible.tscn` oder `chest.tscn`; in der geerbten Szene ändert man nur ihre Werte.
 - Mehrere getestete Module, die noch nicht im Repo liegen, lassen sich in einem Commit hochladen; wichtig ist nur, dass sie vor dem nächsten Modul im Repo sind.
+- Zu jedem neuen Skript legt Godot beim ersten Öffnen eine `.uid`-Datei an. Sie gehört ins Repo und wird mit committet; Claude liefert sie nicht mit.
 - Das Inventarfenster ist im Editor unsichtbar (`Root` ist ausgeblendet). Wer es im Editor ansehen will, schaltet bei `InventoryWindow/Root` das Auge an – und danach wieder aus.
 - Ein neuer Skin ist eine Kopie einer Datei aus `data/skins/` mit anderem Blatt und anderen Zahlen. Die Lage stimmt ohne Änderung, wenn die Figur im Blatt unten steht wie im Paket üblich: bei 32er-Bildern mit den Füßen in Zeile 23, bei 16er-Bildern in Zeile 15, von 0 gezählt.
 - `CharacterView` zeigt im Editor nichts, weil es das Bild erst beim Start baut – wie bisher der Platzhalter. Die Lage prüft man im laufenden Spiel.
@@ -957,14 +991,18 @@ Phase 2 läuft: M8 – Interaktion, M9 – Zerstörbares und M10 – Truhen & Be
 - Eine Truhe ins Level: `world/chest/chest_small.tscn` oder `chest_big.tscn` instanzieren. Verschließen: bei `required_key` einen Gegenstand wählen, etwa `data/items/gold_key.tres`. Andere Beute: beim Kind `LootDropper` eine andere Liste aus `data/loot/` wählen. Ein Schlüssel zum Finden: `entities/pickup/pickup.tscn` instanzieren und als `item` den Schlüssel wählen.
 - Neue Ausrüstung: eine Datei aus `data/items/` kopieren, etwa `broadsword.tres`, und `id`, Namen, Symbol, Platz und Werte ändern. Eine Waffe bekommt bei `melee` eigene Werte wie in `data/player/sword.tres`. Ins Spiel kommt sie als Beute, in einer Truhe oder als `Pickup` am Boden.
 - Ein neues Fenster bekommt das Holz-Thema, indem man bei seinem obersten `Control` unter `Theme` die Datei `ui/theme/wood_theme.tres` wählt.
+- Eine neue Fähigkeit zeigt das HUD von selbst, sobald sie unter `Abilities` der Figur hängt. Ihr Symbol steht in ihrer Werte-Datei (`icon`, `icon_disabled`), ihre Taste in `key_icons` am Knoten `Hud/BottomBar/AbilityBar`.
+- Ein HUD für eine zweite Figur: `ui/hud/hud.tscn` ein zweites Mal ins Level hängen und `player_id` auf 2 stellen.
+- Bildebenen der Oberfläche: HUD 90, Debug-Anzeige 100, Inventarfenster 105, Fadenkreuz 110. Ein neues Fenster gehört zwischen 100 und 110, eine neue Anzeige am Bildrand unter 100.
 - Neue Splitter: eine Datei aus `data/effects/debris_*.tres` kopieren, Streifen und `piece_count` anpassen und sie einem `DebrisCue` geben. Die Streifen in `FX/Particle/` sind Bruchstücke nebeneinander, keine Animation; mit `tint` lässt sich ein Streifen einfärben.
 
 ## Offene Punkte
 
-- M11 – Inventar & Ausrüstung: geliefert am 17.11.2026 als `m11_inventar.zip`, der Test des Nutzers steht aus. Danach schließt Claude M11 ab und schlägt M12 – HUD vor.
-- Beim Bauen von M11 ergänzt: Esc schließt das Inventarfenster ebenfalls. Das Fenster liegt über der Debug-Anzeige; wer „S1 Leben“ lesen will, schließt es.
+- M12 – HUD: geliefert am 17.11.2026 als `m12_hud.zip`, der Test des Nutzers steht aus. Danach schließt Claude M12 ab – damit ist Phase 2 fertig – und schlägt M13 – Erster Gegner vor.
+- Beim Bauen von M12 ergänzt: Kugel und Leiste wachsen in ganzen Pixeln und zeigen mindestens einen, die Herzen mindestens ein Viertel, solange noch etwas da ist. Fähigkeiten und Geschoss-Zelle stehen in einer Reihe, die sich anpasst. Die Debug-Anzeige lässt sich mit `align_right` wieder nach links stellen.
+- Lebensleisten über Gegnern – das Paket hat dafür `LifeBarMiniUnder.png` und `LifeBarMiniProgress.png` – kommen mit den Gegnern in Phase 3.
+- Zwei Dinge hat Claude in M11 selbst ergänzt, der Nutzer hat sie mit dem Test bestätigt: Esc schließt das Inventarfenster ebenfalls, und das Fenster liegt über der Debug-Anzeige.
 - Im Inventarfenster haben mehr als 20 Plätze noch keinen Raum; ein größeres Inventar braucht später Blättern oder einen größeren Rahmen.
-- M9 und M10 sind getestet, aber noch nicht im Repo. Vor dem Einspielen von M11 committen und hochladen: `m9_zerstoerbares.zip`, `m9_abschluss.zip`, `m10_truhen.zip`, `m10_abschluss.zip` – am einfachsten in einem Commit, weil alle schon entpackt sind.
 - Eine Sache hat Claude in M10 selbst ergänzt, der Nutzer hat sie mit dem Test bestätigt: das goldene Funkeln beim Öffnen. Zurücknehmen ohne Code: in `world/chest/chest.tscn` den Knoten `OpenEffect` löschen.
 - Schlüssel gibt es bisher nur für Truhen. Türen mit Schloss – das Paket hat dafür den Schlüsselloch-Block in `TilesetDungeon.png` – kommen, wenn ein Level sie braucht.
 - Drei Dinge hat Claude in M9 selbst entschieden, der Nutzer hat sie mit dem Test bestätigt: keine Energie aus Zerstörbarem, Blätter je Hieb am Baum, der graugrüne Fels als Stein. Zurücknehmen ginge ohne Code: `feeds_attacker` an der Hurtbox anschalten, den Knoten `LeafHit` löschen, in `data/skins/rock.tres` eine andere Zelle wählen.
@@ -972,7 +1010,7 @@ Phase 2 läuft: M8 – Interaktion, M9 – Zerstörbares und M10 – Truhen & Be
 - Ein Kanal kennt nur ODER: Eine Tür ist offen, sobald einer ihrer Schalter an ist. Ein Tor, das zwei Hebel zugleich braucht, gibt es noch nicht.
 - Ton (A3): auf Wunsch des Nutzers verschoben, fast ans Ende des Projekts, mit Phase 7 – Feinschliff. Bis dahin hat kein Modul Ton; `SoundCue` und die Ton-Tabelle entstehen erst dann.
 - Der Hieb-Effekt richtet sich nicht von selbst nach der Trefferzone: Ändern sich `start_distance` oder `reach` in `data/player/sword.tres`, ist `distance` am Knoten `SlashEffect` der Spielfigur nachzuziehen. Heute ist es 8, also `start_distance` + 2.
-- Grafik, noch ungeprüft – Claude klärt das, bevor ein Schritt es braucht: Lage des Katanas über der Figur (erst wenn das Schwert sichtbar wird); Effekte, die im Katalog „unklar“ heißen (wenn ein Schritt sie braucht); alle Töne, bisher nur die Namen (A3); Übergangsregeln der Kacheln (A4); `TilesetFloor.png` mit 417 Pixeln Höhe, nicht durch 16 teilbar (A4); Symbole für Schnelligkeit und Stun (A5).
+- Grafik, noch ungeprüft – Claude klärt das, bevor ein Schritt es braucht: Lage des Katanas über der Figur (erst wenn das Schwert sichtbar wird); Effekte, die im Katalog „unklar“ heißen (wenn ein Schritt sie braucht); alle Töne, bisher nur die Namen (A3); Übergangsregeln der Kacheln (A4); `TilesetFloor.png` mit 417 Pixeln Höhe, nicht durch 16 teilbar (A4).
 - Schießen zeigt kein eigenes Bild der Figur; das Paket hat für die `NinjaGreen` keins. Die Geschosse haben seit M11a ihr Flugbild.
 - Wer vor wem gezeichnet wird, richtet sich noch nach der Reihenfolge der Knoten. Eine Sortierung nach Höhe im Bild folgt mit den Kacheln in A4. Seit M9 fällt das am Baum auf: Läuft die Figur hinter seine Krone, steht sie trotzdem davor.
 - Zauber: „keine eigene Kategorie“ ist nur vorläufig gewählt. Die Entscheidung liegt beim Nutzer.
@@ -980,7 +1018,7 @@ Phase 2 läuft: M8 – Interaktion, M9 – Zerstörbares und M10 – Truhen & Be
 - Geschosse kommen seit M9 als Beute aus Töpfen, Kisten und Steinen nach, seit M10 auch aus Truhen. Energie aus Fläschchen und Speicherpunkten folgt später.
 - Dynamit trifft die Spielfigur nicht. Ob es später auch eigenen Schaden geben soll, entscheidet der Nutzer.
 - `data/player/ammo.tres` ist seit M11a nicht mehr eingehängt; `bow.tres` gilt nur noch ohne `AmmoSelector`. Beide bleiben vorerst liegen.
-- Die Debug-Anzeige stößt an ihre Grenze, seit M9 mit bis zu zwölf Zeilen; die Leisten und Fähigkeits-Symbole des HUD kommen mit M12.
+- Die Debug-Anzeige stößt an ihre Grenze, seit M9 mit bis zu zwölf Zeilen. Seit M12 zeigt das HUD Leben, Energie, Ausdauer, Fähigkeiten und Geschoss; die Debug-Anzeige bleibt zum Nachprüfen und steht oben rechts.
 - Tod & Speichern: Der Neustart des Raums ist vorläufig. Was beim Tod verloren geht und wo gespeichert wird, ist vor M16 zu entscheiden.
 - Stottert die Bewegung auf einem Monitor mit mehr als 60 Hz, gibt es dafür die Physik-Interpolation als Projekteinstellung. Sie ist bewusst noch aus.
 - Der Sicherungsordner `E:\GitHub\TT_alt` kann gelöscht werden, falls er noch existiert.

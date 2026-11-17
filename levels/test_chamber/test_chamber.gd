@@ -27,6 +27,7 @@ extends Node2D
 ##   Crosshair       Fadenkreuz am Mauszeiger (M4)
 ##   DebugOverlay    Entwickler-Anzeige
 ##   InventoryWindow Inventarfenster auf Tab (M11)
+##   Hud             Leben, Energie, Ausdauer, Fähigkeiten und Geschoss der Figur 1 (M12)
 ## Alles außer Walls, Blocks und SpawnPoints lässt sich einzeln löschen,
 ## die Kammer läuft weiter.
 ##

@@ -7,6 +7,8 @@ extends CanvasLayer
 ## Ein leerer Wert entfernt den Eintrag wieder.
 ## Wird die Anzeige zu lang, lassen sich einzelne Werte im Inspektor
 ## ausblenden: hidden_keys und show_mouse.
+## Seit M12 steht sie oben rechts, damit sie das HUD oben links nicht verdeckt;
+## align_right aus stellt sie wieder nach links.
 ##
 ## Ein- und ausblenden: Aktion "debug_toggle_overlay" (F1).
 ## Abschalten: Knoten aus der Szene löschen - kein anderes Modul braucht ihn.
@@ -21,6 +23,10 @@ extends CanvasLayer
 @export var show_mouse := true
 ## Gemeldete Werte, die nicht angezeigt werden - ihre Namen, etwa "Kamera".
 @export var hidden_keys := PackedStringArray()
+## Oben rechts statt oben links (M12)?
+@export var align_right := true
+## Abstand zum rechten Rand in Pixeln, wenn align_right an ist (M12).
+@export var edge_margin := 4.0
 
 var _values: Dictionary = {}
 var _time_left := 0.0
@@ -66,6 +72,9 @@ func _refresh() -> void:
 	lines.append("Anzeige: F1")
 	_label.text = "\n".join(lines)
 	_label.reset_size()
+	if align_right:
+		# reset_size() behält die linke Kante; also nach jeder Änderung neu an den rechten Rand.
+		_label.position.x = get_viewport().get_visible_rect().size.x - _label.size.x - edge_margin
 
 
 func _pressed_actions_text() -> String:
