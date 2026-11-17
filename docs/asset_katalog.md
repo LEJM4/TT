@@ -1,6 +1,6 @@
 # Grafik-Katalog – Ninja Adventure Asset Pack
 
-Stand: 15.11.2026 · erstellt aus der Dateiliste (Namen und Pixelgrößen) · **noch nicht am Bild geprüft**
+Stand: 17.11.2026 · erstellt aus der Dateiliste (Namen und Pixelgrößen) · **am 16.11.2026 teilweise am Bild geprüft** – siehe „Prüfstand am Bild“ am Ende
 
 - Quelle: https://pixel-boy.itch.io/ninja-adventure-asset-pack – Lizenz CC0
 - Ablage im Projekt: `assets/ninja_adventure/` (alle Pfade unten sind relativ dazu)
@@ -8,14 +8,14 @@ Stand: 15.11.2026 · erstellt aus der Dateiliste (Namen und Pixelgrößen) · **
 - Stil: Pixelart in Draufsicht, Grundraster 16 × 16 Pixel
 
 **Lesehilfe:** „4 × 4 à 16“ heißt 4 Spalten × 4 Zeilen, jedes Bild 16 × 16 Pixel.
-Ein ⚠ markiert eine Annahme, die nur aus den Maßen abgeleitet ist.
+Ein ⚠ markiert eine Annahme, die nur aus den Maßen abgeleitet ist. „Geprüft“ heißt: Claude hat das Bild vergrößert angesehen; „gesichtet“ heißt: Inhalt grob angesehen, Einzelheiten offen.
 
 ## Überblick
 
 | Bereich | Ordner | Anzahl | Grundmaß |
 | --- | --- | --- | --- |
 | Figuren | `Actor/Character/` | 92 | 16 × 16 je Bild |
-| Animierte Hauptfigur | `Actor/CharacterAnimated/` | 1 Figur, 5 Waffen | ⚠ 32 × 32 je Bild |
+| Animierte Hauptfigur | `Actor/CharacterAnimated/` | 1 Figur, 5 Waffen | 32 × 32 je Bild |
 | Monster | `Actor/Monster/` | 66 | 16 × 16 je Bild |
 | Bosse | `Actor/Boss/` | 20 | 40 bis 96 je Bild |
 | Tiere | `Actor/Animal/` | 26 | meist 16 × 16 je Bild |
@@ -32,8 +32,8 @@ Jede Figur hat ein Gesamtblatt, dieselben Animationen einzeln und ein Porträt.
 
 | Datei | Größe | Aufteilung | Inhalt |
 | --- | --- | --- | --- |
-| `SpriteSheet.png` | 64 × 112 | 4 × 7 à 16 | alles in einem Blatt |
-| `SeparateAnim/Walk.png` | 64 × 64 | 4 × 4 à 16 | Laufen: ⚠ 4 Blickrichtungen × 4 Bilder |
+| `SpriteSheet.png` | 64 × 112 | 4 × 7 à 16 | alles in einem Blatt: Zeilen 1–4 Laufen, 5 Angriff, 6 Sprung, 7 Tod, Gegenstand und zwei Sonderposen – geprüft |
+| `SeparateAnim/Walk.png` | 64 × 64 | 4 × 4 à 16 | Laufen: 4 Blickrichtungen × 4 Bilder – geprüft |
 | `SeparateAnim/Idle.png` | 64 × 16 | 4 × 1 à 16 | Stehen: ein Bild je Blickrichtung |
 | `SeparateAnim/Attack.png` | 64 × 16 | 4 × 1 à 16 | Angriff: ein Bild je Blickrichtung |
 | `SeparateAnim/Jump.png` | 64 × 16 | 4 × 1 à 16 | Sprung: ein Bild je Blickrichtung |
@@ -42,7 +42,7 @@ Jede Figur hat ein Gesamtblatt, dieselben Animationen einzeln und ein Porträt.
 | `SeparateAnim/Special1.png`, `Special2.png` | 16 × 16 | je 1 Bild | Sonderposen |
 | `Faceset.png` | 38 × 38 | 1 Bild | Porträt für Dialoge |
 
-⚠ Die vier Spalten sind die Blickrichtungen. Ihre Reihenfolge (unten, oben, links, rechts?) ist am Bild zu prüfen.
+Die vier Spalten sind die Blickrichtungen, von links: unten, oben, links, rechts – geprüft am 16.11.2026 an NinjaGreen und Caveman.
 
 **Nach Thema**
 
@@ -68,7 +68,7 @@ Jede Figur hat ein Gesamtblatt, dieselben Animationen einzeln und ein Porträt.
 Die einzige Figur mit vollem Bewegungsumfang – Kandidat für die Spielfigur.
 Gesamtblatt `SpriteSheet.png` mit 256 × 544; einzeln unter `Separate/`:
 
-| Datei | Größe | ⚠ Aufteilung à 32 | Nutzen im Spiel |
+| Datei | Größe | Aufteilung à 32 | Nutzen im Spiel |
 | --- | --- | --- | --- |
 | `Idle.png` | 128 × 128 | 4 × 4 | Stehen |
 | `Walk.png` | 128 × 128 | 4 × 4 | Laufen |
@@ -84,11 +84,11 @@ Gesamtblatt `SpriteSheet.png` mit 256 × 544; einzeln unter `Separate/`:
 | `Swim.png` | 128 × 128 | 4 × 4 | Schwimmen |
 
 Waffen dazu in `Actor/CharacterAnimated/Weapon/`: `Axe.png`, `Hammer.png`, `Katana.png`, `Net.png`, `Pickaxe.png`, je 256 × 256.
-⚠ Bildgröße, Richtung der Reihen und das Zusammenspiel von Figur und Waffe sind am Bild zu prüfen.
+Geprüft am 16.11.2026: Jedes Bild ist 32 × 32. Bei Blättern mit vier Spalten sind die Spalten die Blickrichtungen – unten, oben, links, rechts –, die Zeilen die Bilder der Animation. `Katana.png` hat 4 × 4 Bilder à 64 im Raster von `Attack.png`. ⚠ Wie die Waffe über der Figur liegt, zeigt erst Godot.
 
 ## Monster – `Actor/Monster/<Name>/`
 
-66 Monster. Blatt mit 64 × 64 = 4 × 4 à 16, ⚠ 4 Blickrichtungen × 4 Laufbilder; dazu `Faceset.png` mit 38 × 38.
+66 Monster. Blatt mit 64 × 64 = 4 × 4 à 16: Spalten = Blickrichtungen wie bei den Figuren, Zeilen = 4 Laufbilder – geprüft an Slime; dazu `Faceset.png` mit 38 × 38.
 Das Blatt heißt `SpriteSheet.png` oder wie das Monster (`Beast.png`, `Slime.png`, `mushroom.png` …).
 
 Axolot, AxolotBlue, Bamboo, BambooYellow, Bear, Beast, Beast2, BlueBat, Butterfly, ButterflyBlue, Cyclope, Cyclope2, Dragon, DragonYellow, Eye, Eye2, Fish, FishRed, Flam, Flam2, GoldRacoon, GreenOctopus, Grey Trex, HeartGreen, HeartRed, KappaGreen, KappaRed, LanternGreen, LanternRed, Larva, Larva2, Lizard, Lizard2, Mole, Mole2, Mollusc, Mollusc2, Mouse, MouseBlack, Mushroom, Mushroom2, Octopus, Octopus2, Owl, Owl2, Panda, Racoon, RedOctopus, Reptile, Reptile2, Skull, SkullBlue, Slime, Slime2, Slime3, Slime4, Snake, Snake2, Snake3, Snake4, SpiderRed, SpiderYellow, Spirit, Spirit2, TRex, YellowsBat
@@ -124,14 +124,14 @@ Seitenansichten: Cow 48 × 16, Donkey und Horse 46 × 16, Lion und Lioness 60 ×
 
 ## Kacheln – `Backgrounds/Tilesets/`
 
-Alle im 16er-Raster. Der Inhalt ist aus dem Namen geschlossen.
+Alle im 16er-Raster. Der Inhalt ist aus dem Namen geschlossen, außer wo „gesichtet“ steht.
 
 | Datei | Größe | Kacheln | Inhalt laut Name |
 | --- | --- | --- | --- |
-| `TilesetNature.png` | 384 × 336 | 24 × 21 | Bäume, Büsche, Natur |
-| `TilesetRelief.png` | 320 × 192 | 20 × 12 | Felsen, Höhenstufen |
+| `TilesetNature.png` | 384 × 336 | 24 × 21 | Bäume, Felsen, Büsche – gesichtet |
+| `TilesetRelief.png` | 320 × 192 | 20 × 12 | Klippen, Höhenstufen – gesichtet |
 | `TilesetReliefDetail.png` | 192 × 192 | 12 × 12 | Details für Felsen |
-| `TilesetFloor.png` | 352 × 417 | 22 × ⚠ 26 | Böden – Höhe kein Vielfaches von 16 |
+| `TilesetFloor.png` | 352 × 417 | 22 × ⚠ 26 | Böden: Gras, Erde, Sand, Schnee – gesichtet; Höhe kein Vielfaches von 16 |
 | `TilesetFloorB.png` | 176 × 112 | 11 × 7 | Böden |
 | `TilesetFloorDetail.png` | 256 × 80 | 16 × 5 | Bodendetails |
 | `TilesetField.png` | 80 × 240 | 5 × 15 | Felder |
@@ -143,13 +143,13 @@ Alle im 16er-Raster. Der Inhalt ist aus dem Namen geschlossen.
 | `TilesetHouse.png` | 528 × 368 | 33 × 23 | Häuser |
 | `TilesetTowers.png` | 384 × 96 | 24 × 6 | Türme |
 | `TilesetVillageAbandoned.png` | 320 × 192 | 20 × 12 | verlassenes Dorf |
-| `TilesetDungeon.png` | 192 × 64 | 12 × 4 | Dungeon |
-| `TilesetElement.png` | 256 × 240 | 16 × 15 | einzelne Objekte |
+| `TilesetDungeon.png` | 192 × 64 | 12 × 4 | Dungeon: Knöpfe, Platten, Stacheln – gesichtet |
+| `TilesetElement.png` | 256 × 240 | 16 × 15 | einzelne Objekte: Kisten, Fässer, Möbel – gesichtet |
 | `TilesetLogic.png` | 128 × 160 | 8 × 10 | Schalter, Rätsel-Elemente |
 | `Pipes.png` | 240 × 48 | 15 × 3 | Rohre |
 | `Interior/TilesetInterior.png` | 256 × 320 | 16 × 20 | Möbel, Innenräume |
 | `Interior/TilesetInteriorFloor.png` | 352 × 272 | 22 × 17 | Innenböden |
-| `Interior/TilesetWallSimple.png` | 160 × 176 | 10 × 11 | Wände |
+| `Interior/TilesetWallSimple.png` | 160 × 176 | 10 × 11 | Wände: vier Mauer-Rahmen – gesichtet |
 | `Interior/Elements.png` | 144 × 48 | 9 × 3 | Kleinteile |
 
 Fahrzeuge in `Backgrounds/Vehicles/`: `Boat.png` 80 × 32, `Crane.png` 33 × 36, `FishNet.png` und `FishNetFull.png` 33 × 25, `Sail.png` 30 × 43.
@@ -189,7 +189,9 @@ Fahrzeuge in `Backgrounds/Vehicles/`: `Boat.png` 80 × 32, `Crane.png` 33 × 36,
 | `Slash/` | `SpriteSheetArc.png`, `Circular`, `Multi`, `Slash01`, `Slash02`, `Slash03` | 228 × 34 bis 396 × 50 | ⚠ unklar |
 | `Projectile/Kunai`, `Projectile/Shuriken` | `SpriteSheet.png` | 650 × 59, 690 × 54 | ⚠ unklar |
 
-**Geschosse** in `FX/Projectile/`: `Arrow.png` 13 × 5, `Kunai.png` 14 × 5, `BigKunai.png` 35 × 9, `Shuriken.png` und `ShurikenMagic.png` 32 × 16 (2 à 16), `BigShuriken.png` 46 × 23 (2 à 23), `Fireball.png`, `EnergyBall.png` und `SpriteSheetRock.png` 64 × 16 (4 à 16), `BigEnergyBall.png` 96 × 24 (4 à 24), `CanonBall.png` 80 × 16 (5 à 16), `IceSpike.png` 144 × 10, `PlantSpike.png` 96 × 20.
+Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `Magic/Circle/SpriteSheetWhite.png` – Bildzahl wie angegeben.
+
+**Geschosse** in `FX/Projectile/`: `Arrow.png` 13 × 5 (zeigt nach rechts – geprüft), `Kunai.png` 14 × 5, `BigKunai.png` 35 × 9, `Shuriken.png` und `ShurikenMagic.png` 32 × 16 (2 à 16), `BigShuriken.png` 46 × 23 (2 à 23), `Fireball.png`, `EnergyBall.png` und `SpriteSheetRock.png` 64 × 16 (4 à 16), `BigEnergyBall.png` 96 × 24 (4 à 24), `CanonBall.png` 80 × 16 (5 à 16), `IceSpike.png` 144 × 10, `PlantSpike.png` 96 × 20.
 
 **Partikel** in `FX/Particle/` als schmale Streifen: Bamboo, Clouds, Fire, Grass, Leaf, LeafPink, Rain, RainOnFloor, Rock, RockGray, Snow, Spark, Vase, Wood.
 
@@ -199,7 +201,7 @@ Fahrzeuge in `Backgrounds/Vehicles/`: `Boat.png` 80 × 32, `Crane.png` 33 × 36,
 
 | Ordner | Inhalt |
 | --- | --- |
-| `Treasure/` | `LittleTreasureChest.png` 32 × 16 und `BigTreasureChest.png` 32 × 14 (⚠ je 2 Bilder: zu und offen), `GoldKey.png`, `SilverKey.png`, `GoldCoin.png`, `SilverCoin.png`, `Coin2.png` 40 × 10 (4 à 10), `GoldCup.png`, `SilverCup.png` |
+| `Treasure/` | `LittleTreasureChest.png` 32 × 16 und `BigTreasureChest.png` 32 × 14 (je 2 Bilder: zu und offen – geprüft), `GoldKey.png`, `SilverKey.png`, `GoldCoin.png`, `SilverCoin.png`, `Coin2.png` 40 × 10 (4 à 10), `GoldCup.png`, `SilverCup.png` |
 | `Potion/` | `LifePot.png`, `MilkPot.png`, `WaterPot.png`, `EmptyPot.png`, `Heart.png`, `Medipack.png` |
 | `Weapons/<Name>/` | 23 Waffen, je `Sprite.png` und meist `SpriteInHand.png`: Axe, AxeTool, BigSword, Bone, Book, Bow, Bow2, Club, Fishing Rod, Fork, Hammer, Katana, Lance, Lance2, MagicWand, Ninjaku, Pickaxe, Rapier, Sai, Stick, Sword, Sword2, Whip |
 | `Projectile/` | Arrow, Bomb, Caltrop, CrateDynamite, Dynamite, Kunai, Shuriken |
@@ -217,10 +219,10 @@ Fahrzeuge in `Backgrounds/Vehicles/`: `Boat.png` 80 × 32, `Crane.png` 33 × 36,
 | --- | --- |
 | `Dialog/` | `DialogBox.png` und `DialogBoxFaceset.png` 300 × 58, `DialogueBoxSimple.png` 316 × 60, `ChoiceBox.png`, `FacesetBox.png`, `YesButton.png`, `NoButton.png`, `DialogInfo.png` |
 | `Emote/` | `emote1.png` bis `emote30.png`, 14 × 13 |
-| `Font/` | `NormalFont.ttf`, `font8x8.png` 120 × 64, `font24x30.png` 360 × 240 |
-| `Receptacle/` | `Heart.png` 80 × 16 (5 à 16), `Heart2.png` und `Heart3.png` 64 × 16 (4 à 16), `LifeBarMiniProgress.png`, `LifeBarMiniUnder.png`, `IconHeart.png` |
+| `Font/` | `NormalFont.ttf` (Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt), `font8x8.png` 120 × 64, `font24x30.png` 360 × 240 |
+| `Receptacle/` | `Heart.png` 80 × 16 (5 à 16: leer bis voll in Viertelschritten – geprüft), `Heart2.png` und `Heart3.png` 64 × 16 (4 à 16), `LifeBarMiniProgress.png`, `LifeBarMiniUnder.png`, `IconHeart.png` |
 | `Receptacle/Receptacle Rectangle/`, `Receptacle Sphere/` | Rahmen (`Background*.png`) und Füllungen (`Progress*.png`) für Leisten und Kugeln, darunter `ProgressHealth.png` und `ProgressMana.png` |
-| `Skill Icon/Spell/` | 34 Symbole à 24 × 24, fast alle auch als `…Disabled.png`: darunter Camouflage, Mist, Vision, Fireball, Heal, Counter, Cut |
+| `Skill Icon/Spell/` | 34 Symbole à 24 × 24, fast alle auch als `…Disabled.png`: darunter Camouflage (geprüft), Mist, Vision, Fireball, Heal, Counter, Cut |
 | `Skill Icon/Items & Weapon/`, `Job & Action/`, `Meteo/` | weitere 28 Symbole à 24 × 24 mit `…Disabled.png`: darunter Interact, Talk, Punch, Potion, Kunai, Shuriken |
 | `Input/Keyboard/` | Tastensymbole 13 × 13: Buchstaben, Ziffern, F1–F12, Pfeile, Shift, Ctrl, Alt, Space, Tab, Enter, Escape |
 | `Input/Mouse/`, `Input/Gamepad/` | Maus mit linker, rechter, mittlerer Taste und Rad; Gamepad-Tasten |
@@ -233,11 +235,23 @@ Fahrzeuge in `Backgrounds/Vehicles/`: `Boat.png` 80 × 32, `Crane.png` 33 × 36,
 - **Jingles** in `Jingles/`: GameOver (4), LevelUp (3), Secret (4), Success (4)
 - **Geräusche** in `Sounds/`: Alert (6), Ambient (9), Bonus (10), Creature (5), Elemental (26), Hit & Impact (13), Jump & Bounce (8), Magic & Skill (11), Menu (25), Voice (10), Whoosh & Slash (9)
 
-## Offene Prüfungen am Bild
+## Lose Dateien
 
-1. Reihenfolge der vier Blickrichtungen bei Figuren und Monstern
-2. Aufbau der animierten Hauptfigur und der Waffen-Blätter
-3. Die beiden Zustände der Truhen
-4. Alle mit ⚠ „unklar“ markierten Effekt-Streifen
-5. `TilesetFloor.png`: Höhe 417 ist kein Vielfaches von 16
-6. Inhalt der Tilesets – bisher nur aus dem Namen geschlossen
+- Im Stamm des Pakets: `Example 1.gif` bis `Example 4.gif`, `Example 5 ( Old Version).png`, `preview-part-1.png`, `preview-part-2.png`, `MusicCover.png`, `Palette.png` – laut Name Vorschauen, Musik-Cover und Farbpalette.
+- In `Actor/Character/`: `Shadow.png` 12 × 7, ein Schatten für Figuren – geprüft; `AllPreview.png` und `AllPreview2.png`, laut Name Übersichten aller Figuren.
+
+## Prüfstand am Bild
+
+Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 des Grafik-Plans brauchen.
+
+| Prüfung | Stand |
+| --- | --- |
+| Reihenfolge der vier Blickrichtungen bei Figuren und Monstern | erledigt: unten, oben, links, rechts |
+| Aufbau der animierten Hauptfigur und der Waffen-Blätter | erledigt für die Figur und `Katana.png`; offen sind die übrigen Waffen und die Lage der Waffe über der Figur |
+| Die beiden Zustände der Truhen | erledigt: zu und offen |
+| Alle mit ⚠ „unklar“ markierten Effekt-Streifen | offen |
+| `TilesetFloor.png`: Höhe 417 ist kein Vielfaches von 16 | offen |
+| Inhalt der Tilesets | teilweise: Floor, Nature, Relief, Dungeon, Element und WallSimple gesichtet; Regeln für Übergänge offen |
+| `Actor/Monster/BambooYellow/` als Bild der Übungspuppe | offen, nur der Name bekannt |
+| Symbole für Schnelligkeit und Stun in `Ui/Skill Icon/` | offen, noch auszuwählen |
+| Töne | nur die Namen bekannt; anhören kann nur der Nutzer |

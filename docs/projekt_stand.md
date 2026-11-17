@@ -4,18 +4,57 @@ Diese Datei führt Claude. Sie hält fest, wo das Projekt steht und was im Code 
 Nach jedem abgeschlossenen Schritt liefert Claude eine neue, vollständige Fassung.
 Sie ersetzt die alte an zwei Orten: im Repo unter `docs/projekt_stand.md` und im Projektwissen des Claude-Projekts.
 
-Der ausführliche Plan steht im Projektdokument: https://claude.ai/artifact/VsJhWxFHsnRPmCMFcH483R
+Der ausführliche Plan steht im Projektdokument: https://claude.ai/artifact/VsJhWxFHsnRPmCMFcH483R – der Grafik-Plan dort im Tab „Grafik & Assets“.
 Er ist eine Richtlinie, kein Zwang. Was vorgezogen oder eingeschoben wird, steht unten unter „Außer der Reihe“.
 
 ## Stand
 
 | | |
 | --- | --- |
-| Stand vom | 16.11.2026 |
-| In Arbeit | M7 – Fähigkeiten: Dateien geliefert, der Test des Nutzers in Godot steht aus |
-| Als Nächstes | Gate G1 – fühlt sich die Spielfigur gut an? Danach Phase 2 mit M8 – Interaktion |
-| Zuletzt abgeschlossen | M5 – Dash und M6 – Fernkampf, am 16.11.2026 |
-| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; zuletzt gelesen am 16.11.2026 vor M4, damals lag dort M2. Seither kein Abgleich, auf Wunsch des Nutzers |
+| Stand vom | 17.11.2026 |
+| In Arbeit | Grafik & Assets, Schritt A0 – Sichtung & Auswahl: Der Plan steht im Plan-Dokument im Tab „Grafik & Assets“; die Antworten des Nutzers auf die vier Entscheidungen E1 bis E4 stehen aus |
+| Als Nächstes | A1 – Figuren-Bild, danach A2 – Kampf-Bilder und A3 – Ton; dann Gate G1 und Phase 2 mit M8 – Interaktion |
+| Zuletzt abgeschlossen | M7 – Fähigkeiten, am 16.11.2026; damit ist Phase 1 gebaut |
+| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; zuletzt gelesen am 16.11.2026 vor M4, damals lag dort M2 (Commit `098b405`). M3 bis M7 hat der Nutzer lokal eingespielt und getestet; ob sie hochgeladen sind, hat Claude seither nicht geprüft |
+
+## Übergabe an einen neuen Chat
+
+Der Chat vom 15. bis 17.11.2026 endet hier. Ein neuer Chat hat keine Kopie der bisherigen Lieferungen: Er kennt nur diese Datei, den Grafik-Katalog, das Plan-Dokument und das Repo.
+
+**Vorher erledigt der Nutzer**
+
+1. Das ZIP `uebergabe_grafikplan.zip` nach `E:\GitHub\TT` entpacken; es ersetzt `docs/projekt_stand.md` und `docs/asset_katalog.md`.
+2. In GitHub Desktop alles committen und hochladen, was seit M2 dazugekommen ist: M3 bis M7 und die beiden Dateien unter `docs/`. Vor dem Push unter „History“ prüfen, dass beim Commit `LEJM4` steht.
+3. In den Projektanweisungen zwei Stellen ändern, Text unten.
+4. Im Projekt „TimeTraveller“ einen neuen Chat beginnen, mit dem Startsatz unten.
+
+Im Projektwissen liegen beide Dateien schon in der neuen Fassung; dort ist nichts zu tun.
+
+**Text für die Projektanweisungen**
+
+- Unter „Wo alles steht“, Punkt 2: den Platzhalter `[LINK EINTRAGEN, SOBALD ANGELEGT]` durch `https://github.com/LEJM4/TT` ersetzen.
+- Unter „Arbeitsweise“ den Satz „Liefere jede neue oder geänderte Datei einzeln und vollständig, mit ihrem Pfad im Projekt. Ich lege sie ab und lade sie hoch.“ ersetzen durch: „Liefere alle neuen oder geänderten Dateien zusammen als ein ZIP mit ihren Pfaden im Projekt. Ich entpacke es nach E:\GitHub\TT und lade es hoch.“
+
+**Startsatz für den neuen Chat**
+
+> Lies projekt_stand.md und im Plan-Dokument den Tab „Grafik & Assets“. E1 bis E4: alle vier ok. Dann weiter mit A1.
+
+Wer bei einer Entscheidung etwas anderes will, schreibt das statt „alle vier ok“.
+
+**Was der neue Chat zuerst tut**
+
+1. Diese Datei lesen, dann im Plan-Dokument den Tab „Grafik & Assets“.
+2. Das Repo klonen und den Code lesen. Fehlen dort M3 bis M7, bittet Claude den Nutzer, sie hochzuladen, statt sie aus dieser Datei nachzubauen.
+3. Die Antworten auf E1 bis E4 in Plan-Dokument und Stand-Datei eintragen.
+4. A1 – Figuren-Bild bauen, wie jede Mechanik zuerst in der Testkammer.
+
+**Arbeitsweise, wie der Nutzer sie zuletzt wollte**
+
+- Antworten kurz und auf Deutsch, das Ergebnis zuerst.
+- Code kommt als ein ZIP mit Projektpfaden, im Chat dazu nur eine Zeile. Die Prüfliste steht im Plan-Dokument bei den nächsten Schritten und in dieser Datei, nicht im Chat.
+- Kein Abgleich mit dem Repo vor jedem Modul. Zu Beginn eines neuen Chats liest Claude das Repo trotzdem einmal, weil es sonst keine Kopie des Codes gibt.
+- Auf „weiter“ geht es mit dem nächsten Schritt weiter.
+- Nach jedem abgeschlossenen Schritt: eine neue, vollständige Stand-Datei, ins Projektwissen geschrieben und im ZIP unter `docs/`; im Plan-Dokument Status, Prüfliste, nächste Schritte und Verlauf nachziehen.
 
 ## Arbeitsumgebung
 
@@ -41,7 +80,7 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | | M4 Zielen & Nahkampf | fertig |
 | | M5 Dash | fertig |
 | | M6 Fernkampf | fertig |
-| | M7 Fähigkeiten | im Test |
+| | M7 Fähigkeiten | fertig |
 | 2 – Welt & Interaktion | M8 Interaktion | als Nächstes |
 | | M9 Zerstörbares | offen |
 | | M10 Truhen & Beute | offen |
@@ -60,6 +99,20 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | 7 | Feinschliff & Veröffentlichung | offen |
 | 8 | Online-Mehrspieler | offen |
 
+**Grafik & Assets** – eingeschoben am 16.11.2026; der Plan steht im Tab „Grafik & Assets“ des Plan-Dokuments
+
+| Schritt | Inhalt | Wann | Status |
+| --- | --- | --- | --- |
+| A0 Sichtung & Auswahl | Katalog am Bild prüfen; Grafiken, Kacheln, Effekte und Töne für die Testkammer auswählen | jetzt | in Arbeit, wartet auf E1 bis E4 |
+| A1 Figuren-Bild | Baustein `CharacterView`, Skins als Werte-Dateien, Spielfigur mit Stehen, Laufen, Rolle, Treffer und Tod in vier Richtungen, Schatten, Bild der Übungspuppen | vor Phase 2 | als Nächstes |
+| A2 Kampf-Bilder | Hieb-Effekt, Pfeil, Effekte für Treffer, Tod und Stun; Baustein `EffectCue`; Pixel-Schrift für Schadenszahlen | vor Phase 2 | offen |
+| A3 Ton | `AudioManager` füllen, Baustein `SoundCue`, Ton-Tabelle als Werte-Datei, Musik in der Testkammer | vor Phase 2 | offen |
+| A4 Kacheln & Räume | Kachel-Sets mit Kollision, Testkammer mit Kacheln, Anleitung zum Malen im Editor | mit M8, spätestens vor Level 1 | offen |
+| A5 Oberfläche | Schrift und Thema, Herzen, Leisten, Fähigkeits- und Tastensymbole, Dialogfeld | mit M11, M12, M15 und M20 | offen |
+| A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | offen |
+
+Ab A1 bringt jedes neue Modul Bild und Ton gleich mit: M8 aus `TilesetDungeon`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`.
+
 **Gates**
 
 - G1 nach Phase 1: Die Spielfigur fühlt sich gut an – Bewegen, Zielen, Zuschlagen, Ausweichen.
@@ -73,9 +126,10 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Datum | Was | Status |
 | --- | --- | --- |
 | 15.11.2026 | Commits laufen unter `LEJM4` mit privater GitHub-Adresse. Dafür wurde das Repo neu angelegt; die erste Historie ist gelöscht. | erledigt |
-| 16.11.2026 | Wunsch des Nutzers nach dem Test von M4: nichts mit dem Repo abgleichen, nur programmieren, nur das ZIP liefern. M4 wurde deshalb ohne eigenen Abschluss-Schritt abgeschlossen und M5 ohne vorherigen Vorschlag gebaut. Ob das dauerhaft gilt, ist offen. | für M5 so umgesetzt |
+| 16.11.2026 | Wunsch des Nutzers nach dem Test von M4: nichts mit dem Repo abgleichen, nur programmieren, nur das ZIP liefern. M4 wurde deshalb ohne eigenen Abschluss-Schritt abgeschlossen und M5 ohne vorherigen Vorschlag gebaut. Der Nutzer hat das bis M7 beibehalten; es gilt, bis er etwas anderes sagt. | gilt weiter |
 | 16.11.2026 | Auf „weiter“ direkt nach der Lieferung von M5 hat Claude M6 gebaut, ohne dass ein Testergebnis zu M5 vorlag, wieder ohne Abgleich und nur als ZIP. Das ZIP zu M6 enthält deshalb auch alle Dateien von M5. | so umgesetzt |
 | 16.11.2026 | Auf „Ja alles passt -> weiter“ hat Claude M7 gebaut, wieder ohne Abgleich und nur als ZIP. Die Entscheidung zu Zaubern hat Claude vorläufig selbst getroffen. | so umgesetzt |
+| 16./17.11.2026 | Nach dem Test von M7 wollte der Nutzer zuerst einen Plan für Grafik und Assets, ohne Code. Er steht im Plan-Dokument im Tab „Grafik & Assets“: Schritte A0 bis A6, Regeln zur Einbindung, Auswahl der Grafiken und vier Entscheidungen. Vorschlag: A1 bis A3 vor Phase 2. | Plan fertig, Entscheidungen offen |
 
 ## Festlegungen
 
@@ -102,17 +156,23 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Dash | In Laufrichtung, im Stehen in Blickrichtung; währenddessen unverwundbar und nicht lenkbar; neue Hiebe erst danach; begrenzt durch eine Abklingzeit, ohne Ausdauer-Kosten | von Claude gewählt; vom Nutzer nach dem Test am 16.11.2026 mit „Ja alles passt“ bestätigt |
 | Fernkampf | Rechtsklick schießt in Zielrichtung, gehalten zwei Schüsse pro Sekunde; ein Geschoss fliegt geradeaus, trifft genau ein Ziel und endet an Wänden und Blöcken; während des Dashs fällt kein Schuss | von Claude gewählt; vom Nutzer nach dem Test am 16.11.2026 mit „Ja alles passt“ bestätigt |
 | Fernkampf-Kosten | Munition: 12 Schuss, jeder Schuss kostet 1, nichts kommt von selbst nach. Nachschub folgt mit Truhen und Beute in M10. | von Claude vorgeschlagen; vom Nutzer am 16.11.2026 mit „Ja alles passt“ bestätigt |
-| Fähigkeiten | Drei Plätze auf den Tasten 1, 2 und 3: Schnelligkeit, Unsichtbarkeit, Stun. Jede kostet Energie, wirkt eine Dauer lang und hat danach eine Abklingzeit. Der Platz unter dem Knoten `Abilities` bestimmt die Taste. | von Claude gewählt am 16.11.2026, vom Nutzer noch nicht bestätigt |
+| Fähigkeiten | Drei Plätze auf den Tasten 1, 2 und 3: Schnelligkeit, Unsichtbarkeit, Stun. Jede kostet Energie, wirkt eine Dauer lang und hat danach eine Abklingzeit. Der Platz unter dem Knoten `Abilities` bestimmt die Taste. | von Claude gewählt; vom Nutzer nach dem Test am 16.11.2026 mit „Ja alles funktioniert“ bestätigt |
 | Energie | 100 Punkte, eine Leiste für alle Fähigkeiten. Sie füllt sich nicht von selbst, sondern laut Konzept durch Treffer: jeder Schwerttreffer bringt 10. Fläschchen und Speicherpunkte folgen später. | laut Konzept; die Zahlen hat Claude gewählt |
 | Zauber | Keine eigene Kategorie: Ein Zauber ist eine Fähigkeit wie jede andere, mit demselben Baustein und derselben Energie | vorläufig von Claude gewählt am 16.11.2026; die Entscheidung liegt beim Nutzer |
+| Grafik einbinden | Eigene Schicht über der Mechanik: je Figur ein Bild-Baustein `CharacterView` statt `PlaceholderView`; Effekte und Töne als Zusatz-Bausteine `EffectCue` und `SoundCue`, die auf Signale reagieren; welche Grafik, steht als Skin in einer Werte-Datei; das Paket bleibt unverändert | von Claude vorgeschlagen am 17.11.2026 im Grafik-Plan |
+| E1 Spielfigur | Die animierte `NinjaGreen`, 32 × 32 je Bild, mit eigener Rolle für den Dash und Treffer-Animation; die 16er-Figuren werden NPCs und Gegner | Vorschlag, Antwort des Nutzers offen |
+| E2 Reihenfolge | A1 bis A3 vor Phase 2; danach bringt jedes Modul Bild und Ton gleich mit | Vorschlag, Antwort des Nutzers offen |
+| E3 Räume malen | Der Nutzer malt im Godot-Editor; Claude liefert Kachel-Sets mit Kollision und eine Anleitung; den Boden der Testkammer füllt Code | Vorschlag, Antwort des Nutzers offen |
+| E4 Schrift | `NormalFont` aus dem Paket; ihr fehlt das ß, im Spiel steht dafür „ss“ | Vorschlag, Antwort des Nutzers offen |
 
-Noch offen laut Plan, jeweils fällig vor dem genannten Modul: Zauber (vorläufig gewählt, siehe oben), Tod & Speichern endgültig (M16), Story (Phase 5), Anzahl Level (Phase 6).
+Noch offen, jeweils fällig vor dem genannten Schritt: Grafik E1 bis E4 (A1), Zauber (vorläufig gewählt, siehe oben), Tod & Speichern endgültig (M16), Story (Phase 5), Anzahl Level (Phase 6).
 
 ## Prüfungen
 
 **M7 – Fähigkeiten**
 
-- Noch nicht getestet. Claude hat die Dateien nur am Text geprüft: Verweise, Knotenpfade, Meldungen, exportierte Werte, Klassennamen und alle Aufrufe zwischen den Bausteinen.
+- Getestet hat der Nutzer am 16.11.2026 in Godot. Rückmeldung: „Ja alles funktioniert“ – die zehn Punkte der Prüfliste gelten als bestanden.
+- Claude hat die Dateien nur am Text geprüft: Verweise, Knotenpfade, Meldungen, exportierte Werte, Klassennamen und alle Aufrufe zwischen den Bausteinen.
 - Grundlage waren Claudes Lieferungen zu M5 und M6. Kein Abgleich mit dem Repo.
 
 **M6 – Fernkampf**
@@ -179,7 +239,7 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 | `GameState` | `autoload/game_state.gd` | leer, wird in M16 und M19 gefüllt |
 | `SaveManager` | `autoload/save_manager.gd` | leer, wird in M16 gefüllt |
 | `SceneManager` | `autoload/scene_manager.gd` | leer, wird in M18 gefüllt |
-| `AudioManager` | `autoload/audio_manager.gd` | leer, wird in Phase 5 gefüllt |
+| `AudioManager` | `autoload/audio_manager.gd` | leer, wird mit A3 – Ton gefüllt |
 
 ### Meldungen im EventBus
 
@@ -305,7 +365,7 @@ Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden.
 
 | Baustein | Ordner | Was er tut | Einstellbar |
 | --- | --- | --- | --- |
-| `PlaceholderView` | `components/placeholder_view/` | Malt die Rechtecke, Kreise und Kapseln der `CollisionShape2D`-Geschwister als Farbfläche. Platzhalter-Grafik bis Gate G2. | `color` |
+| `PlaceholderView` | `components/placeholder_view/` | Malt die Rechtecke, Kreise und Kapseln der `CollisionShape2D`-Geschwister als Farbfläche. Platzhalter-Grafik; ab A1 tritt `CharacterView` an ihre Stelle, sie selbst bleibt als Rückfall. | `color` |
 | `Stamina` | `components/stamina/` | Ausdauer-Vorrat: `spend(amount)` verbraucht und liefert, ob es ging; nach `regen_delay` füllt er sich. Bei 0 gilt `is_exhausted`, bis `recover_threshold` erreicht ist. Meldet `changed`, `exhausted`, `recovered`. | `stats` |
 | `Health` | `components/health/` | Leben. `apply_damage(amount)` ist die einzige Stelle, an der über Schaden entschieden wird: Tote und gerade Unverwundbare nehmen keinen. `make_invulnerable(seconds)` schützt für eine Dauer, etwa beim Dash. `reset()` füllt auf, auch nach dem Tod. Meldet `changed`, `damaged`, `died`, `revived`. | `stats` |
 | `Hurtbox` | `components/hurtbox/` | `Area2D`, die Treffer annimmt und an das Geschwister `Health` weiterreicht: `receive_hit(damage, direction)`. Meldet `hit_received`. Braucht eine eigene `CollisionShape2D`. | Ebene |
@@ -490,29 +550,51 @@ Zu jedem Skript legt Godot eine `.gd.uid`-Datei an, zu jeder Grafik und jedem To
 - Ablage: `assets/ninja_adventure/`; Einzelheiten stehen in `docs/asset_katalog.md`.
 - Umfang, am Repo gezählt: 2.234 Dateien – 1.915 PNG, 128 GIF, 147 WAV, 41 OGG, 1 TTF, dazu `LICENSE.txt` und die `README.md` des Pakets. Das deckt sich mit dem Katalog.
 - Godot hat 2.104 `.import`-Dateien angelegt. Lizenz: CC0 1.0.
-- Im Stamm des Pakets liegen Dateien, die der Katalog noch nicht führt: `Example 1.gif` bis `Example 4.gif`, `Example 5 ( Old Version).png`, `preview-part-1.png`, `preview-part-2.png`, `MusicCover.png`, `Palette.png`.
-- In `Actor/Character/` liegen lose `Shadow.png`, `AllPreview.png` und `AllPreview2.png`; auch sie fehlen im Katalog.
+- Lose Dateien im Stamm des Pakets und in `Actor/Character/` führt der Katalog seit 17.11.2026 im Abschnitt „Lose Dateien“.
+- Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 brauchen. Wo das Bild die Annahme bestätigt, ist das ⚠ im Katalog entfernt; was noch fehlt, steht dort unter „Prüfstand am Bild“.
 
-## M7 im Test – Prüfliste
+## Grafik-Plan in Kürze
 
-Gebaut am 16.11.2026 ohne vorherigen Vorschlag. Die Regeln der Fähigkeiten hat Claude gewählt, die Energie folgt dem Konzept; beides steht unter „Festlegungen“.
+Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die Kurzfassung hier gilt, falls der Tab nicht lesbar ist.
 
-1. Godot zeigt nach dem Einlesen keine roten Fehler.
-2. F5: Die Anzeige zeigt „S1 Energie: 100 / 100“ und „S1 Fähigkeiten: bereit“; „Maus“, „Kamera“ und „Raumzeit“ fehlen.
-3. Taste 1, Schnelligkeit: 4 Sekunden lang läuft die Figur mit Tempo 120 statt 80 und schlägt schneller. Die Energie sinkt auf 70. Die Anzeige zeigt „1 aktiv“, danach 6 Sekunden „1 Pause“; solange wirkt die Taste nicht.
-4. Taste 2, Unsichtbarkeit: 5 Sekunden lang ist die Figur durchscheinend. Die Energie sinkt um 40, danach folgen 8 Sekunden Pause.
-5. Taste 3, Stun, neben der pendelnden Puppe: Ein gelber Ring breitet sich aus, die Puppe bleibt 2 Sekunden stehen und trägt einen gelben Ring. Die Energie sinkt um 30.
-6. Stun neben dem roten Streifen: 2 Sekunden lang lässt er sich ohne Schaden durchlaufen.
-7. Bei Energie 0 wirkt keine Taste. Die Energie kommt nicht von selbst zurück; jeder Schwerttreffer auf eine Puppe bringt 10.
-8. Ohne Code: `Duration` in `data/abilities/haste.tres` auf 8 stellen – die Schnelligkeit hält 8 Sekunden; danach zurück auf 4.
-9. Austauschbar: In `entities/player/player.tscn` unter `Abilities` den Knoten `Stun` an die erste Stelle ziehen – Taste 1 löst den Stun aus; danach Strg+Z.
-10. Abschalt-Test: Ohne den Knoten `Abilities` in `entities/player/player.tscn` passiert bei 1, 2 und 3 nichts, alles andere läuft, keine roten Fehler.
+- Die Mechanik bleibt unberührt: Kollisionsformen und Werte-Dateien entscheiden, das Bild schaut nur zu.
+- `CharacterView` ersetzt `PlaceholderView`, das als Rückfall bleibt. Der Baustein liest Blickrichtung und Tempo der Figur und hört auf die Signale ihrer Bausteine: Hieb, Dash, Schaden, Tod.
+- Das Bild zeigt die nächstliegende von vier Blickrichtungen; gezielt und getroffen wird weiter stufenlos.
+- Ein Skin ist eine Werte-Datei: Blatt, Bildgröße und Bilder je Animation. Ein anderer Skin ist eine andere Datei, kein Code.
+- `EffectCue` und `SoundCue` hängen neben einem Baustein und reagieren auf eines seiner Signale. Töne spielt der `AudioManager` nach einer Ton-Tabelle.
+- Das Paket unter `assets/ninja_adventure/` wird nie verändert. Eigenes – Skins, Kachel-Sets, Ton-Tabelle, Thema – liegt unter `data/` und `ui/`.
+- Alles ist abschaltbar. Bild und Ton sind rein lokal und entscheiden im Mehrspieler nichts.
 
-## Gate G1 und Ausblick auf Phase 2
+**Ausgewählte Grafiken** – Pfade relativ zu `assets/ninja_adventure/`; „geprüft“ heißt: am 16.11.2026 vergrößert angesehen
 
-M7 ist das letzte Modul der Phase 1. Danach steht Gate G1 an: Fühlt sich die Spielfigur gut an – Bewegen, Zielen, Zuschlagen, Ausweichen? Das beurteilt der Nutzer; nachstellen lässt sich alles ohne Code über die Werte-Dateien in `data/`.
+| Zweck | Datei | Stand |
+| --- | --- | --- |
+| Spielfigur | `Actor/CharacterAnimated/NinjaGreen/Separate/` – Idle, Walk, Attack, Roll, Hit, Dead; 32 × 32 je Bild | geprüft: Spalten = Blick nach unten, oben, links, rechts; Zeilen = Bilder der Animation |
+| Schwert an der Figur | `Actor/CharacterAnimated/Weapon/Katana.png`, 64 × 64 je Bild | geprüft: gleiches Raster wie `Attack.png`; die Lage über der Figur zeigt erst Godot |
+| Hieb-Effekt | `FX/Attack/SlashCurved/SpriteSheet.png`, 4 à 32 | geprüft |
+| Geschoss | `FX/Projectile/Arrow.png`, 13 × 5, zeigt nach rechts | geprüft |
+| Treffer und Tod | `FX/Attack/Cut/SpriteSheet.png`, 4 à 32; `FX/Smoke/Smoke/SpriteSheet.png`, 6 à 32 | geprüft |
+| Stun-Ring | `FX/Magic/Circle/SpriteSheetWhite.png`, 4 à 32 | geprüft |
+| Schatten | `Actor/Character/Shadow.png`, 12 × 7 | geprüft |
+| Übungspuppen | `Actor/Monster/Bamboo/` und `BambooYellow/`, 4 × 4 à 16 | Bamboo geprüft; BambooYellow nur dem Namen nach |
+| Gegner | `Actor/Monster/<Name>/`, 4 × 4 à 16 | geprüft an Slime: Spalten wie bei den Figuren, Zeilen = Laufbilder |
+| NPCs | `Actor/Character/<Name>/SpriteSheet.png`, 4 × 7 à 16, dazu `Faceset.png` | geprüft: Zeilen 1 bis 4 Laufen, 5 Angriff, 6 Sprung, 7 Tod, Gegenstand und zwei Sonderposen |
+| Boden und Natur der Steinzeit | `Backgrounds/Tilesets/TilesetFloor.png`, `TilesetNature.png`, `TilesetRelief.png` | gesichtet; Regeln für Übergänge fehlen |
+| Wände der Testkammer | `Backgrounds/Tilesets/Interior/TilesetWallSimple.png` | gesichtet: vier Mauer-Rahmen |
+| Knöpfe, Platten, Stacheln (M8) | `Backgrounds/Tilesets/TilesetDungeon.png` | gesichtet |
+| Kisten, Fässer, Möbel (M9) | `Backgrounds/Tilesets/TilesetElement.png` | gesichtet |
+| Truhen (M10) | `Items/Treasure/LittleTreasureChest.png`, `BigTreasureChest.png` | geprüft: je zwei Bilder, zu und offen |
+| Leben im HUD | `Ui/Receptacle/Heart.png`, 5 Bilder à 16 | geprüft: leer bis voll in Viertelschritten |
+| Fähigkeits-Symbole | `Ui/Skill Icon/Spell/`, 24 × 24 | Camouflage für die Unsichtbarkeit geprüft; Schnelligkeit und Stun noch auszuwählen |
+| Schrift | `Ui/Font/NormalFont.ttf` | Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt |
+| Geräusche | `Audio/Sounds/Whoosh & Slash/`, `Hit & Impact/`, `Magic & Skill/`, `Jump & Bounce/` | nur die Namen; anhören kann nur der Nutzer |
+| Musik | `Audio/Musics/`, 41 Stücke, etwa „2 - The Cave“ für die Steinzeit | nur die Namen |
 
-Phase 2 beginnt mit M8 – Interaktion. Laut Konzept gehören in die Testkammer dafür Truhe, Tür, Hebel und Druckplatte nebeneinander; die Aktion `interact` liegt auf E.
+## Gate G1 und Ausblick
+
+Phase 1 ist gebaut. Gate G1 steht an: Fühlt sich die Spielfigur gut an – Bewegen, Zielen, Zuschlagen, Ausweichen? Das beurteilt der Nutzer; nachstellen lässt sich alles ohne Code über die Werte-Dateien in `data/`. Vorschlag: G1 nach A1 bis A3 beurteilen, wenn die Figur Bild und Ton hat.
+
+Phase 2 beginnt mit M8 – Interaktion. Laut Konzept gehören in die Testkammer dafür Truhe, Tür, Hebel und Druckplatte nebeneinander; die Aktion `interact` liegt auf E. Bild und Ton kommen dann gleich mit.
 
 ## Hinweise aus der bisherigen Arbeit
 
@@ -524,23 +606,22 @@ Phase 2 beginnt mit M8 – Interaktion. Laut Konzept gehören in die Testkammer 
 - Szenen, die Godot schon gespeichert hat, ändert Claude nur auf Grundlage der Fassung im Repo, damit Kennungen erhalten bleiben.
 - Godot 4.7 schreibt Szenen ohne `load_steps` und mit `unique_id` je Knoten; handgeschriebene Szenen ohne beides lädt es problemlos.
 - Nach jedem bestandenen Test committen und pushen, bevor das nächste Modul eingespielt wird. Sonst kann Claude den Stand nicht im Repo nachlesen und baut auf der eigenen Lieferung auf.
+- Ein neuer Chat hat keine Kopie früherer Lieferungen. Vor einem Wechsel des Chats muss alles im Repo liegen.
 - Die `README.md` nennt den Dash unter `abilities/`. Gebaut ist er als Baustein unter `components/dash/`, weil er keine Energie kostet und eine eigene Taste hat. Die README ist bei Gelegenheit anzupassen.
 - In `hitbox.tscn`, `hurtbox.tscn` und `melee_attack.tscn` zeigt der Editor ein gelbes Warndreieck, weil dort keine Form liegt. Das ist gewollt: Die Form kommt beim Einhängen dazu, beim Schwert beim Start aus der Werte-Datei.
 
 ## Offene Punkte
 
-- M7 ist geliefert, der Test steht aus.
-- Die Regeln der Fähigkeiten hat Claude gewählt; der Nutzer kann sie bestätigen oder ändern.
+- Grafik: Die Antworten des Nutzers auf E1 bis E4 stehen aus; ohne sie beginnt A1 nicht.
+- Grafik, noch ungeprüft – Claude klärt das, bevor ein Schritt es braucht: Bild der Übungspuppe `BambooYellow` (A1); Lage des Katanas über der Figur (A2); Effekte, die im Katalog „unklar“ heißen (A2); alle Töne, bisher nur die Namen (A3); Übergangsregeln der Kacheln (A4); `TilesetFloor.png` mit 417 Pixeln Höhe, nicht durch 16 teilbar (A4); Symbole für Schnelligkeit und Stun (A5).
 - Zauber: „keine eigene Kategorie“ ist nur vorläufig gewählt. Die Entscheidung liegt beim Nutzer.
-- Gate G1 steht nach M7 an: Der Nutzer beurteilt, ob sich die Spielfigur gut anfühlt.
+- Gate G1: Der Nutzer beurteilt, ob sich die Spielfigur gut anfühlt; Vorschlag: nach A1 bis A3.
 - Unsichtbarkeit: Dass Gegner die Figur verlieren und ein Angriff daraus Bonus-Schaden macht, folgt mit den Gegnern in Phase 3.
 - Munition lässt sich bisher nur mit F2 auffüllen; Nachschub kommt mit Truhen und Beute in M10. Energie aus Fläschchen und Speicherpunkten folgt ebenfalls später.
 - Die Debug-Anzeige stößt an ihre Grenze; die Leisten und Fähigkeits-Symbole des HUD kommen mit M12.
-- Abgleich mit dem Repo: für M3 bis M7 offen, auf Wunsch des Nutzers ausgesetzt. Zu klären ist, ob Claude künftig wieder im Repo nachliest und ob Lieferungen dauerhaft nur als ZIP kommen.
+- Repo: Zuletzt gelesen hat Claude Commit `098b405` (M2). Ob M3 bis M7 inzwischen hochgeladen sind, ist offen; vor dem nächsten Chat muss alles im Repo liegen, siehe „Übergabe“.
 - Tod & Speichern: Der Neustart des Raums ist vorläufig. Was beim Tod verloren geht und wo gespeichert wird, ist vor M16 zu entscheiden.
 - Stottert die Bewegung auf einem Monitor mit mehr als 60 Hz, gibt es dafür die Physik-Interpolation als Projekteinstellung. Sie ist bewusst noch aus.
-- Der Repo-Link ist in die Projektanweisungen einzutragen, falls dort noch der Platzhalter steht.
+- Projektanweisungen: Repo-Link und Lieferung als ZIP nachtragen, Text unter „Übergabe“.
 - Der Sicherungsordner `E:\GitHub\TT_alt` kann gelöscht werden, falls er noch existiert.
-- Grafik-Katalog: Alle Einträge mit ⚠ sind am Bild zu prüfen, zuerst die Reihenfolge der Blickrichtungen und der Aufbau der animierten Hauptfigur. Claude kann die Bilder selbst im Repo ansehen. Fällig, bevor echte Grafik eingebaut wird.
-- Grafik-Katalog: die losen Dateien im Stamm des Pakets und in `Actor/Character/` nachtragen.
 - In `components/`, `levels/test_chamber/`, `entities/player/` und `data/` liegt noch je eine `.gitkeep`, die nicht mehr gebraucht wird.
