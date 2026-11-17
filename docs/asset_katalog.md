@@ -199,7 +199,7 @@ Fahrzeuge in `Backgrounds/Vehicles/`: `Boat.png` 80 × 32, `Crane.png` 33 × 36,
 | `Slash/` | `SpriteSheetArc.png`, `Circular`, `Multi`, `Slash01`, `Slash02`, `Slash03` | 228 × 34 bis 396 × 50 | ⚠ unklar |
 | `Projectile/Kunai`, `Projectile/Shuriken` | `SpriteSheet.png` | 650 × 59, 690 × 54 | ⚠ unklar |
 
-Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `Magic/Circle/SpriteSheetWhite.png` – Bildzahl wie angegeben.
+Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `Magic/Circle/SpriteSheetWhite.png` – Bildzahl wie angegeben. Am 17.11.2026 für A2 Bild für Bild vermessen und eingebaut, Werte in `data/effects/`: `SlashCurved` – ein Bogen schwingt von unten über rechts nach oben um die Bildmitte, die Sichel liegt rechts davon in den Spalten 14 bis 31; `Cut` – ein schräger Schnitt mit Funken von links unten nach rechts oben, fast über das ganze Bild; `Smoke/Smoke` – eine Wolke wächst aus der unteren Mitte auf knapp 30 Pixel; `Circle/SpriteSheetWhite.png` – ein weißer Ring wächst von 10 auf 28 Pixel Durchmesser, mittig. Alle Bilder sind nicht leer.
 
 **Geschosse** in `FX/Projectile/`: `Arrow.png` 13 × 5 (zeigt nach rechts – geprüft), `Kunai.png` 14 × 5 (zeigt nach rechts – geprüft am 17.11.2026), `BigKunai.png` 35 × 9, `Shuriken.png` und `ShurikenMagic.png` 32 × 16 (2 à 16; bei `Shuriken.png` zwei Drehbilder – geprüft am 17.11.2026), `BigShuriken.png` 46 × 23 (2 à 23), `Fireball.png`, `EnergyBall.png` und `SpriteSheetRock.png` 64 × 16 (4 à 16), `BigEnergyBall.png` 96 × 24 (4 à 24), `CanonBall.png` 80 × 16 (5 à 16), `IceSpike.png` 144 × 10, `PlantSpike.png` 96 × 20.
 
@@ -229,7 +229,7 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 | --- | --- |
 | `Dialog/` | `DialogBox.png` und `DialogBoxFaceset.png` 300 × 58, `DialogueBoxSimple.png` 316 × 60, `ChoiceBox.png`, `FacesetBox.png`, `YesButton.png`, `NoButton.png`, `DialogInfo.png` |
 | `Emote/` | `emote1.png` bis `emote30.png`, 14 × 13 |
-| `Font/` | `NormalFont.ttf` (Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt), `font8x8.png` 120 × 64, `font24x30.png` 360 × 240 |
+| `Font/` | `NormalFont.ttf` (Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt; am 17.11.2026 vermessen: gebaut für 9 Pixel – 2.048 Einheiten je Geviert, ein Pixel sind 227,6 Einheiten –, Ziffern 6 Pixel hoch, Vorschub 6 Pixel; eingebaut mit A2 für die Schadenszahlen in Größe 9), `font8x8.png` 120 × 64, `font24x30.png` 360 × 240 |
 | `Receptacle/` | `Heart.png` 80 × 16 (5 à 16: leer bis voll in Viertelschritten – geprüft), `Heart2.png` und `Heart3.png` 64 × 16 (4 à 16), `LifeBarMiniProgress.png`, `LifeBarMiniUnder.png`, `IconHeart.png` |
 | `Receptacle/Receptacle Rectangle/`, `Receptacle Sphere/` | Rahmen (`Background*.png`) und Füllungen (`Progress*.png`) für Leisten und Kugeln, darunter `ProgressHealth.png` und `ProgressMana.png` |
 | `Skill Icon/Spell/` | 34 Symbole à 24 × 24, fast alle auch als `…Disabled.png`: darunter Camouflage (geprüft), Mist, Vision, Fireball, Heal, Counter, Cut |

@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" path="res://components/damage_numbers/damage_numbers.tscn" id="7_numbers"]
 [ext_resource type="PackedScene" path="res://components/character_view/character_view.tscn" id="8_character_view"]
 [ext_resource type="Resource" path="res://data/skins/bamboo_yellow.tres" id="9_skin"]
+[ext_resource type="PackedScene" path="res://components/effect_cue/effect_cue.tscn" id="10_effect_cue"]
+[ext_resource type="Resource" path="res://data/effects/hit.tres" id="11_hit"]
+[ext_resource type="Resource" path="res://data/effects/death_smoke.tres" id="12_smoke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(12, 12)
@@ -41,3 +44,15 @@ shape = SubResource("RectangleShape2D_hurt")
 [node name="HitFlash" parent="." instance=ExtResource("6_flash")]
 
 [node name="DamageNumbers" parent="." instance=ExtResource("7_numbers")]
+
+[node name="HitEffect" parent="." instance=ExtResource("10_effect_cue")]
+effect = ExtResource("11_hit")
+source_name = "Hurtbox"
+signal_name = "hit_received"
+use_direction = true
+
+[node name="DeathEffect" parent="." instance=ExtResource("10_effect_cue")]
+effect = ExtResource("12_smoke")
+source_name = "Health"
+signal_name = "died"
+follow = false

@@ -15,7 +15,7 @@
 | Ordner | Inhalt |
 | --- | --- |
 | `autoload/` | Globale Dienste: EventBus, Tastenbelegung, Spielstand, Szenenwechsel, Ton |
-| `components/` | Bausteine für alle: Bild, Leben, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl; später Zustandsautomat, Interaktion |
+| `components/` | Bausteine für alle: Bild, Effekte, Leben, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl; später Zustandsautomat, Interaktion |
 | `entities/` | Figuren und Bewegliches: `player/`, `dummy/`, `projectile/`, `effect/`; später `enemies/`, `npcs/` |
 | `abilities/` | Fähigkeiten: Schnelligkeit, Unsichtbarkeit, Stun; der Dash ist ein Baustein in `components/dash/` |
 | `items/` | Baupläne für Gegenstände und Geschosse; die Gegenstände selbst liegen in `data/items/`; später Beutetabellen |

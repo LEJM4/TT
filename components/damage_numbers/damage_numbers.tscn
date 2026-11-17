@@ -1,6 +1,9 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://components/damage_numbers/damage_numbers.gd" id="1_numbers"]
+[ext_resource type="FontFile" path="res://assets/ninja_adventure/Ui/Font/NormalFont.ttf" id="2_font"]
 
 [node name="DamageNumbers" type="Node2D"]
 script = ExtResource("1_numbers")
+font = ExtResource("2_font")
+font_size = 9

@@ -5,8 +5,13 @@ extends Node2D
 ## auch ein Kind mit dem Namen "Health" hat. Die Zahl steigt kurz auf,
 ## verblasst und verschwindet.
 ##
+## Seit A2 in der Pixel-Schrift des Pakets (NormalFont): Sie ist für 9 Pixel
+## gebaut und bleibt scharf bei Schriftgröße 9 oder einem Vielfachen davon.
+##
 ## Abschalten: Knoten löschen - Schaden wirkt weiter, nur ohne Zahl.
 
+## Schrift der Zahl. Leer: die Standardschrift von Godot (A2).
+@export var font: Font
 ## Farbe der Zahl.
 @export var color := Color(1.0, 0.9, 0.4)
 ## Schriftgröße in Pixeln.
@@ -34,6 +39,8 @@ func _on_damaged(amount: float) -> void:
 	var label := Label.new()
 	label.text = "%d" % roundi(amount)
 	label.z_index = 100
+	if font != null:
+		label.add_theme_font_override("font", font)
 	label.add_theme_font_size_override("font_size", font_size)
 	label.add_theme_color_override("font_color", color)
 	label.add_theme_color_override("font_outline_color", Color.BLACK)

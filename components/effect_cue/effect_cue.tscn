@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://components/effect_cue/effect_cue.gd" id="1_cue"]
+
+[node name="EffectCue" type="Node2D"]
+script = ExtResource("1_cue")

@@ -12,10 +12,10 @@ Er ist eine Richtlinie, kein Zwang. Was vorgezogen oder eingeschoben wird, steht
 | | |
 | --- | --- |
 | Stand vom | 17.11.2026 |
-| In Arbeit | M11a – Inventar-Logik: geliefert am 17.11.2026 als `m11a_inventar.zip`, der Test des Nutzers steht aus |
-| Als Nächstes | A2 – Kampf-Bilder, ohne die Geschoss-Bilder – die kamen mit M11a –, danach A3 – Ton; dann Gate G1 und Phase 2 mit M8 – Interaktion |
-| Zuletzt abgeschlossen | A1 – Figuren-Bild, am 17.11.2026: Test bestanden. Davor am selben Tag A0 – Sichtung & Auswahl mit E1 bis E4, am 16.11.2026 M7 – Fähigkeiten; damit ist Phase 1 gebaut |
-| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 17.11.2026 zu Beginn von A1: Commit `9b6d28a`, darin M0 bis M7 und die Übergabe-Dateien unter `docs/`, alle Commits unter `LEJM4`. A1 und M11a lädt der Nutzer nach bestandenem Test hoch; die Stand-Datei im ZIP von M11a ersetzt die aus `a1_abschluss.zip` |
+| In Arbeit | A2 – Kampf-Bilder: geliefert am 17.11.2026 als `a2_kampf_bilder.zip`, der Test des Nutzers steht aus |
+| Als Nächstes | A3 – Ton; dann Gate G1 und Phase 2 mit M8 – Interaktion |
+| Zuletzt abgeschlossen | M11a – Inventar-Logik, am 17.11.2026: Test bestanden. Davor am selben Tag A1 – Figuren-Bild und A0 – Sichtung & Auswahl mit E1 bis E4, am 16.11.2026 M7 – Fähigkeiten; damit ist Phase 1 gebaut |
+| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 17.11.2026 nach dem Test von M11a: Commit `369a648` mit A1 und M11a, davor `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4`. A2 lädt der Nutzer nach bestandenem Test hoch; die Stand-Datei im ZIP von A2 ersetzt die aus `m11a_inventar.zip` |
 
 ## Neuer Chat und Arbeitsweise
 
@@ -61,7 +61,7 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | | M5 Dash | fertig |
 | | M6 Fernkampf | fertig |
 | | M7 Fähigkeiten | fertig |
-| 2 – Welt & Interaktion | M11a Inventar-Logik | im Test – vorgezogen vor A2 |
+| 2 – Welt & Interaktion | M11a Inventar-Logik | fertig am 17.11.2026 – vorgezogen vor A2 |
 | | M8 Interaktion | offen, nach A1 bis A3 und Gate G1 |
 | | M9 Zerstörbares | offen |
 | | M10 Truhen & Beute | offen |
@@ -86,8 +86,8 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | --- | --- | --- | --- |
 | A0 Sichtung & Auswahl | Katalog am Bild prüfen; Grafiken, Kacheln, Effekte und Töne für die Testkammer auswählen | 16./17.11.2026 | fertig am 17.11.2026; was noch ungeprüft ist, klärt der Schritt, der es braucht |
 | A1 Figuren-Bild | Baustein `CharacterView`, Skins als Werte-Dateien, Spielfigur mit Stehen, Laufen, Hieb, Rolle, Treffer und Tod in vier Richtungen, Schatten, Bild der Übungspuppen | vor Phase 2 | fertig am 17.11.2026 |
-| A2 Kampf-Bilder | Hieb-Effekt, Effekte für Treffer, Tod und Stun; Baustein `EffectCue`; Pixel-Schrift für Schadenszahlen. Die Bilder der Geschosse kommen mit M11a. | vor Phase 2, nach M11a | als Nächstes |
-| A3 Ton | `AudioManager` füllen, Baustein `SoundCue`, Ton-Tabelle als Werte-Datei, Musik in der Testkammer | vor Phase 2 | offen |
+| A2 Kampf-Bilder | Hieb-Effekt, Effekte für Treffer, Tod und Stun; Baustein `EffectCue`; Pixel-Schrift für Schadenszahlen. Die Bilder der Geschosse kamen mit M11a. | vor Phase 2, nach M11a | im Test |
+| A3 Ton | `AudioManager` füllen, Baustein `SoundCue`, Ton-Tabelle als Werte-Datei, Musik in der Testkammer | vor Phase 2 | als Nächstes |
 | A4 Kacheln & Räume | Kachel-Sets mit Kollision, Testkammer mit Kacheln, Anleitung zum Malen im Editor | mit M8, spätestens vor Level 1 | offen |
 | A5 Oberfläche | Schrift und Thema, Herzen, Leisten, Fähigkeits- und Tastensymbole, Dialogfeld | mit M11, M12, M15 und M20 | offen |
 | A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | offen |
@@ -112,7 +112,7 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | 16.11.2026 | Auf „Ja alles passt -> weiter“ hat Claude M7 gebaut, wieder ohne Abgleich und nur als ZIP. Die Entscheidung zu Zaubern hat Claude vorläufig selbst getroffen. | so umgesetzt |
 | 16./17.11.2026 | Nach dem Test von M7 wollte der Nutzer zuerst einen Plan für Grafik und Assets, ohne Code. Er steht im Plan-Dokument im Tab „Grafik & Assets“: Schritte A0 bis A6, Regeln zur Einbindung, Auswahl der Grafiken und vier Entscheidungen. Vorschlag: A1 bis A3 vor Phase 2. | Plan fertig; E1 bis E4 am 17.11.2026 bestätigt |
 | 17.11.2026 | Neuer Chat. Der Nutzer bestätigt E1 bis E4 mit „alle vier ok“; Claude hat A1 gebaut. Zusätzlich zum Plan: der Probe-Skin `caveman.tres` für einen Skin-Tausch an der Spielfigur und ein Hieb-Bild der Figur. | A1 fertig am 17.11.2026 |
-| 17.11.2026 | Wunsch des Nutzers zu A2: Beim Schuss gibt es vier Geschosse aus `Items/Projectile` – Pfeil, Kunai, Shuriken, Dynamit –, je nachdem, was im Inventar ist. Das Inventar gab es noch nicht; auf Wunsch des Nutzers kommt seine Logik als M11a vor A2. Die Bilder der Geschosse wandern aus A2 nach M11a. Auf „weiter“ hat Claude M11a gebaut. | M11a im Test |
+| 17.11.2026 | Wunsch des Nutzers zu A2: Beim Schuss gibt es vier Geschosse aus `Items/Projectile` – Pfeil, Kunai, Shuriken, Dynamit –, je nachdem, was im Inventar ist. Das Inventar gab es noch nicht; auf Wunsch des Nutzers kommt seine Logik als M11a vor A2. Die Bilder der Geschosse wandern aus A2 nach M11a. Auf „weiter“ hat Claude M11a gebaut. | M11a fertig am 17.11.2026 |
 
 ## Festlegungen
 
@@ -138,15 +138,15 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Mauszeiger | Im Spielfenster ersetzt ihn das Fadenkreuz | entschieden am 16.11.2026 |
 | Dash | In Laufrichtung, im Stehen in Blickrichtung; währenddessen unverwundbar und nicht lenkbar; neue Hiebe erst danach; begrenzt durch eine Abklingzeit, ohne Ausdauer-Kosten | von Claude gewählt; vom Nutzer nach dem Test am 16.11.2026 mit „Ja alles passt“ bestätigt |
 | Fernkampf | Rechtsklick schießt in Zielrichtung, gehalten zwei Schüsse pro Sekunde; ein Geschoss fliegt geradeaus, trifft genau ein Ziel und endet an Wänden und Blöcken; während des Dashs fällt kein Schuss | von Claude gewählt; vom Nutzer nach dem Test am 16.11.2026 mit „Ja alles passt“ bestätigt |
-| Fernkampf-Kosten | Munition: 12 Schuss, jeder Schuss kostet 1, nichts kommt von selbst nach. Nachschub folgt mit Truhen und Beute in M10. | von Claude vorgeschlagen; vom Nutzer am 16.11.2026 mit „Ja alles passt“ bestätigt; wird mit M11a durch Geschosse aus dem Inventar ersetzt |
-| Geschosse | Vier Geschosse – Pfeil, Kunai, Shuriken, Dynamit aus `Items/Projectile`, nur diese –; geworfen wird, was im Inventar der Spielfigur ist | Wunsch des Nutzers am 17.11.2026 |
-| Geschoss-Werte | Pfeil 10 Schaden, Tempo 220, 240 Pixel weit, 0,5 s Pause. Kunai 15, Tempo 300, 180 Pixel, 0,5 s. Shuriken 6, fliegt durch bis zu 3 Ziele, Tempo 200, 200 Pixel, 0,4 s. Dynamit: kein Aufprall-Schaden, explodiert beim Aufprall oder am Ende und trifft alles im Umkreis von 24 Pixeln mit 20 Schaden, die Spielfigur nicht; Tempo 140, 120 Pixel, 1 s Pause | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; Test steht aus |
-| Geschoss-Wahl | Mausrad runter: nächstes Geschoss, hoch: voriges, in der Reihenfolge der Plätze. Ist das gewählte aufgebraucht, rückt das nächste nach; ohne Geschosse fällt kein Schuss. Die alte Munition (12 Schuss) entfällt | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; Test steht aus |
-| Inventar | 20 Plätze; Gleiches stapelt sich – Pfeile bis 99, Kunai und Shuriken bis 30, Dynamit bis 10. Hinein nur über `add()`, heraus nur über `remove()`. Gegenstände sind Werte-Dateien in `data/items/` | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; Test steht aus |
+| Fernkampf-Kosten | Munition: 12 Schuss, jeder Schuss kostet 1, nichts kommt von selbst nach. Nachschub folgt mit Truhen und Beute in M10. | von Claude vorgeschlagen; vom Nutzer am 16.11.2026 mit „Ja alles passt“ bestätigt; mit M11a durch Geschosse aus dem Inventar ersetzt |
+| Geschosse | Vier Geschosse – Pfeil, Kunai, Shuriken, Dynamit aus `Items/Projectile`, nur diese –; geworfen wird, was im Inventar der Spielfigur ist | Wunsch des Nutzers am 17.11.2026; mit M11a gebaut |
+| Geschoss-Werte | Pfeil 10 Schaden, Tempo 220, 240 Pixel weit, 0,5 s Pause. Kunai 15, Tempo 300, 180 Pixel, 0,5 s. Shuriken 6, fliegt durch bis zu 3 Ziele, Tempo 200, 200 Pixel, 0,4 s. Dynamit: kein Aufprall-Schaden, explodiert beim Aufprall oder am Ende und trifft alles im Umkreis von 24 Pixeln mit 20 Schaden, die Spielfigur nicht; Tempo 140, 120 Pixel, 1 s Pause | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt, nach dem Test mit „okay alles passt“ |
+| Geschoss-Wahl | Mausrad runter: nächstes Geschoss, hoch: voriges, in der Reihenfolge der Plätze. Ist das gewählte aufgebraucht, rückt das nächste nach; ohne Geschosse fällt kein Schuss. Die alte Munition (12 Schuss) entfällt | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt, nach dem Test mit „okay alles passt“ |
+| Inventar | 20 Plätze; Gleiches stapelt sich – Pfeile bis 99, Kunai und Shuriken bis 30, Dynamit bis 10. Hinein nur über `add()`, heraus nur über `remove()`. Gegenstände sind Werte-Dateien in `data/items/` | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt, nach dem Test mit „okay alles passt“ |
 | Fähigkeiten | Drei Plätze auf den Tasten 1, 2 und 3: Schnelligkeit, Unsichtbarkeit, Stun. Jede kostet Energie, wirkt eine Dauer lang und hat danach eine Abklingzeit. Der Platz unter dem Knoten `Abilities` bestimmt die Taste. | von Claude gewählt; vom Nutzer nach dem Test am 16.11.2026 mit „Ja alles funktioniert“ bestätigt |
 | Energie | 100 Punkte, eine Leiste für alle Fähigkeiten. Sie füllt sich nicht von selbst, sondern laut Konzept durch Treffer: jeder Schwerttreffer bringt 10. Fläschchen und Speicherpunkte folgen später. | laut Konzept; die Zahlen hat Claude gewählt |
 | Zauber | Keine eigene Kategorie: Ein Zauber ist eine Fähigkeit wie jede andere, mit demselben Baustein und derselben Energie | vorläufig von Claude gewählt am 16.11.2026; die Entscheidung liegt beim Nutzer |
-| Grafik einbinden | Eigene Schicht über der Mechanik: je Figur ein Bild-Baustein `CharacterView` statt `PlaceholderView`; Effekte und Töne als Zusatz-Bausteine `EffectCue` und `SoundCue`, die auf Signale reagieren; welche Grafik, steht als Skin in einer Werte-Datei; das Paket bleibt unverändert | von Claude vorgeschlagen am 17.11.2026 im Grafik-Plan; `CharacterView` mit A1 gebaut |
+| Grafik einbinden | Eigene Schicht über der Mechanik: je Figur ein Bild-Baustein `CharacterView` statt `PlaceholderView`; Effekte und Töne als Zusatz-Bausteine `EffectCue` und `SoundCue`, die auf Signale reagieren; welche Grafik, steht als Skin in einer Werte-Datei; das Paket bleibt unverändert | von Claude vorgeschlagen am 17.11.2026 im Grafik-Plan; `CharacterView` mit A1 gebaut, `EffectCue` mit A2 |
 | E1 Spielfigur | Die animierte `NinjaGreen`, 32 × 32 je Bild, mit eigener Rolle für den Dash und Treffer-Animation; die 16er-Figuren werden NPCs und Gegner | vom Nutzer am 17.11.2026 mit „alle vier ok“ bestätigt |
 | E2 Reihenfolge | A1 bis A3 vor Phase 2; danach bringt jedes Modul Bild und Ton gleich mit | vom Nutzer am 17.11.2026 mit „alle vier ok“ bestätigt |
 | E3 Räume malen | Der Nutzer malt im Godot-Editor; Claude liefert Kachel-Sets mit Kollision und eine Anleitung; den Boden der Testkammer füllt Code | vom Nutzer am 17.11.2026 mit „alle vier ok“ bestätigt |
@@ -154,30 +154,35 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Figuren-Bild | Ein Skin nennt Bildgröße, Lage, Schatten und je Animation Blatt, erste Zelle, Schritte und Bilder je Sekunde; Pflicht ist nur Stehen. Die Füße stehen auf der Unterkante der Kollisionsform: Bild 2 Pixel angehoben, Schattenmitte 5 Pixel unter der Mitte. Gezeigt wird die nächstliegende von vier Richtungen; die alte bleibt bis 8° über die Diagonale hinaus. Laufbilder laufen im Takt des Tempos. Mit Bild entfällt der weiße Richtungspunkt. | von Claude gewählt; vom Nutzer nach dem Test am 17.11.2026 mit „Okay das passt alles“ bestätigt |
 | Bild der Übungspuppen | Feste Puppen `BambooYellow` (orange), das bewegliche Ziel `Bamboo` (grün). Sie stehen im ersten Laufbild; das bewegliche Ziel läuft mit Laufbildern; im Tod werden sie grau. | von Claude gewählt; vom Nutzer nach dem Test am 17.11.2026 mit „Okay das passt alles“ bestätigt |
 | Unsichtbarkeit und Bild | Durchscheinend werden alle Bild-Knoten der Figur, die in `view_names` stehen: `CharacterView` samt Schatten und der Platzhalter | von Claude gewählt; vom Nutzer nach dem Test am 17.11.2026 mit „Okay das passt alles“ bestätigt |
+| Kampf-Bilder | Hieb: Der Bogen `SlashCurved` schwingt vor der Figur in Hiebrichtung, stufenlos gedreht, und deckt die Trefferzone; das gelbe Feld ist unsichtbar. Treffer: Am Getroffenen blitzt der Schnitt `Cut` auf, gedreht in Schlagrichtung – bei Puppen und bei der Spielfigur. Tod: Bei Puppen steigt Rauch auf (`Smoke`); die Spielfigur behält ihr Tod-Bild. Stun: Um jedes betäubte Ziel pulsiert der weiße Kreis (`Circle`) statt des gelben Rings; der Ring, mit dem sich die Fähigkeit ausbreitet, bleibt. Schadenszahlen in `NormalFont`, Größe 9. Jeder Effekt ist ein eigener Knoten und lässt sich einzeln löschen | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „Ja passt“ bestätigt; Test steht aus |
 
 Noch offen, jeweils fällig vor dem genannten Schritt: Zauber (vorläufig gewählt, siehe oben), Tod & Speichern endgültig (M16), Story (Phase 5), Anzahl Level (Phase 6).
 
 ## Prüfungen
 
-**M11a – Inventar-Logik**
+**A2 – Kampf-Bilder**
 
-- Geliefert am 17.11.2026 als `m11a_inventar.zip`. Der Test des Nutzers steht aus; die Prüfliste steht darunter und im Plan-Dokument.
-- Claude hat die Dateien am Text geprüft: Verweise, Knotenpfade, Signale, exportierte Werte, Klassennamen und das Format der Werte-Dateien. Grundlage war das Repo, Commit `9b6d28a`, plus Claudes Lieferung zu A1.
-- Nachgerechnet, nicht ausprobiert: Die Flugbilder und die 9 Explosionsbilder liegen im Blatt und sind nicht leer. Eine Explosion trifft 5 Physik-Schritte lang, jedes Ziel höchstens einmal. Das Puppenpaar steht 20 Pixel auseinander und liegt damit im Umkreis von 24.
+- Geliefert am 17.11.2026 als `a2_kampf_bilder.zip`. Der Test des Nutzers steht aus; die Prüfliste steht darunter und im Plan-Dokument.
+- Claude hat die Dateien am Text geprüft: Verweise, Knotenpfade, Signale und ihre Werte, exportierte Werte, Klassennamen und das Format der Werte-Dateien. Grundlage war das Repo, Commit `369a648`.
+- Nachgerechnet, nicht ausprobiert: Alle Bilder der vier Effekte liegen im Blatt und sind nicht leer. Die Sichel des Hiebs liegt im Bild rechts der Mitte, in den Spalten 14 bis 31; um 8 Pixel vorgerückt deckt sie 6 bis 24 Pixel vor der Figur – genau die Trefferzone des Schwerts. Die Schrift ist für 9 Pixel gebaut; in Größe 9 fällt jeder Schrift-Pixel auf einen Bild-Pixel.
 
-Prüfliste M11a:
+Prüfliste A2:
 
 1. Godot schließen, ZIP nach `E:\GitHub\TT` entpacken, Godot öffnen, F5. Keine roten Fehler.
-2. Die Anzeige zeigt „S1 Geschoss: Pfeil 30 · Plätze 4/20“; die Zeile „S1 Munition“ ist weg.
-3. Rechtsklick auf eine Puppe: Ein Pfeil fliegt, 10 Schaden, die Zahl sinkt auf 29.
-4. Mausrad runter: Kunai 10, Shuriken 10, Dynamit 5, dann wieder Pfeil. Mausrad hoch geht zurück.
-5. Kunai: schneller als der Pfeil, kürzere Reichweite, 15 Schaden.
-6. Shuriken: dreht sich im Flug. Waagerecht durch das Puppenpaar geworfen, trifft er beide mit je 6.
-7. Dynamit: dreht sich im Flug und explodiert an der ersten Puppe, an einer Wand oder am Ende der Flugstrecke. Am Puppenpaar bekommen beide 20. An einer nahen Wand nimmt die Spielfigur keinen Schaden.
-8. Alle 5 Dynamit werfen: Die Wahl springt zum nächsten Geschoss, die Anzeige zeigt „Plätze 3/20“. Ist alles verbraucht, steht dort „keins“ und Rechtsklick tut nichts.
-9. F2 füllt das Inventar wieder auf.
-10. Ohne Code: in `data/items/kunai.tres` beim Wurf (`shot`) den Schaden auf 30 stellen – Kunai machen 30; danach zurück auf 15.
-11. Abschalt-Test: in `entities/player/player.tscn` den Knoten `AmmoSelector` löschen, F5 – Rechtsklick schießt wieder unbegrenzt den gelben Platzhalter wie vor M11a, keine roten Fehler. Danach Strg+Z.
+2. Linksklick in verschiedene Richtungen, auch schräg: Vor der Figur schwingt ein weiß-gelber Bogen in Zielrichtung; das gelbe Feld ist weg. Der Bogen liegt dort, wo das Schwert Puppen trifft.
+3. Schwert oder Geschoss auf eine Puppe: Am Getroffenen blitzt ein Schnitt auf. Die Schadenszahl steht in der Pixel-Schrift des Pakets, mit scharfen Rändern, und steigt wie bisher auf.
+4. Eine Puppe auf 0 bringen: Rauch steigt auf und vergeht; die Puppe wird grau und steht nach 2 s wieder auf wie bisher.
+5. Ins Schadensfeld laufen: Bei jedem Treffer blitzt der Schnitt auch an der Spielfigur.
+6. Zwischen beweglichem Ziel und Schadensstreifen Taste 3 (Stun) drücken: Um beide pulsiert der weiße Kreis statt des gelben Rings, 2 s lang, dann ist er weg. Der Ring, mit dem sich der Stun ausbreitet, sieht aus wie bisher.
+7. Dynamit werfen: Die Explosion sieht aus wie in M11a und sitzt an derselben Stelle.
+8. Ohne Code: in `data/effects/hit.tres` `fps` auf 4 stellen – der Treffer-Schnitt läuft eine Sekunde lang; danach zurück auf 20.
+9. Abschalt-Test: in `entities/dummy/training_dummy.tscn` den Knoten `DeathEffect` löschen, F5 – Puppen fallen ohne Rauch, keine roten Fehler. Danach Strg+Z.
+
+**M11a – Inventar-Logik**
+
+- Getestet hat der Nutzer am 17.11.2026 in Godot. Rückmeldung: „okay alles passt“ – die elf Punkte der Prüfliste gelten als bestanden.
+- Claude hat die Dateien am Text geprüft: Verweise, Knotenpfade, Signale, exportierte Werte, Klassennamen und das Format der Werte-Dateien. Grundlage war das Repo, Commit `9b6d28a`, plus Claudes Lieferung zu A1.
+- Nachgerechnet, nicht ausprobiert: Die Flugbilder und die 9 Explosionsbilder liegen im Blatt und sind nicht leer. Eine Explosion trifft 5 Physik-Schritte lang, jedes Ziel höchstens einmal. Das Puppenpaar steht 20 Pixel auseinander und liegt damit im Umkreis von 24.
 
 **A1 – Figuren-Bild**
 
@@ -355,7 +360,8 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `ProjectileView` | `entities/projectile/projectile_view.gd` | zeigt ein Geschoss mit seinem Bild und spielt seine Explosion ab (M11a) |
 | `ProjectileSkin` | `entities/projectile/projectile_skin.gd` | Bauplan: Flugbild, Einzelbilder, Drehung, Explosions-Effekt eines Geschosses (M11a) |
 | `EffectData` | `entities/effect/effect_data.gd` | Bauplan einer Werte-Datei für einen kurzen Effekt: Blatt, Bilder, Tempo (M11a) |
-| `OneShotEffect` | `entities/effect/one_shot_effect.gd` | spielt einen Effekt einmal ab und verschwindet; `OneShotEffect.spawn(effekt, ort, eltern)` (M11a) |
+| `OneShotEffect` | `entities/effect/one_shot_effect.gd` | spielt einen Effekt ab und verschwindet; `OneShotEffect.spawn(effekt, ort, eltern, winkel, wiederholen)` (M11a; Winkel und Wiederholung seit A2) |
+| `EffectCue` | `components/effect_cue/effect_cue.gd` | Baustein: spielt einen Effekt, wenn ein Baustein daneben ein Signal sendet (A2) |
 | `ItemData` | `items/item_data.gd` | Bauplan eines Gegenstands: `id`, Name, Art, Symbol, Stapelgröße (M11a) |
 | `AmmoData` | `items/ammo_data.gd` | erweitert `ItemData` um `shot`, die Werte des Wurfs (M11a) |
 | `Inventory` | `components/inventory/inventory.gd` | Baustein Inventar (M11a) |
@@ -390,6 +396,10 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `data/items/shuriken.tres` | `AmmoData` | Shuriken, Stapel 30; Wurf: `damage` 6, `pierce` 3, `projectile_speed` 200, `max_distance` 200, `cooldown` 0,4; Flugbild `FX/Projectile/Shuriken.png`, 2 Bilder, `spin` 720 |
 | `data/items/dynamite.tres` | `AmmoData` | Dynamit, Stapel 10; Wurf: `damage` 0, `explosion_radius` 24, `explosion_damage` 20, `projectile_speed` 140, `max_distance` 120, `cooldown` 1; Flugbild das Symbol, `spin` 540; Explosion `data/effects/explosion.tres` |
 | `data/effects/explosion.tres` | `EffectData` | `FX/Elemental/Explosion/SpriteSheet.png`, 9 Bilder à 40, 15 Bilder je Sekunde |
+| `data/effects/sword_slash.tres` | `EffectData` | Hieb (A2): `FX/Attack/SlashCurved/SpriteSheet.png`, 4 Bilder à 32, 20 je Sekunde |
+| `data/effects/hit.tres` | `EffectData` | Treffer (A2): `FX/Attack/Cut/SpriteSheet.png`, 4 Bilder à 32, 20 je Sekunde, `offset` (0, −2) |
+| `data/effects/death_smoke.tres` | `EffectData` | Tod der Puppen (A2): `FX/Smoke/Smoke/SpriteSheet.png`, 6 Bilder à 32, 12 je Sekunde, `offset` (0, −2) |
+| `data/effects/stun.tres` | `EffectData` | Betäubung (A2): `FX/Magic/Circle/SpriteSheetWhite.png`, 4 Bilder à 32, 8 je Sekunde, wiederholt sich |
 | `data/player/energy.tres` | `SupplyStats` | `max_amount` 100, `regen_per_second` 0, `regen_delay` 1 |
 | `data/abilities/haste.tres` | `HasteStats` | `display_name` Schnelligkeit, `cost` 30, `duration` 4, `cooldown` 6, `speed_factor` 1,5 |
 | `data/abilities/invisibility.tres` | `InvisibilityStats` | `display_name` Unsichtbarkeit, `cost` 40, `duration` 5, `cooldown` 8, `alpha` 0,3 |
@@ -412,16 +422,17 @@ Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden; „4 à 8/s
 | `Health` | `components/health/` | Leben. `apply_damage(amount)` ist die einzige Stelle, an der über Schaden entschieden wird: Tote und gerade Unverwundbare nehmen keinen. `make_invulnerable(seconds)` schützt für eine Dauer, etwa beim Dash. `reset()` füllt auf, auch nach dem Tod. Meldet `changed`, `damaged`, `died`, `revived`. | `stats` |
 | `Hurtbox` | `components/hurtbox/` | `Area2D`, die Treffer annimmt und an das Geschwister `Health` weiterreicht: `receive_hit(damage, direction)`. Meldet `hit_received`. Braucht eine eigene `CollisionShape2D`. | Ebene |
 | `Hitbox` | `components/hitbox/` | `Area2D`, die jede berührte `Hurtbox` trifft, solange sie scharf ist: `activate()`, `deactivate()`. Meldet `hit_landed`; entschärft ein Zuhörer sie dabei, trifft sie in diesem Schritt nichts weiter. Braucht eine eigene `CollisionShape2D`. | `damage`, `hit_interval`, `active_on_start`, Maske |
-| `MeleeAttack` | `components/melee_attack/` | Nahkampf-Angriff: `try_attack(richtung)` dreht die Trefferzone in die Richtung und macht sie kurz scharf. Zone und Zeiten kommen aus der Werte-Datei. Jeder Treffer füllt das Geschwister `gain_supply_name` um `gain_per_hit` auf. `rate_factor` über 1 verkürzt die Pause. Meldet `attack_started`, `attack_finished`. | `stats`, `target_mask`, `swing_color`, `gain_supply_name` |
+| `MeleeAttack` | `components/melee_attack/` | Nahkampf-Angriff: `try_attack(richtung)` dreht die Trefferzone in die Richtung und macht sie kurz scharf. Zone und Zeiten kommen aus der Werte-Datei. Jeder Treffer füllt das Geschwister `gain_supply_name` um `gain_per_hit` auf. `rate_factor` über 1 verkürzt die Pause. Meldet `attack_started`, `attack_finished`. Das Feld in `swing_color` ist an der Spielfigur seit A2 durchsichtig; dort zeigt `SlashEffect` den Hieb. | `stats`, `target_mask`, `swing_color`, `gain_supply_name` |
 | `HitFlash` | `components/hit_flash/` | Lässt den Elternknoten bei Schaden hell aufblitzen; solange er unverwundbar ist, blinkt er. Hört auf das Geschwister `Health`. | `flash_time`, `flash_strength`, `blink_while_invulnerable`, `blink_interval`, `blink_alpha` |
-| `DamageNumbers` | `components/damage_numbers/` | Zeigt bei Schaden die Zahl über dem Elternknoten; sie steigt auf und verblasst. Hört auf das Geschwister `Health`. | `color`, `font_size`, `outline_size`, `rise_distance`, `duration`, `start_offset` |
+| `DamageNumbers` | `components/damage_numbers/` | Zeigt bei Schaden die Zahl über dem Elternknoten; sie steigt auf und verblasst. Hört auf das Geschwister `Health`. Seit A2 in der Pixel-Schrift `NormalFont`, Größe 9; ohne `font` die Standardschrift. | `color`, `font`, `font_size`, `outline_size`, `rise_distance`, `duration`, `start_offset` |
 | `Dash` | `components/dash/` | Kurzer, schneller Satz: `request()` merkt den Tastendruck vor, `try_start(richtung)` startet, sobald es möglich ist; solange `is_dashing` gilt, liefert `get_velocity()` das Tempo. Macht das Geschwister `Health` beim Start kurz unverwundbar. Meldet `dash_started`, `dash_finished`. | `stats` |
 | `Supply` | `components/supply/` | Zählbarer Vorrat: `spend(menge)` verbraucht und liefert, ob genug da war; `add(menge)` füllt auf. Mit `regen_per_second` über 0 füllt er sich nach `regen_delay` von selbst. Meldet `changed`. | `stats` |
 | `RangedAttack` | `components/ranged_attack/` | Fernkampf-Angriff: `try_shoot(richtung)` bezahlt aus dem Geschwister `supply_name` und bestellt das Geschoss über `projectile_requested`. Liegt ein `AmmoSelector` daneben (M11a), kommen Werte und Kosten von dort, und `stats` und `supply_name` gelten nicht. Ohne `ProjectileSpawner` im Level fällt kein Schuss und nichts wird bezahlt. `rate_factor` über 1 verkürzt die Pause. Meldet `shot_fired`. | `stats`, `projectile_scene`, `target_mask`, `supply_name`, `ammo_name` |
 | `Inventory` | `components/inventory/` | Inventar mit begrenzten Plätzen; Gleiches stapelt sich bis zur Stapelgröße. `add(gegenstand, anzahl)` liefert, was keinen Platz fand; `remove(gegenstand, anzahl)` nimmt nur, wenn genug da ist. Die einzige Stelle, die über den Inhalt entscheidet. Lesen: `count()`, `has()`, `get_items()`, `get_slots()`, `get_used_slots()`, `get_slot_count()`. Meldet `changed`, `item_added`, `item_removed`. | `stats` |
 | `AmmoSelector` | `components/ammo_selector/` | Wählt das Geschoss: jedes `AmmoData` im Inventar, in der Reihenfolge der Plätze. `cycle(schritt)` wechselt, `get_shot()` liefert die Werte des Wurfs, `consume(anzahl)` nimmt aus dem Inventar. Ist das gewählte aufgebraucht, rückt das nächste nach. Meldet `selection_changed`. | `inventory_name` |
 | `PatrolMover` | `components/patrol_mover/` | Lässt seinen Elternknoten zwischen Startpunkt und Startpunkt + `travel` pendeln. Für Dinge, die nichts wegschieben müssen. | `travel`, `speed` |
-| `Stunnable` | `components/stunnable/` | Macht seinen Elternknoten betäubbar: `apply_stun(sekunden)`, `is_stunned()`. Solange die Betäubung anhält, ruht der Knoten aus `paused_node` und um das Ziel liegt ein Ring. Steht in der Gruppe `stunnable`. Meldet `stunned`, `recovered`. | `paused_node`, `ring_radius`, `ring_color` |
+| `Stunnable` | `components/stunnable/` | Macht seinen Elternknoten betäubbar: `apply_stun(sekunden)`, `is_stunned()`. Solange die Betäubung anhält, ruht der Knoten aus `paused_node`, und um das Ziel pulsiert der weiße Kreis aus seinem Kind `StunEffect` (A2). Der gelbe Ring aus M7 ist durchsichtig gestellt. Steht in der Gruppe `stunnable`. Meldet `stunned`, `recovered`. | `paused_node`, `ring_radius`, `ring_color` |
+| `EffectCue` | `components/effect_cue/` | Spielt einen Effekt aus einer Werte-Datei, wenn ein Baustein daneben ein Signal sendet (A2). Liefert das Signal eine Richtung, rückt der Effekt um `distance` dorthin und dreht sich auf Wunsch mit. Mit `stop_signal_name` wiederholt er sich, bis dieses Signal kommt. Er entscheidet nichts. | `effect`, `source_name`, `signal_name`, `stop_signal_name`, `follow`, `use_direction`, `distance` |
 
 Die Bausteine finden das Leben über den Namen: Der Knoten muss genau `Health` heißen und neben ihnen liegen.
 
@@ -465,7 +476,8 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 | `components/supply/supply.tscn` | `supply.gd` | Baustein, siehe oben |
 | `components/ranged_attack/ranged_attack.tscn` | `ranged_attack.gd` | Baustein, siehe oben |
 | `components/patrol_mover/patrol_mover.tscn` | `patrol_mover.gd` | Baustein, siehe oben |
-| `components/stunnable/stunnable.tscn` | `stunnable.gd` | Baustein, siehe oben |
+| `components/stunnable/stunnable.tscn` | `stunnable.gd` | Baustein, siehe oben; Kind `StunEffect` (ein `EffectCue`) |
+| `components/effect_cue/effect_cue.tscn` | `effect_cue.gd` | Baustein, siehe oben |
 | `abilities/haste/haste.tscn` | `haste.gd` | Fähigkeit, siehe oben |
 | `abilities/invisibility/invisibility.tscn` | `invisibility.gd` | Fähigkeit, siehe oben |
 | `abilities/stun/stun.tscn` | `stun.gd` | Fähigkeit, siehe oben |
@@ -474,7 +486,7 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 **Spielfigur im Einzelnen**
 
 - `Player` ist ein `CharacterBody2D` im schwebenden Modus, Ebene `player`, Maske `world` und `enemy`, Gruppe `players`. Körper 12 × 12 Pixel. Bild seit A1: der Ninja aus `data/skins/ninja_green.tres` über `CharacterView`; ohne ihn der grüne Platzhalter mit weißem Punkt in Blickrichtung.
-- Kinder: `CollisionShape2D`, `PlaceholderView`, `CharacterView`, `PlayerInput` (ein `IntentSource`, läuft vor der Figur), `Stamina`, `Health`, `Hurtbox` (10 × 10 Pixel, Ebene `player_hurtbox`), `HitFlash`, `MeleeAttack` (sucht auf `enemy_hurtbox`), `Dash`, `Inventory`, `AmmoSelector`, `RangedAttack` (Ziele auf `enemy_hurtbox`), `Energy` (ein `Supply`), `Abilities` mit den Kindern `Haste`, `Invisibility` und `Stun`.
+- Kinder: `CollisionShape2D`, `PlaceholderView`, `CharacterView`, `PlayerInput` (ein `IntentSource`, läuft vor der Figur), `Stamina`, `Health`, `Hurtbox` (10 × 10 Pixel, Ebene `player_hurtbox`), `HitFlash`, `MeleeAttack` (sucht auf `enemy_hurtbox`), `Dash`, `Inventory`, `AmmoSelector`, `RangedAttack` (Ziele auf `enemy_hurtbox`), `Energy` (ein `Supply`), `Abilities` mit den Kindern `Haste`, `Invisibility` und `Stun`, dazu seit A2 `SlashEffect` und `HitEffect` (je ein `EffectCue`).
 - Die Figur liest nur Absichten. `PlayerInput` füllt sie aus den Aktionen und aus der Mausposition; später kann eine andere Quelle dasselbe tun.
 - Blick und Hieb: Die Figur blickt stufenlos in die Zielrichtung, also zur Maus. Solange `attack_primary` gehalten wird, schlägt sie dorthin. Laufen, Sprinten und Schleichen gehen dabei weiter.
 - Zustände: Stehen, Laufen, Sprinten, Schleichen, Dash. Schleichen geht vor Sprinten. Sprinten kostet Ausdauer; ohne Vorrat läuft die Figur normal.
@@ -483,7 +495,7 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Fähigkeiten: Ein Druck auf `ability_1`, `ability_2` oder `ability_3` setzt das erste, zweite oder dritte Kind von `Abilities` ein. Das geht jederzeit, auch im Dash. Die Figur selbst kennt keine einzelne Fähigkeit; sie bietet nur `speed_factor` an, den die Schnelligkeit setzt.
 - Energie: Fähigkeiten bezahlen aus `Energy`. Der Vorrat füllt sich nur durch Schwerttreffer, über `MeleeAttack`.
 - Tod: Fällt das Leben auf 0, bleibt die Figur stehen, zeigt das Tod-Bild (der Platzhalter wird grau) und sendet `player_died`. Was dann geschieht, entscheidet das Level.
-- Einstellbar: `stats` (Werte-Datei), `player_id`, `defeated_color`. Ohne `PlayerInput` bleibt sie stehen, ohne `Stamina` sprintet sie unbegrenzt, ohne `Health` nimmt sie keinen Schaden, ohne `Hurtbox` ist sie nicht zu treffen, ohne `MeleeAttack` schlägt sie nicht zu, ohne `Dash` dasht sie nicht, ohne `RangedAttack` schießt sie nicht, ohne `Inventory` hat sie nichts zu werfen, ohne `AmmoSelector` schießt sie wie vor M11a mit `bow.tres` kostenlos, ohne `Abilities` hat sie keine Fähigkeiten, ohne `Energy` kosten Fähigkeiten nichts, ohne `CharacterView` zeigt sie den Platzhalter.
+- Einstellbar: `stats` (Werte-Datei), `player_id`, `defeated_color`. Ohne `PlayerInput` bleibt sie stehen, ohne `Stamina` sprintet sie unbegrenzt, ohne `Health` nimmt sie keinen Schaden, ohne `Hurtbox` ist sie nicht zu treffen, ohne `MeleeAttack` schlägt sie nicht zu, ohne `Dash` dasht sie nicht, ohne `RangedAttack` schießt sie nicht, ohne `Inventory` hat sie nichts zu werfen, ohne `AmmoSelector` schießt sie wie vor M11a mit `bow.tres` kostenlos, ohne `Abilities` hat sie keine Fähigkeiten, ohne `Energy` kosten Fähigkeiten nichts, ohne `CharacterView` zeigt sie den Platzhalter, ohne `SlashEffect` oder `HitEffect` fehlt nur dieser Effekt.
 - Einen Zustandsautomaten als Baustein gibt es noch nicht: Der Dash bringt seinen Zeitablauf selbst mit, die Figur fragt nur `is_dashing`. Vorgesehen ist er für den ersten Gegner in M13.
 
 **Kampf im Einzelnen**
@@ -498,7 +510,7 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Explosion (M11a): Hat ein Geschoss `explosion_radius`, bleibt es an seinem Ende 0,1 s liegen; sein `ExplosionHitbox` trifft dann jedes Ziel im Umkreis einmal mit `explosion_damage`, nur auf der Ziel-Ebene. Ohne Aufprall-Schaden (`damage` 0) merkt sein `TargetSensor`, dass es ein Ziel berührt.
 - Bild (M11a): `ProjectileView` baut das Flugbild aus `RangedStats.skin`, dreht es um `spin` und blendet den gelben Platzhalter aus. Bei der Explosion spielt es den Effekt über `OneShotEffect` in der Szene ab, unabhängig vom Geschoss.
 - Geschosse entstehen an genau einer Stelle: `RangedAttack` bestellt über `projectile_requested`, der `ProjectileSpawner` des Levels baut und startet. Je Level darf es nur einen geben.
-- Übungspuppe: fester Körper auf Ebene `enemy`, 12 × 12 Pixel, 50 Leben. Bild seit A1: orange Bambus-Figur aus `data/skins/bamboo_yellow.tres`; der Platzhalter darunter ist violett. Bei 0 wird sie grau und steht nach `revive_delay` (2 s) mit vollem Leben wieder auf. Einstellbar: `revive_delay`, `alive_color`, `defeated_color` – die Farben gelten nur für den Platzhalter.
+- Übungspuppe: fester Körper auf Ebene `enemy`, 12 × 12 Pixel, 50 Leben. Bild seit A1: orange Bambus-Figur aus `data/skins/bamboo_yellow.tres`; der Platzhalter darunter ist violett. Bei 0 wird sie grau und steht nach `revive_delay` (2 s) mit vollem Leben wieder auf. Seit A2 zeigen ihre Kinder `HitEffect` und `DeathEffect` Treffer und Rauch. Einstellbar: `revive_delay`, `alive_color`, `defeated_color` – die Farben gelten nur für den Platzhalter.
 - Schadensfeld: 48 × 48 Pixel, 10 Schaden, sucht auf `player_hurtbox`. Es versucht alle 0,5 s zu treffen; wegen der Unverwundbarkeit kommt der Schaden alle 0,6 s an.
 - Fadenkreuz: `CanvasLayer` auf Ebene 110, also über allem. Es versteckt den Mauszeiger im Spielfenster und läuft auch bei pausiertem Spiel. Einstellbar: `color`, `arm_length`, `gap`, `hide_system_cursor`.
 
@@ -548,6 +560,18 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Abschalten: Knoten löschen oder im Editor ausblenden; dann bleibt der Platzhalter sichtbar. Fällt der Knoten zur Laufzeit weg, holt er den Platzhalter zurück.
 - `HitFlash` und Unsichtbarkeit färben weiter über `modulate`; das Bild macht beides mit. Der Tod färbt das Bild selbst über `self_modulate` des Kindes `Sprite`.
 
+**Kampf-Bilder im Einzelnen (A2)**
+
+- Ein `EffectCue` hängt neben einem Baustein und hört auf eines seiner Signale; welcher Effekt, steht in einer Werte-Datei unter `data/effects/`. Er findet den Baustein über `source_name`, leer heißt: der Elternknoten. Signale mit bis zu vier Werten gehen.
+- Richtung: Liefert das Signal einen `Vector2`, rückt der Effekt um `distance` Pixel dorthin; mit `use_direction` dreht er sich danach, stufenlos. Gedreht wird um die Bildmitte; das `offset` der Werte-Datei dreht nicht mit.
+- Mit `follow` hängt der Effekt am `EffectCue` und läuft mit der Figur; ohne bleibt er in der Szene an seinem Ort und läuft zu Ende, auch wenn die Figur verschwindet. Mit `stop_signal_name` wiederholt er sich, bis dieses Signal kommt.
+- Eingehängt: an der Spielfigur `SlashEffect` (Hieb über `MeleeAttack.attack_started`, 8 Pixel vor der Mitte, gedreht) und `HitEffect` (`Hurtbox.hit_received`, gedreht); an der Übungspuppe `HitEffect` und `DeathEffect` (`Health.died`, bleibt am Ort); im `Stunnable` das Kind `StunEffect` (`stunned` bis `recovered`).
+- `StunEffect` erbt den Verarbeitungs-Modus des `Stunnable`. So läuft der Kreis auch dort, wo die Betäubung den Elternknoten selbst anhält, etwa beim Schadensstreifen.
+- Effekte zeichnen auf Ebene 50 über den Figuren, Schadenszahlen auf Ebene 100 darüber.
+- Das gelbe Hieb-Feld und der gelbe Stun-Ring sind nur durchsichtig gestellt (Deckkraft 0 in `swing_color` und `ring_color`). Wer einen Effekt löscht und das alte Bild zurück will, stellt die Deckkraft dort wieder hoch.
+- Die Schrift der Schadenszahlen zeichnet Godot mit den Import-Einstellungen, die es für `NormalFont.ttf` angelegt hat; die Glättung ist dort an.
+- Effekte entscheiden nichts. Im Mehrspieler zeigt sie jeder Rechner selbst, ausgelöst von denselben Signalen.
+
 **Debug-Anzeige im Einzelnen**
 
 - `CanvasLayer` auf Ebene 100, läuft auch bei pausiertem Spiel. Zeigt FPS, Mausposition im Bild, gedrückte Aktionen und alle gemeldeten Werte.
@@ -555,6 +579,13 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Im Editor zeigt die Testkammer nur die blauen Kollisionsflächen; Farben, Raster und Anzeige erscheinen erst im laufenden Spiel.
 
 ### Dateien je Modul
+
+**A2 – Kampf-Bilder**
+
+- Neu: `components/effect_cue/` mit `effect_cue.tscn`, `effect_cue.gd`; `data/effects/sword_slash.tres`, `hit.tres`, `death_smoke.tres`, `stun.tres`
+- Geändert: `entities/effect/one_shot_effect.gd` (Winkel, Wiederholung, `offset` dreht nicht mit), `components/damage_numbers/damage_numbers.gd` (`font`) und `damage_numbers.tscn` (`NormalFont`, Größe 9), `components/stunnable/stunnable.tscn` (Kind `StunEffect`, Ring durchsichtig)
+- Geändert: `entities/player/player.tscn` (`SlashEffect`, `HitEffect`, Hieb-Feld durchsichtig), `entities/dummy/training_dummy.tscn` (`HitEffect`, `DeathEffect`)
+- Geändert: `README.md` (Effekte bei den Bausteinen), `docs/projekt_stand.md`, `docs/asset_katalog.md`
 
 **M11a – Inventar-Logik**
 
@@ -657,10 +688,10 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 | --- | --- | --- |
 | Spielfigur | `Actor/CharacterAnimated/NinjaGreen/Separate/` – Idle, Walk, Attack, Roll, Hit, Dead; 32 × 32 je Bild | geprüft: Spalten = Blick nach unten, oben, links, rechts; Zeilen = Bilder der Animation; eingebaut mit A1 |
 | Schwert an der Figur | `Actor/CharacterAnimated/Weapon/Katana.png`, 64 × 64 je Bild | geprüft: gleiches Raster wie `Attack.png`; die Lage über der Figur zeigt erst Godot |
-| Hieb-Effekt | `FX/Attack/SlashCurved/SpriteSheet.png`, 4 à 32 | geprüft |
+| Hieb-Effekt | `FX/Attack/SlashCurved/SpriteSheet.png`, 4 à 32 | geprüft; eingebaut mit A2 |
 | Geschosse | `FX/Projectile/Arrow.png` 13 × 5, `Kunai.png` 14 × 5, `Shuriken.png` 2 à 16; Dynamit fliegt als `Items/Projectile/Dynamite.png`; Explosion `FX/Elemental/Explosion/SpriteSheet.png`, 9 à 40 | geprüft; eingebaut mit M11a |
-| Treffer und Tod | `FX/Attack/Cut/SpriteSheet.png`, 4 à 32; `FX/Smoke/Smoke/SpriteSheet.png`, 6 à 32 | geprüft |
-| Stun-Ring | `FX/Magic/Circle/SpriteSheetWhite.png`, 4 à 32 | geprüft |
+| Treffer und Tod | `FX/Attack/Cut/SpriteSheet.png`, 4 à 32; `FX/Smoke/Smoke/SpriteSheet.png`, 6 à 32 | geprüft; eingebaut mit A2 |
+| Stun-Ring | `FX/Magic/Circle/SpriteSheetWhite.png`, 4 à 32 | geprüft; eingebaut mit A2 |
 | Schatten | `Actor/Character/Shadow.png`, 12 × 7 | geprüft; eingebaut mit A1 |
 | Übungspuppen | `Actor/Monster/BambooYellow/` für die festen Puppen, `Bamboo/` für das bewegliche Ziel; 4 × 4 à 16 | beide geprüft, BambooYellow am 17.11.2026: orange, gleiches Raster wie Bamboo; eingebaut mit A1 |
 | Gegner | `Actor/Monster/<Name>/`, 4 × 4 à 16 | geprüft an Slime: Spalten wie bei den Figuren, Zeilen = Laufbilder |
@@ -672,7 +703,7 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 | Truhen (M10) | `Items/Treasure/LittleTreasureChest.png`, `BigTreasureChest.png` | geprüft: je zwei Bilder, zu und offen |
 | Leben im HUD | `Ui/Receptacle/Heart.png`, 5 Bilder à 16 | geprüft: leer bis voll in Viertelschritten |
 | Fähigkeits-Symbole | `Ui/Skill Icon/Spell/`, 24 × 24 | Camouflage für die Unsichtbarkeit geprüft; Schnelligkeit und Stun noch auszuwählen |
-| Schrift | `Ui/Font/NormalFont.ttf` | Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt |
+| Schrift | `Ui/Font/NormalFont.ttf` | Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt; gebaut für 9 Pixel; mit A2 für die Schadenszahlen eingebaut |
 | Geräusche | `Audio/Sounds/Whoosh & Slash/`, `Hit & Impact/`, `Magic & Skill/`, `Jump & Bounce/` | nur die Namen; anhören kann nur der Nutzer |
 | Musik | `Audio/Musics/`, 41 Stücke, etwa „2 - The Cave“ für die Steinzeit | nur die Namen |
 
@@ -698,12 +729,14 @@ Phase 2 beginnt mit M8 – Interaktion. Laut Konzept gehören in die Testkammer 
 - Godot speichert offene Szenen, sobald F5 das Spiel startet. Wer zum Testen etwas in einer Szene ändert, stellt es danach zurück, bevor er committet.
 - Ein neuer Skin ist eine Kopie einer Datei aus `data/skins/` mit anderem Blatt und anderen Zahlen. Die Lage stimmt ohne Änderung, wenn die Figur im Blatt unten steht wie im Paket üblich: bei 32er-Bildern mit den Füßen in Zeile 23, bei 16er-Bildern in Zeile 15, von 0 gezählt.
 - `CharacterView` zeigt im Editor nichts, weil es das Bild erst beim Start baut – wie bisher der Platzhalter. Die Lage prüft man im laufenden Spiel.
+- Ein neuer Effekt ist eine Kopie einer Datei aus `data/effects/` mit anderem Blatt und anderen Zahlen. Eingehängt wird er mit der Szene `components/effect_cue/effect_cue.tscn` neben dem Baustein, dessen Signal ihn auslösen soll; Signal und Lage stellt man im Inspektor ein.
+- `NormalFont` ist für 9 Pixel gebaut. Scharf bleibt sie in Größe 9 und ihren Vielfachen, also 18, 27 und so weiter.
 
 ## Offene Punkte
 
-- M11a – Inventar-Logik: geliefert, der Test des Nutzers steht aus. Danach schließt Claude M11a ab und baut A2. Der Vorschlag vom 17.11.2026 steht im Plan-Dokument, Tab „Plan & Status“, unter „Außer der Reihe“. Kurz: Gegenstände als Werte-Dateien; Baustein `Inventory` mit 20 Plätzen und Stapeln, Startinhalt aus einer Werte-Datei; Rechtsklick wirft das gewählte Geschoss und zieht es vom Inventar ab, das Mausrad wechselt; Pfeil 10 Schaden wie bisher, Kunai 15 und schneller, Shuriken 6 und durch bis zu 3 Ziele, Dynamit explodiert im Umkreis von 24 Pixeln mit 20 Schaden, ohne die Spielfigur zu treffen; die bisherige Munition entfällt.
-- A2 – Kampf-Bilder: Claudes Vorschlag vom 17.11.2026 steht im Plan-Dokument, Tab „Grafik & Assets“, Abschnitt „A2 – Vorschlag“; die Geschoss-Bilder sind daraus nach M11a gewandert. Kurz: beim Hieb der Schnitt `SlashCurved` statt des gelben Feldes, `Cut` bei jedem Treffer, Rauch beim Tod der Puppen, der weiße Zauberkreis über betäubten Zielen statt des gelben Rings, Schadenszahlen in `NormalFont`; dafür der Baustein `EffectCue` mit Werte-Dateien in `data/effects/`. Vom Nutzer am 17.11.2026 mit „Ja passt“ bestätigt; gebaut wird nach M11a.
-- Grafik, noch ungeprüft – Claude klärt das, bevor ein Schritt es braucht: Lage des Katanas über der Figur (erst wenn das Schwert sichtbar wird; A2 braucht es nicht); Effekte, die im Katalog „unklar“ heißen (wenn ein Schritt sie braucht; A2 kommt ohne sie aus); alle Töne, bisher nur die Namen (A3); Übergangsregeln der Kacheln (A4); `TilesetFloor.png` mit 417 Pixeln Höhe, nicht durch 16 teilbar (A4); Symbole für Schnelligkeit und Stun (A5).
+- A2 – Kampf-Bilder: geliefert am 17.11.2026 als `a2_kampf_bilder.zip`, der Test des Nutzers steht aus. Danach schließt Claude A2 ab und schlägt A3 – Ton vor: `AudioManager` füllen, Baustein `SoundCue`, Ton-Tabelle als Werte-Datei, Musik in der Testkammer. Den Plan dazu enthält der Tab „Grafik & Assets“ im Plan-Dokument.
+- Der Hieb-Effekt richtet sich nicht von selbst nach der Trefferzone: Ändern sich `start_distance` oder `reach` in `data/player/sword.tres`, ist `distance` am Knoten `SlashEffect` der Spielfigur nachzuziehen. Heute ist es 8, also `start_distance` + 2.
+- Grafik, noch ungeprüft – Claude klärt das, bevor ein Schritt es braucht: Lage des Katanas über der Figur (erst wenn das Schwert sichtbar wird); Effekte, die im Katalog „unklar“ heißen (wenn ein Schritt sie braucht); alle Töne, bisher nur die Namen (A3); Übergangsregeln der Kacheln (A4); `TilesetFloor.png` mit 417 Pixeln Höhe, nicht durch 16 teilbar (A4); Symbole für Schnelligkeit und Stun (A5).
 - Schießen zeigt kein eigenes Bild der Figur; das Paket hat für die `NinjaGreen` keins. Die Geschosse haben seit M11a ihr Flugbild.
 - Wer vor wem gezeichnet wird, richtet sich noch nach der Reihenfolge der Knoten. Eine Sortierung nach Höhe im Bild folgt mit den Kacheln in A4.
 - Zauber: „keine eigene Kategorie“ ist nur vorläufig gewählt. Die Entscheidung liegt beim Nutzer.

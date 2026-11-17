@@ -1,7 +1,15 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://components/stunnable/stunnable.gd" id="1_stunnable"]
+[ext_resource type="PackedScene" path="res://components/effect_cue/effect_cue.tscn" id="2_effect_cue"]
+[ext_resource type="Resource" path="res://data/effects/stun.tres" id="3_stun"]
 
 [node name="Stunnable" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_stunnable")
+ring_color = Color(1, 0.9, 0.3, 0)
+
+[node name="StunEffect" parent="." instance=ExtResource("2_effect_cue")]
+effect = ExtResource("3_stun")
+signal_name = "stunned"
+stop_signal_name = "recovered"
