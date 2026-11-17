@@ -1,0 +1,47 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/chest/chest.gd" id="1_chest"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="2_view"]
+[ext_resource type="PackedScene" path="res://components/prop_view/prop_view.tscn" id="3_prop_view"]
+[ext_resource type="PackedScene" path="res://components/interactable/interactable.tscn" id="4_interactable"]
+[ext_resource type="PackedScene" path="res://components/loot_dropper/loot_dropper.tscn" id="5_loot_dropper"]
+[ext_resource type="PackedScene" path="res://components/effect_cue/effect_cue.tscn" id="6_effect_cue"]
+[ext_resource type="Resource" path="res://data/effects/chest_sparkle.tres" id="7_sparkle"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(14, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reach"]
+size = Vector2(16, 16)
+
+[node name="Chest" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_chest")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="PlaceholderView" parent="." instance=ExtResource("2_view")]
+color = Color(0.7, 0.55, 0.2, 1)
+
+[node name="PropView" parent="." instance=ExtResource("3_prop_view")]
+
+[node name="Interactable" parent="." instance=ExtResource("4_interactable")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("RectangleShape2D_reach")
+
+[node name="LockHint" type="Sprite2D" parent="."]
+visible = false
+z_index = 100
+position = Vector2(0, -16)
+
+[node name="LootDropper" parent="." instance=ExtResource("5_loot_dropper")]
+source_name = ""
+signal_name = "opened"
+
+[node name="OpenEffect" parent="." instance=ExtResource("6_effect_cue")]
+effect = ExtResource("7_sparkle")
+signal_name = "opened"
+follow = false

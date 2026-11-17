@@ -12,10 +12,10 @@ Er ist eine Richtlinie, kein Zwang. Was vorgezogen oder eingeschoben wird, steht
 | | |
 | --- | --- |
 | Stand vom | 17.11.2026 |
-| In Arbeit | M9 – Zerstörbares: Claudes Vorschlag vom 17.11.2026 steht im Plan-Dokument, Tab „Plan & Status“, unter Phase 2; er wartet auf „weiter“ oder Änderungen des Nutzers |
-| Als Nächstes | M9 bauen, sobald der Nutzer den Vorschlag bestätigt; danach M10 – Truhen & Beute. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
-| Zuletzt abgeschlossen | M8 – Interaktion, am 17.11.2026: Test bestanden. Davor am selben Tag A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
-| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 17.11.2026 nach dem Test von M8: noch Commit `e7909b2` mit A2 – M8 ist getestet, aber noch nicht hochgeladen. Davor `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4`. Die Stand-Datei aus `m8_abschluss.zip` ersetzt die aus `m8_interaktion.zip` |
+| In Arbeit | M11 – Inventar & Ausrüstung: geliefert am 17.11.2026 als `m11_inventar.zip`, der Test des Nutzers steht aus |
+| Als Nächstes | nach dem Test M11 abschließen, dann M12 – HUD vorschlagen. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
+| Zuletzt abgeschlossen | M10 – Truhen & Beute, am 17.11.2026: Test bestanden. Davor am selben Tag M9 – Zerstörbares, M8 – Interaktion, A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
+| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 17.11.2026 nach dem Test von M10: noch Commit `e615355` mit M8 und der Stand-Datei aus `m8_abschluss.zip`. M9 und M10 sind getestet, aber noch nicht hochgeladen. Davor `e7909b2` mit A2, `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4`. Reihenfolge fürs Hochladen: erst M9 und M10 samt `m9_abschluss.zip` und `m10_abschluss.zip` committen, dann `m11_inventar.zip` entpacken; dessen Stand-Datei ersetzt alle früheren |
 
 ## Neuer Chat und Arbeitsweise
 
@@ -35,6 +35,7 @@ Die Übergabe vom 17.11.2026 ist erledigt: Der Nutzer hat M3 bis M7 hochgeladen 
 - Kein Abgleich mit dem Repo vor jedem Modul. Zu Beginn eines neuen Chats liest Claude das Repo trotzdem einmal, weil es sonst keine Kopie des Codes gibt.
 - Auf „weiter“ geht es mit dem nächsten Schritt weiter.
 - Ein neues Modul beginnt mit einem kurzen Vorschlag im Plan-Dokument und im Chat; gebaut wird nach „weiter“ oder mit den Änderungen des Nutzers.
+- Nach einem Test genügt dem Nutzer eine kurze Rückmeldung wie „alles passt, weiter“. Claude schließt das Modul dann ab und legt im selben Zug den Vorschlag für das nächste vor.
 - Nach jedem abgeschlossenen Schritt: eine neue, vollständige Stand-Datei, ins Projektwissen geschrieben und im ZIP unter `docs/`; im Plan-Dokument Status, Prüfliste, nächste Schritte und Verlauf nachziehen.
 
 ## Arbeitsumgebung
@@ -64,9 +65,9 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | | M7 Fähigkeiten | fertig |
 | 2 – Welt & Interaktion | M11a Inventar-Logik | fertig am 17.11.2026 – vorgezogen vor A2 |
 | | M8 Interaktion | fertig am 17.11.2026 |
-| | M9 Zerstörbares | als Nächstes – Vorschlag vom 17.11.2026, wartet auf Bestätigung |
-| | M10 Truhen & Beute | offen; laut Vorschlag zieht das Aufsammeln schon in M9 |
-| | M11 Inventar & Ausrüstung | offen; die Logik kommt vorher mit M11a, hier folgen Inventarfenster und Ausrüstungsplätze |
+| | M9 Zerstörbares | fertig am 17.11.2026 – mit Aufsammeln |
+| | M10 Truhen & Beute | fertig am 17.11.2026; Beute-Listen und Aufsammeln kamen schon mit M9 |
+| | M11 Inventar & Ausrüstung | im Test – geliefert am 17.11.2026; die Logik kam mit M11a |
 | | M12 HUD | offen |
 | 3 – Gegner & NPCs | M13 Erster Gegner | offen |
 | | M14 Gegnertypen | offen |
@@ -115,6 +116,7 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | 17.11.2026 | Neuer Chat. Der Nutzer bestätigt E1 bis E4 mit „alle vier ok“; Claude hat A1 gebaut. Zusätzlich zum Plan: der Probe-Skin `caveman.tres` für einen Skin-Tausch an der Spielfigur und ein Hieb-Bild der Figur. | A1 fertig am 17.11.2026 |
 | 17.11.2026 | Wunsch des Nutzers zu A2: Beim Schuss gibt es vier Geschosse aus `Items/Projectile` – Pfeil, Kunai, Shuriken, Dynamit –, je nachdem, was im Inventar ist. Das Inventar gab es noch nicht; auf Wunsch des Nutzers kommt seine Logik als M11a vor A2. Die Bilder der Geschosse wandern aus A2 nach M11a. Auf „weiter“ hat Claude M11a gebaut. | M11a fertig am 17.11.2026 |
 | 17.11.2026 | Wunsch des Nutzers nach dem Test von A2: den Ton (A3) ganz zum Schluss, fast am Ende des Projekts, weil sich bis dahin noch vieles ändert; weiter mit Phase 2. Claude hat A3 zu Phase 7 – Feinschliff gelegt und M8 – Interaktion vorgeschlagen. | A3 verschoben; M8 am 17.11.2026 bestätigt mit der Änderung: nur die Taste E, ohne Wort |
+| 17.11.2026 | Im Vorschlag zu M9 hat Claude das Aufsammeln und die Beute-Listen aus M10 nach M9 gezogen, weil zerstörte Dinge sonst nichts fallen lassen könnten. Der Nutzer hat mit „weiter“ bestätigt. M10 bringt damit nur noch die Truhen. | M9 fertig am 17.11.2026 |
 
 ## Festlegungen
 
@@ -159,10 +161,49 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Kampf-Bilder | Hieb: Der Bogen `SlashCurved` schwingt vor der Figur in Hiebrichtung, stufenlos gedreht, und deckt die Trefferzone; das gelbe Feld ist unsichtbar. Treffer: Am Getroffenen blitzt der Schnitt `Cut` auf, gedreht in Schlagrichtung – bei Puppen und bei der Spielfigur. Tod: Bei Puppen steigt Rauch auf (`Smoke`); die Spielfigur behält ihr Tod-Bild. Stun: Um jedes betäubte Ziel pulsiert der weiße Kreis (`Circle`) statt des gelben Rings; der Ring, mit dem sich die Fähigkeit ausbreitet, bleibt. Schadenszahlen in `NormalFont`, Größe 9. Jeder Effekt ist ein eigener Knoten und lässt sich einzeln löschen | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „Ja passt“ bestätigt, nach dem Test mit „Alles getestet und alles funktioniert“ |
 | Interaktion | Steht die Figur nah an etwas Bedienbarem – ihr Suchkreis reicht 16 Pixel –, erscheint die Taste E aus dem Paket, ohne Wort, über ihrem Kopf. Sind mehrere nah, gilt das nächste; E bedient es | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 bestätigt mit der Änderung „nur die Taste, keine Schrift“. Die Lage über dem Kopf hat Claude beim Bauen gewählt, weil die Taste über einer Tür die Figur verdeckt; über dem Ding geht per Schalter. Nach dem Test vom Nutzer mit „alles passt“ bestätigt |
 | Türen und Schalter | Holztür: E öffnet und schließt sie. Gittertore folgen ihrem Kanal und sind offen, solange mindestens ein Schalter darauf an ist. Hebel: E legt ihn um. Druckplatte: gedrückt, solange jemand draufsteht; ihr Kanal bleibt danach 2 Sekunden an. Steht jemand im Durchgang, schließt keine Tür. Offene Türen verschwinden | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „Der Rest passt“ bestätigt, nach dem Test mit „alles passt“ |
+| Zerstörbares | Topf 10 Leben (ein Hieb), Kiste 20, Baum 40, Stein 20. Topf, Kiste und Stein verschwinden, der Baum wird zum Stumpf, der weiter aufhält und an dem Pfeile enden. Der Stein nimmt nur Explosionen: Schwert und Geschosse prallen mit einem Funken ab, das Geschoss endet dort. Hiebe auf Zerstörbares füllen keine Energie. Splitter fliegen beim Zerbrechen, beim Baum fallen bei jedem Hieb Blätter. Es kommt nichts wieder, bis F2 den Raum neu lädt | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; „keine Energie“ und die Blätter je Hieb hat Claude beim Bauen ergänzt. Nach dem Test vom Nutzer mit „Okay das programmierte passt“ bestätigt |
+| Beute und Aufsammeln | Topf: mit 50 % 3 Shuriken. Kiste: 5 Pfeile, mit 30 % dazu 2 Kunai. Baum: 2 Äste. Stein: 1 Stein, mit 25 % dazu 1 Dynamit. Äste und Steine sind neue Gegenstände der Art Material, Stapel 99. Die Beute springt zur Seite oder nach vorn auf einen freien Platz, mit Zahl, wenn es mehr als eins ist. Drüberlaufen sammelt ins Inventar; was nicht passt, bleibt liegen | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt, nach dem Test mit „Okay das programmierte passt“ |
+| Treffer-Arten | Jeder Treffer ist Klinge, Geschoss oder Explosion. Eine Hurtbox nimmt alle drei, außer sie ist anders eingestellt; die übrigen prallen ab | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt, nach dem Test mit „Okay das programmierte passt“ |
+| Truhen | Kleine Truhe (türkis): E öffnet sie genau einmal, der Deckel geht auf, es funkelt, die Beute springt heraus – 10 Pfeile, mit 50 % dazu 5 Shuriken. Große Truhe (rot): verschlossen; mit einem Goldschlüssel im Inventar öffnet E sie und verbraucht ihn – 15 Pfeile, 5 Kunai, 3 Dynamit. Ohne Schlüssel wackelt sie kurz, und über ihr steht eine Sekunde lang das Symbol des Schlüssels. Offen bleibt eine Truhe, bis der Raum neu lädt. Der Goldschlüssel ist ein Gegenstand der Art Schlüssel, Stapel 9 | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; das Funkeln beim Öffnen hat Claude beim Bauen ergänzt. Nach dem Test vom Nutzer mit „ja das passt alles“ bestätigt |
+| Inventarfenster | Tab öffnet und schließt es, Esc schließt es. Links die vier Ausrüstungsplätze Waffe, Fernkampf, Rüstung, Anhänger, rechts die 20 Plätze als Raster mit Symbol und Anzahl, unten Name, Art und Werte des Gewählten. Ein Klick wählt, ein Doppelklick legt an oder ab. Solange es offen ist, bleibt die Figur stehen und greift nicht an; die Welt läuft weiter. Aussehen: das Holz-Thema des Pakets, Schrift `NormalFont` | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; Esc zum Schließen hat Claude beim Bauen ergänzt. Test steht aus |
+| Ausrüstung | Angelegtes liegt nicht im Inventar; beim Anlegen wandert das Vorige zurück, Ablegen geht nur mit Platz im Inventar. Waffe: bringt die Werte des Schwerthiebs mit; ohne Waffe gelten die aus `sword.tres`. Fernkampf: mehr Aufprall-Schaden für jedes Geschoss. Rüstung: zieht von jedem Treffer etwas ab, mindestens 1 bleibt. Anhänger: mehr Leben, das aktuelle Leben bleibt. Zum Testen: Katana (beim Start angelegt, 10 Schaden, 0,35 s), Breitschwert (15, 0,5 s), Bogen (+3), Lederrüstung (−3), Rubin-Anhänger (+20 Leben) | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; Test steht aus |
 
 Noch offen, jeweils fällig vor dem genannten Schritt: Zauber (vorläufig gewählt, siehe oben), Tod & Speichern endgültig (M16), Story (Phase 5), Anzahl Level (Phase 6).
 
 ## Prüfungen
+
+**M11 – Inventar & Ausrüstung**
+
+- Geliefert am 17.11.2026 als `m11_inventar.zip`. Der Test des Nutzers steht aus; die Prüfliste steht darunter und im Plan-Dokument.
+- Claude hat die Dateien am Text geprüft: Verweise in Szenen, Werte-Dateien und im Thema, Knotenpfade, Signale und ihre Werte, exportierte Werte, Klassennamen. Grundlage war das Repo, Commit `e615355`, und die Dateien aus `m9_zerstoerbares.zip` und `m10_truhen.zip`.
+- Nachgerechnet, nicht ausprobiert: Das Fenster hat Claude mit den Bildern des Holz-Themas und der Schrift als Bild nachgestellt – 268 × 196 Pixel in der Mitte der Spielfläche, Zellen 26 Pixel, Raster 5 × 4. Alles passt hinein, auch das 24 Pixel große Rüstungs-Symbol. Werte: Breitschwert 15 statt 10; Pfeil mit Bogen 13, Kunai 18, Shuriken 9; Schadensfeld mit Rüstung 7 statt 10; Leben mit Anhänger 100 von 120.
+
+Prüfliste M11:
+
+1. Godot schließen. M9 und M10 vorher committen, falls noch nicht geschehen. Dann `m11_inventar.zip` nach `E:\GitHub\TT` entpacken, Godot öffnen, F5. Keine roten Fehler.
+2. Unter den Startpunkten liegen vier Dinge: Breitschwert, Bogen, Lederrüstung (Symbol mit orangem Hintergrund) und ein roter Rubin. Drüberlaufen: F1 „S1 Beute“ meldet jedes.
+3. Tab: Das Fenster geht auf; die bewegliche Puppe pendelt weiter. Die Figur bleibt stehen, auch mit WASD, und schlägt nicht. Links das Katana auf „Waffe“, rechts das Raster mit Pfeilen, Kunai, Shuriken, Dynamit und den vier neuen Dingen, mit Zahlen.
+4. Klick auf das Breitschwert: Rahmen darum, unten „Breitschwert“, „Waffe - Schaden 15, Pause 0,5 s“ und „Doppelklick: anlegen“.
+5. Doppelklick auf das Breitschwert: Es liegt jetzt bei „Waffe“, das Katana im Raster. Tab schließt. Ein Hieb auf eine Übungspuppe zeigt 15, die Hiebe kommen langsamer.
+6. Bogen anlegen: Ein Pfeil auf eine Puppe zeigt 13 statt 10, ein Kunai 18.
+7. Rubin-Anhänger anlegen: F1 „S1 Leben“ zeigt 100 / 120. Wieder ablegen: 100 / 100.
+8. Lederrüstung anlegen und ins rote Schadensfeld stellen: „S1 Leben“ sinkt je Treffer um 7 statt um 10.
+9. Doppelklick auf einen belegten Ausrüstungsplatz legt ab; der Gegenstand liegt wieder im Raster. Esc schließt das Fenster ebenfalls.
+10. Ohne Code: in `data/player/inventory.tres` die Plätze (`slot_count`) auf 4 stellen, F5 – das Raster hat 4 Plätze, alle belegt; Doppelklick auf das Katana: Es bleibt, unten steht „Kein Platz im Inventar“. Danach zurück auf 20.
+11. F2: alles wie am Anfang – das Katana angelegt, die vier Dinge liegen wieder am Boden.
+12. Abschalt-Test: in `entities/player/player.tscn` den Knoten `Equipment` löschen, F5 – das Fenster zeigt leere Ausrüstungsplätze, Doppelklick tut nichts, die Figur schlägt wie bisher mit 10, keine roten Fehler. Danach Strg+Z und Strg+S.
+
+**M10 – Truhen & Beute**
+
+- Getestet hat der Nutzer am 17.11.2026 in Godot. Rückmeldung: „ja das passt alles“ – die zwölf Punkte der Prüfliste gelten als bestanden, auch das Funkeln.
+- Claude hat die Dateien am Text geprüft: Verweise in Szenen und Werte-Dateien, Knotenpfade der geerbten Szenen, Signale und ihre Werte, Ebenen und Masken, exportierte Werte, Klassennamen. Grundlage war das Repo, Commit `e615355`, und die Dateien aus `m9_zerstoerbares.zip`.
+- Nachgerechnet, nicht ausprobiert: Truhen, Funkeln und Schlüssel-Symbol hat Claude als Bild nachgestellt. Beide Truhen stehen mit der Unterkante auf derselben Linie; das Funkeln sitzt über dem Deckel, das Schlüssel-Symbol 16 Pixel über der Mitte. Die Truhen stehen unter dem langen Balken, 64 Pixel auseinander; der Schlüssel liegt mitten im linken Raum der Interaktions-Ecke.
+
+**M9 – Zerstörbares**
+
+- Getestet hat der Nutzer am 17.11.2026 in Godot. Rückmeldung: „Okay das programmierte passt“ – die zwölf Punkte der Prüfliste gelten als bestanden, auch die drei Dinge, die Claude beim Bauen selbst entschieden hat.
+- Claude hat die Dateien am Text geprüft: Verweise in Szenen und Werte-Dateien, Knotenpfade der geerbten Szenen, Signale und ihre Werte, Ebenen und Masken, exportierte Werte, Klassennamen. Grundlage war das Repo, Commit `e7909b2`, und die Dateien aus `m8_interaktion.zip`.
+- Nachgerechnet, nicht ausprobiert: Das Feld hat Claude als Bild nachgestellt – alles im 16er-Raster, mindestens 32 Pixel Abstand, nur die beiden Kisten stehen Kante an Kante. Die Splitter hat Claude als Bildfolge nachgerechnet: Sie steigen etwa 8 Pixel, fliegen bis zu 25 Pixel zur Seite und sind nach gut einer halben Sekunde weg; die Blätter schweben gut eine Sekunde. Eine Explosion mit 24 Pixeln Radius an der Kante der einen Kiste erreicht auch die andere. Beute landet 10 bis 18 Pixel vom Ding entfernt.
 
 **M8 – Interaktion**
 
@@ -253,7 +294,7 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 
 | Name | Datei | Stand |
 | --- | --- | --- |
-| `EventBus` | `autoload/event_bus.gd` | aktiv, 6 Meldungen |
+| `EventBus` | `autoload/event_bus.gd` | aktiv, 8 Meldungen |
 | `InputSetup` | `autoload/input_setup.gd` | aktiv; legt die Aktionen an, `all_actions()` liefert ihre Namen |
 | `GameState` | `autoload/game_state.gd` | leer, wird in M16 und M19 gefüllt |
 | `SaveManager` | `autoload/save_manager.gd` | leer, wird in M16 gefüllt |
@@ -270,6 +311,8 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 | `player_died` | `player_id: int` | Das Leben einer Spielfigur ist auf 0 gefallen; was dann geschieht, entscheidet das Level |
 | `projectile_requested` | `scene: PackedScene`, `origin: Vector2`, `direction: Vector2`, `stats: Resource`, `target_mask: int` | Jemand schießt; der `ProjectileSpawner` des Levels erzeugt das Geschoss. `stats` ist ein `RangedStats` |
 | `switch_changed` | `channel: StringName`, `switch_id: int`, `is_on: bool` | Ein Schalter – Hebel oder Druckplatte – meldet, ob er an ist; `switch_id` ist seine Instanz-Kennung. Türen mit demselben Kanal sind offen, solange mindestens einer an ist (M8) |
+| `loot_requested` | `item: Resource`, `amount: int`, `origin: Vector2` | Ein Ding lässt Beute fallen; der `LootSpawner` des Levels legt sie hin. `item` ist ein `ItemData`, `origin` der Ort, von dem sie wegspringt (M9) |
+| `menu_changed` | `player_id: int`, `is_open: bool` | Ein Menü einer Spielfigur ist auf- oder zugegangen, bisher das Inventarfenster. Solange es offen ist, meldet ihr `PlayerInput` keine Absichten; die Welt läuft weiter (M11) |
 
 ### Debug-Werte, die Module melden
 
@@ -285,9 +328,10 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 | `S1 Munition` | Spielfigur | Vorrat und Höchstwert; nur ohne `AmmoSelector`, also seit M11a nicht mehr zu sehen |
 | `S1 Energie` | Spielfigur | Vorrat und Höchstwert |
 | `S1 Fähigkeiten` | Spielfigur | „bereit“ oder je beschäftigter Fähigkeit: Platz, „aktiv“ mit Restdauer oder „Pause“ mit Rest der Abklingzeit |
+| `S1 Beute` | `Collector` der Spielfigur | zuletzt Aufgesammeltes, etwa „+5 × Pfeil (jetzt 35)“, oder „Ast: Inventar voll“ (M9) |
 | `Kamera` | Kamera | Bildmitte in der Welt |
 
-Der Hinweis „Neustart: F2“ ist mit M4 entfallen; F2 gilt weiter. In der Testkammer sind seit M7 die Zeilen „Maus“, „Kamera“ und „Raumzeit“ ausgeblendet, damit die Anzeige bei elf Zeilen bleibt. Einschalten lassen sie sich im Inspektor des Knotens `DebugOverlay` über `show_mouse` und `hidden_keys`.
+Der Hinweis „Neustart: F2“ ist mit M4 entfallen; F2 gilt weiter. In der Testkammer sind seit M7 die Zeilen „Maus“, „Kamera“ und „Raumzeit“ ausgeblendet, damit die Anzeige bei elf Zeilen bleibt; seit M9 kommt „S1 Beute“ dazu, sobald etwas aufgesammelt wurde. Einschalten lassen sie sich im Inspektor des Knotens `DebugOverlay` über `show_mouse` und `hidden_keys`.
 
 ### Eingabe-Aktionen – `autoload/input_setup.gd`
 
@@ -309,19 +353,19 @@ Der Hinweis „Neustart: F2“ ist mit M4 entfallen; F2 gilt weiter. In der Test
 | `debug_toggle_overlay` | F1 |
 | `debug_restart_room` | F2 |
 
-Genutzt werden bisher: die vier Laufrichtungen, `sprint`, `sneak`, `attack_primary`, `attack_secondary`, `dash`, `ability_1` bis `ability_3`, `ammo_next`, `ammo_previous`, `interact` (M8) und die beiden Entwickler-Tasten.
+Genutzt werden bisher: die vier Laufrichtungen, `sprint`, `sneak`, `attack_primary`, `attack_secondary`, `dash`, `ability_1` bis `ability_3`, `ammo_next`, `ammo_previous`, `interact` (M8), `inventory` (Tab, M11), `pause` (Esc schließt das Inventarfenster, M11) und die beiden Entwickler-Tasten.
 
 ### Kollisions-Ebenen
 
 | Ebene | Name | Wer liegt darauf |
 | --- | --- | --- |
-| 1 | `world` | Wände und Blöcke der Testkammer, seit M8 auch geschlossene Türen und Hebel; Geschosse enden an ihnen |
+| 1 | `world` | Wände und Blöcke der Testkammer, seit M8 auch geschlossene Türen und Hebel, seit M9 Baumstümpfe, seit M10 Truhen; Geschosse enden an ihnen |
 | 2 | `player` | Spielfigur; ihre Maske ist `world` und `enemy`. Druckplatten und Türdurchgänge bemerken sie hier (M8) |
-| 3 | `enemy` | Übungspuppen als feste Körper; das bewegliche Ziel liegt auf keiner Ebene und lässt sich durchlaufen. Druckplatten und Türdurchgänge bemerken auch diese Ebene (M8) |
+| 3 | `enemy` | Übungspuppen als feste Körper, seit M9 auch Zerstörbares, solange es heil ist – Geschosse treffen es über die Hurtbox, statt daran zu enden; das bewegliche Ziel liegt auf keiner Ebene und lässt sich durchlaufen. Druckplatten und Türdurchgänge bemerken auch diese Ebene (M8) |
 | 4 | `player_hurtbox` | `Hurtbox` der Spielfigur; Schadensfeld und Schadensstreifen suchen hier |
-| 5 | `enemy_hurtbox` | `Hurtbox` der Übungspuppen; Schwert und Geschosse suchen hier |
+| 5 | `enemy_hurtbox` | `Hurtbox` der Übungspuppen und, seit M9, von Zerstörbarem; Schwert und Geschosse suchen hier |
 | 6 | `interactable` | `Interactable` von Holztür und Hebel; der `Interactor` der Spielfigur sucht hier (M8) |
-| 7 | `pickup` | – |
+| 7 | `pickup` | Beute am Boden (`Pickup`); der `Collector` der Spielfigur sucht hier (M9) |
 
 Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbst nichts. Eine `Hitbox` liegt auf keiner Ebene und sucht über ihre Maske.
 
@@ -384,6 +428,19 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `Door` | `world/door/door.gd` | Tür oder Gittertor (M8) |
 | `Lever` | `world/lever/lever.gd` | Hebel (M8) |
 | `PressurePlate` | `world/pressure_plate/pressure_plate.gd` | Druckplatte (M8) |
+| `Destructible` | `world/destructible/destructible.gd` | Ding, das Treffer zerstören: Topf, Kiste, Baum, Stein (M9) |
+| `DebrisData` | `entities/debris/debris_data.gd` | Bauplan einer Werte-Datei für Splitter: Streifen, Anzahl, Tempo, Zug nach unten, Drehung, Größe, Färbung (M9) |
+| `Debris` | `entities/debris/debris.gd` | Splitter, die einmal auseinanderfliegen; `Debris.spawn(werte, ort, eltern)` (M9) |
+| `DebrisCue` | `components/debris_cue/debris_cue.gd` | Baustein: lässt Splitter fliegen, wenn ein Baustein daneben ein Signal sendet (M9) |
+| `LootEntry` | `items/loot_entry.gd` | eine Zeile einer Beute-Liste: Gegenstand, Anzahl, Wahrscheinlichkeit (M9) |
+| `LootTable` | `items/loot_table.gd` | Beute-Liste; `roll()` würfelt jede Zeile einmal (M9) |
+| `LootDropper` | `components/loot_dropper/loot_dropper.gd` | Baustein: würfelt die Beute-Liste auf ein Signal und bestellt die Beute (M9) |
+| `Pickup` | `entities/pickup/pickup.gd` | Gegenstand am Boden, der aufgesammelt werden kann (M9) |
+| `Collector` | `components/collector/collector.gd` | Baustein an der Figur: sammelt Beute ins Inventar (M9) |
+| `Chest` | `world/chest/chest.gd` | Truhe: öffnet sich mit E genau einmal, auf Wunsch nur mit Schlüssel (M10) |
+| `EquipmentData` | `items/equipment_data.gd` | erweitert `ItemData`: Platz (Waffe, Fernkampf, Rüstung, Anhänger) und Werte – `melee`, `projectile_damage_bonus`, `armor`, `max_health_bonus`; `describe()` liefert den Text fürs Fenster (M11) |
+| `Equipment` | `components/equipment/equipment.gd` | Baustein: die Ausrüstung einer Figur (M11) |
+| `EquipmentStats` | `components/equipment/equipment_stats.gd` | Bauplan einer Werte-Datei für Equipment: was beim Start angelegt ist (M11) |
 
 ### Werte-Dateien – `data/`
 
@@ -399,6 +456,12 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `data/player/ammo.tres` | `SupplyStats` | `max_amount` 12, `regen_per_second` 0, `regen_delay` 1; seit M11a nicht mehr eingehängt |
 | `data/player/inventory.tres` | `InventoryStats` | `slot_count` 20; Start: 30 Pfeile, 10 Kunai, 10 Shuriken, 5 Dynamit |
 | `data/player/interactor.tres` | `InteractorStats` | `reach` 16 (M8) |
+| `data/player/equipment.tres` | `EquipmentStats` | beim Start angelegt: Katana (M11) |
+| `data/items/katana.tres` | `EquipmentData` | Katana, Waffe, Werte `data/player/sword.tres`; Symbol `Items/Weapons/Katana/Sprite.png` (M11) |
+| `data/items/broadsword.tres` | `EquipmentData` | Breitschwert, Waffe: `damage` 15, `cooldown` 0,5, sonst wie `sword.tres`; Symbol `Items/Weapons/BigSword/Sprite.png` (M11) |
+| `data/items/bow.tres` | `EquipmentData` | Bogen, Fernkampf: `projectile_damage_bonus` 3; Symbol `Items/Weapons/Bow/Sprite.png` (M11) |
+| `data/items/leather_armor.tres` | `EquipmentData` | Lederrüstung, Rüstung: `armor` 3; Symbol `Ui/Skill Icon/Items & Weapon/Armor.png`, 24 × 24 (M11) |
+| `data/items/ruby_charm.tres` | `EquipmentData` | Rubin-Anhänger, Anhänger: `max_health_bonus` 20; Symbol `Items/Resource/GemRed.png` (M11) |
 | `data/items/arrow.tres` | `AmmoData` | Pfeil, Stapel 99; Wurf: `damage` 10, `pierce` 1, `projectile_speed` 220, `max_distance` 240, `cooldown` 0,5; Flugbild `FX/Projectile/Arrow.png` |
 | `data/items/kunai.tres` | `AmmoData` | Kunai, Stapel 30; Wurf: `damage` 15, `pierce` 1, `projectile_speed` 300, `max_distance` 180, `cooldown` 0,5; Flugbild `FX/Projectile/Kunai.png` |
 | `data/items/shuriken.tres` | `AmmoData` | Shuriken, Stapel 30; Wurf: `damage` 6, `pierce` 3, `projectile_speed` 200, `max_distance` 200, `cooldown` 0,4; Flugbild `FX/Projectile/Shuriken.png`, 2 Bilder, `spin` 720 |
@@ -421,8 +484,35 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `data/skins/gate_bars.tres` | `PropSkin` | Gittertor (M8): `TilesetElement.png`, zu (1,11), offen kein Bild |
 | `data/skins/lever.tres` | `PropSkin` | Hebel (M8): `TilesetDungeon.png`, aus (3,3) rot, an (4,3) blau |
 | `data/skins/pressure_plate.tres` | `PropSkin` | Druckplatte (M8): `TilesetDungeon.png`, oben (2,1), gedrückt (3,1) |
+| `data/skins/pot.tres` | `PropSkin` | Topf (M9): `TilesetElement.png`, heil (1,0), zerstört kein Bild |
+| `data/skins/crate.tres` | `PropSkin` | Kiste (M9): `TilesetElement.png`, heil (0,0), zerstört kein Bild |
+| `data/skins/rock.tres` | `PropSkin` | Stein (M9): `TilesetNature.png`, heil (17,17), zerstört kein Bild |
+| `data/skins/tree.tres` | `PropSkin` | Baum (M9): `TilesetNature.png`, Zellen à 32, heil (0,0) Baum, zerstört (1,4) Stumpf; `offset` (0, −12), damit der Fuß des Stamms auf der Mitte steht |
+| `data/destructibles/pot_health.tres` | `HealthStats` | `max_health` 10, `invulnerable_time` 0 (M9) |
+| `data/destructibles/crate_health.tres` | `HealthStats` | `max_health` 20 (M9) |
+| `data/destructibles/tree_health.tres` | `HealthStats` | `max_health` 40 (M9) |
+| `data/destructibles/rock_health.tres` | `HealthStats` | `max_health` 20 (M9) |
+| `data/loot/pot.tres` | `LootTable` | 3 Shuriken, Wahrscheinlichkeit 0,5 (M9) |
+| `data/loot/crate.tres` | `LootTable` | 5 Pfeile immer; 2 Kunai mit 0,3 (M9) |
+| `data/loot/tree.tres` | `LootTable` | 2 Äste immer (M9) |
+| `data/loot/rock.tres` | `LootTable` | 1 Stein immer; 1 Dynamit mit 0,25 (M9) |
+| `data/items/branch.tres` | `ItemData` | Ast, Art Material, Stapel 99, Symbol `Items/Resource/Branch.png` (M9) |
+| `data/items/stone.tres` | `ItemData` | Stein, Art Material, Stapel 99, Symbol `Items/Resource/Rock.png` (M9) |
+| `data/effects/spark.tres` | `EffectData` | Funke beim Abprallen (M9): `FX/Particle/Spark.png`, 7 Bilder à 10 × 8, 24 je Sekunde |
+| `data/effects/debris_pot.tres` | `DebrisData` | Scherben (M9): `FX/Particle/Vase.png`, 6 Stücke; 7 Splitter, 0,55 s, Tempo 50 bis 90, Streuung 70°, Zug 320, Bremsen 30, Drehung 420, Größe 0,6 bis 0,9 |
+| `data/effects/debris_crate.tres` | `DebrisData` | Holzsplitter (M9): `FX/Particle/Wood.png`, 6 Stücke; 8 Splitter, 0,6 s, Tempo 50 bis 95, sonst wie die Scherben, Drehung 360 |
+| `data/effects/debris_rock.tres` | `DebrisData` | Steinbrocken (M9): `FX/Particle/RockGray.png`, 5 Stücke; 8 Splitter, 0,6 s, Tempo 55 bis 100, Zug 340, Größe 0,5 bis 0,8, Färbung (0,67; 0,84; 1) ins Graugrüne des Steins |
+| `data/effects/debris_tree.tres` | `DebrisData` | Blätter beim Fällen (M9): `FX/Particle/Leaf.png`, 6 Stücke; 12 Blätter, 1,1 s, Tempo 15 bis 55, in alle Richtungen, Zug 50 |
+| `data/effects/debris_tree_hit.tres` | `DebrisData` | Blätter je Hieb (M9): wie oben, 3 Blätter, 0,9 s, Tempo 10 bis 30 |
+| `data/effects/debris_tree_wood.tres` | `DebrisData` | Holzsplitter beim Fällen (M9): `FX/Particle/Wood.png`; 6 Splitter, Größe 0,5 bis 0,8 |
+| `data/effects/chest_sparkle.tres` | `EffectData` | Funkeln beim Öffnen einer Truhe (M10): `FX/Magic/Spark/SpriteSheet.png`, 10 Bilder à 27 × 35, 12 je Sekunde, `offset` (0, −10) |
+| `data/skins/chest_small.tres` | `PropSkin` | kleine Truhe (M10): `Items/Treasure/LittleTreasureChest.png`, Zellen à 16 × 16, zu (0,0), offen (1,0) |
+| `data/skins/chest_big.tres` | `PropSkin` | große Truhe (M10): `Items/Treasure/BigTreasureChest.png`, Zellen à 16 × 14, zu (0,0), offen (1,0); `offset` (0, 1), damit die Unterkante wie bei der kleinen liegt |
+| `data/loot/chest_small.tres` | `LootTable` | 10 Pfeile immer; 5 Shuriken mit 0,5 (M10) |
+| `data/loot/chest_big.tres` | `LootTable` | 15 Pfeile, 5 Kunai, 3 Dynamit, alle immer (M10) |
+| `data/items/gold_key.tres` | `ItemData` | Goldschlüssel, Art Schlüssel, Stapel 9, Symbol `Items/Treasure/GoldKey.png` (M10) |
 
-Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden; „4 à 8/s“ heißt 4 Bilder, 8 Bilder je Sekunde.
+Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden; „4 à 8/s“ heißt 4 Bilder, 8 Bilder je Sekunde. Bei Splittern: Zug und Bremsen in Pixeln je Sekunde zum Quadrat, Drehung in Grad je Sekunde.
 
 ### Bausteine – `components/`
 
@@ -431,15 +521,15 @@ Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden; „4 à 8/s
 | `PlaceholderView` | `components/placeholder_view/` | Malt die Rechtecke, Kreise und Kapseln der `CollisionShape2D`-Geschwister als Farbfläche. Platzhalter-Grafik; wo ein `CharacterView` daneben ein Bild zeigt, ist sie ausgeblendet und bleibt als Rückfall. | `color` |
 | `CharacterView` | `components/character_view/` | Zeigt die Figur mit der Grafik aus einem Skin, in der nächstliegenden von vier Blickrichtungen. Liest den Wert `facing` der Figur, sonst die Laufrichtung, und misst das Tempo am Ort. Hört auf `Health` (Treffer, Tod, Wiederaufstehen), `Dash` und `MeleeAttack`. Blendet das Geschwister `PlaceholderView` aus. Fragt: `has_skin_animation(name)`; liest: `direction`, `current_animation`. | `skin`, `walk_threshold`, `direction_hysteresis`, `min_walk_rate`, `max_walk_rate` |
 | `Stamina` | `components/stamina/` | Ausdauer-Vorrat: `spend(amount)` verbraucht und liefert, ob es ging; nach `regen_delay` füllt er sich. Bei 0 gilt `is_exhausted`, bis `recover_threshold` erreicht ist. Meldet `changed`, `exhausted`, `recovered`. | `stats` |
-| `Health` | `components/health/` | Leben. `apply_damage(amount)` ist die einzige Stelle, an der über Schaden entschieden wird: Tote und gerade Unverwundbare nehmen keinen. `make_invulnerable(seconds)` schützt für eine Dauer, etwa beim Dash. `reset()` füllt auf, auch nach dem Tod. Meldet `changed`, `damaged`, `died`, `revived`. | `stats` |
-| `Hurtbox` | `components/hurtbox/` | `Area2D`, die Treffer annimmt und an das Geschwister `Health` weiterreicht: `receive_hit(damage, direction)`. Meldet `hit_received`. Braucht eine eigene `CollisionShape2D`. | Ebene |
-| `Hitbox` | `components/hitbox/` | `Area2D`, die jede berührte `Hurtbox` trifft, solange sie scharf ist: `activate()`, `deactivate()`. Meldet `hit_landed`; entschärft ein Zuhörer sie dabei, trifft sie in diesem Schritt nichts weiter. Braucht eine eigene `CollisionShape2D`. | `damage`, `hit_interval`, `active_on_start`, Maske |
-| `MeleeAttack` | `components/melee_attack/` | Nahkampf-Angriff: `try_attack(richtung)` dreht die Trefferzone in die Richtung und macht sie kurz scharf. Zone und Zeiten kommen aus der Werte-Datei. Jeder Treffer füllt das Geschwister `gain_supply_name` um `gain_per_hit` auf. `rate_factor` über 1 verkürzt die Pause. Meldet `attack_started`, `attack_finished`. Das Feld in `swing_color` ist an der Spielfigur seit A2 durchsichtig; dort zeigt `SlashEffect` den Hieb. | `stats`, `target_mask`, `swing_color`, `gain_supply_name` |
+| `Health` | `components/health/` | Leben. `apply_damage(amount)` ist die einzige Stelle, an der über Schaden entschieden wird: Tote und gerade Unverwundbare nehmen keinen. `make_invulnerable(seconds)` schützt für eine Dauer, etwa beim Dash. `reset()` füllt auf, auch nach dem Tod. Seit M11: `armor` zieht von jedem Treffer ab, mindestens 1 bleibt; `set_bonus_maximum(wert)` gibt mehr Leben, `get_maximum()` zählt es mit. Beides setzt `Equipment`. Meldet `changed`, `damaged`, `died`, `revived`. | `stats` |
+| `Hurtbox` | `components/hurtbox/` | `Area2D`, die Treffer annimmt und an das Geschwister `Health` weiterreicht: `receive_hit(damage, direction)`. Meldet `hit_received`. Seit M9: `accepted_kinds` nennt die Arten von Treffern, die Schaden machen – Klinge, Geschoss, Explosion; die übrigen prallen ab, `accepts(art)` fragt das, `block_hit(richtung)` meldet `hit_blocked`. Mit `feeds_attacker` aus füllt ein Treffer beim Angreifer nichts auf, etwa keine Energie. Braucht eine eigene `CollisionShape2D`. | Ebene, `accepted_kinds`, `feeds_attacker` |
+| `Hitbox` | `components/hitbox/` | `Area2D`, die jede berührte `Hurtbox` trifft, solange sie scharf ist: `activate()`, `deactivate()`. Meldet `hit_landed`; entschärft ein Zuhörer sie dabei, trifft sie in diesem Schritt nichts weiter. Seit M9 hat jeder Treffer eine Art (`kind`: Klinge, Geschoss, Explosion); nimmt die Hurtbox sie nicht an, meldet sie `hit_blocked` – einmal je Ziel und Aktivierung, wie ein Treffer. Braucht eine eigene `CollisionShape2D`. | `damage`, `kind`, `hit_interval`, `active_on_start`, Maske |
+| `MeleeAttack` | `components/melee_attack/` | Nahkampf-Angriff: `try_attack(richtung)` dreht die Trefferzone in die Richtung und macht sie kurz scharf. Zone und Zeiten kommen aus der Werte-Datei. Jeder Treffer füllt das Geschwister `gain_supply_name` um `gain_per_hit` auf, außer an einer Hurtbox mit `feeds_attacker` aus, etwa an Zerstörbarem (M9). `rate_factor` über 1 verkürzt die Pause. Meldet `attack_started`, `attack_finished`. Das Feld in `swing_color` ist an der Spielfigur seit A2 durchsichtig; dort zeigt `SlashEffect` den Hieb. Seit M11 wechselt `set_stats(werte)` die Werte, etwa für eine andere Waffe; `set_stats(null)` kehrt zu denen aus dem Inspektor zurück. | `stats`, `target_mask`, `swing_color`, `gain_supply_name` |
 | `HitFlash` | `components/hit_flash/` | Lässt den Elternknoten bei Schaden hell aufblitzen; solange er unverwundbar ist, blinkt er. Hört auf das Geschwister `Health`. | `flash_time`, `flash_strength`, `blink_while_invulnerable`, `blink_interval`, `blink_alpha` |
 | `DamageNumbers` | `components/damage_numbers/` | Zeigt bei Schaden die Zahl über dem Elternknoten; sie steigt auf und verblasst. Hört auf das Geschwister `Health`. Seit A2 in der Pixel-Schrift `NormalFont`, Größe 9; ohne `font` die Standardschrift. | `color`, `font`, `font_size`, `outline_size`, `rise_distance`, `duration`, `start_offset` |
 | `Dash` | `components/dash/` | Kurzer, schneller Satz: `request()` merkt den Tastendruck vor, `try_start(richtung)` startet, sobald es möglich ist; solange `is_dashing` gilt, liefert `get_velocity()` das Tempo. Macht das Geschwister `Health` beim Start kurz unverwundbar. Meldet `dash_started`, `dash_finished`. | `stats` |
 | `Supply` | `components/supply/` | Zählbarer Vorrat: `spend(menge)` verbraucht und liefert, ob genug da war; `add(menge)` füllt auf. Mit `regen_per_second` über 0 füllt er sich nach `regen_delay` von selbst. Meldet `changed`. | `stats` |
-| `RangedAttack` | `components/ranged_attack/` | Fernkampf-Angriff: `try_shoot(richtung)` bezahlt aus dem Geschwister `supply_name` und bestellt das Geschoss über `projectile_requested`. Liegt ein `AmmoSelector` daneben (M11a), kommen Werte und Kosten von dort, und `stats` und `supply_name` gelten nicht. Ohne `ProjectileSpawner` im Level fällt kein Schuss und nichts wird bezahlt. `rate_factor` über 1 verkürzt die Pause. Meldet `shot_fired`. | `stats`, `projectile_scene`, `target_mask`, `supply_name`, `ammo_name` |
+| `RangedAttack` | `components/ranged_attack/` | Fernkampf-Angriff: `try_shoot(richtung)` bezahlt aus dem Geschwister `supply_name` und bestellt das Geschoss über `projectile_requested`. Liegt ein `AmmoSelector` daneben (M11a), kommen Werte und Kosten von dort, und `stats` und `supply_name` gelten nicht. Ohne `ProjectileSpawner` im Level fällt kein Schuss und nichts wird bezahlt. `rate_factor` über 1 verkürzt die Pause. Seit M11 legt `damage_bonus` auf jedes Geschoss mit Aufprall-Schaden etwas drauf – in einer Kopie der Werte, die Werte-Datei bleibt. Meldet `shot_fired`. | `stats`, `projectile_scene`, `target_mask`, `supply_name`, `ammo_name` |
 | `Inventory` | `components/inventory/` | Inventar mit begrenzten Plätzen; Gleiches stapelt sich bis zur Stapelgröße. `add(gegenstand, anzahl)` liefert, was keinen Platz fand; `remove(gegenstand, anzahl)` nimmt nur, wenn genug da ist. Die einzige Stelle, die über den Inhalt entscheidet. Lesen: `count()`, `has()`, `get_items()`, `get_slots()`, `get_used_slots()`, `get_slot_count()`. Meldet `changed`, `item_added`, `item_removed`. | `stats` |
 | `AmmoSelector` | `components/ammo_selector/` | Wählt das Geschoss: jedes `AmmoData` im Inventar, in der Reihenfolge der Plätze. `cycle(schritt)` wechselt, `get_shot()` liefert die Werte des Wurfs, `consume(anzahl)` nimmt aus dem Inventar. Ist das gewählte aufgebraucht, rückt das nächste nach. Meldet `selection_changed`. | `inventory_name` |
 | `PatrolMover` | `components/patrol_mover/` | Lässt seinen Elternknoten zwischen Startpunkt und Startpunkt + `travel` pendeln. Für Dinge, die nichts wegschieben müssen. | `travel`, `speed` |
@@ -448,6 +538,10 @@ Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden; „4 à 8/s
 | `Interactor` | `components/interactor/` | `Area2D` an der Figur: Ein Kreis mit `reach` sucht auf `interactable`; das nächste bedienbare Ding ist `focus` (Signal `focus_changed`). `try_interact()` bedient es. Das Kind `Prompt` zeigt die Taste E über dem Kopf der Figur oder mit `prompt_above_target` über dem Ding (M8). | `stats`, `prompt_above_target`, `prompt_offset` |
 | `PropView` | `components/prop_view/` | `Sprite2D`: zeigt ein Ding der Welt mit dem Bild für aus oder an aus einem `PropSkin`; ohne Bild für einen Zustand ist dann nichts zu sehen. Liest `is_on` und hört auf `state_changed` des Elternknotens. Blendet das Geschwister `PlaceholderView` aus (M8). | `skin` |
 | `EffectCue` | `components/effect_cue/` | Spielt einen Effekt aus einer Werte-Datei, wenn ein Baustein daneben ein Signal sendet (A2). Liefert das Signal eine Richtung, rückt der Effekt um `distance` dorthin und dreht sich auf Wunsch mit. Mit `stop_signal_name` wiederholt er sich, bis dieses Signal kommt. Er entscheidet nichts. | `effect`, `source_name`, `signal_name`, `stop_signal_name`, `follow`, `use_direction`, `distance` |
+| `DebrisCue` | `components/debris_cue/` | Lässt Splitter aus einer `DebrisData` fliegen, wenn ein Baustein daneben ein Signal sendet, an seinem eigenen Ort; sie fliegen in der Szene zu Ende. Entscheidet nichts (M9). | `debris`, `source_name` (Standard `Health`), `signal_name` (Standard `died`) |
+| `LootDropper` | `components/loot_dropper/` | Würfelt auf ein Signal seine Beute-Liste und bestellt jeden Treffer über `loot_requested`, mit seinem Ort als Absprung. `drop()` geht auch direkt. Meldet `dropped(anzahl)`. Die eine Stelle, an der gewürfelt wird (M9). | `table`, `source_name` (Standard `Health`), `signal_name` (Standard `died`) |
+| `Equipment` | `components/equipment/` | Die Ausrüstung einer Figur: vier Plätze. `equip(gegenstand)` nimmt ihn aus dem Inventar und legt ihn an, das Vorige kommt zurück; `unequip(platz)` legt ab, wenn im Inventar Platz ist; `get_item(platz)` liest. Die einzige Stelle, die über Angelegtes entscheidet. Gibt die Werte an `MeleeAttack`, `RangedAttack` und `Health` weiter. Meldet `changed(platz, gegenstand)` (M11). | `stats` |
+| `Collector` | `components/collector/` | `Area2D` an der Figur, Kreis 6 Pixel, Maske `pickup`. Nimmt aus jedem bereiten `Pickup` im Kreis so viel, wie das Geschwister `Inventory` annimmt; der Rest bleibt liegen. Meldet `collected`, `rejected` und schreibt „S1 Beute“ in die Debug-Anzeige (M9). | – |
 
 Die Bausteine finden das Leben über den Namen: Der Knoten muss genau `Health` heißen und neben ihnen liegen.
 
@@ -475,10 +569,18 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 | `world/door/door.tscn` | `door.gd` | Tür oder Gittertor; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView`, `Interactable`, `DoorwaySensor` (M8) |
 | `world/lever/lever.tscn` | `lever.gd` | Hebel; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView`, `Interactable` (M8) |
 | `world/pressure_plate/pressure_plate.tscn` | `pressure_plate.gd` | Druckplatte; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView` (M8) |
+| `world/destructible/destructible.tscn` | `destructible.gd` | Grundszene für Zerstörbares; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView`, `Health`, `Hurtbox` (Ebene `enemy_hurtbox`, keine Energie), `HitFlash`, `HitEffect` (Schnitt), `BlockEffect` (Funke beim Abprallen), `Debris` (ein `DebrisCue`), `LootDropper` (M9) |
+| `world/destructible/pot.tscn`, `crate.tscn`, `rock.tscn`, `tree.tscn` | erben von `destructible.tscn` | Topf, Kiste, Stein und Baum mit eigenem Skin, Leben, Splittern, Beute und eigenen Formen; der Stein nimmt nur Explosionen, der Baum hat dazu `WoodDebris` und `LeafHit` (M9) |
+| `entities/pickup/pickup.tscn` | `pickup.gd` | Gegenstand am Boden; Kinder `CollisionShape2D` (Kreis 6), `Icon` (`Sprite2D`) mit `Count` (`Label`, `NormalFont` 9) (M9) |
+| `entities/pickup/loot_spawner.tscn` | `loot_spawner.gd` | legt alle Beute eines Levels hin (M9) |
+| `world/chest/chest.tscn` | `chest.gd` | Grundszene für Truhen; Kinder `CollisionShape2D` (14 × 10), `PlaceholderView`, `PropView`, `Interactable` (16 × 16), `LockHint` (`Sprite2D`, 16 Pixel über der Mitte), `LootDropper` (hört auf `opened`), `OpenEffect` (ein `EffectCue`, Funkeln) (M10) |
+| `world/chest/chest_small.tscn`, `chest_big.tscn` | erben von `chest.tscn` | kleine Truhe mit eigenem Skin und eigener Beute; große Truhe dazu mit `required_key` Goldschlüssel und Körper 16 × 10 (M10) |
 | `entities/projectile/projectile.tscn` | `projectile.gd` | Geschoss; Kinder `Hitbox` mit `PlaceholderView`, `WorldSensor`, `TargetSensor`, `ExplosionHitbox`, `ProjectileView` |
 | `entities/projectile/projectile_spawner.tscn` | `projectile_spawner.gd` | erzeugt alle Geschosse eines Levels |
 | `ui/crosshair/crosshair.tscn` | `crosshair.gd` | Fadenkreuz |
 | `ui/debug/debug_overlay.tscn` | `debug_overlay.gd` | Debug-Anzeige |
+| `ui/inventory/inventory_window.tscn` | `inventory_window.gd` | Inventarfenster; `CanvasLayer` auf Ebene 105, Kind `Root` mit dem Thema `ui/theme/wood_theme.tres`, darin `Frame` (`PanelContainer`) und `Interior` (`Panel`) mit `Title`, `EquipmentTitle`, `EquipmentSlots`, `Grid`, `InfoName`, `InfoText`, `InfoHint`; die Zellen baut das Skript (M11) |
+| `components/equipment/equipment.tscn` | `equipment.gd` | Baustein, siehe oben (M11) |
 | `components/placeholder_view/placeholder_view.tscn` | `placeholder_view.gd` | Baustein, siehe oben |
 | `components/character_view/character_view.tscn` | `character_view.gd` | Baustein, siehe oben; Kinder `Shadow` (`Sprite2D`) und `Sprite` (`AnimatedSprite2D`) |
 | `components/inventory/inventory.tscn` | `inventory.gd` | Baustein, siehe oben |
@@ -499,6 +601,9 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 | `components/interactable/interactable.tscn` | `interactable.gd` | Baustein, siehe oben |
 | `components/interactor/interactor.tscn` | `interactor.gd` | Baustein, siehe oben; Kinder `CollisionShape2D` und `Prompt` (`Sprite2D` mit `KeyE.png`) |
 | `components/prop_view/prop_view.tscn` | `prop_view.gd` | Baustein, siehe oben |
+| `components/debris_cue/debris_cue.tscn` | `debris_cue.gd` | Baustein, siehe oben |
+| `components/loot_dropper/loot_dropper.tscn` | `loot_dropper.gd` | Baustein, siehe oben |
+| `components/collector/collector.tscn` | `collector.gd` | Baustein, siehe oben; Kind `CollisionShape2D` |
 | `abilities/haste/haste.tscn` | `haste.gd` | Fähigkeit, siehe oben |
 | `abilities/invisibility/invisibility.tscn` | `invisibility.gd` | Fähigkeit, siehe oben |
 | `abilities/stun/stun.tscn` | `stun.gd` | Fähigkeit, siehe oben |
@@ -507,7 +612,7 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 **Spielfigur im Einzelnen**
 
 - `Player` ist ein `CharacterBody2D` im schwebenden Modus, Ebene `player`, Maske `world` und `enemy`, Gruppe `players`. Körper 12 × 12 Pixel. Bild seit A1: der Ninja aus `data/skins/ninja_green.tres` über `CharacterView`; ohne ihn der grüne Platzhalter mit weißem Punkt in Blickrichtung.
-- Kinder: `CollisionShape2D`, `PlaceholderView`, `CharacterView`, `PlayerInput` (ein `IntentSource`, läuft vor der Figur), `Stamina`, `Health`, `Hurtbox` (10 × 10 Pixel, Ebene `player_hurtbox`), `HitFlash`, `MeleeAttack` (sucht auf `enemy_hurtbox`), `Dash`, `Inventory`, `AmmoSelector`, `RangedAttack` (Ziele auf `enemy_hurtbox`), `Energy` (ein `Supply`), `Abilities` mit den Kindern `Haste`, `Invisibility` und `Stun`, dazu seit A2 `SlashEffect` und `HitEffect` (je ein `EffectCue`) und seit M8 `Interactor`.
+- Kinder: `CollisionShape2D`, `PlaceholderView`, `CharacterView`, `PlayerInput` (ein `IntentSource`, läuft vor der Figur), `Stamina`, `Health`, `Hurtbox` (10 × 10 Pixel, Ebene `player_hurtbox`), `HitFlash`, `MeleeAttack` (sucht auf `enemy_hurtbox`), `Dash`, `Inventory`, `AmmoSelector`, `RangedAttack` (Ziele auf `enemy_hurtbox`), `Energy` (ein `Supply`), `Abilities` mit den Kindern `Haste`, `Invisibility` und `Stun`, dazu seit A2 `SlashEffect` und `HitEffect` (je ein `EffectCue`), seit M8 `Interactor`, seit M9 `Collector` und seit M11 `Equipment` – als letztes Kind, damit die anderen Bausteine bereit sind, wenn es ihnen die Werte gibt.
 - Die Figur liest nur Absichten. `PlayerInput` füllt sie aus den Aktionen und aus der Mausposition; später kann eine andere Quelle dasselbe tun.
 - Blick und Hieb: Die Figur blickt stufenlos in die Zielrichtung, also zur Maus. Solange `attack_primary` gehalten wird, schlägt sie dorthin. Laufen, Sprinten und Schleichen gehen dabei weiter.
 - Zustände: Stehen, Laufen, Sprinten, Schleichen, Dash. Schleichen geht vor Sprinten. Sprinten kostet Ausdauer; ohne Vorrat läuft die Figur normal.
@@ -516,19 +621,22 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Fähigkeiten: Ein Druck auf `ability_1`, `ability_2` oder `ability_3` setzt das erste, zweite oder dritte Kind von `Abilities` ein. Das geht jederzeit, auch im Dash. Die Figur selbst kennt keine einzelne Fähigkeit; sie bietet nur `speed_factor` an, den die Schnelligkeit setzt.
 - Energie: Fähigkeiten bezahlen aus `Energy`. Der Vorrat füllt sich nur durch Schwerttreffer, über `MeleeAttack`.
 - Interaktion (M8): Ein Druck auf `interact` (E) bedient das nächste bedienbare Ding im Suchkreis des `Interactor`, 16 Pixel um die Mitte. Solange es eins gibt, steht die Taste E über dem Kopf der Figur. Das geht jederzeit, auch im Dash.
+- Aufsammeln (M9): Läuft die Figur über Beute, nimmt ihr `Collector` so viel ins Inventar, wie hineinpasst; dafür gibt es keine Taste.
+- Ausrüstung (M11): Was sie angelegt hat, verwaltet `Equipment`; beim Start ist es das Katana. Ist ein Menü der Figur offen, meldet `PlayerInput` keine Absichten: Sie bleibt stehen.
 - Tod: Fällt das Leben auf 0, bleibt die Figur stehen, zeigt das Tod-Bild (der Platzhalter wird grau) und sendet `player_died`. Was dann geschieht, entscheidet das Level.
-- Einstellbar: `stats` (Werte-Datei), `player_id`, `defeated_color`. Ohne `PlayerInput` bleibt sie stehen, ohne `Stamina` sprintet sie unbegrenzt, ohne `Health` nimmt sie keinen Schaden, ohne `Hurtbox` ist sie nicht zu treffen, ohne `MeleeAttack` schlägt sie nicht zu, ohne `Dash` dasht sie nicht, ohne `RangedAttack` schießt sie nicht, ohne `Inventory` hat sie nichts zu werfen, ohne `AmmoSelector` schießt sie wie vor M11a mit `bow.tres` kostenlos, ohne `Abilities` hat sie keine Fähigkeiten, ohne `Energy` kosten Fähigkeiten nichts, ohne `CharacterView` zeigt sie den Platzhalter, ohne `SlashEffect` oder `HitEffect` fehlt nur dieser Effekt, ohne `Interactor` bedient sie nichts mit E.
+- Einstellbar: `stats` (Werte-Datei), `player_id`, `defeated_color`. Ohne `PlayerInput` bleibt sie stehen, ohne `Stamina` sprintet sie unbegrenzt, ohne `Health` nimmt sie keinen Schaden, ohne `Hurtbox` ist sie nicht zu treffen, ohne `MeleeAttack` schlägt sie nicht zu, ohne `Dash` dasht sie nicht, ohne `RangedAttack` schießt sie nicht, ohne `Inventory` hat sie nichts zu werfen, ohne `AmmoSelector` schießt sie wie vor M11a mit `bow.tres` kostenlos, ohne `Abilities` hat sie keine Fähigkeiten, ohne `Energy` kosten Fähigkeiten nichts, ohne `CharacterView` zeigt sie den Platzhalter, ohne `SlashEffect` oder `HitEffect` fehlt nur dieser Effekt, ohne `Interactor` bedient sie nichts mit E, ohne `Collector` läuft sie über Beute hinweg, ohne `Equipment` kämpft sie mit ihren Grundwerten.
 - Einen Zustandsautomaten als Baustein gibt es noch nicht: Der Dash bringt seinen Zeitablauf selbst mit, die Figur fragt nur `is_dashing`. Vorgesehen ist er für den ersten Gegner in M13.
 
 **Kampf im Einzelnen**
 
 - Weg eines Treffers: `Hitbox` berührt `Hurtbox` → `Hurtbox.receive_hit()` → `Health.apply_damage()`. Nur `Health` entscheidet, ob und wie viel Schaden ankommt.
+- Treffer-Arten (M9): Das Schwert und das Schadensfeld treffen als Klinge, die `Hitbox` eines Geschosses als Geschoss, seine `ExplosionHitbox` als Explosion. Nimmt eine `Hurtbox` die Art nicht an, prallt der Treffer ab: kein Schaden, keine Energie, die `Hurtbox` meldet `hit_blocked`. Ein Geschoss endet, sobald es abprallt, auch wenn es noch Ziele durchschlagen dürfte.
 - Schwert: Die Trefferzone ist 18 Pixel lang und 20 breit und beginnt 6 Pixel vor der Mitte der Figur. Sie ist 0,12 s scharf; von Hieb zu Hieb vergehen 0,35 s. Ein Hieb trifft jedes Ziel höchstens einmal, kann aber mehrere Ziele treffen.
 - Die Trefferzone wird erst einen Physik-Schritt nach Hiebbeginn ausgewertet, weil Godot Berührungen erst dann kennt.
 - Unverwundbarkeit: Nach einem Treffer nimmt die Spielfigur 0,6 s lang keinen Schaden. Das steht als `invulnerable_time` in ihrer Werte-Datei und gilt für jede Schadensquelle. Auch ein Dash schützt, 0,25 s ab seinem Beginn. Solange die Figur unverwundbar ist, blinkt sie.
 - Dash: 64 Pixel in 0,2 s, also 12 Physik-Schritte mit Tempo 320. Von Dash zu Dash vergehen 0,8 s. Ein Tastendruck kurz vor Ablauf der Pause bleibt 0,12 s lang vorgemerkt.
 - Geschosse seit M11a: Pfeil, Kunai, Shuriken und Dynamit aus dem Inventar, Werte in `data/items/`. Jedes entsteht 8 Pixel vor der Mitte der Figur. Ohne `AmmoSelector` gilt der alte Bogen aus `bow.tres`.
-- Geschoss: fliegt geradeaus mit Tempo und Reichweite aus seinen Werten. Es endet, wenn es `pierce` Ziele getroffen hat, an Wänden und Blöcken oder am Ende der Reichweite. Schaden teilt seine `Hitbox` aus, Wände bemerkt sein `WorldSensor` über die Ebene `world`. Den Schützen kann es nicht treffen, weil es nur auf der Ziel-Ebene sucht.
+- Geschoss: fliegt geradeaus mit Tempo und Reichweite aus seinen Werten. Es endet, wenn es `pierce` Ziele getroffen hat, an Wänden und Blöcken, wenn es abprallt (M9) oder am Ende der Reichweite. Schaden teilt seine `Hitbox` aus, Wände bemerkt sein `WorldSensor` über die Ebene `world`. Den Schützen kann es nicht treffen, weil es nur auf der Ziel-Ebene sucht.
 - Explosion (M11a): Hat ein Geschoss `explosion_radius`, bleibt es an seinem Ende 0,1 s liegen; sein `ExplosionHitbox` trifft dann jedes Ziel im Umkreis einmal mit `explosion_damage`, nur auf der Ziel-Ebene. Ohne Aufprall-Schaden (`damage` 0) merkt sein `TargetSensor`, dass es ein Ziel berührt.
 - Bild (M11a): `ProjectileView` baut das Flugbild aus `RangedStats.skin`, dreht es um `spin` und blendet den gelben Platzhalter aus. Bei der Explosion spielt es den Effekt über `OneShotEffect` in der Szene ab, unabhängig vom Geschoss.
 - Geschosse entstehen an genau einer Stelle: `RangedAttack` bestellt über `projectile_requested`, der `ProjectileSpawner` des Levels baut und startet. Je Level darf es nur einen geben.
@@ -560,7 +668,12 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Schadensfeld `DamageZone`: Mitte bei (240, 240).
 - Schadensstreifen `DamageStrip`: 16 × 96 Pixel, Mitte bei (528, 120), rechts neben den Puppen; 10 Schaden, gebaut direkt aus `hitbox.tscn`. Er dient dem Test des Dashs. Sein Kind `Stunnable` schaltet ihn bei einer Betäubung ab.
 - Interaktions-Ecke `InteractionCorner` (M8), Ursprung (752, 448): drei Räume nebeneinander, je 48 × 64 Pixel, zusammen x 768 bis 944 und y 464 bis 528; die Wände sind `RoomWalls`, ein `StaticBody2D` auf `world`. In der oberen Wand liegen drei Durchgänge, je 16 Pixel breit. `WoodDoor` bei (792, 456) ist eine Holztür für E. `LeverGate` bei (856, 456) ist ein Gittertor auf dem Kanal `lever_gate`, sein `Lever` steht bei (824, 424). `PlateGate` bei (920, 456) ist ein Gittertor auf `plate_gate`; die `PressurePlate` liegt davor bei (920, 376), die `PressurePlateInside` im Raum bei (920, 504), damit niemand eingesperrt bleibt.
-- Die Puppen, `DamageZone`, `DamageStrip`, `InteractionCorner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair` und `DebugOverlay` sind eingehängt und lassen sich einzeln löschen.
+- Feld mit Zerstörbarem `DestructibleField` (M9), Ursprung (72, 328), jeweils die Mitte: `PotA` (72, 328) und `PotB` (120, 328); `CrateA` (168, 328) und `CrateB` (184, 328) Kante an Kante; `RockA` (72, 408) und `RockB` (120, 408); `Tree` mit dem Fuß des Stamms bei (176, 428), das Bild reicht von (160, 400) bis (192, 432).
+- Truhen (M10): `ChestSmall` bei (616, 488) und `ChestBig` bei (680, 488), unter dem langen Balken links vor der Interaktions-Ecke. Der Goldschlüssel ist ein von Hand gelegter `Pickup` namens `GoldKey` im linken Raum der Interaktions-Ecke, bei (792, 504).
+- Ausrüstung zum Aufsammeln (M11): Unter `StartItems` liegen vier von Hand gelegte `Pickup` – `Broadsword` (192, 176), `Bow` (216, 176), `LeatherArmor` (240, 176), `RubyCharm` (264, 176).
+- `InventoryWindow` (M11) hängt als letztes Kind in der Kammer.
+- `LootSpawner` (M9) liegt vor dem `PlayerSpawner`; so liegt Beute über dem Zerstörbaren und den Truhen, aber unter der Figur.
+- Die Puppen, `DamageZone`, `DamageStrip`, `InteractionCorner`, `DestructibleField`, `ChestSmall`, `ChestBig`, `StartItems`, `LootSpawner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair`, `DebugOverlay` und `InventoryWindow` sind eingehängt und lassen sich einzeln löschen.
 - `DebugOverlay` blendet hier „Maus“, „Kamera“ und „Raumzeit“ aus.
 - F2 und der Tod einer Figur laden die Szene neu, direkt in `test_chamber.gd`. Ab M18 übernimmt das der `SceneManager`.
 
@@ -569,7 +682,10 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Gegenstände sind Werte-Dateien in `data/items/` mit `id`, Name, Art (Waffen, Rüstung, Verbrauchbares, Schlüssel, Materialien – die Geschosse zählen zu Verbrauchbares), Symbol und Stapelgröße. Zwei Einträge mit derselben `id` gelten als derselbe Gegenstand.
 - Neues füllt erst angefangene Stapel derselben Sorte, dann freie Plätze. Entnommen wird vom hintersten Stapel; ein leerer Platz wird frei.
 - Die Reihenfolge der Geschosse beim Wechseln ist die der Plätze; der Startinhalt legt sie fest: Pfeil, Kunai, Shuriken, Dynamit.
-- Speichern und Laden des Inhalts kommt mit M16, das Inventarfenster und Ausrüstungsplätze mit M11, Aufsammeln und Truhen mit M10.
+- Seit M9 gibt es die ersten Materialien: Ast und Stein. Aufgesammelt wird seit M9 über den `Collector`.
+- Seit M10 gibt es den ersten Schlüssel: den Goldschlüssel. Eine Truhe nimmt ihn mit `remove()` aus dem Inventar der Figur, die E drückt.
+- Seit M11 gibt es das Inventarfenster (Tab) und die Ausrüstung. Angelegtes liegt nicht im Inventar.
+- Speichern und Laden des Inhalts und des Angelegten kommt mit M16.
 
 **Figuren-Bild im Einzelnen (A1)**
 
@@ -606,6 +722,33 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - `PropView` zeigt die Zelle für aus oder an; fehlt sie, ist nichts zu sehen. Er liest `is_on` und hört auf `state_changed`; der Platzhalter dahinter ist ausgeblendet.
 - Mehrspieler: Jede Figur hat ihren eigenen `Interactor`. Die Taste zeigen noch alle Figuren, auch mehrere auf einem Rechner; nur die eigene zu zeigen, kommt mit Phase 8.
 
+**Zerstörbares und Beute im Einzelnen (M9)**
+
+- `Destructible` ist ein `StaticBody2D` auf `enemy`. Leben und Treffer kommen von den Bausteinen `Health` und `Hurtbox`; die Hurtbox liegt auf `enemy_hurtbox` und füllt keine Energie. Bei 0 Leben schaltet es die Hurtbox ab, meldet `state_changed(true)` und zeigt über `PropView` das Bild für „an“: Topf, Kiste und Stein nichts, der Baum seinen Stumpf. Ohne Rest wird auch die Körperform abgeschaltet; mit `leaves_remains` bleibt sie und wechselt auf `remains_layer` (Standard `world`).
+- Formen, jeweils Körper und Hurtbox: Topf 12 × 10 (2 Pixel tiefer) und 14 × 14; Kiste 14 × 12 und 14 × 14; Stein 14 × 12 und 14 × 14, nimmt nur Explosionen (`accepted_kinds` 4); Baum 22 × 8 am Fuß des Stamms und 24 × 24 über Stamm und Krone.
+- Der Baum hat drei `DebrisCue`: `Debris` mit Blättern beim Fällen, in der Krone; `WoodDebris` mit Holzsplittern am Stamm; `LeafHit` mit drei Blättern bei jedem Treffer.
+- Splitter sind `CPUParticles2D`: Ein Streifen aus `FX/Particle/` zählt als Bilder nebeneinander, jeder Splitter zeigt eins davon fest. Sie springen hoch, fallen, drehen sich, verblassen ab 60 % ihrer Zeit und zeichnen auf Ebene 40 – über den Figuren, unter den Effekten.
+- Beute: `LootDropper` würfelt bei `died` die Liste aus `data/loot/` und bestellt jeden Treffer über `loot_requested`. Der `LootSpawner` erledigt Bestellungen im nächsten Physik-Schritt: je Gegenstand ein `Pickup`, der in 0,35 s von der Mitte des Dings auf einen Platz 10 bis 18 Pixel entfernt springt, 10 Pixel hoch. Der Platz liegt zwischen −20° und 200°, also zur Seite oder nach vorn; er ist frei von Körpern auf `world` und `enemy` und ohne solche dazwischen. Mehrere Gegenstände vom selben Ort verteilen sich im goldenen Schnitt. Findet sich in 12 Versuchen nichts, landet die Beute in der Mitte.
+- `Pickup`: `Area2D` auf `pickup`, Kreis 6 Pixel. Zeigt das Symbol des Gegenstands, darunter einen Schatten, bei mehr als einem Stück die Zahl; am Boden wippt es um 1 Pixel. Erst nach dem Sprung lässt es sich aufsammeln. `take(anzahl)` nimmt weg; leer verschwindet es. Von Hand ins Level gelegt, liegt es gleich bereit.
+- Mehrspieler: Gewürfelt wird nur im `LootDropper`, erzeugt nur im `LootSpawner`, über den Inhalt entscheidet nur das Inventar – später jeweils der Gastgeber. Splitter und Funken zeigt jeder Rechner selbst.
+
+**Truhen im Einzelnen (M10)**
+
+- `Chest` ist ein `StaticBody2D` auf `world`. E kommt über ihr `Interactable`; `open(actor)` ist die einzige Stelle, die entscheidet, ob sie aufgeht. Mit `required_key` braucht sie diesen Gegenstand: Sie sucht beim `actor` das Kind `Inventory` und nimmt mit `remove()` einen heraus. Fehlt er, meldet sie `locked`, wackelt `shake_time` lang um `shake_distance` Pixel (0,3 s, 2 Pixel) und zeigt `hint_time` lang (1 s) das Symbol des Schlüssels über sich – das Kind `LockHint`, Ebene 100.
+- Geht sie auf, wird `is_on` wahr, `PropView` zeigt das offene Bild, ihr `Interactable` schaltet ab, und sie meldet `state_changed(true)` und `opened(actor)`. Auf `opened` hören `LootDropper` (Beute-Liste) und `OpenEffect` (Funkeln aus `data/effects/chest_sparkle.tres`, bleibt am Ort).
+- `start_open` stellt sie offen hin, ohne Beute. Offen bleibt sie, bis der Raum neu lädt; Speichern kommt mit M16.
+- Mehrspieler: Ob eine Truhe aufgeht, entscheidet nur `open()`, über das Inventar nur `remove()` – später jeweils beim Gastgeber.
+
+**Inventarfenster und Ausrüstung im Einzelnen (M11)**
+
+- Das Fenster sucht beim Öffnen in der Gruppe `players` die Figur mit seiner `player_id` und hört dann auf ihr `Inventory` und ihr `Equipment`. Es baut so viele Zellen, wie das Inventar Plätze hat, fünf je Zeile; mehr als 20 Plätze passen noch nicht in den Rahmen.
+- Zelle: `Panel` mit der Variante `InventoryCell` (Bild `inventory_cell.png`), darin `Icon` (`TextureRect`, Bild in Originalgröße, mittig), `Count` (`Label`, Variante `CountLabel`, weiß mit dunklem Rand, ab 2 Stück) und `Focus` (Variante `InventoryFocus`, der Rahmen `nine_path_focus.png`, nur wenn gewählt).
+- Bedienung: Linksklick wählt, Doppelklick legt an (Raster) oder ab (Ausrüstungsplatz). Geht das nicht, steht unten „Kein Platz im Inventar“. Tab und Esc fängt das Fenster in `_input` ab, vor der übrigen Oberfläche.
+- Unten drei Zeilen: Name; Art und Werte – bei Ausrüstung der Platz und `describe()`, bei Geschossen der Schaden, sonst die Art; dazu ein Hinweis oder die Anzahl.
+- Holz-Thema `ui/theme/wood_theme.tres`: Schrift `NormalFont` 9; `PanelContainer` mit dem orangen Rahmen `nine_path_panel.png` (Ränder 6, 6, 5, 5), `Panel` mit dem braunen Inneren `nine_path_panel_interior.png`; Varianten `InventoryCell`, `InventoryFocus`, `TitleLabel` und `HintLabel` (hellorange), `CountLabel`; dazu Knöpfe aus `button_*.png` für spätere Fenster. Es ist der erste Teil von A5.
+- `Equipment` gibt nach jeder Änderung alles weiter: die Waffe an `MeleeAttack.set_stats()`, die Summe der Fernkampf-Boni an `RangedAttack.damage_bonus`, die Summe der Rüstung an `Health.armor`, die Summe der Leben an `Health.set_bonus_maximum()`. So kann später auch ein Gegenstand mehreres zugleich können.
+- Mehrspieler: Über Angelegtes entscheidet nur `Equipment`, über den Inhalt nur das Inventar; das Fenster fragt nur an. Jede Figur hat ihr eigenes Fenster über ihre `player_id`.
+
 **Debug-Anzeige im Einzelnen**
 
 - `CanvasLayer` auf Ebene 100, läuft auch bei pausiertem Spiel. Zeigt FPS, Mausposition im Bild, gedrückte Aktionen und alle gemeldeten Werte.
@@ -613,6 +756,28 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Im Editor zeigt die Testkammer nur die blauen Kollisionsflächen; Farben, Raster und Anzeige erscheinen erst im laufenden Spiel.
 
 ### Dateien je Modul
+
+**M11 – Inventar & Ausrüstung**
+
+- Neu: `items/equipment_data.gd`; `components/equipment/` mit `equipment.tscn`, `equipment.gd`, `equipment_stats.gd`; `ui/inventory/` mit `inventory_window.tscn`, `inventory_window.gd`; `ui/theme/wood_theme.tres`
+- Neu: `data/player/equipment.tres`; `data/items/katana.tres`, `broadsword.tres`, `bow.tres`, `leather_armor.tres`, `ruby_charm.tres`
+- Geändert: `components/melee_attack/melee_attack.gd` (`set_stats()`), `components/health/health.gd` (`armor`, `set_bonus_maximum()`), `components/ranged_attack/ranged_attack.gd` (`damage_bonus`), `entities/player/player_input.gd` (Sperre bei offenem Menü), `entities/pickup/pickup.gd` (Symbol mittig bei jeder Größe), `autoload/event_bus.gd` (Meldung `menu_changed`)
+- Geändert: `entities/player/player.tscn` (Knoten `Equipment`), `entities/player/player.gd` (nur der Kommentar), `levels/test_chamber/test_chamber.tscn` (`StartItems`, `InventoryWindow`), `levels/test_chamber/test_chamber.gd` (nur der Kommentar), `README.md` (Ordner), `docs/projekt_stand.md`, `docs/asset_katalog.md`
+
+**M10 – Truhen & Beute**
+
+- Neu: `world/chest/` mit `chest.tscn`, `chest.gd`, `chest_small.tscn`, `chest_big.tscn`
+- Neu: `data/skins/chest_small.tres`, `chest_big.tres`; `data/loot/chest_small.tres`, `chest_big.tres`; `data/items/gold_key.tres`; `data/effects/chest_sparkle.tres`
+- Geändert: `levels/test_chamber/test_chamber.tscn` (zwei Truhen, Goldschlüssel), `levels/test_chamber/test_chamber.gd` (nur der Kommentar), `README.md` (Ordner), `docs/projekt_stand.md`, `docs/asset_katalog.md`
+
+**M9 – Zerstörbares**
+
+- Neu: `world/destructible/` mit `destructible.tscn`, `destructible.gd`, `pot.tscn`, `crate.tscn`, `rock.tscn`, `tree.tscn`
+- Neu: `components/debris_cue/` mit `debris_cue.tscn`, `debris_cue.gd`; `components/loot_dropper/` mit `loot_dropper.tscn`, `loot_dropper.gd`; `components/collector/` mit `collector.tscn`, `collector.gd`
+- Neu: `entities/debris/debris.gd`, `debris_data.gd`; `entities/pickup/` mit `pickup.tscn`, `pickup.gd`, `loot_spawner.tscn`, `loot_spawner.gd`; `items/loot_entry.gd`, `loot_table.gd`
+- Neu: `data/destructibles/pot_health.tres`, `crate_health.tres`, `tree_health.tres`, `rock_health.tres`; `data/loot/pot.tres`, `crate.tres`, `tree.tres`, `rock.tres`; `data/items/branch.tres`, `stone.tres`; `data/skins/pot.tres`, `crate.tres`, `rock.tres`, `tree.tres`; `data/effects/spark.tres`, `debris_pot.tres`, `debris_crate.tres`, `debris_rock.tres`, `debris_tree.tres`, `debris_tree_hit.tres`, `debris_tree_wood.tres`
+- Geändert: `components/hitbox/hitbox.gd` (Treffer-Arten, `hit_blocked`), `components/hurtbox/hurtbox.gd` (`accepted_kinds`, `feeds_attacker`, `hit_blocked`), `components/melee_attack/melee_attack.gd` (keine Energie an Hurtboxen mit `feeds_attacker` aus), `entities/projectile/projectile.gd` (endet beim Abprallen) und `projectile.tscn` (Arten der beiden Hitboxen)
+- Geändert: `autoload/event_bus.gd` (Meldung `loot_requested`), `entities/player/player.tscn` (Knoten `Collector`), `entities/player/player.gd` (nur der Kommentar), `levels/test_chamber/test_chamber.tscn` (Feld und `LootSpawner`), `levels/test_chamber/test_chamber.gd` (nur der Kommentar), `README.md` (Ordner), `docs/projekt_stand.md`, `docs/asset_katalog.md`
 
 **M8 – Interaktion**
 
@@ -743,11 +908,14 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 | Hebel, Druckplatte, Stacheln (M8) | `Backgrounds/Tilesets/TilesetDungeon.png`, Zellen als (Spalte, Zeile) à 16: Druckplatte oben (2,1) und gedrückt (3,1), Hebel rot (3,3) und blau (4,3), Stacheln oben (4,1) und unten (5,1) | geprüft am 17.11.2026; Hebel und Druckplatte eingebaut mit M8 |
 | Türen (M8) | `Backgrounds/Tilesets/TilesetHouse.png` Zelle (2,3): Holztür; `TilesetElement.png` Zelle (1,11): Gittertor | geprüft am 17.11.2026: nur geschlossen – ein Bild der offenen Tür hat das Paket nicht; eingebaut mit M8 |
 | Taste E (M8) | `Ui/Input/Keyboard/KeyE.png`, 13 × 13 | geprüft am 17.11.2026; eingebaut mit M8 |
-| Kiste und Topf (M9) | `Backgrounds/Tilesets/TilesetElement.png`, Zellen als (Spalte, Zeile) à 16: Kiste (0,0), Topf (1,0), Fass (4,0) | geprüft am 17.11.2026 |
-| Baum, Stumpf und Stein (M9) | `Backgrounds/Tilesets/TilesetNature.png`: Baum 32 × 32 aus (0,0) bis (1,1), Stumpf 32 × 32 aus (2,8) bis (3,9), Stein (11,13) | geprüft am 17.11.2026 |
-| Splitter (M9) | `FX/Particle/`: `Wood.png` 6 à 16, `Vase.png` 6 à 14, `Leaf.png` 6 à 12 × 7, `RockGray.png` 5 à 16, `Spark.png` 7 à 10 × 8 | geprüft am 17.11.2026: keine Animationen, sondern einzelne Bruchstücke nebeneinander |
-| Äste und Steine als Beute (M9) | `Items/Resource/Branch.png`, `Rock.png`, je 16 × 16 | geprüft am 17.11.2026 |
-| Truhen (M10) | `Items/Treasure/LittleTreasureChest.png`, `BigTreasureChest.png` | geprüft: je zwei Bilder, zu und offen |
+| Kiste und Topf (M9) | `Backgrounds/Tilesets/TilesetElement.png`, Zellen als (Spalte, Zeile) à 16: Kiste (0,0), Topf (1,0), Fass (4,0) | geprüft am 17.11.2026; Kiste und Topf eingebaut mit M9 |
+| Baum, Stumpf und Stein (M9) | `Backgrounds/Tilesets/TilesetNature.png`: Baum 32 × 32 aus (0,0) bis (1,1), Stumpf 32 × 32 aus (2,8) bis (3,9), Stein (17,17) graugrün | geprüft am 17.11.2026; eingebaut mit M9. Beim Bauen hat Claude den Stein (17,17) statt (11,13) gewählt: Er passt zum Symbol des Gegenstands Stein, (11,13) sieht eher nach Schneeball aus |
+| Splitter und Funke (M9) | `FX/Particle/`: `Wood.png` 6 à 16, `Vase.png` 6 à 14, `Leaf.png` 6 à 12 × 7, `RockGray.png` 5 à 16, `Spark.png` 7 à 10 × 8 | geprüft am 17.11.2026: Bruchstücke nebeneinander; nur `Spark.png` ist eine Bildfolge, ein Funke, der wächst und vergeht; eingebaut mit M9 |
+| Äste und Steine als Beute (M9) | `Items/Resource/Branch.png`, `Rock.png`, je 16 × 16 | geprüft am 17.11.2026; eingebaut mit M9. Die Beute am Boden zeigt die Symbole der Gegenstände, auch die der Geschosse aus `Items/Projectile/` |
+| Truhen und Schlüssel (M10) | `Items/Treasure/LittleTreasureChest.png` 2 à 16 × 16, türkis; `BigTreasureChest.png` 2 à 16 × 14, rot; `GoldKey.png` und `SilverKey.png`, je 12 × 8 | geprüft: je zwei Bilder, zu und offen; eingebaut mit M10, vom Schlüssel der goldene |
+| Funkeln beim Öffnen (M10) | `FX/Magic/Spark/SpriteSheet.png`, 10 Bilder à 27 × 35 | geprüft am 17.11.2026: goldenes Funkeln mit einem großen Stern im dritten Bild; eingebaut mit M10 |
+| Fenster (M11) | `Ui/Theme/Theme Wood/`: `nine_path_panel.png`, `nine_path_panel_interior.png`, `inventory_cell.png`, `nine_path_focus.png`, `button_*.png` | geprüft am 17.11.2026; eingebaut mit M11 im Thema `ui/theme/wood_theme.tres` |
+| Ausrüstung (M11) | `Items/Weapons/Katana/Sprite.png` 6 × 14, `BigSword/Sprite.png` 7 × 16, `Bow/Sprite.png` 15 × 7; `Items/Resource/GemRed.png` 15 × 15; `Ui/Skill Icon/Items & Weapon/Armor.png` 24 × 24 | geprüft am 17.11.2026; eingebaut mit M11. Die Rüstung hat als einziges ein Symbol mit farbigem Hintergrund – eine Rüstung ohne Hintergrund hat das Paket nicht |
 | Leben im HUD | `Ui/Receptacle/Heart.png`, 5 Bilder à 16 | geprüft: leer bis voll in Viertelschritten |
 | Fähigkeits-Symbole | `Ui/Skill Icon/Spell/`, 24 × 24 | Camouflage für die Unsichtbarkeit geprüft; Schnelligkeit und Stun noch auszuwählen |
 | Schrift | `Ui/Font/NormalFont.ttf` | Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt; gebaut für 9 Pixel; mit A2 für die Schadenszahlen eingebaut |
@@ -758,7 +926,7 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 
 Gate G1 ist bestanden: Nach dem Test von A2 hat der Nutzer am 17.11.2026 geschrieben: „Alles getestet und alles funktioniert … lass uns weitermachen“. Claude wertet das als „die Spielfigur fühlt sich gut an“. Nachstellen lässt sich weiter alles ohne Code über die Werte-Dateien in `data/`. Der Ton fehlt noch; er kommt mit A3 fast am Ende des Projekts.
 
-Phase 2 hat mit M8 – Interaktion begonnen; M8 ist fertig. Als Nächstes kommt M9 – Zerstörbares. Claudes Vorschlag vom 17.11.2026 steht im Plan-Dokument, Tab „Plan & Status“, unter Phase 2; die Kurzfassung steht unten unter „Offene Punkte“. Der Ton kommt erst mit A3.
+Phase 2 läuft: M8 – Interaktion, M9 – Zerstörbares und M10 – Truhen & Beute sind fertig, M11 – Inventar & Ausrüstung ist geliefert und im Test. Mit M11 hat auch A5 – Oberfläche begonnen: das Holz-Thema für Fenster. Danach folgt laut Fahrplan M12 – HUD. Der Ton kommt erst mit A3.
 
 ## Hinweise aus der bisherigen Arbeit
 
@@ -773,7 +941,10 @@ Phase 2 hat mit M8 – Interaktion begonnen; M8 ist fertig. Als Nächstes kommt 
 - Ein neuer Chat hat keine Kopie früherer Lieferungen. Vor einem Wechsel des Chats muss alles im Repo liegen.
 - Die `README.md` ist seit M11a wieder aktuell: Der Dash steht als Baustein unter `components/dash/`, nicht bei den Fähigkeiten.
 - In `hitbox.tscn`, `hurtbox.tscn` und `melee_attack.tscn` zeigt der Editor ein gelbes Warndreieck, weil dort keine Form liegt. Das ist gewollt: Die Form kommt beim Einhängen dazu, beim Schwert beim Start aus der Werte-Datei.
-- Godot speichert offene Szenen, sobald F5 das Spiel startet. Wer zum Testen etwas in einer Szene ändert, stellt es danach zurück, bevor er committet.
+- Godot speichert offene Szenen, sobald F5 das Spiel startet. Wer zum Testen etwas in einer Szene ändert, stellt es danach zurück, bevor er committet; nach Strg+Z also noch einmal Strg+S.
+- Geerbte Szenen wie `pot.tscn` oder `chest_small.tscn` übernehmen ihre Kinder aus der Grundszene. Löschen lassen sich diese Kinder nur dort, in `destructible.tscn` oder `chest.tscn`; in der geerbten Szene ändert man nur ihre Werte.
+- Mehrere getestete Module, die noch nicht im Repo liegen, lassen sich in einem Commit hochladen; wichtig ist nur, dass sie vor dem nächsten Modul im Repo sind.
+- Das Inventarfenster ist im Editor unsichtbar (`Root` ist ausgeblendet). Wer es im Editor ansehen will, schaltet bei `InventoryWindow/Root` das Auge an – und danach wieder aus.
 - Ein neuer Skin ist eine Kopie einer Datei aus `data/skins/` mit anderem Blatt und anderen Zahlen. Die Lage stimmt ohne Änderung, wenn die Figur im Blatt unten steht wie im Paket üblich: bei 32er-Bildern mit den Füßen in Zeile 23, bei 16er-Bildern in Zeile 15, von 0 gezählt.
 - `CharacterView` zeigt im Editor nichts, weil es das Bild erst beim Start baut – wie bisher der Platzhalter. Die Lage prüft man im laufenden Spiel.
 - Ein neuer Effekt ist eine Kopie einer Datei aus `data/effects/` mit anderem Blatt und anderen Zahlen. Eingehängt wird er mit der Szene `components/effect_cue/effect_cue.tscn` neben dem Baustein, dessen Signal ihn auslösen soll; Signal und Lage stellt man im Inspektor ein.
@@ -781,22 +952,35 @@ Phase 2 hat mit M8 – Interaktion begonnen; M8 ist fertig. Als Nächstes kommt 
 - Texte im Spiel ohne ß, Gedankenstrich – und unteres Anführungszeichen „: `NormalFont` hat diese Zeichen nicht. Statt ß steht „ss“ (E4), statt – ein Bindestrich.
 - Ein neues bedienbares Ding: die Szene `components/interactable/interactable.tscn` als Kind anhängen, darunter eine `CollisionShape2D` legen und im Skript auf `interacted` hören.
 - Eine neue Tür: `world/door/door.tscn` instanzieren. Ohne Kanal öffnet E sie; mit Kanal folgt sie allen Hebeln und Druckplatten mit demselben Kanal. Ein Gittertor bekommt beim Kind `PropView` den Skin `data/skins/gate_bars.tres`.
+- Zerstörbares ins Level: `world/destructible/pot.tscn`, `crate.tscn`, `rock.tscn` oder `tree.tscn` instanzieren. Ein neues Ding: im Editor „Neue geerbte Szene“ aus `destructible.tscn`, dann Skin, Leben, Splitter, Beute-Liste und Formen wählen. Ohne `LootSpawner` im Level fällt keine Beute.
+- Eine neue Beute-Liste ist eine Kopie einer Datei aus `data/loot/`; jede Zeile hat Gegenstand, Anzahl und Wahrscheinlichkeit von 0 bis 1.
+- Eine Truhe ins Level: `world/chest/chest_small.tscn` oder `chest_big.tscn` instanzieren. Verschließen: bei `required_key` einen Gegenstand wählen, etwa `data/items/gold_key.tres`. Andere Beute: beim Kind `LootDropper` eine andere Liste aus `data/loot/` wählen. Ein Schlüssel zum Finden: `entities/pickup/pickup.tscn` instanzieren und als `item` den Schlüssel wählen.
+- Neue Ausrüstung: eine Datei aus `data/items/` kopieren, etwa `broadsword.tres`, und `id`, Namen, Symbol, Platz und Werte ändern. Eine Waffe bekommt bei `melee` eigene Werte wie in `data/player/sword.tres`. Ins Spiel kommt sie als Beute, in einer Truhe oder als `Pickup` am Boden.
+- Ein neues Fenster bekommt das Holz-Thema, indem man bei seinem obersten `Control` unter `Theme` die Datei `ui/theme/wood_theme.tres` wählt.
+- Neue Splitter: eine Datei aus `data/effects/debris_*.tres` kopieren, Streifen und `piece_count` anpassen und sie einem `DebrisCue` geben. Die Streifen in `FX/Particle/` sind Bruchstücke nebeneinander, keine Animation; mit `tint` lässt sich ein Streifen einfärben.
 
 ## Offene Punkte
 
-- M9 – Zerstörbares: Claudes Vorschlag vom 17.11.2026 steht im Plan-Dokument, Tab „Plan & Status“, unter Phase 2; er wartet auf „weiter“ oder Änderungen. Kurz: Topf (10 Leben, ein Hieb, 50 % 3 Shuriken), Kiste (20 Leben, 5 Pfeile, 30 % dazu 2 Kunai), Baum (40 Leben, wird zum Stumpf, der im Weg bleibt, 2 Äste), Stein (20 Leben; Schwert und Geschosse prallen mit Funken ab, nur Dynamit sprengt ihn; 1 Stein, 25 % 1 Dynamit). Äste und Steine sind neue Gegenstände der Art Material. Die Beute springt als Gegenstand neben das Ding; drüberlaufen sammelt sie ins Inventar, ist es voll, bleibt der Rest liegen – das Aufsammeln zieht damit aus M10 nach M9. Beute entsteht zentral über den EventBus und einen `LootSpawner` im Level, wie Geschosse. Treffer bekommen eine Art – Klinge, Geschoss, Explosion. Splitter aus `FX/Particle`. Testkammer: ein Feld unten links. Nicht dabei: Wiederkehren nach dem Zerstören (bis M16 stellt F2 alles wieder her) und Ton.
+- M11 – Inventar & Ausrüstung: geliefert am 17.11.2026 als `m11_inventar.zip`, der Test des Nutzers steht aus. Danach schließt Claude M11 ab und schlägt M12 – HUD vor.
+- Beim Bauen von M11 ergänzt: Esc schließt das Inventarfenster ebenfalls. Das Fenster liegt über der Debug-Anzeige; wer „S1 Leben“ lesen will, schließt es.
+- Im Inventarfenster haben mehr als 20 Plätze noch keinen Raum; ein größeres Inventar braucht später Blättern oder einen größeren Rahmen.
+- M9 und M10 sind getestet, aber noch nicht im Repo. Vor dem Einspielen von M11 committen und hochladen: `m9_zerstoerbares.zip`, `m9_abschluss.zip`, `m10_truhen.zip`, `m10_abschluss.zip` – am einfachsten in einem Commit, weil alle schon entpackt sind.
+- Eine Sache hat Claude in M10 selbst ergänzt, der Nutzer hat sie mit dem Test bestätigt: das goldene Funkeln beim Öffnen. Zurücknehmen ohne Code: in `world/chest/chest.tscn` den Knoten `OpenEffect` löschen.
+- Schlüssel gibt es bisher nur für Truhen. Türen mit Schloss – das Paket hat dafür den Schlüsselloch-Block in `TilesetDungeon.png` – kommen, wenn ein Level sie braucht.
+- Drei Dinge hat Claude in M9 selbst entschieden, der Nutzer hat sie mit dem Test bestätigt: keine Energie aus Zerstörbarem, Blätter je Hieb am Baum, der graugrüne Fels als Stein. Zurücknehmen ginge ohne Code: `feeds_attacker` an der Hurtbox anschalten, den Knoten `LeafHit` löschen, in `data/skins/rock.tres` eine andere Zelle wählen.
+- Zerstörtes kommt nicht wieder, Beute bleibt liegen, bis der Raum neu lädt. Ob Dinge später wiederkehren und ob Beute verschwindet, gehört zu M16.
 - Ein Kanal kennt nur ODER: Eine Tür ist offen, sobald einer ihrer Schalter an ist. Ein Tor, das zwei Hebel zugleich braucht, gibt es noch nicht.
 - Ton (A3): auf Wunsch des Nutzers verschoben, fast ans Ende des Projekts, mit Phase 7 – Feinschliff. Bis dahin hat kein Modul Ton; `SoundCue` und die Ton-Tabelle entstehen erst dann.
 - Der Hieb-Effekt richtet sich nicht von selbst nach der Trefferzone: Ändern sich `start_distance` oder `reach` in `data/player/sword.tres`, ist `distance` am Knoten `SlashEffect` der Spielfigur nachzuziehen. Heute ist es 8, also `start_distance` + 2.
 - Grafik, noch ungeprüft – Claude klärt das, bevor ein Schritt es braucht: Lage des Katanas über der Figur (erst wenn das Schwert sichtbar wird); Effekte, die im Katalog „unklar“ heißen (wenn ein Schritt sie braucht); alle Töne, bisher nur die Namen (A3); Übergangsregeln der Kacheln (A4); `TilesetFloor.png` mit 417 Pixeln Höhe, nicht durch 16 teilbar (A4); Symbole für Schnelligkeit und Stun (A5).
 - Schießen zeigt kein eigenes Bild der Figur; das Paket hat für die `NinjaGreen` keins. Die Geschosse haben seit M11a ihr Flugbild.
-- Wer vor wem gezeichnet wird, richtet sich noch nach der Reihenfolge der Knoten. Eine Sortierung nach Höhe im Bild folgt mit den Kacheln in A4.
+- Wer vor wem gezeichnet wird, richtet sich noch nach der Reihenfolge der Knoten. Eine Sortierung nach Höhe im Bild folgt mit den Kacheln in A4. Seit M9 fällt das am Baum auf: Läuft die Figur hinter seine Krone, steht sie trotzdem davor.
 - Zauber: „keine eigene Kategorie“ ist nur vorläufig gewählt. Die Entscheidung liegt beim Nutzer.
 - Unsichtbarkeit: Dass Gegner die Figur verlieren und ein Angriff daraus Bonus-Schaden macht, folgt mit den Gegnern in Phase 3.
-- Geschosse lassen sich bisher nur mit F2 auffüllen; Nachschub ins Inventar kommt laut Vorschlag mit der Beute aus M9 und mit den Truhen in M10. Energie aus Fläschchen und Speicherpunkten folgt ebenfalls später.
+- Geschosse kommen seit M9 als Beute aus Töpfen, Kisten und Steinen nach, seit M10 auch aus Truhen. Energie aus Fläschchen und Speicherpunkten folgt später.
 - Dynamit trifft die Spielfigur nicht. Ob es später auch eigenen Schaden geben soll, entscheidet der Nutzer.
 - `data/player/ammo.tres` ist seit M11a nicht mehr eingehängt; `bow.tres` gilt nur noch ohne `AmmoSelector`. Beide bleiben vorerst liegen.
-- Die Debug-Anzeige stößt an ihre Grenze; die Leisten und Fähigkeits-Symbole des HUD kommen mit M12.
+- Die Debug-Anzeige stößt an ihre Grenze, seit M9 mit bis zu zwölf Zeilen; die Leisten und Fähigkeits-Symbole des HUD kommen mit M12.
 - Tod & Speichern: Der Neustart des Raums ist vorläufig. Was beim Tod verloren geht und wo gespeichert wird, ist vor M16 zu entscheiden.
 - Stottert die Bewegung auf einem Monitor mit mehr als 60 Hz, gibt es dafür die Physik-Interpolation als Projekteinstellung. Sie ist bewusst noch aus.
 - Der Sicherungsordner `E:\GitHub\TT_alt` kann gelöscht werden, falls er noch existiert.

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="HealthStats" format=3]
+
+[ext_resource type="Script" path="res://components/health/health_stats.gd" id="1_stats"]
+
+[resource]
+script = ExtResource("1_stats")
+max_health = 40.0
+invulnerable_time = 0.0

@@ -1,0 +1,60 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/destructible/destructible.gd" id="1_destructible"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="2_view"]
+[ext_resource type="PackedScene" path="res://components/prop_view/prop_view.tscn" id="3_prop_view"]
+[ext_resource type="PackedScene" path="res://components/health/health.tscn" id="4_health"]
+[ext_resource type="PackedScene" path="res://components/hurtbox/hurtbox.tscn" id="5_hurtbox"]
+[ext_resource type="PackedScene" path="res://components/hit_flash/hit_flash.tscn" id="6_flash"]
+[ext_resource type="PackedScene" path="res://components/effect_cue/effect_cue.tscn" id="7_effect_cue"]
+[ext_resource type="Resource" path="res://data/effects/hit.tres" id="8_hit"]
+[ext_resource type="Resource" path="res://data/effects/spark.tres" id="9_spark"]
+[ext_resource type="PackedScene" path="res://components/debris_cue/debris_cue.tscn" id="10_debris_cue"]
+[ext_resource type="PackedScene" path="res://components/loot_dropper/loot_dropper.tscn" id="11_loot_dropper"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(14, 14)
+
+[node name="Destructible" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_destructible")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="PlaceholderView" parent="." instance=ExtResource("2_view")]
+color = Color(0.6, 0.42, 0.25, 1)
+
+[node name="PropView" parent="." instance=ExtResource("3_prop_view")]
+
+[node name="Health" parent="." instance=ExtResource("4_health")]
+
+[node name="Hurtbox" parent="." instance=ExtResource("5_hurtbox")]
+collision_layer = 16
+feeds_attacker = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_hurt")
+
+[node name="HitFlash" parent="." instance=ExtResource("6_flash")]
+
+[node name="HitEffect" parent="." instance=ExtResource("7_effect_cue")]
+effect = ExtResource("8_hit")
+source_name = "Hurtbox"
+signal_name = "hit_received"
+use_direction = true
+
+[node name="BlockEffect" parent="." instance=ExtResource("7_effect_cue")]
+effect = ExtResource("9_spark")
+source_name = "Hurtbox"
+signal_name = "hit_blocked"
+follow = false
+distance = -6.0
+
+[node name="Debris" parent="." instance=ExtResource("10_debris_cue")]
+
+[node name="LootDropper" parent="." instance=ExtResource("11_loot_dropper")]

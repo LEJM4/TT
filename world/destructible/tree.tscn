@@ -1,0 +1,56 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://world/destructible/destructible.tscn" id="1_base"]
+[ext_resource type="Resource" path="res://data/skins/tree.tres" id="2_skin"]
+[ext_resource type="Resource" path="res://data/destructibles/tree_health.tres" id="3_health"]
+[ext_resource type="Resource" path="res://data/effects/debris_tree.tres" id="4_debris"]
+[ext_resource type="Resource" path="res://data/loot/tree.tres" id="5_loot"]
+[ext_resource type="PackedScene" path="res://components/debris_cue/debris_cue.tscn" id="6_debris_cue"]
+[ext_resource type="Resource" path="res://data/effects/debris_tree_wood.tres" id="7_wood"]
+[ext_resource type="Resource" path="res://data/effects/debris_tree_hit.tres" id="8_leaves_hit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(22, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(24, 24)
+
+[node name="Tree" instance=ExtResource("1_base")]
+leaves_remains = true
+
+[node name="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="PlaceholderView" parent="."]
+color = Color(0.3, 0.6, 0.3, 1)
+
+[node name="PropView" parent="."]
+skin = ExtResource("2_skin")
+
+[node name="Health" parent="."]
+stats = ExtResource("3_health")
+
+[node name="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_hurt")
+
+[node name="HitEffect" parent="."]
+position = Vector2(0, -8)
+
+[node name="Debris" parent="."]
+position = Vector2(0, -18)
+debris = ExtResource("4_debris")
+
+[node name="LootDropper" parent="."]
+table = ExtResource("5_loot")
+
+[node name="WoodDebris" parent="." instance=ExtResource("6_debris_cue")]
+position = Vector2(0, -4)
+debris = ExtResource("7_wood")
+
+[node name="LeafHit" parent="." instance=ExtResource("6_debris_cue")]
+position = Vector2(0, -18)
+debris = ExtResource("8_leaves_hit")
+source_name = "Hurtbox"
+signal_name = "hit_received"

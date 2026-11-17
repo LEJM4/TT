@@ -12,12 +12,21 @@ extends Node2D
 ##   DamageStrip     schmaler Schadensstreifen zum Durchdashen (M5); lässt sich betäuben (M7)
 ##   InteractionCorner  drei kleine Räume unten rechts (M8): Holztür mit E, Gittertor
 ##                   am Hebel (Kanal lever_gate), Gittertor an zwei Druckplatten (plate_gate) -
-##                   eine davor, eine im Raum, damit niemand eingesperrt bleibt
+##                   eine davor, eine im Raum, damit niemand eingesperrt bleibt;
+##                   hinter der Holztür liegt seit M10 ein Goldschlüssel (GoldKey)
+##   DestructibleField  Zerstörbares unten links (M9): zwei Töpfe, zwei Kisten
+##                   nebeneinander, zwei Steine und ein Baum
+##   ChestSmall, ChestBig  Truhen unter dem langen Balken (M10): die kleine ist offen
+##                   für jeden, die große braucht den Goldschlüssel
+##   StartItems      Ausrüstung zum Aufsammeln unter den Startpunkten (M11):
+##                   Breitschwert, Bogen, Lederrüstung, Rubin-Anhänger
+##   LootSpawner     legt alle Beute hin (M9)
 ##   PlayerSpawner   erzeugt die Spielfiguren (M2)
 ##   ProjectileSpawner  erzeugt alle Geschosse (M6)
 ##   PlayerCamera    folgt der Spielfigur (M3); die Grenzen meldet dieses Skript
 ##   Crosshair       Fadenkreuz am Mauszeiger (M4)
 ##   DebugOverlay    Entwickler-Anzeige
+##   InventoryWindow Inventarfenster auf Tab (M11)
 ## Alles außer Walls, Blocks und SpawnPoints lässt sich einzeln löschen,
 ## die Kammer läuft weiter.
 ##

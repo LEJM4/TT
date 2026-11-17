@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="LootTable" format=3]
+
+[ext_resource type="Script" path="res://items/loot_table.gd" id="1_table"]
+[ext_resource type="Script" path="res://items/loot_entry.gd" id="2_entry"]
+[ext_resource type="Resource" path="res://data/items/stone.tres" id="3_stone"]
+[ext_resource type="Resource" path="res://data/items/dynamite.tres" id="4_dynamite"]
+
+[sub_resource type="Resource" id="Resource_stone"]
+script = ExtResource("2_entry")
+item = ExtResource("3_stone")
+amount = 1
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_dynamite"]
+script = ExtResource("2_entry")
+item = ExtResource("4_dynamite")
+amount = 1
+chance = 0.25
+
+[resource]
+script = ExtResource("1_table")
+entries = Array[ExtResource("2_entry")]([SubResource("Resource_stone"), SubResource("Resource_dynamite")])

@@ -35,6 +35,9 @@
 [ext_resource type="Resource" path="res://data/effects/hit.tres" id="34_hit"]
 [ext_resource type="PackedScene" path="res://components/interactor/interactor.tscn" id="35_interactor"]
 [ext_resource type="Resource" path="res://data/player/interactor.tres" id="36_interactor_stats"]
+[ext_resource type="PackedScene" path="res://components/collector/collector.tscn" id="37_collector"]
+[ext_resource type="PackedScene" path="res://components/equipment/equipment.tscn" id="38_equipment"]
+[ext_resource type="Resource" path="res://data/player/equipment.tres" id="39_equipment_stats"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(12, 12)
@@ -123,3 +126,8 @@ use_direction = true
 
 [node name="Interactor" parent="." instance=ExtResource("35_interactor")]
 stats = ExtResource("36_interactor_stats")
+
+[node name="Collector" parent="." instance=ExtResource("37_collector")]
+
+[node name="Equipment" parent="." instance=ExtResource("38_equipment")]
+stats = ExtResource("39_equipment_stats")

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DebrisData" format=3]
+
+[ext_resource type="Script" path="res://entities/debris/debris_data.gd" id="1_debris"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/FX/Particle/RockGray.png" id="2_sheet"]
+
+[resource]
+script = ExtResource("1_debris")
+texture = ExtResource("2_sheet")
+piece_count = 5
+amount = 8
+lifetime = 0.6
+speed_min = 55.0
+speed_max = 100.0
+spread = 70.0
+gravity = 340.0
+damping = 30.0
+spin = 300.0
+scale_min = 0.5
+scale_max = 0.8
+emission_radius = 4.0
+tint = Color(0.67, 0.84, 1, 1)

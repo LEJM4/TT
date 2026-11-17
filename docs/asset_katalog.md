@@ -138,7 +138,7 @@ Alle im 16er-Raster. Der Inhalt ist aus dem Namen geschlossen, außer wo „gesi
 
 | Datei | Größe | Kacheln | Inhalt laut Name |
 | --- | --- | --- | --- |
-| `TilesetNature.png` | 384 × 336 | 24 × 21 | Bäume, Felsen, Büsche – gesichtet; am 17.11.2026 geprüft, Zellen als (Spalte, Zeile): Bäume 32 × 32 bei (0,0) rund, (2,0) Tanne, (4,0) kahl, (6,0) mit Wurzeln; große Stümpfe 32 × 32 bei (0,8) braun und (2,8) orange; kleiner Stumpf (4,8), Holzklotz (5,8); Büsche (7,10) bis (9,11); Steine (7,12) blaugrün, (8,12) rund blau, (9,12) grau gezackt, (11,13) grau rund; Schnee (10,12), (10,13) |
+| `TilesetNature.png` | 384 × 336 | 24 × 21 | Bäume, Felsen, Büsche – gesichtet; am 17.11.2026 geprüft, Zellen als (Spalte, Zeile): Bäume 32 × 32 bei (0,0) rund, (2,0) Tanne, (4,0) kahl, (6,0) mit Wurzeln; große Stümpfe 32 × 32 bei (0,8) braun und (2,8) orange; kleiner Stumpf (4,8), Holzklotz (5,8); Büsche (7,10) bis (9,11); Steine (7,12) blaugrün, (8,12) rund blau, (9,12) Eiszacken weiß-blau, (11,13) hell und rund, eher ein Schneeball; Schnee (10,12), (10,13). Für M9 genauer angesehen: braune Felsen 32 × 32 bei (15,10) und (15,12), klein bei (17,13), (18,13), (19,13); graugrüne Felsen 32 × 32 bei (15,14) und (15,16), klein bei (17,17), (18,17), (19,17) – sie passen zum Symbol `Items/Resource/Rock.png`; Kiesel in Zeile 18 ab (15,18); ein schmaler Baum in Spalte 13 von Zeile 16 bis 18, die Krone 24 Pixel breit und 4 Pixel über die Nachbarspalten, dazu ein fallender Stamm (14,17) und ein Stumpf mit Kerbe (14,18); große Bäume 48 × 48 bei (0,18) rosa, (3,18) grün, (6,18) weiß, (9,18) orange. Eingebaut mit M9: Baum (0,0) und Stumpf (2,8) in `data/skins/tree.tres`, Stein (17,17) in `rock.tres` |
 | `TilesetRelief.png` | 320 × 192 | 20 × 12 | Klippen, Höhenstufen – gesichtet |
 | `TilesetReliefDetail.png` | 192 × 192 | 12 × 12 | Details für Felsen |
 | `TilesetFloor.png` | 352 × 417 | 22 × ⚠ 26 | Böden: Gras, Erde, Sand, Schnee – gesichtet; Höhe kein Vielfaches von 16 |
@@ -154,7 +154,7 @@ Alle im 16er-Raster. Der Inhalt ist aus dem Namen geschlossen, außer wo „gesi
 | `TilesetTowers.png` | 384 × 96 | 24 × 6 | Türme |
 | `TilesetVillageAbandoned.png` | 320 × 192 | 20 × 12 | verlassenes Dorf |
 | `TilesetDungeon.png` | 192 × 64 | 12 × 4 | Dungeon – geprüft am 17.11.2026, Zellen als (Spalte, Zeile): Schlüsselloch-Block (0,0) und (1,0), roter Knopf oben (0,1) und gedrückt (1,1), Druckplatte oben (2,1) und gedrückt (3,1), Stacheln oben (4,1) und unten (5,1), Glasblöcke (0,2) und (1,2), Kugeln auf Sockeln (2,2) bis (7,2), Farbblöcke (0,3) und (1,3), leerer Sockel (2,3), Schalter rot (3,3) und blau (4,3), kleine Schalter (5,3) und (6,3), Kristall (7,3), Steinblock (8,3). Türen gibt es hier keine. Eingebaut mit M8: Druckplatte (2,1) und (3,1), Hebel (3,3) und (4,3) |
-| `TilesetElement.png` | 256 × 240 | 16 × 15 | einzelne Objekte: Kisten, Fässer, Möbel – gesichtet; am 17.11.2026 geprüft, Zellen als (Spalte, Zeile): Kiste (0,0), Topf (1,0), Fass offen (4,0), Truhe (3,1); Gittertor (1,11), Gitterzaun (2,11) bis (4,11), Zellentür (5,11), offene Luken mit Treppe (6,11) bis (9,11), Treppen (6,12) bis (9,12), geschlossene Luken (6,13) bis (9,13) – je in vier Farben. Eingebaut mit M8: Gittertor (1,11) in `data/skins/gate_bars.tres` |
+| `TilesetElement.png` | 256 × 240 | 16 × 15 | einzelne Objekte: Kisten, Fässer, Möbel – gesichtet; am 17.11.2026 geprüft, Zellen als (Spalte, Zeile): Kiste (0,0), Topf (1,0), Fass offen (4,0), Truhe (3,1); Gittertor (1,11), Gitterzaun (2,11) bis (4,11), Zellentür (5,11), offene Luken mit Treppe (6,11) bis (9,11), Treppen (6,12) bis (9,12), geschlossene Luken (6,13) bis (9,13) – je in vier Farben. Eingebaut mit M8: Gittertor (1,11) in `data/skins/gate_bars.tres`; mit M9: Kiste (0,0) in `crate.tres`, Topf (1,0) in `pot.tres` |
 | `TilesetLogic.png` | 128 × 160 | 8 × 10 | geprüft am 17.11.2026: keine Spielobjekte, sondern Markierungen in acht Farben – Flächen, Schlüssel, Auge, Truhe, Fragezeichen, Kreuz, Buchstaben A bis D; wohl für den Leveleditor |
 | `Pipes.png` | 240 × 48 | 15 × 3 | Rohre |
 | `Interior/TilesetInterior.png` | 256 × 320 | 16 × 20 | Möbel, Innenräume |
@@ -194,7 +194,8 @@ Fahrzeuge in `Backgrounds/Vehicles/`: `Boat.png` 80 × 32, `Crane.png` 33 × 36,
 | `Elemental/Rock` | `SpriteSheet.png`, `SpriteSheetB.png` | 420 × 30 | ⚠ 14 à 30 |
 | `Magic/Aura` | `SpriteSheet.png` | 125 × 24 | ⚠ 5 à 25 × 24 |
 | `Elemental/Flam`, `Plant`, `RockSpike`, `Thunder`, `Water`, `WaterPillar` | `SpriteSheet.png` | 200 × 30, 240 × 28 und 210 × 26, 540 × 48, 160 × 28, 440 × 33, 270 × 41 | ⚠ unklar |
-| `Magic/Boost`, `Shield`, `Spark` | `SpriteSheet*.png` | 424 × 35, 144 × 26, 270 × 35 | ⚠ unklar |
+| `Magic/Boost`, `Shield` | `SpriteSheet*.png` | 424 × 35, 144 × 26 | ⚠ unklar |
+| `Magic/Spark` | `SpriteSheet.png` | 270 × 35 | 10 à 27 × 35 – goldenes Funkeln, großer Stern im dritten Bild; das Vorschau-GIF hat 10 Bilder à 0,1 s. Geprüft am 17.11.2026, eingebaut mit M10 als Funkeln beim Öffnen einer Truhe |
 | `Smoke/SmokeCircular` | `SpriteSheet.png` | 240 × 14 | ⚠ unklar |
 | `Slash/` | `SpriteSheetArc.png`, `Circular`, `Multi`, `Slash01`, `Slash02`, `Slash03` | 228 × 34 bis 396 × 50 | ⚠ unklar |
 | `Projectile/Kunai`, `Projectile/Shuriken` | `SpriteSheet.png` | 650 × 59, 690 × 54 | ⚠ unklar |
@@ -203,7 +204,7 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 
 **Geschosse** in `FX/Projectile/`: `Arrow.png` 13 × 5 (zeigt nach rechts – geprüft), `Kunai.png` 14 × 5 (zeigt nach rechts – geprüft am 17.11.2026), `BigKunai.png` 35 × 9, `Shuriken.png` und `ShurikenMagic.png` 32 × 16 (2 à 16; bei `Shuriken.png` zwei Drehbilder – geprüft am 17.11.2026), `BigShuriken.png` 46 × 23 (2 à 23), `Fireball.png`, `EnergyBall.png` und `SpriteSheetRock.png` 64 × 16 (4 à 16), `BigEnergyBall.png` 96 × 24 (4 à 24), `CanonBall.png` 80 × 16 (5 à 16), `IceSpike.png` 144 × 10, `PlantSpike.png` 96 × 20.
 
-**Partikel** in `FX/Particle/` als schmale Streifen: Bamboo, Clouds, Fire, Grass, Leaf, LeafPink, Rain, RainOnFloor, Rock, RockGray, Snow, Spark, Vase, Wood. Geprüft am 17.11.2026: Die meisten sind keine Animationen, sondern einzelne Bruchstücke nebeneinander – `Wood.png` 6 à 16, `Vase.png` 6 à 14, `Leaf.png` und `LeafPink.png` 6 à 12 × 7, `Grass.png` 6 à 12 × 13, `Rock.png` und `RockGray.png` 5 à 16, `Bamboo.png` 6 à 16; `Spark.png` sind 7 à 10 × 8 Funken von klein über groß zu klein. `AllPreview.png` zeigt alle zusammen.
+**Partikel** in `FX/Particle/` als schmale Streifen: Bamboo, Clouds, Fire, Grass, Leaf, LeafPink, Rain, RainOnFloor, Rock, RockGray, Snow, Spark, Vase, Wood. Geprüft am 17.11.2026: Die meisten sind keine Animationen, sondern einzelne Bruchstücke nebeneinander – `Wood.png` 6 à 16, `Vase.png` 6 à 14, `Leaf.png` und `LeafPink.png` 6 à 12 × 7, `Grass.png` 6 à 12 × 13, `Rock.png` und `RockGray.png` 5 à 16, `Bamboo.png` 6 à 16; `Spark.png` sind 7 à 10 × 8 Funken von klein über groß zu klein. `AllPreview.png` zeigt alle zusammen. Eingebaut mit M9: `Vase.png`, `Wood.png`, `Leaf.png` und `RockGray.png` als Splitter in `data/effects/debris_*.tres` – `RockGray.png` ist beige und wird dort graugrün gefärbt –, `Spark.png` als Funke beim Abprallen in `data/effects/spark.tres`.
 
 **Umgebung** in `FX/Environment/`: `Fog.png` 320 × 180, `Raylight.png` 216 × 102.
 
@@ -211,11 +212,11 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 
 | Ordner | Inhalt |
 | --- | --- |
-| `Treasure/` | `LittleTreasureChest.png` 32 × 16 und `BigTreasureChest.png` 32 × 14 (je 2 Bilder: zu und offen – geprüft), `GoldKey.png`, `SilverKey.png`, `GoldCoin.png`, `SilverCoin.png`, `Coin2.png` 40 × 10 (4 à 10), `GoldCup.png`, `SilverCup.png` |
+| `Treasure/` | `LittleTreasureChest.png` 32 × 16 und `BigTreasureChest.png` 32 × 14 (je 2 Bilder: zu und offen – geprüft), `GoldKey.png`, `SilverKey.png`, `GoldCoin.png`, `SilverCoin.png`, `Coin2.png` 40 × 10 (4 à 10), `GoldCup.png`, `SilverCup.png`. Am 17.11.2026 für den Vorschlag zu M10 genauer angesehen: die kleine Truhe türkis mit Goldrand, 2 à 16 × 16, links zu, rechts offen; die große rot, 2 à 16 × 14; die Schlüssel 12 × 8, golden und silbern. Eingebaut mit M10: beide Truhen in `data/skins/chest_small.tres` und `chest_big.tres`, `GoldKey.png` als Goldschlüssel |
 | `Potion/` | `LifePot.png`, `MilkPot.png`, `WaterPot.png`, `EmptyPot.png`, `Heart.png`, `Medipack.png` |
-| `Weapons/<Name>/` | 23 Waffen, je `Sprite.png` und meist `SpriteInHand.png`: Axe, AxeTool, BigSword, Bone, Book, Bow, Bow2, Club, Fishing Rod, Fork, Hammer, Katana, Lance, Lance2, MagicWand, Ninjaku, Pickaxe, Rapier, Sai, Stick, Sword, Sword2, Whip |
+| `Weapons/<Name>/` | 23 Waffen, je `Sprite.png` und meist `SpriteInHand.png`: Axe, AxeTool, BigSword, Bone, Book, Bow, Bow2, Club, Fishing Rod, Fork, Hammer, Katana, Lance, Lance2, MagicWand, Ninjaku, Pickaxe, Rapier, Sai, Stick, Sword, Sword2, Whip. Am 17.11.2026 vermessen: die `Sprite.png` sind schmal und hochkant, etwa BigSword 7 × 16, Katana 6 × 14, Sword 6 × 17, Ninjaku 7 × 12; Bow liegt quer, 15 × 7. Eingebaut mit M11 als Symbole: Katana, BigSword als Breitschwert, Bow als Bogen |
 | `Projectile/` | Arrow, Bomb, Caltrop, CrateDynamite, Dynamite, Kunai, Shuriken – Symbole fürs Inventar; Arrow, Kunai und Dynamite 16 × 16, Shuriken 15 × 15, geprüft am 17.11.2026. Für Dynamit gibt es kein eigenes Flugbild |
-| `Resource/` | BarCopper, BarGold, BarIron, BarMithril, BarPurple, BarSilver, Branch, feather, GemGreen, GemPurple, GemRed, GemYellow, Grass, Rock, Water |
+| `Resource/` | BarCopper, BarGold, BarIron, BarMithril, BarPurple, BarSilver, Branch, feather, GemGreen, GemPurple, GemRed, GemYellow, Grass, Rock, Water – je 16 × 16; Branch und Rock eingebaut mit M9 als Ast und Stein, GemRed 15 × 15 mit M11 als Rubin-Anhänger |
 | `Food/` | Beaf, Calamari, Fish, FortuneCookie, Honey, Meat, Noodle, Nut, Nut2, Octopus, Onigiri, Seed1–3, SeedBig1–3, SeedLarge, SeedLargeWhite, Shrimp, Sushi, Sushi2, TeaLeaf, Yakitori |
 | `Tool/` | Anvil, Axe, Hammer, Hoe, Pickaxe, Shovel, Sickle, WateringCan |
 | `Scroll/` | Scroll, ScrollEmpty, ScrollFire, ScrollIce, ScrollPlant, ScrollRock, ScrollThunder |
@@ -233,10 +234,10 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 | `Receptacle/` | `Heart.png` 80 × 16 (5 à 16: leer bis voll in Viertelschritten – geprüft), `Heart2.png` und `Heart3.png` 64 × 16 (4 à 16), `LifeBarMiniProgress.png`, `LifeBarMiniUnder.png`, `IconHeart.png` |
 | `Receptacle/Receptacle Rectangle/`, `Receptacle Sphere/` | Rahmen (`Background*.png`) und Füllungen (`Progress*.png`) für Leisten und Kugeln, darunter `ProgressHealth.png` und `ProgressMana.png` |
 | `Skill Icon/Spell/` | 34 Symbole à 24 × 24, fast alle auch als `…Disabled.png`: darunter Camouflage (geprüft), Mist, Vision, Fireball, Heal, Counter, Cut |
-| `Skill Icon/Items & Weapon/`, `Job & Action/`, `Meteo/` | weitere 28 Symbole à 24 × 24 mit `…Disabled.png`: darunter Interact, Talk, Punch, Potion, Kunai, Shuriken |
+| `Skill Icon/Items & Weapon/`, `Job & Action/`, `Meteo/` | weitere 28 Symbole à 24 × 24 mit `…Disabled.png`: darunter Interact, Talk, Punch, Potion, Kunai, Shuriken. In `Items & Weapon/` am 17.11.2026 angesehen: Amulet, Armor, Arrow, Boot, Guard, Helmet, Hook, Kunai, Money, Ring, Scroll, Shuriken – Gegenstände auf farbigem Quadrat; eine Rüstung als Gegenstand ohne Hintergrund hat das Paket nicht. `Armor.png` ist mit M11 das Symbol der Lederrüstung |
 | `Input/Keyboard/` | Tastensymbole 13 × 13: Buchstaben, Ziffern, F1–F12, Pfeile, Shift, Ctrl, Alt, Space, Tab, Enter, Escape. Die Dateien heißen `Key<Name>.png`, etwa `KeyE.png` – geprüft am 17.11.2026; `KeyE.png` ist seit M8 die Taste über der Figur |
 | `Input/Mouse/`, `Input/Gamepad/` | Maus mit linker, rechter, mittlerer Taste und Rad; Gamepad-Tasten |
-| `Theme/Theme Wood/` | fertiges Oberflächen-Thema: Knöpfe, Rahmen als Nine-Patch, `inventory_cell.png`, Schieberegler, Reiter, Häkchen |
+| `Theme/Theme Wood/` | fertiges Oberflächen-Thema: Knöpfe, Rahmen als Nine-Patch, `inventory_cell.png`, Schieberegler, Reiter, Häkchen. Am 17.11.2026 für den Vorschlag zu M11 angesehen, nur PNG-Dateien, kein fertiges Godot-Thema: `inventory_cell.png` 16 × 16 graugrün mit dunklem Rand; `nine_path_panel.png`, `_2`, `_3` je 16 × 16, orange Rahmen – leer, mit grauem und mit weißem Inneren; `nine_path_panel_interior.png` braun, `nine_path_bg.png` und `_2` dunkel; `nine_path_focus.png` 8 × 8; Knöpfe 16 × 8, Reiter 16 × 12, Pfeile 16 × 16. Eingebaut mit M11 im Thema `ui/theme/wood_theme.tres`: Rahmen `nine_path_panel.png` mit den Rändern 6, 6, 5, 5, Inneres `nine_path_panel_interior.png` mit 2, Zelle `inventory_cell.png` mit 3, 3, 1, 1, Auswahl `nine_path_focus.png` mit 3 ohne Mitte, Knöpfe mit 2 |
 | `Theme/Wip/` | 12 weitere Rahmen als Entwurf |
 
 ## Ton – `Audio/`
@@ -252,16 +253,18 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 
 ## Prüfstand am Bild
 
-Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 des Grafik-Plans brauchen; am 17.11.2026 dazu die Blätter für M8 – Interaktion; was M8 davon nutzt, steht bei den Kacheln und der Oberfläche. Ebenfalls am 17.11.2026 für den Vorschlag zu M9: Kiste, Topf, Baum, Stumpf, Stein und die Splitter in `FX/Particle/`.
+Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 des Grafik-Plans brauchen; am 17.11.2026 dazu die Blätter für M8 – Interaktion; was M8 davon nutzt, steht bei den Kacheln und der Oberfläche. Ebenfalls am 17.11.2026 für M9 – Zerstörbares: Kiste, Topf, Baum, Stumpf, Felsen, die Splitter in `FX/Particle/` und die Symbole aus `Items/Resource/`; was M9 davon nutzt, steht bei den Kacheln, den Effekten und den Gegenständen. Für M10 – Truhen & Beute: die beiden Truhen, die Schlüssel und das Funkeln in `FX/Magic/Spark/`. Für M11 – Inventar & Ausrüstung: das Holz-Thema in `Ui/Theme/Theme Wood/`, die Symbole in `Ui/Skill Icon/Items & Weapon/` und die Waffen-Bilder in `Items/Weapons/`; was M11 davon nutzt, steht bei der Oberfläche und den Gegenständen.
 
 | Prüfung | Stand |
 | --- | --- |
 | Reihenfolge der vier Blickrichtungen bei Figuren und Monstern | erledigt: unten, oben, links, rechts |
+| Holz-Thema als Fenster | erledigt am 17.11.2026 für M11: Rahmen, Inneres, Zelle und Auswahl als Bild nachgestellt; die Ränder stehen beim Holz-Thema in der Oberfläche |
 | Aufbau der animierten Hauptfigur und der Waffen-Blätter | erledigt für die Figur und `Katana.png`; offen sind die übrigen Waffen und die Lage der Waffe über der Figur |
 | Die beiden Zustände der Truhen | erledigt: zu und offen |
 | Alle mit ⚠ „unklar“ markierten Effekt-Streifen | offen |
 | `TilesetFloor.png`: Höhe 417 ist kein Vielfaches von 16 | offen |
 | Inhalt der Tilesets | teilweise: Floor, Nature, Relief und WallSimple gesichtet; am 17.11.2026 geprüft: Dungeon und Logic ganz, in House die Türen, in Element Gitter, Luken und Treppen; Regeln für Übergänge offen |
 | `Actor/Monster/BambooYellow/` als Bild der Übungspuppe | erledigt am 17.11.2026: orange Fassung von Bamboo, gleiches Raster; eingebaut mit A1 |
+| Bäume, Stümpfe, Felsen in `TilesetNature.png` und die Streifen in `FX/Particle/` | erledigt am 17.11.2026 für M9: Lage der Bäume und Felsen siehe Kacheln; die Streifen sind Bruchstücke nebeneinander, nur `Spark.png` ist eine Bildfolge |
 | Symbole für Schnelligkeit und Stun in `Ui/Skill Icon/` | offen, noch auszuwählen |
 | Töne | nur die Namen bekannt; anhören kann nur der Nutzer |

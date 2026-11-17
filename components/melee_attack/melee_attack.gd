@@ -7,7 +7,10 @@ extends Node2D
 ## Die Figur ruft try_attack(richtung) auf. Der Knoten dreht sich in die
 ## Richtung und macht seine Hitbox für kurze Zeit scharf. Größe und Lage der
 ## Trefferzone kommen aus der Werte-Datei. Jeder Treffer füllt das Geschwister
-## mit dem Namen aus gain_supply_name auf (ein Supply), etwa die Energie.
+## mit dem Namen aus gain_supply_name auf (ein Supply), etwa die Energie -
+## außer an Hurtboxen, die das nicht wollen, etwa an Zerstörbarem (M9).
+## Eine andere Waffe bringt andere Werte: set_stats() wechselt sie, set_stats(null)
+## kehrt zu den Werten aus dem Inspektor zurück (M11).
 ##
 ## Abschalten: Knoten löschen - die Figur kann dann nicht mehr zuschlagen.
 
@@ -33,6 +36,8 @@ var rate_factor := 1.0
 var _active_left := 0.0
 var _cooldown_left := 0.0
 var _gain_supply: Supply
+# Die Werte aus dem Inspektor; zu ihnen führt set_stats(null) zurück (M11).
+var _base_stats: MeleeStats
 
 @onready var _hitbox := get_node_or_null("Hitbox") as Hitbox
 @onready var _shape_node := get_node_or_null("Hitbox/CollisionShape2D") as CollisionShape2D
@@ -42,12 +47,34 @@ func _ready() -> void:
 	if stats == null:
 		push_warning("MeleeAttack: keine Werte-Datei gesetzt, nutze Standardwerte.")
 		stats = MeleeStats.new()
+	if _base_stats == null:
+		_base_stats = stats
 	if _hitbox != null:
-		_hitbox.damage = stats.damage
 		_hitbox.collision_mask = target_mask
 		_hitbox.hit_landed.connect(_on_hit_landed)
 	if not gain_supply_name.is_empty():
 		_gain_supply = get_parent().get_node_or_null(gain_supply_name) as Supply
+	_apply_stats()
+
+
+## Wechselt die Werte, etwa für eine andere Waffe (M11). null: zurück zu den Werten aus dem Inspektor.
+func set_stats(new_stats: MeleeStats) -> void:
+	if _base_stats == null:
+		_base_stats = stats
+	if new_stats != null:
+		stats = new_stats
+	else:
+		stats = _base_stats
+	if is_node_ready():
+		_apply_stats()
+
+
+# Überträgt Schaden und Trefferzone aus stats auf die Hitbox.
+func _apply_stats() -> void:
+	if stats == null:
+		return
+	if _hitbox != null:
+		_hitbox.damage = stats.damage
 	if _shape_node != null:
 		var zone := RectangleShape2D.new()
 		zone.size = Vector2(stats.reach, stats.width)
@@ -93,8 +120,8 @@ func _finish() -> void:
 	attack_finished.emit()
 
 
-func _on_hit_landed(_hurtbox: Hurtbox) -> void:
-	if _gain_supply != null:
+func _on_hit_landed(hurtbox: Hurtbox) -> void:
+	if _gain_supply != null and hurtbox.feeds_attacker:
 		_gain_supply.add(stats.gain_per_hit)
 
 

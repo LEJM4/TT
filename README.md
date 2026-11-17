@@ -15,14 +15,14 @@
 | Ordner | Inhalt |
 | --- | --- |
 | `autoload/` | Globale Dienste: EventBus, Tastenbelegung, Spielstand, Szenenwechsel, Ton |
-| `components/` | Bausteine für alle: Bild, Effekte, Leben, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion; später Zustandsautomat |
-| `entities/` | Figuren und Bewegliches: `player/`, `dummy/`, `projectile/`, `effect/`; später `enemies/`, `npcs/` |
+| `components/` | Bausteine für alle: Bild, Effekte, Splitter, Leben, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion, Beute, Aufsammeln, Ausrüstung; später Zustandsautomat |
+| `entities/` | Figuren und Bewegliches: `player/`, `dummy/`, `projectile/`, `effect/`, `debris/`, `pickup/`; später `enemies/`, `npcs/` |
 | `abilities/` | Fähigkeiten: Schnelligkeit, Unsichtbarkeit, Stun; der Dash ist ein Baustein in `components/dash/` |
-| `items/` | Baupläne für Gegenstände und Geschosse; die Gegenstände selbst liegen in `data/items/`; später Beutetabellen |
-| `world/` | Dinge der Welt: Schadensfeld, Türen, Hebel, Druckplatten; später Truhen und Zerstörbares |
+| `items/` | Baupläne für Gegenstände, Geschosse, Ausrüstung und Beute-Listen; die Gegenstände selbst liegen in `data/items/` – Geschosse, Materialien, Schlüssel, Ausrüstung –, die Listen in `data/loot/` |
+| `world/` | Dinge der Welt: Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen |
 | `levels/` | `test_chamber/`, später die Level und die Zeitkapsel |
-| `ui/` | HUD, Inventar, Dialog, Menüs; `ui/debug/` für Entwickler-Anzeigen |
-| `data/` | Werte-Dateien (`.tres`): Balancing, Skins, Gegenstände, Effekte |
+| `ui/` | Oberfläche: `inventory/` das Inventarfenster, `theme/` das Holz-Thema für alle Fenster, `crosshair/`, `debug/` für Entwickler-Anzeigen; später HUD, Dialog, Menüs |
+| `data/` | Werte-Dateien (`.tres`): Balancing, Skins, Gegenstände, Effekte, Beute |
 | `assets/` | Grafik und Ton – siehe `assets/README.md` |
 | `docs/` | Stand-Datei und Grafik-Katalog; von Godot ignoriert |
 | `tools/` | Hilfsskripte; von Godot ignoriert |

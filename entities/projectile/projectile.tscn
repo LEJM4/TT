@@ -21,6 +21,7 @@ radius = 24.0
 script = ExtResource("1_projectile")
 
 [node name="Hitbox" parent="." instance=ExtResource("2_hitbox")]
+kind = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_hit")
@@ -44,6 +45,7 @@ monitorable = false
 shape = SubResource("RectangleShape2D_target")
 
 [node name="ExplosionHitbox" parent="." instance=ExtResource("2_hitbox")]
+kind = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionHitbox"]
 shape = SubResource("CircleShape2D_explosion")

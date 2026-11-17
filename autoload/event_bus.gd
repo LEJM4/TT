@@ -36,3 +36,14 @@ signal projectile_requested(scene: PackedScene, origin: Vector2, direction: Vect
 ## Eine Tür ist offen, solange mindestens ein Schalter auf ihrem Kanal an ist.
 @warning_ignore("unused_signal")
 signal switch_changed(channel: StringName, switch_id: int, is_on: bool)
+
+## Ein Ding lässt Beute fallen: Der LootSpawner des Levels soll sie hinlegen (M9).
+## item ist der Gegenstand (ein ItemData), amount seine Anzahl, origin der Ort,
+## von dem die Beute wegspringt.
+@warning_ignore("unused_signal")
+signal loot_requested(item: Resource, amount: int, origin: Vector2)
+
+## Ein Menü einer Spielfigur ist auf- oder zugegangen, etwa das Inventar (M11).
+## Solange es offen ist, nimmt die Figur keine Eingaben an; die Welt läuft weiter.
+@warning_ignore("unused_signal")
+signal menu_changed(player_id: int, is_open: bool)

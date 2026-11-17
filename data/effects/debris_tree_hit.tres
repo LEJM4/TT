@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DebrisData" format=3]
+
+[ext_resource type="Script" path="res://entities/debris/debris_data.gd" id="1_debris"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/FX/Particle/Leaf.png" id="2_sheet"]
+
+[resource]
+script = ExtResource("1_debris")
+texture = ExtResource("2_sheet")
+piece_count = 6
+amount = 3
+lifetime = 0.9
+speed_min = 10.0
+speed_max = 30.0
+spread = 180.0
+gravity = 45.0
+damping = 5.0
+spin = 120.0
+scale_min = 0.8
+scale_max = 1.0
+emission_radius = 8.0
+tint = Color(1, 1, 1, 1)

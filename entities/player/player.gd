@@ -1,5 +1,5 @@
 extends CharacterBody2D
-## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten, A1: Bild, M11a: Inventar, M8: Interaktion).
+## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten, A1: Bild, M11a: Inventar, M8: Interaktion, M9: Aufsammeln, M11: Ausrüstung).
 ##
 ## Die Figur führt nur Absichten aus. Woher sie kommen, bestimmt das Kind
 ## "PlayerInput" (ein IntentSource): Tasten, später Gamepad oder Netz.
@@ -11,8 +11,11 @@ extends CharacterBody2D
 ## Fähigkeiten liegen als Kinder unter "Abilities"; ihr Platz dort bestimmt
 ## die Taste. Sie kosten Energie, die nur durch Schwerttreffer zurückkommt.
 ## Die Taste E bedient das nächste Ding in Reichweite, etwa eine Tür (M8).
+## Beute am Boden sammelt sie beim Drüberlaufen ins Inventar (M9).
+## Was sie angelegt hat - Waffe, Fernkampf, Rüstung, Anhänger -, verwaltet ihr Kind
+## Equipment; es ändert die Werte von Schwert, Geschossen und Leben (M11).
 ## Die Zahlen stehen in data/player/: movement.tres, stamina.tres,
-## health.tres, sword.tres, dash.tres, bow.tres, energy.tres, inventory.tres und interactor.tres;
+## health.tres, sword.tres, dash.tres, bow.tres, energy.tres, inventory.tres, interactor.tres und equipment.tres;
 ## die Werte der Fähigkeiten in data/abilities/, die der Geschosse in data/items/.
 ##
 ## Kinder und was ohne sie passiert:
@@ -31,6 +34,8 @@ extends CharacterBody2D
 ##   Abilities     Fähigkeiten  - ohne: Sie hat keine Fähigkeiten.
 ##   Energy        Energie      - ohne: Fähigkeiten kosten nichts.
 ##   Interactor    Interaktion  - ohne: Sie bedient nichts mit E (M8).
+##   Collector     Aufsammeln   - ohne: Sie läuft über Beute hinweg (M9).
+##   Equipment     Ausrüstung   - ohne: Sie kämpft mit ihren Grundwerten (M11).
 ##
 ## Stirbt die Figur, bleibt sie stehen und meldet es über den EventBus
 ## (player_died); ihr Bild zeigt den Tod, der Platzhalter wird grau.

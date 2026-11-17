@@ -6,6 +6,8 @@ extends Node
 ## Figur hängen und im Inspektor eine Werte-Datei (HealthStats) wählen.
 ## Schaden kommt über apply_damage(). Das ist die einzige Stelle, an der über
 ## Schaden entschieden wird: Tote und gerade Unverwundbare nehmen keinen.
+## Ausrüstung wirkt hier mit (M11): armor zieht von jedem Treffer etwas ab -
+## mindestens 1 bleibt -, set_bonus_maximum() gibt mehr Leben.
 ## Später bestimmt hier der Gastgeber des Spiels.
 ##
 ## Abschalten: Knoten löschen - die Figur nimmt dann keinen Schaden mehr.
@@ -26,15 +28,19 @@ signal revived
 var current := 0.0
 ## Tot: Das Leben ist auf 0 gefallen und wurde noch nicht zurückgesetzt.
 var is_dead := false
+## Rüstung: so viel weniger Schaden macht jeder Treffer; mindestens 1 bleibt (M11).
+## Setzt der Baustein Equipment.
+var armor := 0.0
 
 var _invulnerable_left := 0.0
+var _bonus_maximum := 0.0
 
 
 func _ready() -> void:
 	if stats == null:
 		push_warning("Health: keine Werte-Datei gesetzt, nutze Standardwerte.")
 		stats = HealthStats.new()
-	current = stats.max_health
+	current = get_maximum()
 
 
 func _physics_process(delta: float) -> void:
@@ -42,9 +48,17 @@ func _physics_process(delta: float) -> void:
 		_invulnerable_left -= delta
 
 
-## Größtes Leben laut Werte-Datei.
+## Größtes Leben: laut Werte-Datei, dazu, was Ausrüstung gibt (M11).
 func get_maximum() -> float:
-	return stats.max_health
+	return stats.max_health + _bonus_maximum
+
+
+## Mehr Leben durch Ausrüstung, etwa einen Anhänger (M11). Das aktuelle Leben
+## bleibt, wie es ist, höchstens aber der neue Höchstwert.
+func set_bonus_maximum(value: float) -> void:
+	_bonus_maximum = maxf(value, 0.0)
+	_set_current(minf(current, get_maximum()))
+	changed.emit(current, get_maximum())
 
 
 ## Ist die Figur gerade unverwundbar - nach einem Treffer oder bei einem Dash?
@@ -64,6 +78,8 @@ func make_invulnerable(seconds: float) -> void:
 func apply_damage(amount: float) -> float:
 	if is_dead or is_invulnerable() or amount <= 0.0:
 		return 0.0
+	if armor > 0.0:
+		amount = maxf(amount - armor, 1.0)
 	var before := current
 	_set_current(current - amount)
 	var dealt := before - current
@@ -84,14 +100,14 @@ func reset() -> void:
 	var was_dead := is_dead
 	is_dead = false
 	_invulnerable_left = 0.0
-	_set_current(stats.max_health)
+	_set_current(get_maximum())
 	if was_dead:
 		revived.emit()
 
 
 func _set_current(value: float) -> void:
-	var new_value := clampf(value, 0.0, stats.max_health)
+	var new_value := clampf(value, 0.0, get_maximum())
 	if is_equal_approx(new_value, current):
 		return
 	current = new_value
-	changed.emit(current, stats.max_health)
+	changed.emit(current, get_maximum())

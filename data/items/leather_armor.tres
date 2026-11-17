@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EquipmentData" format=3]
+
+[ext_resource type="Script" path="res://items/equipment_data.gd" id="1_item"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Skill Icon/Items & Weapon/Armor.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_item")
+slot = 2
+projectile_damage_bonus = 0.0
+armor = 3.0
+max_health_bonus = 0.0
+id = &"leather_armor"
+display_name = "Lederrüstung"
+category = 1
+icon = ExtResource("2_icon")
+max_stack = 1

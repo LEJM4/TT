@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EquipmentData" format=3]
+
+[ext_resource type="Script" path="res://items/equipment_data.gd" id="1_item"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Items/Weapons/BigSword/Sprite.png" id="2_icon"]
+[ext_resource type="Script" path="res://components/melee_attack/melee_stats.gd" id="3_melee_stats"]
+
+[sub_resource type="Resource" id="Resource_melee"]
+script = ExtResource("3_melee_stats")
+damage = 15.0
+gain_per_hit = 10.0
+start_distance = 6.0
+reach = 18.0
+width = 20.0
+active_time = 0.12
+cooldown = 0.5
+
+[resource]
+script = ExtResource("1_item")
+slot = 0
+melee = SubResource("Resource_melee")
+projectile_damage_bonus = 0.0
+armor = 0.0
+max_health_bonus = 0.0
+id = &"broadsword"
+display_name = "Breitschwert"
+category = 0
+icon = ExtResource("2_icon")
+max_stack = 1

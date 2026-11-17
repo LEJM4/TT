@@ -11,6 +11,8 @@ extends Node2D
 ## Liegt daneben ein AmmoSelector (Name aus ammo_name, M11a), kommen Werte und
 ## Kosten von dort: geworfen wird das gewählte Geschoss aus dem Inventar, und
 ## stats und supply_name gelten nicht.
+## damage_bonus macht jedes Geschoss beim Aufprall härter, etwa mit einem
+## angelegten Bogen (M11); die Werte-Datei des Geschosses bleibt dabei unberührt.
 ##
 ## Abschalten: Knoten löschen - die Figur kann dann nicht mehr schießen.
 ## Ohne Supply und AmmoSelector ist jeder Schuss kostenlos.
@@ -32,6 +34,8 @@ signal shot_fired(direction: Vector2)
 
 ## Tempo-Faktor für die Pause zwischen zwei Schüssen; über 1 geht es schneller (M7).
 var rate_factor := 1.0
+## So viel mehr Schaden macht jedes Geschoss beim Aufprall (M11). Setzt der Baustein Equipment.
+var damage_bonus := 0.0
 
 var _cooldown_left := 0.0
 var _supply: Supply
@@ -76,6 +80,10 @@ func try_shoot(direction: Vector2) -> bool:
 	if not _pay(shot):
 		return false
 	_cooldown_left = shot.cooldown
+	if damage_bonus > 0.0 and shot.damage > 0.0:
+		# Eine Kopie: Die Werte-Datei des Geschosses teilen sich alle Würfe.
+		shot = shot.duplicate() as RangedStats
+		shot.damage += damage_bonus
 	var aim := direction.normalized()
 	var origin := global_position + aim * shot.spawn_distance
 	EventBus.projectile_requested.emit(projectile_scene, origin, aim, shot, target_mask)

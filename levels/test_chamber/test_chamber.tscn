@@ -17,6 +17,20 @@
 [ext_resource type="PackedScene" path="res://world/lever/lever.tscn" id="15_lever"]
 [ext_resource type="PackedScene" path="res://world/pressure_plate/pressure_plate.tscn" id="16_plate"]
 [ext_resource type="Resource" path="res://data/skins/gate_bars.tres" id="17_gate_skin"]
+[ext_resource type="PackedScene" path="res://world/destructible/pot.tscn" id="18_pot"]
+[ext_resource type="PackedScene" path="res://world/destructible/crate.tscn" id="19_crate"]
+[ext_resource type="PackedScene" path="res://world/destructible/tree.tscn" id="20_tree"]
+[ext_resource type="PackedScene" path="res://world/destructible/rock.tscn" id="21_rock"]
+[ext_resource type="PackedScene" path="res://entities/pickup/loot_spawner.tscn" id="22_loot_spawner"]
+[ext_resource type="PackedScene" path="res://world/chest/chest_small.tscn" id="23_chest_small"]
+[ext_resource type="PackedScene" path="res://world/chest/chest_big.tscn" id="24_chest_big"]
+[ext_resource type="PackedScene" path="res://entities/pickup/pickup.tscn" id="25_pickup"]
+[ext_resource type="Resource" path="res://data/items/gold_key.tres" id="26_gold_key"]
+[ext_resource type="PackedScene" path="res://ui/inventory/inventory_window.tscn" id="27_inventory_window"]
+[ext_resource type="Resource" path="res://data/items/broadsword.tres" id="28_broadsword"]
+[ext_resource type="Resource" path="res://data/items/bow.tres" id="29_bow"]
+[ext_resource type="Resource" path="res://data/items/leather_armor.tres" id="30_leather_armor"]
+[ext_resource type="Resource" path="res://data/items/ruby_charm.tres" id="31_ruby_charm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
 size = Vector2(960, 16)
@@ -261,6 +275,59 @@ channel = &"plate_gate"
 position = Vector2(168, 56)
 channel = &"plate_gate"
 
+[node name="GoldKey" parent="InteractionCorner" instance=ExtResource("25_pickup")]
+position = Vector2(40, 56)
+item = ExtResource("26_gold_key")
+
+[node name="DestructibleField" type="Node2D" parent="."]
+position = Vector2(72, 328)
+
+[node name="PotA" parent="DestructibleField" instance=ExtResource("18_pot")]
+
+[node name="PotB" parent="DestructibleField" instance=ExtResource("18_pot")]
+position = Vector2(48, 0)
+
+[node name="CrateA" parent="DestructibleField" instance=ExtResource("19_crate")]
+position = Vector2(96, 0)
+
+[node name="CrateB" parent="DestructibleField" instance=ExtResource("19_crate")]
+position = Vector2(112, 0)
+
+[node name="RockA" parent="DestructibleField" instance=ExtResource("21_rock")]
+position = Vector2(0, 80)
+
+[node name="RockB" parent="DestructibleField" instance=ExtResource("21_rock")]
+position = Vector2(48, 80)
+
+[node name="Tree" parent="DestructibleField" instance=ExtResource("20_tree")]
+position = Vector2(104, 100)
+
+[node name="ChestSmall" parent="." instance=ExtResource("23_chest_small")]
+position = Vector2(616, 488)
+
+[node name="ChestBig" parent="." instance=ExtResource("24_chest_big")]
+position = Vector2(680, 488)
+
+[node name="StartItems" type="Node2D" parent="."]
+
+[node name="Broadsword" parent="StartItems" instance=ExtResource("25_pickup")]
+position = Vector2(192, 176)
+item = ExtResource("28_broadsword")
+
+[node name="Bow" parent="StartItems" instance=ExtResource("25_pickup")]
+position = Vector2(216, 176)
+item = ExtResource("29_bow")
+
+[node name="LeatherArmor" parent="StartItems" instance=ExtResource("25_pickup")]
+position = Vector2(240, 176)
+item = ExtResource("30_leather_armor")
+
+[node name="RubyCharm" parent="StartItems" instance=ExtResource("25_pickup")]
+position = Vector2(264, 176)
+item = ExtResource("31_ruby_charm")
+
+[node name="LootSpawner" parent="." instance=ExtResource("22_loot_spawner")]
+
 [node name="PlayerSpawner" parent="." unique_id=970808961 instance=ExtResource("4_spawner")]
 
 [node name="ProjectileSpawner" parent="." instance=ExtResource("11_projectiles")]
@@ -273,3 +340,5 @@ position = Vector2(240, 135)
 [node name="DebugOverlay" parent="." unique_id=2130183334 instance=ExtResource("3_overlay")]
 show_mouse = false
 hidden_keys = PackedStringArray("Kamera", "Raumzeit")
+
+[node name="InventoryWindow" parent="." instance=ExtResource("27_inventory_window")]

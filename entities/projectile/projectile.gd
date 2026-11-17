@@ -5,9 +5,11 @@ extends Node2D
 ## Erzeugt wird es nur vom ProjectileSpawner des Levels; der ruft direkt nach
 ## dem Einhängen launch() auf. Das Geschoss fliegt in gerader Linie. Es endet,
 ## wenn es so viele Ziele getroffen hat, wie seine Werte erlauben (pierce),
-## wenn es an eine Wand oder einen Block stößt oder seine Reichweite verbraucht
-## hat. Hat es einen Explosionsradius, explodiert es dann und bleibt kurz liegen,
-## während das Kind "ExplosionHitbox" alles im Umkreis trifft.
+## wenn es an eine Wand oder einen Block stößt, wenn es an einem Ziel abprallt,
+## das seine Art Treffer nicht annimmt - etwa an einem Stein (M9) -, oder wenn
+## es seine Reichweite verbraucht hat. Hat es einen Explosionsradius, explodiert
+## es dann und bleibt kurz liegen, während das Kind "ExplosionHitbox" alles im
+## Umkreis trifft.
 ## Schaden beim Aufprall teilt das Kind "Hitbox" aus; Wände und Blöcke bemerkt
 ## das Kind "WorldSensor". Ein Geschoss ohne Aufprall-Schaden bemerkt Ziele über
 ## das Kind "TargetSensor". Wie es aussieht, zeigt das Kind "ProjectileView".
@@ -49,6 +51,7 @@ func launch(direction: Vector2, stats: RangedStats, target_mask: int) -> void:
 		_hitbox.damage = stats.damage
 		_hitbox.collision_mask = target_mask
 		_hitbox.hit_landed.connect(_on_hit_landed)
+		_hitbox.hit_blocked.connect(_on_hit_blocked)
 		_hitbox.activate()
 	if _world_sensor != null:
 		_world_sensor.body_entered.connect(_on_body_entered)
@@ -114,6 +117,11 @@ func _on_hit_landed(_hurtbox: Hurtbox) -> void:
 	_hits_left -= 1
 	if _hits_left <= 0:
 		_finish()
+
+
+# Abgeprallt, etwa an einem Stein: Das Geschoss endet, gleich wie viele Ziele es noch durchschlagen dürfte (M9).
+func _on_hit_blocked(_hurtbox: Hurtbox) -> void:
+	_finish()
 
 
 func _on_body_entered(_body: Node2D) -> void:

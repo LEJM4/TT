@@ -7,14 +7,24 @@ extends Area2D
 ## "enemy_hurtbox" trifft Gegner, "player_hurtbox" trifft Spieler.
 ## Scharf ist sie nur zwischen activate() und deactivate() - oder dauerhaft
 ## mit active_on_start, etwa für ein Schadensfeld.
+## Jeder Treffer hat eine Art - Klinge, Geschoss oder Explosion (M9). Nimmt eine
+## Hurtbox diese Art nicht an, prallt er ab: kein Schaden, dafür hit_blocked -
+## je Ziel einmal je Aktivierung, wie ein Treffer.
 ##
 ## Abschalten: Knoten löschen - es wird kein Schaden mehr ausgeteilt.
 
+## Arten von Treffern (M9). Die Reihenfolge passt zu Hurtbox.accepted_kinds.
+enum Kind { BLADE, PROJECTILE, EXPLOSION }
+
 ## Ein Treffer hat Schaden gemacht.
 signal hit_landed(hurtbox: Hurtbox)
+## Ein Treffer ist abgeprallt: Die Hurtbox nimmt seine Art nicht an (M9).
+signal hit_blocked(hurtbox: Hurtbox)
 
 ## Schaden pro Treffer.
 @export var damage := 10.0
+## Art der Treffer: Klinge, Geschoss oder Explosion (M9).
+@export var kind := Kind.BLADE
 ## Sekunden zwischen zwei Treffern auf dasselbe Ziel. 0: jedes Ziel nur einmal je Aktivierung.
 @export var hit_interval := 0.0
 ## Von Anfang an scharf?
@@ -66,6 +76,14 @@ func _physics_process(delta: float) -> void:
 			if since < hit_interval:
 				continue
 		var direction := (hurtbox.global_position - global_position).normalized()
+		if not hurtbox.accepts(kind):
+			# Abgeprallt: wie ein Treffer vermerken, sonst meldet es sich jedes Bild neu.
+			_last_hit[target_id] = _clock
+			hurtbox.block_hit(direction)
+			hit_blocked.emit(hurtbox)
+			if not is_active:
+				return
+			continue
 		if hurtbox.receive_hit(damage, direction):
 			_last_hit[target_id] = _clock
 			hit_landed.emit(hurtbox)

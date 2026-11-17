@@ -1,0 +1,91 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/inventory/inventory_window.gd" id="1_window"]
+[ext_resource type="Theme" path="res://ui/theme/wood_theme.tres" id="2_theme"]
+
+[node name="InventoryWindow" type="CanvasLayer"]
+layer = 105
+script = ExtResource("1_window")
+
+[node name="Root" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_theme")
+
+[node name="Frame" type="PanelContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -98.0
+offset_right = 134.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Interior" type="Panel" parent="Root/Frame"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Root/Frame/Interior"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 126.0
+offset_bottom = 15.0
+theme_type_variation = &"TitleLabel"
+text = "Inventar"
+
+[node name="EquipmentTitle" type="Label" parent="Root/Frame/Interior"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 16.0
+offset_right = 100.0
+offset_bottom = 28.0
+text = "Ausrüstung"
+
+[node name="EquipmentSlots" type="Control" parent="Root/Frame/Interior"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 30.0
+offset_right = 96.0
+offset_bottom = 146.0
+mouse_filter = 2
+
+[node name="Grid" type="Control" parent="Root/Frame/Interior"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 18.0
+offset_right = 246.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="InfoName" type="Label" parent="Root/Frame/Interior"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 149.0
+offset_right = 250.0
+offset_bottom = 161.0
+
+[node name="InfoText" type="Label" parent="Root/Frame/Interior"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 160.0
+offset_right = 250.0
+offset_bottom = 172.0
+
+[node name="InfoHint" type="Label" parent="Root/Frame/Interior"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 171.0
+offset_right = 250.0
+offset_bottom = 183.0
+theme_type_variation = &"HintLabel"
