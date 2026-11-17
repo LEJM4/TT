@@ -26,11 +26,13 @@ const KEY_BINDINGS := {
 	"debug_restart_room": [KEY_F2],
 }
 
-## Aktion -> Maustasten.
+## Aktion -> Maustasten; das Mausrad zählt als Taste.
 const MOUSE_BINDINGS := {
 	"attack_primary": [MOUSE_BUTTON_LEFT],
 	"attack_secondary": [MOUSE_BUTTON_RIGHT],
 	"dash": [MOUSE_BUTTON_XBUTTON1],
+	"ammo_next": [MOUSE_BUTTON_WHEEL_DOWN],
+	"ammo_previous": [MOUSE_BUTTON_WHEEL_UP],
 }
 
 

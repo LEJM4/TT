@@ -8,9 +8,12 @@ extends Node2D
 ## Das Geschoss erzeugt der Baustein nicht selbst: Er bestellt es über den
 ## EventBus (projectile_requested) beim ProjectileSpawner des Levels.
 ## Bezahlt wird aus dem Geschwister mit dem Namen aus supply_name (ein Supply).
+## Liegt daneben ein AmmoSelector (Name aus ammo_name, M11a), kommen Werte und
+## Kosten von dort: geworfen wird das gewählte Geschoss aus dem Inventar, und
+## stats und supply_name gelten nicht.
 ##
 ## Abschalten: Knoten löschen - die Figur kann dann nicht mehr schießen.
-## Ohne das Supply-Geschwister ist jeder Schuss kostenlos.
+## Ohne Supply und AmmoSelector ist jeder Schuss kostenlos.
 
 ## Ein Schuss wurde abgegeben.
 signal shot_fired(direction: Vector2)
@@ -23,12 +26,16 @@ signal shot_fired(direction: Vector2)
 @export_flags_2d_physics var target_mask := 0
 ## Name des Geschwisters, das den Schuss bezahlt. Leer: Schüsse sind kostenlos.
 @export var supply_name := "Ammo"
+## Name des Geschwisters, das das Geschoss aus dem Inventar wählt (ein AmmoSelector, M11a).
+## Fehlt es, gelten stats und supply_name.
+@export var ammo_name := "AmmoSelector"
 
 ## Tempo-Faktor für die Pause zwischen zwei Schüssen; über 1 geht es schneller (M7).
 var rate_factor := 1.0
 
 var _cooldown_left := 0.0
 var _supply: Supply
+var _ammo: AmmoSelector
 
 
 func _ready() -> void:
@@ -37,6 +44,8 @@ func _ready() -> void:
 		stats = RangedStats.new()
 	if not supply_name.is_empty():
 		_supply = get_parent().get_node_or_null(supply_name) as Supply
+	if not ammo_name.is_empty():
+		_ammo = get_parent().get_node_or_null(ammo_name) as AmmoSelector
 
 
 func _physics_process(delta: float) -> void:
@@ -46,7 +55,14 @@ func _physics_process(delta: float) -> void:
 
 ## Ist gerade ein Schuss möglich? Der Vorrat wird erst beim Schuss geprüft.
 func can_shoot() -> bool:
-	return _cooldown_left <= 0.0 and projectile_scene != null
+	return _cooldown_left <= 0.0 and projectile_scene != null and get_shot() != null
+
+
+## Die Werte des nächsten Schusses: vom AmmoSelector, sonst aus stats. null: Es gibt nichts zu werfen.
+func get_shot() -> RangedStats:
+	if _ammo != null:
+		return _ammo.get_shot()
+	return stats
 
 
 ## Schießt in die Richtung, wenn es gerade möglich ist. Liefert, ob der Schuss fiel.
@@ -56,11 +72,20 @@ func try_shoot(direction: Vector2) -> bool:
 	# Ohne Geschoss-Erzeuger im Level gibt es keinen Schuss und keine Kosten.
 	if EventBus.projectile_requested.get_connections().is_empty():
 		return false
-	if _supply != null and not _supply.spend(stats.cost):
+	var shot := get_shot()
+	if not _pay(shot):
 		return false
-	_cooldown_left = stats.cooldown
+	_cooldown_left = shot.cooldown
 	var aim := direction.normalized()
-	var origin := global_position + aim * stats.spawn_distance
-	EventBus.projectile_requested.emit(projectile_scene, origin, aim, stats, target_mask)
+	var origin := global_position + aim * shot.spawn_distance
+	EventBus.projectile_requested.emit(projectile_scene, origin, aim, shot, target_mask)
 	shot_fired.emit(aim)
+	return true
+
+
+func _pay(shot: RangedStats) -> bool:
+	if _ammo != null:
+		return _ammo.consume(roundi(shot.cost))
+	if _supply != null:
+		return _supply.spend(shot.cost)
 	return true

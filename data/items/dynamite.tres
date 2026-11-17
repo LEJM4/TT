@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="AmmoData" format=3]
+
+[ext_resource type="Script" path="res://items/ammo_data.gd" id="1_item"]
+[ext_resource type="Script" path="res://components/ranged_attack/ranged_stats.gd" id="2_shot"]
+[ext_resource type="Script" path="res://entities/projectile/projectile_skin.gd" id="3_skin"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Items/Projectile/Dynamite.png" id="4_icon"]
+[ext_resource type="Resource" path="res://data/effects/explosion.tres" id="6_explosion"]
+
+[sub_resource type="Resource" id="Resource_skin"]
+script = ExtResource("3_skin")
+texture = ExtResource("4_icon")
+frame_size = Vector2i(0, 0)
+frame_count = 1
+fps = 1.0
+spin = 540.0
+explosion = ExtResource("6_explosion")
+
+[sub_resource type="Resource" id="Resource_shot"]
+script = ExtResource("2_shot")
+damage = 0.0
+pierce = 1
+explosion_radius = 24.0
+explosion_damage = 20.0
+projectile_speed = 140.0
+max_distance = 120.0
+spawn_distance = 8.0
+cooldown = 1.0
+cost = 1.0
+skin = SubResource("Resource_skin")
+
+[resource]
+script = ExtResource("1_item")
+id = &"dynamite"
+display_name = "Dynamit"
+category = 2
+icon = ExtResource("4_icon")
+max_stack = 10
+shot = SubResource("Resource_shot")

@@ -9,8 +9,9 @@ extends Ability
 ## Gruppe, in der die Figur steht, solange sie unsichtbar ist.
 const GROUP := "invisible"
 
-## Name des Kindes der Figur, das ihr Bild malt und durchscheinend wird.
-@export var view_name := "PlaceholderView"
+## Namen der Kinder der Figur, die ihr Bild malen und durchscheinend werden.
+## Fehlt eines, wird es übersprungen (A1: CharacterView dazu).
+@export var view_names := PackedStringArray(["CharacterView", "PlaceholderView"])
 
 
 func _begin_effect() -> void:
@@ -38,9 +39,11 @@ func _alpha() -> float:
 
 
 func _set_view_alpha(alpha: float) -> void:
-	var view := get_user().get_node_or_null(view_name) as CanvasItem
-	if view == null:
-		return
-	var tint := view.modulate
-	tint.a = alpha
-	view.modulate = tint
+	var user := get_user()
+	for view_name in view_names:
+		var view := user.get_node_or_null(view_name) as CanvasItem
+		if view == null:
+			continue
+		var tint := view.modulate
+		tint.a = alpha
+		view.modulate = tint

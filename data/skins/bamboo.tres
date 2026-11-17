@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="CharacterSkin" format=3]
+
+[ext_resource type="Script" path="res://components/character_view/character_skin.gd" id="1_skin"]
+[ext_resource type="Script" path="res://components/character_view/skin_animation.gd" id="2_animation"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Actor/Character/Shadow.png" id="3_shadow"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Actor/Monster/Bamboo/SpriteSheet.png" id="4_sheet"]
+
+[sub_resource type="Resource" id="Resource_idle"]
+script = ExtResource("2_animation")
+texture = ExtResource("4_sheet")
+first_cell = Vector2i(0, 0)
+frame_step = Vector2i(0, 1)
+direction_step = Vector2i(1, 0)
+frame_count = 1
+fps = 1.0
+loop = true
+
+[sub_resource type="Resource" id="Resource_walk"]
+script = ExtResource("2_animation")
+texture = ExtResource("4_sheet")
+first_cell = Vector2i(0, 0)
+frame_step = Vector2i(0, 1)
+direction_step = Vector2i(1, 0)
+frame_count = 4
+fps = 6.0
+loop = true
+
+[resource]
+script = ExtResource("1_skin")
+frame_size = Vector2i(16, 16)
+offset = Vector2i(0, -2)
+defeated_tint = Color(0.45, 0.45, 0.5, 1)
+walk_reference_speed = 40.0
+shadow = ExtResource("3_shadow")
+shadow_center = Vector2i(0, 5)
+idle = SubResource("Resource_idle")
+walk = SubResource("Resource_walk")

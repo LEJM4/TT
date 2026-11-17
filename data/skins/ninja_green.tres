@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="CharacterSkin" format=3]
+
+[ext_resource type="Script" path="res://components/character_view/character_skin.gd" id="1_skin"]
+[ext_resource type="Script" path="res://components/character_view/skin_animation.gd" id="2_animation"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Actor/Character/Shadow.png" id="3_shadow"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Actor/CharacterAnimated/NinjaGreen/Separate/Idle.png" id="4_idle"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Actor/CharacterAnimated/NinjaGreen/Separate/Walk.png" id="5_walk"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Actor/CharacterAnimated/NinjaGreen/Separate/Attack.png" id="6_attack"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Actor/CharacterAnimated/NinjaGreen/Separate/Roll.png" id="7_roll"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Actor/CharacterAnimated/NinjaGreen/Separate/Hit.png" id="8_hit"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Actor/CharacterAnimated/NinjaGreen/Separate/Dead.png" id="9_dead"]
+
+[sub_resource type="Resource" id="Resource_idle"]
+script = ExtResource("2_animation")
+texture = ExtResource("4_idle")
+first_cell = Vector2i(0, 0)
+frame_step = Vector2i(0, 1)
+direction_step = Vector2i(1, 0)
+frame_count = 4
+fps = 5.0
+loop = true
+
+[sub_resource type="Resource" id="Resource_walk"]
+script = ExtResource("2_animation")
+texture = ExtResource("5_walk")
+first_cell = Vector2i(0, 0)
+frame_step = Vector2i(0, 1)
+direction_step = Vector2i(1, 0)
+frame_count = 4
+fps = 8.0
+loop = true
+
+[sub_resource type="Resource" id="Resource_attack"]
+script = ExtResource("2_animation")
+texture = ExtResource("6_attack")
+first_cell = Vector2i(0, 0)
+frame_step = Vector2i(0, 1)
+direction_step = Vector2i(1, 0)
+frame_count = 4
+fps = 11.0
+loop = false
+
+[sub_resource type="Resource" id="Resource_dash"]
+script = ExtResource("2_animation")
+texture = ExtResource("7_roll")
+first_cell = Vector2i(0, 0)
+frame_step = Vector2i(0, 1)
+direction_step = Vector2i(1, 0)
+frame_count = 3
+fps = 15.0
+loop = true
+
+[sub_resource type="Resource" id="Resource_hit"]
+script = ExtResource("2_animation")
+texture = ExtResource("8_hit")
+first_cell = Vector2i(0, 0)
+frame_step = Vector2i(0, 1)
+direction_step = Vector2i(1, 0)
+frame_count = 2
+fps = 8.0
+loop = false
+
+[sub_resource type="Resource" id="Resource_dead"]
+script = ExtResource("2_animation")
+texture = ExtResource("9_dead")
+first_cell = Vector2i(0, 0)
+frame_step = Vector2i(0, 1)
+direction_step = Vector2i(0, 0)
+frame_count = 2
+fps = 5.0
+loop = false
+
+[resource]
+script = ExtResource("1_skin")
+frame_size = Vector2i(32, 32)
+offset = Vector2i(0, -2)
+walk_reference_speed = 80.0
+shadow = ExtResource("3_shadow")
+shadow_center = Vector2i(0, 5)
+idle = SubResource("Resource_idle")
+walk = SubResource("Resource_walk")
+attack = SubResource("Resource_attack")
+dash = SubResource("Resource_dash")
+hit = SubResource("Resource_hit")
+dead = SubResource("Resource_dead")

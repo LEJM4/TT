@@ -23,3 +23,6 @@ var wants_shoot := false
 ## Platz der Fähigkeit, die die Figur einsetzen will: 0 ist die erste, -1 heißt keine.
 ## Nur in dem Physik-Schritt gesetzt, in dem der Wunsch kam (M7).
 var wants_ability := -1
+## Geschoss wechseln: positiv zum nächsten, negativ zum vorigen, 0 bleibt.
+## Nur in dem Physik-Schritt gesetzt, in dem der Wunsch kam (M11a).
+var wants_ammo_cycle := 0

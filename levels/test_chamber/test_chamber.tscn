@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" path="res://components/patrol_mover/patrol_mover.tscn" id="10_mover"]
 [ext_resource type="PackedScene" path="res://entities/projectile/projectile_spawner.tscn" id="11_projectiles"]
 [ext_resource type="PackedScene" path="res://components/stunnable/stunnable.tscn" id="12_stunnable"]
+[ext_resource type="Resource" path="res://data/skins/bamboo.tres" id="13_bamboo_skin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
 size = Vector2(960, 16)
@@ -151,6 +152,9 @@ position = Vector2(450, 144)
 position = Vector2(592, 72)
 collision_layer = 0
 alive_color = Color(0.3, 0.75, 0.8, 1)
+
+[node name="CharacterView" parent="DummyD"]
+skin = ExtResource("13_bamboo_skin")
 
 [node name="PatrolMover" parent="DummyD" instance=ExtResource("10_mover")]
 

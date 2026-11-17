@@ -3,12 +3,19 @@
 [ext_resource type="Script" path="res://entities/projectile/projectile.gd" id="1_projectile"]
 [ext_resource type="PackedScene" path="res://components/hitbox/hitbox.tscn" id="2_hitbox"]
 [ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="3_view"]
+[ext_resource type="Script" path="res://entities/projectile/projectile_view.gd" id="4_projectile_view"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hit"]
 size = Vector2(6, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_world"]
 size = Vector2(2, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_target"]
+size = Vector2(6, 3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_explosion"]
+radius = 24.0
 
 [node name="Projectile" type="Node2D"]
 script = ExtResource("1_projectile")
@@ -27,3 +34,19 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSensor"]
 shape = SubResource("RectangleShape2D_world")
+
+[node name="TargetSensor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetSensor"]
+shape = SubResource("RectangleShape2D_target")
+
+[node name="ExplosionHitbox" parent="." instance=ExtResource("2_hitbox")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionHitbox"]
+shape = SubResource("CircleShape2D_explosion")
+
+[node name="ProjectileView" type="Node2D" parent="."]
+script = ExtResource("4_projectile_view")

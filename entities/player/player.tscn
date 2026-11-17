@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" path="res://components/dash/dash.tscn" id="13_dash"]
 [ext_resource type="Resource" path="res://data/player/dash.tres" id="14_dash_stats"]
 [ext_resource type="PackedScene" path="res://components/supply/supply.tscn" id="15_supply"]
-[ext_resource type="Resource" path="res://data/player/ammo.tres" id="16_ammo"]
 [ext_resource type="PackedScene" path="res://components/ranged_attack/ranged_attack.tscn" id="17_ranged"]
 [ext_resource type="Resource" path="res://data/player/bow.tres" id="18_bow"]
 [ext_resource type="PackedScene" path="res://entities/projectile/projectile.tscn" id="19_projectile"]
@@ -26,6 +25,11 @@
 [ext_resource type="Resource" path="res://data/abilities/invisibility.tres" id="24_invisibility_stats"]
 [ext_resource type="PackedScene" path="res://abilities/stun/stun.tscn" id="25_stun"]
 [ext_resource type="Resource" path="res://data/abilities/stun.tres" id="26_stun_stats"]
+[ext_resource type="PackedScene" path="res://components/character_view/character_view.tscn" id="27_character_view"]
+[ext_resource type="Resource" path="res://data/skins/ninja_green.tres" id="28_skin"]
+[ext_resource type="PackedScene" path="res://components/inventory/inventory.tscn" id="29_inventory"]
+[ext_resource type="Resource" path="res://data/player/inventory.tres" id="30_inventory_stats"]
+[ext_resource type="PackedScene" path="res://components/ammo_selector/ammo_selector.tscn" id="31_ammo_selector"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(12, 12)
@@ -45,6 +49,9 @@ shape = SubResource("RectangleShape2D_body")
 
 [node name="PlaceholderView" parent="." instance=ExtResource("3_view")]
 color = Color(0.3, 0.78, 0.45, 1)
+
+[node name="CharacterView" parent="." instance=ExtResource("27_character_view")]
+skin = ExtResource("28_skin")
 
 [node name="PlayerInput" type="Node" parent="."]
 process_physics_priority = -1
@@ -71,8 +78,10 @@ target_mask = 16
 [node name="Dash" parent="." instance=ExtResource("13_dash")]
 stats = ExtResource("14_dash_stats")
 
-[node name="Ammo" parent="." instance=ExtResource("15_supply")]
-stats = ExtResource("16_ammo")
+[node name="Inventory" parent="." instance=ExtResource("29_inventory")]
+stats = ExtResource("30_inventory_stats")
+
+[node name="AmmoSelector" parent="." instance=ExtResource("31_ammo_selector")]
 
 [node name="RangedAttack" parent="." instance=ExtResource("17_ranged")]
 stats = ExtResource("18_bow")

@@ -1,19 +1,21 @@
 extends CharacterBody2D
-## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten).
+## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten, A1: Bild, M11a: Inventar).
 ##
 ## Die Figur führt nur Absichten aus. Woher sie kommen, bestimmt das Kind
 ## "PlayerInput" (ein IntentSource): Tasten, später Gamepad oder Netz.
 ## Sie blickt in die Zielrichtung und schlägt dorthin; laufen kann sie dabei
-## weiter. Geschossen wird ebenfalls in Zielrichtung; jeder Schuss kostet
-## Munition. Der Dash geht in Laufrichtung, im Stehen in Blickrichtung; solange
+## weiter. Geworfen wird ebenfalls in Zielrichtung: das gewählte Geschoss aus
+## dem Inventar, jeder Wurf nimmt eins heraus; das Mausrad wechselt das
+## Geschoss (M11a). Der Dash geht in Laufrichtung, im Stehen in Blickrichtung; solange
 ## er läuft, lenkt die Figur nicht und beginnt weder Hieb noch Schuss.
 ## Fähigkeiten liegen als Kinder unter "Abilities"; ihr Platz dort bestimmt
 ## die Taste. Sie kosten Energie, die nur durch Schwerttreffer zurückkommt.
 ## Die Zahlen stehen in data/player/: movement.tres, stamina.tres,
-## health.tres, sword.tres, dash.tres, bow.tres, ammo.tres und energy.tres;
-## die Werte der Fähigkeiten in data/abilities/.
+## health.tres, sword.tres, dash.tres, bow.tres, energy.tres und inventory.tres;
+## die Werte der Fähigkeiten in data/abilities/, die der Geschosse in data/items/.
 ##
 ## Kinder und was ohne sie passiert:
+##   CharacterView Bild         - ohne: Sie zeigt den Platzhalter mit Richtungspunkt (A1).
 ##   PlayerInput   Absichten    - ohne: Die Figur bleibt stehen.
 ##   Stamina       Ausdauer     - ohne: Sie sprintet unbegrenzt.
 ##   Health        Leben        - ohne: Sie nimmt keinen Schaden und stirbt nicht.
@@ -22,12 +24,15 @@ extends CharacterBody2D
 ##   MeleeAttack   Schwerthieb  - ohne: Sie kann nicht zuschlagen.
 ##   Dash          Ausweichen   - ohne: Sie kann nicht dashen.
 ##   RangedAttack  Fernkampf    - ohne: Sie kann nicht schießen.
-##   Ammo          Munition     - ohne: Schüsse kosten nichts.
+##   Inventory     Inventar     - ohne: Sie trägt nichts und hat nichts zu werfen (M11a).
+##   AmmoSelector  Geschoss-Wahl - ohne: Sie schießt wie vor M11a mit bow.tres (M11a).
+##   Ammo          Munition     - nur ohne AmmoSelector; seit M11a nicht eingehängt.
 ##   Abilities     Fähigkeiten  - ohne: Sie hat keine Fähigkeiten.
 ##   Energy        Energie      - ohne: Fähigkeiten kosten nichts.
 ##
-## Stirbt die Figur, bleibt sie stehen, wird grau und meldet es über den
-## EventBus (player_died). Was dann geschieht, entscheidet das Level.
+## Stirbt die Figur, bleibt sie stehen und meldet es über den EventBus
+## (player_died); ihr Bild zeigt den Tod, der Platzhalter wird grau.
+## Was dann geschieht, entscheidet das Level.
 
 enum MoveState { IDLE, WALK, SPRINT, SNEAK, DASH }
 
@@ -67,6 +72,8 @@ var speed_factor := 1.0
 @onready var _dash := get_node_or_null("Dash") as Dash
 @onready var _ranged := get_node_or_null("RangedAttack") as RangedAttack
 @onready var _ammo := get_node_or_null("Ammo") as Supply
+@onready var _inventory := get_node_or_null("Inventory") as Inventory
+@onready var _ammo_selector := get_node_or_null("AmmoSelector") as AmmoSelector
 @onready var _abilities := get_node_or_null("Abilities")
 @onready var _energy := get_node_or_null("Energy") as Supply
 
@@ -89,6 +96,7 @@ func _physics_process(delta: float) -> void:
 	var wants_dash := false
 	var wants_shoot := false
 	var wanted_ability := -1
+	var wanted_ammo_cycle := 0
 	if _intent != null:
 		direction = _intent.move_direction.limit_length(1.0)
 		wants_sprint = _intent.wants_sprint
@@ -97,6 +105,7 @@ func _physics_process(delta: float) -> void:
 		wants_dash = _intent.wants_dash
 		wants_shoot = _intent.wants_shoot
 		wanted_ability = _intent.wants_ability
+		wanted_ammo_cycle = _intent.wants_ammo_cycle
 		_face(_intent.aim_direction)
 
 	_handle_dash_wish(direction, wants_dash)
@@ -119,10 +128,16 @@ func _physics_process(delta: float) -> void:
 			_ranged.try_shoot(facing)
 	if wanted_ability >= 0:
 		_use_ability(wanted_ability)
+	if wanted_ammo_cycle != 0 and _ammo_selector != null:
+		_ammo_selector.cycle(wanted_ammo_cycle)
 	_report_debug_values()
 
 
 func _draw() -> void:
+	# Der Richtungspunkt gehört zum Platzhalter; zeigt CharacterView das Bild, entfällt er (A1).
+	var placeholder := get_node_or_null("PlaceholderView") as CanvasItem
+	if placeholder == null or not placeholder.visible:
+		return
 	var half := FACING_DOT_SIZE * 0.5
 	var corner := facing * FACING_DOT_DISTANCE - Vector2(half, half)
 	draw_rect(Rect2(corner, Vector2(FACING_DOT_SIZE, FACING_DOT_SIZE)), Color.WHITE)
@@ -224,7 +239,9 @@ func _report_debug_values() -> void:
 		if not _dash.is_ready():
 			dash_state = "%.1f s" % _dash.get_cooldown_left()
 		EventBus.debug_value_changed.emit(prefix + " Dash", dash_state)
-	if _ammo != null:
+	if _ammo_selector != null:
+		EventBus.debug_value_changed.emit(prefix + " Geschoss", _ammo_text())
+	elif _ammo != null:
 		var ammo := "%d / %d" % [roundi(_ammo.current), roundi(_ammo.get_maximum())]
 		EventBus.debug_value_changed.emit(prefix + " Munition", ammo)
 	if _energy != null:
@@ -232,6 +249,16 @@ func _report_debug_values() -> void:
 		EventBus.debug_value_changed.emit(prefix + " Energie", energy)
 	if _abilities != null:
 		EventBus.debug_value_changed.emit(prefix + " Fähigkeiten", _abilities_text())
+
+
+func _ammo_text() -> String:
+	var text := "keins"
+	var item := _ammo_selector.selected
+	if item != null:
+		text = "%s %d" % [item.display_name, _ammo_selector.get_selected_count()]
+	if _inventory != null:
+		text += " · Plätze %d/%d" % [_inventory.get_used_slots(), _inventory.get_slot_count()]
+	return text
 
 
 func _abilities_text() -> String:

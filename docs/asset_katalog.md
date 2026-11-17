@@ -1,6 +1,6 @@
 # Grafik-Katalog – Ninja Adventure Asset Pack
 
-Stand: 17.11.2026 · erstellt aus der Dateiliste (Namen und Pixelgrößen) · **am 16.11.2026 teilweise am Bild geprüft** – siehe „Prüfstand am Bild“ am Ende
+Stand: 17.11.2026 · erstellt aus der Dateiliste (Namen und Pixelgrößen) · **am 16. und 17.11.2026 teilweise am Bild geprüft** – siehe „Prüfstand am Bild“ am Ende
 
 - Quelle: https://pixel-boy.itch.io/ninja-adventure-asset-pack – Lizenz CC0
 - Ablage im Projekt: `assets/ninja_adventure/` (alle Pfade unten sind relativ dazu)
@@ -44,6 +44,8 @@ Jede Figur hat ein Gesamtblatt, dieselben Animationen einzeln und ein Porträt.
 
 Die vier Spalten sind die Blickrichtungen, von links: unten, oben, links, rechts – geprüft am 16.11.2026 an NinjaGreen und Caveman.
 
+Am 17.11.2026 an `Caveman/SeparateAnim/` gemessen: Die Figur steht unten im Bild, die Füße in Zeile 15 (von 0 gezählt), 13 bis 14 Pixel breit. Daraus ist der Probe-Skin `data/skins/caveman.tres` gebaut.
+
 **Nach Thema**
 
 - **Steinzeit:** Caveman, Caveman2, Cavegirl, Cavegirl2, CaveLion, CaveLion2
@@ -86,9 +88,17 @@ Gesamtblatt `SpriteSheet.png` mit 256 × 544; einzeln unter `Separate/`:
 Waffen dazu in `Actor/CharacterAnimated/Weapon/`: `Axe.png`, `Hammer.png`, `Katana.png`, `Net.png`, `Pickaxe.png`, je 256 × 256.
 Geprüft am 16.11.2026: Jedes Bild ist 32 × 32. Bei Blättern mit vier Spalten sind die Spalten die Blickrichtungen – unten, oben, links, rechts –, die Zeilen die Bilder der Animation. `Katana.png` hat 4 × 4 Bilder à 64 im Raster von `Attack.png`. ⚠ Wie die Waffe über der Figur liegt, zeigt erst Godot.
 
+Am 17.11.2026 gemessen und gelesen:
+
+- Die Figur steht mittig im 32er-Bild, gut 15 Pixel breit und hoch; die Füße liegen in Zeile 23 (von 0 gezählt). `Dead.png` zeigt sie liegend, `Roll.png` als Kugel.
+- `Attack.png`: Zeile 1 Ausholen, Zeile 2 Schlag, Zeilen 3 und 4 gleich – das Nachschwingen.
+- Bildzeiten laut den Vorschau-GIFs in `Preview/`: Stehen 200 ms, Laufen 150 ms, Rolle 60 ms, Treffer 100 bis 200 ms, Tod 200 ms je Bild; der Angriff 200, 60, 60 und 100 ms – Ausholen, Schlag, zweimal Nachschwingen. Die Vorschau zeigt dazu eine Axt und einen Hieb-Effekt.
+- Eingebaut mit A1 über den Skin `data/skins/ninja_green.tres`: Idle, Walk, Attack, Roll, Hit, Dead.
+
 ## Monster – `Actor/Monster/<Name>/`
 
-66 Monster. Blatt mit 64 × 64 = 4 × 4 à 16: Spalten = Blickrichtungen wie bei den Figuren, Zeilen = 4 Laufbilder – geprüft an Slime; dazu `Faceset.png` mit 38 × 38.
+66 Monster. Blatt mit 64 × 64 = 4 × 4 à 16: Spalten = Blickrichtungen wie bei den Figuren, Zeilen = 4 Laufbilder – geprüft an Slime, am 17.11.2026 auch an BambooYellow; dazu `Faceset.png` mit 38 × 38.
+`BambooYellow` ist eine orange Fassung von `Bamboo` im gleichen Raster; beide füllen das 16er-Bild bis zur Unterkante. Eingebaut mit A1 als Bild der Übungspuppen: `data/skins/bamboo_yellow.tres` und `bamboo.tres`.
 Das Blatt heißt `SpriteSheet.png` oder wie das Monster (`Beast.png`, `Slime.png`, `mushroom.png` …).
 
 Axolot, AxolotBlue, Bamboo, BambooYellow, Bear, Beast, Beast2, BlueBat, Butterfly, ButterflyBlue, Cyclope, Cyclope2, Dragon, DragonYellow, Eye, Eye2, Fish, FishRed, Flam, Flam2, GoldRacoon, GreenOctopus, Grey Trex, HeartGreen, HeartRed, KappaGreen, KappaRed, LanternGreen, LanternRed, Larva, Larva2, Lizard, Lizard2, Mole, Mole2, Mollusc, Mollusc2, Mouse, MouseBlack, Mushroom, Mushroom2, Octopus, Octopus2, Owl, Owl2, Panda, Racoon, RedOctopus, Reptile, Reptile2, Skull, SkullBlue, Slime, Slime2, Slime3, Slime4, Snake, Snake2, Snake3, Snake4, SpiderRed, SpiderYellow, Spirit, Spirit2, TRex, YellowsBat
@@ -179,7 +189,7 @@ Fahrzeuge in `Backgrounds/Vehicles/`: `Boat.png` 80 × 32, `Crane.png` 33 × 36,
 | `Magic/Circle` | `SpriteSheetOrange.png`, `SpriteSheetWhite.png` | 128 × 32 | 4 à 32 |
 | `Magic/Circle` | `SpriteSheetSpark.png` / `SpriteSheetSpark2.png` | 192 × 32 / 160 × 32 | 6 / 5 à 32 |
 | `Magic/Spirit` | `SpriteSheet.png`, `SpriteSheetBlue.png`, `SpriteSheetDouble.png` | 160 × 32 | 5 à 32 |
-| `Elemental/Explosion` | `SpriteSheet.png` | 360 × 40 | ⚠ 9 à 40 |
+| `Elemental/Explosion` | `SpriteSheet.png` | 360 × 40 | 9 à 40 – geprüft am 17.11.2026: Blitz, Feuerball, Rauch, mittig im Bild |
 | `Elemental/Ice` | `SpriteSheet.png` / `SpriteSheetB.png`, `SpriteSheetFlake.png` | 320 × 32 / 288 × 32 | ⚠ 10 / 9 à 32 |
 | `Elemental/Rock` | `SpriteSheet.png`, `SpriteSheetB.png` | 420 × 30 | ⚠ 14 à 30 |
 | `Magic/Aura` | `SpriteSheet.png` | 125 × 24 | ⚠ 5 à 25 × 24 |
@@ -191,7 +201,7 @@ Fahrzeuge in `Backgrounds/Vehicles/`: `Boat.png` 80 × 32, `Crane.png` 33 × 36,
 
 Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `Magic/Circle/SpriteSheetWhite.png` – Bildzahl wie angegeben.
 
-**Geschosse** in `FX/Projectile/`: `Arrow.png` 13 × 5 (zeigt nach rechts – geprüft), `Kunai.png` 14 × 5, `BigKunai.png` 35 × 9, `Shuriken.png` und `ShurikenMagic.png` 32 × 16 (2 à 16), `BigShuriken.png` 46 × 23 (2 à 23), `Fireball.png`, `EnergyBall.png` und `SpriteSheetRock.png` 64 × 16 (4 à 16), `BigEnergyBall.png` 96 × 24 (4 à 24), `CanonBall.png` 80 × 16 (5 à 16), `IceSpike.png` 144 × 10, `PlantSpike.png` 96 × 20.
+**Geschosse** in `FX/Projectile/`: `Arrow.png` 13 × 5 (zeigt nach rechts – geprüft), `Kunai.png` 14 × 5 (zeigt nach rechts – geprüft am 17.11.2026), `BigKunai.png` 35 × 9, `Shuriken.png` und `ShurikenMagic.png` 32 × 16 (2 à 16; bei `Shuriken.png` zwei Drehbilder – geprüft am 17.11.2026), `BigShuriken.png` 46 × 23 (2 à 23), `Fireball.png`, `EnergyBall.png` und `SpriteSheetRock.png` 64 × 16 (4 à 16), `BigEnergyBall.png` 96 × 24 (4 à 24), `CanonBall.png` 80 × 16 (5 à 16), `IceSpike.png` 144 × 10, `PlantSpike.png` 96 × 20.
 
 **Partikel** in `FX/Particle/` als schmale Streifen: Bamboo, Clouds, Fire, Grass, Leaf, LeafPink, Rain, RainOnFloor, Rock, RockGray, Snow, Spark, Vase, Wood.
 
@@ -204,7 +214,7 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 | `Treasure/` | `LittleTreasureChest.png` 32 × 16 und `BigTreasureChest.png` 32 × 14 (je 2 Bilder: zu und offen – geprüft), `GoldKey.png`, `SilverKey.png`, `GoldCoin.png`, `SilverCoin.png`, `Coin2.png` 40 × 10 (4 à 10), `GoldCup.png`, `SilverCup.png` |
 | `Potion/` | `LifePot.png`, `MilkPot.png`, `WaterPot.png`, `EmptyPot.png`, `Heart.png`, `Medipack.png` |
 | `Weapons/<Name>/` | 23 Waffen, je `Sprite.png` und meist `SpriteInHand.png`: Axe, AxeTool, BigSword, Bone, Book, Bow, Bow2, Club, Fishing Rod, Fork, Hammer, Katana, Lance, Lance2, MagicWand, Ninjaku, Pickaxe, Rapier, Sai, Stick, Sword, Sword2, Whip |
-| `Projectile/` | Arrow, Bomb, Caltrop, CrateDynamite, Dynamite, Kunai, Shuriken |
+| `Projectile/` | Arrow, Bomb, Caltrop, CrateDynamite, Dynamite, Kunai, Shuriken – Symbole fürs Inventar; Arrow, Kunai und Dynamite 16 × 16, Shuriken 15 × 15, geprüft am 17.11.2026. Für Dynamit gibt es kein eigenes Flugbild |
 | `Resource/` | BarCopper, BarGold, BarIron, BarMithril, BarPurple, BarSilver, Branch, feather, GemGreen, GemPurple, GemRed, GemYellow, Grass, Rock, Water |
 | `Food/` | Beaf, Calamari, Fish, FortuneCookie, Honey, Meat, Noodle, Nut, Nut2, Octopus, Onigiri, Seed1–3, SeedBig1–3, SeedLarge, SeedLargeWhite, Shrimp, Sushi, Sushi2, TeaLeaf, Yakitori |
 | `Tool/` | Anvil, Axe, Hammer, Hoe, Pickaxe, Shovel, Sickle, WateringCan |
@@ -238,7 +248,7 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 ## Lose Dateien
 
 - Im Stamm des Pakets: `Example 1.gif` bis `Example 4.gif`, `Example 5 ( Old Version).png`, `preview-part-1.png`, `preview-part-2.png`, `MusicCover.png`, `Palette.png` – laut Name Vorschauen, Musik-Cover und Farbpalette.
-- In `Actor/Character/`: `Shadow.png` 12 × 7, ein Schatten für Figuren – geprüft; `AllPreview.png` und `AllPreview2.png`, laut Name Übersichten aller Figuren.
+- In `Actor/Character/`: `Shadow.png` 12 × 7, ein Schatten für Figuren – geprüft, mit A1 unter allen Figuren eingebaut; `AllPreview.png` und `AllPreview2.png`, laut Name Übersichten aller Figuren.
 
 ## Prüfstand am Bild
 
@@ -252,6 +262,6 @@ Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 des 
 | Alle mit ⚠ „unklar“ markierten Effekt-Streifen | offen |
 | `TilesetFloor.png`: Höhe 417 ist kein Vielfaches von 16 | offen |
 | Inhalt der Tilesets | teilweise: Floor, Nature, Relief, Dungeon, Element und WallSimple gesichtet; Regeln für Übergänge offen |
-| `Actor/Monster/BambooYellow/` als Bild der Übungspuppe | offen, nur der Name bekannt |
+| `Actor/Monster/BambooYellow/` als Bild der Übungspuppe | erledigt am 17.11.2026: orange Fassung von Bamboo, gleiches Raster; eingebaut mit A1 |
 | Symbole für Schnelligkeit und Stun in `Ui/Skill Icon/` | offen, noch auszuwählen |
 | Töne | nur die Namen bekannt; anhören kann nur der Nutzer |

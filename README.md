@@ -15,14 +15,14 @@
 | Ordner | Inhalt |
 | --- | --- |
 | `autoload/` | Globale Dienste: EventBus, Tastenbelegung, Spielstand, Szenenwechsel, Ton |
-| `components/` | Bausteine für alle: Platzhalter-Grafik, später Leben, Trefferzonen, Zustandsautomat, Interaktion, Beute |
-| `entities/` | Figuren: `player/`, `enemies/`, `npcs/` |
-| `abilities/` | Fähigkeiten: Dash, Unsichtbarkeit, Schnelligkeit, Stun |
-| `items/` | Gegenstände und Beutetabellen |
+| `components/` | Bausteine für alle: Bild, Leben, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl; später Zustandsautomat, Interaktion |
+| `entities/` | Figuren und Bewegliches: `player/`, `dummy/`, `projectile/`, `effect/`; später `enemies/`, `npcs/` |
+| `abilities/` | Fähigkeiten: Schnelligkeit, Unsichtbarkeit, Stun; der Dash ist ein Baustein in `components/dash/` |
+| `items/` | Baupläne für Gegenstände und Geschosse; die Gegenstände selbst liegen in `data/items/`; später Beutetabellen |
 | `world/` | Truhen, Türen, Hebel, Zerstörbares |
 | `levels/` | `test_chamber/`, später die Level und die Zeitkapsel |
 | `ui/` | HUD, Inventar, Dialog, Menüs; `ui/debug/` für Entwickler-Anzeigen |
-| `data/` | Werte-Dateien (`.tres`) fürs Balancing |
+| `data/` | Werte-Dateien (`.tres`): Balancing, Skins, Gegenstände, Effekte |
 | `assets/` | Grafik und Ton – siehe `assets/README.md` |
 | `docs/` | Stand-Datei und Grafik-Katalog; von Godot ignoriert |
 | `tools/` | Hilfsskripte; von Godot ignoriert |
@@ -37,6 +37,7 @@ Sie steht in `autoload/input_setup.gd` und lässt sich dort ändern.
 | Maus bewegen | Fadenkreuz |
 | Linksklick | `attack_primary` |
 | Rechtsklick | `attack_secondary` |
+| Mausrad runter / hoch | `ammo_next`, `ammo_previous` – nächstes oder voriges Geschoss |
 | Leertaste, Maustaste 4 | `dash` |
 | Umschalt | `sprint` |
 | Strg | `sneak` |

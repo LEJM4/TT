@@ -4,6 +4,7 @@ extends IntentSource
 ## Liest die Aktionen aus InputSetup und füllt die Felder von IntentSource.
 ## Die Zielrichtung zeigt von der Figur zum Mauszeiger.
 ## Dash und Fähigkeiten zählen je Tastendruck genau einmal; Halten löst nichts weiter aus.
+## Jede Raste des Mausrads wechselt das Geschoss um eins (M11a).
 ## Der Knoten läuft vor der Figur (process_physics_priority = -1 in player.tscn),
 ## damit sie im selben Bild die frischen Absichten liest.
 
@@ -14,6 +15,7 @@ const ABILITY_ACTIONS: Array[String] = ["ability_1", "ability_2", "ability_3"]
 
 var _dash_pressed := false
 var _ability_pressed := -1
+var _ammo_cycle := 0
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -22,6 +24,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	for index in ABILITY_ACTIONS.size():
 		if event.is_action_pressed(ABILITY_ACTIONS[index]):
 			_ability_pressed = index
+	if event.is_action_pressed("ammo_next"):
+		_ammo_cycle += 1
+	elif event.is_action_pressed("ammo_previous"):
+		_ammo_cycle -= 1
 
 
 func _physics_process(_delta: float) -> void:
@@ -34,6 +40,8 @@ func _physics_process(_delta: float) -> void:
 	_dash_pressed = false
 	wants_ability = _ability_pressed
 	_ability_pressed = -1
+	wants_ammo_cycle = _ammo_cycle
+	_ammo_cycle = 0
 	var body := get_parent() as Node2D
 	if body == null:
 		return

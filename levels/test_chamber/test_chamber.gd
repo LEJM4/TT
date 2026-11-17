@@ -4,10 +4,10 @@ extends Node2D
 ## Aufbau der Szene:
 ##   Walls, Blocks   feste Körper auf der Ebene "world"; ihre Flächen malt PlaceholderView
 ##   SpawnPoints     Startpunkte für Spielfiguren (Gruppe "player_spawn")
-##   DummyA          einzelne Übungspuppe (M4)
+##   DummyA          einzelne Übungspuppe (M4); Bild aus data/skins/bamboo_yellow.tres (A1)
 ##   DummyB, DummyC  Puppenpaar: ein Hieb kann beide treffen (M4)
 ##   DummyD          bewegliches Ziel: pendelt, ist nicht fest und lässt sich durchlaufen (M6);
-##                   lässt sich betäuben (M7)
+##                   lässt sich betäuben (M7); trägt den Skin data/skins/bamboo.tres (A1)
 ##   DamageZone      Schadensfeld (M4)
 ##   DamageStrip     schmaler Schadensstreifen zum Durchdashen (M5); lässt sich betäuben (M7)
 ##   PlayerSpawner   erzeugt die Spielfiguren (M2)

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="InventoryStats" format=3]
+
+[ext_resource type="Script" path="res://components/inventory/inventory_stats.gd" id="1_stats"]
+[ext_resource type="Script" path="res://components/inventory/item_stack.gd" id="2_stack"]
+[ext_resource type="Resource" path="res://data/items/arrow.tres" id="3_arrow"]
+[ext_resource type="Resource" path="res://data/items/kunai.tres" id="4_kunai"]
+[ext_resource type="Resource" path="res://data/items/shuriken.tres" id="5_shuriken"]
+[ext_resource type="Resource" path="res://data/items/dynamite.tres" id="6_dynamite"]
+
+[sub_resource type="Resource" id="Resource_arrows"]
+script = ExtResource("2_stack")
+item = ExtResource("3_arrow")
+amount = 30
+
+[sub_resource type="Resource" id="Resource_kunai"]
+script = ExtResource("2_stack")
+item = ExtResource("4_kunai")
+amount = 10
+
+[sub_resource type="Resource" id="Resource_shuriken"]
+script = ExtResource("2_stack")
+item = ExtResource("5_shuriken")
+amount = 10
+
+[sub_resource type="Resource" id="Resource_dynamite"]
+script = ExtResource("2_stack")
+item = ExtResource("6_dynamite")
+amount = 5
+
+[resource]
+script = ExtResource("1_stats")
+slot_count = 20
+start_items = Array[ExtResource("2_stack")]([SubResource("Resource_arrows"), SubResource("Resource_kunai"), SubResource("Resource_shuriken"), SubResource("Resource_dynamite")])
