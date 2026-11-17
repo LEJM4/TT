@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/pressure_plate/pressure_plate.gd" id="1_plate"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="2_view"]
+[ext_resource type="PackedScene" path="res://components/prop_view/prop_view.tscn" id="3_prop_view"]
+[ext_resource type="Resource" path="res://data/skins/pressure_plate.tres" id="4_skin"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plate"]
+size = Vector2(10, 10)
+
+[node name="PressurePlate" type="Area2D"]
+collision_layer = 0
+collision_mask = 6
+monitorable = false
+script = ExtResource("1_plate")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_plate")
+
+[node name="PlaceholderView" parent="." instance=ExtResource("2_view")]
+color = Color(0.75, 0.68, 0.45, 1)
+
+[node name="PropView" parent="." instance=ExtResource("3_prop_view")]
+skin = ExtResource("4_skin")

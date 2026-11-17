@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/door/door.gd" id="1_door"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="2_view"]
+[ext_resource type="PackedScene" path="res://components/prop_view/prop_view.tscn" id="3_prop_view"]
+[ext_resource type="Resource" path="res://data/skins/door_wood.tres" id="4_skin"]
+[ext_resource type="PackedScene" path="res://components/interactable/interactable.tscn" id="5_interactable"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reach"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_doorway"]
+size = Vector2(14, 14)
+
+[node name="Door" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_door")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_door")
+
+[node name="PlaceholderView" parent="." instance=ExtResource("2_view")]
+color = Color(0.55, 0.38, 0.22, 1)
+
+[node name="PropView" parent="." instance=ExtResource("3_prop_view")]
+skin = ExtResource("4_skin")
+
+[node name="Interactable" parent="." instance=ExtResource("5_interactable")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("RectangleShape2D_reach")
+
+[node name="DoorwaySensor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorwaySensor"]
+shape = SubResource("RectangleShape2D_doorway")

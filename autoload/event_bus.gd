@@ -30,3 +30,9 @@ signal player_died(player_id: int)
 ## target_mask nennt die Ebenen der Hurtboxen, die getroffen werden.
 @warning_ignore("unused_signal")
 signal projectile_requested(scene: PackedScene, origin: Vector2, direction: Vector2, stats: Resource, target_mask: int)
+
+## Ein Schalter meldet, ob er an ist - ein Hebel oder eine Druckplatte (M8).
+## channel nennt den Kanal, switch_id den Schalter (seine Instanz-Kennung).
+## Eine Tür ist offen, solange mindestens ein Schalter auf ihrem Kanal an ist.
+@warning_ignore("unused_signal")
+signal switch_changed(channel: StringName, switch_id: int, is_on: bool)

@@ -15,11 +15,11 @@
 | Ordner | Inhalt |
 | --- | --- |
 | `autoload/` | Globale Dienste: EventBus, Tastenbelegung, Spielstand, Szenenwechsel, Ton |
-| `components/` | Bausteine für alle: Bild, Effekte, Leben, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl; später Zustandsautomat, Interaktion |
+| `components/` | Bausteine für alle: Bild, Effekte, Leben, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion; später Zustandsautomat |
 | `entities/` | Figuren und Bewegliches: `player/`, `dummy/`, `projectile/`, `effect/`; später `enemies/`, `npcs/` |
 | `abilities/` | Fähigkeiten: Schnelligkeit, Unsichtbarkeit, Stun; der Dash ist ein Baustein in `components/dash/` |
 | `items/` | Baupläne für Gegenstände und Geschosse; die Gegenstände selbst liegen in `data/items/`; später Beutetabellen |
-| `world/` | Truhen, Türen, Hebel, Zerstörbares |
+| `world/` | Dinge der Welt: Schadensfeld, Türen, Hebel, Druckplatten; später Truhen und Zerstörbares |
 | `levels/` | `test_chamber/`, später die Level und die Zeitkapsel |
 | `ui/` | HUD, Inventar, Dialog, Menüs; `ui/debug/` für Entwickler-Anzeigen |
 | `data/` | Werte-Dateien (`.tres`): Balancing, Skins, Gegenstände, Effekte |

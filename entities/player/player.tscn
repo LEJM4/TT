@@ -33,6 +33,8 @@
 [ext_resource type="PackedScene" path="res://components/effect_cue/effect_cue.tscn" id="32_effect_cue"]
 [ext_resource type="Resource" path="res://data/effects/sword_slash.tres" id="33_slash"]
 [ext_resource type="Resource" path="res://data/effects/hit.tres" id="34_hit"]
+[ext_resource type="PackedScene" path="res://components/interactor/interactor.tscn" id="35_interactor"]
+[ext_resource type="Resource" path="res://data/player/interactor.tres" id="36_interactor_stats"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(12, 12)
@@ -118,3 +120,6 @@ effect = ExtResource("34_hit")
 source_name = "Hurtbox"
 signal_name = "hit_received"
 use_direction = true
+
+[node name="Interactor" parent="." instance=ExtResource("35_interactor")]
+stats = ExtResource("36_interactor_stats")

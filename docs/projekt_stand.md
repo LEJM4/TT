@@ -12,10 +12,10 @@ Er ist eine Richtlinie, kein Zwang. Was vorgezogen oder eingeschoben wird, steht
 | | |
 | --- | --- |
 | Stand vom | 17.11.2026 |
-| In Arbeit | A2 – Kampf-Bilder: geliefert am 17.11.2026 als `a2_kampf_bilder.zip`, der Test des Nutzers steht aus |
-| Als Nächstes | A3 – Ton; dann Gate G1 und Phase 2 mit M8 – Interaktion |
-| Zuletzt abgeschlossen | M11a – Inventar-Logik, am 17.11.2026: Test bestanden. Davor am selben Tag A1 – Figuren-Bild und A0 – Sichtung & Auswahl mit E1 bis E4, am 16.11.2026 M7 – Fähigkeiten; damit ist Phase 1 gebaut |
-| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 17.11.2026 nach dem Test von M11a: Commit `369a648` mit A1 und M11a, davor `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4`. A2 lädt der Nutzer nach bestandenem Test hoch; die Stand-Datei im ZIP von A2 ersetzt die aus `m11a_inventar.zip` |
+| In Arbeit | M9 – Zerstörbares: Claudes Vorschlag vom 17.11.2026 steht im Plan-Dokument, Tab „Plan & Status“, unter Phase 2; er wartet auf „weiter“ oder Änderungen des Nutzers |
+| Als Nächstes | M9 bauen, sobald der Nutzer den Vorschlag bestätigt; danach M10 – Truhen & Beute. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
+| Zuletzt abgeschlossen | M8 – Interaktion, am 17.11.2026: Test bestanden. Davor am selben Tag A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
+| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 17.11.2026 nach dem Test von M8: noch Commit `e7909b2` mit A2 – M8 ist getestet, aber noch nicht hochgeladen. Davor `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4`. Die Stand-Datei aus `m8_abschluss.zip` ersetzt die aus `m8_interaktion.zip` |
 
 ## Neuer Chat und Arbeitsweise
 
@@ -34,6 +34,7 @@ Die Übergabe vom 17.11.2026 ist erledigt: Der Nutzer hat M3 bis M7 hochgeladen 
 - Code kommt als ein ZIP mit Projektpfaden, im Chat dazu nur eine Zeile. Die Prüfliste steht im Plan-Dokument bei den nächsten Schritten und in dieser Datei, nicht im Chat.
 - Kein Abgleich mit dem Repo vor jedem Modul. Zu Beginn eines neuen Chats liest Claude das Repo trotzdem einmal, weil es sonst keine Kopie des Codes gibt.
 - Auf „weiter“ geht es mit dem nächsten Schritt weiter.
+- Ein neues Modul beginnt mit einem kurzen Vorschlag im Plan-Dokument und im Chat; gebaut wird nach „weiter“ oder mit den Änderungen des Nutzers.
 - Nach jedem abgeschlossenen Schritt: eine neue, vollständige Stand-Datei, ins Projektwissen geschrieben und im ZIP unter `docs/`; im Plan-Dokument Status, Prüfliste, nächste Schritte und Verlauf nachziehen.
 
 ## Arbeitsumgebung
@@ -62,9 +63,9 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | | M6 Fernkampf | fertig |
 | | M7 Fähigkeiten | fertig |
 | 2 – Welt & Interaktion | M11a Inventar-Logik | fertig am 17.11.2026 – vorgezogen vor A2 |
-| | M8 Interaktion | offen, nach A1 bis A3 und Gate G1 |
-| | M9 Zerstörbares | offen |
-| | M10 Truhen & Beute | offen |
+| | M8 Interaktion | fertig am 17.11.2026 |
+| | M9 Zerstörbares | als Nächstes – Vorschlag vom 17.11.2026, wartet auf Bestätigung |
+| | M10 Truhen & Beute | offen; laut Vorschlag zieht das Aufsammeln schon in M9 |
 | | M11 Inventar & Ausrüstung | offen; die Logik kommt vorher mit M11a, hier folgen Inventarfenster und Ausrüstungsplätze |
 | | M12 HUD | offen |
 | 3 – Gegner & NPCs | M13 Erster Gegner | offen |
@@ -86,17 +87,17 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | --- | --- | --- | --- |
 | A0 Sichtung & Auswahl | Katalog am Bild prüfen; Grafiken, Kacheln, Effekte und Töne für die Testkammer auswählen | 16./17.11.2026 | fertig am 17.11.2026; was noch ungeprüft ist, klärt der Schritt, der es braucht |
 | A1 Figuren-Bild | Baustein `CharacterView`, Skins als Werte-Dateien, Spielfigur mit Stehen, Laufen, Hieb, Rolle, Treffer und Tod in vier Richtungen, Schatten, Bild der Übungspuppen | vor Phase 2 | fertig am 17.11.2026 |
-| A2 Kampf-Bilder | Hieb-Effekt, Effekte für Treffer, Tod und Stun; Baustein `EffectCue`; Pixel-Schrift für Schadenszahlen. Die Bilder der Geschosse kamen mit M11a. | vor Phase 2, nach M11a | im Test |
-| A3 Ton | `AudioManager` füllen, Baustein `SoundCue`, Ton-Tabelle als Werte-Datei, Musik in der Testkammer | vor Phase 2 | als Nächstes |
+| A2 Kampf-Bilder | Hieb-Effekt, Effekte für Treffer, Tod und Stun; Baustein `EffectCue`; Pixel-Schrift für Schadenszahlen. Die Bilder der Geschosse kamen mit M11a. | vor Phase 2, nach M11a | fertig am 17.11.2026 |
+| A3 Ton | `AudioManager` füllen, Baustein `SoundCue`, Ton-Tabelle als Werte-Datei, Musik in der Testkammer | fast am Ende des Projekts, mit Phase 7 – Feinschliff; am 17.11.2026 auf Wunsch des Nutzers verschoben | offen |
 | A4 Kacheln & Räume | Kachel-Sets mit Kollision, Testkammer mit Kacheln, Anleitung zum Malen im Editor | mit M8, spätestens vor Level 1 | offen |
 | A5 Oberfläche | Schrift und Thema, Herzen, Leisten, Fähigkeits- und Tastensymbole, Dialogfeld | mit M11, M12, M15 und M20 | offen |
 | A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | offen |
 
-Ab A1 bringt jedes neue Modul Bild und Ton gleich mit: M8 aus `TilesetDungeon`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`.
+Ab A1 bringt jedes neue Modul sein Bild gleich mit: M8 aus `TilesetDungeon`, `TilesetHouse` und `TilesetElement`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`. Den Ton bekommen alle Module erst mit A3, fast am Ende des Projekts.
 
 **Gates**
 
-- G1 nach Phase 1: Die Spielfigur fühlt sich gut an – Bewegen, Zielen, Zuschlagen, Ausweichen.
+- G1 nach Phase 1: Die Spielfigur fühlt sich gut an – Bewegen, Zielen, Zuschlagen, Ausweichen. Bestanden am 17.11.2026, siehe „Gate G1 und Ausblick“.
 - G2 nach Phase 4: Alle Mechaniken laufen in der Testkammer zusammen, auch nach Speichern und Laden.
 - G3 nach Phase 5: Level 1 ist vom Start bis zur Zeitkapsel durchspielbar.
 
@@ -113,6 +114,7 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | 16./17.11.2026 | Nach dem Test von M7 wollte der Nutzer zuerst einen Plan für Grafik und Assets, ohne Code. Er steht im Plan-Dokument im Tab „Grafik & Assets“: Schritte A0 bis A6, Regeln zur Einbindung, Auswahl der Grafiken und vier Entscheidungen. Vorschlag: A1 bis A3 vor Phase 2. | Plan fertig; E1 bis E4 am 17.11.2026 bestätigt |
 | 17.11.2026 | Neuer Chat. Der Nutzer bestätigt E1 bis E4 mit „alle vier ok“; Claude hat A1 gebaut. Zusätzlich zum Plan: der Probe-Skin `caveman.tres` für einen Skin-Tausch an der Spielfigur und ein Hieb-Bild der Figur. | A1 fertig am 17.11.2026 |
 | 17.11.2026 | Wunsch des Nutzers zu A2: Beim Schuss gibt es vier Geschosse aus `Items/Projectile` – Pfeil, Kunai, Shuriken, Dynamit –, je nachdem, was im Inventar ist. Das Inventar gab es noch nicht; auf Wunsch des Nutzers kommt seine Logik als M11a vor A2. Die Bilder der Geschosse wandern aus A2 nach M11a. Auf „weiter“ hat Claude M11a gebaut. | M11a fertig am 17.11.2026 |
+| 17.11.2026 | Wunsch des Nutzers nach dem Test von A2: den Ton (A3) ganz zum Schluss, fast am Ende des Projekts, weil sich bis dahin noch vieles ändert; weiter mit Phase 2. Claude hat A3 zu Phase 7 – Feinschliff gelegt und M8 – Interaktion vorgeschlagen. | A3 verschoben; M8 am 17.11.2026 bestätigt mit der Änderung: nur die Taste E, ohne Wort |
 
 ## Festlegungen
 
@@ -148,35 +150,31 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Zauber | Keine eigene Kategorie: Ein Zauber ist eine Fähigkeit wie jede andere, mit demselben Baustein und derselben Energie | vorläufig von Claude gewählt am 16.11.2026; die Entscheidung liegt beim Nutzer |
 | Grafik einbinden | Eigene Schicht über der Mechanik: je Figur ein Bild-Baustein `CharacterView` statt `PlaceholderView`; Effekte und Töne als Zusatz-Bausteine `EffectCue` und `SoundCue`, die auf Signale reagieren; welche Grafik, steht als Skin in einer Werte-Datei; das Paket bleibt unverändert | von Claude vorgeschlagen am 17.11.2026 im Grafik-Plan; `CharacterView` mit A1 gebaut, `EffectCue` mit A2 |
 | E1 Spielfigur | Die animierte `NinjaGreen`, 32 × 32 je Bild, mit eigener Rolle für den Dash und Treffer-Animation; die 16er-Figuren werden NPCs und Gegner | vom Nutzer am 17.11.2026 mit „alle vier ok“ bestätigt |
-| E2 Reihenfolge | A1 bis A3 vor Phase 2; danach bringt jedes Modul Bild und Ton gleich mit | vom Nutzer am 17.11.2026 mit „alle vier ok“ bestätigt |
+| E2 Reihenfolge | A1 und A2 vor Phase 2; danach bringt jedes Modul sein Bild gleich mit. Den Ton (A3) gibt es erst fast am Ende des Projekts, mit Phase 7 – Feinschliff | vom Nutzer am 17.11.2026 mit „alle vier ok“ bestätigt; den Ton hat der Nutzer am selben Tag ans Ende verschoben |
 | E3 Räume malen | Der Nutzer malt im Godot-Editor; Claude liefert Kachel-Sets mit Kollision und eine Anleitung; den Boden der Testkammer füllt Code | vom Nutzer am 17.11.2026 mit „alle vier ok“ bestätigt |
 | E4 Schrift | `NormalFont` aus dem Paket; ihr fehlt das ß, im Spiel steht dafür „ss“ | vom Nutzer am 17.11.2026 mit „alle vier ok“ bestätigt |
 | Figuren-Bild | Ein Skin nennt Bildgröße, Lage, Schatten und je Animation Blatt, erste Zelle, Schritte und Bilder je Sekunde; Pflicht ist nur Stehen. Die Füße stehen auf der Unterkante der Kollisionsform: Bild 2 Pixel angehoben, Schattenmitte 5 Pixel unter der Mitte. Gezeigt wird die nächstliegende von vier Richtungen; die alte bleibt bis 8° über die Diagonale hinaus. Laufbilder laufen im Takt des Tempos. Mit Bild entfällt der weiße Richtungspunkt. | von Claude gewählt; vom Nutzer nach dem Test am 17.11.2026 mit „Okay das passt alles“ bestätigt |
 | Bild der Übungspuppen | Feste Puppen `BambooYellow` (orange), das bewegliche Ziel `Bamboo` (grün). Sie stehen im ersten Laufbild; das bewegliche Ziel läuft mit Laufbildern; im Tod werden sie grau. | von Claude gewählt; vom Nutzer nach dem Test am 17.11.2026 mit „Okay das passt alles“ bestätigt |
 | Unsichtbarkeit und Bild | Durchscheinend werden alle Bild-Knoten der Figur, die in `view_names` stehen: `CharacterView` samt Schatten und der Platzhalter | von Claude gewählt; vom Nutzer nach dem Test am 17.11.2026 mit „Okay das passt alles“ bestätigt |
-| Kampf-Bilder | Hieb: Der Bogen `SlashCurved` schwingt vor der Figur in Hiebrichtung, stufenlos gedreht, und deckt die Trefferzone; das gelbe Feld ist unsichtbar. Treffer: Am Getroffenen blitzt der Schnitt `Cut` auf, gedreht in Schlagrichtung – bei Puppen und bei der Spielfigur. Tod: Bei Puppen steigt Rauch auf (`Smoke`); die Spielfigur behält ihr Tod-Bild. Stun: Um jedes betäubte Ziel pulsiert der weiße Kreis (`Circle`) statt des gelben Rings; der Ring, mit dem sich die Fähigkeit ausbreitet, bleibt. Schadenszahlen in `NormalFont`, Größe 9. Jeder Effekt ist ein eigener Knoten und lässt sich einzeln löschen | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „Ja passt“ bestätigt; Test steht aus |
+| Kampf-Bilder | Hieb: Der Bogen `SlashCurved` schwingt vor der Figur in Hiebrichtung, stufenlos gedreht, und deckt die Trefferzone; das gelbe Feld ist unsichtbar. Treffer: Am Getroffenen blitzt der Schnitt `Cut` auf, gedreht in Schlagrichtung – bei Puppen und bei der Spielfigur. Tod: Bei Puppen steigt Rauch auf (`Smoke`); die Spielfigur behält ihr Tod-Bild. Stun: Um jedes betäubte Ziel pulsiert der weiße Kreis (`Circle`) statt des gelben Rings; der Ring, mit dem sich die Fähigkeit ausbreitet, bleibt. Schadenszahlen in `NormalFont`, Größe 9. Jeder Effekt ist ein eigener Knoten und lässt sich einzeln löschen | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „Ja passt“ bestätigt, nach dem Test mit „Alles getestet und alles funktioniert“ |
+| Interaktion | Steht die Figur nah an etwas Bedienbarem – ihr Suchkreis reicht 16 Pixel –, erscheint die Taste E aus dem Paket, ohne Wort, über ihrem Kopf. Sind mehrere nah, gilt das nächste; E bedient es | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 bestätigt mit der Änderung „nur die Taste, keine Schrift“. Die Lage über dem Kopf hat Claude beim Bauen gewählt, weil die Taste über einer Tür die Figur verdeckt; über dem Ding geht per Schalter. Nach dem Test vom Nutzer mit „alles passt“ bestätigt |
+| Türen und Schalter | Holztür: E öffnet und schließt sie. Gittertore folgen ihrem Kanal und sind offen, solange mindestens ein Schalter darauf an ist. Hebel: E legt ihn um. Druckplatte: gedrückt, solange jemand draufsteht; ihr Kanal bleibt danach 2 Sekunden an. Steht jemand im Durchgang, schließt keine Tür. Offene Türen verschwinden | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „Der Rest passt“ bestätigt, nach dem Test mit „alles passt“ |
 
 Noch offen, jeweils fällig vor dem genannten Schritt: Zauber (vorläufig gewählt, siehe oben), Tod & Speichern endgültig (M16), Story (Phase 5), Anzahl Level (Phase 6).
 
 ## Prüfungen
 
+**M8 – Interaktion**
+
+- Getestet hat der Nutzer am 17.11.2026 in Godot. Rückmeldung: „alles passt“ – die elf Punkte der Prüfliste gelten als bestanden, auch die Taste über dem Kopf.
+- Claude hat die Dateien am Text geprüft: Verweise, Knotenpfade, Signale, Ebenen und Masken, exportierte Werte, Klassennamen und das Format der Werte-Dateien. Grundlage war das Repo, Commit `e7909b2`.
+- Nachgerechnet, nicht ausprobiert: Die Ecke hat Claude als Bild nachgestellt – Wände, Türen, Hebel und Platten liegen im 16er-Raster, die Durchgänge sind 16 Pixel breit für die 12 Pixel breite Figur, die Taste sitzt 2 Pixel über dem Kopf. Von der äußeren Platte bis in den Raum sind es 94 Pixel, zu Fuß gut 1,2 Sekunden; das Tor bleibt 2 Sekunden offen.
+
 **A2 – Kampf-Bilder**
 
-- Geliefert am 17.11.2026 als `a2_kampf_bilder.zip`. Der Test des Nutzers steht aus; die Prüfliste steht darunter und im Plan-Dokument.
+- Getestet hat der Nutzer am 17.11.2026 in Godot. Rückmeldung: „Alles getestet und alles funktioniert“ – die neun Punkte der Prüfliste gelten als bestanden.
 - Claude hat die Dateien am Text geprüft: Verweise, Knotenpfade, Signale und ihre Werte, exportierte Werte, Klassennamen und das Format der Werte-Dateien. Grundlage war das Repo, Commit `369a648`.
 - Nachgerechnet, nicht ausprobiert: Alle Bilder der vier Effekte liegen im Blatt und sind nicht leer. Die Sichel des Hiebs liegt im Bild rechts der Mitte, in den Spalten 14 bis 31; um 8 Pixel vorgerückt deckt sie 6 bis 24 Pixel vor der Figur – genau die Trefferzone des Schwerts. Die Schrift ist für 9 Pixel gebaut; in Größe 9 fällt jeder Schrift-Pixel auf einen Bild-Pixel.
-
-Prüfliste A2:
-
-1. Godot schließen, ZIP nach `E:\GitHub\TT` entpacken, Godot öffnen, F5. Keine roten Fehler.
-2. Linksklick in verschiedene Richtungen, auch schräg: Vor der Figur schwingt ein weiß-gelber Bogen in Zielrichtung; das gelbe Feld ist weg. Der Bogen liegt dort, wo das Schwert Puppen trifft.
-3. Schwert oder Geschoss auf eine Puppe: Am Getroffenen blitzt ein Schnitt auf. Die Schadenszahl steht in der Pixel-Schrift des Pakets, mit scharfen Rändern, und steigt wie bisher auf.
-4. Eine Puppe auf 0 bringen: Rauch steigt auf und vergeht; die Puppe wird grau und steht nach 2 s wieder auf wie bisher.
-5. Ins Schadensfeld laufen: Bei jedem Treffer blitzt der Schnitt auch an der Spielfigur.
-6. Zwischen beweglichem Ziel und Schadensstreifen Taste 3 (Stun) drücken: Um beide pulsiert der weiße Kreis statt des gelben Rings, 2 s lang, dann ist er weg. Der Ring, mit dem sich der Stun ausbreitet, sieht aus wie bisher.
-7. Dynamit werfen: Die Explosion sieht aus wie in M11a und sitzt an derselben Stelle.
-8. Ohne Code: in `data/effects/hit.tres` `fps` auf 4 stellen – der Treffer-Schnitt läuft eine Sekunde lang; danach zurück auf 20.
-9. Abschalt-Test: in `entities/dummy/training_dummy.tscn` den Knoten `DeathEffect` löschen, F5 – Puppen fallen ohne Rauch, keine roten Fehler. Danach Strg+Z.
 
 **M11a – Inventar-Logik**
 
@@ -255,12 +253,12 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 
 | Name | Datei | Stand |
 | --- | --- | --- |
-| `EventBus` | `autoload/event_bus.gd` | aktiv, 5 Meldungen |
+| `EventBus` | `autoload/event_bus.gd` | aktiv, 6 Meldungen |
 | `InputSetup` | `autoload/input_setup.gd` | aktiv; legt die Aktionen an, `all_actions()` liefert ihre Namen |
 | `GameState` | `autoload/game_state.gd` | leer, wird in M16 und M19 gefüllt |
 | `SaveManager` | `autoload/save_manager.gd` | leer, wird in M16 gefüllt |
 | `SceneManager` | `autoload/scene_manager.gd` | leer, wird in M18 gefüllt |
-| `AudioManager` | `autoload/audio_manager.gd` | leer, wird mit A3 – Ton gefüllt |
+| `AudioManager` | `autoload/audio_manager.gd` | leer, wird mit A3 – Ton gefüllt, fast am Ende des Projekts |
 
 ### Meldungen im EventBus
 
@@ -271,6 +269,7 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 | `camera_bounds_changed` | `bounds: Rect2` | Ein Level meldet seine Grenzen; Kameras bleiben innerhalb |
 | `player_died` | `player_id: int` | Das Leben einer Spielfigur ist auf 0 gefallen; was dann geschieht, entscheidet das Level |
 | `projectile_requested` | `scene: PackedScene`, `origin: Vector2`, `direction: Vector2`, `stats: Resource`, `target_mask: int` | Jemand schießt; der `ProjectileSpawner` des Levels erzeugt das Geschoss. `stats` ist ein `RangedStats` |
+| `switch_changed` | `channel: StringName`, `switch_id: int`, `is_on: bool` | Ein Schalter – Hebel oder Druckplatte – meldet, ob er an ist; `switch_id` ist seine Instanz-Kennung. Türen mit demselben Kanal sind offen, solange mindestens einer an ist (M8) |
 
 ### Debug-Werte, die Module melden
 
@@ -310,18 +309,18 @@ Der Hinweis „Neustart: F2“ ist mit M4 entfallen; F2 gilt weiter. In der Test
 | `debug_toggle_overlay` | F1 |
 | `debug_restart_room` | F2 |
 
-Genutzt werden bisher: die vier Laufrichtungen, `sprint`, `sneak`, `attack_primary`, `attack_secondary`, `dash`, `ability_1` bis `ability_3`, `ammo_next`, `ammo_previous` und die beiden Entwickler-Tasten.
+Genutzt werden bisher: die vier Laufrichtungen, `sprint`, `sneak`, `attack_primary`, `attack_secondary`, `dash`, `ability_1` bis `ability_3`, `ammo_next`, `ammo_previous`, `interact` (M8) und die beiden Entwickler-Tasten.
 
 ### Kollisions-Ebenen
 
 | Ebene | Name | Wer liegt darauf |
 | --- | --- | --- |
-| 1 | `world` | Wände und Blöcke der Testkammer; Geschosse enden an ihnen |
-| 2 | `player` | Spielfigur; ihre Maske ist `world` und `enemy` |
-| 3 | `enemy` | Übungspuppen als feste Körper; das bewegliche Ziel liegt auf keiner Ebene und lässt sich durchlaufen |
+| 1 | `world` | Wände und Blöcke der Testkammer, seit M8 auch geschlossene Türen und Hebel; Geschosse enden an ihnen |
+| 2 | `player` | Spielfigur; ihre Maske ist `world` und `enemy`. Druckplatten und Türdurchgänge bemerken sie hier (M8) |
+| 3 | `enemy` | Übungspuppen als feste Körper; das bewegliche Ziel liegt auf keiner Ebene und lässt sich durchlaufen. Druckplatten und Türdurchgänge bemerken auch diese Ebene (M8) |
 | 4 | `player_hurtbox` | `Hurtbox` der Spielfigur; Schadensfeld und Schadensstreifen suchen hier |
 | 5 | `enemy_hurtbox` | `Hurtbox` der Übungspuppen; Schwert und Geschosse suchen hier |
-| 6 | `interactable` | – |
+| 6 | `interactable` | `Interactable` von Holztür und Hebel; der `Interactor` der Spielfigur sucht hier (M8) |
 | 7 | `pickup` | – |
 
 Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbst nichts. Eine `Hitbox` liegt auf keiner Ebene und sucht über ihre Maske.
@@ -339,7 +338,7 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 
 | Klasse | Datei | Art |
 | --- | --- | --- |
-| `IntentSource` | `entities/intent_source.gd` | Knoten: die Absichten einer Figur – `move_direction`, `wants_sprint`, `wants_sneak`, `aim_direction`, `wants_attack`, `wants_dash`, `wants_shoot`, `wants_ability`, `wants_ammo_cycle` (M11a) |
+| `IntentSource` | `entities/intent_source.gd` | Knoten: die Absichten einer Figur – `move_direction`, `wants_sprint`, `wants_sneak`, `aim_direction`, `wants_attack`, `wants_dash`, `wants_shoot`, `wants_ability`, `wants_ammo_cycle` (M11a), `wants_interact` (M8) |
 | `MovementStats` | `entities/movement_stats.gd` | Bauplan einer Werte-Datei für Bewegung |
 | `Stamina` | `components/stamina/stamina.gd` | Baustein Ausdauer |
 | `StaminaStats` | `components/stamina/stamina_stats.gd` | Bauplan einer Werte-Datei für Ausdauer |
@@ -377,6 +376,14 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `CharacterView` | `components/character_view/character_view.gd` | Baustein: zeigt eine Figur mit der Grafik aus einem Skin (A1) |
 | `CharacterSkin` | `components/character_view/character_skin.gd` | Bauplan einer Werte-Datei für einen Skin: Bildgröße, Lage, Schatten, Animationen |
 | `SkinAnimation` | `components/character_view/skin_animation.gd` | Bauplan einer Animation im Skin: Blatt, erste Zelle, Schritte, Bilder je Sekunde |
+| `Interactable` | `components/interactable/interactable.gd` | Baustein: macht ein Ding mit E bedienbar (M8) |
+| `Interactor` | `components/interactor/interactor.gd` | Baustein: findet das nächste bedienbare Ding und bedient es; zeigt die Taste E (M8) |
+| `InteractorStats` | `components/interactor/interactor_stats.gd` | Bauplan einer Werte-Datei für den Interactor: Reichweite (M8) |
+| `PropView` | `components/prop_view/prop_view.gd` | Baustein: zeigt ein Ding der Welt mit zwei Bildern, aus und an (M8) |
+| `PropSkin` | `components/prop_view/prop_skin.gd` | Bauplan einer Werte-Datei für PropView: Blatt, Zellgröße, Zelle für aus und für an (M8) |
+| `Door` | `world/door/door.gd` | Tür oder Gittertor (M8) |
+| `Lever` | `world/lever/lever.gd` | Hebel (M8) |
+| `PressurePlate` | `world/pressure_plate/pressure_plate.gd` | Druckplatte (M8) |
 
 ### Werte-Dateien – `data/`
 
@@ -391,6 +398,7 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `data/player/bow.tres` | `RangedStats` | seit M11a nur noch Rückfall ohne `AmmoSelector`: `damage` 10, `projectile_speed` 220, `max_distance` 240, `spawn_distance` 8, `cooldown` 0,5, `cost` 1 |
 | `data/player/ammo.tres` | `SupplyStats` | `max_amount` 12, `regen_per_second` 0, `regen_delay` 1; seit M11a nicht mehr eingehängt |
 | `data/player/inventory.tres` | `InventoryStats` | `slot_count` 20; Start: 30 Pfeile, 10 Kunai, 10 Shuriken, 5 Dynamit |
+| `data/player/interactor.tres` | `InteractorStats` | `reach` 16 (M8) |
 | `data/items/arrow.tres` | `AmmoData` | Pfeil, Stapel 99; Wurf: `damage` 10, `pierce` 1, `projectile_speed` 220, `max_distance` 240, `cooldown` 0,5; Flugbild `FX/Projectile/Arrow.png` |
 | `data/items/kunai.tres` | `AmmoData` | Kunai, Stapel 30; Wurf: `damage` 15, `pierce` 1, `projectile_speed` 300, `max_distance` 180, `cooldown` 0,5; Flugbild `FX/Projectile/Kunai.png` |
 | `data/items/shuriken.tres` | `AmmoData` | Shuriken, Stapel 30; Wurf: `damage` 6, `pierce` 3, `projectile_speed` 200, `max_distance` 200, `cooldown` 0,4; Flugbild `FX/Projectile/Shuriken.png`, 2 Bilder, `spin` 720 |
@@ -409,6 +417,10 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `data/skins/bamboo_yellow.tres` | `CharacterSkin` | feste Übungspuppen, `BambooYellow`: Bild 16 × 16, `offset` (0, −2), Schatten bei (0, 5), `walk_reference_speed` 40; Stehen 1 Bild, Laufen 4 à 6/s; im Tod grau |
 | `data/skins/bamboo.tres` | `CharacterSkin` | bewegliches Ziel, `Bamboo`; Werte wie `bamboo_yellow.tres` |
 | `data/skins/caveman.tres` | `CharacterSkin` | Probe-Skin `Caveman` für einen Skin-Tausch: Bild 16 × 16; Stehen 1 Bild, Laufen 4 à 8/s, Hieb 1 Bild, Tod 1 Bild; keine Rolle, kein Treffer-Bild |
+| `data/skins/door_wood.tres` | `PropSkin` | Holztür (M8): `TilesetHouse.png`, zu (2,3), offen kein Bild |
+| `data/skins/gate_bars.tres` | `PropSkin` | Gittertor (M8): `TilesetElement.png`, zu (1,11), offen kein Bild |
+| `data/skins/lever.tres` | `PropSkin` | Hebel (M8): `TilesetDungeon.png`, aus (3,3) rot, an (4,3) blau |
+| `data/skins/pressure_plate.tres` | `PropSkin` | Druckplatte (M8): `TilesetDungeon.png`, oben (2,1), gedrückt (3,1) |
 
 Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden; „4 à 8/s“ heißt 4 Bilder, 8 Bilder je Sekunde.
 
@@ -432,6 +444,9 @@ Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden; „4 à 8/s
 | `AmmoSelector` | `components/ammo_selector/` | Wählt das Geschoss: jedes `AmmoData` im Inventar, in der Reihenfolge der Plätze. `cycle(schritt)` wechselt, `get_shot()` liefert die Werte des Wurfs, `consume(anzahl)` nimmt aus dem Inventar. Ist das gewählte aufgebraucht, rückt das nächste nach. Meldet `selection_changed`. | `inventory_name` |
 | `PatrolMover` | `components/patrol_mover/` | Lässt seinen Elternknoten zwischen Startpunkt und Startpunkt + `travel` pendeln. Für Dinge, die nichts wegschieben müssen. | `travel`, `speed` |
 | `Stunnable` | `components/stunnable/` | Macht seinen Elternknoten betäubbar: `apply_stun(sekunden)`, `is_stunned()`. Solange die Betäubung anhält, ruht der Knoten aus `paused_node`, und um das Ziel pulsiert der weiße Kreis aus seinem Kind `StunEffect` (A2). Der gelbe Ring aus M7 ist durchsichtig gestellt. Steht in der Gruppe `stunnable`. Meldet `stunned`, `recovered`. | `paused_node`, `ring_radius`, `ring_color` |
+| `Interactable` | `components/interactable/` | `Area2D` auf der Ebene `interactable`: macht seinen Elternknoten mit E bedienbar. `interact(actor)` meldet `interacted`; was dann geschieht, entscheidet der Elternknoten. Nur mit `enabled` zeigt sich die Taste und E wirkt. Braucht eine eigene `CollisionShape2D` (M8). | `enabled`, `prompt_offset` |
+| `Interactor` | `components/interactor/` | `Area2D` an der Figur: Ein Kreis mit `reach` sucht auf `interactable`; das nächste bedienbare Ding ist `focus` (Signal `focus_changed`). `try_interact()` bedient es. Das Kind `Prompt` zeigt die Taste E über dem Kopf der Figur oder mit `prompt_above_target` über dem Ding (M8). | `stats`, `prompt_above_target`, `prompt_offset` |
+| `PropView` | `components/prop_view/` | `Sprite2D`: zeigt ein Ding der Welt mit dem Bild für aus oder an aus einem `PropSkin`; ohne Bild für einen Zustand ist dann nichts zu sehen. Liest `is_on` und hört auf `state_changed` des Elternknotens. Blendet das Geschwister `PlaceholderView` aus (M8). | `skin` |
 | `EffectCue` | `components/effect_cue/` | Spielt einen Effekt aus einer Werte-Datei, wenn ein Baustein daneben ein Signal sendet (A2). Liefert das Signal eine Richtung, rückt der Effekt um `distance` dorthin und dreht sich auf Wunsch mit. Mit `stop_signal_name` wiederholt er sich, bis dieses Signal kommt. Er entscheidet nichts. | `effect`, `source_name`, `signal_name`, `stop_signal_name`, `follow`, `use_direction`, `distance` |
 
 Die Bausteine finden das Leben über den Namen: Der Knoten muss genau `Health` heißen und neben ihnen liegen.
@@ -457,6 +472,9 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 | `entities/player/player_camera.tscn` | `player_camera.gd` | Kamera, die der Spielfigur folgt |
 | `entities/dummy/training_dummy.tscn` | `training_dummy.gd` | Übungspuppe |
 | `world/damage_zone/damage_zone.tscn` | keins; die Szene erbt von `hitbox.tscn` | Schadensfeld |
+| `world/door/door.tscn` | `door.gd` | Tür oder Gittertor; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView`, `Interactable`, `DoorwaySensor` (M8) |
+| `world/lever/lever.tscn` | `lever.gd` | Hebel; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView`, `Interactable` (M8) |
+| `world/pressure_plate/pressure_plate.tscn` | `pressure_plate.gd` | Druckplatte; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView` (M8) |
 | `entities/projectile/projectile.tscn` | `projectile.gd` | Geschoss; Kinder `Hitbox` mit `PlaceholderView`, `WorldSensor`, `TargetSensor`, `ExplosionHitbox`, `ProjectileView` |
 | `entities/projectile/projectile_spawner.tscn` | `projectile_spawner.gd` | erzeugt alle Geschosse eines Levels |
 | `ui/crosshair/crosshair.tscn` | `crosshair.gd` | Fadenkreuz |
@@ -478,6 +496,9 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 | `components/patrol_mover/patrol_mover.tscn` | `patrol_mover.gd` | Baustein, siehe oben |
 | `components/stunnable/stunnable.tscn` | `stunnable.gd` | Baustein, siehe oben; Kind `StunEffect` (ein `EffectCue`) |
 | `components/effect_cue/effect_cue.tscn` | `effect_cue.gd` | Baustein, siehe oben |
+| `components/interactable/interactable.tscn` | `interactable.gd` | Baustein, siehe oben |
+| `components/interactor/interactor.tscn` | `interactor.gd` | Baustein, siehe oben; Kinder `CollisionShape2D` und `Prompt` (`Sprite2D` mit `KeyE.png`) |
+| `components/prop_view/prop_view.tscn` | `prop_view.gd` | Baustein, siehe oben |
 | `abilities/haste/haste.tscn` | `haste.gd` | Fähigkeit, siehe oben |
 | `abilities/invisibility/invisibility.tscn` | `invisibility.gd` | Fähigkeit, siehe oben |
 | `abilities/stun/stun.tscn` | `stun.gd` | Fähigkeit, siehe oben |
@@ -486,7 +507,7 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 **Spielfigur im Einzelnen**
 
 - `Player` ist ein `CharacterBody2D` im schwebenden Modus, Ebene `player`, Maske `world` und `enemy`, Gruppe `players`. Körper 12 × 12 Pixel. Bild seit A1: der Ninja aus `data/skins/ninja_green.tres` über `CharacterView`; ohne ihn der grüne Platzhalter mit weißem Punkt in Blickrichtung.
-- Kinder: `CollisionShape2D`, `PlaceholderView`, `CharacterView`, `PlayerInput` (ein `IntentSource`, läuft vor der Figur), `Stamina`, `Health`, `Hurtbox` (10 × 10 Pixel, Ebene `player_hurtbox`), `HitFlash`, `MeleeAttack` (sucht auf `enemy_hurtbox`), `Dash`, `Inventory`, `AmmoSelector`, `RangedAttack` (Ziele auf `enemy_hurtbox`), `Energy` (ein `Supply`), `Abilities` mit den Kindern `Haste`, `Invisibility` und `Stun`, dazu seit A2 `SlashEffect` und `HitEffect` (je ein `EffectCue`).
+- Kinder: `CollisionShape2D`, `PlaceholderView`, `CharacterView`, `PlayerInput` (ein `IntentSource`, läuft vor der Figur), `Stamina`, `Health`, `Hurtbox` (10 × 10 Pixel, Ebene `player_hurtbox`), `HitFlash`, `MeleeAttack` (sucht auf `enemy_hurtbox`), `Dash`, `Inventory`, `AmmoSelector`, `RangedAttack` (Ziele auf `enemy_hurtbox`), `Energy` (ein `Supply`), `Abilities` mit den Kindern `Haste`, `Invisibility` und `Stun`, dazu seit A2 `SlashEffect` und `HitEffect` (je ein `EffectCue`) und seit M8 `Interactor`.
 - Die Figur liest nur Absichten. `PlayerInput` füllt sie aus den Aktionen und aus der Mausposition; später kann eine andere Quelle dasselbe tun.
 - Blick und Hieb: Die Figur blickt stufenlos in die Zielrichtung, also zur Maus. Solange `attack_primary` gehalten wird, schlägt sie dorthin. Laufen, Sprinten und Schleichen gehen dabei weiter.
 - Zustände: Stehen, Laufen, Sprinten, Schleichen, Dash. Schleichen geht vor Sprinten. Sprinten kostet Ausdauer; ohne Vorrat läuft die Figur normal.
@@ -494,8 +515,9 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Fernkampf: Solange `attack_secondary` gehalten wird, wirft die Figur das gewählte Geschoss in Zielrichtung; jeder Wurf nimmt eins aus dem Inventar, die Pause hängt am Geschoss. Das Mausrad wechselt das Geschoss. Laufen geht dabei weiter; während des Dashs fällt kein Schuss.
 - Fähigkeiten: Ein Druck auf `ability_1`, `ability_2` oder `ability_3` setzt das erste, zweite oder dritte Kind von `Abilities` ein. Das geht jederzeit, auch im Dash. Die Figur selbst kennt keine einzelne Fähigkeit; sie bietet nur `speed_factor` an, den die Schnelligkeit setzt.
 - Energie: Fähigkeiten bezahlen aus `Energy`. Der Vorrat füllt sich nur durch Schwerttreffer, über `MeleeAttack`.
+- Interaktion (M8): Ein Druck auf `interact` (E) bedient das nächste bedienbare Ding im Suchkreis des `Interactor`, 16 Pixel um die Mitte. Solange es eins gibt, steht die Taste E über dem Kopf der Figur. Das geht jederzeit, auch im Dash.
 - Tod: Fällt das Leben auf 0, bleibt die Figur stehen, zeigt das Tod-Bild (der Platzhalter wird grau) und sendet `player_died`. Was dann geschieht, entscheidet das Level.
-- Einstellbar: `stats` (Werte-Datei), `player_id`, `defeated_color`. Ohne `PlayerInput` bleibt sie stehen, ohne `Stamina` sprintet sie unbegrenzt, ohne `Health` nimmt sie keinen Schaden, ohne `Hurtbox` ist sie nicht zu treffen, ohne `MeleeAttack` schlägt sie nicht zu, ohne `Dash` dasht sie nicht, ohne `RangedAttack` schießt sie nicht, ohne `Inventory` hat sie nichts zu werfen, ohne `AmmoSelector` schießt sie wie vor M11a mit `bow.tres` kostenlos, ohne `Abilities` hat sie keine Fähigkeiten, ohne `Energy` kosten Fähigkeiten nichts, ohne `CharacterView` zeigt sie den Platzhalter, ohne `SlashEffect` oder `HitEffect` fehlt nur dieser Effekt.
+- Einstellbar: `stats` (Werte-Datei), `player_id`, `defeated_color`. Ohne `PlayerInput` bleibt sie stehen, ohne `Stamina` sprintet sie unbegrenzt, ohne `Health` nimmt sie keinen Schaden, ohne `Hurtbox` ist sie nicht zu treffen, ohne `MeleeAttack` schlägt sie nicht zu, ohne `Dash` dasht sie nicht, ohne `RangedAttack` schießt sie nicht, ohne `Inventory` hat sie nichts zu werfen, ohne `AmmoSelector` schießt sie wie vor M11a mit `bow.tres` kostenlos, ohne `Abilities` hat sie keine Fähigkeiten, ohne `Energy` kosten Fähigkeiten nichts, ohne `CharacterView` zeigt sie den Platzhalter, ohne `SlashEffect` oder `HitEffect` fehlt nur dieser Effekt, ohne `Interactor` bedient sie nichts mit E.
 - Einen Zustandsautomaten als Baustein gibt es noch nicht: Der Dash bringt seinen Zeitablauf selbst mit, die Figur fragt nur `is_dashing`. Vorgesehen ist er für den ersten Gegner in M13.
 
 **Kampf im Einzelnen**
@@ -537,7 +559,8 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Bewegliches Ziel `DummyD`: eine Übungspuppe ohne Kollisions-Ebene, Start bei (592, 72). Ihr `CharacterView` trägt den Skin `bamboo.tres` (grüner Bambus); der Platzhalter wäre türkis. Ihr Kind `PatrolMover` lässt sie mit Tempo 40 um 96 Pixel nach unten und zurück pendeln; ihr Kind `Stunnable` hält den `PatrolMover` bei einer Betäubung an.
 - Schadensfeld `DamageZone`: Mitte bei (240, 240).
 - Schadensstreifen `DamageStrip`: 16 × 96 Pixel, Mitte bei (528, 120), rechts neben den Puppen; 10 Schaden, gebaut direkt aus `hitbox.tscn`. Er dient dem Test des Dashs. Sein Kind `Stunnable` schaltet ihn bei einer Betäubung ab.
-- Die Puppen, `DamageZone`, `DamageStrip`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair` und `DebugOverlay` sind eingehängt und lassen sich einzeln löschen.
+- Interaktions-Ecke `InteractionCorner` (M8), Ursprung (752, 448): drei Räume nebeneinander, je 48 × 64 Pixel, zusammen x 768 bis 944 und y 464 bis 528; die Wände sind `RoomWalls`, ein `StaticBody2D` auf `world`. In der oberen Wand liegen drei Durchgänge, je 16 Pixel breit. `WoodDoor` bei (792, 456) ist eine Holztür für E. `LeverGate` bei (856, 456) ist ein Gittertor auf dem Kanal `lever_gate`, sein `Lever` steht bei (824, 424). `PlateGate` bei (920, 456) ist ein Gittertor auf `plate_gate`; die `PressurePlate` liegt davor bei (920, 376), die `PressurePlateInside` im Raum bei (920, 504), damit niemand eingesperrt bleibt.
+- Die Puppen, `DamageZone`, `DamageStrip`, `InteractionCorner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair` und `DebugOverlay` sind eingehängt und lassen sich einzeln löschen.
 - `DebugOverlay` blendet hier „Maus“, „Kamera“ und „Raumzeit“ aus.
 - F2 und der Tod einer Figur laden die Szene neu, direkt in `test_chamber.gd`. Ab M18 übernimmt das der `SceneManager`.
 
@@ -572,6 +595,17 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Die Schrift der Schadenszahlen zeichnet Godot mit den Import-Einstellungen, die es für `NormalFont.ttf` angelegt hat; die Glättung ist dort an.
 - Effekte entscheiden nichts. Im Mehrspieler zeigt sie jeder Rechner selbst, ausgelöst von denselben Signalen.
 
+**Interaktion im Einzelnen (M8)**
+
+- `Interactable` markiert ein Ding als bedienbar: eine `Area2D` auf `interactable` mit eigener Form, 16 × 16 bei Tür und Hebel. `interact(actor)` meldet `interacted`; was dann passiert, entscheidet das Ding – die eine Stelle für den Mehrspieler.
+- `Interactor` hängt an der Figur: ein Kreis mit `reach` aus `data/player/interactor.tres`, Maske `interactable`. In jedem Physik-Schritt gilt das nächste bedienbare Ding als `focus`. Sein Kind `Prompt` (`KeyE.png`, Ebene 100, `top_level`) steht dann über dem Kopf der Figur: Unterkante 12 Pixel über ihrer Mitte, 2 Pixel über dem Ninja. Mit `prompt_above_target` steht es über dem Ding, an dessen `prompt_offset` (Standard 10 Pixel über der Mitte).
+- Die Taste sitzt über dem Kopf, weil sie über einer Tür die Figur verdeckt, die von oben herantritt.
+- Schalter melden über `EventBus.switch_changed(channel, switch_id, is_on)`. Beim Start melden sie einmal, um einen Schritt verzögert, damit alle Türen schon zuhören. Eine Tür merkt sich, welche Schalter auf ihrem Kanal an sind, und ist offen, solange es mindestens einer ist.
+- `Door`: `StaticBody2D` auf `world`, 16 × 16; offen ist ihre Form abgeschaltet. Ohne Kanal bedient E sie über ihr `Interactable`; mit Kanal ist es aus. Ihr `DoorwaySensor` (14 × 14, Maske `player` und `enemy`) hält sie offen, solange dort jemand steht – dann zeigt sie auch keine Taste. Bild: `door_wood.tres`; die Gittertore der Testkammer tragen `gate_bars.tres`.
+- `Lever`: `StaticBody2D` mit einem Pfosten von 10 × 10 Pixeln, den die Figur nicht durchläuft; E legt ihn um. `PressurePlate`: `Area2D` mit 10 × 10, Maske `player` und `enemy`; gedrückt, solange ein Körper sie berührt, ihr Kanal bleibt danach `release_delay` Sekunden an (2).
+- `PropView` zeigt die Zelle für aus oder an; fehlt sie, ist nichts zu sehen. Er liest `is_on` und hört auf `state_changed`; der Platzhalter dahinter ist ausgeblendet.
+- Mehrspieler: Jede Figur hat ihren eigenen `Interactor`. Die Taste zeigen noch alle Figuren, auch mehrere auf einem Rechner; nur die eigene zu zeigen, kommt mit Phase 8.
+
 **Debug-Anzeige im Einzelnen**
 
 - `CanvasLayer` auf Ebene 100, läuft auch bei pausiertem Spiel. Zeigt FPS, Mausposition im Bild, gedrückte Aktionen und alle gemeldeten Werte.
@@ -579,6 +613,14 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Im Editor zeigt die Testkammer nur die blauen Kollisionsflächen; Farben, Raster und Anzeige erscheinen erst im laufenden Spiel.
 
 ### Dateien je Modul
+
+**M8 – Interaktion**
+
+- Neu: `components/interactable/` mit `interactable.tscn`, `interactable.gd`; `components/interactor/` mit `interactor.tscn`, `interactor.gd`, `interactor_stats.gd`; `components/prop_view/` mit `prop_view.tscn`, `prop_view.gd`, `prop_skin.gd`
+- Neu: `world/door/` mit `door.tscn`, `door.gd`; `world/lever/` mit `lever.tscn`, `lever.gd`; `world/pressure_plate/` mit `pressure_plate.tscn`, `pressure_plate.gd`
+- Neu: `data/player/interactor.tres`; `data/skins/door_wood.tres`, `gate_bars.tres`, `lever.tres`, `pressure_plate.tres`
+- Geändert: `autoload/event_bus.gd` (Meldung `switch_changed`), `entities/intent_source.gd` (`wants_interact`), `entities/player/player_input.gd` (liest E), `entities/player/player.gd` (bedient über `Interactor`), `entities/player/player.tscn` (Knoten `Interactor`)
+- Geändert: `levels/test_chamber/test_chamber.tscn` (Interaktions-Ecke), `levels/test_chamber/test_chamber.gd` (nur der Kommentar), `README.md` (Ordner), `docs/projekt_stand.md`, `docs/asset_katalog.md`
 
 **A2 – Kampf-Bilder**
 
@@ -678,7 +720,7 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 - `CharacterView` ersetzt `PlaceholderView`, das als Rückfall bleibt. Der Baustein liest Blickrichtung und Tempo der Figur und hört auf die Signale ihrer Bausteine: Hieb, Dash, Schaden, Tod.
 - Das Bild zeigt die nächstliegende von vier Blickrichtungen; gezielt und getroffen wird weiter stufenlos.
 - Ein Skin ist eine Werte-Datei: Blatt, Bildgröße und Bilder je Animation. Ein anderer Skin ist eine andere Datei, kein Code.
-- `EffectCue` und `SoundCue` hängen neben einem Baustein und reagieren auf eines seiner Signale. Töne spielt der `AudioManager` nach einer Ton-Tabelle.
+- `EffectCue` und `SoundCue` hängen neben einem Baustein und reagieren auf eines seiner Signale. Töne spielt der `AudioManager` nach einer Ton-Tabelle. Den Ton gibt es erst mit A3, fast am Ende des Projekts.
 - Das Paket unter `assets/ninja_adventure/` wird nie verändert. Eigenes – Skins, Kachel-Sets, Ton-Tabelle, Thema – liegt unter `data/` und `ui/`.
 - Alles ist abschaltbar. Bild und Ton sind rein lokal und entscheiden im Mehrspieler nichts.
 
@@ -698,8 +740,13 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 | NPCs | `Actor/Character/<Name>/SpriteSheet.png`, 4 × 7 à 16, dazu `Faceset.png` | geprüft: Zeilen 1 bis 4 Laufen, 5 Angriff, 6 Sprung, 7 Tod, Gegenstand und zwei Sonderposen |
 | Boden und Natur der Steinzeit | `Backgrounds/Tilesets/TilesetFloor.png`, `TilesetNature.png`, `TilesetRelief.png` | gesichtet; Regeln für Übergänge fehlen |
 | Wände der Testkammer | `Backgrounds/Tilesets/Interior/TilesetWallSimple.png` | gesichtet: vier Mauer-Rahmen |
-| Knöpfe, Platten, Stacheln (M8) | `Backgrounds/Tilesets/TilesetDungeon.png` | gesichtet |
-| Kisten, Fässer, Möbel (M9) | `Backgrounds/Tilesets/TilesetElement.png` | gesichtet |
+| Hebel, Druckplatte, Stacheln (M8) | `Backgrounds/Tilesets/TilesetDungeon.png`, Zellen als (Spalte, Zeile) à 16: Druckplatte oben (2,1) und gedrückt (3,1), Hebel rot (3,3) und blau (4,3), Stacheln oben (4,1) und unten (5,1) | geprüft am 17.11.2026; Hebel und Druckplatte eingebaut mit M8 |
+| Türen (M8) | `Backgrounds/Tilesets/TilesetHouse.png` Zelle (2,3): Holztür; `TilesetElement.png` Zelle (1,11): Gittertor | geprüft am 17.11.2026: nur geschlossen – ein Bild der offenen Tür hat das Paket nicht; eingebaut mit M8 |
+| Taste E (M8) | `Ui/Input/Keyboard/KeyE.png`, 13 × 13 | geprüft am 17.11.2026; eingebaut mit M8 |
+| Kiste und Topf (M9) | `Backgrounds/Tilesets/TilesetElement.png`, Zellen als (Spalte, Zeile) à 16: Kiste (0,0), Topf (1,0), Fass (4,0) | geprüft am 17.11.2026 |
+| Baum, Stumpf und Stein (M9) | `Backgrounds/Tilesets/TilesetNature.png`: Baum 32 × 32 aus (0,0) bis (1,1), Stumpf 32 × 32 aus (2,8) bis (3,9), Stein (11,13) | geprüft am 17.11.2026 |
+| Splitter (M9) | `FX/Particle/`: `Wood.png` 6 à 16, `Vase.png` 6 à 14, `Leaf.png` 6 à 12 × 7, `RockGray.png` 5 à 16, `Spark.png` 7 à 10 × 8 | geprüft am 17.11.2026: keine Animationen, sondern einzelne Bruchstücke nebeneinander |
+| Äste und Steine als Beute (M9) | `Items/Resource/Branch.png`, `Rock.png`, je 16 × 16 | geprüft am 17.11.2026 |
 | Truhen (M10) | `Items/Treasure/LittleTreasureChest.png`, `BigTreasureChest.png` | geprüft: je zwei Bilder, zu und offen |
 | Leben im HUD | `Ui/Receptacle/Heart.png`, 5 Bilder à 16 | geprüft: leer bis voll in Viertelschritten |
 | Fähigkeits-Symbole | `Ui/Skill Icon/Spell/`, 24 × 24 | Camouflage für die Unsichtbarkeit geprüft; Schnelligkeit und Stun noch auszuwählen |
@@ -709,9 +756,9 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 
 ## Gate G1 und Ausblick
 
-Phase 1 ist gebaut. Gate G1 steht an: Fühlt sich die Spielfigur gut an – Bewegen, Zielen, Zuschlagen, Ausweichen? Das beurteilt der Nutzer; nachstellen lässt sich alles ohne Code über die Werte-Dateien in `data/`. Laut E2 wird G1 nach A1 bis A3 beurteilt, wenn die Figur Bild und Ton hat.
+Gate G1 ist bestanden: Nach dem Test von A2 hat der Nutzer am 17.11.2026 geschrieben: „Alles getestet und alles funktioniert … lass uns weitermachen“. Claude wertet das als „die Spielfigur fühlt sich gut an“. Nachstellen lässt sich weiter alles ohne Code über die Werte-Dateien in `data/`. Der Ton fehlt noch; er kommt mit A3 fast am Ende des Projekts.
 
-Phase 2 beginnt mit M8 – Interaktion. Laut Konzept gehören in die Testkammer dafür Truhe, Tür, Hebel und Druckplatte nebeneinander; die Aktion `interact` liegt auf E. Bild und Ton kommen dann gleich mit.
+Phase 2 hat mit M8 – Interaktion begonnen; M8 ist fertig. Als Nächstes kommt M9 – Zerstörbares. Claudes Vorschlag vom 17.11.2026 steht im Plan-Dokument, Tab „Plan & Status“, unter Phase 2; die Kurzfassung steht unten unter „Offene Punkte“. Der Ton kommt erst mit A3.
 
 ## Hinweise aus der bisherigen Arbeit
 
@@ -731,18 +778,22 @@ Phase 2 beginnt mit M8 – Interaktion. Laut Konzept gehören in die Testkammer 
 - `CharacterView` zeigt im Editor nichts, weil es das Bild erst beim Start baut – wie bisher der Platzhalter. Die Lage prüft man im laufenden Spiel.
 - Ein neuer Effekt ist eine Kopie einer Datei aus `data/effects/` mit anderem Blatt und anderen Zahlen. Eingehängt wird er mit der Szene `components/effect_cue/effect_cue.tscn` neben dem Baustein, dessen Signal ihn auslösen soll; Signal und Lage stellt man im Inspektor ein.
 - `NormalFont` ist für 9 Pixel gebaut. Scharf bleibt sie in Größe 9 und ihren Vielfachen, also 18, 27 und so weiter.
+- Texte im Spiel ohne ß, Gedankenstrich – und unteres Anführungszeichen „: `NormalFont` hat diese Zeichen nicht. Statt ß steht „ss“ (E4), statt – ein Bindestrich.
+- Ein neues bedienbares Ding: die Szene `components/interactable/interactable.tscn` als Kind anhängen, darunter eine `CollisionShape2D` legen und im Skript auf `interacted` hören.
+- Eine neue Tür: `world/door/door.tscn` instanzieren. Ohne Kanal öffnet E sie; mit Kanal folgt sie allen Hebeln und Druckplatten mit demselben Kanal. Ein Gittertor bekommt beim Kind `PropView` den Skin `data/skins/gate_bars.tres`.
 
 ## Offene Punkte
 
-- A2 – Kampf-Bilder: geliefert am 17.11.2026 als `a2_kampf_bilder.zip`, der Test des Nutzers steht aus. Danach schließt Claude A2 ab und schlägt A3 – Ton vor: `AudioManager` füllen, Baustein `SoundCue`, Ton-Tabelle als Werte-Datei, Musik in der Testkammer. Den Plan dazu enthält der Tab „Grafik & Assets“ im Plan-Dokument.
+- M9 – Zerstörbares: Claudes Vorschlag vom 17.11.2026 steht im Plan-Dokument, Tab „Plan & Status“, unter Phase 2; er wartet auf „weiter“ oder Änderungen. Kurz: Topf (10 Leben, ein Hieb, 50 % 3 Shuriken), Kiste (20 Leben, 5 Pfeile, 30 % dazu 2 Kunai), Baum (40 Leben, wird zum Stumpf, der im Weg bleibt, 2 Äste), Stein (20 Leben; Schwert und Geschosse prallen mit Funken ab, nur Dynamit sprengt ihn; 1 Stein, 25 % 1 Dynamit). Äste und Steine sind neue Gegenstände der Art Material. Die Beute springt als Gegenstand neben das Ding; drüberlaufen sammelt sie ins Inventar, ist es voll, bleibt der Rest liegen – das Aufsammeln zieht damit aus M10 nach M9. Beute entsteht zentral über den EventBus und einen `LootSpawner` im Level, wie Geschosse. Treffer bekommen eine Art – Klinge, Geschoss, Explosion. Splitter aus `FX/Particle`. Testkammer: ein Feld unten links. Nicht dabei: Wiederkehren nach dem Zerstören (bis M16 stellt F2 alles wieder her) und Ton.
+- Ein Kanal kennt nur ODER: Eine Tür ist offen, sobald einer ihrer Schalter an ist. Ein Tor, das zwei Hebel zugleich braucht, gibt es noch nicht.
+- Ton (A3): auf Wunsch des Nutzers verschoben, fast ans Ende des Projekts, mit Phase 7 – Feinschliff. Bis dahin hat kein Modul Ton; `SoundCue` und die Ton-Tabelle entstehen erst dann.
 - Der Hieb-Effekt richtet sich nicht von selbst nach der Trefferzone: Ändern sich `start_distance` oder `reach` in `data/player/sword.tres`, ist `distance` am Knoten `SlashEffect` der Spielfigur nachzuziehen. Heute ist es 8, also `start_distance` + 2.
 - Grafik, noch ungeprüft – Claude klärt das, bevor ein Schritt es braucht: Lage des Katanas über der Figur (erst wenn das Schwert sichtbar wird); Effekte, die im Katalog „unklar“ heißen (wenn ein Schritt sie braucht); alle Töne, bisher nur die Namen (A3); Übergangsregeln der Kacheln (A4); `TilesetFloor.png` mit 417 Pixeln Höhe, nicht durch 16 teilbar (A4); Symbole für Schnelligkeit und Stun (A5).
 - Schießen zeigt kein eigenes Bild der Figur; das Paket hat für die `NinjaGreen` keins. Die Geschosse haben seit M11a ihr Flugbild.
 - Wer vor wem gezeichnet wird, richtet sich noch nach der Reihenfolge der Knoten. Eine Sortierung nach Höhe im Bild folgt mit den Kacheln in A4.
 - Zauber: „keine eigene Kategorie“ ist nur vorläufig gewählt. Die Entscheidung liegt beim Nutzer.
-- Gate G1: Der Nutzer beurteilt nach A1 bis A3, ob sich die Spielfigur gut anfühlt.
 - Unsichtbarkeit: Dass Gegner die Figur verlieren und ein Angriff daraus Bonus-Schaden macht, folgt mit den Gegnern in Phase 3.
-- Geschosse lassen sich bisher nur mit F2 auffüllen; Nachschub ins Inventar kommt mit Truhen und Beute in M10. Energie aus Fläschchen und Speicherpunkten folgt ebenfalls später.
+- Geschosse lassen sich bisher nur mit F2 auffüllen; Nachschub ins Inventar kommt laut Vorschlag mit der Beute aus M9 und mit den Truhen in M10. Energie aus Fläschchen und Speicherpunkten folgt ebenfalls später.
 - Dynamit trifft die Spielfigur nicht. Ob es später auch eigenen Schaden geben soll, entscheidet der Nutzer.
 - `data/player/ammo.tres` ist seit M11a nicht mehr eingehängt; `bow.tres` gilt nur noch ohne `AmmoSelector`. Beide bleiben vorerst liegen.
 - Die Debug-Anzeige stößt an ihre Grenze; die Leisten und Fähigkeits-Symbole des HUD kommen mit M12.

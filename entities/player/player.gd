@@ -1,5 +1,5 @@
 extends CharacterBody2D
-## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten, A1: Bild, M11a: Inventar).
+## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten, A1: Bild, M11a: Inventar, M8: Interaktion).
 ##
 ## Die Figur führt nur Absichten aus. Woher sie kommen, bestimmt das Kind
 ## "PlayerInput" (ein IntentSource): Tasten, später Gamepad oder Netz.
@@ -10,8 +10,9 @@ extends CharacterBody2D
 ## er läuft, lenkt die Figur nicht und beginnt weder Hieb noch Schuss.
 ## Fähigkeiten liegen als Kinder unter "Abilities"; ihr Platz dort bestimmt
 ## die Taste. Sie kosten Energie, die nur durch Schwerttreffer zurückkommt.
+## Die Taste E bedient das nächste Ding in Reichweite, etwa eine Tür (M8).
 ## Die Zahlen stehen in data/player/: movement.tres, stamina.tres,
-## health.tres, sword.tres, dash.tres, bow.tres, energy.tres und inventory.tres;
+## health.tres, sword.tres, dash.tres, bow.tres, energy.tres, inventory.tres und interactor.tres;
 ## die Werte der Fähigkeiten in data/abilities/, die der Geschosse in data/items/.
 ##
 ## Kinder und was ohne sie passiert:
@@ -29,6 +30,7 @@ extends CharacterBody2D
 ##   Ammo          Munition     - nur ohne AmmoSelector; seit M11a nicht eingehängt.
 ##   Abilities     Fähigkeiten  - ohne: Sie hat keine Fähigkeiten.
 ##   Energy        Energie      - ohne: Fähigkeiten kosten nichts.
+##   Interactor    Interaktion  - ohne: Sie bedient nichts mit E (M8).
 ##
 ## Stirbt die Figur, bleibt sie stehen und meldet es über den EventBus
 ## (player_died); ihr Bild zeigt den Tod, der Platzhalter wird grau.
@@ -76,6 +78,7 @@ var speed_factor := 1.0
 @onready var _ammo_selector := get_node_or_null("AmmoSelector") as AmmoSelector
 @onready var _abilities := get_node_or_null("Abilities")
 @onready var _energy := get_node_or_null("Energy") as Supply
+@onready var _interactor := get_node_or_null("Interactor") as Interactor
 
 
 func _ready() -> void:
@@ -97,6 +100,7 @@ func _physics_process(delta: float) -> void:
 	var wants_shoot := false
 	var wanted_ability := -1
 	var wanted_ammo_cycle := 0
+	var wants_interact := false
 	if _intent != null:
 		direction = _intent.move_direction.limit_length(1.0)
 		wants_sprint = _intent.wants_sprint
@@ -106,6 +110,7 @@ func _physics_process(delta: float) -> void:
 		wants_shoot = _intent.wants_shoot
 		wanted_ability = _intent.wants_ability
 		wanted_ammo_cycle = _intent.wants_ammo_cycle
+		wants_interact = _intent.wants_interact
 		_face(_intent.aim_direction)
 
 	_handle_dash_wish(direction, wants_dash)
@@ -130,6 +135,8 @@ func _physics_process(delta: float) -> void:
 		_use_ability(wanted_ability)
 	if wanted_ammo_cycle != 0 and _ammo_selector != null:
 		_ammo_selector.cycle(wanted_ammo_cycle)
+	if wants_interact and _interactor != null:
+		_interactor.try_interact()
 	_report_debug_values()
 
 

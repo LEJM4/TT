@@ -138,7 +138,7 @@ Alle im 16er-Raster. Der Inhalt ist aus dem Namen geschlossen, außer wo „gesi
 
 | Datei | Größe | Kacheln | Inhalt laut Name |
 | --- | --- | --- | --- |
-| `TilesetNature.png` | 384 × 336 | 24 × 21 | Bäume, Felsen, Büsche – gesichtet |
+| `TilesetNature.png` | 384 × 336 | 24 × 21 | Bäume, Felsen, Büsche – gesichtet; am 17.11.2026 geprüft, Zellen als (Spalte, Zeile): Bäume 32 × 32 bei (0,0) rund, (2,0) Tanne, (4,0) kahl, (6,0) mit Wurzeln; große Stümpfe 32 × 32 bei (0,8) braun und (2,8) orange; kleiner Stumpf (4,8), Holzklotz (5,8); Büsche (7,10) bis (9,11); Steine (7,12) blaugrün, (8,12) rund blau, (9,12) grau gezackt, (11,13) grau rund; Schnee (10,12), (10,13) |
 | `TilesetRelief.png` | 320 × 192 | 20 × 12 | Klippen, Höhenstufen – gesichtet |
 | `TilesetReliefDetail.png` | 192 × 192 | 12 × 12 | Details für Felsen |
 | `TilesetFloor.png` | 352 × 417 | 22 × ⚠ 26 | Böden: Gras, Erde, Sand, Schnee – gesichtet; Höhe kein Vielfaches von 16 |
@@ -150,12 +150,12 @@ Alle im 16er-Raster. Der Inhalt ist aus dem Namen geschlossen, außer wo „gesi
 | `TilesetDesert.png` | 320 × 192 | 20 × 12 | Wüste |
 | `tileset_camp.png` | 368 × 144 | 23 × 9 | Lager |
 | `tileset_bed.png` | 224 × 192 | 14 × 12 | Betten |
-| `TilesetHouse.png` | 528 × 368 | 33 × 23 | Häuser |
+| `TilesetHouse.png` | 528 × 368 | 33 × 23 | Häuser; Türen geprüft am 17.11.2026, Zellen als (Spalte, Zeile): Schiebetür (0,3), Gittertür mit Schloss (1,3), Holztür (2,3), Bogentür (8,3), dazu offene Türöffnungen (1,2) und (5,2) als Teil einer Hauswand; ein Eisenzaun mit Tor liegt in (9,10) bis (13,12). Eingebaut mit M8: Holztür (2,3) in `data/skins/door_wood.tres` |
 | `TilesetTowers.png` | 384 × 96 | 24 × 6 | Türme |
 | `TilesetVillageAbandoned.png` | 320 × 192 | 20 × 12 | verlassenes Dorf |
-| `TilesetDungeon.png` | 192 × 64 | 12 × 4 | Dungeon: Knöpfe, Platten, Stacheln – gesichtet |
-| `TilesetElement.png` | 256 × 240 | 16 × 15 | einzelne Objekte: Kisten, Fässer, Möbel – gesichtet |
-| `TilesetLogic.png` | 128 × 160 | 8 × 10 | Schalter, Rätsel-Elemente |
+| `TilesetDungeon.png` | 192 × 64 | 12 × 4 | Dungeon – geprüft am 17.11.2026, Zellen als (Spalte, Zeile): Schlüsselloch-Block (0,0) und (1,0), roter Knopf oben (0,1) und gedrückt (1,1), Druckplatte oben (2,1) und gedrückt (3,1), Stacheln oben (4,1) und unten (5,1), Glasblöcke (0,2) und (1,2), Kugeln auf Sockeln (2,2) bis (7,2), Farbblöcke (0,3) und (1,3), leerer Sockel (2,3), Schalter rot (3,3) und blau (4,3), kleine Schalter (5,3) und (6,3), Kristall (7,3), Steinblock (8,3). Türen gibt es hier keine. Eingebaut mit M8: Druckplatte (2,1) und (3,1), Hebel (3,3) und (4,3) |
+| `TilesetElement.png` | 256 × 240 | 16 × 15 | einzelne Objekte: Kisten, Fässer, Möbel – gesichtet; am 17.11.2026 geprüft, Zellen als (Spalte, Zeile): Kiste (0,0), Topf (1,0), Fass offen (4,0), Truhe (3,1); Gittertor (1,11), Gitterzaun (2,11) bis (4,11), Zellentür (5,11), offene Luken mit Treppe (6,11) bis (9,11), Treppen (6,12) bis (9,12), geschlossene Luken (6,13) bis (9,13) – je in vier Farben. Eingebaut mit M8: Gittertor (1,11) in `data/skins/gate_bars.tres` |
+| `TilesetLogic.png` | 128 × 160 | 8 × 10 | geprüft am 17.11.2026: keine Spielobjekte, sondern Markierungen in acht Farben – Flächen, Schlüssel, Auge, Truhe, Fragezeichen, Kreuz, Buchstaben A bis D; wohl für den Leveleditor |
 | `Pipes.png` | 240 × 48 | 15 × 3 | Rohre |
 | `Interior/TilesetInterior.png` | 256 × 320 | 16 × 20 | Möbel, Innenräume |
 | `Interior/TilesetInteriorFloor.png` | 352 × 272 | 22 × 17 | Innenböden |
@@ -203,7 +203,7 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 
 **Geschosse** in `FX/Projectile/`: `Arrow.png` 13 × 5 (zeigt nach rechts – geprüft), `Kunai.png` 14 × 5 (zeigt nach rechts – geprüft am 17.11.2026), `BigKunai.png` 35 × 9, `Shuriken.png` und `ShurikenMagic.png` 32 × 16 (2 à 16; bei `Shuriken.png` zwei Drehbilder – geprüft am 17.11.2026), `BigShuriken.png` 46 × 23 (2 à 23), `Fireball.png`, `EnergyBall.png` und `SpriteSheetRock.png` 64 × 16 (4 à 16), `BigEnergyBall.png` 96 × 24 (4 à 24), `CanonBall.png` 80 × 16 (5 à 16), `IceSpike.png` 144 × 10, `PlantSpike.png` 96 × 20.
 
-**Partikel** in `FX/Particle/` als schmale Streifen: Bamboo, Clouds, Fire, Grass, Leaf, LeafPink, Rain, RainOnFloor, Rock, RockGray, Snow, Spark, Vase, Wood.
+**Partikel** in `FX/Particle/` als schmale Streifen: Bamboo, Clouds, Fire, Grass, Leaf, LeafPink, Rain, RainOnFloor, Rock, RockGray, Snow, Spark, Vase, Wood. Geprüft am 17.11.2026: Die meisten sind keine Animationen, sondern einzelne Bruchstücke nebeneinander – `Wood.png` 6 à 16, `Vase.png` 6 à 14, `Leaf.png` und `LeafPink.png` 6 à 12 × 7, `Grass.png` 6 à 12 × 13, `Rock.png` und `RockGray.png` 5 à 16, `Bamboo.png` 6 à 16; `Spark.png` sind 7 à 10 × 8 Funken von klein über groß zu klein. `AllPreview.png` zeigt alle zusammen.
 
 **Umgebung** in `FX/Environment/`: `Fog.png` 320 × 180, `Raylight.png` 216 × 102.
 
@@ -229,12 +229,12 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 | --- | --- |
 | `Dialog/` | `DialogBox.png` und `DialogBoxFaceset.png` 300 × 58, `DialogueBoxSimple.png` 316 × 60, `ChoiceBox.png`, `FacesetBox.png`, `YesButton.png`, `NoButton.png`, `DialogInfo.png` |
 | `Emote/` | `emote1.png` bis `emote30.png`, 14 × 13 |
-| `Font/` | `NormalFont.ttf` (Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt; am 17.11.2026 vermessen: gebaut für 9 Pixel – 2.048 Einheiten je Geviert, ein Pixel sind 227,6 Einheiten –, Ziffern 6 Pixel hoch, Vorschub 6 Pixel; eingebaut mit A2 für die Schadenszahlen in Größe 9), `font8x8.png` 120 × 64, `font24x30.png` 360 × 240 |
+| `Font/` | `NormalFont.ttf` (Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt; am 17.11.2026 vermessen: gebaut für 9 Pixel – 2.048 Einheiten je Geviert, ein Pixel sind 227,6 Einheiten –, Ziffern 6 Pixel hoch, Vorschub 6 Pixel; eingebaut mit A2 für die Schadenszahlen in Größe 9; nachgezählt: Klein- und Großbuchstaben, Umlaute, Ziffern und die üblichen Satzzeichen sind da, es fehlen ß, der Gedankenstrich – und das untere Anführungszeichen „), `font8x8.png` 120 × 64, `font24x30.png` 360 × 240 |
 | `Receptacle/` | `Heart.png` 80 × 16 (5 à 16: leer bis voll in Viertelschritten – geprüft), `Heart2.png` und `Heart3.png` 64 × 16 (4 à 16), `LifeBarMiniProgress.png`, `LifeBarMiniUnder.png`, `IconHeart.png` |
 | `Receptacle/Receptacle Rectangle/`, `Receptacle Sphere/` | Rahmen (`Background*.png`) und Füllungen (`Progress*.png`) für Leisten und Kugeln, darunter `ProgressHealth.png` und `ProgressMana.png` |
 | `Skill Icon/Spell/` | 34 Symbole à 24 × 24, fast alle auch als `…Disabled.png`: darunter Camouflage (geprüft), Mist, Vision, Fireball, Heal, Counter, Cut |
 | `Skill Icon/Items & Weapon/`, `Job & Action/`, `Meteo/` | weitere 28 Symbole à 24 × 24 mit `…Disabled.png`: darunter Interact, Talk, Punch, Potion, Kunai, Shuriken |
-| `Input/Keyboard/` | Tastensymbole 13 × 13: Buchstaben, Ziffern, F1–F12, Pfeile, Shift, Ctrl, Alt, Space, Tab, Enter, Escape |
+| `Input/Keyboard/` | Tastensymbole 13 × 13: Buchstaben, Ziffern, F1–F12, Pfeile, Shift, Ctrl, Alt, Space, Tab, Enter, Escape. Die Dateien heißen `Key<Name>.png`, etwa `KeyE.png` – geprüft am 17.11.2026; `KeyE.png` ist seit M8 die Taste über der Figur |
 | `Input/Mouse/`, `Input/Gamepad/` | Maus mit linker, rechter, mittlerer Taste und Rad; Gamepad-Tasten |
 | `Theme/Theme Wood/` | fertiges Oberflächen-Thema: Knöpfe, Rahmen als Nine-Patch, `inventory_cell.png`, Schieberegler, Reiter, Häkchen |
 | `Theme/Wip/` | 12 weitere Rahmen als Entwurf |
@@ -252,7 +252,7 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 
 ## Prüfstand am Bild
 
-Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 des Grafik-Plans brauchen.
+Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 des Grafik-Plans brauchen; am 17.11.2026 dazu die Blätter für M8 – Interaktion; was M8 davon nutzt, steht bei den Kacheln und der Oberfläche. Ebenfalls am 17.11.2026 für den Vorschlag zu M9: Kiste, Topf, Baum, Stumpf, Stein und die Splitter in `FX/Particle/`.
 
 | Prüfung | Stand |
 | --- | --- |
@@ -261,7 +261,7 @@ Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 des 
 | Die beiden Zustände der Truhen | erledigt: zu und offen |
 | Alle mit ⚠ „unklar“ markierten Effekt-Streifen | offen |
 | `TilesetFloor.png`: Höhe 417 ist kein Vielfaches von 16 | offen |
-| Inhalt der Tilesets | teilweise: Floor, Nature, Relief, Dungeon, Element und WallSimple gesichtet; Regeln für Übergänge offen |
+| Inhalt der Tilesets | teilweise: Floor, Nature, Relief und WallSimple gesichtet; am 17.11.2026 geprüft: Dungeon und Logic ganz, in House die Türen, in Element Gitter, Luken und Treppen; Regeln für Übergänge offen |
 | `Actor/Monster/BambooYellow/` als Bild der Übungspuppe | erledigt am 17.11.2026: orange Fassung von Bamboo, gleiches Raster; eingebaut mit A1 |
 | Symbole für Schnelligkeit und Stun in `Ui/Skill Icon/` | offen, noch auszuwählen |
 | Töne | nur die Namen bekannt; anhören kann nur der Nutzer |

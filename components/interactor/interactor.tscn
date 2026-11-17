@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://components/interactor/interactor.gd" id="1_interactor"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Input/Keyboard/KeyE.png" id="2_key"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_reach"]
+radius = 16.0
+
+[node name="Interactor" type="Area2D"]
+collision_layer = 0
+collision_mask = 32
+monitorable = false
+script = ExtResource("1_interactor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_reach")
+
+[node name="Prompt" type="Sprite2D" parent="."]
+visible = false
+top_level = true
+z_index = 100
+texture = ExtResource("2_key")
+centered = false
+offset = Vector2(-6, -13)

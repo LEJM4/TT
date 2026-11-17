@@ -10,6 +10,9 @@ extends Node2D
 ##                   lässt sich betäuben (M7); trägt den Skin data/skins/bamboo.tres (A1)
 ##   DamageZone      Schadensfeld (M4)
 ##   DamageStrip     schmaler Schadensstreifen zum Durchdashen (M5); lässt sich betäuben (M7)
+##   InteractionCorner  drei kleine Räume unten rechts (M8): Holztür mit E, Gittertor
+##                   am Hebel (Kanal lever_gate), Gittertor an zwei Druckplatten (plate_gate) -
+##                   eine davor, eine im Raum, damit niemand eingesperrt bleibt
 ##   PlayerSpawner   erzeugt die Spielfiguren (M2)
 ##   ProjectileSpawner  erzeugt alle Geschosse (M6)
 ##   PlayerCamera    folgt der Spielfigur (M3); die Grenzen meldet dieses Skript

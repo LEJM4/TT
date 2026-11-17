@@ -13,6 +13,10 @@
 [ext_resource type="PackedScene" path="res://entities/projectile/projectile_spawner.tscn" id="11_projectiles"]
 [ext_resource type="PackedScene" path="res://components/stunnable/stunnable.tscn" id="12_stunnable"]
 [ext_resource type="Resource" path="res://data/skins/bamboo.tres" id="13_bamboo_skin"]
+[ext_resource type="PackedScene" path="res://world/door/door.tscn" id="14_door"]
+[ext_resource type="PackedScene" path="res://world/lever/lever.tscn" id="15_lever"]
+[ext_resource type="PackedScene" path="res://world/pressure_plate/pressure_plate.tscn" id="16_plate"]
+[ext_resource type="Resource" path="res://data/skins/gate_bars.tres" id="17_gate_skin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
 size = Vector2(960, 16)
@@ -58,6 +62,18 @@ size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_strip"]
 size = Vector2(16, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_room_wall_a"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_room_wall_bc"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_room_wall_d"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_room_side"]
+size = Vector2(16, 64)
 
 [node name="TestChamber" type="Node2D" unique_id=242313944]
 script = ExtResource("1_chamber")
@@ -178,6 +194,72 @@ color = Color(0.9, 0.2, 0.2, 0.35)
 
 [node name="Stunnable" parent="DamageStrip" instance=ExtResource("12_stunnable")]
 paused_node = NodePath("..")
+
+[node name="InteractionCorner" type="Node2D" parent="."]
+position = Vector2(752, 448)
+
+[node name="RoomWalls" type="StaticBody2D" parent="InteractionCorner"]
+collision_mask = 0
+
+[node name="WallA" type="CollisionShape2D" parent="InteractionCorner/RoomWalls"]
+position = Vector2(16, 8)
+shape = SubResource("RectangleShape2D_room_wall_a")
+
+[node name="WallB" type="CollisionShape2D" parent="InteractionCorner/RoomWalls"]
+position = Vector2(72, 8)
+shape = SubResource("RectangleShape2D_room_wall_bc")
+
+[node name="WallC" type="CollisionShape2D" parent="InteractionCorner/RoomWalls"]
+position = Vector2(136, 8)
+shape = SubResource("RectangleShape2D_room_wall_bc")
+
+[node name="WallD" type="CollisionShape2D" parent="InteractionCorner/RoomWalls"]
+position = Vector2(184, 8)
+shape = SubResource("RectangleShape2D_room_wall_d")
+
+[node name="WallLeft" type="CollisionShape2D" parent="InteractionCorner/RoomWalls"]
+position = Vector2(8, 48)
+shape = SubResource("RectangleShape2D_room_side")
+
+[node name="DividerA" type="CollisionShape2D" parent="InteractionCorner/RoomWalls"]
+position = Vector2(72, 48)
+shape = SubResource("RectangleShape2D_room_side")
+
+[node name="DividerB" type="CollisionShape2D" parent="InteractionCorner/RoomWalls"]
+position = Vector2(136, 48)
+shape = SubResource("RectangleShape2D_room_side")
+
+[node name="PlaceholderView" parent="InteractionCorner/RoomWalls" instance=ExtResource("2_view")]
+color = Color(0.36, 0.4, 0.5, 1)
+
+[node name="WoodDoor" parent="InteractionCorner" instance=ExtResource("14_door")]
+position = Vector2(40, 8)
+
+[node name="LeverGate" parent="InteractionCorner" instance=ExtResource("14_door")]
+position = Vector2(104, 8)
+channel = &"lever_gate"
+
+[node name="PropView" parent="InteractionCorner/LeverGate"]
+skin = ExtResource("17_gate_skin")
+
+[node name="PlateGate" parent="InteractionCorner" instance=ExtResource("14_door")]
+position = Vector2(168, 8)
+channel = &"plate_gate"
+
+[node name="PropView" parent="InteractionCorner/PlateGate"]
+skin = ExtResource("17_gate_skin")
+
+[node name="Lever" parent="InteractionCorner" instance=ExtResource("15_lever")]
+position = Vector2(72, -24)
+channel = &"lever_gate"
+
+[node name="PressurePlate" parent="InteractionCorner" instance=ExtResource("16_plate")]
+position = Vector2(168, -72)
+channel = &"plate_gate"
+
+[node name="PressurePlateInside" parent="InteractionCorner" instance=ExtResource("16_plate")]
+position = Vector2(168, 56)
+channel = &"plate_gate"
 
 [node name="PlayerSpawner" parent="." unique_id=970808961 instance=ExtResource("4_spawner")]
 

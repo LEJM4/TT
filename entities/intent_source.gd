@@ -26,3 +26,5 @@ var wants_ability := -1
 ## Geschoss wechseln: positiv zum nächsten, negativ zum vorigen, 0 bleibt.
 ## Nur in dem Physik-Schritt gesetzt, in dem der Wunsch kam (M11a).
 var wants_ammo_cycle := 0
+## Will die Figur etwas mit E bedienen? Nur in dem Physik-Schritt wahr, in dem der Wunsch kam (M8).
+var wants_interact := false

@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/lever/lever.gd" id="1_lever"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="2_view"]
+[ext_resource type="PackedScene" path="res://components/prop_view/prop_view.tscn" id="3_prop_view"]
+[ext_resource type="Resource" path="res://data/skins/lever.tres" id="4_skin"]
+[ext_resource type="PackedScene" path="res://components/interactable/interactable.tscn" id="5_interactable"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_post"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reach"]
+size = Vector2(16, 16)
+
+[node name="Lever" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_lever")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_post")
+
+[node name="PlaceholderView" parent="." instance=ExtResource("2_view")]
+color = Color(0.8, 0.3, 0.3, 1)
+
+[node name="PropView" parent="." instance=ExtResource("3_prop_view")]
+skin = ExtResource("4_skin")
+
+[node name="Interactable" parent="." instance=ExtResource("5_interactable")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("RectangleShape2D_reach")
