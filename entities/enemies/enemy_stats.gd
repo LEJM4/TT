@@ -1,19 +1,23 @@
 class_name EnemyStats
 extends Resource
-## EnemyStats - Werte-Datei eines Gegners: Tempo, Zeiten und Kampf (M13).
+## EnemyStats - Werte-Datei eines Gegners: Tempo, Zeiten und Überraschung (M13).
 ##
-## Die Werte des Höhlenmenschen stehen in data/enemies/caveman.tres. Leben,
-## Schlag, Sehen und Hören stehen in eigenen Werte-Dateien daneben.
+## Die Werte stehen je Gegner in data/enemies/, etwa caveman.tres (Höhlenmensch)
+## und stone_thrower.tres (Steinwerferin, M14). Leben, Sehen und Hören, Waffe und
+## Angriff stehen in eigenen Werte-Dateien daneben.
 ## Abstände stehen in Kacheln (1 Kachel = 16 Pixel der Grafik), Tempo in Pixeln
 ## pro Sekunde - so lässt es sich mit der Spielfigur vergleichen (Gehen 80).
-## Die Schlagweite steht nicht hier: Er schlägt zu, sobald die Figur in der
-## Trefferzone seines Schlags steht (MeleeStats: start_distance + reach).
+## Wie nah er herangeht, wann er angreift und wie lange er danach steht, sagen
+## seine Angriffs-Module (EnemyAttackStats, M14) und deren Waffen.
 
 @export_group("Tempo")
 ## Tempo auf Patrouille und auf dem Rückweg, in Pixeln pro Sekunde.
 @export var patrol_speed := 30.0
 ## Tempo beim Verfolgen, in Pixeln pro Sekunde.
 @export var chase_speed := 60.0
+## Tempo beim Zurückweichen, wenn ihm die Figur zu nah ist, in Pixeln pro Sekunde (M14).
+## Nur für Gegner, deren erster Angriff einen Mindestabstand hat.
+@export var retreat_speed := 45.0
 ## Tempo auf dem Weg zur letzten bekannten Stelle, in Pixeln pro Sekunde.
 @export var search_speed := 45.0
 
@@ -24,8 +28,6 @@ extends Resource
 @export var alert_time := 0.4
 ## So lange darf er die Figur aus den Augen verlieren, bevor er sucht, in Sekunden.
 @export var lose_time := 1.5
-## Pause nach einem Schlag, bevor er weiter verfolgt, in Sekunden.
-@export var attack_recover := 0.6
 ## So lange schaut er sich an der letzten bekannten Stelle um, in Sekunden.
 @export var search_time := 3.0
 ## Nach so vielen Sekunden dreht er sich beim Umschauen um 90°.
@@ -37,7 +39,7 @@ extends Resource
 ## So lange bleibt er nach dem Tod liegen, bevor er verschwindet, in Sekunden.
 @export var remove_delay := 1.0
 
-@export_group("Kampf")
+@export_group("Überraschung")
 ## Faktor auf Treffer, solange er die Figur nicht bemerkt hat - Überraschung.
 @export var surprise_factor := 2.0
 ## Wird er unbemerkt getroffen, sucht er so weit in der Richtung des Angreifers, in Kacheln.

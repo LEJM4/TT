@@ -12,10 +12,10 @@ Er ist eine Richtlinie, kein Zwang. Was vorgezogen oder eingeschoben wird, steht
 | | |
 | --- | --- |
 | Stand vom | 18.11.2026 |
-| In Arbeit | – Übergabe an einen neuen Chat, vorbereitet am 18.11.2026 |
-| Als Nächstes | im neuen Chat: Repo lesen und prüfen, dass M13 drin ist, dann M14 – Gegnertypen vorschlagen. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
-| Zuletzt abgeschlossen | M13 – Erster Gegner, am 18.11.2026: Test nach der Nachbesserung bestanden („Alles passt“). Davor am 18.11.2026 M12 – HUD, damit war Phase 2 fertig; am 17.11.2026 M11 – Inventar & Ausrüstung, M10 – Truhen & Beute, M9 – Zerstörbares, M8 – Interaktion, A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
-| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 18.11.2026 nach dem Test von M12: Commit `19e426c` „m12 -> only docs missing“ mit M12. Der Inhalt stimmt Datei für Datei mit `m12_hud.zip` überein, dazu die `.uid`-Dateien der neuen Skripte. Davor `1b7abfc` mit M9 bis M11, `e615355` mit M8, `e7909b2` mit A2, `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4`. Vor dem Bau von M13 noch einmal gelesen: weiter `19e426c`, `m12_abschluss.zip` war noch nicht hochgeladen. Das muss nicht nachgeholt werden: Die Stand-Datei aus `m13_nachbesserung.zip` ersetzt alle früheren. Vor der Nachbesserung von M13 und beim Abschluss noch einmal gelesen: weiter `19e426c`, M13 ist noch nicht hochgeladen. Der Nutzer lädt M13 mit dieser Stand-Datei als nächsten Commit hoch; der neue Chat prüft das zuerst |
+| In Arbeit | M15 – NPCs & Dialog: Vorschlag im Plan-Dokument unter Phase 3, vorgelegt am 18.11.2026; gebaut wird nach „weiter“ oder mit den Änderungen des Nutzers |
+| Als Nächstes | M15 – NPCs & Dialog bauen, sobald der Nutzer den Vorschlag bestätigt. Vorher lädt er M14 mit dieser Stand-Datei aus `m14_abschluss.zip` hoch und löscht `components/windup_flash`. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
+| Zuletzt abgeschlossen | M14 – Gegnertypen, am 18.11.2026: Test bestanden („Passt alles“). Davor am 18.11.2026 M13 – Erster Gegner nach einer Nachbesserung und M12 – HUD, damit war Phase 2 fertig; am 17.11.2026 M11 – Inventar & Ausrüstung, M10 – Truhen & Beute, M9 – Zerstörbares, M8 – Interaktion, A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
+| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 18.11.2026 zu Beginn des neuen Chats: Commit `886f6f9` „m13 upades“ mit M13 samt Nachbesserung und der Stand-Datei aus `m13_abschluss.zip`. Noch im Repo liegt der Ordner `components/windup_flash` aus der ersten Fassung von M13; nichts benutzt ihn, der Nutzer löscht ihn beim Einspielen von M14. Davor `19e426c` mit M12, `1b7abfc` mit M9 bis M11, `e615355` mit M8, `e7909b2` mit A2, `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4`. M14 baut auf `886f6f9` auf. Nach dem Test von M14 noch einmal gelesen: weiter `886f6f9`, M14 ist noch nicht hochgeladen |
 
 ## Neuer Chat und Arbeitsweise
 
@@ -26,16 +26,12 @@ Ein neuer Chat hat keine Kopie früherer Lieferungen. Er kennt nur diese Datei, 
 1. Diese Datei lesen, dann im Plan-Dokument den Tab, um den es geht.
 2. Das Repo einmal klonen und den Code lesen. Fehlt dort etwas, das hier als fertig steht, bittet Claude den Nutzer, es hochzuladen, statt es aus dieser Datei nachzubauen.
 
-**Übergabe vom 18.11.2026, nach M13**
+**Regeln für alle Gegner**
 
-- Stand: M0 bis M13 fertig, dazu M11a und A0 bis A2. Phase 3 läuft; als Nächstes kommt M14 – Gegnertypen.
-- M13 lädt der Nutzer vor dem Wechsel hoch, als Commit nach `19e426c`, mit `m13_nachbesserung.zip` und dieser Stand-Datei aus `m13_abschluss.zip`. Der Ordner `components/windup_flash` gehört nicht dazu; liegt er im Repo, bittet Claude den Nutzer, ihn zu löschen.
-- Die Stand-Datei im Projektwissen ist schon diese Fassung.
-- Erste Nachricht des Nutzers im neuen Chat:
+- Seit M13: Abstände in Kacheln (`ViewSettings.tiles()`), Bemerken nur in der fairen Grenze von `Perception`, Schlag sofort mit dem ersten Bild der Hieb-Animation, kein Blinken beim Angriff; die Welt erscheint mit Zoom 2 aus `data/world/view.tres`.
+- Seit M14: Neue Gegner und Gegnertypen kommen als neue Dateien dazu – Aufbau unter „Gegnertypen im Einzelnen (M14)“. Der Nutzer will später viele weitere Typen.
 
-> Neuer Chat für TimeTraveller, weiter nach M13. Lies zuerst `projekt_stand.md` im Projektwissen und im Plan-Dokument den Tab „Plan & Status“. Klone dann das Repo https://github.com/LEJM4/TT und prüfe, ob M13 – Erster Gegner samt Nachbesserung vollständig drin ist: ein Commit nach `19e426c`, ohne den Ordner `components/windup_flash`. Fehlt etwas, sag es mir. Danach schlag M14 – Gegnertypen vor.
-
-- Für alle weiteren Gegner gilt seit M13: Abstände in Kacheln (`ViewSettings.tiles()`), Bemerken nur in der fairen Grenze von `Perception`, Schlag sofort mit dem ersten Bild der Hieb-Animation, kein Blinken beim Angriff; die Welt erscheint mit Zoom 2 aus `data/world/view.tres`.
+Die Übergabe vom 18.11.2026 nach M13 ist erledigt: M13 liegt im Repo (Commit `886f6f9`); der neue Chat hat das geprüft und auf Wunsch des Nutzers gleich M14 gebaut. Übrig war nur der Ordner `components/windup_flash`.
 
 Die Übergabe vom 17.11.2026 ist erledigt: Der Nutzer hat M3 bis M7 hochgeladen und die Projektanweisungen angepasst; der neue Chat hat mit A1 begonnen.
 
@@ -81,8 +77,8 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | | M11 Inventar & Ausrüstung | fertig am 17.11.2026; die Logik kam mit M11a |
 | | M12 HUD | fertig am 18.11.2026 – damit ist Phase 2 fertig |
 | 3 – Gegner & NPCs | M13 Erster Gegner | fertig am 18.11.2026 – nach einer Nachbesserung am selben Tag |
-| | M14 Gegnertypen | als Nächstes – im neuen Chat |
-| | M15 NPCs & Dialog | offen |
+| | M14 Gegnertypen | fertig am 18.11.2026 – Nahkämpfer und Fernkämpfer als Baukasten für viele weitere Typen |
+| | M15 NPCs & Dialog | als Nächstes – Vorschlag im Plan-Dokument, vorgelegt am 18.11.2026 |
 | 4 – Spielrahmen | M16 Speichern & Laden | offen |
 | | M17 Missionen | offen |
 | | M18 Räume & Levelwechsel | offen |
@@ -103,9 +99,9 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | A3 Ton | `AudioManager` füllen, Baustein `SoundCue`, Ton-Tabelle als Werte-Datei, Musik in der Testkammer | fast am Ende des Projekts, mit Phase 7 – Feinschliff; am 17.11.2026 auf Wunsch des Nutzers verschoben | offen |
 | A4 Kacheln & Räume | Kachel-Sets mit Kollision, Testkammer mit Kacheln, Anleitung zum Malen im Editor | mit M8, spätestens vor Level 1 | offen |
 | A5 Oberfläche | Schrift und Thema, Herzen, Leisten, Fähigkeits- und Tastensymbole, Dialogfeld | mit M11, M12, M15 und M20 | in Arbeit – mit M11 das Holz-Thema für Fenster, mit M12 Herzen, Energie-Kugel, Ausdauer-Leiste, Fähigkeits- und Tastensymbole; es fehlen Dialogfeld (M15) und Menüs (M20) |
-| A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | in Arbeit – mit M13 der Höhlenmensch `Caveman2` als erster Gegner |
+| A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | in Arbeit – mit M13 der Höhlenmensch `Caveman2` als erster Gegner, mit M14 die Steinwerferin `Cavegirl` und ihr Stein aus `FX/Particle/Rock.png` |
 
-Ab A1 bringt jedes neue Modul sein Bild gleich mit: M8 aus `TilesetDungeon`, `TilesetHouse` und `TilesetElement`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`, M11 aus `Ui/Theme/Theme Wood` und `Items/Weapons`, M12 aus `Ui/Receptacle`, `Ui/Skill Icon` und `Ui/Input/Keyboard`, M13 aus `Actor/Character/Caveman2`, `Ui/Emote` und `FX/Attack/Claw`. Den Ton bekommen alle Module erst mit A3, fast am Ende des Projekts.
+Ab A1 bringt jedes neue Modul sein Bild gleich mit: M8 aus `TilesetDungeon`, `TilesetHouse` und `TilesetElement`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`, M11 aus `Ui/Theme/Theme Wood` und `Items/Weapons`, M12 aus `Ui/Receptacle`, `Ui/Skill Icon` und `Ui/Input/Keyboard`, M13 aus `Actor/Character/Caveman2`, `Ui/Emote` und `FX/Attack/Claw`, M14 aus `Actor/Character/Cavegirl` und `FX/Particle/Rock.png`. Den Ton bekommen alle Module erst mit A3, fast am Ende des Projekts.
 
 **Gates**
 
@@ -130,6 +126,7 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | 17.11.2026 | Im Vorschlag zu M9 hat Claude das Aufsammeln und die Beute-Listen aus M10 nach M9 gezogen, weil zerstörte Dinge sonst nichts fallen lassen könnten. Der Nutzer hat mit „weiter“ bestätigt. M10 bringt damit nur noch die Truhen. | M9 fertig am 17.11.2026 |
 | 18.11.2026 | Wunsch des Nutzers: Nach M13 – Erster Gegner wechselt er in einen neuen Chat. Claude liefert nach dem Test von M13 alles dafür und sagt, was im neuen Chat einzufügen ist. | vorbereitet am 18.11.2026 nach dem bestandenen Test: Stand-Datei, Plan-Dokument und erste Nachricht für den neuen Chat stehen bereit |
 | 18.11.2026 | Wunsch des Nutzers nach dem ersten Test von M13: Sprites global größer („4x“); Fokus- und Angriffsabstand der Nahkämpfer in logischen Einheiten statt fester Pixel, fair und nicht einfach mit dem Faktor multipliziert; Schlag sofort mit dem ersten Bild der Hieb-Animation, weil sie nur ein Bild ohne Ausholen hat; kein rotes Blinken beim Angriff des Höhlenmenschen. Claude hat das als Nachbesserung von M13 gebaut – Zoom 2 statt 4, Begründung unter „Weltskalierung“. | eingebaut am 18.11.2026 als `m13_nachbesserung.zip`; Test bestanden („Alles passt“) |
+| 18.11.2026 | Neuer Chat. Wunsch des Nutzers: gleich mit M14 beginnen, als Gegnertypen erst Nahkampf und Fernkampf; später kommen viele weitere dazu, deshalb so modular und einfach erweiterbar wie möglich. Claude hat M14 ohne vorherigen Vorschlag gebaut; die Entscheidungen stehen unter „Festlegungen“ und im Plan-Dokument. Dafür ist die Grundszene der Gegner einmal umgebaut: Den Angriff bringt jetzt der Gegnertyp mit, nicht mehr die Grundszene. | gebaut am 18.11.2026 als `m14_gegnertypen.zip`; Test bestanden („Passt alles“) |
 
 ## Festlegungen
 
@@ -182,11 +179,19 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Inventarfenster | Tab öffnet und schließt es, Esc schließt es. Links die vier Ausrüstungsplätze Waffe, Fernkampf, Rüstung, Anhänger, rechts die 20 Plätze als Raster mit Symbol und Anzahl, unten Name, Art und Werte des Gewählten. Ein Klick wählt, ein Doppelklick legt an oder ab. Solange es offen ist, bleibt die Figur stehen und greift nicht an; die Welt läuft weiter. Aussehen: das Holz-Thema des Pakets, Schrift `NormalFont` | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; Esc zum Schließen hat Claude beim Bauen ergänzt. Nach dem Test vom Nutzer mit „alles klappt“ bestätigt |
 | Ausrüstung | Angelegtes liegt nicht im Inventar; beim Anlegen wandert das Vorige zurück, Ablegen geht nur mit Platz im Inventar. Waffe: bringt die Werte des Schwerthiebs mit; ohne Waffe gelten die aus `sword.tres`. Fernkampf: mehr Aufprall-Schaden für jedes Geschoss. Rüstung: zieht von jedem Treffer etwas ab, mindestens 1 bleibt. Anhänger: mehr Leben, das aktuelle Leben bleibt. Zum Testen: Katana (beim Start angelegt, 10 Schaden, 0,35 s), Breitschwert (15, 0,5 s), Bogen (+3), Lederrüstung (−3), Rubin-Anhänger (+20 Leben) | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt, nach dem Test mit „alles klappt“ |
 | HUD | Oben links die Energie als Kugel, die sich von unten blau füllt; rechts daneben das Leben als Herzen – ein Herz sind 20 Leben, in Vierteln, solange Leben übrig ist mindestens ein Viertel –; darunter die Ausdauer als schmale Leiste, grün, rot während der Erschöpfung. Unten links die Fähigkeiten 1 bis 3 mit der Taste darunter – Stiefel, Tarnung, Blitz-Buch –: orange umrahmt, solange sie wirken, grau mit Füllung im Uhrzeigersinn in der Abklingzeit, grau ohne genug Energie; daneben das gewählte Geschoss mit seiner Anzahl. Die Debug-Anzeige steht oben rechts. Keine Zahlen an Kugel und Leiste | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt, nach dem Test am 18.11.2026 mit „okay du kannst weitermachen“ |
-| Erster Gegner | Ein Höhlenmensch (`Caveman2`) mit 30 Leben patrouilliert mit 30 Pixeln pro Sekunde zwischen zwei Punkten und wartet an jedem Ende 1 s. Er sieht 6 Kacheln nach vorn in einem Kegel von 100°, nicht durch Wände; läuft eine Figur, hört er sie im Umkreis von 2,5 Kacheln auch von hinten. Schleicht sie (Strg gehalten, auch im Stehen), sieht er sie nur halb so weit und hört sie nicht; unsichtbar oder tot bemerkt er sie gar nicht. Bemerken kann er sie nur, wenn er auf ihrem Bild steht, mindestens 1 Kachel vom Rand. Bemerkt er sie, bleibt er 0,4 s stehen – über ihm ein rotes „!“ –, dann verfolgt er sie mit 60 Pixeln pro Sekunde; als Verfolger sieht er rundum bis 10 Kacheln. Steht sie in der Reichweite seiner Faust (18 Pixel), schlägt er sofort zu – Faust-Bild, Krallen und Treffer im selben Moment, ohne Ausholen und ohne Blinken –: 10 Schaden; danach 0,6 s Pause, frühestens nach 0,8 s der nächste Schlag. Verliert er die Figur 1,5 s lang oder wird sie unsichtbar, geht er zur letzten Stelle – über ihm ein „?“ –, schaut sich 3 s um und kehrt zurück. Stun hält ihn an. Treffer, bevor er die Figur bemerkt hat, zählen doppelt; danach dreht er sich zum Angreifer. Lebensleiste ab dem ersten Treffer; beim Tod Rauch, Beute (3 Pfeile, mit 50 % 2 Shuriken), nach 1 s verschwindet er | von Claude vorgeschlagen; vom Nutzer am 18.11.2026 mit „weiter“ bestätigt; nach dem ersten Test am 18.11.2026 auf seinen Wunsch geändert: Abstände in Kacheln mit fairer Grenze, Schlag ohne Ausholen, kein rotes Blinken. Nach dem Test am 18.11.2026 mit „Alles passt“ bestätigt |
+| Erster Gegner | Ein Höhlenmensch (`Caveman2`) mit 30 Leben patrouilliert mit 30 Pixeln pro Sekunde zwischen zwei Punkten und wartet an jedem Ende 1 s. Er sieht 6 Kacheln nach vorn in einem Kegel von 100°, nicht durch Wände; läuft eine Figur, hört er sie im Umkreis von 2,5 Kacheln auch von hinten. Schleicht sie (Strg gehalten, auch im Stehen), sieht er sie nur halb so weit und hört sie nicht; unsichtbar oder tot bemerkt er sie gar nicht. Bemerken kann er sie nur, wenn er auf ihrem Bild steht, mindestens 1 Kachel vom Rand. Bemerkt er sie, bleibt er 0,4 s stehen – über ihm ein rotes „!“ –, dann verfolgt er sie mit 60 Pixeln pro Sekunde; als Verfolger sieht er rundum bis 10 Kacheln. Steht sie in der Reichweite seiner Faust (18 Pixel), schlägt er sofort zu – Faust-Bild, Krallen und Treffer im selben Moment, ohne Ausholen und ohne Blinken –: 10 Schaden; danach 0,6 s Pause, frühestens nach 0,8 s der nächste Schlag. Verliert er die Figur 1,5 s lang oder wird sie unsichtbar, geht er zur letzten Stelle – über ihm ein „?“ –, schaut sich 3 s um und kehrt zurück. Stun hält ihn an. Treffer, bevor er die Figur bemerkt hat, zählen doppelt; danach dreht er sich zum Angreifer. Lebensleiste ab dem ersten Treffer; beim Tod Rauch, Beute (3 Pfeile, mit 50 % 2 Shuriken), nach 1 s verschwindet er | von Claude vorgeschlagen; vom Nutzer am 18.11.2026 mit „weiter“ bestätigt; nach dem ersten Test am 18.11.2026 auf seinen Wunsch geändert: Abstände in Kacheln mit fairer Grenze, Schlag ohne Ausholen, kein rotes Blinken. Nach dem Test am 18.11.2026 mit „Alles passt“ bestätigt; seit M14 der erste Nahkämpfer, Verhalten unverändert |
+| Gegnertypen | Baukasten in drei Stufen geerbter Szenen: Die Grundszene `enemy.tscn` hat alles außer dem Angriff. Ein Gegnertyp bringt Waffe und Angriffs-Modul mit – `melee_enemy.tscn` (Nahkämpfer), `ranged_enemy.tscn` (Fernkämpfer). Ein fertiger Gegner erbt von seinem Typ und bringt Skin, Werte und Beute mit. Angriffs-Module (`EnemyAttack`) hängen unter `Attacks`: Der erste bestimmt, auf welchen Abstand der Gegner geht; eingesetzt wird der erste, der gerade passt. Ein Gegner kann mehrere haben. Neue Typen kommen als neue Dateien dazu, ohne bestehenden Code zu ändern | Wunsch des Nutzers am 18.11.2026: erst Nahkampf und Fernkampf, später viele mehr, so modular wie möglich; den Aufbau hat Claude gewählt; nach dem Test am 18.11.2026 mit „Passt alles“ bestätigt |
+| Fernkämpfer | Eine Steinwerferin (`Cavegirl`, grünes Haar) mit 20 Leben patrouilliert mit 30 Pixeln pro Sekunde. Sie sieht 7 Kacheln weit in einem Kegel von 90°; Hören, Schleichen, Unsichtbarkeit und faire Grenze wie beim Höhlenmenschen. Bemerkt sie die Figur – „!“, 0,4 s –, geht sie mit 50 Pixeln pro Sekunde bis auf 5 Kacheln heran und wirft, sobald nichts dazwischen ist: ein Stein, 10 Schaden, Tempo 120, höchstens 7 Kacheln Flug; er trifft nur Spielfiguren und endet an Wänden und Blöcken. Danach steht sie 0,3 s, frühestens nach 1,8 s kommt der nächste Wurf. Ist die Figur näher als 2,5 Kacheln, weicht sie mit 45 Pixeln pro Sekunde zurück und blickt sie dabei an; ist sie bereit, wirft sie auch aus der Nähe. Dazwischen wartet sie. Suchen, Rückweg, Überraschung, Stun, Lebensleiste und Tod wie beim Höhlenmenschen; Beute: 2 Steine, mit 50 % 3 Pfeile | von Claude gewählt am 18.11.2026 mit M14; nach dem Test am 18.11.2026 mit „Passt alles“ bestätigt |
 
 Noch offen, jeweils fällig vor dem genannten Schritt: Zauber (vorläufig gewählt, siehe oben), Tod & Speichern endgültig (M16), Story (Phase 5), Anzahl Level (Phase 6).
 
 ## Prüfungen
+
+**M14 – Gegnertypen**
+
+- Getestet hat der Nutzer am 18.11.2026 in Godot. Rückmeldung: „Passt alles“ – die zwölf Punkte der Prüfliste gelten als bestanden: Höhlenmensch wie bisher, Steinwerferin mit Wurf, Abstand, Zurückweichen und Deckung, eine Debug-Zeile je Gegner.
+- Claude hat die Dateien am Text geprüft – mit einem eigenen Prüfskript, weil Godot hier nicht läuft: Pfade aller Verweise in Szenen und Werte-Dateien, Kennungen von `ExtResource` und `SubResource`, Knotenpfade der geerbten Szenen über drei Stufen – `enemy.tscn` → `melee_enemy.tscn` → `caveman.tscn` und `enemy.tscn` → `ranged_enemy.tscn` → `stone_thrower.tscn` –, Namen der Werte in Skripten und `.tres`, Klassennamen, Einrückung nur mit Tabs. Grundlage war das Repo, Commit `886f6f9`.
+- Nachgerechnet, nicht ausprobiert: Bei Zoom 2 bemerkt sie die Figur zur Seite bis 6,5 Kacheln, nach oben und unten bis gut 3. Sie wirft bis 5 Kacheln – nach oben und unten also bis gut 3 – und weicht unter 2,5 Kacheln zurück; beides liegt in der fairen Grenze. Der Stein fliegt aus 5 Kacheln 0,6 s, aus 2,5 Kacheln gut 0,25 s; aus seiner Bahn kommt die Figur mit etwa 7 Pixeln zur Seite, beim Gehen in keiner 0,1 s. Sie weicht mit 45 Pixeln pro Sekunde zurück, die Figur geht 80: Sie holt sie ein. Ihre Patrouille von (464, 320) bis (592, 320) hat mindestens 5 Kacheln Platz zu jedem Block und liegt 11 Kacheln links vom Weg des Höhlenmenschen.
 
 **M13 – Erster Gegner**
 
@@ -346,8 +351,7 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 | `S1 Beute` | `Collector` der Spielfigur | zuletzt Aufgesammeltes, etwa „+5 × Pfeil (jetzt 35)“, oder „Ast: Inventar voll“ (M9) |
 | `Kamera` | Kamera | Bildmitte in der Welt |
 | `Zoom` | Testkammer (M13) | Zoom der Welt und sichtbare Kacheln, etwa „2 - 15.0 x 8.4 Kacheln (F3)“ |
-| `Caveman Zustand` | Gegner (M13) | sein Zustand: Patrouille, Entdeckt, Verfolgen, Angriff, Suchen, Zurück, Betäubt, Tot; vorn steht der Name des Knotens |
-| `Caveman Leben` | Gegner (M13) | Leben und Höchstwert |
+| `Caveman`, `StoneThrower` | Gegner (M13; seit M14 eine Zeile je Gegner) | Zustand und Leben, etwa „Verfolgen · Leben 30/30“. Zustände: Patrouille, Entdeckt, Verfolgen, Abwarten, Zurückweichen, Angriff, Suchen, Zurück, Betäubt, Tot. Der Schlüssel ist der Name des Knotens; nach dem Tod verschwindet die Zeile |
 
 Der Hinweis „Neustart: F2“ ist mit M4 entfallen; F2 gilt weiter. In der Testkammer sind seit M7 die Zeilen „Maus“, „Kamera“ und „Raumzeit“ ausgeblendet, damit die Anzeige bei elf Zeilen bleibt; seit M9 kommt „S1 Beute“ dazu, sobald etwas aufgesammelt wurde. Einschalten lassen sie sich im Inspektor des Knotens `DebugOverlay` über `show_mouse` und `hidden_keys`.
 
@@ -381,7 +385,7 @@ Genutzt werden bisher: die vier Laufrichtungen, `sprint`, `sneak`, `attack_prima
 | 1 | `world` | Wände und Blöcke der Testkammer, seit M8 auch geschlossene Türen und Hebel, seit M9 Baumstümpfe, seit M10 Truhen; Geschosse enden an ihnen |
 | 2 | `player` | Spielfigur; ihre Maske ist `world` und `enemy`. Druckplatten und Türdurchgänge bemerken sie hier (M8) |
 | 3 | `enemy` | Übungspuppen als feste Körper, seit M13 die Gegner – ihre Maske ist `world`, `player` und `enemy` –, seit M9 auch Zerstörbares, solange es heil ist – Geschosse treffen es über die Hurtbox, statt daran zu enden; das bewegliche Ziel liegt auf keiner Ebene und lässt sich durchlaufen. Druckplatten und Türdurchgänge bemerken auch diese Ebene (M8) |
-| 4 | `player_hurtbox` | `Hurtbox` der Spielfigur; Schadensfeld, Schadensstreifen und seit M13 der Schlag der Gegner suchen hier |
+| 4 | `player_hurtbox` | `Hurtbox` der Spielfigur; Schadensfeld, Schadensstreifen, seit M13 der Schlag der Gegner und seit M14 ihre Geschosse suchen hier |
 | 5 | `enemy_hurtbox` | `Hurtbox` der Übungspuppen, seit M9 von Zerstörbarem, seit M13 der Gegner; Schwert und Geschosse suchen hier |
 | 6 | `interactable` | `Interactable` von Holztür und Hebel; der `Interactor` der Spielfigur sucht hier (M8) |
 | 7 | `pickup` | Beute am Boden (`Pickup`); der `Collector` der Spielfigur sucht hier (M9) |
@@ -420,7 +424,7 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `RangedStats` | `components/ranged_attack/ranged_stats.gd` | Bauplan einer Werte-Datei für einen Fernkampf-Angriff; seit M11a auch Durchschlag, Explosion und Bild |
 | `Projectile` | `entities/projectile/projectile.gd` | Geschoss |
 | `ProjectileView` | `entities/projectile/projectile_view.gd` | zeigt ein Geschoss mit seinem Bild und spielt seine Explosion ab (M11a) |
-| `ProjectileSkin` | `entities/projectile/projectile_skin.gd` | Bauplan: Flugbild, Einzelbilder, Drehung, Explosions-Effekt eines Geschosses (M11a) |
+| `ProjectileSkin` | `entities/projectile/projectile_skin.gd` | Bauplan: Flugbild, Einzelbilder, Drehung, Explosions-Effekt eines Geschosses (M11a); seit M14 `first_frame`, das erste Bild im Streifen |
 | `EffectData` | `entities/effect/effect_data.gd` | Bauplan einer Werte-Datei für einen kurzen Effekt: Blatt, Bilder, Tempo (M11a) |
 | `OneShotEffect` | `entities/effect/one_shot_effect.gd` | spielt einen Effekt ab und verschwindet; `OneShotEffect.spawn(effekt, ort, eltern, winkel, wiederholen)` (M11a; Winkel und Wiederholung seit A2) |
 | `EffectCue` | `components/effect_cue/effect_cue.gd` | Baustein: spielt einen Effekt, wenn ein Baustein daneben ein Signal sendet (A2) |
@@ -437,7 +441,7 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `StunStats` | `abilities/stun/stun_stats.gd` | erweitert `AbilityStats` um `radius` |
 | `Stunnable` | `components/stunnable/stunnable.gd` | Baustein: macht ein Ziel betäubbar |
 | `CharacterView` | `components/character_view/character_view.gd` | Baustein: zeigt eine Figur mit der Grafik aus einem Skin (A1) |
-| `CharacterSkin` | `components/character_view/character_skin.gd` | Bauplan einer Werte-Datei für einen Skin: Bildgröße, Lage, Schatten, Animationen |
+| `CharacterSkin` | `components/character_view/character_skin.gd` | Bauplan einer Werte-Datei für einen Skin: Bildgröße, Lage, Schatten, Animationen; seit M14 auch der Wurf `shoot` |
 | `SkinAnimation` | `components/character_view/skin_animation.gd` | Bauplan einer Animation im Skin: Blatt, erste Zelle, Schritte, Bilder je Sekunde |
 | `Interactable` | `components/interactable/interactable.gd` | Baustein: macht ein Ding mit E bedienbar (M8) |
 | `Interactor` | `components/interactor/interactor.gd` | Baustein: findet das nächste bedienbare Ding und bedient es; zeigt die Taste E (M8) |
@@ -466,8 +470,12 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `Perception` | `components/perception/perception.gd` | Baustein Sehen und Hören (M13) |
 | `PerceptionStats` | `components/perception/perception_stats.gd` | Bauplan einer Werte-Datei für Perception (M13) |
 | `Enemy` | `entities/enemies/enemy.gd` | ein Gegner (M13) |
-| `EnemyStats` | `entities/enemies/enemy_stats.gd` | Bauplan der Werte-Datei eines Gegners: Tempo, Zeiten, Kampf (M13) |
+| `EnemyStats` | `entities/enemies/enemy_stats.gd` | Bauplan der Werte-Datei eines Gegners: Tempo, Zeiten, Überraschung (M13; seit M14 mit `retreat_speed`, ohne `attack_recover`) |
 | `EnemyState` | `entities/enemies/states/enemy_state.gd` | Grundlage der Zustände eines Gegners (M13) |
+| `EnemyAttack` | `entities/enemies/attacks/enemy_attack.gd` | Angriffs-Modul eines Gegners: wann ein Angriff passt und welche Waffe er auslöst (M14) |
+| `EnemyAttackStats` | `entities/enemies/attacks/enemy_attack_stats.gd` | Bauplan der Werte-Datei eines Angriffs-Moduls: Mindest- und Höchstabstand, freie Sicht, Pause danach (M14) |
+| `EnemyMeleeAttack` | `entities/enemies/attacks/enemy_melee_attack.gd` | Angriffs-Modul Nahkampf: löst `MeleeAttack` aus (M14) |
+| `EnemyRangedAttack` | `entities/enemies/attacks/enemy_ranged_attack.gd` | Angriffs-Modul Fernkampf: löst `RangedAttack` aus (M14) |
 | `ViewSettings` | `world/view/view_settings.gd` | Bauplan der Ansicht: Zoom der Welt, faire Grenze für Gegner und die Kachel als Maß – `TILE_SIZE`, `tiles(anzahl)` (M13) |
 
 ### Werte-Dateien – `data/`
@@ -505,10 +513,18 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `data/abilities/invisibility.tres` | `InvisibilityStats` | `display_name` Unsichtbarkeit, `cost` 40, `duration` 5, `cooldown` 8, `alpha` 0,3; Symbol `Ui/Skill Icon/Spell/Camouflage.png` mit `CamouflageDisabled.png` (M12) |
 | `data/abilities/stun.tres` | `StunStats` | `display_name` Stun, `cost` 30, `duration` 2, `cooldown` 6, `radius` 64; Symbol `Ui/Skill Icon/Spell/BookThunder.png` mit `BookThunderDisabled.png` (M12) |
 | `data/ui/hud.tres` | `HudStats` | `health_per_heart` 20 (M12) |
-| `data/enemies/caveman.tres` | `EnemyStats` | `patrol_speed` 30, `chase_speed` 60, `search_speed` 45, `patrol_wait` 1, `alert_time` 0,4, `lose_time` 1,5, `attack_recover` 0,6, `search_time` 3, `look_interval` 0,75, `search_walk_limit` 4, `give_up_time` 1,5, `remove_delay` 1, `surprise_factor` 2, `hit_search_tiles` 2 (M13) |
+| `data/enemies/caveman.tres` | `EnemyStats` | `patrol_speed` 30, `chase_speed` 60, `retreat_speed` 45 (M14, bei ihm ohne Wirkung), `search_speed` 45, `patrol_wait` 1, `alert_time` 0,4, `lose_time` 1,5, `search_time` 3, `look_interval` 0,75, `search_walk_limit` 4, `give_up_time` 1,5, `remove_delay` 1, `surprise_factor` 2, `hit_search_tiles` 2 (M13) |
 | `data/enemies/caveman_health.tres` | `HealthStats` | `max_health` 30, `invulnerable_time` 0 (M13) |
 | `data/enemies/caveman_punch.tres` | `MeleeStats` | `damage` 10, `gain_per_hit` 0, `start_distance` 4, `reach` 14, `width` 14, `active_time` 0,12, `cooldown` 0,8 (M13) |
 | `data/enemies/caveman_perception.tres` | `PerceptionStats` | `sight_tiles` 6, `sight_angle` 100, `track_tiles` 10, `occluder_mask` world, `hearing_tiles` 2,5, `silent_speed` 10, `sneak_factor` 0,5 (M13) |
+| `data/enemies/caveman_attack.tres` | `EnemyAttackStats` | Angriffs-Modul des Höhlenmenschen: `min_tiles` 0, `max_tiles` 0 – so weit die Faust reicht –, `needs_line_of_sight` aus, `recover_time` 0,6; vorher `attack_recover` in `caveman.tres` (M14) |
+| `data/enemies/stone_thrower.tres` | `EnemyStats` | Steinwerferin: `patrol_speed` 30, `chase_speed` 50, `retreat_speed` 45, `search_speed` 40, sonst wie `caveman.tres` (M14) |
+| `data/enemies/stone_thrower_health.tres` | `HealthStats` | `max_health` 20, `invulnerable_time` 0 (M14) |
+| `data/enemies/stone_thrower_perception.tres` | `PerceptionStats` | `sight_tiles` 7, `sight_angle` 90, sonst wie beim Höhlenmenschen (M14) |
+| `data/enemies/stone_thrower_attack.tres` | `EnemyAttackStats` | `min_tiles` 2,5, `max_tiles` 5, `needs_line_of_sight` an, `recover_time` 0,3 (M14) |
+| `data/enemies/stone_thrower_throw.tres` | `RangedStats` | der Stein: `damage` 10, `pierce` 1, `projectile_speed` 120, `max_distance` 112, `spawn_distance` 8, `cooldown` 1,8, `cost` 0; Bild `FX/Particle/Rock.png`, Zellen 16 × 16, `first_frame` 4, `spin` 540 (M14) |
+| `data/loot/stone_thrower.tres` | `LootTable` | 2 Steine; mit 50 % 3 Pfeile (M14) |
+| `data/skins/cavegirl.tres` | `CharacterSkin` | Steinwerferin: wie `caveman_brown.tres`, mit den Blättern von `Cavegirl`, `walk_reference_speed` 50 und `shoot` – das Bild aus `Attack.png` (M14) |
 | `data/loot/caveman.tres` | `LootTable` | 3 Pfeile; mit 50 % 2 Shuriken (M13) |
 | `data/skins/caveman_brown.tres` | `CharacterSkin` | wie `caveman.tres`, mit den Blättern von `Caveman2` und `walk_reference_speed` 60 (M13) |
 | `data/effects/claw.tres` | `EffectData` | `FX/Attack/Claw/SpriteSheet.png`, 4 à 32, 16 Bilder je Sekunde (M13) |
@@ -557,7 +573,7 @@ Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden; „4 à 8/s
 | Baustein | Ordner | Was er tut | Einstellbar |
 | --- | --- | --- | --- |
 | `PlaceholderView` | `components/placeholder_view/` | Malt die Rechtecke, Kreise und Kapseln der `CollisionShape2D`-Geschwister als Farbfläche. Platzhalter-Grafik; wo ein `CharacterView` daneben ein Bild zeigt, ist sie ausgeblendet und bleibt als Rückfall. | `color` |
-| `CharacterView` | `components/character_view/` | Zeigt die Figur mit der Grafik aus einem Skin, in der nächstliegenden von vier Blickrichtungen. Liest den Wert `facing` der Figur, sonst die Laufrichtung, und misst das Tempo am Ort. Hört auf `Health` (Treffer, Tod, Wiederaufstehen), `Dash` und `MeleeAttack`. Blendet das Geschwister `PlaceholderView` aus. Fragt: `has_skin_animation(name)`; liest: `direction`, `current_animation`. | `skin`, `walk_threshold`, `direction_hysteresis`, `min_walk_rate`, `max_walk_rate` |
+| `CharacterView` | `components/character_view/` | Zeigt die Figur mit der Grafik aus einem Skin, in der nächstliegenden von vier Blickrichtungen. Liest den Wert `facing` der Figur, sonst die Laufrichtung, und misst das Tempo am Ort. Hört auf `Health` (Treffer, Tod, Wiederaufstehen), `Dash`, `MeleeAttack` und seit M14 `RangedAttack` – beim Wurf zeigt er `shoot`, wenn der Skin es hat. Blendet das Geschwister `PlaceholderView` aus. Fragt: `has_skin_animation(name)`; liest: `direction`, `current_animation`. | `skin`, `walk_threshold`, `direction_hysteresis`, `min_walk_rate`, `max_walk_rate` |
 | `Stamina` | `components/stamina/` | Ausdauer-Vorrat: `spend(amount)` verbraucht und liefert, ob es ging; nach `regen_delay` füllt er sich. Bei 0 gilt `is_exhausted`, bis `recover_threshold` erreicht ist. Meldet `changed`, `exhausted`, `recovered`. | `stats` |
 | `Health` | `components/health/` | Leben. `apply_damage(amount)` ist die einzige Stelle, an der über Schaden entschieden wird: Tote und gerade Unverwundbare nehmen keinen. `make_invulnerable(seconds)` schützt für eine Dauer, etwa beim Dash. `reset()` füllt auf, auch nach dem Tod. Seit M11: `armor` zieht von jedem Treffer ab, mindestens 1 bleibt; `set_bonus_maximum(wert)` gibt mehr Leben, `get_maximum()` zählt es mit. Beides setzt `Equipment`. Seit M13 vervielfacht `damage_factor` jeden Treffer vor der Rüstung; ein Gegner setzt ihn auf 2, solange er die Figur nicht bemerkt hat. Meldet `changed`, `damaged`, `died`, `revived`. | `stats` |
 | `Hurtbox` | `components/hurtbox/` | `Area2D`, die Treffer annimmt und an das Geschwister `Health` weiterreicht: `receive_hit(damage, direction)`. Meldet `hit_received`. Seit M9: `accepted_kinds` nennt die Arten von Treffern, die Schaden machen – Klinge, Geschoss, Explosion; die übrigen prallen ab, `accepts(art)` fragt das, `block_hit(richtung)` meldet `hit_blocked`. Mit `feeds_attacker` aus füllt ein Treffer beim Angreifer nichts auf, etwa keine Energie. Braucht eine eigene `CollisionShape2D`. | Ebene, `accepted_kinds`, `feeds_attacker` |
@@ -606,8 +622,11 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 | `entities/player/player_spawner.tscn` | `player_spawner.gd` | erzeugt die Spielfiguren eines Levels |
 | `entities/player/player_camera.tscn` | `player_camera.gd` | Kamera, die der Spielfigur folgt |
 | `entities/dummy/training_dummy.tscn` | `training_dummy.gd` | Übungspuppe |
-| `entities/enemies/enemy.tscn` | `enemy.gd` | Grundszene eines Gegners mit allen Bausteinen und dem Zustandsautomaten `Brain` (M13) |
-| `entities/enemies/caveman.tscn` | – (erbt von `enemy.tscn`) | der Höhlenmensch: Skin, Werte, Beute (M13) |
+| `entities/enemies/enemy.tscn` | `enemy.gd` | Grundszene eines Gegners mit allen Bausteinen außer dem Angriff, dem leeren Knoten `Attacks` und dem Zustandsautomaten `Brain` (M13; seit M14 ohne Angriff) |
+| `entities/enemies/melee_enemy.tscn` | – (erbt von `enemy.tscn`) | Gegnertyp Nahkämpfer: Waffe `MeleeAttack`, Effekt `ClawEffect`, Angriffs-Modul `Attacks/Melee` (M14) |
+| `entities/enemies/ranged_enemy.tscn` | – (erbt von `enemy.tscn`) | Gegnertyp Fernkämpfer: Waffe `RangedAttack` mit `projectile.tscn`, Angriffs-Modul `Attacks/Ranged` (M14) |
+| `entities/enemies/caveman.tscn` | – (erbt seit M14 von `melee_enemy.tscn`) | der Höhlenmensch: Skin, Werte, Faust, Beute (M13) |
+| `entities/enemies/stone_thrower.tscn` | – (erbt von `ranged_enemy.tscn`) | die Steinwerferin: Skin, Werte, Wurf, Beute (M14) |
 | `components/state_machine/state_machine.tscn`, `components/perception/perception.tscn`, `components/life_bar/life_bar.tscn` | je ein Skript daneben | Bausteine, siehe oben (M13) |
 | `world/damage_zone/damage_zone.tscn` | keins; die Szene erbt von `hitbox.tscn` | Schadensfeld |
 | `world/door/door.tscn` | `door.gd` | Tür oder Gittertor; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView`, `Interactable`, `DoorwaySensor` (M8) |
@@ -720,9 +739,10 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Truhen (M10): `ChestSmall` bei (616, 488) und `ChestBig` bei (680, 488), unter dem langen Balken links vor der Interaktions-Ecke. Der Goldschlüssel ist ein von Hand gelegter `Pickup` namens `GoldKey` im linken Raum der Interaktions-Ecke, bei (792, 504).
 - Ausrüstung zum Aufsammeln (M11): Unter `StartItems` liegen vier von Hand gelegte `Pickup` – `Broadsword` (192, 176), `Bow` (216, 176), `LeatherArmor` (240, 176), `RubyCharm` (264, 176).
 - Gegner (M13): `Caveman`, ein `caveman.tscn`, steht bei (776, 224) und patrouilliert mit `patrol_tiles` (0, 8,5), also 136 Pixel, bis (776, 360) – links der große Block, rechts der Pfeiler `PillarB`. Seine `Perception` hat hier `debug_draw` an. Er liegt vor dem `LootSpawner`.
+- Fernkämpferin (M14): `StoneThrower`, ein `stone_thrower.tscn`, steht bei (464, 320) und patrouilliert mit `patrol_tiles` (8, 0), also 128 Pixel, bis (592, 320) – in der freien Fläche unten in der Mitte, mit mindestens 5 Kacheln Platz zu jedem Block. Ihre `Perception` hat hier `debug_draw` an. Sie liegt hinter dem Höhlenmenschen und vor dem `LootSpawner`.
 - `InventoryWindow` (M11) und `Hud` (M12) hängen als letzte Kinder in der Kammer.
 - `LootSpawner` (M9) liegt vor dem `PlayerSpawner`; so liegt Beute über dem Zerstörbaren und den Truhen, aber unter der Figur.
-- Die Puppen, `DamageZone`, `DamageStrip`, `InteractionCorner`, `DestructibleField`, `ChestSmall`, `ChestBig`, `StartItems`, `Caveman`, `LootSpawner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair`, `DebugOverlay`, `InventoryWindow` und `Hud` sind eingehängt und lassen sich einzeln löschen.
+- Die Puppen, `DamageZone`, `DamageStrip`, `InteractionCorner`, `DestructibleField`, `ChestSmall`, `ChestBig`, `StartItems`, `Caveman`, `StoneThrower`, `LootSpawner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair`, `DebugOverlay`, `InventoryWindow` und `Hud` sind eingehängt und lassen sich einzeln löschen.
 - `DebugOverlay` blendet hier „Maus“, „Kamera“ und „Raumzeit“ aus.
 - F2 und der Tod einer Figur laden die Szene neu, direkt in `test_chamber.gd`. Ab M18 übernimmt das der `SceneManager`.
 
@@ -740,7 +760,7 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 
 - `CharacterView` baut beim Start aus dem Skin die Animationen für alle vier Richtungen, etwa `walk_left`. Die Richtungen folgen der Reihenfolge des Pakets: unten, oben, links, rechts.
 - Eine Animation im Skin nennt ihr Blatt, die Zelle des ersten Bildes für „unten“, den Schritt zum nächsten Bild, den Schritt zur nächsten Richtung, die Zahl der Bilder, Bilder je Sekunde und ob sie sich wiederholt. Die Zellgröße gilt für den ganzen Skin.
-- Was gezeigt wird, in dieser Rangfolge: Tod, Dash, das letzte einmalige Bild (Hieb oder Treffer), Laufen ab 10 Pixeln pro Sekunde, Stehen.
+- Was gezeigt wird, in dieser Rangfolge: Tod, Dash, das letzte einmalige Bild (Hieb, seit M14 Wurf, oder Treffer), Laufen ab 10 Pixeln pro Sekunde, Stehen.
 - Blickrichtung: beim Hieb die Hiebrichtung, beim Dash die Dash-Richtung, sonst `facing` der Figur, bei Figuren ohne `facing` die letzte Laufrichtung. Die alte Richtung bleibt, bis das Ziel 8° über die Diagonale hinaus liegt; im Tod ändert sie sich nicht mehr.
 - Tempo der Laufbilder: Tempo der Figur geteilt durch `walk_reference_speed` des Skins, begrenzt auf 0,5 bis 2,5. Beim Spieler: Schleichen 0,5, Laufen 1, Sprinten 1,6.
 - Ersatz, wenn dem Skin etwas fehlt: Dash zeigt Laufen, Laufen zeigt Stehen, Tod zeigt Stehen in `defeated_tint`; ohne Hieb- oder Treffer-Bild bleibt das laufende Bild. Ohne Bild zum Stehen gilt der Skin als unbrauchbar: Warnung, Platzhalter bleibt.
@@ -800,18 +820,33 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 
 **Gegner im Einzelnen (M13)**
 
-- `entities/enemies/enemy.tscn` ist die Grundszene: `CharacterBody2D` im schwebenden Modus, Ebene `enemy`, Maske `world`, `player` und `enemy`, Körper 12 × 12. Kinder in dieser Reihenfolge: `CollisionShape2D`, `Perception`, `PlaceholderView` (rot), `CharacterView`, `Health`, `Hurtbox` (12 × 14, Ebene `enemy_hurtbox`), `HitFlash`, `DamageNumbers`, `MeleeAttack` (sucht auf `player_hurtbox`, ohne Energie), `Stunnable`, `LootDropper`, `LifeBar` (14 Pixel über der Mitte), die Effekte `HitEffect`, `DeathEffect` (Rauch), `ClawEffect` (Kralle beim Schlag, 6 Pixel vor), `AlertEmote` („!“) und `SearchEmote` („?“) und zuletzt `Brain`.
-- `Brain` ist ein `StateMachine` mit acht Zuständen in `entities/enemies/states/`, je ein Knoten: `Patrol` (Patrouille), `Alert` (Entdeckt), `Chase` (Verfolgen), `Attack` (Angriff), `Search` (Suchen), `Return` (Zurück), `Stunned` (Betäubt), `Dead` (Tot). Alle erben von `EnemyState` und steuern den Gegner nur über `move_to()`, `stop()`, `face()` und `look_for_target()`.
-- Ablauf: Patrol → bemerkt → Alert (0,4 s, „!“) → Chase → in Reichweite der Faust Attack, sofortiger Schlag → nach der Pause wieder Chase. Verloren (1,5 s oder unsichtbar) → Search („?“, zur letzten Stelle, viermal umschauen) → Return → Patrol. Unterwegs bemerkt er die Figur wieder → Alert. Ist in Chase eine andere Figur näher, nimmt er die.
+- `entities/enemies/enemy.tscn` ist die Grundszene: `CharacterBody2D` im schwebenden Modus, Ebene `enemy`, Maske `world`, `player` und `enemy`, Körper 12 × 12. Kinder in dieser Reihenfolge: `CollisionShape2D`, `Perception`, `PlaceholderView` (rot), `CharacterView`, `Health`, `Hurtbox` (12 × 14, Ebene `enemy_hurtbox`), `HitFlash`, `DamageNumbers`, `Stunnable`, `LootDropper`, `LifeBar` (14 Pixel über der Mitte), die Effekte `HitEffect`, `DeathEffect` (Rauch), `AlertEmote` („!“) und `SearchEmote` („?“), seit M14 `Attacks` – in der Grundszene leer – und zuletzt `Brain`. Die Waffe hängt seit M14 der Gegnertyp hinten an: beim Nahkämpfer `MeleeAttack` (sucht auf `player_hurtbox`, ohne Energie) und `ClawEffect` (Kralle beim Schlag, 6 Pixel vor), beim Fernkämpfer `RangedAttack`.
+- `Brain` ist ein `StateMachine` mit acht Zuständen in `entities/enemies/states/`, je ein Knoten: `Patrol` (Patrouille), `Alert` (Entdeckt), `Chase` (Verfolgen), `Attack` (Angriff), `Search` (Suchen), `Return` (Zurück), `Stunned` (Betäubt), `Dead` (Tot). Alle erben von `EnemyState` und steuern den Gegner nur über `move_to()`, `move_away_from()`, `stop()`, `face()`, `look_for_target()` und `choose_attack()`.
+- Ablauf: Patrol → bemerkt → Alert (0,4 s, „!“) → Chase → ein Angriff ist bereit und trifft von hier: Attack, sofort → nach der Pause wieder Chase. Verloren (1,5 s oder unsichtbar) → Search („?“, zur letzten Stelle, viermal umschauen) → Return → Patrol. Unterwegs bemerkt er die Figur wieder → Alert. Ist in Chase eine andere Figur näher, nimmt er die.
 - Bemerken (`Perception`): ahnungslos nur im Kegel von 100° bis 6 Kacheln, als Verfolger rundum bis 10 Kacheln, immer mit freier Sicht; Hören 2,5 Kacheln, wenn sich die Figur bewegt und nicht schleicht; Schleichen halbiert die Sicht. Alles nur innerhalb der fairen Grenze: auf dem Bild der Figur, 1 Kachel vom Rand – bei Zoom 2 höchstens 6,5 Kacheln zur Seite und gut 3 nach oben und unten.
-- Angriff: Er schlägt zu, sobald die Figur so nah ist, wie seine Faust reicht – `attack_distance()` fragt `reach_distance()` von `MeleeAttack`, beim Höhlenmenschen 18 Pixel –, sofort und ohne Ausholen: Faust-Bild, Krallen und Treffer kommen im selben Physik-Schritt. Dann `attack_recover` 0,6 s Pause; der nächste Schlag frühestens nach `cooldown` 0,8 s. Rot färbt ihn nichts; bei Schaden blitzt er hell auf (`HitFlash`).
+- Angriff, seit M14 über das Angriffs-Modul `Attacks/Melee`: Er schlägt zu, sobald die Figur so nah ist, wie seine Faust reicht – das Modul fragt `reach_distance()` von `MeleeAttack`, beim Höhlenmenschen 18 Pixel –, sofort und ohne Ausholen: Faust-Bild, Krallen und Treffer kommen im selben Physik-Schritt. Dann `recover_time` 0,6 s Pause aus `caveman_attack.tres`; der nächste Schlag frühestens nach `cooldown` 0,8 s – bis dahin wartet er („Abwarten“). Rot färbt ihn nichts; bei Schaden blitzt er hell auf (`HitFlash`).
 - Überraschung: In Patrol, Search und Return gilt er als ahnungslos; dann setzt er `damage_factor` seines `Health` auf `surprise_factor` (2). Wird er so getroffen, dreht er sich zum Angreifer: Bemerkt er ihn jetzt, folgt Alert, sonst Search 2 Kacheln in Richtung Angreifer. Bemerkt er die Figur, gilt wieder Faktor 1.
 - Stun: `Stunnable` meldet `stunned` → Stunned. Bei `recovered` folgt Chase, wenn er die Figur kannte, sonst Search an seinem Ort.
 - Tod: Dead; Körper und Trefferzone werden abgeschaltet, er tritt aus der Gruppe `stunnable` aus, `CharacterView` zeigt das Tod-Bild, Rauch steigt auf, `LootDropper` bestellt die Beute; nach `remove_delay` verschwindet er.
-- Debug: Zustand und Leben gehen an die Debug-Anzeige, mit dem Namen des Knotens vorn, etwa „Caveman Zustand“.
+- Debug: Zustand und Leben gehen seit M14 in einer Zeile an die Debug-Anzeige, mit dem Namen des Knotens vorn, etwa „Caveman: Verfolgen · Leben 30/30“; nach dem Tod verschwindet die Zeile.
 - Kommt er auf dem Rückweg 1,5 s nicht voran, weil etwas im Weg steht, patrouilliert er von dort aus. Wege um Hindernisse herum kommen mit den Kacheln (A4).
-- Ein neuer Gegner gleicher Art: im Editor „Neue geerbte Szene“ aus `enemy.tscn`, dann Skin, Werte-Dateien und Beute wählen – so ist `caveman.tscn` gebaut. Ins Level: die Szene instanzieren und `patrol_tiles` setzen, in Kacheln; (0, 0), der Standard, heißt: Er steht und wacht.
+- Ein neuer Gegner gleicher Art: im Editor „Neue geerbte Szene“ aus seinem Gegnertyp – `melee_enemy.tscn` oder `ranged_enemy.tscn` –, dann Skin, Werte-Dateien, Waffe, Angriffs-Modul und Beute wählen – so sind `caveman.tscn` und `stone_thrower.tscn` gebaut. Ins Level: die Szene instanzieren und `patrol_tiles` setzen, in Kacheln; (0, 0), der Standard, heißt: Er steht und wacht.
 - Mehrspieler: Der Gegner sucht immer den nächsten Spieler, den er bemerken kann. Über Schaden entscheidet `Health`, über Beute der `LootDropper`, hingelegt vom `LootSpawner`; später entscheidet das der Gastgeber, und der Zustandsautomat läuft nur dort.
+
+**Gegnertypen im Einzelnen (M14)**
+
+- Drei Stufen geerbter Szenen: `enemy.tscn` – alles außer dem Angriff – → Gegnertyp – `melee_enemy.tscn`, `ranged_enemy.tscn`: Waffe und Angriffs-Modul – → fertiger Gegner – `caveman.tscn`, `stone_thrower.tscn`: Skin, Werte, Beute. Ins Level kommen nur fertige Gegner; die Gegnertypen haben weder Werte noch Bild.
+- Angriffs-Module: jedes Kind von `Attacks` mit einem Skript, das von `EnemyAttack` erbt. Es löst eine Waffe neben dem Gegner aus – `weapon_name`, beim Nahkämpfer `MeleeAttack`, beim Fernkämpfer `RangedAttack` – und sagt, wann der Angriff passt: `is_ready()` (die Waffe ist nicht in ihrer Pause), `can_hit(ziel)` (Abstand bis `max_distance()`, auf Wunsch mit freier Sicht), `min_distance()`. Werte in einer `EnemyAttackStats`: `min_tiles`, `max_tiles` (0: so weit die Waffe reicht; mehr geht nicht), `needs_line_of_sight`, `recover_time`. Mit `enabled` aus zählt ein Modul nicht. Beginnt ein Angriff, meldet das Modul `started(richtung)`.
+- Rangfolge: die Reihenfolge unter `Attacks`. Der erste Angriff bestimmt in Chase den Abstand: zu weit weg oder ohne freie Sicht – Verfolgen; näher als `min_distance()` – Zurückweichen mit `retreat_speed`, den Blick auf der Figur; dazwischen – Abwarten. In jedem Physik-Schritt prüft Chase alle Angriffe der Reihe nach; der erste, der bereit ist und trifft, führt nach Attack.
+- Attack: Der Gegner dreht sich zur Figur und startet den Angriff sofort. Solange er läuft, steuert ihn das Modul über `update()` – Standard: Er steht still. Danach `recover_time` Pause, dann Chase.
+- Fernkampf: `EnemyRangedAttack` wirft nur mit `ProjectileSpawner` im Level, höchstens so weit wie `spawn_distance` + `max_distance` des Geschosses. Das Geschoss sucht auf `player_hurtbox` (Maske 8) – Gegner und Puppen trifft es nicht. Bezahlt wird nichts: `supply_name` und `ammo_name` der Waffe sind leer.
+- Bild: `CharacterView` zeigt beim Wurf die Animation `shoot`, wenn der Skin eine hat; die Steinwerferin nimmt dafür ihr Bild aus `Attack.png`. Die Spielfigur hat keine und sieht beim Werfen aus wie bisher.
+- Ein neuer Gegnertyp, jeweils ohne bestehenden Code zu ändern:
+    1. Gleicher Angriff, anderer Gegner: „Neue geerbte Szene“ aus `melee_enemy.tscn` oder `ranged_enemy.tscn`; Skin, Werte, Beute.
+    2. Neue Mischung: „Neue geerbte Szene“ aus `enemy.tscn`, Waffen anhängen (`melee_attack.tscn`, `ranged_attack.tscn`) und unter `Attacks` je Waffe ein Modul. Beispiel: erst `Ranged`, dann `Melee` – der Gegner hält Abstand, wirft, und schlägt zu, wenn die Figur nah ist und der Wurf noch Pause hat.
+    3. Neuer Angriff: ein Skript, das von `EnemyAttack` erbt und `_weapon_ready()`, `_weapon_reach()` und `_trigger()` füllt, bei längeren Angriffen auch `is_busy()` und `update()` – dazu die Waffe als Baustein, etwa für einen Ansturm oder einen Flächenschlag.
+    4. Anderes Verhalten: in der Szene des Gegnertyps einen Zustand unter `Brain` ergänzen oder einem vorhandenen ein anderes Skript geben, das von `EnemyState` erbt.
+- Mehrspieler: Angriffe zielen auf den nächsten Spieler, den der Gegner bemerkt; Geschosse entstehen nur im `ProjectileSpawner`, über Schaden entscheidet `Health`.
 
 **HUD im Einzelnen (M12)**
 
@@ -835,6 +870,17 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Im Editor zeigt die Testkammer nur die blauen Kollisionsflächen; Farben, Raster und Anzeige erscheinen erst im laufenden Spiel.
 
 ### Dateien je Modul
+
+**M14 – Gegnertypen**
+
+- Neu: `entities/enemies/attacks/` mit `enemy_attack.gd`, `enemy_attack_stats.gd`, `enemy_melee_attack.gd`, `enemy_ranged_attack.gd`
+- Neu: `entities/enemies/melee_enemy.tscn`, `ranged_enemy.tscn`, `stone_thrower.tscn`
+- Neu: `data/enemies/caveman_attack.tres`, `stone_thrower.tres`, `stone_thrower_health.tres`, `stone_thrower_perception.tres`, `stone_thrower_attack.tres`, `stone_thrower_throw.tres`; `data/skins/cavegirl.tres`; `data/loot/stone_thrower.tres`
+- Geändert: `entities/enemies/enemy.gd` (Angriffs-Module, Zurückweichen, eine Debug-Zeile), `enemy.tscn` (ohne `MeleeAttack` und `ClawEffect`, dazu `Attacks`), `enemy_stats.gd` (`retreat_speed`, ohne `attack_recover`), `caveman.tscn` (erbt von `melee_enemy.tscn`), `states/chase_state.gd`, `states/attack_state.gd`, `states/enemy_state.gd` (nur der Kommentar); `data/enemies/caveman.tres`
+- Geändert: `components/character_view/character_view.gd` und `character_skin.gd` (Wurf `shoot`), `entities/projectile/projectile_skin.gd` und `projectile_view.gd` (`first_frame`)
+- Geändert: `levels/test_chamber/test_chamber.tscn` (`StoneThrower`), `levels/test_chamber/test_chamber.gd` (nur der Kommentar), `README.md` (Ordner), `docs/projekt_stand.md`, `docs/asset_katalog.md`
+- Von Hand zu löschen: `components/windup_flash/` – ein Rest aus M13
+- Abschluss: `m14_abschluss.zip` mit `docs/projekt_stand.md` und `docs/asset_katalog.md`
 
 **M13 – Erster Gegner**
 
@@ -1024,7 +1070,7 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 
 Gate G1 ist bestanden: Nach dem Test von A2 hat der Nutzer am 17.11.2026 geschrieben: „Alles getestet und alles funktioniert … lass uns weitermachen“. Claude wertet das als „die Spielfigur fühlt sich gut an“. Nachstellen lässt sich weiter alles ohne Code über die Werte-Dateien in `data/`. Der Ton fehlt noch; er kommt mit A3 fast am Ende des Projekts.
 
-Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & Beute, M11 – Inventar & Ausrüstung und M12 – HUD, zuletzt am 18.11.2026. A5 – Oberfläche ist dabei zweimal gewachsen: das Holz-Thema für Fenster, dann Herzen, Energie-Kugel, Ausdauer-Leiste und Symbole. Phase 3 hat begonnen: M13 – Erster Gegner ist fertig, am 18.11.2026 nach einer Nachbesserung; mit ihm hat A6 – Gegner, NPCs, Bosse begonnen, und die Welt erscheint seitdem mit Zoom 2. Danach übergibt Claude an einen neuen Chat; dort folgt M14 – Gegnertypen. Der Ton kommt erst mit A3.
+Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & Beute, M11 – Inventar & Ausrüstung und M12 – HUD, zuletzt am 18.11.2026. A5 – Oberfläche ist dabei zweimal gewachsen: das Holz-Thema für Fenster, dann Herzen, Energie-Kugel, Ausdauer-Leiste und Symbole. Phase 3 hat begonnen: M13 – Erster Gegner ist fertig, am 18.11.2026 nach einer Nachbesserung; mit ihm hat A6 – Gegner, NPCs, Bosse begonnen, und die Welt erscheint seitdem mit Zoom 2. Im neuen Chat folgte M14 – Gegnertypen: ein Baukasten für viele Gegner, mit dem Höhlenmenschen als Nahkämpfer und der Steinwerferin als Fernkämpferin; fertig am 18.11.2026. Als Nächstes kommt M15 – NPCs & Dialog. Der Ton kommt erst mit A3.
 
 ## Hinweise aus der bisherigen Arbeit
 
@@ -1060,19 +1106,23 @@ Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & B
 - Ein HUD für eine zweite Figur: `ui/hud/hud.tscn` ein zweites Mal ins Level hängen und `player_id` auf 2 stellen.
 - Ein neuer Zustand für einen Gegner: unter `Brain` einen Knoten anlegen, ihm ein Skript geben, das von `EnemyState` erbt, und ihn aus einem anderen Zustand mit `machine.transition_to(&"Name")` aufrufen. Der Knotenname ist der Name des Zustands.
 - Den Sichtkegel eines Gegners sieht man, wenn bei seinem Kind `Perception` `debug_draw` an ist; F1 blendet ihn mit der Debug-Anzeige aus und ein.
-- Knoten der Grundszene `enemy.tscn`, die `caveman.tscn` überschreibt – `Perception`, `CharacterView`, `Health`, `MeleeAttack`, `LootDropper` –, nicht in der Grundszene löschen; das gibt Fehler in der geerbten Szene.
+- Knoten, die eine geerbte Szene überschreibt, nicht in ihrer Grundszene löschen – `Perception`, `CharacterView`, `Health` und `LootDropper` in `enemy.tscn`, `MeleeAttack` und `Attacks/Melee` in `melee_enemy.tscn`, `RangedAttack` und `Attacks/Ranged` in `ranged_enemy.tscn` –; das gibt Fehler in `caveman.tscn` und `stone_thrower.tscn`.
+- Ein neuer Gegner (M14): im Editor „Neue geerbte Szene“ aus `melee_enemy.tscn` oder `ranged_enemy.tscn`, als `entities/enemies/<name>.tscn` speichern, dann Skin, Werte-Dateien – Kopien aus `data/enemies/` –, Waffe und Beute wählen; ins Level instanzieren und `patrol_tiles` setzen. Mehr unter „Gegnertypen im Einzelnen (M14)“.
+- Einen Angriff abschalten, ohne ihn zu löschen: beim Knoten unter `Attacks` `enabled` aus.
 - Bildebenen der Oberfläche: HUD 90, Debug-Anzeige 100, Inventarfenster 105, Fadenkreuz 110. Ein neues Fenster gehört zwischen 100 und 110, eine neue Anzeige am Bildrand unter 100.
 - Ein Commit mit dem Code eines Moduls, aber noch ohne die abschließende Stand-Datei, ist kein Problem: Die Stand-Datei kommt mit dem Abschluss-ZIP nach und wird einfach als eigener Commit hochgeladen.
 - Neue Splitter: eine Datei aus `data/effects/debris_*.tres` kopieren, Streifen und `piece_count` anpassen und sie einem `DebrisCue` geben. Die Streifen in `FX/Particle/` sind Bruchstücke nebeneinander, keine Animation; mit `tint` lässt sich ein Streifen einfärben.
 
 ## Offene Punkte
 
-- Übergabe an einen neuen Chat, vorbereitet am 18.11.2026: Der Nutzer lädt M13 mit dieser Stand-Datei hoch und öffnet einen neuen Chat im Projekt; die erste Nachricht steht oben unter „Neuer Chat und Arbeitsweise“. Der neue Chat prüft zuerst, dass M13 im Repo liegt – ohne `components/windup_flash`.
+- `components/windup_flash/` liegt noch im Repo, ein Rest aus der ersten Fassung von M13; nichts benutzt ihn. Der Nutzer löscht den Ordner, bevor er M14 hochlädt.
+- Beim Bauen von M14 ergänzt: Die Debug-Anzeige zeigt je Gegner eine Zeile statt zwei, und sie verschwindet nach dem Tod; Chase zeigt, ob der Gegner verfolgt, abwartet oder zurückweicht; `ProjectileSkin` kann mit `first_frame` ein einzelnes Bild aus einem Streifen nehmen; ein Skin kennt den Wurf `shoot`. Mit dem Test vom Nutzer bestätigt.
+- Fernkämpfer: Steine lassen sich nicht abwehren oder zurückschlagen; die Steinwerferin zielt auf die Stelle, an der die Figur gerade steht, ohne vorzuhalten; beim Abwarten steht sie still, statt zur Seite auszuweichen. Zurückweichen in eine Ecke beendet sie nicht – dort bleibt sie stehen und wirft weiter.
 - Zoom: Gewünscht war „4x“; eingestellt ist 2, mit dem Test bestätigt. Andere Werte gehen ohne Code in `data/world/view.tres`; Abstände der Gegner und die faire Grenze passen sich an.
 - Ausholen gibt es nicht mehr: Der Schlag kommt mit dem ersten Bild der Hieb-Animation; die des Höhlenmenschen hat nur ein Bild. Ein Gegner mit eigener Ausholbewegung bekäme später ein eigenes Bild dafür.
 - Beim Bauen von M13 ergänzt, vom Nutzer mit dem Test bestätigt: In der Testkammer sind Sichtkegel und Hörkreis zu sehen, seit der Nachbesserung auch die faire Grenze als Rahmen; F1 blendet sie aus; ist in der Verfolgung eine andere Figur näher, nimmt er die; kommt er auf dem Rückweg nicht weiter, patrouilliert er von dort aus; Schleichen zählt auch im Stehen mit gehaltener Strg-Taste. Mit der Nachbesserung: F3 schaltet den Zoom durch, die Kamera rundet auf das Raster des Bildes.
 - Gegner haben noch keine Wegfindung: Sie laufen gerade auf ihr Ziel zu und gleiten an Hindernissen entlang. Wege um Blöcke herum kommen mit den Kacheln (A4).
-- Aus dem Konzept noch offen für Gegner: Lärm beim Zerstören lockt sie an; höchstens drei greifen zugleich an, der Rest umkreist; Gegnertypen wie Fernkämpfer, Schildträger, Wache (M14). Treffer unterbrechen einen Gegner nicht und stoßen ihn nicht zurück.
+- Aus dem Konzept noch offen für Gegner: Lärm beim Zerstören lockt sie an; höchstens drei greifen zugleich an, der Rest umkreist; weitere Gegnertypen – Schildträger, Flieger, Wache, Unterstützer – folgen auf Wunsch des Nutzers später. Treffer unterbrechen einen Gegner nicht und stoßen ihn nicht zurück.
 - Drei Dinge hat Claude in M12 selbst ergänzt, der Nutzer hat sie mit dem Test bestätigt: Kugel und Leiste wachsen in ganzen Pixeln und zeigen mindestens einen, die Herzen mindestens ein Viertel, solange noch etwas da ist; Fähigkeiten und Geschoss-Zelle stehen in einer Reihe, die sich anpasst; die Debug-Anzeige lässt sich mit `align_right` wieder nach links stellen.
 - Zwei Dinge hat Claude in M11 selbst ergänzt, der Nutzer hat sie mit dem Test bestätigt: Esc schließt das Inventarfenster ebenfalls, und das Fenster liegt über der Debug-Anzeige.
 - Im Inventarfenster haben mehr als 20 Plätze noch keinen Raum; ein größeres Inventar braucht später Blättern oder einen größeren Rahmen.
@@ -1081,6 +1131,7 @@ Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & B
 - Drei Dinge hat Claude in M9 selbst entschieden, der Nutzer hat sie mit dem Test bestätigt: keine Energie aus Zerstörbarem, Blätter je Hieb am Baum, der graugrüne Fels als Stein. Zurücknehmen ginge ohne Code: `feeds_attacker` an der Hurtbox anschalten, den Knoten `LeafHit` löschen, in `data/skins/rock.tres` eine andere Zelle wählen.
 - Zerstörtes kommt nicht wieder, Beute bleibt liegen, bis der Raum neu lädt. Ob Dinge später wiederkehren und ob Beute verschwindet, gehört zu M16.
 - Ein Kanal kennt nur ODER: Eine Tür ist offen, sobald einer ihrer Schalter an ist. Ein Tor, das zwei Hebel zugleich braucht, gibt es noch nicht.
+- M15 – NPCs & Dialog ist vorgeschlagen, noch nicht bestätigt: Schamane in der Testkammer, Dialogfenster aus `Ui/Dialog/` mit Porträt, Namen, Text Buchstabe für Buchstabe und bis zu drei Antworten, Gespräche als Werte-Dateien in `data/dialogs/`, Geschenke als Beute. Einzelheiten im Plan-Dokument unter Phase 3.
 - Ton (A3): auf Wunsch des Nutzers verschoben, fast ans Ende des Projekts, mit Phase 7 – Feinschliff. Bis dahin hat kein Modul Ton; `SoundCue` und die Ton-Tabelle entstehen erst dann.
 - Der Hieb-Effekt richtet sich nicht von selbst nach der Trefferzone: Ändern sich `start_distance` oder `reach` in `data/player/sword.tres`, ist `distance` am Knoten `SlashEffect` der Spielfigur nachzuziehen. Heute ist es 8, also `start_distance` + 2.
 - Grafik, noch ungeprüft – Claude klärt das, bevor ein Schritt es braucht: Lage des Katanas über der Figur (erst wenn das Schwert sichtbar wird); Effekte, die im Katalog „unklar“ heißen (wenn ein Schritt sie braucht); alle Töne, bisher nur die Namen (A3); Übergangsregeln der Kacheln (A4); `TilesetFloor.png` mit 417 Pixeln Höhe, nicht durch 16 teilbar (A4).

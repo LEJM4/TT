@@ -73,9 +73,9 @@ func _build_frames(skin: ProjectileSkin) -> SpriteFrames:
 	var size := _frame_size(skin)
 	var sheet := Rect2i(Vector2i.ZERO, Vector2i(skin.texture.get_size()))
 	for index in skin.frame_count:
-		var region := Rect2i(Vector2i(size.x * index, 0), size)
+		var region := Rect2i(Vector2i(size.x * (skin.first_frame + index), 0), size)
 		if not sheet.encloses(region):
-			push_warning("ProjectileView: Bild %d liegt außerhalb von %s." % [index + 1, skin.texture.resource_path])
+			push_warning("ProjectileView: Bild %d liegt außerhalb von %s." % [skin.first_frame + index + 1, skin.texture.resource_path])
 			break
 		var image := AtlasTexture.new()
 		image.atlas = skin.texture

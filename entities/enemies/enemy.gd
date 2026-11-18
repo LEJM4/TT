@@ -1,32 +1,38 @@
 class_name Enemy
 extends CharacterBody2D
-## Enemy - ein Gegner (M13).
+## Enemy - ein Gegner (M13; seit M14 mit Angriffs-Modulen).
 ##
 ## Was er tut, entscheidet sein Kind "Brain", ein Zustandsautomat mit je einem
 ## Knoten pro Zustand (entities/enemies/states/): Patrol, Alert, Chase, Attack,
 ## Search, Return, Stunned, Dead. Die Zustände steuern ihn über move_to(),
-## stop() und face(); er selbst bewegt sich nur mit move_and_slide().
-## Bemerken tut er über "Perception", zuschlagen über "MeleeAttack": sofort, ohne
-## Ausholen, sobald die Figur in der Trefferzone steht - Treffer und erstes Bild
-## der Hieb-Animation kommen zusammen.
+## move_away_from(), stop() und face(); er selbst bewegt sich nur mit move_and_slide().
+## Bemerken tut er über "Perception".
+##
+## Angreifen (M14): Jedes Kind von "Attacks" ist ein Angriffs-Modul (EnemyAttack)
+## und löst eine Waffe neben ihm aus, etwa MeleeAttack oder RangedAttack. Der
+## erste Angriff bestimmt, auf welchen Abstand er geht; eingesetzt wird der erste,
+## der gerade passt. Die Grundszene enemy.tscn hat noch keinen Angriff - die
+## Gegnertypen bringen ihn mit: melee_enemy.tscn (Nahkämpfer) und
+## ranged_enemy.tscn (Fernkämpfer).
 ## Abstände rechnet er in Kacheln (ViewSettings.TILE_SIZE); der Zoom ändert sie nicht.
-## Einen bestimmten Gegner beschreibt eine geerbte Szene wie caveman.tscn:
-## Skin, Werte-Dateien, Beute.
+## Einen bestimmten Gegner beschreibt eine geerbte Szene eines Gegnertyps, etwa
+## caveman.tscn oder stone_thrower.tscn: Skin, Werte-Dateien, Beute.
 ##
 ## Über Schaden entscheidet Health. Solange er die Figur nicht bemerkt hat,
 ## setzt er dort nur den Faktor surprise_factor: Überraschungstreffer zählen mehr.
 ## Wird er dabei getroffen, dreht er sich zum Angreifer und sucht. Stun hält ihn
 ## an. Stirbt er, bleibt er kurz liegen und verschwindet; F2 bringt ihn zurück.
-## Zustand und Leben meldet er der Debug-Anzeige.
+## Zustand und Leben meldet er der Debug-Anzeige in einer Zeile mit seinem Namen;
+## verschwindet er nach dem Tod, verschwindet die Zeile mit.
 ##
 ## Kinder und was ohne sie passiert:
-##   Brain         Zustände      - ohne: Er steht nur da.
-##   Perception    Sehen, Hören  - ohne: Er bemerkt niemanden.
-##   MeleeAttack   Schlag        - ohne: Er verfolgt, schlägt aber nie zu.
-##   Health        Leben         - ohne: Er nimmt keinen Schaden.
-##   Hurtbox       Trefferzone   - ohne: Er ist nicht zu treffen.
-##   Stunnable     Betäubung     - ohne: Stun wirkt nicht auf ihn.
-##   LootDropper   Beute         - ohne: Er lässt nichts fallen.
+##   Brain         Zustände        - ohne: Er steht nur da.
+##   Perception    Sehen, Hören    - ohne: Er bemerkt niemanden.
+##   Attacks       Angriffs-Module - ohne oder leer: Er verfolgt, greift aber nie an.
+##   Health        Leben           - ohne: Er nimmt keinen Schaden.
+##   Hurtbox       Trefferzone     - ohne: Er ist nicht zu treffen.
+##   Stunnable     Betäubung       - ohne: Stun wirkt nicht auf ihn.
+##   LootDropper   Beute           - ohne: Er lässt nichts fallen.
 ##   CharacterView, LifeBar, HitFlash, DamageNumbers und die Effekte sind nur
 ##   fürs Auge. Aufblitzen zeigt nur Schaden, den er nimmt, nie seinen Angriff.
 ##
@@ -39,8 +45,10 @@ signal search_started
 
 ## Unter diesem Abstand gilt ein Punkt als erreicht, in Pixeln.
 const ARRIVE_DISTANCE := 2.0
+## Name des Kindes mit den Angriffs-Modulen (M14).
+const ATTACKS_NAME := "Attacks"
 
-## Werte-Datei mit Tempo, Zeiten und Kampfwerten.
+## Werte-Datei mit Tempo, Zeiten und Überraschung.
 @export var stats: EnemyStats
 ## Strecke der Patrouille vom Startpunkt aus, in Kacheln. Null: Er steht und wacht.
 @export var patrol_tiles := Vector2.ZERO
@@ -58,10 +66,13 @@ var last_known_position := Vector2.ZERO
 ## Startpunkt der Patrouille.
 var home := Vector2.ZERO
 
+var _state_text := "-"
+var _life_text := ""
+
 @onready var brain := get_node_or_null("Brain") as StateMachine
 @onready var perception := get_node_or_null("Perception") as Perception
-@onready var melee := get_node_or_null("MeleeAttack") as MeleeAttack
 @onready var health := get_node_or_null("Health") as Health
+@onready var _attacks := get_node_or_null(ATTACKS_NAME)
 @onready var _hurtbox := get_node_or_null("Hurtbox") as Hurtbox
 @onready var _stunnable := get_node_or_null("Stunnable") as Stunnable
 
@@ -106,6 +117,15 @@ func move_to(point: Vector2, speed: float) -> bool:
 	return false
 
 
+## Weicht vom Punkt zurück und blickt dabei zu ihm hin (M14).
+func move_away_from(point: Vector2, speed: float) -> void:
+	var away := global_position - point
+	if away.length_squared() < 0.0001:
+		away = -facing
+	velocity = away.normalized() * speed
+	face_point(point)
+
+
 ## Bleibt stehen.
 func stop() -> void:
 	velocity = Vector2.ZERO
@@ -116,12 +136,42 @@ func patrol_end() -> Vector2:
 	return home + patrol_tiles * ViewSettings.TILE_SIZE
 
 
-## Bis zu diesem Abstand (Mitte zu Mitte) schlägt er zu: so weit, wie die
-## Trefferzone seines Schlags reicht. Ohne MeleeAttack: 0.
-func attack_distance() -> float:
-	if melee == null:
-		return 0.0
-	return melee.reach_distance()
+## Seine Angriffe in Rangfolge, die er einsetzen kann: eingeschaltet und mit Waffe (M14).
+func get_attacks() -> Array[EnemyAttack]:
+	var list: Array[EnemyAttack] = []
+	if _attacks == null:
+		return list
+	for child in _attacks.get_children():
+		var attack := child as EnemyAttack
+		if attack != null and attack.is_usable():
+			list.append(attack)
+	return list
+
+
+## Der Angriff, nach dem er seinen Abstand richtet: der erste in der Rangfolge.
+## null: Er hat keinen (M14).
+func main_attack() -> EnemyAttack:
+	var list := get_attacks()
+	if list.is_empty():
+		return null
+	return list[0]
+
+
+## Der erste Angriff, der jetzt geht: bereit, und das Ziel ist von hier aus zu
+## treffen. null: gerade keiner (M14).
+func choose_attack(victim: Node2D) -> EnemyAttack:
+	for attack in get_attacks():
+		if attack.is_ready() and attack.can_hit(victim):
+			return attack
+	return null
+
+
+## Ist der Weg von hier bis zum Punkt frei von Wänden und Blöcken (M14)?
+## Ohne Perception: ja.
+func has_line_of_sight_to(point: Vector2) -> bool:
+	if perception == null:
+		return true
+	return perception.has_line_of_sight(point)
 
 
 ## Blickt in die Richtung.
@@ -178,6 +228,14 @@ func set_aware(value: bool) -> void:
 		health.damage_factor = stats.surprise_factor
 
 
+## Meldet den Zustand neu an die Debug-Anzeige - etwa wenn ein Zustand seinen
+## Anzeigenamen ändert (M14).
+func report_state() -> void:
+	if brain != null:
+		_state_text = brain.get_display_name()
+	_report()
+
+
 func _on_hit_received(_damage: float, direction: Vector2) -> void:
 	if is_dead or is_aware:
 		return
@@ -224,16 +282,27 @@ func _on_died() -> void:
 	set_deferred("collision_mask", 0)
 	if _hurtbox != null:
 		_hurtbox.set_deferred("monitorable", false)
-	get_tree().create_timer(stats.remove_delay).timeout.connect(queue_free)
+	get_tree().create_timer(stats.remove_delay).timeout.connect(_remove)
+
+
+# Nach dem Tod: aus dem Level und aus der Debug-Anzeige verschwinden.
+func _remove() -> void:
+	EventBus.debug_value_changed.emit(String(name), "")
+	queue_free()
 
 
 func _on_state_changed(_previous: StringName, _current: StringName) -> void:
-	_report("Zustand", brain.get_display_name())
+	report_state()
 
 
 func _on_health_changed(current: float, maximum: float) -> void:
-	_report("Leben", "%d / %d" % [roundi(current), roundi(maximum)])
+	_life_text = "%d/%d" % [roundi(current), roundi(maximum)]
+	_report()
 
 
-func _report(key: String, value: String) -> void:
-	EventBus.debug_value_changed.emit("%s %s" % [name, key], value)
+# Eine Zeile je Gegner, etwa "Caveman: Verfolgen · Leben 30/30" (M14).
+func _report() -> void:
+	var text := _state_text
+	if not _life_text.is_empty():
+		text += " · Leben " + _life_text
+	EventBus.debug_value_changed.emit(String(name), text)

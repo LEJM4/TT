@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://entities/enemies/enemy.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://components/melee_attack/melee_attack.tscn" id="2_melee"]
+[ext_resource type="PackedScene" path="res://components/effect_cue/effect_cue.tscn" id="3_effect_cue"]
+[ext_resource type="Resource" path="res://data/effects/claw.tres" id="4_claw"]
+[ext_resource type="Script" path="res://entities/enemies/attacks/enemy_melee_attack.gd" id="5_melee_attack"]
+
+[node name="MeleeEnemy" instance=ExtResource("1_base")]
+
+[node name="Melee" type="Node" parent="Attacks"]
+script = ExtResource("5_melee_attack")
+weapon_name = "MeleeAttack"
+
+[node name="MeleeAttack" parent="." instance=ExtResource("2_melee")]
+target_mask = 8
+swing_color = Color(1, 0.4, 0.3, 0)
+gain_supply_name = ""
+
+[node name="ClawEffect" parent="." instance=ExtResource("3_effect_cue")]
+effect = ExtResource("4_claw")
+source_name = "MeleeAttack"
+signal_name = "attack_started"
+use_direction = true
+distance = 6.0

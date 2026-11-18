@@ -6,11 +6,11 @@
 script = ExtResource("1_stats")
 patrol_speed = 30.0
 chase_speed = 60.0
+retreat_speed = 45.0
 search_speed = 45.0
 patrol_wait = 1.0
 alert_time = 0.4
 lose_time = 1.5
-attack_recover = 0.6
 search_time = 3.0
 look_interval = 0.75
 search_walk_limit = 4.0

@@ -8,7 +8,9 @@ extends Node2D
 ##   - die Blickrichtung: den Wert "facing" der Figur; hat sie keinen, die Laufrichtung,
 ##   - das Tempo: wie weit sich die Figur je Physik-Schritt bewegt,
 ##   - die Signale der Geschwister "Health" (Treffer, Tod, Wiederaufstehen),
-##     "Dash" (Rolle) und "MeleeAttack" (Hieb).
+##     "Dash" (Rolle), "MeleeAttack" (Hieb) und "RangedAttack" (Wurf, M14).
+## Einen Wurf zeigt er nur, wenn der Skin ein Bild dafür hat ("shoot"); sonst
+## läuft das Bild weiter wie bisher - so bei der Spielfigur.
 ## Gezeigt wird die nächstliegende der vier Blickrichtungen; gezielt und
 ## getroffen wird weiter in jeden Winkel.
 ## Hat der Baustein ein brauchbares Bild, blendet er das Geschwister
@@ -25,7 +27,7 @@ const DIRECTION_NAMES: Array[String] = ["down", "up", "left", "right"]
 ## Die Blickrichtungen als Vektoren, in derselben Reihenfolge.
 const DIRECTION_VECTORS: Array[Vector2] = [Vector2.DOWN, Vector2.UP, Vector2.LEFT, Vector2.RIGHT]
 ## Animationen, die ein Skin haben kann - die Namen der Felder in CharacterSkin.
-const ANIMATIONS: Array[String] = ["idle", "walk", "attack", "dash", "hit", "dead"]
+const ANIMATIONS: Array[String] = ["idle", "walk", "attack", "shoot", "dash", "hit", "dead"]
 ## Name des Geschwisters, das der Baustein ausblendet.
 const PLACEHOLDER_NAME := "PlaceholderView"
 ## Springt die Figur in einem Schritt weiter als so viele Pixel, wurde sie versetzt und läuft nicht.
@@ -171,6 +173,9 @@ func _connect_parts() -> void:
 	var melee := holder.get_node_or_null("MeleeAttack") as MeleeAttack
 	if melee != null:
 		melee.attack_started.connect(_on_attack_started)
+	var ranged := holder.get_node_or_null("RangedAttack") as RangedAttack
+	if ranged != null:
+		ranged.shot_fired.connect(_on_shot_fired)
 	_sprite.animation_finished.connect(_on_animation_finished)
 	# Hat ein Hieb- oder Treffer-Bild im Skin versehentlich "loop", endet es nach einem Durchlauf.
 	_sprite.animation_looped.connect(_on_animation_finished)
@@ -206,7 +211,7 @@ func _refresh(restart := false) -> void:
 		look = _dash_direction
 	elif not _one_shot.is_empty():
 		animation_name = _one_shot
-		if _one_shot == "attack":
+		if _one_shot == "attack" or _one_shot == "shoot":
 			look = _attack_direction
 	elif _speed > walk_threshold:
 		animation_name = "walk"
@@ -317,6 +322,15 @@ func _on_attack_started(attack_direction: Vector2) -> void:
 		return
 	_one_shot = "attack"
 	_attack_direction = attack_direction
+	_refresh(true)
+
+
+# Ein Wurf (M14): nur mit Bild "shoot" im Skin, sonst bleibt das laufende Bild.
+func _on_shot_fired(shot_direction: Vector2) -> void:
+	if _is_dead or _is_dashing or not has_skin_animation("shoot"):
+		return
+	_one_shot = "shoot"
+	_attack_direction = shot_direction
 	_refresh(true)
 
 

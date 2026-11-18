@@ -9,6 +9,10 @@ extends Resource
 @export var texture: Texture2D
 ## Größe eines Einzelbilds in Pixeln. (0, 0): Das ganze Blatt ist ein Bild.
 @export var frame_size := Vector2i.ZERO
+## Erstes Bild im Blatt, von 0 gezählt; die übrigen folgen rechts davon (M14).
+## So lässt sich ein einzelnes Bild aus einem Streifen nehmen, etwa ein Stein
+## aus FX/Particle/Rock.png.
+@export_range(0, 63) var first_frame := 0
 ## Anzahl der Bilder, nebeneinander im Blatt.
 @export_range(1, 64) var frame_count := 1
 ## Bilder je Sekunde.

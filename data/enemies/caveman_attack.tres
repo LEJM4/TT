@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyAttackStats" format=3]
+
+[ext_resource type="Script" path="res://entities/enemies/attacks/enemy_attack_stats.gd" id="1_stats"]
+
+[resource]
+script = ExtResource("1_stats")
+min_tiles = 0.0
+max_tiles = 0.0
+needs_line_of_sight = false
+recover_time = 0.6

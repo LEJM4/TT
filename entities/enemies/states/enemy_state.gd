@@ -4,8 +4,10 @@ extends State
 ##
 ## Die Zustände liegen als Kinder unter "Brain" (ein StateMachine) in
 ## entities/enemies/enemy.tscn. Jeder steuert den Gegner nur über dessen
-## Methoden - move_to(), stop(), face(), look_for_target() - und wechselt mit
-## machine.transition_to(name).
+## Methoden - move_to(), move_away_from(), stop(), face(), look_for_target(),
+## choose_attack() - und wechselt mit machine.transition_to(name).
+## Ein Gegnertyp mit anderem Verhalten bekommt in seiner Szene einen eigenen
+## Zustand oder ein anderes Skript für einen vorhandenen (M14).
 
 ## Der Gegner, zu dem der Zustand gehört: die Wurzel seiner Szene.
 var enemy: Enemy

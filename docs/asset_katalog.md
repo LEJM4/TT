@@ -1,6 +1,6 @@
 # Grafik-Katalog – Ninja Adventure Asset Pack
 
-Stand: 17.11.2026 · erstellt aus der Dateiliste (Namen und Pixelgrößen) · **am 16. und 17.11.2026 teilweise am Bild geprüft** – siehe „Prüfstand am Bild“ am Ende
+Stand: 18.11.2026 · erstellt aus der Dateiliste (Namen und Pixelgrößen) · **vom 16. bis 18.11.2026 teilweise am Bild geprüft** – siehe „Prüfstand am Bild“ am Ende
 
 - Quelle: https://pixel-boy.itch.io/ninja-adventure-asset-pack – Lizenz CC0
 - Ablage im Projekt: `assets/ninja_adventure/` (alle Pfade unten sind relativ dazu)
@@ -48,6 +48,8 @@ Am 17.11.2026 an `Caveman/SeparateAnim/` gemessen: Die Figur steht unten im Bild
 
 Am 18.11.2026 für den Vorschlag zu M13 angesehen: `Caveman` (hellhäutig, orange) und `Caveman2` (braun) haben dieselben Blätter in `SeparateAnim/` – Idle 64 × 16, Walk 64 × 64, Attack 64 × 16 (ein Schlag mit der Faust), Dead 16 × 16 –, ohne Waffe in der Hand. `Cavegirl` trägt grünes Haar, `CaveLion` ein Löwenfell. Eingebaut mit M13: `Caveman2` als erster Gegner, Skin `data/skins/caveman_brown.tres` – er unterscheidet sich so vom Probe-Skin der Spielfigur.
 
+Am 18.11.2026 für M14 geprüft: `Cavegirl` hat dieselben Blätter wie `Caveman` – Idle, Walk, Attack, Dead –, die Füße in Zeile 15. Ihr `Attack.png` zeigt einen Wurf mit vorgestrecktem Arm. Eingebaut mit M14 als Steinwerferin, Skin `data/skins/cavegirl.tres`; `Attack.png` dient dort als Wurf (`shoot`).
+
 **Nach Thema**
 
 - **Steinzeit:** Caveman, Caveman2, Cavegirl, Cavegirl2, CaveLion, CaveLion2
@@ -66,6 +68,8 @@ Am 18.11.2026 für den Vorschlag zu M13 angesehen: `Caveman` (hellhäutig, orang
 - `SamuraiRed`: das Gesamtblatt heißt `redsamurai.png`
 - `ManGreen`: das Porträt heißt `Faceset1.png`
 - `Cavegirl2`: Porträt 37 × 38
+
+Am 18.11.2026 für den Vorschlag zu M15 die Porträts angesehen: `Shaman` trägt eine Totenkopf-Maske und Fell – passend zur Steinzeit –, `ShamanLion` dasselbe mit Löwenfell; dazu OldMan, OldMan2, OldMan3, Monk, Master, Villager, CaveLion, CaveLion2, Cavegirl2 und Caveman. Alle Porträts sind 38 × 38 und passen genau in das Porträt-Feld von `Ui/Dialog/DialogBoxFaceset.png`.
 
 ## Animierte Hauptfigur – `Actor/CharacterAnimated/NinjaGreen/`
 
@@ -204,9 +208,9 @@ Fahrzeuge in `Backgrounds/Vehicles/`: `Boat.png` 80 × 32, `Crane.png` 33 × 36,
 
 Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `Magic/Circle/SpriteSheetWhite.png` – Bildzahl wie angegeben. Am 17.11.2026 für A2 Bild für Bild vermessen und eingebaut, Werte in `data/effects/`: `SlashCurved` – ein Bogen schwingt von unten über rechts nach oben um die Bildmitte, die Sichel liegt rechts davon in den Spalten 14 bis 31; `Cut` – ein schräger Schnitt mit Funken von links unten nach rechts oben, fast über das ganze Bild; `Smoke/Smoke` – eine Wolke wächst aus der unteren Mitte auf knapp 30 Pixel; `Circle/SpriteSheetWhite.png` – ein weißer Ring wächst von 10 auf 28 Pixel Durchmesser, mittig. Alle Bilder sind nicht leer.
 
-**Geschosse** in `FX/Projectile/`: `Arrow.png` 13 × 5 (zeigt nach rechts – geprüft), `Kunai.png` 14 × 5 (zeigt nach rechts – geprüft am 17.11.2026), `BigKunai.png` 35 × 9, `Shuriken.png` und `ShurikenMagic.png` 32 × 16 (2 à 16; bei `Shuriken.png` zwei Drehbilder – geprüft am 17.11.2026), `BigShuriken.png` 46 × 23 (2 à 23), `Fireball.png`, `EnergyBall.png` und `SpriteSheetRock.png` 64 × 16 (4 à 16), `BigEnergyBall.png` 96 × 24 (4 à 24), `CanonBall.png` 80 × 16 (5 à 16), `IceSpike.png` 144 × 10, `PlantSpike.png` 96 × 20.
+**Geschosse** in `FX/Projectile/`: `Arrow.png` 13 × 5 (zeigt nach rechts – geprüft), `Kunai.png` 14 × 5 (zeigt nach rechts – geprüft am 17.11.2026), `BigKunai.png` 35 × 9, `Shuriken.png` und `ShurikenMagic.png` 32 × 16 (2 à 16; bei `Shuriken.png` zwei Drehbilder – geprüft am 17.11.2026), `BigShuriken.png` 46 × 23 (2 à 23), `Fireball.png`, `EnergyBall.png` und `SpriteSheetRock.png` 64 × 16 (4 à 16; `SpriteSheetRock.png` geprüft am 18.11.2026: vier Drehbilder eines großen Felsbrockens, fast 16 × 14 – als geworfener Stein zu groß), `BigEnergyBall.png` 96 × 24 (4 à 24), `CanonBall.png` 80 × 16 (5 à 16), `IceSpike.png` 144 × 10, `PlantSpike.png` 96 × 20.
 
-**Partikel** in `FX/Particle/` als schmale Streifen: Bamboo, Clouds, Fire, Grass, Leaf, LeafPink, Rain, RainOnFloor, Rock, RockGray, Snow, Spark, Vase, Wood. Geprüft am 17.11.2026: Die meisten sind keine Animationen, sondern einzelne Bruchstücke nebeneinander – `Wood.png` 6 à 16, `Vase.png` 6 à 14, `Leaf.png` und `LeafPink.png` 6 à 12 × 7, `Grass.png` 6 à 12 × 13, `Rock.png` und `RockGray.png` 5 à 16, `Bamboo.png` 6 à 16; `Spark.png` sind 7 à 10 × 8 Funken von klein über groß zu klein. `AllPreview.png` zeigt alle zusammen. Eingebaut mit M9: `Vase.png`, `Wood.png`, `Leaf.png` und `RockGray.png` als Splitter in `data/effects/debris_*.tres` – `RockGray.png` ist beige und wird dort graugrün gefärbt –, `Spark.png` als Funke beim Abprallen in `data/effects/spark.tres`.
+**Partikel** in `FX/Particle/` als schmale Streifen: Bamboo, Clouds, Fire, Grass, Leaf, LeafPink, Rain, RainOnFloor, Rock, RockGray, Snow, Spark, Vase, Wood. Geprüft am 17.11.2026: Die meisten sind keine Animationen, sondern einzelne Bruchstücke nebeneinander – `Wood.png` 6 à 16, `Vase.png` 6 à 14, `Leaf.png` und `LeafPink.png` 6 à 12 × 7, `Grass.png` 6 à 12 × 13, `Rock.png` und `RockGray.png` 5 à 16, `Bamboo.png` 6 à 16; `Spark.png` sind 7 à 10 × 8 Funken von klein über groß zu klein. `AllPreview.png` zeigt alle zusammen. Eingebaut mit M9: `Vase.png`, `Wood.png`, `Leaf.png` und `RockGray.png` als Splitter in `data/effects/debris_*.tres` – `RockGray.png` ist beige und wird dort graugrün gefärbt –, `Spark.png` als Funke beim Abprallen in `data/effects/spark.tres`. Eingebaut mit M14: Bild 5 von `Rock.png` (Index 4) – ein runder orangefarbener Stein, etwa 10 × 10 Pixel – als geworfener Stein der Steinwerferin in `data/enemies/stone_thrower_throw.tres`.
 
 **Umgebung** in `FX/Environment/`: `Fog.png` 320 × 180, `Raylight.png` 216 × 102.
 
@@ -230,7 +234,7 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 
 | Ordner | Inhalt |
 | --- | --- |
-| `Dialog/` | `DialogBox.png` und `DialogBoxFaceset.png` 300 × 58, `DialogueBoxSimple.png` 316 × 60, `ChoiceBox.png`, `FacesetBox.png`, `YesButton.png`, `NoButton.png`, `DialogInfo.png` – noch nicht am Bild geprüft; das geschieht mit M15 – NPCs & Dialog |
+| `Dialog/` | `DialogBox.png` und `DialogBoxFaceset.png` 300 × 58, `DialogueBoxSimple.png` 316 × 60, `ChoiceBox.png`, `FacesetBox.png`, `YesButton.png`, `NoButton.png`, `DialogInfo.png`. Am 18.11.2026 für den Vorschlag zu M15 vermessen: `DialogBoxFaceset.png` 300 × 58 – oben links ein brauner Reiter für den Namen (x 4 bis 69, gut 9 Pixel hoch), links ein dunkles Feld für das Porträt bei (6, 14) mit 38 × 38, rechts der helle Textbereich von (50, 14) bis (293, 51); `DialogBox.png` gleich, ohne Porträt; `DialogueBoxSimple.png` ohne Reiter; `FacesetBox.png` 48 × 48 der Porträt-Rahmen allein; `ChoiceBox.png` 64 × 20 mit 5 Pixeln Rand, innen hell – als Nine-Patch dehnbar; `DialogInfo.png` 4 Sprechblasen à 20 × 16: leer, „.“, „..“, „...“. `YesButton.png` und `NoButton.png` tragen die englischen Wörter „Yes“ und „No“ – für deutsche Texte nicht brauchbar |
 | `Emote/` | `emote1.png` bis `emote30.png`, 14 × 13 – Sprechblasen; am 18.11.2026 angesehen: 1 bis 19 Gesichter, 20 „…“, 21 „!“ dunkel, 22 „!“ rot, 23 „?“ dunkel, 24 eine Figur, 25 „?“ rot, 26 gebrochenes und 27 ganzes Herz, 28 Schlaf, 29 Stern, 30 Kreuz. Eingebaut mit M13: 22 beim Entdecken, 23 beim Suchen, je 24 Pixel über dem Gegner |
 | `Font/` | `NormalFont.ttf` (Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt; am 17.11.2026 vermessen: gebaut für 9 Pixel – 2.048 Einheiten je Geviert, ein Pixel sind 227,6 Einheiten –, Ziffern 6 Pixel hoch, Vorschub 6 Pixel; eingebaut mit A2 für die Schadenszahlen in Größe 9; nachgezählt: Klein- und Großbuchstaben, Umlaute, Ziffern und die üblichen Satzzeichen sind da, es fehlen ß, der Gedankenstrich – und das untere Anführungszeichen „), `font8x8.png` 120 × 64, `font24x30.png` 360 × 240 |
 | `Receptacle/` | `Heart.png` 80 × 16 (5 à 16: leer bis voll in Viertelschritten – geprüft), `Heart2.png` 64 × 16 (4 à 16: Kästchen mit 0 bis 3 Streifen), `Heart3.png` 64 × 16 (4 à 16: Dreieck aus 0 bis 3 Teilen), `LifeBarMiniUnder.png` und `LifeBarMiniProgress.png` je 18 × 4 (1 Pixel dunkler Rand mit runden Ecken, innen 2 Pixel graugrün oder rot), `IconHeart.png` 14 × 12. Geprüft am 17.11.2026; eingebaut mit M12: `Heart.png` für das Leben, `LifeBarMiniUnder.png` als Rahmen der Ausdauer-Leiste; mit M13 beide Mini-Leisten als Lebensleiste über Gegnern |
@@ -255,7 +259,7 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 
 ## Prüfstand am Bild
 
-Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 des Grafik-Plans brauchen; am 17.11.2026 dazu die Blätter für M8 – Interaktion; was M8 davon nutzt, steht bei den Kacheln und der Oberfläche. Ebenfalls am 17.11.2026 für M9 – Zerstörbares: Kiste, Topf, Baum, Stumpf, Felsen, die Splitter in `FX/Particle/` und die Symbole aus `Items/Resource/`; was M9 davon nutzt, steht bei den Kacheln, den Effekten und den Gegenständen. Für M10 – Truhen & Beute: die beiden Truhen, die Schlüssel und das Funkeln in `FX/Magic/Spark/`. Für M11 – Inventar & Ausrüstung: das Holz-Thema in `Ui/Theme/Theme Wood/`, die Symbole in `Ui/Skill Icon/Items & Weapon/` und die Waffen-Bilder in `Items/Weapons/`; was M11 davon nutzt, steht bei der Oberfläche und den Gegenständen. Für M12 – HUD: die Behälter in `Ui/Receptacle/`, alle Fähigkeits-Symbole samt grauer Fassung und die Maus in `Ui/Input/`; das HUD hat Claude als Bild nachgestellt, was es nutzt, steht bei der Oberfläche. Am 18.11.2026 für den Vorschlag zu M13 – Erster Gegner: die Höhlenmenschen in `Actor/Character/`, die Emotes in `Ui/Emote/` und die Angriffs-Effekte in `FX/Attack/`.
+Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 des Grafik-Plans brauchen; am 17.11.2026 dazu die Blätter für M8 – Interaktion; was M8 davon nutzt, steht bei den Kacheln und der Oberfläche. Ebenfalls am 17.11.2026 für M9 – Zerstörbares: Kiste, Topf, Baum, Stumpf, Felsen, die Splitter in `FX/Particle/` und die Symbole aus `Items/Resource/`; was M9 davon nutzt, steht bei den Kacheln, den Effekten und den Gegenständen. Für M10 – Truhen & Beute: die beiden Truhen, die Schlüssel und das Funkeln in `FX/Magic/Spark/`. Für M11 – Inventar & Ausrüstung: das Holz-Thema in `Ui/Theme/Theme Wood/`, die Symbole in `Ui/Skill Icon/Items & Weapon/` und die Waffen-Bilder in `Items/Weapons/`; was M11 davon nutzt, steht bei der Oberfläche und den Gegenständen. Für M12 – HUD: die Behälter in `Ui/Receptacle/`, alle Fähigkeits-Symbole samt grauer Fassung und die Maus in `Ui/Input/`; das HUD hat Claude als Bild nachgestellt, was es nutzt, steht bei der Oberfläche. Am 18.11.2026 für den Vorschlag zu M13 – Erster Gegner: die Höhlenmenschen in `Actor/Character/`, die Emotes in `Ui/Emote/` und die Angriffs-Effekte in `FX/Attack/`. Für den Vorschlag zu M15 – NPCs & Dialog: die Dialog-Bilder in `Ui/Dialog/` und die Porträts möglicher NPCs. Ebenfalls am 18.11.2026 für M14 – Gegnertypen: `Cavegirl` als Steinwerferin und die Steine in `FX/Projectile/SpriteSheetRock.png` und `FX/Particle/Rock.png`; was M14 davon nutzt, steht bei den Figuren und den Effekten.
 
 | Prüfung | Stand |
 | --- | --- |
@@ -271,4 +275,5 @@ Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 des 
 | Symbole für Schnelligkeit und Stun in `Ui/Skill Icon/` | erledigt am 17.11.2026, eingebaut mit M12: `Items & Weapon/Boot.png` und `Spell/BookThunder.png`, beide mit grauer Fassung; `OrbLight` hätte gepasst, hat aber keine |
 | Behälter für Leben, Energie und Ausdauer | erledigt am 17.11.2026: Herzen, Kugel mit Füllung und Glanzpunkt, kleine Leiste als Bild nachgestellt; eingebaut mit M12 |
 | Höhlenmensch als Gegner | erledigt am 18.11.2026: `Caveman2` hat dieselben Blätter wie `Caveman`; die Kralle liegt im Bild wie der Hieb-Bogen; eingebaut mit M13 |
+| Steinwerferin als Gegner | erledigt am 18.11.2026: `Cavegirl` hat dieselben Blätter wie `Caveman`, `Attack.png` ist ein Wurf; der Stein ist Bild 5 von `FX/Particle/Rock.png`; eingebaut mit M14 |
 | Töne | nur die Namen bekannt; anhören kann nur der Nutzer |

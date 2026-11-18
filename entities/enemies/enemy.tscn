@@ -8,14 +8,12 @@
 [ext_resource type="PackedScene" path="res://components/hurtbox/hurtbox.tscn" id="6_hurtbox"]
 [ext_resource type="PackedScene" path="res://components/hit_flash/hit_flash.tscn" id="7_flash"]
 [ext_resource type="PackedScene" path="res://components/damage_numbers/damage_numbers.tscn" id="9_numbers"]
-[ext_resource type="PackedScene" path="res://components/melee_attack/melee_attack.tscn" id="10_melee"]
 [ext_resource type="PackedScene" path="res://components/stunnable/stunnable.tscn" id="11_stunnable"]
 [ext_resource type="PackedScene" path="res://components/loot_dropper/loot_dropper.tscn" id="12_loot_dropper"]
 [ext_resource type="PackedScene" path="res://components/life_bar/life_bar.tscn" id="13_life_bar"]
 [ext_resource type="PackedScene" path="res://components/effect_cue/effect_cue.tscn" id="14_effect_cue"]
 [ext_resource type="Resource" path="res://data/effects/hit.tres" id="15_hit"]
 [ext_resource type="Resource" path="res://data/effects/death_smoke.tres" id="16_smoke"]
-[ext_resource type="Resource" path="res://data/effects/claw.tres" id="17_claw"]
 [ext_resource type="Resource" path="res://data/effects/emote_alert.tres" id="18_alert"]
 [ext_resource type="Resource" path="res://data/effects/emote_search.tres" id="19_search"]
 [ext_resource type="PackedScene" path="res://components/state_machine/state_machine.tscn" id="20_machine"]
@@ -63,11 +61,6 @@ shape = SubResource("RectangleShape2D_hurt")
 
 [node name="DamageNumbers" parent="." instance=ExtResource("9_numbers")]
 
-[node name="MeleeAttack" parent="." instance=ExtResource("10_melee")]
-target_mask = 8
-swing_color = Color(1, 0.4, 0.3, 0)
-gain_supply_name = ""
-
 [node name="Stunnable" parent="." instance=ExtResource("11_stunnable")]
 
 [node name="LootDropper" parent="." instance=ExtResource("12_loot_dropper")]
@@ -87,13 +80,6 @@ source_name = "Health"
 signal_name = "died"
 follow = false
 
-[node name="ClawEffect" parent="." instance=ExtResource("14_effect_cue")]
-effect = ExtResource("17_claw")
-source_name = "MeleeAttack"
-signal_name = "attack_started"
-use_direction = true
-distance = 6.0
-
 [node name="AlertEmote" parent="." instance=ExtResource("14_effect_cue")]
 effect = ExtResource("18_alert")
 signal_name = "alerted"
@@ -101,6 +87,8 @@ signal_name = "alerted"
 [node name="SearchEmote" parent="." instance=ExtResource("14_effect_cue")]
 effect = ExtResource("19_search")
 signal_name = "search_started"
+
+[node name="Attacks" type="Node" parent="."]
 
 [node name="Brain" parent="." instance=ExtResource("20_machine")]
 initial_state = &"Patrol"

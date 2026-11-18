@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" path="res://ui/hud/hud.tscn" id="32_hud"]
 [ext_resource type="PackedScene" path="res://entities/enemies/caveman.tscn" id="33_caveman"]
 [ext_resource type="Resource" path="res://data/world/view.tres" id="34_view"]
+[ext_resource type="PackedScene" path="res://entities/enemies/stone_thrower.tscn" id="35_stone_thrower"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
 size = Vector2(960, 16)
@@ -335,6 +336,13 @@ position = Vector2(776, 224)
 patrol_tiles = Vector2(0, 8.5)
 
 [node name="Perception" parent="Caveman"]
+debug_draw = true
+
+[node name="StoneThrower" parent="." instance=ExtResource("35_stone_thrower")]
+position = Vector2(464, 320)
+patrol_tiles = Vector2(8, 0)
+
+[node name="Perception" parent="StoneThrower"]
 debug_draw = true
 
 [node name="LootSpawner" parent="." instance=ExtResource("22_loot_spawner")]

@@ -9,7 +9,7 @@ extends Resource
 ##
 ## Pflicht ist nur "idle". Fehlt eine andere Animation, nimmt CharacterView
 ## Ersatz: beim Dash Laufen, beim Laufen Stehen, beim Tod Stehen mit
-## defeated_tint; ohne Hieb- oder Treffer-Bild bleibt das laufende Bild.
+## defeated_tint; ohne Hieb-, Wurf- oder Treffer-Bild bleibt das laufende Bild.
 
 @export_group("Bild")
 ## Größe eines Einzelbilds in Pixeln, für alle Animationen dieses Skins.
@@ -34,8 +34,11 @@ extends Resource
 @export var idle: SkinAnimation
 ## Laufen.
 @export var walk: SkinAnimation
-## Hieb mit dem Schwert.
+## Hieb mit dem Schwert, Schlag mit der Faust - spielt, wenn MeleeAttack zuschlägt.
 @export var attack: SkinAnimation
+## Wurf oder Schuss - spielt, wenn RangedAttack ein Geschoss abgibt (M14).
+## Leer: Beim Wurf läuft das Bild weiter wie bisher, so bei der Spielfigur.
+@export var shoot: SkinAnimation
 ## Dash, etwa eine Rolle.
 @export var dash: SkinAnimation
 ## Treffer: Schaden kommt an.

@@ -20,9 +20,12 @@ extends Node2D
 ##                   für jeden, die große braucht den Goldschlüssel
 ##   StartItems      Ausrüstung zum Aufsammeln unter den Startpunkten (M11):
 ##                   Breitschwert, Bogen, Lederrüstung, Rubin-Anhänger
-##   Caveman         erster Gegner (M13): ein Höhlenmensch patrouilliert rechts
+##   Caveman         Nahkämpfer (M13): ein Höhlenmensch patrouilliert rechts
 ##                   zwischen dem großen Block und dem rechten Pfeiler; sein
 ##                   Sichtkegel und Hörkreis sind eingeblendet (F1 blendet sie aus)
+##   StoneThrower    Fernkämpferin (M14): eine Steinwerferin patrouilliert in der
+##                   freien Fläche unten in der Mitte; sie hält Abstand und wirft
+##                   Steine; Sichtkegel und Hörkreis wie beim Höhlenmenschen
 ##   LootSpawner     legt alle Beute hin (M9)
 ##   PlayerSpawner   erzeugt die Spielfiguren (M2)
 ##   ProjectileSpawner  erzeugt alle Geschosse (M6)
