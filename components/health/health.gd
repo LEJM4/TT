@@ -8,6 +8,8 @@ extends Node
 ## Schaden entschieden wird: Tote und gerade Unverwundbare nehmen keinen.
 ## Ausrüstung wirkt hier mit (M11): armor zieht von jedem Treffer etwas ab -
 ## mindestens 1 bleibt -, set_bonus_maximum() gibt mehr Leben.
+## damage_factor vervielfacht jeden Treffer vor der Rüstung (M13) - etwa bei
+## einem Gegner, der den Angreifer noch nicht bemerkt hat.
 ## Später bestimmt hier der Gastgeber des Spiels.
 ##
 ## Abschalten: Knoten löschen - die Figur nimmt dann keinen Schaden mehr.
@@ -31,6 +33,9 @@ var is_dead := false
 ## Rüstung: so viel weniger Schaden macht jeder Treffer; mindestens 1 bleibt (M11).
 ## Setzt der Baustein Equipment.
 var armor := 0.0
+## Faktor auf jeden Treffer, vor der Rüstung: 2 heißt doppelter Schaden (M13).
+## Setzt etwa ein Gegner, solange er den Angreifer nicht bemerkt hat.
+var damage_factor := 1.0
 
 var _invulnerable_left := 0.0
 var _bonus_maximum := 0.0
@@ -77,6 +82,9 @@ func make_invulnerable(seconds: float) -> void:
 ## Zieht Leben ab und liefert den Schaden, der wirklich ankam.
 func apply_damage(amount: float) -> float:
 	if is_dead or is_invulnerable() or amount <= 0.0:
+		return 0.0
+	amount *= maxf(damage_factor, 0.0)
+	if amount <= 0.0:
 		return 0.0
 	if armor > 0.0:
 		amount = maxf(amount - armor, 1.0)

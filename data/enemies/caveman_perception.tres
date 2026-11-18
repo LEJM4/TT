@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PerceptionStats" format=3]
+
+[ext_resource type="Script" path="res://components/perception/perception_stats.gd" id="1_stats"]
+
+[resource]
+script = ExtResource("1_stats")
+sight_tiles = 6.0
+sight_angle = 100.0
+track_tiles = 10.0
+occluder_mask = 1
+hearing_tiles = 2.5
+silent_speed = 10.0
+sneak_factor = 0.5

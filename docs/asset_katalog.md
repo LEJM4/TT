@@ -46,6 +46,8 @@ Die vier Spalten sind die Blickrichtungen, von links: unten, oben, links, rechts
 
 Am 17.11.2026 an `Caveman/SeparateAnim/` gemessen: Die Figur steht unten im Bild, die Füße in Zeile 15 (von 0 gezählt), 13 bis 14 Pixel breit. Daraus ist der Probe-Skin `data/skins/caveman.tres` gebaut.
 
+Am 18.11.2026 für den Vorschlag zu M13 angesehen: `Caveman` (hellhäutig, orange) und `Caveman2` (braun) haben dieselben Blätter in `SeparateAnim/` – Idle 64 × 16, Walk 64 × 64, Attack 64 × 16 (ein Schlag mit der Faust), Dead 16 × 16 –, ohne Waffe in der Hand. `Cavegirl` trägt grünes Haar, `CaveLion` ein Löwenfell. Eingebaut mit M13: `Caveman2` als erster Gegner, Skin `data/skins/caveman_brown.tres` – er unterscheidet sich so vom Probe-Skin der Spielfigur.
+
 **Nach Thema**
 
 - **Steinzeit:** Caveman, Caveman2, Cavegirl, Cavegirl2, CaveLion, CaveLion2
@@ -183,7 +185,7 @@ Fahrzeuge in `Backgrounds/Vehicles/`: `Boat.png` 80 × 32, `Crane.png` 33 × 36,
 
 | Ordner | Blätter | Größe | Bilder |
 | --- | --- | --- | --- |
-| `Attack/CircularSlash`, `Claw`, `ClawDouble`, `Cut`, `CutX`, `SlashCurved`, `SlashDoubleCurved` | `SpriteSheet.png` | 128 × 32 | 4 à 32 |
+| `Attack/CircularSlash`, `Claw`, `ClawDouble`, `Cut`, `CutX`, `SlashCurved`, `SlashDoubleCurved` | `SpriteSheet.png` | 128 × 32 | 4 à 32 – am 18.11.2026 alle angesehen: `Claw` sind drei Krallenspuren, die von unten nach oben ziehen – dieselbe Lage im Bild wie `SlashCurved`; eingebaut mit M13 als Schlag des Gegners |
 | `Attack/CutDouble` | `SpriteSheet.png` | 160 × 32 | 5 à 32 |
 | `Smoke/Smoke` | `SpriteSheet.png` | 192 × 32 | 6 à 32 |
 | `Magic/Circle` | `SpriteSheetOrange.png`, `SpriteSheetWhite.png` | 128 × 32 | 4 à 32 |
@@ -228,10 +230,10 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 
 | Ordner | Inhalt |
 | --- | --- |
-| `Dialog/` | `DialogBox.png` und `DialogBoxFaceset.png` 300 × 58, `DialogueBoxSimple.png` 316 × 60, `ChoiceBox.png`, `FacesetBox.png`, `YesButton.png`, `NoButton.png`, `DialogInfo.png` |
-| `Emote/` | `emote1.png` bis `emote30.png`, 14 × 13 |
+| `Dialog/` | `DialogBox.png` und `DialogBoxFaceset.png` 300 × 58, `DialogueBoxSimple.png` 316 × 60, `ChoiceBox.png`, `FacesetBox.png`, `YesButton.png`, `NoButton.png`, `DialogInfo.png` – noch nicht am Bild geprüft; das geschieht mit M15 – NPCs & Dialog |
+| `Emote/` | `emote1.png` bis `emote30.png`, 14 × 13 – Sprechblasen; am 18.11.2026 angesehen: 1 bis 19 Gesichter, 20 „…“, 21 „!“ dunkel, 22 „!“ rot, 23 „?“ dunkel, 24 eine Figur, 25 „?“ rot, 26 gebrochenes und 27 ganzes Herz, 28 Schlaf, 29 Stern, 30 Kreuz. Eingebaut mit M13: 22 beim Entdecken, 23 beim Suchen, je 24 Pixel über dem Gegner |
 | `Font/` | `NormalFont.ttf` (Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt; am 17.11.2026 vermessen: gebaut für 9 Pixel – 2.048 Einheiten je Geviert, ein Pixel sind 227,6 Einheiten –, Ziffern 6 Pixel hoch, Vorschub 6 Pixel; eingebaut mit A2 für die Schadenszahlen in Größe 9; nachgezählt: Klein- und Großbuchstaben, Umlaute, Ziffern und die üblichen Satzzeichen sind da, es fehlen ß, der Gedankenstrich – und das untere Anführungszeichen „), `font8x8.png` 120 × 64, `font24x30.png` 360 × 240 |
-| `Receptacle/` | `Heart.png` 80 × 16 (5 à 16: leer bis voll in Viertelschritten – geprüft), `Heart2.png` 64 × 16 (4 à 16: Kästchen mit 0 bis 3 Streifen), `Heart3.png` 64 × 16 (4 à 16: Dreieck aus 0 bis 3 Teilen), `LifeBarMiniUnder.png` und `LifeBarMiniProgress.png` je 18 × 4 (1 Pixel dunkler Rand mit runden Ecken, innen 2 Pixel graugrün oder rot), `IconHeart.png` 14 × 12. Geprüft am 17.11.2026; eingebaut mit M12: `Heart.png` für das Leben, `LifeBarMiniUnder.png` als Rahmen der Ausdauer-Leiste |
+| `Receptacle/` | `Heart.png` 80 × 16 (5 à 16: leer bis voll in Viertelschritten – geprüft), `Heart2.png` 64 × 16 (4 à 16: Kästchen mit 0 bis 3 Streifen), `Heart3.png` 64 × 16 (4 à 16: Dreieck aus 0 bis 3 Teilen), `LifeBarMiniUnder.png` und `LifeBarMiniProgress.png` je 18 × 4 (1 Pixel dunkler Rand mit runden Ecken, innen 2 Pixel graugrün oder rot), `IconHeart.png` 14 × 12. Geprüft am 17.11.2026; eingebaut mit M12: `Heart.png` für das Leben, `LifeBarMiniUnder.png` als Rahmen der Ausdauer-Leiste; mit M13 beide Mini-Leisten als Lebensleiste über Gegnern |
 | `Receptacle/Receptacle Rectangle/`, `Receptacle Sphere/` | Behälter, die von unten volllaufen. Kugeln: Rahmen `Background*.png` 32 × 32 – Bamboo, Flask, Iron, Iron2, Metal, Red, Wood – mit dunklem Inneren; Füllungen `Progress*.png` 22 × 22 – Black, Green, Health (rot), Mana (hellblau), Purple, White, Yellow –, sie sitzen bei (5, 5); `Over.png` 32 × 32 ist ein weißer Glanzpunkt obendrauf. Rechtecke: stehende Rahmen – Bag 42 × 58, Bamboo 34 × 56, Bottle 32 × 63, Scroll 38 × 66, Wood 34 × 56 –, Füllungen `ProgressHealth.png` und `ProgressWhite.png` 22 × 40, dazu `AmmoSkill.png` 22 × 10, `AmmoSpecial.png` 11 × 10 und `Ammokunai.png` 22 × 10 als Einlagen. `Preview.png` zeigt jeweils alle. Geprüft am 17.11.2026; eingebaut mit M12: die Kugel `BackgroundRed.png` mit `ProgressMana.png` und `Over.png` für die Energie |
 | `Skill Icon/Spell/` | 34 Symbole à 24 × 24, fast alle auch als `…Disabled.png` – eine graue Fassung; nur die fünf `Orb…` haben keine. Darunter Camouflage (geprüft), Mist, Vision, Fireball, Heal, Counter, Cut, BookThunder. Am 17.11.2026 alle angesehen; eingebaut mit M12: `Camouflage.png` für Unsichtbarkeit, `BookThunder.png` für Stun |
 | `Skill Icon/Items & Weapon/`, `Job & Action/`, `Meteo/` | weitere 28 Symbole à 24 × 24 mit `…Disabled.png`: darunter Interact, Talk, Punch, Potion, Kunai, Shuriken. In `Items & Weapon/` am 17.11.2026 angesehen: Amulet, Armor, Arrow, Boot, Guard, Helmet, Hook, Kunai, Money, Ring, Scroll, Shuriken – Gegenstände auf farbigem Quadrat; eine Rüstung als Gegenstand ohne Hintergrund hat das Paket nicht. `Armor.png` ist mit M11 das Symbol der Lederrüstung; eingebaut mit M12: `Boot.png` für Schnelligkeit |
@@ -253,7 +255,7 @@ Geprüft am 16.11.2026: `Attack/SlashCurved`, `Attack/Cut`, `Smoke/Smoke` und `M
 
 ## Prüfstand am Bild
 
-Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 des Grafik-Plans brauchen; am 17.11.2026 dazu die Blätter für M8 – Interaktion; was M8 davon nutzt, steht bei den Kacheln und der Oberfläche. Ebenfalls am 17.11.2026 für M9 – Zerstörbares: Kiste, Topf, Baum, Stumpf, Felsen, die Splitter in `FX/Particle/` und die Symbole aus `Items/Resource/`; was M9 davon nutzt, steht bei den Kacheln, den Effekten und den Gegenständen. Für M10 – Truhen & Beute: die beiden Truhen, die Schlüssel und das Funkeln in `FX/Magic/Spark/`. Für M11 – Inventar & Ausrüstung: das Holz-Thema in `Ui/Theme/Theme Wood/`, die Symbole in `Ui/Skill Icon/Items & Weapon/` und die Waffen-Bilder in `Items/Weapons/`; was M11 davon nutzt, steht bei der Oberfläche und den Gegenständen. Für M12 – HUD: die Behälter in `Ui/Receptacle/`, alle Fähigkeits-Symbole samt grauer Fassung und die Maus in `Ui/Input/`; das HUD hat Claude als Bild nachgestellt, was es nutzt, steht bei der Oberfläche.
+Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 des Grafik-Plans brauchen; am 17.11.2026 dazu die Blätter für M8 – Interaktion; was M8 davon nutzt, steht bei den Kacheln und der Oberfläche. Ebenfalls am 17.11.2026 für M9 – Zerstörbares: Kiste, Topf, Baum, Stumpf, Felsen, die Splitter in `FX/Particle/` und die Symbole aus `Items/Resource/`; was M9 davon nutzt, steht bei den Kacheln, den Effekten und den Gegenständen. Für M10 – Truhen & Beute: die beiden Truhen, die Schlüssel und das Funkeln in `FX/Magic/Spark/`. Für M11 – Inventar & Ausrüstung: das Holz-Thema in `Ui/Theme/Theme Wood/`, die Symbole in `Ui/Skill Icon/Items & Weapon/` und die Waffen-Bilder in `Items/Weapons/`; was M11 davon nutzt, steht bei der Oberfläche und den Gegenständen. Für M12 – HUD: die Behälter in `Ui/Receptacle/`, alle Fähigkeits-Symbole samt grauer Fassung und die Maus in `Ui/Input/`; das HUD hat Claude als Bild nachgestellt, was es nutzt, steht bei der Oberfläche. Am 18.11.2026 für den Vorschlag zu M13 – Erster Gegner: die Höhlenmenschen in `Actor/Character/`, die Emotes in `Ui/Emote/` und die Angriffs-Effekte in `FX/Attack/`.
 
 | Prüfung | Stand |
 | --- | --- |
@@ -268,4 +270,5 @@ Am 16.11.2026 hat Claude die Blätter vergrößert angesehen, die A1 bis A4 des 
 | Bäume, Stümpfe, Felsen in `TilesetNature.png` und die Streifen in `FX/Particle/` | erledigt am 17.11.2026 für M9: Lage der Bäume und Felsen siehe Kacheln; die Streifen sind Bruchstücke nebeneinander, nur `Spark.png` ist eine Bildfolge |
 | Symbole für Schnelligkeit und Stun in `Ui/Skill Icon/` | erledigt am 17.11.2026, eingebaut mit M12: `Items & Weapon/Boot.png` und `Spell/BookThunder.png`, beide mit grauer Fassung; `OrbLight` hätte gepasst, hat aber keine |
 | Behälter für Leben, Energie und Ausdauer | erledigt am 17.11.2026: Herzen, Kugel mit Füllung und Glanzpunkt, kleine Leiste als Bild nachgestellt; eingebaut mit M12 |
+| Höhlenmensch als Gegner | erledigt am 18.11.2026: `Caveman2` hat dieselben Blätter wie `Caveman`; die Kralle liegt im Bild wie der Hieb-Bogen; eingebaut mit M13 |
 | Töne | nur die Namen bekannt; anhören kann nur der Nutzer |

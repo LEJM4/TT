@@ -15,14 +15,14 @@
 | Ordner | Inhalt |
 | --- | --- |
 | `autoload/` | Globale Dienste: EventBus, Tastenbelegung, Spielstand, Szenenwechsel, Ton |
-| `components/` | Bausteine für alle: Bild, Effekte, Splitter, Leben, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion, Beute, Aufsammeln, Ausrüstung; später Zustandsautomat |
-| `entities/` | Figuren und Bewegliches: `player/`, `dummy/`, `projectile/`, `effect/`, `debris/`, `pickup/`; später `enemies/`, `npcs/` |
+| `components/` | Bausteine für alle: Bild, Effekte, Splitter, Leben, Lebensleiste, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion, Beute, Aufsammeln, Ausrüstung, Zustandsautomat, Sehen und Hören |
+| `entities/` | Figuren und Bewegliches: `player/`, `enemies/` mit ihren Zuständen, `dummy/`, `projectile/`, `effect/`, `debris/`, `pickup/`; später `npcs/` |
 | `abilities/` | Fähigkeiten: Schnelligkeit, Unsichtbarkeit, Stun; der Dash ist ein Baustein in `components/dash/` |
 | `items/` | Baupläne für Gegenstände, Geschosse, Ausrüstung und Beute-Listen; die Gegenstände selbst liegen in `data/items/` – Geschosse, Materialien, Schlüssel, Ausrüstung –, die Listen in `data/loot/` |
-| `world/` | Dinge der Welt: Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen |
+| `world/` | Dinge der Welt: `view/` die Ansicht – Zoom der Welt und die Kachel als Maß –, Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen |
 | `levels/` | `test_chamber/`, später die Level und die Zeitkapsel |
 | `ui/` | Oberfläche: `hud/` die Anzeige am Bildrand, `inventory/` das Inventarfenster, `theme/` das Holz-Thema für alle Fenster, `crosshair/`, `debug/` für Entwickler-Anzeigen; später Dialog, Menüs |
-| `data/` | Werte-Dateien (`.tres`): Balancing, Skins, Gegenstände, Effekte, Beute, Oberfläche |
+| `data/` | Werte-Dateien (`.tres`): Balancing, Gegner, Skins, Gegenstände, Effekte, Beute, Oberfläche |
 | `assets/` | Grafik und Ton – siehe `assets/README.md` |
 | `docs/` | Stand-Datei und Grafik-Katalog; von Godot ignoriert |
 | `tools/` | Hilfsskripte; von Godot ignoriert |
@@ -54,6 +54,7 @@ Sie steht in `autoload/input_setup.gd` und lässt sich dort ändern.
 | --- | --- | --- |
 | F1 | `debug_toggle_overlay` | Debug-Anzeige ein- und ausblenden |
 | F2 | `debug_restart_room` | Raum neu starten |
+| F3 | `debug_cycle_zoom` | in der Testkammer: Zoom der Welt 1 bis 4 durchschalten; der Wert steht in `data/world/view.tres` |
 
 ## Regeln
 

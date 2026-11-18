@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" path="res://entities/player/player_camera.gd" id="1_camera"]
 [ext_resource type="Resource" path="res://data/player/camera.tres" id="2_stats"]
+[ext_resource type="Resource" path="res://data/world/view.tres" id="3_view"]
 
 [node name="PlayerCamera" type="Camera2D"]
 process_physics_priority = 10
 script = ExtResource("1_camera")
 stats = ExtResource("2_stats")
+view = ExtResource("3_view")

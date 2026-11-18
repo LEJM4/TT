@@ -24,6 +24,7 @@ const KEY_BINDINGS := {
 	"pause": [KEY_ESCAPE],
 	"debug_toggle_overlay": [KEY_F1],
 	"debug_restart_room": [KEY_F2],
+	"debug_cycle_zoom": [KEY_F3],
 }
 
 ## Aktion -> Maustasten; das Mausrad zählt als Taste.

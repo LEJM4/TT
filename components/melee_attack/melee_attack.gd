@@ -97,6 +97,14 @@ func can_attack() -> bool:
 	return not is_attacking and _cooldown_left <= 0.0
 
 
+## So weit reicht der Schlag: von der Mitte der Figur bis zum Ende der
+## Trefferzone, in Pixeln. Gegner schlagen erst zu, wenn die Figur so nah ist (M13).
+func reach_distance() -> float:
+	if stats == null:
+		return 0.0
+	return stats.start_distance + stats.reach
+
+
 ## Schlägt in die Richtung, wenn es gerade möglich ist. Liefert, ob der Schlag begann.
 func try_attack(direction: Vector2) -> bool:
 	if not can_attack() or direction == Vector2.ZERO:

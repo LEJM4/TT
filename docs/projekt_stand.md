@@ -11,11 +11,11 @@ Er ist eine Richtlinie, kein Zwang. Was vorgezogen oder eingeschoben wird, steht
 
 | | |
 | --- | --- |
-| Stand vom | 17.11.2026 |
-| In Arbeit | M12 – HUD: geliefert am 17.11.2026 als `m12_hud.zip`, der Test des Nutzers steht aus |
-| Als Nächstes | nach dem Test M12 abschließen – damit ist Phase 2 fertig –, dann Phase 3 mit M13 – Erster Gegner vorschlagen. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
-| Zuletzt abgeschlossen | M11 – Inventar & Ausrüstung, am 17.11.2026: Test bestanden. Davor am selben Tag M10 – Truhen & Beute, M9 – Zerstörbares, M8 – Interaktion, A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
-| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 17.11.2026 nach dem Test von M11: Commit `1b7abfc` „m11 inventar“ mit M9, M10 und M11 samt den Stand-Dateien aus `m9_abschluss.zip` und `m10_abschluss.zip`. Der Inhalt stimmt Datei für Datei mit den Lieferungen überein; dazu hat Godot die `.uid`-Dateien der neuen Skripte angelegt. Davor `e615355` mit M8, `e7909b2` mit A2, `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4`. Vor dem Bau von M12 noch einmal gelesen: weiter `1b7abfc`, `m11_abschluss.zip` war noch nicht hochgeladen. Das muss nicht nachgeholt werden: Die Stand-Datei aus `m12_hud.zip` ersetzt alle früheren |
+| Stand vom | 18.11.2026 |
+| In Arbeit | – Übergabe an einen neuen Chat, vorbereitet am 18.11.2026 |
+| Als Nächstes | im neuen Chat: Repo lesen und prüfen, dass M13 drin ist, dann M14 – Gegnertypen vorschlagen. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
+| Zuletzt abgeschlossen | M13 – Erster Gegner, am 18.11.2026: Test nach der Nachbesserung bestanden („Alles passt“). Davor am 18.11.2026 M12 – HUD, damit war Phase 2 fertig; am 17.11.2026 M11 – Inventar & Ausrüstung, M10 – Truhen & Beute, M9 – Zerstörbares, M8 – Interaktion, A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
+| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 18.11.2026 nach dem Test von M12: Commit `19e426c` „m12 -> only docs missing“ mit M12. Der Inhalt stimmt Datei für Datei mit `m12_hud.zip` überein, dazu die `.uid`-Dateien der neuen Skripte. Davor `1b7abfc` mit M9 bis M11, `e615355` mit M8, `e7909b2` mit A2, `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4`. Vor dem Bau von M13 noch einmal gelesen: weiter `19e426c`, `m12_abschluss.zip` war noch nicht hochgeladen. Das muss nicht nachgeholt werden: Die Stand-Datei aus `m13_nachbesserung.zip` ersetzt alle früheren. Vor der Nachbesserung von M13 und beim Abschluss noch einmal gelesen: weiter `19e426c`, M13 ist noch nicht hochgeladen. Der Nutzer lädt M13 mit dieser Stand-Datei als nächsten Commit hoch; der neue Chat prüft das zuerst |
 
 ## Neuer Chat und Arbeitsweise
 
@@ -25,6 +25,17 @@ Ein neuer Chat hat keine Kopie früherer Lieferungen. Er kennt nur diese Datei, 
 
 1. Diese Datei lesen, dann im Plan-Dokument den Tab, um den es geht.
 2. Das Repo einmal klonen und den Code lesen. Fehlt dort etwas, das hier als fertig steht, bittet Claude den Nutzer, es hochzuladen, statt es aus dieser Datei nachzubauen.
+
+**Übergabe vom 18.11.2026, nach M13**
+
+- Stand: M0 bis M13 fertig, dazu M11a und A0 bis A2. Phase 3 läuft; als Nächstes kommt M14 – Gegnertypen.
+- M13 lädt der Nutzer vor dem Wechsel hoch, als Commit nach `19e426c`, mit `m13_nachbesserung.zip` und dieser Stand-Datei aus `m13_abschluss.zip`. Der Ordner `components/windup_flash` gehört nicht dazu; liegt er im Repo, bittet Claude den Nutzer, ihn zu löschen.
+- Die Stand-Datei im Projektwissen ist schon diese Fassung.
+- Erste Nachricht des Nutzers im neuen Chat:
+
+> Neuer Chat für TimeTraveller, weiter nach M13. Lies zuerst `projekt_stand.md` im Projektwissen und im Plan-Dokument den Tab „Plan & Status“. Klone dann das Repo https://github.com/LEJM4/TT und prüfe, ob M13 – Erster Gegner samt Nachbesserung vollständig drin ist: ein Commit nach `19e426c`, ohne den Ordner `components/windup_flash`. Fehlt etwas, sag es mir. Danach schlag M14 – Gegnertypen vor.
+
+- Für alle weiteren Gegner gilt seit M13: Abstände in Kacheln (`ViewSettings.tiles()`), Bemerken nur in der fairen Grenze von `Perception`, Schlag sofort mit dem ersten Bild der Hieb-Animation, kein Blinken beim Angriff; die Welt erscheint mit Zoom 2 aus `data/world/view.tres`.
 
 Die Übergabe vom 17.11.2026 ist erledigt: Der Nutzer hat M3 bis M7 hochgeladen und die Projektanweisungen angepasst; der neue Chat hat mit A1 begonnen.
 
@@ -68,9 +79,9 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | | M9 Zerstörbares | fertig am 17.11.2026 – mit Aufsammeln |
 | | M10 Truhen & Beute | fertig am 17.11.2026; Beute-Listen und Aufsammeln kamen schon mit M9 |
 | | M11 Inventar & Ausrüstung | fertig am 17.11.2026; die Logik kam mit M11a |
-| | M12 HUD | im Test – geliefert am 17.11.2026 |
-| 3 – Gegner & NPCs | M13 Erster Gegner | offen |
-| | M14 Gegnertypen | offen |
+| | M12 HUD | fertig am 18.11.2026 – damit ist Phase 2 fertig |
+| 3 – Gegner & NPCs | M13 Erster Gegner | fertig am 18.11.2026 – nach einer Nachbesserung am selben Tag |
+| | M14 Gegnertypen | als Nächstes – im neuen Chat |
 | | M15 NPCs & Dialog | offen |
 | 4 – Spielrahmen | M16 Speichern & Laden | offen |
 | | M17 Missionen | offen |
@@ -92,9 +103,9 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | A3 Ton | `AudioManager` füllen, Baustein `SoundCue`, Ton-Tabelle als Werte-Datei, Musik in der Testkammer | fast am Ende des Projekts, mit Phase 7 – Feinschliff; am 17.11.2026 auf Wunsch des Nutzers verschoben | offen |
 | A4 Kacheln & Räume | Kachel-Sets mit Kollision, Testkammer mit Kacheln, Anleitung zum Malen im Editor | mit M8, spätestens vor Level 1 | offen |
 | A5 Oberfläche | Schrift und Thema, Herzen, Leisten, Fähigkeits- und Tastensymbole, Dialogfeld | mit M11, M12, M15 und M20 | in Arbeit – mit M11 das Holz-Thema für Fenster, mit M12 Herzen, Energie-Kugel, Ausdauer-Leiste, Fähigkeits- und Tastensymbole; es fehlen Dialogfeld (M15) und Menüs (M20) |
-| A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | offen |
+| A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | in Arbeit – mit M13 der Höhlenmensch `Caveman2` als erster Gegner |
 
-Ab A1 bringt jedes neue Modul sein Bild gleich mit: M8 aus `TilesetDungeon`, `TilesetHouse` und `TilesetElement`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`, M11 aus `Ui/Theme/Theme Wood` und `Items/Weapons`, M12 aus `Ui/Receptacle`, `Ui/Skill Icon` und `Ui/Input/Keyboard`. Den Ton bekommen alle Module erst mit A3, fast am Ende des Projekts.
+Ab A1 bringt jedes neue Modul sein Bild gleich mit: M8 aus `TilesetDungeon`, `TilesetHouse` und `TilesetElement`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`, M11 aus `Ui/Theme/Theme Wood` und `Items/Weapons`, M12 aus `Ui/Receptacle`, `Ui/Skill Icon` und `Ui/Input/Keyboard`, M13 aus `Actor/Character/Caveman2`, `Ui/Emote` und `FX/Attack/Claw`. Den Ton bekommen alle Module erst mit A3, fast am Ende des Projekts.
 
 **Gates**
 
@@ -117,6 +128,8 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | 17.11.2026 | Wunsch des Nutzers zu A2: Beim Schuss gibt es vier Geschosse aus `Items/Projectile` – Pfeil, Kunai, Shuriken, Dynamit –, je nachdem, was im Inventar ist. Das Inventar gab es noch nicht; auf Wunsch des Nutzers kommt seine Logik als M11a vor A2. Die Bilder der Geschosse wandern aus A2 nach M11a. Auf „weiter“ hat Claude M11a gebaut. | M11a fertig am 17.11.2026 |
 | 17.11.2026 | Wunsch des Nutzers nach dem Test von A2: den Ton (A3) ganz zum Schluss, fast am Ende des Projekts, weil sich bis dahin noch vieles ändert; weiter mit Phase 2. Claude hat A3 zu Phase 7 – Feinschliff gelegt und M8 – Interaktion vorgeschlagen. | A3 verschoben; M8 am 17.11.2026 bestätigt mit der Änderung: nur die Taste E, ohne Wort |
 | 17.11.2026 | Im Vorschlag zu M9 hat Claude das Aufsammeln und die Beute-Listen aus M10 nach M9 gezogen, weil zerstörte Dinge sonst nichts fallen lassen könnten. Der Nutzer hat mit „weiter“ bestätigt. M10 bringt damit nur noch die Truhen. | M9 fertig am 17.11.2026 |
+| 18.11.2026 | Wunsch des Nutzers: Nach M13 – Erster Gegner wechselt er in einen neuen Chat. Claude liefert nach dem Test von M13 alles dafür und sagt, was im neuen Chat einzufügen ist. | vorbereitet am 18.11.2026 nach dem bestandenen Test: Stand-Datei, Plan-Dokument und erste Nachricht für den neuen Chat stehen bereit |
+| 18.11.2026 | Wunsch des Nutzers nach dem ersten Test von M13: Sprites global größer („4x“); Fokus- und Angriffsabstand der Nahkämpfer in logischen Einheiten statt fester Pixel, fair und nicht einfach mit dem Faktor multipliziert; Schlag sofort mit dem ersten Bild der Hieb-Animation, weil sie nur ein Bild ohne Ausholen hat; kein rotes Blinken beim Angriff des Höhlenmenschen. Claude hat das als Nachbesserung von M13 gebaut – Zoom 2 statt 4, Begründung unter „Weltskalierung“. | eingebaut am 18.11.2026 als `m13_nachbesserung.zip`; Test bestanden („Alles passt“) |
 
 ## Festlegungen
 
@@ -133,6 +146,7 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Programmiersprache | GDScript | entschieden am 15.11.2026 |
 | Namen | Dateien und Code englisch, Texte im Spiel deutsch | entschieden am 15.11.2026 |
 | Auflösung | Spielfläche 480 × 270, vierfach vergrößert auf 1920 × 1080 | entschieden am 15.11.2026 |
+| Weltskalierung | Die Kamera zeichnet die Welt mit ganzzahligem Zoom, Standard 2: Sichtbar sind 15 × 8,4 Kacheln, eine Figur erscheint im Fenster 1440 × 810 96 Pixel groß, bei 1920 × 1080 128. HUD, Fenster und Debug-Anzeige zoomen nicht mit. Die Welt rechnet weiter in Pixeln der Grafik; Abstände von Gegnern stehen in Kacheln zu 16 Pixeln und werden nicht mit dem Zoom multipliziert. Fair: Gegner bemerken nur, wer sie auf dem Bild hat, mit 1 Kachel Rand. Werte in `data/world/view.tres`; F3 schaltet in der Testkammer 1 bis 4 durch | Wunsch des Nutzers am 18.11.2026: „globale Skalierung 4x“. Claude hat 2 eingestellt, weil das Fenster die Grafik schon 3- bis 4-fach zeigt – mit 4 wären es 12- bis 16-fach und nur 7,5 × 4,2 Kacheln. Vom Nutzer nach dem Test am 18.11.2026 mit „Alles passt“ bestätigt |
 | Entwickler-Tasten | F1 Debug-Anzeige ein und aus, F2 Raum neu starten | entschieden am 15.11.2026 |
 | Sprint und Schleichen | Solange die Taste gehalten wird, kein Umschalten | entschieden am 16.11.2026 |
 | Kamera | Bildmitte folgt der Figur auf ganzen Pixeln; Vorausschau ein Stück zur Maus und in Laufrichtung, weich nachgleitend; die Raumgrenzen meldet das Level | entschieden am 16.11.2026; die Werte bleiben einstellbar |
@@ -167,32 +181,25 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Truhen | Kleine Truhe (türkis): E öffnet sie genau einmal, der Deckel geht auf, es funkelt, die Beute springt heraus – 10 Pfeile, mit 50 % dazu 5 Shuriken. Große Truhe (rot): verschlossen; mit einem Goldschlüssel im Inventar öffnet E sie und verbraucht ihn – 15 Pfeile, 5 Kunai, 3 Dynamit. Ohne Schlüssel wackelt sie kurz, und über ihr steht eine Sekunde lang das Symbol des Schlüssels. Offen bleibt eine Truhe, bis der Raum neu lädt. Der Goldschlüssel ist ein Gegenstand der Art Schlüssel, Stapel 9 | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; das Funkeln beim Öffnen hat Claude beim Bauen ergänzt. Nach dem Test vom Nutzer mit „ja das passt alles“ bestätigt |
 | Inventarfenster | Tab öffnet und schließt es, Esc schließt es. Links die vier Ausrüstungsplätze Waffe, Fernkampf, Rüstung, Anhänger, rechts die 20 Plätze als Raster mit Symbol und Anzahl, unten Name, Art und Werte des Gewählten. Ein Klick wählt, ein Doppelklick legt an oder ab. Solange es offen ist, bleibt die Figur stehen und greift nicht an; die Welt läuft weiter. Aussehen: das Holz-Thema des Pakets, Schrift `NormalFont` | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; Esc zum Schließen hat Claude beim Bauen ergänzt. Nach dem Test vom Nutzer mit „alles klappt“ bestätigt |
 | Ausrüstung | Angelegtes liegt nicht im Inventar; beim Anlegen wandert das Vorige zurück, Ablegen geht nur mit Platz im Inventar. Waffe: bringt die Werte des Schwerthiebs mit; ohne Waffe gelten die aus `sword.tres`. Fernkampf: mehr Aufprall-Schaden für jedes Geschoss. Rüstung: zieht von jedem Treffer etwas ab, mindestens 1 bleibt. Anhänger: mehr Leben, das aktuelle Leben bleibt. Zum Testen: Katana (beim Start angelegt, 10 Schaden, 0,35 s), Breitschwert (15, 0,5 s), Bogen (+3), Lederrüstung (−3), Rubin-Anhänger (+20 Leben) | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt, nach dem Test mit „alles klappt“ |
-| HUD | Oben links die Energie als Kugel, die sich von unten blau füllt; rechts daneben das Leben als Herzen – ein Herz sind 20 Leben, in Vierteln, solange Leben übrig ist mindestens ein Viertel –; darunter die Ausdauer als schmale Leiste, grün, rot während der Erschöpfung. Unten links die Fähigkeiten 1 bis 3 mit der Taste darunter – Stiefel, Tarnung, Blitz-Buch –: orange umrahmt, solange sie wirken, grau mit Füllung im Uhrzeigersinn in der Abklingzeit, grau ohne genug Energie; daneben das gewählte Geschoss mit seiner Anzahl. Die Debug-Anzeige steht oben rechts. Keine Zahlen an Kugel und Leiste | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt; Test steht aus |
+| HUD | Oben links die Energie als Kugel, die sich von unten blau füllt; rechts daneben das Leben als Herzen – ein Herz sind 20 Leben, in Vierteln, solange Leben übrig ist mindestens ein Viertel –; darunter die Ausdauer als schmale Leiste, grün, rot während der Erschöpfung. Unten links die Fähigkeiten 1 bis 3 mit der Taste darunter – Stiefel, Tarnung, Blitz-Buch –: orange umrahmt, solange sie wirken, grau mit Füllung im Uhrzeigersinn in der Abklingzeit, grau ohne genug Energie; daneben das gewählte Geschoss mit seiner Anzahl. Die Debug-Anzeige steht oben rechts. Keine Zahlen an Kugel und Leiste | von Claude vorgeschlagen; vom Nutzer am 17.11.2026 mit „weiter“ bestätigt, nach dem Test am 18.11.2026 mit „okay du kannst weitermachen“ |
+| Erster Gegner | Ein Höhlenmensch (`Caveman2`) mit 30 Leben patrouilliert mit 30 Pixeln pro Sekunde zwischen zwei Punkten und wartet an jedem Ende 1 s. Er sieht 6 Kacheln nach vorn in einem Kegel von 100°, nicht durch Wände; läuft eine Figur, hört er sie im Umkreis von 2,5 Kacheln auch von hinten. Schleicht sie (Strg gehalten, auch im Stehen), sieht er sie nur halb so weit und hört sie nicht; unsichtbar oder tot bemerkt er sie gar nicht. Bemerken kann er sie nur, wenn er auf ihrem Bild steht, mindestens 1 Kachel vom Rand. Bemerkt er sie, bleibt er 0,4 s stehen – über ihm ein rotes „!“ –, dann verfolgt er sie mit 60 Pixeln pro Sekunde; als Verfolger sieht er rundum bis 10 Kacheln. Steht sie in der Reichweite seiner Faust (18 Pixel), schlägt er sofort zu – Faust-Bild, Krallen und Treffer im selben Moment, ohne Ausholen und ohne Blinken –: 10 Schaden; danach 0,6 s Pause, frühestens nach 0,8 s der nächste Schlag. Verliert er die Figur 1,5 s lang oder wird sie unsichtbar, geht er zur letzten Stelle – über ihm ein „?“ –, schaut sich 3 s um und kehrt zurück. Stun hält ihn an. Treffer, bevor er die Figur bemerkt hat, zählen doppelt; danach dreht er sich zum Angreifer. Lebensleiste ab dem ersten Treffer; beim Tod Rauch, Beute (3 Pfeile, mit 50 % 2 Shuriken), nach 1 s verschwindet er | von Claude vorgeschlagen; vom Nutzer am 18.11.2026 mit „weiter“ bestätigt; nach dem ersten Test am 18.11.2026 auf seinen Wunsch geändert: Abstände in Kacheln mit fairer Grenze, Schlag ohne Ausholen, kein rotes Blinken. Nach dem Test am 18.11.2026 mit „Alles passt“ bestätigt |
 
 Noch offen, jeweils fällig vor dem genannten Schritt: Zauber (vorläufig gewählt, siehe oben), Tod & Speichern endgültig (M16), Story (Phase 5), Anzahl Level (Phase 6).
 
 ## Prüfungen
 
+**M13 – Erster Gegner**
+
+- Getestet hat der Nutzer am 18.11.2026 in Godot, nach der Nachbesserung. Rückmeldung: „Alles passt“ – die zwölf Punkte der Prüfliste gelten als bestanden, ebenso die übrigen der ersten Prüfliste. Zoom 2 hat er damit bestätigt.
+- Geliefert zuerst als `m13_gegner.zip`. Nach dem ersten Test wünschte der Nutzer vier Änderungen: Sprites global größer („4x“), Abstände der Nahkämpfer in logischen Einheiten und fair statt fester Pixel, Schlag sofort mit dem ersten Bild der Hieb-Animation, kein rotes Blinken beim Angriff. Nachgebessert am selben Tag als `m13_nachbesserung.zip`, ganz M13 in 45 Dateien.
+- Claude hat die Dateien am Text geprüft: Verweise in Szenen und Werte-Dateien, Knotenpfade der geerbten Szene `caveman.tscn`, Namen der Werte in Skripten und `.tres`, Klassennamen. Keine Stelle nutzt mehr Ausholen, `WindupFlash` oder die alten Abstände in Pixeln. Grundlage war das Repo, Commit `19e426c`, mit `m13_gegner.zip` darüber.
+- Nachgerechnet, nicht ausprobiert: Bei Zoom 2 zeigt das Bild 240 × 135 Pixel der Welt, also 15 × 8,4 Kacheln. Die faire Grenze liegt dann 104 Pixel zur Seite und 51,5 Pixel nach oben und unten, gut 6,5 und 3 Kacheln: Zur Seite zählt die volle Sicht von 6 Kacheln, nach oben und unten nur gut 3. Bei Zoom 1 zählen überall die vollen Werte, bei Zoom 4 nur 2,75 Kacheln zur Seite und gut 1 nach oben und unten. Die Faust reicht 18 Pixel weit (4 + 14), das Schwert der Figur 24 (6 + 18): Wer zuschlägt und zurückgeht, trifft ihn, ohne selbst getroffen zu werden. Eine Figur erscheint bei Zoom 2 im Fenster 1440 × 810 96 Pixel groß, bei 1920 × 1080 128.
+
 **M12 – HUD**
 
-- Geliefert am 17.11.2026 als `m12_hud.zip`. Der Test des Nutzers steht aus; die Prüfliste steht darunter und im Plan-Dokument.
+- Getestet hat der Nutzer am 17./18.11.2026 in Godot. Rückmeldung: „okay du kannst weitermachen“ – die zwölf Punkte der Prüfliste gelten als bestanden. Hochgeladen hat er M12 mit Commit `19e426c`.
 - Claude hat die Dateien am Text geprüft: Verweise in Szenen und Werte-Dateien, Knotenpfade, Signale und ihre Werte, exportierte Werte, Klassennamen und die Eigenschaften von `TextureProgressBar`, `NinePatchRect` und `HBoxContainer`. Grundlage war das Repo, Commit `1b7abfc`.
 - Nachgerechnet, nicht ausprobiert: Das HUD hat Claude mit den Bildern des Pakets als Bild nachgestellt, auch Zwischenstände – 70 von 120 Leben sind drei volle und ein halbes von sechs Herzen, 30 Energie füllen 7 der 22 Pixel der Kugel, 20 Ausdauer 12 der 62 Pixel der Leiste. Alles liegt auf ganzen Pixeln: die Kugel bei (4, 4), die Herzen ab (38, 6), die Leiste bei (39, 25), unten die Symbole ab (4, 228), 24 Pixel groß mit 4 Pixeln Abstand, die Tasten 1 Pixel darunter, die Geschoss-Zelle bei (90, 228).
-
-Prüfliste M12:
-
-1. Godot schließen, `m12_hud.zip` nach `E:\GitHub\TT` entpacken, Godot öffnen, F5. Keine roten Fehler. Oben links die blaue Kugel und fünf volle Herzen, darunter die grüne Leiste; unten links drei farbige Symbole mit den Tasten 1, 2, 3 darunter, daneben eine Zelle mit dem Pfeil und 30. Die Debug-Anzeige steht oben rechts; F1 blendet sie aus und ein.
-2. Ins rote Schadensfeld stellen: Je Treffer verschwindet ein halbes Herz. F1 „S1 Leben“ passt dazu – bei 70 sind es drei volle und ein halbes Herz.
-3. Shift halten und laufen: Die Leiste sinkt. Ist sie leer, wird sie rot; nach kurzer Pause füllt sie sich wieder und wird ab einem Viertel grün.
-4. Taste 1: Der Stiefel bekommt einen orangen Rahmen, die Kugel sinkt um knapp ein Drittel. Nach 4 s verschwindet der Rahmen; der Stiefel ist grau und füllt sich in 6 s im Uhrzeigersinn wieder mit Farbe.
-5. Gleich danach Taste 2 und Taste 3: Die Kugel ist leer. Sind die Abklingzeiten vorbei, bleiben alle drei Symbole grau.
-6. Abklingzeiten abwarten, dann Hiebe auf eine Übungspuppe: Jeder Treffer füllt die Kugel um ein Zehntel. Ab drei Treffern werden Stiefel und Blitz-Buch farbig, ab vier auch die Tarnung.
-7. Mausrad: Die Zelle wechselt zu Kunai, Shuriken, Dynamit und zurück zum Pfeil, jeweils mit Anzahl. Rechtsklick: Die Zahl sinkt um 1.
-8. Rubin-Anhänger unter den Startpunkten aufsammeln und anlegen (Tab, Doppelklick): 6 Herzen, das sechste leer. Ablegen: wieder 5.
-9. Im Schadensfeld bleiben bis zum Tod: Alle Herzen sind leer; nach einer Sekunde startet der Raum neu, und das HUD ist wieder voll.
-10. Ohne Code: in `data/ui/hud.tres` `health_per_heart` auf 10 stellen, F5 – 10 Herzen, ein Treffer nimmt ein ganzes. Danach zurück auf 20.
-11. Abschalt-Test: in `entities/player/player.tscn` den Knoten `Energy` löschen, F5 – die Kugel fehlt, die drei Symbole bleiben farbig, weil die Fähigkeiten nichts kosten; keine roten Fehler. Danach Strg+Z und Strg+S.
-12. Abschalt-Test: in `levels/test_chamber/test_chamber.tscn` den Knoten `Hud` löschen, F5 – alles läuft wie vor M12, keine roten Fehler. Danach Strg+Z und Strg+S.
 
 **M11 – Inventar & Ausrüstung**
 
@@ -290,6 +297,7 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 
 - Spielfläche 480 × 270, Fenster beim Start 1440 × 810
 - Streckmodus `viewport` mit ganzzahliger Vergrößerung
+- Seit M13 zeichnet die Kamera die Welt zusätzlich mit dem Zoom aus `data/world/view.tres` (Standard 2); `project.godot` bleibt dafür unverändert. HUD, Fenster und Debug-Anzeige zoomen nicht mit.
 - Texturfilter „Nearest“ für scharfe Pixel
 - Renderer `gl_compatibility`
 - Startszene: die Testkammer `res://levels/test_chamber/test_chamber.tscn`
@@ -337,6 +345,9 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 | `S1 Fähigkeiten` | Spielfigur | „bereit“ oder je beschäftigter Fähigkeit: Platz, „aktiv“ mit Restdauer oder „Pause“ mit Rest der Abklingzeit |
 | `S1 Beute` | `Collector` der Spielfigur | zuletzt Aufgesammeltes, etwa „+5 × Pfeil (jetzt 35)“, oder „Ast: Inventar voll“ (M9) |
 | `Kamera` | Kamera | Bildmitte in der Welt |
+| `Zoom` | Testkammer (M13) | Zoom der Welt und sichtbare Kacheln, etwa „2 - 15.0 x 8.4 Kacheln (F3)“ |
+| `Caveman Zustand` | Gegner (M13) | sein Zustand: Patrouille, Entdeckt, Verfolgen, Angriff, Suchen, Zurück, Betäubt, Tot; vorn steht der Name des Knotens |
+| `Caveman Leben` | Gegner (M13) | Leben und Höchstwert |
 
 Der Hinweis „Neustart: F2“ ist mit M4 entfallen; F2 gilt weiter. In der Testkammer sind seit M7 die Zeilen „Maus“, „Kamera“ und „Raumzeit“ ausgeblendet, damit die Anzeige bei elf Zeilen bleibt; seit M9 kommt „S1 Beute“ dazu, sobald etwas aufgesammelt wurde. Einschalten lassen sie sich im Inspektor des Knotens `DebugOverlay` über `show_mouse` und `hidden_keys`.
 
@@ -359,6 +370,7 @@ Der Hinweis „Neustart: F2“ ist mit M4 entfallen; F2 gilt weiter. In der Test
 | `pause` | Esc |
 | `debug_toggle_overlay` | F1 |
 | `debug_restart_room` | F2 |
+| `debug_cycle_zoom` | F3 – nur in der Testkammer: Zoom 1 bis 4 durchschalten (M13) |
 
 Genutzt werden bisher: die vier Laufrichtungen, `sprint`, `sneak`, `attack_primary`, `attack_secondary`, `dash`, `ability_1` bis `ability_3`, `ammo_next`, `ammo_previous`, `interact` (M8), `inventory` (Tab, M11), `pause` (Esc schließt das Inventarfenster, M11) und die beiden Entwickler-Tasten.
 
@@ -368,9 +380,9 @@ Genutzt werden bisher: die vier Laufrichtungen, `sprint`, `sneak`, `attack_prima
 | --- | --- | --- |
 | 1 | `world` | Wände und Blöcke der Testkammer, seit M8 auch geschlossene Türen und Hebel, seit M9 Baumstümpfe, seit M10 Truhen; Geschosse enden an ihnen |
 | 2 | `player` | Spielfigur; ihre Maske ist `world` und `enemy`. Druckplatten und Türdurchgänge bemerken sie hier (M8) |
-| 3 | `enemy` | Übungspuppen als feste Körper, seit M9 auch Zerstörbares, solange es heil ist – Geschosse treffen es über die Hurtbox, statt daran zu enden; das bewegliche Ziel liegt auf keiner Ebene und lässt sich durchlaufen. Druckplatten und Türdurchgänge bemerken auch diese Ebene (M8) |
-| 4 | `player_hurtbox` | `Hurtbox` der Spielfigur; Schadensfeld und Schadensstreifen suchen hier |
-| 5 | `enemy_hurtbox` | `Hurtbox` der Übungspuppen und, seit M9, von Zerstörbarem; Schwert und Geschosse suchen hier |
+| 3 | `enemy` | Übungspuppen als feste Körper, seit M13 die Gegner – ihre Maske ist `world`, `player` und `enemy` –, seit M9 auch Zerstörbares, solange es heil ist – Geschosse treffen es über die Hurtbox, statt daran zu enden; das bewegliche Ziel liegt auf keiner Ebene und lässt sich durchlaufen. Druckplatten und Türdurchgänge bemerken auch diese Ebene (M8) |
+| 4 | `player_hurtbox` | `Hurtbox` der Spielfigur; Schadensfeld, Schadensstreifen und seit M13 der Schlag der Gegner suchen hier |
+| 5 | `enemy_hurtbox` | `Hurtbox` der Übungspuppen, seit M9 von Zerstörbarem, seit M13 der Gegner; Schwert und Geschosse suchen hier |
 | 6 | `interactable` | `Interactable` von Holztür und Hebel; der `Interactor` der Spielfigur sucht hier (M8) |
 | 7 | `pickup` | Beute am Boden (`Pickup`); der `Collector` der Spielfigur sucht hier (M9) |
 
@@ -381,9 +393,9 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | Gruppe | Mitglieder | Wer sie nutzt |
 | --- | --- | --- |
 | `player_spawn` | Startpunkte im Level (`Marker2D`) | `PlayerSpawner` |
-| `players` | jede Spielfigur | `PlayerCamera`, `InventoryWindow` (M11), `Hud` (M12); später Gegner |
-| `invisible` | Figuren, solange ihre Unsichtbarkeit wirkt | noch niemand; ab Phase 3 die Wahrnehmung der Gegner |
-| `stunnable` | jeder Baustein `Stunnable` | die Fähigkeit Stun |
+| `players` | jede Spielfigur | `PlayerCamera`, `InventoryWindow` (M11), `Hud` (M12), `Perception` der Gegner (M13) |
+| `invisible` | Figuren, solange ihre Unsichtbarkeit wirkt | `Perception` der Gegner: Unsichtbare bemerken sie nicht (M13) |
+| `stunnable` | jeder Baustein `Stunnable`; ein toter Gegner tritt aus | die Fähigkeit Stun |
 
 ### Globale Klassen (`class_name`)
 
@@ -449,6 +461,14 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `Equipment` | `components/equipment/equipment.gd` | Baustein: die Ausrüstung einer Figur (M11) |
 | `EquipmentStats` | `components/equipment/equipment_stats.gd` | Bauplan einer Werte-Datei für Equipment: was beim Start angelegt ist (M11) |
 | `HudStats` | `ui/hud/hud_stats.gd` | Bauplan der Werte-Datei des HUD: Leben je Herz (M12) |
+| `StateMachine` | `components/state_machine/state_machine.gd` | Baustein Zustandsautomat (M13) |
+| `State` | `components/state_machine/state.gd` | ein Zustand für den Zustandsautomaten (M13) |
+| `Perception` | `components/perception/perception.gd` | Baustein Sehen und Hören (M13) |
+| `PerceptionStats` | `components/perception/perception_stats.gd` | Bauplan einer Werte-Datei für Perception (M13) |
+| `Enemy` | `entities/enemies/enemy.gd` | ein Gegner (M13) |
+| `EnemyStats` | `entities/enemies/enemy_stats.gd` | Bauplan der Werte-Datei eines Gegners: Tempo, Zeiten, Kampf (M13) |
+| `EnemyState` | `entities/enemies/states/enemy_state.gd` | Grundlage der Zustände eines Gegners (M13) |
+| `ViewSettings` | `world/view/view_settings.gd` | Bauplan der Ansicht: Zoom der Welt, faire Grenze für Gegner und die Kachel als Maß – `TILE_SIZE`, `tiles(anzahl)` (M13) |
 
 ### Werte-Dateien – `data/`
 
@@ -457,6 +477,7 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `data/player/movement.tres` | `MovementStats` | `walk_speed` 80, `sprint_speed` 130, `sneak_speed` 40, `acceleration` 600, `friction` 800, `sprint_cost_per_second` 25 |
 | `data/player/stamina.tres` | `StaminaStats` | `max_stamina` 100, `regen_per_second` 30, `regen_delay` 0,8, `recover_threshold` 25 |
 | `data/player/camera.tres` | `CameraStats` | `mouse_look_factor` 0,15, `mouse_look_max` 40, `move_look_seconds` 0,12, `move_look_max` 24, `smooth_time` 0,2, `min_speed` 24 |
+| `data/world/view.tres` | `ViewSettings` | `world_scale` 2, `fair_margin_tiles` 1 (M13) |
 | `data/player/health.tres` | `HealthStats` | `max_health` 100, `invulnerable_time` 0,6 |
 | `data/player/sword.tres` | `MeleeStats` | `damage` 10, `gain_per_hit` 10, `start_distance` 6, `reach` 18, `width` 20, `active_time` 0,12, `cooldown` 0,35 |
 | `data/player/dash.tres` | `DashStats` | `distance` 64, `duration` 0,2, `invulnerable_time` 0,25, `cooldown` 0,8, `buffer_time` 0,12 |
@@ -484,6 +505,14 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `data/abilities/invisibility.tres` | `InvisibilityStats` | `display_name` Unsichtbarkeit, `cost` 40, `duration` 5, `cooldown` 8, `alpha` 0,3; Symbol `Ui/Skill Icon/Spell/Camouflage.png` mit `CamouflageDisabled.png` (M12) |
 | `data/abilities/stun.tres` | `StunStats` | `display_name` Stun, `cost` 30, `duration` 2, `cooldown` 6, `radius` 64; Symbol `Ui/Skill Icon/Spell/BookThunder.png` mit `BookThunderDisabled.png` (M12) |
 | `data/ui/hud.tres` | `HudStats` | `health_per_heart` 20 (M12) |
+| `data/enemies/caveman.tres` | `EnemyStats` | `patrol_speed` 30, `chase_speed` 60, `search_speed` 45, `patrol_wait` 1, `alert_time` 0,4, `lose_time` 1,5, `attack_recover` 0,6, `search_time` 3, `look_interval` 0,75, `search_walk_limit` 4, `give_up_time` 1,5, `remove_delay` 1, `surprise_factor` 2, `hit_search_tiles` 2 (M13) |
+| `data/enemies/caveman_health.tres` | `HealthStats` | `max_health` 30, `invulnerable_time` 0 (M13) |
+| `data/enemies/caveman_punch.tres` | `MeleeStats` | `damage` 10, `gain_per_hit` 0, `start_distance` 4, `reach` 14, `width` 14, `active_time` 0,12, `cooldown` 0,8 (M13) |
+| `data/enemies/caveman_perception.tres` | `PerceptionStats` | `sight_tiles` 6, `sight_angle` 100, `track_tiles` 10, `occluder_mask` world, `hearing_tiles` 2,5, `silent_speed` 10, `sneak_factor` 0,5 (M13) |
+| `data/loot/caveman.tres` | `LootTable` | 3 Pfeile; mit 50 % 2 Shuriken (M13) |
+| `data/skins/caveman_brown.tres` | `CharacterSkin` | wie `caveman.tres`, mit den Blättern von `Caveman2` und `walk_reference_speed` 60 (M13) |
+| `data/effects/claw.tres` | `EffectData` | `FX/Attack/Claw/SpriteSheet.png`, 4 à 32, 16 Bilder je Sekunde (M13) |
+| `data/effects/emote_alert.tres`, `emote_search.tres` | `EffectData` | `Ui/Emote/emote22.png` („!“) 0,8 s und `emote23.png` („?“) 1 s, je 14 × 13, 24 Pixel über der Mitte (M13) |
 | `data/dummy/health.tres` | `HealthStats` | `max_health` 50, `invulnerable_time` 0 |
 | `data/skins/ninja_green.tres` | `CharacterSkin` | Spielfigur `NinjaGreen`: Bild 32 × 32, `offset` (0, −2), Schatten bei (0, 5), `walk_reference_speed` 80; Stehen 4 Bilder à 5/s, Laufen 4 à 8/s, Hieb 4 à 11/s, Rolle 3 à 15/s, Treffer 2 à 8/s, Tod 2 à 5/s |
 | `data/skins/bamboo_yellow.tres` | `CharacterSkin` | feste Übungspuppen, `BambooYellow`: Bild 16 × 16, `offset` (0, −2), Schatten bei (0, 5), `walk_reference_speed` 40; Stehen 1 Bild, Laufen 4 à 6/s; im Tod grau |
@@ -530,10 +559,10 @@ Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden; „4 à 8/s
 | `PlaceholderView` | `components/placeholder_view/` | Malt die Rechtecke, Kreise und Kapseln der `CollisionShape2D`-Geschwister als Farbfläche. Platzhalter-Grafik; wo ein `CharacterView` daneben ein Bild zeigt, ist sie ausgeblendet und bleibt als Rückfall. | `color` |
 | `CharacterView` | `components/character_view/` | Zeigt die Figur mit der Grafik aus einem Skin, in der nächstliegenden von vier Blickrichtungen. Liest den Wert `facing` der Figur, sonst die Laufrichtung, und misst das Tempo am Ort. Hört auf `Health` (Treffer, Tod, Wiederaufstehen), `Dash` und `MeleeAttack`. Blendet das Geschwister `PlaceholderView` aus. Fragt: `has_skin_animation(name)`; liest: `direction`, `current_animation`. | `skin`, `walk_threshold`, `direction_hysteresis`, `min_walk_rate`, `max_walk_rate` |
 | `Stamina` | `components/stamina/` | Ausdauer-Vorrat: `spend(amount)` verbraucht und liefert, ob es ging; nach `regen_delay` füllt er sich. Bei 0 gilt `is_exhausted`, bis `recover_threshold` erreicht ist. Meldet `changed`, `exhausted`, `recovered`. | `stats` |
-| `Health` | `components/health/` | Leben. `apply_damage(amount)` ist die einzige Stelle, an der über Schaden entschieden wird: Tote und gerade Unverwundbare nehmen keinen. `make_invulnerable(seconds)` schützt für eine Dauer, etwa beim Dash. `reset()` füllt auf, auch nach dem Tod. Seit M11: `armor` zieht von jedem Treffer ab, mindestens 1 bleibt; `set_bonus_maximum(wert)` gibt mehr Leben, `get_maximum()` zählt es mit. Beides setzt `Equipment`. Meldet `changed`, `damaged`, `died`, `revived`. | `stats` |
+| `Health` | `components/health/` | Leben. `apply_damage(amount)` ist die einzige Stelle, an der über Schaden entschieden wird: Tote und gerade Unverwundbare nehmen keinen. `make_invulnerable(seconds)` schützt für eine Dauer, etwa beim Dash. `reset()` füllt auf, auch nach dem Tod. Seit M11: `armor` zieht von jedem Treffer ab, mindestens 1 bleibt; `set_bonus_maximum(wert)` gibt mehr Leben, `get_maximum()` zählt es mit. Beides setzt `Equipment`. Seit M13 vervielfacht `damage_factor` jeden Treffer vor der Rüstung; ein Gegner setzt ihn auf 2, solange er die Figur nicht bemerkt hat. Meldet `changed`, `damaged`, `died`, `revived`. | `stats` |
 | `Hurtbox` | `components/hurtbox/` | `Area2D`, die Treffer annimmt und an das Geschwister `Health` weiterreicht: `receive_hit(damage, direction)`. Meldet `hit_received`. Seit M9: `accepted_kinds` nennt die Arten von Treffern, die Schaden machen – Klinge, Geschoss, Explosion; die übrigen prallen ab, `accepts(art)` fragt das, `block_hit(richtung)` meldet `hit_blocked`. Mit `feeds_attacker` aus füllt ein Treffer beim Angreifer nichts auf, etwa keine Energie. Braucht eine eigene `CollisionShape2D`. | Ebene, `accepted_kinds`, `feeds_attacker` |
 | `Hitbox` | `components/hitbox/` | `Area2D`, die jede berührte `Hurtbox` trifft, solange sie scharf ist: `activate()`, `deactivate()`. Meldet `hit_landed`; entschärft ein Zuhörer sie dabei, trifft sie in diesem Schritt nichts weiter. Seit M9 hat jeder Treffer eine Art (`kind`: Klinge, Geschoss, Explosion); nimmt die Hurtbox sie nicht an, meldet sie `hit_blocked` – einmal je Ziel und Aktivierung, wie ein Treffer. Braucht eine eigene `CollisionShape2D`. | `damage`, `kind`, `hit_interval`, `active_on_start`, Maske |
-| `MeleeAttack` | `components/melee_attack/` | Nahkampf-Angriff: `try_attack(richtung)` dreht die Trefferzone in die Richtung und macht sie kurz scharf. Zone und Zeiten kommen aus der Werte-Datei. Jeder Treffer füllt das Geschwister `gain_supply_name` um `gain_per_hit` auf, außer an einer Hurtbox mit `feeds_attacker` aus, etwa an Zerstörbarem (M9). `rate_factor` über 1 verkürzt die Pause. Meldet `attack_started`, `attack_finished`. Das Feld in `swing_color` ist an der Spielfigur seit A2 durchsichtig; dort zeigt `SlashEffect` den Hieb. Seit M11 wechselt `set_stats(werte)` die Werte, etwa für eine andere Waffe; `set_stats(null)` kehrt zu denen aus dem Inspektor zurück. | `stats`, `target_mask`, `swing_color`, `gain_supply_name` |
+| `MeleeAttack` | `components/melee_attack/` | Nahkampf-Angriff: `try_attack(richtung)` dreht die Trefferzone in die Richtung und macht sie kurz scharf. Zone und Zeiten kommen aus der Werte-Datei. Jeder Treffer füllt das Geschwister `gain_supply_name` um `gain_per_hit` auf, außer an einer Hurtbox mit `feeds_attacker` aus, etwa an Zerstörbarem (M9). `rate_factor` über 1 verkürzt die Pause. Meldet `attack_started`, `attack_finished`. Das Feld in `swing_color` ist an der Spielfigur seit A2 durchsichtig; dort zeigt `SlashEffect` den Hieb. Seit M11 wechselt `set_stats(werte)` die Werte, etwa für eine andere Waffe; `set_stats(null)` kehrt zu denen aus dem Inspektor zurück. Seit M13 liefert `reach_distance()`, wie weit der Schlag von der Mitte der Figur reicht: `start_distance` + `reach`. Der Schlag kommt immer sofort, ohne Ausholen. | `stats`, `target_mask`, `swing_color`, `gain_supply_name` |
 | `HitFlash` | `components/hit_flash/` | Lässt den Elternknoten bei Schaden hell aufblitzen; solange er unverwundbar ist, blinkt er. Hört auf das Geschwister `Health`. | `flash_time`, `flash_strength`, `blink_while_invulnerable`, `blink_interval`, `blink_alpha` |
 | `DamageNumbers` | `components/damage_numbers/` | Zeigt bei Schaden die Zahl über dem Elternknoten; sie steigt auf und verblasst. Hört auf das Geschwister `Health`. Seit A2 in der Pixel-Schrift `NormalFont`, Größe 9; ohne `font` die Standardschrift. | `color`, `font`, `font_size`, `outline_size`, `rise_distance`, `duration`, `start_offset` |
 | `Dash` | `components/dash/` | Kurzer, schneller Satz: `request()` merkt den Tastendruck vor, `try_start(richtung)` startet, sobald es möglich ist; solange `is_dashing` gilt, liefert `get_velocity()` das Tempo. Macht das Geschwister `Health` beim Start kurz unverwundbar. Meldet `dash_started`, `dash_finished`. | `stats` |
@@ -550,6 +579,9 @@ Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden; „4 à 8/s
 | `DebrisCue` | `components/debris_cue/` | Lässt Splitter aus einer `DebrisData` fliegen, wenn ein Baustein daneben ein Signal sendet, an seinem eigenen Ort; sie fliegen in der Szene zu Ende. Entscheidet nichts (M9). | `debris`, `source_name` (Standard `Health`), `signal_name` (Standard `died`) |
 | `LootDropper` | `components/loot_dropper/` | Würfelt auf ein Signal seine Beute-Liste und bestellt jeden Treffer über `loot_requested`, mit seinem Ort als Absprung. `drop()` geht auch direkt. Meldet `dropped(anzahl)`. Die eine Stelle, an der gewürfelt wird (M9). | `table`, `source_name` (Standard `Health`), `signal_name` (Standard `died`) |
 | `Equipment` | `components/equipment/` | Die Ausrüstung einer Figur: vier Plätze. `equip(gegenstand)` nimmt ihn aus dem Inventar und legt ihn an, das Vorige kommt zurück; `unequip(platz)` legt ab, wenn im Inventar Platz ist; `get_item(platz)` liest. Die einzige Stelle, die über Angelegtes entscheidet. Gibt die Werte an `MeleeAttack`, `RangedAttack` und `Health` weiter. Meldet `changed(platz, gegenstand)` (M11). | `stats` |
+| `StateMachine` | `components/state_machine/` | Zustandsautomat: Jedes Kind mit einem Skript, das von `State` erbt, ist ein Zustand – mit `enter()`, `exit()` und `physics_update()`. Genau einer ist aktiv; `transition_to(name)` wechselt. Beginnt mit `initial_state`, sobald die ganze Szene bereit ist, und läuft vor seiner Figur (`process_physics_priority` −1). Meldet `state_changed(vorher, jetzt)`; `get_display_name()` liefert den Anzeigenamen (M13). | `initial_state`; je Zustand `display_name` |
+| `Perception` | `components/perception/` | Sehen und Hören: `find_target(blickrichtung, aware)` liefert den nächsten Spieler aus der Gruppe `players`, den die Figur bemerkt; `can_perceive(ziel, blickrichtung, aware)` und `has_line_of_sight(punkt)` fragen einzeln. Ohne `aware` nur im Kegel, mit `aware` rundum bis `track_tiles`; Wände verdecken. Hören im Umkreis, wenn sich ein Ziel bewegt und nicht schleicht (`is_sneaking()` der Figur). Unsichtbare und Tote bemerkt sie nicht. Abstände in Kacheln. Faire Grenze: Bemerkt wird nur, wer sie auf dem eigenen Bild hat, mit `fair_margin_tiles` Rand – `is_in_fair_view(abstand)`, `fair_half_extent()`; die Größe folgt dem Zoom aus `view`. Entscheidet nichts. Mit `debug_draw` zeigt sie Kegel, Hörkreis und Grenze als Rahmen, F1 blendet sie aus (M13). | `stats`, `view`, `debug_draw`, zwei Farben |
+| `LifeBar` | `components/life_bar/` | Kleine Lebensleiste über einer Figur aus zwei gleich großen Bildern: leere Leiste und Füllung von links, der Rand bleibt. Erscheint ab dem ersten Schaden, verschwindet beim Tod. Hört auf `Health` (M13). | `texture_under`, `texture_progress`, `border`, `hide_when_full`, `health_name` |
 | `Collector` | `components/collector/` | `Area2D` an der Figur, Kreis 6 Pixel, Maske `pickup`. Nimmt aus jedem bereiten `Pickup` im Kreis so viel, wie das Geschwister `Inventory` annimmt; der Rest bleibt liegen. Meldet `collected`, `rejected` und schreibt „S1 Beute“ in die Debug-Anzeige (M9). | – |
 
 Die Bausteine finden das Leben über den Namen: Der Knoten muss genau `Health` heißen und neben ihnen liegen.
@@ -574,6 +606,9 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 | `entities/player/player_spawner.tscn` | `player_spawner.gd` | erzeugt die Spielfiguren eines Levels |
 | `entities/player/player_camera.tscn` | `player_camera.gd` | Kamera, die der Spielfigur folgt |
 | `entities/dummy/training_dummy.tscn` | `training_dummy.gd` | Übungspuppe |
+| `entities/enemies/enemy.tscn` | `enemy.gd` | Grundszene eines Gegners mit allen Bausteinen und dem Zustandsautomaten `Brain` (M13) |
+| `entities/enemies/caveman.tscn` | – (erbt von `enemy.tscn`) | der Höhlenmensch: Skin, Werte, Beute (M13) |
+| `components/state_machine/state_machine.tscn`, `components/perception/perception.tscn`, `components/life_bar/life_bar.tscn` | je ein Skript daneben | Bausteine, siehe oben (M13) |
 | `world/damage_zone/damage_zone.tscn` | keins; die Szene erbt von `hitbox.tscn` | Schadensfeld |
 | `world/door/door.tscn` | `door.gd` | Tür oder Gittertor; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView`, `Interactable`, `DoorwaySensor` (M8) |
 | `world/lever/lever.tscn` | `lever.gd` | Hebel; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView`, `Interactable` (M8) |
@@ -634,6 +669,7 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Interaktion (M8): Ein Druck auf `interact` (E) bedient das nächste bedienbare Ding im Suchkreis des `Interactor`, 16 Pixel um die Mitte. Solange es eins gibt, steht die Taste E über dem Kopf der Figur. Das geht jederzeit, auch im Dash.
 - Aufsammeln (M9): Läuft die Figur über Beute, nimmt ihr `Collector` so viel ins Inventar, wie hineinpasst; dafür gibt es keine Taste.
 - Ausrüstung (M11): Was sie angelegt hat, verwaltet `Equipment`; beim Start ist es das Katana. Ist ein Menü der Figur offen, meldet `PlayerInput` keine Absichten: Sie bleibt stehen.
+- Schleichen für Gegner (M13): `is_sneaking()` ist wahr, solange die Taste Strg gehalten wird – im Laufen und im Stehen, nicht beim Dash. Gegner hören die Figur dann nicht und sehen sie nur halb so weit.
 - Tod: Fällt das Leben auf 0, bleibt die Figur stehen, zeigt das Tod-Bild (der Platzhalter wird grau) und sendet `player_died`. Was dann geschieht, entscheidet das Level.
 - Einstellbar: `stats` (Werte-Datei), `player_id`, `defeated_color`. Ohne `PlayerInput` bleibt sie stehen, ohne `Stamina` sprintet sie unbegrenzt, ohne `Health` nimmt sie keinen Schaden, ohne `Hurtbox` ist sie nicht zu treffen, ohne `MeleeAttack` schlägt sie nicht zu, ohne `Dash` dasht sie nicht, ohne `RangedAttack` schießt sie nicht, ohne `Inventory` hat sie nichts zu werfen, ohne `AmmoSelector` schießt sie wie vor M11a mit `bow.tres` kostenlos, ohne `Abilities` hat sie keine Fähigkeiten, ohne `Energy` kosten Fähigkeiten nichts, ohne `CharacterView` zeigt sie den Platzhalter, ohne `SlashEffect` oder `HitEffect` fehlt nur dieser Effekt, ohne `Interactor` bedient sie nichts mit E, ohne `Collector` läuft sie über Beute hinweg, ohne `Equipment` kämpft sie mit ihren Grundwerten.
 - Einen Zustandsautomaten als Baustein gibt es noch nicht: Der Dash bringt seinen Zeitablauf selbst mit, die Figur fragt nur `is_dashing`. Vorgesehen ist er für den ersten Gegner in M13.
@@ -663,14 +699,15 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 **Kamera im Einzelnen**
 
 - `PlayerCamera` ist eine `Camera2D`, die nach allen Figuren rechnet. Sie sucht in der Gruppe `players` die Figur mit `follow_player_id`.
-- Bildmitte = gerundeter Ort der Figur + gerundeter Versatz. Der Versatz zeigt ein Stück zur Maus und in Laufrichtung und gleitet seinem Ziel nach.
+- Bildmitte = Ort der Figur + Versatz, beide auf das Pixelraster des Bildes gerundet – bei Zoom 2 auf halbe Pixel der Grafik (M13). Der Versatz zeigt ein Stück zur Maus und in Laufrichtung und gleitet seinem Ziel nach; der Weg zur Maus zählt in Pixeln der Welt.
+- Zoom (M13): aus `view`, also `data/world/view.tres`, in jedem Physik-Schritt neu gelesen; F3 in der Testkammer wirkt sofort. Die Raumgrenzen rechnet sie mit dem Zoom.
 - Die Grenzen kommen über `camera_bounds_changed`; ist der Raum kleiner als das Bild, steht er mittig.
-- Einstellbar: `stats` (Werte-Datei), `follow_player_id`.
+- Einstellbar: `stats` (Werte-Datei), `view` (Ansicht, M13), `follow_player_id`.
 
 **Testkammer im Einzelnen**
 
 - Größe seit M3: 960 × 544 Pixel, also 60 × 34 Kacheln. Freie Fläche innen: x 16 bis 944, y 16 bis 528.
-- Wurzel `TestChamber` malt Boden, Raster und Kreuze an den Startpunkten und meldet Grenzen und Raumzeit. Auf `player_died` startet sie den Raum nach `death_restart_delay` neu. Einstellbar: `room_size`, `cell_size`, `show_grid`, `death_restart_delay` (1 s), drei Farben.
+- Wurzel `TestChamber` malt Boden, Raster und Kreuze an den Startpunkten und meldet Grenzen und Raumzeit. Auf `player_died` startet sie den Raum nach `death_restart_delay` neu. Einstellbar: `room_size`, `cell_size`, `show_grid`, `death_restart_delay` (1 s), drei Farben, seit M13 `view` (Ansicht): F3 schaltet ihren Zoom zum Ausprobieren durch und meldet „Zoom“; gespeichert wird dabei nichts.
 - `Walls` und `Blocks` sind je ein `StaticBody2D` auf Ebene `world`; jede Wand und jeder Block ist eine `CollisionShape2D` mit eigenem Rechteck.
 - Blöcke, linke obere Ecke und Größe: `Square` (160, 64) 32 × 32; `Pillar` (352, 64) 16 × 64; `Bar` (96, 192) 64 × 16; `GateTop` (336, 176) und `GateBottom` (336, 224) je 48 × 16 mit 32 Pixeln Durchgang; `BigSquare` (640, 128) 64 × 64; `LongBar` (560, 400) 160 × 16; `PillarB` (848, 240) 16 × 96; `SquareB` (288, 368) 32 × 32; `SquareC` (784, 80) 32 × 32.
 - `SpawnPoints` enthält `Spawn1` bei (216, 136) und `Spawn2` bei (264, 136).
@@ -682,9 +719,10 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Feld mit Zerstörbarem `DestructibleField` (M9), Ursprung (72, 328), jeweils die Mitte: `PotA` (72, 328) und `PotB` (120, 328); `CrateA` (168, 328) und `CrateB` (184, 328) Kante an Kante; `RockA` (72, 408) und `RockB` (120, 408); `Tree` mit dem Fuß des Stamms bei (176, 428), das Bild reicht von (160, 400) bis (192, 432).
 - Truhen (M10): `ChestSmall` bei (616, 488) und `ChestBig` bei (680, 488), unter dem langen Balken links vor der Interaktions-Ecke. Der Goldschlüssel ist ein von Hand gelegter `Pickup` namens `GoldKey` im linken Raum der Interaktions-Ecke, bei (792, 504).
 - Ausrüstung zum Aufsammeln (M11): Unter `StartItems` liegen vier von Hand gelegte `Pickup` – `Broadsword` (192, 176), `Bow` (216, 176), `LeatherArmor` (240, 176), `RubyCharm` (264, 176).
+- Gegner (M13): `Caveman`, ein `caveman.tscn`, steht bei (776, 224) und patrouilliert mit `patrol_tiles` (0, 8,5), also 136 Pixel, bis (776, 360) – links der große Block, rechts der Pfeiler `PillarB`. Seine `Perception` hat hier `debug_draw` an. Er liegt vor dem `LootSpawner`.
 - `InventoryWindow` (M11) und `Hud` (M12) hängen als letzte Kinder in der Kammer.
 - `LootSpawner` (M9) liegt vor dem `PlayerSpawner`; so liegt Beute über dem Zerstörbaren und den Truhen, aber unter der Figur.
-- Die Puppen, `DamageZone`, `DamageStrip`, `InteractionCorner`, `DestructibleField`, `ChestSmall`, `ChestBig`, `StartItems`, `LootSpawner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair`, `DebugOverlay`, `InventoryWindow` und `Hud` sind eingehängt und lassen sich einzeln löschen.
+- Die Puppen, `DamageZone`, `DamageStrip`, `InteractionCorner`, `DestructibleField`, `ChestSmall`, `ChestBig`, `StartItems`, `Caveman`, `LootSpawner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair`, `DebugOverlay`, `InventoryWindow` und `Hud` sind eingehängt und lassen sich einzeln löschen.
 - `DebugOverlay` blendet hier „Maus“, „Kamera“ und „Raumzeit“ aus.
 - F2 und der Tod einer Figur laden die Szene neu, direkt in `test_chamber.gd`. Ab M18 übernimmt das der `SceneManager`.
 
@@ -760,6 +798,21 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - `Equipment` gibt nach jeder Änderung alles weiter: die Waffe an `MeleeAttack.set_stats()`, die Summe der Fernkampf-Boni an `RangedAttack.damage_bonus`, die Summe der Rüstung an `Health.armor`, die Summe der Leben an `Health.set_bonus_maximum()`. So kann später auch ein Gegenstand mehreres zugleich können.
 - Mehrspieler: Über Angelegtes entscheidet nur `Equipment`, über den Inhalt nur das Inventar; das Fenster fragt nur an. Jede Figur hat ihr eigenes Fenster über ihre `player_id`.
 
+**Gegner im Einzelnen (M13)**
+
+- `entities/enemies/enemy.tscn` ist die Grundszene: `CharacterBody2D` im schwebenden Modus, Ebene `enemy`, Maske `world`, `player` und `enemy`, Körper 12 × 12. Kinder in dieser Reihenfolge: `CollisionShape2D`, `Perception`, `PlaceholderView` (rot), `CharacterView`, `Health`, `Hurtbox` (12 × 14, Ebene `enemy_hurtbox`), `HitFlash`, `DamageNumbers`, `MeleeAttack` (sucht auf `player_hurtbox`, ohne Energie), `Stunnable`, `LootDropper`, `LifeBar` (14 Pixel über der Mitte), die Effekte `HitEffect`, `DeathEffect` (Rauch), `ClawEffect` (Kralle beim Schlag, 6 Pixel vor), `AlertEmote` („!“) und `SearchEmote` („?“) und zuletzt `Brain`.
+- `Brain` ist ein `StateMachine` mit acht Zuständen in `entities/enemies/states/`, je ein Knoten: `Patrol` (Patrouille), `Alert` (Entdeckt), `Chase` (Verfolgen), `Attack` (Angriff), `Search` (Suchen), `Return` (Zurück), `Stunned` (Betäubt), `Dead` (Tot). Alle erben von `EnemyState` und steuern den Gegner nur über `move_to()`, `stop()`, `face()` und `look_for_target()`.
+- Ablauf: Patrol → bemerkt → Alert (0,4 s, „!“) → Chase → in Reichweite der Faust Attack, sofortiger Schlag → nach der Pause wieder Chase. Verloren (1,5 s oder unsichtbar) → Search („?“, zur letzten Stelle, viermal umschauen) → Return → Patrol. Unterwegs bemerkt er die Figur wieder → Alert. Ist in Chase eine andere Figur näher, nimmt er die.
+- Bemerken (`Perception`): ahnungslos nur im Kegel von 100° bis 6 Kacheln, als Verfolger rundum bis 10 Kacheln, immer mit freier Sicht; Hören 2,5 Kacheln, wenn sich die Figur bewegt und nicht schleicht; Schleichen halbiert die Sicht. Alles nur innerhalb der fairen Grenze: auf dem Bild der Figur, 1 Kachel vom Rand – bei Zoom 2 höchstens 6,5 Kacheln zur Seite und gut 3 nach oben und unten.
+- Angriff: Er schlägt zu, sobald die Figur so nah ist, wie seine Faust reicht – `attack_distance()` fragt `reach_distance()` von `MeleeAttack`, beim Höhlenmenschen 18 Pixel –, sofort und ohne Ausholen: Faust-Bild, Krallen und Treffer kommen im selben Physik-Schritt. Dann `attack_recover` 0,6 s Pause; der nächste Schlag frühestens nach `cooldown` 0,8 s. Rot färbt ihn nichts; bei Schaden blitzt er hell auf (`HitFlash`).
+- Überraschung: In Patrol, Search und Return gilt er als ahnungslos; dann setzt er `damage_factor` seines `Health` auf `surprise_factor` (2). Wird er so getroffen, dreht er sich zum Angreifer: Bemerkt er ihn jetzt, folgt Alert, sonst Search 2 Kacheln in Richtung Angreifer. Bemerkt er die Figur, gilt wieder Faktor 1.
+- Stun: `Stunnable` meldet `stunned` → Stunned. Bei `recovered` folgt Chase, wenn er die Figur kannte, sonst Search an seinem Ort.
+- Tod: Dead; Körper und Trefferzone werden abgeschaltet, er tritt aus der Gruppe `stunnable` aus, `CharacterView` zeigt das Tod-Bild, Rauch steigt auf, `LootDropper` bestellt die Beute; nach `remove_delay` verschwindet er.
+- Debug: Zustand und Leben gehen an die Debug-Anzeige, mit dem Namen des Knotens vorn, etwa „Caveman Zustand“.
+- Kommt er auf dem Rückweg 1,5 s nicht voran, weil etwas im Weg steht, patrouilliert er von dort aus. Wege um Hindernisse herum kommen mit den Kacheln (A4).
+- Ein neuer Gegner gleicher Art: im Editor „Neue geerbte Szene“ aus `enemy.tscn`, dann Skin, Werte-Dateien und Beute wählen – so ist `caveman.tscn` gebaut. Ins Level: die Szene instanzieren und `patrol_tiles` setzen, in Kacheln; (0, 0), der Standard, heißt: Er steht und wacht.
+- Mehrspieler: Der Gegner sucht immer den nächsten Spieler, den er bemerken kann. Über Schaden entscheidet `Health`, über Beute der `LootDropper`, hingelegt vom `LootSpawner`; später entscheidet das der Gastgeber, und der Zustandsautomat läuft nur dort.
+
 **HUD im Einzelnen (M12)**
 
 - `ui/hud/hud.tscn` ist ein `CanvasLayer` auf Ebene 90, unter der Debug-Anzeige (100), dem Inventarfenster (105) und dem Fadenkreuz (110). Einstellbar: `player_id` (1).
@@ -782,6 +835,17 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Im Editor zeigt die Testkammer nur die blauen Kollisionsflächen; Farben, Raster und Anzeige erscheinen erst im laufenden Spiel.
 
 ### Dateien je Modul
+
+**M13 – Erster Gegner**
+
+- Neu: `components/state_machine/` mit `state_machine.tscn`, `state_machine.gd`, `state.gd`; `components/perception/` mit `perception.tscn`, `perception.gd`, `perception_stats.gd`; `components/life_bar/` mit `life_bar.tscn`, `life_bar.gd`
+- Neu mit der Nachbesserung: `world/view/view_settings.gd`, `data/world/view.tres`
+- Neu: `entities/enemies/` mit `enemy.tscn`, `enemy.gd`, `enemy_stats.gd`, `caveman.tscn` und `states/` mit `enemy_state.gd`, `patrol_state.gd`, `alert_state.gd`, `chase_state.gd`, `attack_state.gd`, `search_state.gd`, `return_state.gd`, `stunned_state.gd`, `dead_state.gd`
+- Neu: `data/enemies/caveman.tres`, `caveman_health.tres`, `caveman_punch.tres`, `caveman_perception.tres`; `data/loot/caveman.tres`; `data/skins/caveman_brown.tres`; `data/effects/claw.tres`, `emote_alert.tres`, `emote_search.tres`
+- Geändert: `components/melee_attack/melee_attack.gd` (`reach_distance()`), `components/health/health.gd` (`damage_factor`), `entities/player/player.gd` (`is_sneaking()`), `entities/player/player_camera.gd` und `player_camera.tscn` (Zoom), `autoload/input_setup.gd` (F3)
+- Geändert: `levels/test_chamber/test_chamber.tscn` (`Caveman`), `levels/test_chamber/test_chamber.gd` (F3, Anzeige „Zoom“), `README.md` (Ordner, F3), `docs/projekt_stand.md`, `docs/asset_katalog.md`
+- Entfernt mit der Nachbesserung: `components/windup_flash/` – von Hand zu löschen. `melee_stats.gd` und `character_view.gd` sind wieder wie in M12.
+- Abschluss: `m13_abschluss.zip` mit `docs/projekt_stand.md`
 
 **M12 – HUD**
 
@@ -934,6 +998,7 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 | Schatten | `Actor/Character/Shadow.png`, 12 × 7 | geprüft; eingebaut mit A1 |
 | Übungspuppen | `Actor/Monster/BambooYellow/` für die festen Puppen, `Bamboo/` für das bewegliche Ziel; 4 × 4 à 16 | beide geprüft, BambooYellow am 17.11.2026: orange, gleiches Raster wie Bamboo; eingebaut mit A1 |
 | Gegner | `Actor/Monster/<Name>/`, 4 × 4 à 16 | geprüft an Slime: Spalten wie bei den Figuren, Zeilen = Laufbilder |
+| Erster Gegner (M13) | `Actor/Character/Caveman2/SeparateAnim/` – Idle, Walk, Attack, Dead; `Ui/Emote/emote22.png` („!“) und `emote23.png` („?“); `FX/Attack/Claw/SpriteSheet.png`, 4 à 32; `Ui/Receptacle/LifeBarMiniUnder.png` und `LifeBarMiniProgress.png`, je 18 × 4 | geprüft am 18.11.2026; eingebaut mit M13 |
 | NPCs | `Actor/Character/<Name>/SpriteSheet.png`, 4 × 7 à 16, dazu `Faceset.png` | geprüft: Zeilen 1 bis 4 Laufen, 5 Angriff, 6 Sprung, 7 Tod, Gegenstand und zwei Sonderposen |
 | Boden und Natur der Steinzeit | `Backgrounds/Tilesets/TilesetFloor.png`, `TilesetNature.png`, `TilesetRelief.png` | gesichtet; Regeln für Übergänge fehlen |
 | Wände der Testkammer | `Backgrounds/Tilesets/Interior/TilesetWallSimple.png` | gesichtet: vier Mauer-Rahmen |
@@ -959,7 +1024,7 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 
 Gate G1 ist bestanden: Nach dem Test von A2 hat der Nutzer am 17.11.2026 geschrieben: „Alles getestet und alles funktioniert … lass uns weitermachen“. Claude wertet das als „die Spielfigur fühlt sich gut an“. Nachstellen lässt sich weiter alles ohne Code über die Werte-Dateien in `data/`. Der Ton fehlt noch; er kommt mit A3 fast am Ende des Projekts.
 
-Phase 2 läuft: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & Beute und M11 – Inventar & Ausrüstung sind fertig, M12 – HUD ist geliefert und im Test. A5 – Oberfläche ist damit zum zweiten Mal gewachsen: nach dem Holz-Thema für Fenster jetzt Herzen, Energie-Kugel, Ausdauer-Leiste und Symbole. Nach M12 ist Phase 2 fertig; dann beginnt Phase 3 mit M13 – Erster Gegner. Der Ton kommt erst mit A3.
+Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & Beute, M11 – Inventar & Ausrüstung und M12 – HUD, zuletzt am 18.11.2026. A5 – Oberfläche ist dabei zweimal gewachsen: das Holz-Thema für Fenster, dann Herzen, Energie-Kugel, Ausdauer-Leiste und Symbole. Phase 3 hat begonnen: M13 – Erster Gegner ist fertig, am 18.11.2026 nach einer Nachbesserung; mit ihm hat A6 – Gegner, NPCs, Bosse begonnen, und die Welt erscheint seitdem mit Zoom 2. Danach übergibt Claude an einen neuen Chat; dort folgt M14 – Gegnertypen. Der Ton kommt erst mit A3.
 
 ## Hinweise aus der bisherigen Arbeit
 
@@ -993,14 +1058,22 @@ Phase 2 läuft: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & Beute
 - Ein neues Fenster bekommt das Holz-Thema, indem man bei seinem obersten `Control` unter `Theme` die Datei `ui/theme/wood_theme.tres` wählt.
 - Eine neue Fähigkeit zeigt das HUD von selbst, sobald sie unter `Abilities` der Figur hängt. Ihr Symbol steht in ihrer Werte-Datei (`icon`, `icon_disabled`), ihre Taste in `key_icons` am Knoten `Hud/BottomBar/AbilityBar`.
 - Ein HUD für eine zweite Figur: `ui/hud/hud.tscn` ein zweites Mal ins Level hängen und `player_id` auf 2 stellen.
+- Ein neuer Zustand für einen Gegner: unter `Brain` einen Knoten anlegen, ihm ein Skript geben, das von `EnemyState` erbt, und ihn aus einem anderen Zustand mit `machine.transition_to(&"Name")` aufrufen. Der Knotenname ist der Name des Zustands.
+- Den Sichtkegel eines Gegners sieht man, wenn bei seinem Kind `Perception` `debug_draw` an ist; F1 blendet ihn mit der Debug-Anzeige aus und ein.
+- Knoten der Grundszene `enemy.tscn`, die `caveman.tscn` überschreibt – `Perception`, `CharacterView`, `Health`, `MeleeAttack`, `LootDropper` –, nicht in der Grundszene löschen; das gibt Fehler in der geerbten Szene.
 - Bildebenen der Oberfläche: HUD 90, Debug-Anzeige 100, Inventarfenster 105, Fadenkreuz 110. Ein neues Fenster gehört zwischen 100 und 110, eine neue Anzeige am Bildrand unter 100.
+- Ein Commit mit dem Code eines Moduls, aber noch ohne die abschließende Stand-Datei, ist kein Problem: Die Stand-Datei kommt mit dem Abschluss-ZIP nach und wird einfach als eigener Commit hochgeladen.
 - Neue Splitter: eine Datei aus `data/effects/debris_*.tres` kopieren, Streifen und `piece_count` anpassen und sie einem `DebrisCue` geben. Die Streifen in `FX/Particle/` sind Bruchstücke nebeneinander, keine Animation; mit `tint` lässt sich ein Streifen einfärben.
 
 ## Offene Punkte
 
-- M12 – HUD: geliefert am 17.11.2026 als `m12_hud.zip`, der Test des Nutzers steht aus. Danach schließt Claude M12 ab – damit ist Phase 2 fertig – und schlägt M13 – Erster Gegner vor.
-- Beim Bauen von M12 ergänzt: Kugel und Leiste wachsen in ganzen Pixeln und zeigen mindestens einen, die Herzen mindestens ein Viertel, solange noch etwas da ist. Fähigkeiten und Geschoss-Zelle stehen in einer Reihe, die sich anpasst. Die Debug-Anzeige lässt sich mit `align_right` wieder nach links stellen.
-- Lebensleisten über Gegnern – das Paket hat dafür `LifeBarMiniUnder.png` und `LifeBarMiniProgress.png` – kommen mit den Gegnern in Phase 3.
+- Übergabe an einen neuen Chat, vorbereitet am 18.11.2026: Der Nutzer lädt M13 mit dieser Stand-Datei hoch und öffnet einen neuen Chat im Projekt; die erste Nachricht steht oben unter „Neuer Chat und Arbeitsweise“. Der neue Chat prüft zuerst, dass M13 im Repo liegt – ohne `components/windup_flash`.
+- Zoom: Gewünscht war „4x“; eingestellt ist 2, mit dem Test bestätigt. Andere Werte gehen ohne Code in `data/world/view.tres`; Abstände der Gegner und die faire Grenze passen sich an.
+- Ausholen gibt es nicht mehr: Der Schlag kommt mit dem ersten Bild der Hieb-Animation; die des Höhlenmenschen hat nur ein Bild. Ein Gegner mit eigener Ausholbewegung bekäme später ein eigenes Bild dafür.
+- Beim Bauen von M13 ergänzt, vom Nutzer mit dem Test bestätigt: In der Testkammer sind Sichtkegel und Hörkreis zu sehen, seit der Nachbesserung auch die faire Grenze als Rahmen; F1 blendet sie aus; ist in der Verfolgung eine andere Figur näher, nimmt er die; kommt er auf dem Rückweg nicht weiter, patrouilliert er von dort aus; Schleichen zählt auch im Stehen mit gehaltener Strg-Taste. Mit der Nachbesserung: F3 schaltet den Zoom durch, die Kamera rundet auf das Raster des Bildes.
+- Gegner haben noch keine Wegfindung: Sie laufen gerade auf ihr Ziel zu und gleiten an Hindernissen entlang. Wege um Blöcke herum kommen mit den Kacheln (A4).
+- Aus dem Konzept noch offen für Gegner: Lärm beim Zerstören lockt sie an; höchstens drei greifen zugleich an, der Rest umkreist; Gegnertypen wie Fernkämpfer, Schildträger, Wache (M14). Treffer unterbrechen einen Gegner nicht und stoßen ihn nicht zurück.
+- Drei Dinge hat Claude in M12 selbst ergänzt, der Nutzer hat sie mit dem Test bestätigt: Kugel und Leiste wachsen in ganzen Pixeln und zeigen mindestens einen, die Herzen mindestens ein Viertel, solange noch etwas da ist; Fähigkeiten und Geschoss-Zelle stehen in einer Reihe, die sich anpasst; die Debug-Anzeige lässt sich mit `align_right` wieder nach links stellen.
 - Zwei Dinge hat Claude in M11 selbst ergänzt, der Nutzer hat sie mit dem Test bestätigt: Esc schließt das Inventarfenster ebenfalls, und das Fenster liegt über der Debug-Anzeige.
 - Im Inventarfenster haben mehr als 20 Plätze noch keinen Raum; ein größeres Inventar braucht später Blättern oder einen größeren Rahmen.
 - Eine Sache hat Claude in M10 selbst ergänzt, der Nutzer hat sie mit dem Test bestätigt: das goldene Funkeln beim Öffnen. Zurücknehmen ohne Code: in `world/chest/chest.tscn` den Knoten `OpenEffect` löschen.
@@ -1014,7 +1087,7 @@ Phase 2 läuft: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & Beute
 - Schießen zeigt kein eigenes Bild der Figur; das Paket hat für die `NinjaGreen` keins. Die Geschosse haben seit M11a ihr Flugbild.
 - Wer vor wem gezeichnet wird, richtet sich noch nach der Reihenfolge der Knoten. Eine Sortierung nach Höhe im Bild folgt mit den Kacheln in A4. Seit M9 fällt das am Baum auf: Läuft die Figur hinter seine Krone, steht sie trotzdem davor.
 - Zauber: „keine eigene Kategorie“ ist nur vorläufig gewählt. Die Entscheidung liegt beim Nutzer.
-- Unsichtbarkeit: Dass Gegner die Figur verlieren und ein Angriff daraus Bonus-Schaden macht, folgt mit den Gegnern in Phase 3.
+- Unsichtbarkeit: Seit M13 verlieren Gegner die Figur, und Treffer zählen doppelt, solange sie die Figur nicht bemerkt haben.
 - Geschosse kommen seit M9 als Beute aus Töpfen, Kisten und Steinen nach, seit M10 auch aus Truhen. Energie aus Fläschchen und Speicherpunkten folgt später.
 - Dynamit trifft die Spielfigur nicht. Ob es später auch eigenen Schaden geben soll, entscheidet der Nutzer.
 - `data/player/ammo.tres` ist seit M11a nicht mehr eingehängt; `bow.tres` gilt nur noch ohne `AmmoSelector`. Beide bleiben vorerst liegen.

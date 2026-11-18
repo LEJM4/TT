@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ViewSettings" format=3]
+
+[ext_resource type="Script" path="res://world/view/view_settings.gd" id="1_view"]
+
+[resource]
+script = ExtResource("1_view")
+world_scale = 2
+fair_margin_tiles = 1.0

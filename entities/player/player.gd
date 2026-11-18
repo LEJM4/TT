@@ -1,5 +1,5 @@
 extends CharacterBody2D
-## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten, A1: Bild, M11a: Inventar, M8: Interaktion, M9: Aufsammeln, M11: Ausrüstung).
+## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten, A1: Bild, M11a: Inventar, M8: Interaktion, M9: Aufsammeln, M11: Ausrüstung, M13: Schleichen für Gegner).
 ##
 ## Die Figur führt nur Absichten aus. Woher sie kommen, bestimmt das Kind
 ## "PlayerInput" (ein IntentSource): Tasten, später Gamepad oder Netz.
@@ -143,6 +143,12 @@ func _physics_process(delta: float) -> void:
 	if wants_interact and _interactor != null:
 		_interactor.try_interact()
 	_report_debug_values()
+
+
+## Schleicht die Figur gerade - die Taste gehalten, ob sie läuft oder steht?
+## Gegner hören sie dann nicht und sehen sie nur auf kürzere Entfernung (M13).
+func is_sneaking() -> bool:
+	return _intent != null and _intent.wants_sneak and move_state != MoveState.DASH
 
 
 func _draw() -> void:

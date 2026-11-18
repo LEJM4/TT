@@ -20,10 +20,14 @@ extends Node2D
 ##                   für jeden, die große braucht den Goldschlüssel
 ##   StartItems      Ausrüstung zum Aufsammeln unter den Startpunkten (M11):
 ##                   Breitschwert, Bogen, Lederrüstung, Rubin-Anhänger
+##   Caveman         erster Gegner (M13): ein Höhlenmensch patrouilliert rechts
+##                   zwischen dem großen Block und dem rechten Pfeiler; sein
+##                   Sichtkegel und Hörkreis sind eingeblendet (F1 blendet sie aus)
 ##   LootSpawner     legt alle Beute hin (M9)
 ##   PlayerSpawner   erzeugt die Spielfiguren (M2)
 ##   ProjectileSpawner  erzeugt alle Geschosse (M6)
-##   PlayerCamera    folgt der Spielfigur (M3); die Grenzen meldet dieses Skript
+##   PlayerCamera    folgt der Spielfigur (M3); die Grenzen meldet dieses Skript;
+##                   den Zoom liest sie aus data/world/view.tres (M13)
 ##   Crosshair       Fadenkreuz am Mauszeiger (M4)
 ##   DebugOverlay    Entwickler-Anzeige
 ##   InventoryWindow Inventarfenster auf Tab (M11)
@@ -34,6 +38,8 @@ extends Node2D
 ## Blöcke ändern: im 2D-Editor eine CollisionShape2D unter Walls oder Blocks
 ## verschieben oder an den Griffen ziehen - die Farbe folgt der Form.
 ## Neustart des Raums: Aktion "debug_restart_room" (F2) oder der Tod einer Figur.
+## Zoom ausprobieren: Aktion "debug_cycle_zoom" (F3) schaltet 1 bis 4 durch (M13);
+## Kamera und Gegner folgen sofort, die Datei view.tres bleibt, wie sie ist.
 
 @export_group("Raum")
 ## Größe des Raums in Pixeln.
@@ -44,6 +50,8 @@ extends Node2D
 @export var show_grid := true
 ## Sekunden vom Tod einer Figur bis zum Neustart des Raums.
 @export var death_restart_delay := 1.0
+## Ansicht mit dem Zoom der Welt (M13) - dieselbe Datei wie bei Kamera und Gegnern.
+@export var view: ViewSettings
 
 @export_group("Farben")
 ## Farbe des Bodens.
@@ -59,6 +67,7 @@ var _room_time := 0.0
 func _ready() -> void:
 	EventBus.camera_bounds_changed.emit(Rect2(global_position, Vector2(room_size)))
 	EventBus.player_died.connect(_on_player_died)
+	_report_zoom()
 
 
 func _process(delta: float) -> void:
@@ -69,6 +78,8 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_restart_room"):
 		_restart_room()
+	elif event.is_action_pressed("debug_cycle_zoom"):
+		_cycle_zoom()
 
 
 func _draw() -> void:
@@ -98,3 +109,19 @@ func _on_player_died(_player_id: int) -> void:
 func _restart_room() -> void:
 	# Ab M18 läuft der Szenenwechsel über den SceneManager.
 	get_tree().reload_current_scene()
+
+
+# Zoom 1 bis 4 durchschalten (M13) - nur zum Ausprobieren, gespeichert wird nichts.
+func _cycle_zoom() -> void:
+	if view == null:
+		return
+	view.world_scale = view.world_scale % ViewSettings.MAX_SCALE + 1
+	_report_zoom()
+
+
+func _report_zoom() -> void:
+	if view == null:
+		return
+	var tiles := view.visible_size(get_viewport_rect().size) / ViewSettings.TILE_SIZE
+	var text := "%d - %.1f x %.1f Kacheln (F3)" % [view.world_scale, tiles.x, tiles.y]
+	EventBus.debug_value_changed.emit("Zoom", text)

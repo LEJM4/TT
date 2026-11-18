@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://components/life_bar/life_bar.gd" id="1_bar"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Receptacle/LifeBarMiniUnder.png" id="2_under"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Receptacle/LifeBarMiniProgress.png" id="3_progress"]
+
+[node name="LifeBar" type="Node2D"]
+z_index = 40
+script = ExtResource("1_bar")
+texture_under = ExtResource("2_under")
+texture_progress = ExtResource("3_progress")

@@ -1,0 +1,138 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/enemies/enemy.gd" id="1_enemy"]
+[ext_resource type="PackedScene" path="res://components/perception/perception.tscn" id="2_perception"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="3_view"]
+[ext_resource type="PackedScene" path="res://components/character_view/character_view.tscn" id="4_character_view"]
+[ext_resource type="PackedScene" path="res://components/health/health.tscn" id="5_health"]
+[ext_resource type="PackedScene" path="res://components/hurtbox/hurtbox.tscn" id="6_hurtbox"]
+[ext_resource type="PackedScene" path="res://components/hit_flash/hit_flash.tscn" id="7_flash"]
+[ext_resource type="PackedScene" path="res://components/damage_numbers/damage_numbers.tscn" id="9_numbers"]
+[ext_resource type="PackedScene" path="res://components/melee_attack/melee_attack.tscn" id="10_melee"]
+[ext_resource type="PackedScene" path="res://components/stunnable/stunnable.tscn" id="11_stunnable"]
+[ext_resource type="PackedScene" path="res://components/loot_dropper/loot_dropper.tscn" id="12_loot_dropper"]
+[ext_resource type="PackedScene" path="res://components/life_bar/life_bar.tscn" id="13_life_bar"]
+[ext_resource type="PackedScene" path="res://components/effect_cue/effect_cue.tscn" id="14_effect_cue"]
+[ext_resource type="Resource" path="res://data/effects/hit.tres" id="15_hit"]
+[ext_resource type="Resource" path="res://data/effects/death_smoke.tres" id="16_smoke"]
+[ext_resource type="Resource" path="res://data/effects/claw.tres" id="17_claw"]
+[ext_resource type="Resource" path="res://data/effects/emote_alert.tres" id="18_alert"]
+[ext_resource type="Resource" path="res://data/effects/emote_search.tres" id="19_search"]
+[ext_resource type="PackedScene" path="res://components/state_machine/state_machine.tscn" id="20_machine"]
+[ext_resource type="Script" path="res://entities/enemies/states/patrol_state.gd" id="21_patrol"]
+[ext_resource type="Script" path="res://entities/enemies/states/alert_state.gd" id="22_alert"]
+[ext_resource type="Script" path="res://entities/enemies/states/chase_state.gd" id="23_chase"]
+[ext_resource type="Script" path="res://entities/enemies/states/attack_state.gd" id="24_attack"]
+[ext_resource type="Script" path="res://entities/enemies/states/search_state.gd" id="25_search"]
+[ext_resource type="Script" path="res://entities/enemies/states/return_state.gd" id="26_return"]
+[ext_resource type="Script" path="res://entities/enemies/states/stunned_state.gd" id="27_stunned"]
+[ext_resource type="Script" path="res://entities/enemies/states/dead_state.gd" id="28_dead"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(12, 14)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("1_enemy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Perception" parent="." instance=ExtResource("2_perception")]
+
+[node name="PlaceholderView" parent="." instance=ExtResource("3_view")]
+color = Color(0.85, 0.3, 0.25, 1)
+
+[node name="CharacterView" parent="." instance=ExtResource("4_character_view")]
+
+[node name="Health" parent="." instance=ExtResource("5_health")]
+
+[node name="Hurtbox" parent="." instance=ExtResource("6_hurtbox")]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_hurt")
+
+[node name="HitFlash" parent="." instance=ExtResource("7_flash")]
+
+[node name="DamageNumbers" parent="." instance=ExtResource("9_numbers")]
+
+[node name="MeleeAttack" parent="." instance=ExtResource("10_melee")]
+target_mask = 8
+swing_color = Color(1, 0.4, 0.3, 0)
+gain_supply_name = ""
+
+[node name="Stunnable" parent="." instance=ExtResource("11_stunnable")]
+
+[node name="LootDropper" parent="." instance=ExtResource("12_loot_dropper")]
+
+[node name="LifeBar" parent="." instance=ExtResource("13_life_bar")]
+position = Vector2(0, -14)
+
+[node name="HitEffect" parent="." instance=ExtResource("14_effect_cue")]
+effect = ExtResource("15_hit")
+source_name = "Hurtbox"
+signal_name = "hit_received"
+use_direction = true
+
+[node name="DeathEffect" parent="." instance=ExtResource("14_effect_cue")]
+effect = ExtResource("16_smoke")
+source_name = "Health"
+signal_name = "died"
+follow = false
+
+[node name="ClawEffect" parent="." instance=ExtResource("14_effect_cue")]
+effect = ExtResource("17_claw")
+source_name = "MeleeAttack"
+signal_name = "attack_started"
+use_direction = true
+distance = 6.0
+
+[node name="AlertEmote" parent="." instance=ExtResource("14_effect_cue")]
+effect = ExtResource("18_alert")
+signal_name = "alerted"
+
+[node name="SearchEmote" parent="." instance=ExtResource("14_effect_cue")]
+effect = ExtResource("19_search")
+signal_name = "search_started"
+
+[node name="Brain" parent="." instance=ExtResource("20_machine")]
+initial_state = &"Patrol"
+
+[node name="Patrol" type="Node" parent="Brain"]
+script = ExtResource("21_patrol")
+display_name = "Patrouille"
+
+[node name="Alert" type="Node" parent="Brain"]
+script = ExtResource("22_alert")
+display_name = "Entdeckt"
+
+[node name="Chase" type="Node" parent="Brain"]
+script = ExtResource("23_chase")
+display_name = "Verfolgen"
+
+[node name="Attack" type="Node" parent="Brain"]
+script = ExtResource("24_attack")
+display_name = "Angriff"
+
+[node name="Search" type="Node" parent="Brain"]
+script = ExtResource("25_search")
+display_name = "Suchen"
+
+[node name="Return" type="Node" parent="Brain"]
+script = ExtResource("26_return")
+display_name = "Zurück"
+
+[node name="Stunned" type="Node" parent="Brain"]
+script = ExtResource("27_stunned")
+display_name = "Betäubt"
+
+[node name="Dead" type="Node" parent="Brain"]
+script = ExtResource("28_dead")
+display_name = "Tot"
