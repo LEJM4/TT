@@ -7,6 +7,10 @@ extends Node
 ## Im Gespräch (M15) gelten eigene Aktionen auf denselben Tasten: dialog_next
 ## (E, Leertaste, Linksklick) und dialog_choice_1 bis 3 (1 2 3). Die Figur nimmt
 ## dann keine Eingaben an, Doppelbelegungen stören also nicht.
+## Spielstand testen (M16), nur in der Testkammer und nur im Debug-Build: F4
+## löscht ihn, Bild auf schließt das Level ab, Bild ab verlässt es, Ende beendet
+## das Spiel wie das X am Fenster. F5 bis F8 sind im Editor belegt (Starten,
+## Pause, Stopp) und kämen beim eingebetteten Spiel nicht an.
 
 ## Aktion -> Tasten (Position auf der Tastatur, unabhängig vom Layout).
 const KEY_BINDINGS := {
@@ -32,6 +36,10 @@ const KEY_BINDINGS := {
 	"debug_toggle_overlay": [KEY_F1],
 	"debug_restart_room": [KEY_F2],
 	"debug_cycle_zoom": [KEY_F3],
+	"debug_delete_save": [KEY_F4],
+	"debug_complete_level": [KEY_PAGEUP],
+	"debug_leave_level": [KEY_PAGEDOWN],
+	"debug_quit_game": [KEY_END],
 }
 
 ## Aktion -> Maustasten; das Mausrad zählt als Taste.

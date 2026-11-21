@@ -11,6 +11,8 @@ extends StaticBody2D
 ## opened. Darauf hören eigene Bausteine: LootDropper (Beute aus data/loot/)
 ## und OpenEffect (Funkeln). Sie liegt als fester Körper auf "world":
 ## Figuren und Geschosse halten an ihr.
+## Ob sie offen ist, merkt sich ihr Kind "Persistent" im Spielstand (M16): Nach
+## Tod, Neustart und Laden steht sie offen da, ohne Beute und ohne Funkeln.
 ## Fertige Truhen liegen daneben: chest_small.tscn und chest_big.tscn.
 ##
 ## Abschalten: Knoten löschen - die Truhe ist nicht da.
@@ -79,6 +81,23 @@ func open(actor: Node = null) -> bool:
 	state_changed.emit(true)
 	opened.emit(actor)
 	return true
+
+
+## Zustand für den Spielstand (M16): {"open": true}, sobald sie offen ist.
+func get_saved_state() -> Dictionary:
+	if not is_on:
+		return {}
+	return {"open": true}
+
+
+## Stellt den Zustand aus dem Spielstand her (M16): offen wie mit start_open -
+## ohne Beute, ohne Funkeln.
+func apply_saved_state(data: Dictionary) -> void:
+	if data.get("open") != true or is_on:
+		return
+	is_on = true
+	_update_interactable()
+	state_changed.emit(true)
 
 
 func _on_interacted(actor: Node) -> void:

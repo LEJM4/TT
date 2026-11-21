@@ -16,7 +16,8 @@ extends StaticBody2D
 ## nichts Neues mehr: Die Sprechblase verschwindet, und beim nächsten Mal spricht
 ## er repeat_dialog - ohne das wieder dialog. Ein NPC, der nur Auskunft gibt, hat
 ## ein Gespräch ohne Antworten.
-## Gemerkt wird all das bis zum Neustart des Raums; dauerhaft ab M16.
+## Gemerkt wird all das im Spielstand, über sein Kind "Persistent" (M16): ob er
+## erledigt ist und welche Zeilen ihre Beute schon gegeben haben.
 ##
 ## Abschalten: Knoten löschen - die Welt läuft ohne ihn weiter.
 
@@ -26,6 +27,8 @@ signal talk_started(partner: Node2D)
 signal talk_finished(completed: bool)
 ## Er hat Beute gegeben: so viele Gegenstände.
 signal reward_given(count: int)
+## Er ist erledigt oder hat Beute gegeben - das merkt sich Persistent (M16).
+signal progress_changed
 
 ## Das Gespräch, solange er etwas Neues zu sagen hat.
 @export var dialog: DialogData
@@ -117,13 +120,18 @@ func _on_dialog_line_shown(_player_id: int, source_id: int, line: Resource) -> v
 	var dialog_line := line as DialogLine
 	if dialog_line == null:
 		return
+	var changed := false
 	if dialog_line.reward != null and not _given.has(dialog_line):
 		_given[dialog_line] = true
 		_give(dialog_line.reward)
+		changed = true
 	if dialog_line.marks_done and not is_done:
 		is_done = true
 		_refresh_bubble()
 		_report()
+		changed = true
+	if changed:
+		progress_changed.emit()
 
 
 func _on_dialog_finished(_player_id: int, source_id: int, completed: bool) -> void:
@@ -138,6 +146,35 @@ func _on_dialog_finished(_player_id: int, source_id: int, completed: bool) -> vo
 	talk_finished.emit(completed)
 
 
+## Zustand für den Spielstand (M16): erledigt, und welche Zeilen schon Beute
+## gegeben haben - je Zeile "gespräch#name", ohne Namen "gespräch#nummer".
+func get_saved_state() -> Dictionary:
+	var given: Array[String] = []
+	for line: DialogLine in _given:
+		var key := _line_key(line)
+		if not key.is_empty():
+			given.append(key)
+	if not is_done and given.is_empty():
+		return {}
+	return {"done": is_done, "given": given}
+
+
+## Stellt den Zustand aus dem Spielstand her (M16): erledigt, Beute schon gegeben.
+func apply_saved_state(data: Dictionary) -> void:
+	is_done = data.get("done") == true
+	var given: Variant = data.get("given")
+	if given is Array:
+		for source in [dialog, repeat_dialog]:
+			var talk := source as DialogData
+			if talk == null:
+				continue
+			for line in talk.lines:
+				if line != null and (given as Array).has(_line_key(line)):
+					_given[line] = true
+	_refresh_bubble()
+	_report()
+
+
 # Würfelt die Beute und bestellt sie beim LootSpawner; sie springt vor der Figur auf den Boden.
 func _give(table: LootTable) -> void:
 	var origin := global_position
@@ -147,6 +184,22 @@ func _give(table: LootTable) -> void:
 	for stack in stacks:
 		EventBus.loot_requested.emit(stack.item, stack.amount, origin)
 	reward_given.emit(stacks.size())
+
+
+# Kennung einer Zeile für den Spielstand: Gespräch und Name der Zeile, ohne Namen ihre Nummer.
+func _line_key(line: DialogLine) -> String:
+	for source in [dialog, repeat_dialog]:
+		var talk := source as DialogData
+		if talk == null:
+			continue
+		var index := talk.lines.find(line)
+		if index < 0:
+			continue
+		var line_name := String(line.id)
+		if line_name.is_empty():
+			line_name = str(index)
+		return "%s#%s" % [talk.resource_path.get_file().get_basename(), line_name]
+	return ""
 
 
 func _face_partner() -> void:

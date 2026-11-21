@@ -1,5 +1,5 @@
 extends CharacterBody2D
-## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten, A1: Bild, M11a: Inventar, M8: Interaktion, M9: Aufsammeln, M11: Ausrüstung, M13: Schleichen für Gegner, M15: Blick im Gespräch).
+## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten, A1: Bild, M11a: Inventar, M8: Interaktion, M9: Aufsammeln, M11: Ausrüstung, M13: Schleichen für Gegner, M15: Blick im Gespräch, M16: Spielstand).
 ##
 ## Die Figur führt nur Absichten aus. Woher sie kommen, bestimmt das Kind
 ## "PlayerInput" (ein IntentSource): Tasten, später Gamepad oder Netz.
@@ -16,6 +16,8 @@ extends CharacterBody2D
 ## Beute am Boden sammelt sie beim Drüberlaufen ins Inventar (M9).
 ## Was sie angelegt hat - Waffe, Fernkampf, Rüstung, Anhänger -, verwaltet ihr Kind
 ## Equipment; es ändert die Werte von Schwert, Geschossen und Leben (M11).
+## Inventar und Ausrüstung holt ihr Kind PlayerProgress beim Erscheinen aus dem
+## Spielstand und schreibt jede Änderung dorthin zurück (M16).
 ## Die Zahlen stehen in data/player/: movement.tres, stamina.tres,
 ## health.tres, sword.tres, dash.tres, bow.tres, energy.tres, inventory.tres, interactor.tres und equipment.tres;
 ## die Werte der Fähigkeiten in data/abilities/, die der Geschosse in data/items/.
@@ -39,6 +41,7 @@ extends CharacterBody2D
 ##   Collector     Aufsammeln   - ohne: Sie läuft über Beute hinweg (M9).
 ##   TalkFacing    Blick im Gespräch - ohne: Sie behält im Gespräch ihre Blickrichtung (M15).
 ##   Equipment     Ausrüstung   - ohne: Sie kämpft mit ihren Grundwerten (M11).
+##   PlayerProgress Spielstand  - ohne: Sie beginnt jedes Mal mit dem Startinhalt (M16).
 ##
 ## Stirbt die Figur, bleibt sie stehen und meldet es über den EventBus
 ## (player_died); ihr Bild zeigt den Tod, der Platzhalter wird grau.

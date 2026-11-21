@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" path="res://entities/npcs/shaman.tscn" id="36_shaman"]
 [ext_resource type="PackedScene" path="res://entities/npcs/hunter.tscn" id="37_hunter"]
 [ext_resource type="PackedScene" path="res://ui/dialog/dialog_window.tscn" id="38_dialog_window"]
+[ext_resource type="PackedScene" path="res://world/time_anchor/time_anchor.tscn" id="39_time_anchor"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
 size = Vector2(960, 16)
@@ -353,6 +354,9 @@ position = Vector2(312, 120)
 
 [node name="Hunter" parent="." instance=ExtResource("37_hunter")]
 position = Vector2(168, 136)
+
+[node name="TimeAnchor" parent="." instance=ExtResource("39_time_anchor")]
+position = Vector2(240, 88)
 
 [node name="LootSpawner" parent="." instance=ExtResource("22_loot_spawner")]
 

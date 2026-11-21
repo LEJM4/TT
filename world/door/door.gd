@@ -10,6 +10,8 @@ extends StaticBody2D
 ## Steht jemand im Durchgang (Kind "DoorwaySensor"), schließt sie erst, wenn
 ## er frei ist. Ob die Tür auf oder zu ist, entscheidet nur set_open().
 ## Das Bild zeigt PropView; ein offenes Tor hat kein Bild und verschwindet.
+## Ob eine Tür ohne Kanal offen ist, merkt sich ihr Kind "Persistent" im
+## Spielstand (M16); Tore mit Kanal folgen nach dem Laden wieder ihren Schaltern.
 ##
 ## Abschalten: Knoten löschen - der Durchgang ist frei.
 
@@ -63,6 +65,21 @@ func is_occupied() -> bool:
 	if _doorway == null:
 		return false
 	return _doorway.has_overlapping_bodies()
+
+
+## Zustand für den Spielstand (M16): {"open": ...} - nur bei Türen ohne Kanal.
+func get_saved_state() -> Dictionary:
+	if channel != &"":
+		return {}
+	return {"open": is_on}
+
+
+## Stellt den Zustand aus dem Spielstand her (M16); Tore mit Kanal übergehen ihn.
+func apply_saved_state(data: Dictionary) -> void:
+	var saved: Variant = data.get("open")
+	if channel != &"" or not saved is bool:
+		return
+	set_open(saved)
 
 
 func _on_interacted(_actor: Node) -> void:

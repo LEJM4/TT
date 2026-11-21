@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://components/loot_dropper/loot_dropper.tscn" id="5_loot_dropper"]
 [ext_resource type="PackedScene" path="res://components/effect_cue/effect_cue.tscn" id="6_effect_cue"]
 [ext_resource type="Resource" path="res://data/effects/chest_sparkle.tres" id="7_sparkle"]
+[ext_resource type="PackedScene" path="res://components/persistent/persistent.tscn" id="8_persistent"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(14, 10)
@@ -45,3 +46,5 @@ signal_name = "opened"
 effect = ExtResource("7_sparkle")
 signal_name = "opened"
 follow = false
+
+[node name="Persistent" parent="." instance=ExtResource("8_persistent")]

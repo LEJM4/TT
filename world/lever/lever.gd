@@ -6,6 +6,7 @@ extends StaticBody2D
 ## meldet er über den EventBus als switch_changed(channel, Kennung, is_on);
 ## Türen mit demselben Kanal folgen ihm. Beim Start meldet er seinen Zustand einmal,
 ## damit alle Türen ihn kennen. Ob er an ist, entscheidet nur toggle().
+## Seine Stellung merkt sich sein Kind "Persistent" im Spielstand (M16).
 ##
 ## Abschalten: Knoten löschen - Türen auf seinem Kanal bleiben, wie sie sind.
 
@@ -37,6 +38,21 @@ func toggle() -> void:
 	is_on = not is_on
 	state_changed.emit(is_on)
 	_announce()
+
+
+## Zustand für den Spielstand (M16): {"on": true} oder {"on": false}.
+func get_saved_state() -> Dictionary:
+	return {"on": is_on}
+
+
+## Stellt die Stellung aus dem Spielstand her (M16) und meldet sie den Türen.
+func apply_saved_state(data: Dictionary) -> void:
+	var saved: Variant = data.get("on")
+	if not saved is bool or saved == is_on:
+		return
+	is_on = saved
+	state_changed.emit(is_on)
+	_announce.call_deferred()
 
 
 func _on_interacted(_actor: Node) -> void:

@@ -17,6 +17,8 @@ extends StaticBody2D
 ## tree.tscn und rock.tscn.
 ## Der Körper liegt wie die Übungspuppen auf der Ebene "enemy": Geschosse
 ## treffen ihn über die Hurtbox, statt an ihm zu enden wie an einer Wand.
+## Ob es zerstört ist, merkt sich sein Kind "Persistent" im Spielstand (M16): Nach
+## Tod, Neustart und Laden ist es weg oder ein Stumpf, ohne Beute und Splitter.
 ##
 ## Abschalten: Knoten löschen - das Ding ist nicht da.
 
@@ -46,7 +48,25 @@ func is_destroyed() -> bool:
 	return is_on
 
 
+## Zustand für den Spielstand (M16): {"destroyed": true}, sobald es zerstört ist.
+func get_saved_state() -> Dictionary:
+	if not is_on:
+		return {}
+	return {"destroyed": true}
+
+
+## Stellt den Zustand aus dem Spielstand her (M16): zerstört, aber ohne Beute
+## und Splitter - die hören auf den Tod im Kind Health, der hier nicht eintritt.
+func apply_saved_state(data: Dictionary) -> void:
+	if data.get("destroyed") == true:
+		_break()
+
+
 func _on_died() -> void:
+	_break()
+
+
+func _break() -> void:
 	if is_on:
 		return
 	is_on = true

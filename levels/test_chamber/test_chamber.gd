@@ -30,6 +30,8 @@ extends Node2D
 ##                   Startpunkten; fragt, was dich herführt, gibt einmal 5 Pfeile
 ##   Hunter          NPC, der nur Auskunft gibt (M15): ein Jäger links neben den
 ##                   Startpunkten; warnt vor den Gegnern, ohne Antworten
+##   TimeAnchor      Zeitanker über den Startpunkten (M16): E rastet - Leben und
+##                   Energie voll, hier erwacht die Figur wieder, das Spiel speichert
 ##   LootSpawner     legt alle Beute hin (M9)
 ##   PlayerSpawner   erzeugt die Spielfiguren (M2)
 ##   ProjectileSpawner  erzeugt alle Geschosse (M6)
@@ -47,8 +49,20 @@ extends Node2D
 ## Blöcke ändern: im 2D-Editor eine CollisionShape2D unter Walls oder Blocks
 ## verschieben oder an den Griffen ziehen - die Farbe folgt der Form.
 ## Neustart des Raums: Aktion "debug_restart_room" (F2) oder der Tod einer Figur.
+## Vorher bittet die Kammer ums Speichern; der Fortschritt bleibt (M16), die
+## Figur erwacht am Rückkehrpunkt, Gegner stehen wieder, Beute am Boden ist weg.
 ## Zoom ausprobieren: Aktion "debug_cycle_zoom" (F3) schaltet 1 bis 4 durch (M13);
 ## Kamera und Gegner folgen sofort, die Datei view.tres bleibt, wie sie ist.
+##
+## Spielstand (M16): Beim Betreten meldet sich die Kammer bei GameState als Level
+## level_id - ein laufender Lauf geht weiter, sonst beginnt einer. Zum Testen,
+## nur im Debug-Build: F4 löscht den Spielstand, Bild auf schließt das Level ab,
+## Bild ab verlässt es, Ende beendet das Spiel wie das X am Fenster - die ersten
+## drei mit neuem Lauf in der Kammer. Die Debug-Zeile "Spielstand" zeigt Lauf,
+## Rückkehrpunkt und die letzte Speicherung.
+
+## Kennung des Levels im Spielstand (M16).
+@export var level_id := "test_chamber"
 
 @export_group("Raum")
 ## Größe des Raums in Pixeln.
@@ -71,12 +85,24 @@ extends Node2D
 @export var spawn_color := Color(0.95, 0.76, 0.3)
 
 var _room_time := 0.0
+var _restarting := false
+
+
+func _enter_tree() -> void:
+	# Vor allen Kindern: Dinge der Welt und Spielfigur fragen in ihrem _ready() nach dem Stand (M16).
+	var state := get_node_or_null("/root/GameState")
+	if state != null:
+		state.call("enter_level", level_id)
 
 
 func _ready() -> void:
 	EventBus.camera_bounds_changed.emit(Rect2(global_position, Vector2(room_size)))
 	EventBus.player_died.connect(_on_player_died)
+	EventBus.game_saved.connect(_on_save_state_changed.unbind(1))
+	EventBus.respawn_changed.connect(_on_save_state_changed.unbind(2))
+	EventBus.level_run_changed.connect(_on_save_state_changed.unbind(2))
 	_report_zoom()
+	_report_save_state()
 
 
 func _process(delta: float) -> void:
@@ -86,9 +112,11 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_restart_room"):
-		_restart_room()
+		_restart_room("Neustart")
 	elif event.is_action_pressed("debug_cycle_zoom"):
 		_cycle_zoom()
+	elif OS.is_debug_build():
+		_handle_save_keys(event)
 
 
 func _draw() -> void:
@@ -111,13 +139,86 @@ func _draw() -> void:
 
 
 func _on_player_died(_player_id: int) -> void:
-	# Vorläufige Regel aus M4: Der Raum startet neu. Die endgültige folgt mit M16.
-	get_tree().create_timer(death_restart_delay).timeout.connect(_restart_room)
+	# Tod (M16): nach einer Sekunde neu laden - die Figur erwacht am Rückkehrpunkt,
+	# der Fortschritt bleibt, auch was nach dem letzten Rasten kam.
+	get_tree().create_timer(death_restart_delay).timeout.connect(_restart_room.bind("Tod"))
 
 
-func _restart_room() -> void:
+func _restart_room(reason := "Neustart") -> void:
+	if _restarting:
+		return
+	_restarting = true
+	EventBus.save_requested.emit(reason)
 	# Ab M18 läuft der Szenenwechsel über den SceneManager.
 	get_tree().reload_current_scene()
+
+
+# Test-Tasten für den Spielstand (M16), nur im Debug-Build.
+func _handle_save_keys(event: InputEvent) -> void:
+	var state := get_node_or_null("/root/GameState")
+	if event.is_action_pressed("debug_delete_save"):
+		get_viewport().set_input_as_handled()
+		var saves := get_node_or_null("/root/SaveManager")
+		if saves != null:
+			saves.call("delete_save")
+		if state != null:
+			state.call("new_game")
+		_reload_for_new_run()
+	elif event.is_action_pressed("debug_complete_level"):
+		get_viewport().set_input_as_handled()
+		if state != null and state.call("complete_level"):
+			_reload_for_new_run()
+	elif event.is_action_pressed("debug_leave_level"):
+		get_viewport().set_input_as_handled()
+		if state != null and state.call("leave_level"):
+			_reload_for_new_run()
+	elif event.is_action_pressed("debug_quit_game"):
+		get_viewport().set_input_as_handled()
+		# Wie das X am Fenster: Der SaveManager speichert und beendet.
+		get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+		get_tree().quit()
+
+
+# Neuer Lauf in der Kammer: neu laden, ohne zu speichern - GameState hat schon gespeichert.
+func _reload_for_new_run() -> void:
+	if _restarting:
+		return
+	_restarting = true
+	get_tree().reload_current_scene()
+
+
+func _on_save_state_changed() -> void:
+	_report_save_state()
+
+
+# Debug-Zeile "Spielstand": Lauf, Rückkehrpunkt, letzte Speicherung (M16).
+func _report_save_state() -> void:
+	var state := get_node_or_null("/root/GameState")
+	if state == null:
+		EventBus.debug_value_changed.emit("Spielstand", "aus")
+		return
+	var run := String(state.get("current_level"))
+	var text := "kein Lauf"
+	if not run.is_empty():
+		text = "Lauf " + run
+		if state.call("is_level_completed", run):
+			text += " (abgeschlossen)"
+	var respawn: Dictionary = state.call("get_respawn")
+	var anchor := String(respawn.get("anchor", ""))
+	if anchor.is_empty():
+		text += " · Startpunkt"
+	else:
+		text += " · Anker " + anchor
+	var saves := get_node_or_null("/root/SaveManager")
+	if saves == null:
+		text += " · ohne Datei"
+	else:
+		var saved_at := String(saves.get("last_saved_at"))
+		if saved_at.is_empty():
+			text += " · nicht gespeichert"
+		else:
+			text += " · %s %s" % [saved_at.get_slice(" ", 1), String(saves.get("last_reason"))]
+	EventBus.debug_value_changed.emit("Spielstand", text)
 
 
 # Zoom 1 bis 4 durchschalten (M13) - nur zum Ausprobieren, gespeichert wird nichts.

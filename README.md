@@ -15,12 +15,12 @@
 | Ordner | Inhalt |
 | --- | --- |
 | `autoload/` | Globale Dienste: EventBus, Tastenbelegung, Spielstand, Szenenwechsel, Ton |
-| `components/` | Bausteine für alle: Bild, Effekte, Splitter, Leben, Lebensleiste, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion, Beute, Aufsammeln, Ausrüstung, Zustandsautomat, Sehen und Hören, Sprechblase, Blick im Gespräch |
+| `components/` | Bausteine für alle: Bild, Effekte, Splitter, Leben, Lebensleiste, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion, Beute, Aufsammeln, Ausrüstung, Zustandsautomat, Sehen und Hören, Sprechblase, Blick im Gespräch, Spielstand (`persistent/` für Dinge der Welt, `player_progress/` für die Spielfigur) |
 | `entities/` | Figuren und Bewegliches: `player/`, `enemies/` – Grundszene, Gegnertypen (Nahkämpfer, Fernkämpfer), fertige Gegner, Angriffs-Module in `attacks/`, Zustände in `states/` –, `npcs/` – Grundszene und fertige NPCs –, `dummy/`, `projectile/`, `effect/`, `debris/`, `pickup/` |
 | `abilities/` | Fähigkeiten: Schnelligkeit, Unsichtbarkeit, Stun; der Dash ist ein Baustein in `components/dash/` |
 | `items/` | Baupläne für Gegenstände, Geschosse, Ausrüstung und Beute-Listen; die Gegenstände selbst liegen in `data/items/` – Geschosse, Materialien, Schlüssel, Ausrüstung –, die Listen in `data/loot/` |
 | `dialogs/` | Baupläne für Gespräche: Gespräch, Zeile, Antwort, Sprecher und der DialogRunner, der den Weg durch ein Gespräch kennt; die Gespräche selbst liegen in `data/dialogs/` |
-| `world/` | Dinge der Welt: `view/` die Ansicht – Zoom der Welt und die Kachel als Maß –, Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen |
+| `world/` | Dinge der Welt: `view/` die Ansicht – Zoom der Welt und die Kachel als Maß –, Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen, Zeitanker |
 | `levels/` | `test_chamber/`, später die Level und die Zeitkapsel |
 | `ui/` | Oberfläche: `hud/` die Anzeige am Bildrand, `inventory/` das Inventarfenster, `theme/` das Holz-Thema für alle Fenster, `dialog/` das Dialogfenster mit eigenem Thema, `crosshair/`, `debug/` für Entwickler-Anzeigen; später Menüs |
 | `data/` | Werte-Dateien (`.tres`): Balancing, Gegner, Skins, Gegenstände, Effekte, Beute, Gespräche, Oberfläche |
@@ -64,6 +64,18 @@ Sie steht in `autoload/input_setup.gd` und lässt sich dort ändern.
 | F1 | `debug_toggle_overlay` | Debug-Anzeige ein- und ausblenden |
 | F2 | `debug_restart_room` | Raum neu starten |
 | F3 | `debug_cycle_zoom` | in der Testkammer: Zoom der Welt 1 bis 4 durchschalten; der Wert steht in `data/world/view.tres` |
+| F4 | `debug_delete_save` | in der Testkammer, nur im Debug-Build: Spielstand löschen, neu beginnen |
+| Bild auf | `debug_complete_level` | in der Testkammer, nur im Debug-Build: Level abschließen – der Levelstand wird zum Portalstand |
+| Bild ab | `debug_leave_level` | in der Testkammer, nur im Debug-Build: Level verlassen – zurück zum Portalstand |
+| Ende | `debug_quit_game` | in der Testkammer, nur im Debug-Build: Spiel beenden wie mit dem X am Fenster, mit Speichern |
+
+F5 bis F8 sind im Godot-Editor belegt (Starten, Szene starten, Pause, Stopp); läuft das Spiel im Editor eingebettet, kämen sie nicht im Spiel an.
+
+## Spielstand
+
+- Die Datei liegt unter `user://saves/slot_1.json`, unter Windows in `%APPDATA%\Godot\app_userdata\TimeTraveller\saves\`. Sie ist lesbares JSON.
+- Gespeichert wird beim Rasten am Zeitanker, beim Tod, bei F2, beim Abschluss und Verlassen eines Levels und beim Schließen des Fensters. Der Stopp-Knopf des Editors beendet ohne Speichern.
+- Den Fortschritt führt `GameState`, in die Datei schreibt `SaveManager`. Ohne Datei beginnt ein neues Spiel.
 
 ## Regeln
 

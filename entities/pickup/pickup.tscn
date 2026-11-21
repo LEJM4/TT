@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://entities/pickup/pickup.gd" id="1_pickup"]
 [ext_resource type="FontFile" path="res://assets/ninja_adventure/Ui/Font/NormalFont.ttf" id="2_font"]
+[ext_resource type="PackedScene" path="res://components/persistent/persistent.tscn" id="3_persistent"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
 radius = 6.0
@@ -33,3 +34,6 @@ theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 9
 text = "1"
+
+[node name="Persistent" parent="." instance=ExtResource("3_persistent")]
+save_signal = "taken"

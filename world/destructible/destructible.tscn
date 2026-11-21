@@ -11,6 +11,7 @@
 [ext_resource type="Resource" path="res://data/effects/spark.tres" id="9_spark"]
 [ext_resource type="PackedScene" path="res://components/debris_cue/debris_cue.tscn" id="10_debris_cue"]
 [ext_resource type="PackedScene" path="res://components/loot_dropper/loot_dropper.tscn" id="11_loot_dropper"]
+[ext_resource type="PackedScene" path="res://components/persistent/persistent.tscn" id="12_persistent"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(12, 12)
@@ -58,3 +59,5 @@ distance = -6.0
 [node name="Debris" parent="." instance=ExtResource("10_debris_cue")]
 
 [node name="LootDropper" parent="." instance=ExtResource("11_loot_dropper")]
+
+[node name="Persistent" parent="." instance=ExtResource("12_persistent")]

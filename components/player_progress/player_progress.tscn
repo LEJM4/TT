@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://components/player_progress/player_progress.gd" id="1_progress"]
+
+[node name="PlayerProgress" type="Node"]
+script = ExtResource("1_progress")

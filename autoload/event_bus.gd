@@ -67,3 +67,25 @@ signal dialog_line_shown(player_id: int, source_id: int, line: Resource)
 ## falsch: abgebrochen, etwa mit Esc.
 @warning_ignore("unused_signal")
 signal dialog_finished(player_id: int, source_id: int, completed: bool)
+
+## Jemand bittet, den Spielstand in die Datei zu schreiben (M16), etwa der
+## Zeitanker beim Rasten oder das Level beim Tod. reason nennt den Anlass, etwa
+## "Rasten". Der SaveManager schreibt; ohne ihn geschieht nichts.
+@warning_ignore("unused_signal")
+signal save_requested(reason: String)
+
+## Der Spielstand steht jetzt in der Datei (M16); reason wie bei save_requested.
+@warning_ignore("unused_signal")
+signal game_saved(reason: String)
+
+## Der Rückkehrpunkt hat sich geändert (M16): Hier erwacht die Figur nach dem Tod
+## und beim nächsten Start. anchor_id ist die Kennung des Zeitankers im Level
+## level_id; leer heißt: der Landepunkt des Levels.
+@warning_ignore("unused_signal")
+signal respawn_changed(level_id: String, anchor_id: String)
+
+## Ein Lauf durch ein Level hat sich geändert (M16). event ist "begin" (begonnen),
+## "complete" (abgeschlossen), "leave" (verlassen), "load" (aus der Datei geladen)
+## oder "new_game" (neues Spiel, level_id leer).
+@warning_ignore("unused_signal")
+signal level_run_changed(level_id: String, event: String)

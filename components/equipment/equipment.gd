@@ -13,6 +13,8 @@ extends Node
 ## den Werten der Waffe, ohne Waffe mit seinen eigenen; RangedAttack bekommt den
 ## Schadens-Bonus, Health Rüstung und mehr Leben. Fehlt ein Geschwister, wirkt
 ## nur dieser Teil nicht.
+## Für den Spielstand (M16) liefert get_saved_state() das Angelegte als einfache
+## Werte, apply_saved_state() legt es wieder an; das macht PlayerProgress.
 ##
 ## Abschalten: Knoten löschen - die Figur kämpft mit ihren Grundwerten, und
 ## Ausrüstung bleibt im Inventar liegen.
@@ -73,6 +75,45 @@ func unequip(slot: int) -> bool:
 	_apply()
 	changed.emit(slot, null)
 	return true
+
+
+## Das Angelegte für den Spielstand (M16): je Platz ("weapon", "ranged", "armor",
+## "charm") der Pfad der Werte-Datei, etwa {"weapon": "res://data/items/katana.tres"}.
+func get_saved_state() -> Dictionary:
+	var data := {}
+	for value in _items.values():
+		var item := value as EquipmentData
+		if item == null:
+			continue
+		if not item.resource_path.begins_with("res://") or item.resource_path.contains("::"):
+			push_warning("Equipment: %s hat keine eigene Datei und wird nicht gespeichert." % item.display_name)
+			continue
+		data[_slot_key(item.slot)] = item.resource_path
+	return data
+
+
+## Legt an, was im Spielstand steht (M16); Plätze ohne Eintrag sind danach leer.
+## Was angelegt wird, kommt nicht aus dem Inventar - das stellt der Spielstand eigens her.
+func apply_saved_state(data: Dictionary) -> void:
+	_items.clear()
+	for key in data:
+		var path: Variant = data[key]
+		var item := ItemData.load_from_path(path if path is String else "") as EquipmentData
+		if item == null:
+			push_warning("Equipment: Gegenstand %s aus dem Spielstand fehlt." % str(path))
+			continue
+		_items[item.slot] = item
+	_apply()
+	for slot in EquipmentData.Slot.values():
+		changed.emit(slot, get_item(slot))
+
+
+# Name eines Platzes im Spielstand, etwa "weapon".
+func _slot_key(slot: int) -> String:
+	var names := EquipmentData.Slot.keys()
+	if slot < 0 or slot >= names.size():
+		return str(slot)
+	return String(names[slot]).to_lower()
 
 
 # Gibt die Werte alles Angelegten an die Geschwister weiter.

@@ -24,6 +24,14 @@ const CATEGORY_NAMES: Array[String] = ["Waffen", "Rüstung", "Verbrauchbares", "
 @export_range(1, 999) var max_stack := 1
 
 
+## Lädt einen Gegenstand aus seiner Werte-Datei, etwa für den Spielstand (M16).
+## Liefert null, wenn der Pfad nicht im Projekt liegt, fehlt oder kein Gegenstand ist.
+static func load_from_path(path: String) -> ItemData:
+	if not path.begins_with("res://") or not ResourceLoader.exists(path):
+		return null
+	return load(path) as ItemData
+
+
 ## Ist das derselbe Gegenstand wie other? Gleich ist er bei gleicher id oder als dieselbe Datei.
 func is_same_item(other: ItemData) -> bool:
 	if other == null:

@@ -11,6 +11,8 @@ extends Node
 ## Neues füllt zuerst angefangene Stapel derselben Sorte, dann freie Plätze.
 ## Entnommen wird vom hintersten Stapel; ein geleerter Platz wird frei.
 ## Wer den Inhalt zeigen will, liest get_slots() und hört auf changed.
+## Für den Spielstand (M16) liefert get_saved_state() den Inhalt als einfache
+## Werte, apply_saved_state() stellt ihn wieder her; das macht PlayerProgress.
 ##
 ## Abschalten: Knoten löschen - die Figur trägt dann nichts bei sich.
 
@@ -134,6 +136,53 @@ func get_used_slots() -> int:
 	return used
 
 
+## Der Inhalt für den Spielstand (M16): je belegtem Platz {"slot", "item", "count"},
+## der Gegenstand als Pfad seiner Werte-Datei, etwa "res://data/items/arrow.tres".
+func get_saved_state() -> Array:
+	var data := []
+	for index in _items.size():
+		var item := _items[index]
+		if item == null or _counts[index] <= 0:
+			continue
+		if not item.resource_path.begins_with("res://") or item.resource_path.contains("::"):
+			push_warning("Inventory: %s hat keine eigene Datei und wird nicht gespeichert." % item.display_name)
+			continue
+		data.append({"slot": index, "item": item.resource_path, "count": _counts[index]})
+	return data
+
+
+## Ersetzt den Inhalt durch den aus dem Spielstand (M16). Was nicht mehr auf
+## seinen Platz passt, kommt wie mit add() hinein; unbekannte Gegenstände entfallen.
+func apply_saved_state(data: Array) -> void:
+	for index in _items.size():
+		_items[index] = null
+		_counts[index] = 0
+	var rest: Array[Dictionary] = []
+	for entry in data:
+		if not entry is Dictionary:
+			continue
+		var item := ItemData.load_from_path(_text((entry as Dictionary).get("item")))
+		var amount := _number((entry as Dictionary).get("count"))
+		if item == null:
+			push_warning("Inventory: Gegenstand %s aus dem Spielstand fehlt." % str((entry as Dictionary).get("item")))
+			continue
+		if amount <= 0:
+			continue
+		var slot := _number((entry as Dictionary).get("slot"), -1)
+		if slot >= 0 and slot < _items.size() and _items[slot] == null:
+			var placed := mini(amount, maxi(item.max_stack, 1))
+			_items[slot] = item
+			_counts[slot] = placed
+			amount -= placed
+		if amount > 0:
+			rest.append({"item": item, "amount": amount})
+	for leftover in rest:
+		var lost := _put(leftover["item"], leftover["amount"])
+		if lost > 0:
+			push_warning("Inventory: Für %d × %s aus dem Spielstand ist kein Platz mehr." % [lost, (leftover["item"] as ItemData).display_name])
+	changed.emit()
+
+
 func _holds(index: int, item: ItemData) -> bool:
 	var slot_item := _items[index]
 	return slot_item != null and slot_item.is_same_item(item)
@@ -165,3 +214,17 @@ func _put(item: ItemData, amount: int) -> int:
 		_counts[index] = moved
 		left -= moved
 	return left
+
+
+# Ganze Zahl aus einem Wert des Spielstands; alles andere ergibt fallback.
+func _number(value: Variant, fallback := 0) -> int:
+	if value is int or value is float:
+		return int(value)
+	return fallback
+
+
+# Text aus einem Wert des Spielstands; alles andere wird leer.
+func _text(value: Variant) -> String:
+	if value is String or value is StringName:
+		return String(value)
+	return ""

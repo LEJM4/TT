@@ -10,8 +10,13 @@ extends Area2D
 ## Das Bild ist das Symbol des Gegenstands (Kind "Icon"), bei mehr als einem
 ## Stück mit Zahl (Kind "Icon/Count"); darunter ein kleiner Schatten.
 ## Er liegt auf der Ebene "pickup". Von Hand ins Level gelegt, liegt er gleich
-## bereit - dann im Inspektor item und amount wählen.
+## bereit - dann im Inspektor item und amount wählen. Was von einem solchen
+## Pickup schon aufgesammelt ist, merkt sich sein Kind "Persistent" im
+## Spielstand (M16); Beute aus dem LootSpawner merkt es sich nicht - sie ist
+## nach Tod, Neustart und Laden weg.
 
+## Es wurde etwas weggenommen; amount_left ist, was noch liegt (M16).
+signal taken(amount_left: int)
 ## Der Pickup ist leer und verschwindet.
 signal emptied
 
@@ -77,12 +82,31 @@ func can_collect() -> bool:
 func take(count: int) -> void:
 	if count <= 0:
 		return
-	amount -= count
+	amount = maxi(amount - count, 0)
+	taken.emit(amount)
 	if amount > 0:
 		_show_item()
 		return
-	amount = 0
 	emptied.emit()
+	queue_free()
+
+
+## Zustand für den Spielstand (M16): wie viele noch liegen.
+func get_saved_state() -> Dictionary:
+	return {"amount": amount}
+
+
+## Stellt den Zustand aus dem Spielstand her (M16): Liegt nichts mehr da, verschwindet er.
+func apply_saved_state(data: Dictionary) -> void:
+	var left: Variant = data.get("amount")
+	if not (left is int or left is float):
+		return
+	amount = maxi(int(left), 0)
+	if amount > 0:
+		_show_item()
+		return
+	visible = false
+	set_deferred("monitorable", false)
 	queue_free()
 
 

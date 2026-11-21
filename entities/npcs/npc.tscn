@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" path="res://components/character_view/character_view.tscn" id="3_character_view"]
 [ext_resource type="PackedScene" path="res://components/interactable/interactable.tscn" id="4_interactable"]
 [ext_resource type="PackedScene" path="res://components/talk_bubble/talk_bubble.tscn" id="5_bubble"]
+[ext_resource type="PackedScene" path="res://components/persistent/persistent.tscn" id="6_persistent"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(12, 12)
@@ -33,3 +34,6 @@ shape = SubResource("CircleShape2D_reach")
 [node name="TalkBubble" parent="." instance=ExtResource("5_bubble")]
 visible = false
 position = Vector2(0, -19)
+
+[node name="Persistent" parent="." instance=ExtResource("6_persistent")]
+save_signal = "progress_changed"

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" path="res://components/prop_view/prop_view.tscn" id="3_prop_view"]
 [ext_resource type="Resource" path="res://data/skins/door_wood.tres" id="4_skin"]
 [ext_resource type="PackedScene" path="res://components/interactable/interactable.tscn" id="5_interactable"]
+[ext_resource type="PackedScene" path="res://components/persistent/persistent.tscn" id="6_persistent"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
 size = Vector2(16, 16)
@@ -40,3 +41,5 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorwaySensor"]
 shape = SubResource("RectangleShape2D_doorway")
+
+[node name="Persistent" parent="." instance=ExtResource("6_persistent")]
