@@ -47,3 +47,23 @@ signal loot_requested(item: Resource, amount: int, origin: Vector2)
 ## Solange es offen ist, nimmt die Figur keine Eingaben an; die Welt läuft weiter.
 @warning_ignore("unused_signal")
 signal menu_changed(player_id: int, is_open: bool)
+
+## Ein NPC möchte mit einer Spielfigur sprechen: Ihr Dialogfenster soll das
+## Gespräch zeigen (M15). dialog ist das Gespräch (DialogData), source_id die
+## Instanz-Kennung des NPC. Ist das Fenster belegt, bleibt die Bitte ohne Antwort.
+@warning_ignore("unused_signal")
+signal dialog_requested(player_id: int, dialog: Resource, source_id: int)
+
+## Ein Gespräch hat begonnen: Das Dialogfenster der Figur zeigt es jetzt (M15).
+@warning_ignore("unused_signal")
+signal dialog_started(player_id: int, source_id: int)
+
+## Das Dialogfenster zeigt eine neue Zeile (M15); line ist die Zeile (DialogLine).
+## Der NPC mit source_id entscheidet daran, ob er etwas gibt.
+@warning_ignore("unused_signal")
+signal dialog_line_shown(player_id: int, source_id: int, line: Resource)
+
+## Ein Gespräch ist vorbei (M15). completed heißt: bis zum Ende gelaufen;
+## falsch: abgebrochen, etwa mit Esc.
+@warning_ignore("unused_signal")
+signal dialog_finished(player_id: int, source_id: int, completed: bool)

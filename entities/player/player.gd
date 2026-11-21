@@ -1,10 +1,12 @@
 extends CharacterBody2D
-## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten, A1: Bild, M11a: Inventar, M8: Interaktion, M9: Aufsammeln, M11: Ausrüstung, M13: Schleichen für Gegner).
+## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten, A1: Bild, M11a: Inventar, M8: Interaktion, M9: Aufsammeln, M11: Ausrüstung, M13: Schleichen für Gegner, M15: Blick im Gespräch).
 ##
 ## Die Figur führt nur Absichten aus. Woher sie kommen, bestimmt das Kind
 ## "PlayerInput" (ein IntentSource): Tasten, später Gamepad oder Netz.
 ## Sie blickt in die Zielrichtung und schlägt dorthin; laufen kann sie dabei
-## weiter. Geworfen wird ebenfalls in Zielrichtung: das gewählte Geschoss aus
+## weiter. Hat sie ein Blickziel (look_target), blickt sie stattdessen dorthin -
+## im Gespräch zum NPC, gesetzt vom Kind TalkFacing (M15). Geworfen wird
+## ebenfalls in Zielrichtung: das gewählte Geschoss aus
 ## dem Inventar, jeder Wurf nimmt eins heraus; das Mausrad wechselt das
 ## Geschoss (M11a). Der Dash geht in Laufrichtung, im Stehen in Blickrichtung; solange
 ## er läuft, lenkt die Figur nicht und beginnt weder Hieb noch Schuss.
@@ -35,6 +37,7 @@ extends CharacterBody2D
 ##   Energy        Energie      - ohne: Fähigkeiten kosten nichts.
 ##   Interactor    Interaktion  - ohne: Sie bedient nichts mit E (M8).
 ##   Collector     Aufsammeln   - ohne: Sie läuft über Beute hinweg (M9).
+##   TalkFacing    Blick im Gespräch - ohne: Sie behält im Gespräch ihre Blickrichtung (M15).
 ##   Equipment     Ausrüstung   - ohne: Sie kämpft mit ihren Grundwerten (M11).
 ##
 ## Stirbt die Figur, bleibt sie stehen und meldet es über den EventBus
@@ -71,6 +74,9 @@ var facing := Vector2.DOWN
 var is_dead := false
 ## Faktor auf das Lauftempo; die Fähigkeit Schnelligkeit ändert ihn (M7).
 var speed_factor := 1.0
+## Blickziel: Ist es gesetzt, blickt die Figur dorthin statt in die Zielrichtung -
+## etwa im Gespräch zum NPC, gesetzt von TalkFacing (M15). null: die Zielrichtung.
+var look_target: Node2D
 
 @onready var _intent := get_node_or_null("PlayerInput") as IntentSource
 @onready var _stamina := get_node_or_null("Stamina") as Stamina
@@ -106,6 +112,7 @@ func _physics_process(delta: float) -> void:
 	var wanted_ability := -1
 	var wanted_ammo_cycle := 0
 	var wants_interact := false
+	var look := facing
 	if _intent != null:
 		direction = _intent.move_direction.limit_length(1.0)
 		wants_sprint = _intent.wants_sprint
@@ -116,7 +123,11 @@ func _physics_process(delta: float) -> void:
 		wanted_ability = _intent.wants_ability
 		wanted_ammo_cycle = _intent.wants_ammo_cycle
 		wants_interact = _intent.wants_interact
-		_face(_intent.aim_direction)
+		look = _intent.aim_direction
+	# Mit Blickziel, etwa dem NPC im Gespräch, blickt die Figur dorthin (M15).
+	if is_instance_valid(look_target):
+		look = look_target.global_position - global_position
+	_face(look)
 
 	_handle_dash_wish(direction, wants_dash)
 	if _dash != null and _dash.is_dashing:

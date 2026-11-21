@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://components/talk_bubble/talk_bubble.gd" id="1_bubble"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Dialog/DialogInfo.png" id="2_texture"]
+
+[node name="TalkBubble" type="Sprite2D"]
+z_index = 40
+texture = ExtResource("2_texture")
+hframes = 4
+frame = 3
+script = ExtResource("1_bubble")

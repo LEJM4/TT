@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogSettings" format=3]
+
+[ext_resource type="Script" path="res://ui/dialog/dialog_settings.gd" id="1_settings"]
+
+[resource]
+script = ExtResource("1_settings")
+characters_per_second = 40.0
+arrow_bob_rate = 2.0

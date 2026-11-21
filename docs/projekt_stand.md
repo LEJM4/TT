@@ -11,11 +11,11 @@ Er ist eine Richtlinie, kein Zwang. Was vorgezogen oder eingeschoben wird, steht
 
 | | |
 | --- | --- |
-| Stand vom | 18.11.2026 |
-| In Arbeit | M15 – NPCs & Dialog: Vorschlag im Plan-Dokument unter Phase 3, vorgelegt am 18.11.2026; gebaut wird nach „weiter“ oder mit den Änderungen des Nutzers |
-| Als Nächstes | M15 – NPCs & Dialog bauen, sobald der Nutzer den Vorschlag bestätigt. Vorher lädt er M14 mit dieser Stand-Datei aus `m14_abschluss.zip` hoch und löscht `components/windup_flash`. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
+| Stand vom | 21.11.2026 |
+| In Arbeit | M15 – NPCs & Dialog: am 21.11.2026 mit drei Änderungen des Nutzers bestätigt und gebaut (`m15_npcs_dialog.zip`); Test am selben Tag bestanden bis auf einen Wunsch – die Spielfigur soll sich im Gespräch zum NPC drehen. Nachgebessert als `m15_nachbesserung.zip`; deren Test steht aus |
+| Als Nächstes | Der Nutzer spielt `m15_nachbesserung.zip` ein (Godot vorher schließen) und prüft die Drehung der Figur. Danach schließt Claude M15 ab, und der Nutzer lädt M15 hoch – ohne den Ordner `components/windup_flash`, der noch im Repo liegt. Mit dem Abschluss ist Phase 3 fertig; Claude schlägt dann laut Fahrplan M16 – Speichern & Laden vor. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
 | Zuletzt abgeschlossen | M14 – Gegnertypen, am 18.11.2026: Test bestanden („Passt alles“). Davor am 18.11.2026 M13 – Erster Gegner nach einer Nachbesserung und M12 – HUD, damit war Phase 2 fertig; am 17.11.2026 M11 – Inventar & Ausrüstung, M10 – Truhen & Beute, M9 – Zerstörbares, M8 – Interaktion, A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
-| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 18.11.2026 zu Beginn des neuen Chats: Commit `886f6f9` „m13 upades“ mit M13 samt Nachbesserung und der Stand-Datei aus `m13_abschluss.zip`. Noch im Repo liegt der Ordner `components/windup_flash` aus der ersten Fassung von M13; nichts benutzt ihn, der Nutzer löscht ihn beim Einspielen von M14. Davor `19e426c` mit M12, `1b7abfc` mit M9 bis M11, `e615355` mit M8, `e7909b2` mit A2, `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4`. M14 baut auf `886f6f9` auf. Nach dem Test von M14 noch einmal gelesen: weiter `886f6f9`, M14 ist noch nicht hochgeladen |
+| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 21.11.2026 vor dem Bau von M15: Commit `d09ce9a` „m14 simple npc“ mit M14 und der Stand-Datei aus `m14_abschluss.zip`, alles wie geliefert, dazu die `.uid`-Dateien. Noch im Repo liegt der Ordner `components/windup_flash` aus der ersten Fassung von M13; nichts benutzt ihn, der Nutzer löscht ihn beim Einspielen von M15. M15 baut auf `d09ce9a` auf. Davor `886f6f9` mit M13, `19e426c` mit M12, `1b7abfc` mit M9 bis M11, `e615355` mit M8, `e7909b2` mit A2, `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4` |
 
 ## Neuer Chat und Arbeitsweise
 
@@ -78,7 +78,7 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | | M12 HUD | fertig am 18.11.2026 – damit ist Phase 2 fertig |
 | 3 – Gegner & NPCs | M13 Erster Gegner | fertig am 18.11.2026 – nach einer Nachbesserung am selben Tag |
 | | M14 Gegnertypen | fertig am 18.11.2026 – Nahkämpfer und Fernkämpfer als Baukasten für viele weitere Typen |
-| | M15 NPCs & Dialog | als Nächstes – Vorschlag im Plan-Dokument, vorgelegt am 18.11.2026 |
+| | M15 NPCs & Dialog | im Test – vorgeschlagen am 18.11.2026, am 21.11.2026 mit drei Änderungen des Nutzers bestätigt und gebaut; Test bestanden bis auf die Drehung der Spielfigur, nachgebessert am selben Tag |
 | 4 – Spielrahmen | M16 Speichern & Laden | offen |
 | | M17 Missionen | offen |
 | | M18 Räume & Levelwechsel | offen |
@@ -98,10 +98,10 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | A2 Kampf-Bilder | Hieb-Effekt, Effekte für Treffer, Tod und Stun; Baustein `EffectCue`; Pixel-Schrift für Schadenszahlen. Die Bilder der Geschosse kamen mit M11a. | vor Phase 2, nach M11a | fertig am 17.11.2026 |
 | A3 Ton | `AudioManager` füllen, Baustein `SoundCue`, Ton-Tabelle als Werte-Datei, Musik in der Testkammer | fast am Ende des Projekts, mit Phase 7 – Feinschliff; am 17.11.2026 auf Wunsch des Nutzers verschoben | offen |
 | A4 Kacheln & Räume | Kachel-Sets mit Kollision, Testkammer mit Kacheln, Anleitung zum Malen im Editor | mit M8, spätestens vor Level 1 | offen |
-| A5 Oberfläche | Schrift und Thema, Herzen, Leisten, Fähigkeits- und Tastensymbole, Dialogfeld | mit M11, M12, M15 und M20 | in Arbeit – mit M11 das Holz-Thema für Fenster, mit M12 Herzen, Energie-Kugel, Ausdauer-Leiste, Fähigkeits- und Tastensymbole; es fehlen Dialogfeld (M15) und Menüs (M20) |
-| A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | in Arbeit – mit M13 der Höhlenmensch `Caveman2` als erster Gegner, mit M14 die Steinwerferin `Cavegirl` und ihr Stein aus `FX/Particle/Rock.png` |
+| A5 Oberfläche | Schrift und Thema, Herzen, Leisten, Fähigkeits- und Tastensymbole, Dialogfeld | mit M11, M12, M15 und M20 | in Arbeit – mit M11 das Holz-Thema für Fenster, mit M12 Herzen, Energie-Kugel, Ausdauer-Leiste, Fähigkeits- und Tastensymbole, mit M15 das Dialogfeld; es fehlen die Menüs (M20) |
+| A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | in Arbeit – mit M13 der Höhlenmensch `Caveman2` als erster Gegner, mit M14 die Steinwerferin `Cavegirl` und ihr Stein aus `FX/Particle/Rock.png`, mit M15 die NPCs `Shaman` und `CaveLion` mit Porträt |
 
-Ab A1 bringt jedes neue Modul sein Bild gleich mit: M8 aus `TilesetDungeon`, `TilesetHouse` und `TilesetElement`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`, M11 aus `Ui/Theme/Theme Wood` und `Items/Weapons`, M12 aus `Ui/Receptacle`, `Ui/Skill Icon` und `Ui/Input/Keyboard`, M13 aus `Actor/Character/Caveman2`, `Ui/Emote` und `FX/Attack/Claw`, M14 aus `Actor/Character/Cavegirl` und `FX/Particle/Rock.png`. Den Ton bekommen alle Module erst mit A3, fast am Ende des Projekts.
+Ab A1 bringt jedes neue Modul sein Bild gleich mit: M8 aus `TilesetDungeon`, `TilesetHouse` und `TilesetElement`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`, M11 aus `Ui/Theme/Theme Wood` und `Items/Weapons`, M12 aus `Ui/Receptacle`, `Ui/Skill Icon` und `Ui/Input/Keyboard`, M13 aus `Actor/Character/Caveman2`, `Ui/Emote` und `FX/Attack/Claw`, M14 aus `Actor/Character/Cavegirl` und `FX/Particle/Rock.png`, M15 aus `Actor/Character/Shaman`, `Actor/Character/CaveLion`, `Ui/Dialog`, `Ui/Arrow.png` und `Ui/Input/Keyboard`. Den Ton bekommen alle Module erst mit A3, fast am Ende des Projekts.
 
 **Gates**
 
@@ -127,6 +127,8 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | 18.11.2026 | Wunsch des Nutzers: Nach M13 – Erster Gegner wechselt er in einen neuen Chat. Claude liefert nach dem Test von M13 alles dafür und sagt, was im neuen Chat einzufügen ist. | vorbereitet am 18.11.2026 nach dem bestandenen Test: Stand-Datei, Plan-Dokument und erste Nachricht für den neuen Chat stehen bereit |
 | 18.11.2026 | Wunsch des Nutzers nach dem ersten Test von M13: Sprites global größer („4x“); Fokus- und Angriffsabstand der Nahkämpfer in logischen Einheiten statt fester Pixel, fair und nicht einfach mit dem Faktor multipliziert; Schlag sofort mit dem ersten Bild der Hieb-Animation, weil sie nur ein Bild ohne Ausholen hat; kein rotes Blinken beim Angriff des Höhlenmenschen. Claude hat das als Nachbesserung von M13 gebaut – Zoom 2 statt 4, Begründung unter „Weltskalierung“. | eingebaut am 18.11.2026 als `m13_nachbesserung.zip`; Test bestanden („Alles passt“) |
 | 18.11.2026 | Neuer Chat. Wunsch des Nutzers: gleich mit M14 beginnen, als Gegnertypen erst Nahkampf und Fernkampf; später kommen viele weitere dazu, deshalb so modular und einfach erweiterbar wie möglich. Claude hat M14 ohne vorherigen Vorschlag gebaut; die Entscheidungen stehen unter „Festlegungen“ und im Plan-Dokument. Dafür ist die Grundszene der Gegner einmal umgebaut: Den Angriff bringt jetzt der Gegnertyp mit, nicht mehr die Grundszene. | gebaut am 18.11.2026 als `m14_gegnertypen.zip`; Test bestanden („Passt alles“) |
+| 21.11.2026 | Der Nutzer bestätigt den Vorschlag zu M15 mit drei Änderungen: Antworten wählt man nur mit 1 bis 3 oder mit der Maus, nicht mit W/S und E; eine Belohnung gibt es nur bei ausgewählten NPCs, die Beute springt dann vor der Figur auf den Boden; manche NPCs geben nur Auskunft – der Spieler antwortet nicht, der NPC sagt etwas, dann ist das Gespräch zu Ende. Claude hat M15 so gebaut, mit dem Jäger als zweitem NPC, der nur Auskunft gibt. Belohnung und „erledigt“ hängen deshalb an einzelnen Zeilen eines Gesprächs: Der Schamane sagt seinen kurzen Satz erst, nachdem er die Pfeile gegeben hat, nicht schon nach dem Abschied. | gebaut am 21.11.2026 als `m15_npcs_dialog.zip`; Test bestanden („der Rest klappt“) |
+| 21.11.2026 | Wunsch des Nutzers nach dem Test von M15: „wenn die beiden miteinander sprechen, dann dreht sich auch der Spieler selbst zu dem, zu dem er spricht“ – der Rest klappt. Claude hat das als Nachbesserung gebaut: Die Spielfigur hat ein Blickziel `look_target`; der neue Baustein `TalkFacing` an der Figur setzt es im Gespräch auf den Sprecher und nimmt es danach wieder weg. | gebaut am 21.11.2026 als `m15_nachbesserung.zip`; Test steht aus |
 
 ## Festlegungen
 
@@ -182,10 +184,48 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Erster Gegner | Ein Höhlenmensch (`Caveman2`) mit 30 Leben patrouilliert mit 30 Pixeln pro Sekunde zwischen zwei Punkten und wartet an jedem Ende 1 s. Er sieht 6 Kacheln nach vorn in einem Kegel von 100°, nicht durch Wände; läuft eine Figur, hört er sie im Umkreis von 2,5 Kacheln auch von hinten. Schleicht sie (Strg gehalten, auch im Stehen), sieht er sie nur halb so weit und hört sie nicht; unsichtbar oder tot bemerkt er sie gar nicht. Bemerken kann er sie nur, wenn er auf ihrem Bild steht, mindestens 1 Kachel vom Rand. Bemerkt er sie, bleibt er 0,4 s stehen – über ihm ein rotes „!“ –, dann verfolgt er sie mit 60 Pixeln pro Sekunde; als Verfolger sieht er rundum bis 10 Kacheln. Steht sie in der Reichweite seiner Faust (18 Pixel), schlägt er sofort zu – Faust-Bild, Krallen und Treffer im selben Moment, ohne Ausholen und ohne Blinken –: 10 Schaden; danach 0,6 s Pause, frühestens nach 0,8 s der nächste Schlag. Verliert er die Figur 1,5 s lang oder wird sie unsichtbar, geht er zur letzten Stelle – über ihm ein „?“ –, schaut sich 3 s um und kehrt zurück. Stun hält ihn an. Treffer, bevor er die Figur bemerkt hat, zählen doppelt; danach dreht er sich zum Angreifer. Lebensleiste ab dem ersten Treffer; beim Tod Rauch, Beute (3 Pfeile, mit 50 % 2 Shuriken), nach 1 s verschwindet er | von Claude vorgeschlagen; vom Nutzer am 18.11.2026 mit „weiter“ bestätigt; nach dem ersten Test am 18.11.2026 auf seinen Wunsch geändert: Abstände in Kacheln mit fairer Grenze, Schlag ohne Ausholen, kein rotes Blinken. Nach dem Test am 18.11.2026 mit „Alles passt“ bestätigt; seit M14 der erste Nahkämpfer, Verhalten unverändert |
 | Gegnertypen | Baukasten in drei Stufen geerbter Szenen: Die Grundszene `enemy.tscn` hat alles außer dem Angriff. Ein Gegnertyp bringt Waffe und Angriffs-Modul mit – `melee_enemy.tscn` (Nahkämpfer), `ranged_enemy.tscn` (Fernkämpfer). Ein fertiger Gegner erbt von seinem Typ und bringt Skin, Werte und Beute mit. Angriffs-Module (`EnemyAttack`) hängen unter `Attacks`: Der erste bestimmt, auf welchen Abstand der Gegner geht; eingesetzt wird der erste, der gerade passt. Ein Gegner kann mehrere haben. Neue Typen kommen als neue Dateien dazu, ohne bestehenden Code zu ändern | Wunsch des Nutzers am 18.11.2026: erst Nahkampf und Fernkampf, später viele mehr, so modular wie möglich; den Aufbau hat Claude gewählt; nach dem Test am 18.11.2026 mit „Passt alles“ bestätigt |
 | Fernkämpfer | Eine Steinwerferin (`Cavegirl`, grünes Haar) mit 20 Leben patrouilliert mit 30 Pixeln pro Sekunde. Sie sieht 7 Kacheln weit in einem Kegel von 90°; Hören, Schleichen, Unsichtbarkeit und faire Grenze wie beim Höhlenmenschen. Bemerkt sie die Figur – „!“, 0,4 s –, geht sie mit 50 Pixeln pro Sekunde bis auf 5 Kacheln heran und wirft, sobald nichts dazwischen ist: ein Stein, 10 Schaden, Tempo 120, höchstens 7 Kacheln Flug; er trifft nur Spielfiguren und endet an Wänden und Blöcken. Danach steht sie 0,3 s, frühestens nach 1,8 s kommt der nächste Wurf. Ist die Figur näher als 2,5 Kacheln, weicht sie mit 45 Pixeln pro Sekunde zurück und blickt sie dabei an; ist sie bereit, wirft sie auch aus der Nähe. Dazwischen wartet sie. Suchen, Rückweg, Überraschung, Stun, Lebensleiste und Tod wie beim Höhlenmenschen; Beute: 2 Steine, mit 50 % 3 Pfeile | von Claude gewählt am 18.11.2026 mit M14; nach dem Test am 18.11.2026 mit „Passt alles“ bestätigt |
+| NPCs | Feste Figuren, die nicht kämpfen: ein Körper wie ein Block – man läuft nicht hindurch, Geschosse enden an ihnen, verletzen lassen sie sich nicht. Kommt die Figur nah, erscheint wie bei Türen die Taste E über ihrem Kopf; E beginnt das Gespräch, der NPC dreht sich zur Figur. Solange er etwas Neues zu sagen hat, wippt über ihm eine Sprechblase mit ein, zwei, drei Punkten. In der Testkammer: der Schamane (`Shaman`) rechts neben den Startpunkten mit Frage, drei Antworten und einmal 5 Pfeilen; der Jäger (`CaveLion`) links daneben gibt nur Auskunft. Gemerkt wird bis zum Neustart des Raums, dauerhaft ab M16 | vorgeschlagen am 18.11.2026; vom Nutzer am 21.11.2026 bestätigt mit den Änderungen: Belohnung nur bei ausgewählten NPCs, manche NPCs geben nur Auskunft. Den Jäger hat Claude dafür ergänzt. Nach dem Test am 21.11.2026 bestätigt („der Rest klappt“) |
+| Dialog | Fenster unten in der Mitte, 300 × 58 Pixel aus `Ui/Dialog/`: im Reiter der Name, links das Porträt, rechts bis zu drei Zeilen Text in `NormalFont` mit 3 Pixeln mehr Wortabstand. Der Text erscheint mit 40 Buchstaben je Sekunde; E, Leertaste oder Linksklick zeigt ihn ganz, noch einmal geht es weiter – darauf wartet unten rechts ein wippender Pfeil. Bei einer Frage stehen bis zu drei Antworten in Kästchen über dem Fenster, rechts bündig, mit der Taste 1, 2 oder 3 davor; gewählt wird mit 1 bis 3 oder mit der Maus, die Maus über einem Kästchen zeigt einen Rahmen. Jede Antwort führt an eine eigene Stelle. Ohne Antworten spricht nur der NPC; nach der letzten Zeile ist das Gespräch zu Ende. Esc bricht ab. Solange das Fenster offen ist, steht die Figur still und greift nicht an, Tab öffnet kein Inventar; die Welt läuft weiter. NPC und Spielfigur sehen sich an, solange sie sprechen; danach blickt die Figur wieder zur Maus. Nach dem Schließen greift die Figur erst nach dem Loslassen der Maustaste an | vorgeschlagen am 18.11.2026; vom Nutzer am 21.11.2026 bestätigt mit der Änderung: Antworten nur mit 1 bis 3 oder der Maus. Pfeil und Rahmen hat Claude beim Bauen ergänzt. Nach dem Test am 21.11.2026 bestätigt („der Rest klappt“), mit dem Wunsch, dass sich auch die Spielfigur zum NPC dreht – nachgebessert, Test steht aus |
+| Belohnung | Nur ausgewählte NPCs geben etwas: In ihrem Gespräch hat eine Zeile eine Beute-Liste. Erscheint die Zeile, würfelt der NPC die Liste, und die Beute springt vor der Figur auf den Boden – wie aus einer Truhe; aufgesammelt wird sie wie jede Beute. Jede solche Zeile gibt einmal je NPC, bis der Raum neu lädt. Eine Zeile kann den NPC auch als erledigt markieren: Dann verschwindet seine Sprechblase, und er spricht beim nächsten Mal sein kurzes Gespräch. Beim Schamanen sitzt beides an der Zeile mit den Pfeilen | Wunsch des Nutzers am 21.11.2026: „Nur bei ausgewählten NPC führt ein Dialog zu einer Belohnung. Die Beute springt dann vor mir auf den Boden.“ Die Umsetzung hat Claude gewählt; nach dem Test am 21.11.2026 bestätigt |
+| Gespräche als Daten | Ein Gespräch ist eine Werte-Datei in `data/dialogs/`: Zeilen nacheinander, jede mit Text, auf Wunsch eigenem Sprecher, bis zu drei Antworten, Sprungziel, Beute und dem Haken „erledigt“. Sprünge gehen über den Namen einer Zeile; `end` beendet das Gespräch. Sprecher – Name und Porträt – stehen in eigenen Dateien in `data/dialogs/speakers/`. Neue Gespräche entstehen im Inspektor, ohne Code; Fehler wie ein Sprung ins Leere stehen beim Start des Gesprächs im Ausgabefenster | vorgeschlagen am 18.11.2026; vom Nutzer am 21.11.2026 bestätigt; nach dem Test am selben Tag bestätigt |
 
 Noch offen, jeweils fällig vor dem genannten Schritt: Zauber (vorläufig gewählt, siehe oben), Tod & Speichern endgültig (M16), Story (Phase 5), Anzahl Level (Phase 6).
 
 ## Prüfungen
+
+**M15 – NPCs & Dialog**
+
+- Geliefert am 21.11.2026 als `m15_npcs_dialog.zip`. Getestet hat der Nutzer am selben Tag in Godot. Rückmeldung: „der Rest klappt“ – die 13 Punkte der Prüfliste gelten als bestanden. Dazu ein Wunsch: Im Gespräch dreht sich auch die Spielfigur zu dem, mit dem sie spricht. Nachgebessert als `m15_nachbesserung.zip`; deren Test steht aus.
+- Die Nachbesserung hat Claude am Text geprüft wie M15, Grundlage war die eigene Lieferung `m15_npcs_dialog.zip` über Commit `d09ce9a`. Nachgerechnet: Die Figur rechnet ihren Blick in jedem Physik-Schritt einmal – aus der Zielrichtung oder, mit Blickziel, zum Sprecher –; ihr `CharacterView` liest ihn danach und zeigt die nächstliegende der vier Richtungen. Der NPC dreht sich zur Figur, die Figur zum NPC: Sie sehen sich an, aus jeder Richtung.
+- Claude hat die Dateien am Text geprüft – mit dem eigenen Prüfskript, weil Godot hier nicht läuft: Pfade aller Verweise in Szenen, Werte-Dateien und Themen, Kennungen von `ExtResource` und `SubResource`, Knotenpfade der geerbten Szenen `npc.tscn` → `shaman.tscn` und `hunter.tscn`, Namen der Werte in Skripten und `.tres`, Klassennamen, Einrückung nur mit Tabs. Grundlage war das Repo, Commit `d09ce9a`.
+- Nachgerechnet, nicht ausprobiert: Das Fenster hat Claude mit den Bildern des Pakets und der Schrift als Bild nachgestellt. Es liegt bei (90, 208) bis (390, 266) der Fläche 480 × 270; der Text mit Porträt reicht von x 54 bis 278 im Fenster, drei Zeilen à 12 Pixel ab Zeile 14, der Name sitzt mit den Großbuchstaben in den Zeilen 2 bis 7 des braunen Reiters. Der Wortabstand von `NormalFont` ist 1 Pixel (227 von 2048 Einheiten bei Größe 9), im Dialog 4. Alle Sätze der Testgespräche passen in zwei oder drei Zeilen, die längste Antwort „Hast du etwas für mich?“ braucht ein Kästchen von 156 Pixeln. Die Kästchen sind 20 Pixel hoch, 2 Pixel auseinander, rechts bündig bei x 388, das unterste 4 Pixel über dem Fenster. Der längste Satz erscheint in gut 2,5 Sekunden.
+- Nachgerechnet: Der Schamane steht 50 Pixel von `Spawn2`, der Jäger 48 von `Spawn1`; E wirkt, sobald die Mitten weniger als 26 Pixel auseinander sind (16 + 10). Beute landet 10 bis 18 Pixel von der Figur; ihr `Collector` greift 6 Pixel weit, also läuft die Figur nach dem Gespräch hin.
+
+Prüfliste M15 – zum Abhaken in Godot:
+
+1. F5: Links neben den Startpunkten steht der Jäger (Löwenfell), rechts der Schamane (Totenkopf-Maske); über beiden wippt die Sprechblase mit ein, zwei, drei Punkten. Keine Fehler im Ausgabefenster.
+2. Nah an den Schamanen: Über dem Kopf der Figur erscheint die Taste E. E öffnet unten in der Mitte das Fenster – Reiter „Schamane“, links sein Porträt, rechts der Text Buchstabe für Buchstabe. Er dreht sich zur Figur, seine Blase verschwindet.
+3. Während der Text läuft, zeigt E, Leertaste oder Linksklick ihn ganz; dann wippt unten rechts ein Pfeil, und der nächste Druck geht weiter. Die Figur steht still, schlägt, schießt und dasht nicht, 1 bis 3 setzen keine Fähigkeit ein, Tab öffnet kein Inventar; die Gegner bewegen sich weiter.
+4. Bei „Was führt dich her?“ stehen drei Antworten rechts über dem Fenster, mit den Tasten 1, 2, 3 davor. Die Maus über einem Kästchen zeigt einen Rahmen. E und Leertaste tun jetzt nichts.
+5. Taste 1 – „Aus einer anderen Zeit.“: zwei Sätze, danach wieder die Frage.
+6. Mausklick auf die dritte Antwort – „Ich muss weiter.“: ein Abschiedssatz, der nächste Druck schließt das Fenster. Die Figur schlägt dabei nicht zu, auch wenn der letzte Druck ein Linksklick war, und läuft gleich wieder. Die Blase steht wieder über dem Schamanen.
+7. Noch einmal E: Das Gespräch beginnt von vorn. Jetzt 2 – „Hast du etwas für mich?“: 5 Pfeile springen vor der Figur auf den Boden. Nach dem Gespräch hinlaufen und einsammeln; die Debug-Anzeige meldet „S1 Beute“ mit +5 Pfeilen.
+8. Danach ist seine Blase weg, und E bringt nur noch „Die Geister sind mit dir, Reisender.“ – ohne Pfeile. Debug-Zeile „Shaman: wartet · erledigt“.
+9. Esc mitten im Gespräch schließt es sofort, die Figur läuft wieder. Kam die Antwort 2 noch nicht, beginnt beim nächsten E alles von vorn.
+10. Jäger: E zeigt „Jäger“ mit Porträt und zwei Sätze ohne Antworten; nach dem zweiten ist das Gespräch zu Ende. Seine Blase ist danach weg; beim nächsten E sagt er dasselbe noch einmal.
+11. Pfeile enden an den NPCs wie an einem Block, Schwert und Geschosse machen keinen Schaden, die Figur läuft nicht durch sie hindurch.
+12. F2 lädt den Raum neu: Beide haben wieder ihre Blase, der Schamane gibt wieder Pfeile.
+13. Abschaltbar: `DialogWindow` zum Test aus der Testkammer löschen – die Kammer startet ohne Fehler, E an einem NPC schreibt nur eine Warnung ins Ausgabefenster. Danach mit Strg+Z zurückholen und speichern.
+
+Prüfliste zur Nachbesserung von M15:
+
+1. Godot schließen, `m15_nachbesserung.zip` nach `E:\GitHub\TT` entpacken und vorhandene Dateien ersetzen. Godot öffnen, F5: keine roten Fehler.
+2. Von rechts an den Schamanen herangehen, die Maus nach rechts zeigen lassen und E drücken: Die Figur dreht sich zu ihm nach links, er sich zu ihr – sie sehen sich an.
+3. Dasselbe von oben, von unten und von links: Die Figur blickt immer zum NPC, egal wo die Maus steht.
+4. Während des Gesprächs die Maus bewegen: Die Figur bleibt dem NPC zugewandt.
+5. Nach dem Gespräch – zu Ende oder mit Esc – blickt die Figur gleich wieder zur Maus; Hieb und Wurf gehen wieder in Mausrichtung.
+6. Beim Jäger genauso.
+7. Abschaltbar: in `entities/player/player.tscn` den Knoten `TalkFacing` zum Test löschen – die Figur behält im Gespräch ihre Blickrichtung, sonst läuft alles. Danach mit Strg+Z zurückholen und speichern.
 
 **M14 – Gegnertypen**
 
@@ -314,7 +354,7 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 
 | Name | Datei | Stand |
 | --- | --- | --- |
-| `EventBus` | `autoload/event_bus.gd` | aktiv, 8 Meldungen |
+| `EventBus` | `autoload/event_bus.gd` | aktiv, 12 Meldungen |
 | `InputSetup` | `autoload/input_setup.gd` | aktiv; legt die Aktionen an, `all_actions()` liefert ihre Namen |
 | `GameState` | `autoload/game_state.gd` | leer, wird in M16 und M19 gefüllt |
 | `SaveManager` | `autoload/save_manager.gd` | leer, wird in M16 gefüllt |
@@ -332,7 +372,11 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 | `projectile_requested` | `scene: PackedScene`, `origin: Vector2`, `direction: Vector2`, `stats: Resource`, `target_mask: int` | Jemand schießt; der `ProjectileSpawner` des Levels erzeugt das Geschoss. `stats` ist ein `RangedStats` |
 | `switch_changed` | `channel: StringName`, `switch_id: int`, `is_on: bool` | Ein Schalter – Hebel oder Druckplatte – meldet, ob er an ist; `switch_id` ist seine Instanz-Kennung. Türen mit demselben Kanal sind offen, solange mindestens einer an ist (M8) |
 | `loot_requested` | `item: Resource`, `amount: int`, `origin: Vector2` | Ein Ding lässt Beute fallen; der `LootSpawner` des Levels legt sie hin. `item` ist ein `ItemData`, `origin` der Ort, von dem sie wegspringt (M9) |
-| `menu_changed` | `player_id: int`, `is_open: bool` | Ein Menü einer Spielfigur ist auf- oder zugegangen, bisher das Inventarfenster. Solange es offen ist, meldet ihr `PlayerInput` keine Absichten; die Welt läuft weiter (M11) |
+| `menu_changed` | `player_id: int`, `is_open: bool` | Ein Menü einer Spielfigur ist auf- oder zugegangen: das Inventarfenster, seit M15 das Dialogfenster. Solange eins offen ist, meldet ihr `PlayerInput` keine Absichten; es zählt die offenen Menüs (M15). Die Welt läuft weiter (M11) |
+| `dialog_requested` | `player_id: int`, `dialog: Resource`, `source_id: int` | Ein NPC möchte mit einer Spielfigur sprechen; ihr Dialogfenster zeigt das Gespräch, wenn es frei ist. `dialog` ist ein `DialogData`, `source_id` die Instanz-Kennung des NPC (M15) |
+| `dialog_started` | `player_id: int`, `source_id: int` | Das Dialogfenster zeigt jetzt das Gespräch; erst dann sperrt der NPC sein E, und `TalkFacing` dreht die Figur zum Sprecher (M15) |
+| `dialog_line_shown` | `player_id: int`, `source_id: int`, `line: Resource` | Das Fenster zeigt eine neue Zeile (`DialogLine`); der NPC entscheidet daran über Beute und „erledigt“ (M15) |
+| `dialog_finished` | `player_id: int`, `source_id: int`, `completed: bool` | Das Gespräch ist vorbei; `completed` heißt bis zum Ende, falsch heißt abgebrochen (M15) |
 
 ### Debug-Werte, die Module melden
 
@@ -352,6 +396,7 @@ Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige ech
 | `Kamera` | Kamera | Bildmitte in der Welt |
 | `Zoom` | Testkammer (M13) | Zoom der Welt und sichtbare Kacheln, etwa „2 - 15.0 x 8.4 Kacheln (F3)“ |
 | `Caveman`, `StoneThrower` | Gegner (M13; seit M14 eine Zeile je Gegner) | Zustand und Leben, etwa „Verfolgen · Leben 30/30“. Zustände: Patrouille, Entdeckt, Verfolgen, Abwarten, Zurückweichen, Angriff, Suchen, Zurück, Betäubt, Tot. Der Schlüssel ist der Name des Knotens; nach dem Tod verschwindet die Zeile |
+| `Shaman`, `Hunter` | NPCs (M15), eine Zeile je NPC | „wartet · hat Neues“, „spricht mit S1“ oder „wartet · erledigt“; der Schlüssel ist der Name des Knotens |
 
 Der Hinweis „Neustart: F2“ ist mit M4 entfallen; F2 gilt weiter. In der Testkammer sind seit M7 die Zeilen „Maus“, „Kamera“ und „Raumzeit“ ausgeblendet, damit die Anzeige bei elf Zeilen bleibt; seit M9 kommt „S1 Beute“ dazu, sobald etwas aufgesammelt wurde. Einschalten lassen sie sich im Inspektor des Knotens `DebugOverlay` über `show_mouse` und `hidden_keys`.
 
@@ -375,19 +420,21 @@ Der Hinweis „Neustart: F2“ ist mit M4 entfallen; F2 gilt weiter. In der Test
 | `debug_toggle_overlay` | F1 |
 | `debug_restart_room` | F2 |
 | `debug_cycle_zoom` | F3 – nur in der Testkammer: Zoom 1 bis 4 durchschalten (M13) |
+| `dialog_next` | E, Leertaste, Linksklick – nur im Gespräch: Text ganz zeigen, weiter (M15) |
+| `dialog_choice_1`, `dialog_choice_2`, `dialog_choice_3` | 1, 2, 3 – nur im Gespräch: Antwort wählen (M15) |
 
-Genutzt werden bisher: die vier Laufrichtungen, `sprint`, `sneak`, `attack_primary`, `attack_secondary`, `dash`, `ability_1` bis `ability_3`, `ammo_next`, `ammo_previous`, `interact` (M8), `inventory` (Tab, M11), `pause` (Esc schließt das Inventarfenster, M11) und die beiden Entwickler-Tasten.
+Genutzt werden bisher: die vier Laufrichtungen, `sprint`, `sneak`, `attack_primary`, `attack_secondary`, `dash`, `ability_1` bis `ability_3`, `ammo_next`, `ammo_previous`, `interact` (M8), `inventory` (Tab, M11), `pause` (Esc schließt das Inventarfenster, M11, und bricht seit M15 ein Gespräch ab), `dialog_next` und `dialog_choice_1` bis `dialog_choice_3` (M15) und die Entwickler-Tasten. Die Aktionen des Gesprächs liegen auf denselben Tasten wie andere; das stört nicht, weil die Figur im Gespräch keine Eingaben annimmt und das Dialogfenster die Tasten zuerst hört.
 
 ### Kollisions-Ebenen
 
 | Ebene | Name | Wer liegt darauf |
 | --- | --- | --- |
-| 1 | `world` | Wände und Blöcke der Testkammer, seit M8 auch geschlossene Türen und Hebel, seit M9 Baumstümpfe, seit M10 Truhen; Geschosse enden an ihnen |
+| 1 | `world` | Wände und Blöcke der Testkammer, seit M8 auch geschlossene Türen und Hebel, seit M9 Baumstümpfe, seit M10 Truhen, seit M15 NPCs; Geschosse enden an ihnen |
 | 2 | `player` | Spielfigur; ihre Maske ist `world` und `enemy`. Druckplatten und Türdurchgänge bemerken sie hier (M8) |
 | 3 | `enemy` | Übungspuppen als feste Körper, seit M13 die Gegner – ihre Maske ist `world`, `player` und `enemy` –, seit M9 auch Zerstörbares, solange es heil ist – Geschosse treffen es über die Hurtbox, statt daran zu enden; das bewegliche Ziel liegt auf keiner Ebene und lässt sich durchlaufen. Druckplatten und Türdurchgänge bemerken auch diese Ebene (M8) |
 | 4 | `player_hurtbox` | `Hurtbox` der Spielfigur; Schadensfeld, Schadensstreifen, seit M13 der Schlag der Gegner und seit M14 ihre Geschosse suchen hier |
 | 5 | `enemy_hurtbox` | `Hurtbox` der Übungspuppen, seit M9 von Zerstörbarem, seit M13 der Gegner; Schwert und Geschosse suchen hier |
-| 6 | `interactable` | `Interactable` von Holztür und Hebel; der `Interactor` der Spielfigur sucht hier (M8) |
+| 6 | `interactable` | `Interactable` von Holztür und Hebel, seit M10 von Truhen, seit M15 von NPCs; der `Interactor` der Spielfigur sucht hier (M8) |
 | 7 | `pickup` | Beute am Boden (`Pickup`); der `Collector` der Spielfigur sucht hier (M9) |
 
 Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbst nichts. Eine `Hitbox` liegt auf keiner Ebene und sucht über ihre Maske.
@@ -397,7 +444,7 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | Gruppe | Mitglieder | Wer sie nutzt |
 | --- | --- | --- |
 | `player_spawn` | Startpunkte im Level (`Marker2D`) | `PlayerSpawner` |
-| `players` | jede Spielfigur | `PlayerCamera`, `InventoryWindow` (M11), `Hud` (M12), `Perception` der Gegner (M13) |
+| `players` | jede Spielfigur | `PlayerCamera`, `InventoryWindow` (M11), `Hud` (M12), `Perception` der Gegner (M13), `Npc` als Rückfall, wenn er die Figur sonst nicht kennt (M15) |
 | `invisible` | Figuren, solange ihre Unsichtbarkeit wirkt | `Perception` der Gegner: Unsichtbare bemerken sie nicht (M13) |
 | `stunnable` | jeder Baustein `Stunnable`; ein toter Gegner tritt aus | die Fähigkeit Stun |
 
@@ -477,6 +524,15 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `EnemyMeleeAttack` | `entities/enemies/attacks/enemy_melee_attack.gd` | Angriffs-Modul Nahkampf: löst `MeleeAttack` aus (M14) |
 | `EnemyRangedAttack` | `entities/enemies/attacks/enemy_ranged_attack.gd` | Angriffs-Modul Fernkampf: löst `RangedAttack` aus (M14) |
 | `ViewSettings` | `world/view/view_settings.gd` | Bauplan der Ansicht: Zoom der Welt, faire Grenze für Gegner und die Kachel als Maß – `TILE_SIZE`, `tiles(anzahl)` (M13) |
+| `DialogData` | `dialogs/dialog_data.gd` | Bauplan eines Gesprächs: Sprecher und Zeilen; `find_line(name)`, `speaker_of(zeile)`, `check()` liefert Fehler als Sätze (M15) |
+| `DialogLine` | `dialogs/dialog_line.gd` | eine Zeile: `id`, `speaker`, `text`, `choices`, `next`, `reward`, `marks_done`; `get_choices()`, `has_choices()`; `END` ist das Sprungziel „end“ (M15) |
+| `DialogChoice` | `dialogs/dialog_choice.gd` | eine Antwort: `text`, `next` (M15) |
+| `DialogSpeaker` | `dialogs/dialog_speaker.gd` | wer spricht: `display_name`, `portrait` (M15) |
+| `DialogRunner` | `dialogs/dialog_runner.gd` | geht ein Gespräch durch: `start()`, `current()`, `advance()`, `choose(nummer)`, `stop()`; kein Knoten, sondern ein `RefCounted` (M15) |
+| `DialogSettings` | `ui/dialog/dialog_settings.gd` | Bauplan der Werte-Datei des Dialogfensters: Buchstaben je Sekunde, Wippen des Pfeils (M15) |
+| `Npc` | `entities/npcs/npc.gd` | ein NPC: Gespräch, kurzes Gespräch, Blickrichtung; entscheidet über Beute und „erledigt“ (M15) |
+| `TalkBubble` | `components/talk_bubble/talk_bubble.gd` | Baustein Sprechblase (M15) |
+| `TalkFacing` | `components/talk_facing/talk_facing.gd` | Baustein: die Figur blickt im Gespräch zum Sprecher (M15, Nachbesserung) |
 
 ### Werte-Dateien – `data/`
 
@@ -526,6 +582,13 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `data/loot/stone_thrower.tres` | `LootTable` | 2 Steine; mit 50 % 3 Pfeile (M14) |
 | `data/skins/cavegirl.tres` | `CharacterSkin` | Steinwerferin: wie `caveman_brown.tres`, mit den Blättern von `Cavegirl`, `walk_reference_speed` 50 und `shoot` – das Bild aus `Attack.png` (M14) |
 | `data/loot/caveman.tres` | `LootTable` | 3 Pfeile; mit 50 % 2 Shuriken (M13) |
+| `data/dialogs/shaman_intro.tres` | `DialogData` | Gespräch des Schamanen, sieben Zeilen: Begrüßung; `question` mit drei Antworten nach `time`, `gift`, `bye`; `time` und ein zweiter Satz, der nach `question` zurückspringt; `gift` mit `reward` `shaman_gift.tres` und `marks_done`, danach ein Segen und `end`; `bye` als letzte Zeile (M15) |
+| `data/dialogs/shaman_repeat.tres` | `DialogData` | kurzes Gespräch des Schamanen: „Die Geister sind mit dir, Reisender.“ (M15) |
+| `data/dialogs/hunter_info.tres` | `DialogData` | Gespräch des Jägers, zwei Zeilen ohne Antworten; die zweite mit `marks_done` (M15) |
+| `data/dialogs/speakers/shaman.tres`, `hunter.tres` | `DialogSpeaker` | „Schamane“ mit `Actor/Character/Shaman/Faceset.png`, „Jäger“ mit `Actor/Character/CaveLion/Faceset.png` (M15) |
+| `data/loot/shaman_gift.tres` | `LootTable` | 5 Pfeile immer – das Geschenk des Schamanen (M15) |
+| `data/skins/shaman.tres`, `cave_lion.tres` | `CharacterSkin` | NPCs (M15): Blätter von `Shaman` und `CaveLion`, Bild 16 × 16, `offset` (0, −2), Schatten bei (0, 5), `walk_reference_speed` 50; Stehen 1 Bild, Laufen 4 à 8/s |
+| `data/ui/dialog.tres` | `DialogSettings` | `characters_per_second` 40, `arrow_bob_rate` 2 (M15) |
 | `data/skins/caveman_brown.tres` | `CharacterSkin` | wie `caveman.tres`, mit den Blättern von `Caveman2` und `walk_reference_speed` 60 (M13) |
 | `data/effects/claw.tres` | `EffectData` | `FX/Attack/Claw/SpriteSheet.png`, 4 à 32, 16 Bilder je Sekunde (M13) |
 | `data/effects/emote_alert.tres`, `emote_search.tres` | `EffectData` | `Ui/Emote/emote22.png` („!“) 0,8 s und `emote23.png` („?“) 1 s, je 14 × 13, 24 Pixel über der Mitte (M13) |
@@ -598,6 +661,8 @@ Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden; „4 à 8/s
 | `StateMachine` | `components/state_machine/` | Zustandsautomat: Jedes Kind mit einem Skript, das von `State` erbt, ist ein Zustand – mit `enter()`, `exit()` und `physics_update()`. Genau einer ist aktiv; `transition_to(name)` wechselt. Beginnt mit `initial_state`, sobald die ganze Szene bereit ist, und läuft vor seiner Figur (`process_physics_priority` −1). Meldet `state_changed(vorher, jetzt)`; `get_display_name()` liefert den Anzeigenamen (M13). | `initial_state`; je Zustand `display_name` |
 | `Perception` | `components/perception/` | Sehen und Hören: `find_target(blickrichtung, aware)` liefert den nächsten Spieler aus der Gruppe `players`, den die Figur bemerkt; `can_perceive(ziel, blickrichtung, aware)` und `has_line_of_sight(punkt)` fragen einzeln. Ohne `aware` nur im Kegel, mit `aware` rundum bis `track_tiles`; Wände verdecken. Hören im Umkreis, wenn sich ein Ziel bewegt und nicht schleicht (`is_sneaking()` der Figur). Unsichtbare und Tote bemerkt sie nicht. Abstände in Kacheln. Faire Grenze: Bemerkt wird nur, wer sie auf dem eigenen Bild hat, mit `fair_margin_tiles` Rand – `is_in_fair_view(abstand)`, `fair_half_extent()`; die Größe folgt dem Zoom aus `view`. Entscheidet nichts. Mit `debug_draw` zeigt sie Kegel, Hörkreis und Grenze als Rahmen, F1 blendet sie aus (M13). | `stats`, `view`, `debug_draw`, zwei Farben |
 | `LifeBar` | `components/life_bar/` | Kleine Lebensleiste über einer Figur aus zwei gleich großen Bildern: leere Leiste und Füllung von links, der Rand bleibt. Erscheint ab dem ersten Schaden, verschwindet beim Tod. Hört auf `Health` (M13). | `texture_under`, `texture_progress`, `border`, `hide_when_full`, `health_name` |
+| `TalkBubble` | `components/talk_bubble/` | `Sprite2D` mit `Ui/Dialog/DialogInfo.png` in 4 Bildern: spielt eine Sprechblase mit ein, zwei, drei Punkten ab, Ebene 40. Ob sie zu sehen ist, entscheidet der Elternknoten (M15). | `fps` (3), `cycle` (1, 2, 3) |
+| `TalkFacing` | `components/talk_facing/` | Hört auf `dialog_started` und `dialog_finished` mit der `player_id` seiner Figur: setzt ihren Wert `look_target` auf den Sprecher – den Knoten mit `source_id` – und nimmt ihn am Ende wieder weg. Die Figur blickt dann zum Sprecher statt zur Maus (M15, Nachbesserung). | – |
 | `Collector` | `components/collector/` | `Area2D` an der Figur, Kreis 6 Pixel, Maske `pickup`. Nimmt aus jedem bereiten `Pickup` im Kreis so viel, wie das Geschwister `Inventory` annimmt; der Rest bleibt liegen. Meldet `collected`, `rejected` und schreibt „S1 Beute“ in die Debug-Anzeige (M9). | – |
 
 Die Bausteine finden das Leben über den Namen: Der Knoten muss genau `Health` heißen und neben ihnen liegen.
@@ -628,6 +693,12 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 | `entities/enemies/caveman.tscn` | – (erbt seit M14 von `melee_enemy.tscn`) | der Höhlenmensch: Skin, Werte, Faust, Beute (M13) |
 | `entities/enemies/stone_thrower.tscn` | – (erbt von `ranged_enemy.tscn`) | die Steinwerferin: Skin, Werte, Wurf, Beute (M14) |
 | `components/state_machine/state_machine.tscn`, `components/perception/perception.tscn`, `components/life_bar/life_bar.tscn` | je ein Skript daneben | Bausteine, siehe oben (M13) |
+| `entities/npcs/npc.tscn` | `npc.gd` | Grundszene eines NPC: `StaticBody2D` auf `world`, Körper 12 × 12, Kinder `CollisionShape2D`, `PlaceholderView`, `CharacterView`, `Interactable` (Kreis 10), `TalkBubble` 19 Pixel über der Mitte (M15) |
+| `entities/npcs/shaman.tscn`, `hunter.tscn` | – (erben von `npc.tscn`) | der Schamane und der Jäger: Skin und Gespräche (M15) |
+| `ui/dialog/dialog_window.tscn` | `dialog_window.gd` | Dialogfenster; `CanvasLayer` auf Ebene 106, Kind `Root` mit dem Thema `ui/dialog/dialog_theme.tres`, darin `Box` (`TextureRect`) mit `Portrait`, `Name`, `Text` und `Arrow`, daneben `Choices` (`VBoxContainer`) mit `Choice1` bis `Choice3` (M15) |
+| `ui/dialog/choice_button.tscn` | `choice_button.gd` | ein Antwort-Kästchen: `Button` mit `Key` und `Focus` (M15) |
+| `components/talk_bubble/talk_bubble.tscn` | `talk_bubble.gd` | Baustein, siehe oben (M15) |
+| `components/talk_facing/talk_facing.tscn` | `talk_facing.gd` | Baustein, siehe oben (M15, Nachbesserung) |
 | `world/damage_zone/damage_zone.tscn` | keins; die Szene erbt von `hitbox.tscn` | Schadensfeld |
 | `world/door/door.tscn` | `door.gd` | Tür oder Gittertor; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView`, `Interactable`, `DoorwaySensor` (M8) |
 | `world/lever/lever.tscn` | `lever.gd` | Hebel; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView`, `Interactable` (M8) |
@@ -677,7 +748,7 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 **Spielfigur im Einzelnen**
 
 - `Player` ist ein `CharacterBody2D` im schwebenden Modus, Ebene `player`, Maske `world` und `enemy`, Gruppe `players`. Körper 12 × 12 Pixel. Bild seit A1: der Ninja aus `data/skins/ninja_green.tres` über `CharacterView`; ohne ihn der grüne Platzhalter mit weißem Punkt in Blickrichtung.
-- Kinder: `CollisionShape2D`, `PlaceholderView`, `CharacterView`, `PlayerInput` (ein `IntentSource`, läuft vor der Figur), `Stamina`, `Health`, `Hurtbox` (10 × 10 Pixel, Ebene `player_hurtbox`), `HitFlash`, `MeleeAttack` (sucht auf `enemy_hurtbox`), `Dash`, `Inventory`, `AmmoSelector`, `RangedAttack` (Ziele auf `enemy_hurtbox`), `Energy` (ein `Supply`), `Abilities` mit den Kindern `Haste`, `Invisibility` und `Stun`, dazu seit A2 `SlashEffect` und `HitEffect` (je ein `EffectCue`), seit M8 `Interactor`, seit M9 `Collector` und seit M11 `Equipment` – als letztes Kind, damit die anderen Bausteine bereit sind, wenn es ihnen die Werte gibt.
+- Kinder: `CollisionShape2D`, `PlaceholderView`, `CharacterView`, `PlayerInput` (ein `IntentSource`, läuft vor der Figur), `Stamina`, `Health`, `Hurtbox` (10 × 10 Pixel, Ebene `player_hurtbox`), `HitFlash`, `MeleeAttack` (sucht auf `enemy_hurtbox`), `Dash`, `Inventory`, `AmmoSelector`, `RangedAttack` (Ziele auf `enemy_hurtbox`), `Energy` (ein `Supply`), `Abilities` mit den Kindern `Haste`, `Invisibility` und `Stun`, dazu seit A2 `SlashEffect` und `HitEffect` (je ein `EffectCue`), seit M8 `Interactor`, seit M9 `Collector`, seit M15 `TalkFacing` und seit M11 `Equipment` – als letztes Kind, damit die anderen Bausteine bereit sind, wenn es ihnen die Werte gibt.
 - Die Figur liest nur Absichten. `PlayerInput` füllt sie aus den Aktionen und aus der Mausposition; später kann eine andere Quelle dasselbe tun.
 - Blick und Hieb: Die Figur blickt stufenlos in die Zielrichtung, also zur Maus. Solange `attack_primary` gehalten wird, schlägt sie dorthin. Laufen, Sprinten und Schleichen gehen dabei weiter.
 - Zustände: Stehen, Laufen, Sprinten, Schleichen, Dash. Schleichen geht vor Sprinten. Sprinten kostet Ausdauer; ohne Vorrat läuft die Figur normal.
@@ -687,10 +758,11 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Energie: Fähigkeiten bezahlen aus `Energy`. Der Vorrat füllt sich nur durch Schwerttreffer, über `MeleeAttack`.
 - Interaktion (M8): Ein Druck auf `interact` (E) bedient das nächste bedienbare Ding im Suchkreis des `Interactor`, 16 Pixel um die Mitte. Solange es eins gibt, steht die Taste E über dem Kopf der Figur. Das geht jederzeit, auch im Dash.
 - Aufsammeln (M9): Läuft die Figur über Beute, nimmt ihr `Collector` so viel ins Inventar, wie hineinpasst; dafür gibt es keine Taste.
-- Ausrüstung (M11): Was sie angelegt hat, verwaltet `Equipment`; beim Start ist es das Katana. Ist ein Menü der Figur offen, meldet `PlayerInput` keine Absichten: Sie bleibt stehen.
+- Ausrüstung (M11): Was sie angelegt hat, verwaltet `Equipment`; beim Start ist es das Katana. Ist ein Menü der Figur offen, meldet `PlayerInput` keine Absichten: Sie bleibt stehen. Seit M15 zählt `PlayerInput` die offenen Menüs, und nach dem Schließen zählen gehaltene Maustasten erst nach dem Loslassen wieder.
+- Blick im Gespräch (M15, Nachbesserung): Hat die Figur ein Blickziel `look_target`, blickt sie dorthin statt in die Zielrichtung. Im Gespräch setzt es ihr Kind `TalkFacing` auf den NPC; danach ist es wieder leer.
 - Schleichen für Gegner (M13): `is_sneaking()` ist wahr, solange die Taste Strg gehalten wird – im Laufen und im Stehen, nicht beim Dash. Gegner hören die Figur dann nicht und sehen sie nur halb so weit.
 - Tod: Fällt das Leben auf 0, bleibt die Figur stehen, zeigt das Tod-Bild (der Platzhalter wird grau) und sendet `player_died`. Was dann geschieht, entscheidet das Level.
-- Einstellbar: `stats` (Werte-Datei), `player_id`, `defeated_color`. Ohne `PlayerInput` bleibt sie stehen, ohne `Stamina` sprintet sie unbegrenzt, ohne `Health` nimmt sie keinen Schaden, ohne `Hurtbox` ist sie nicht zu treffen, ohne `MeleeAttack` schlägt sie nicht zu, ohne `Dash` dasht sie nicht, ohne `RangedAttack` schießt sie nicht, ohne `Inventory` hat sie nichts zu werfen, ohne `AmmoSelector` schießt sie wie vor M11a mit `bow.tres` kostenlos, ohne `Abilities` hat sie keine Fähigkeiten, ohne `Energy` kosten Fähigkeiten nichts, ohne `CharacterView` zeigt sie den Platzhalter, ohne `SlashEffect` oder `HitEffect` fehlt nur dieser Effekt, ohne `Interactor` bedient sie nichts mit E, ohne `Collector` läuft sie über Beute hinweg, ohne `Equipment` kämpft sie mit ihren Grundwerten.
+- Einstellbar: `stats` (Werte-Datei), `player_id`, `defeated_color`. Ohne `PlayerInput` bleibt sie stehen, ohne `Stamina` sprintet sie unbegrenzt, ohne `Health` nimmt sie keinen Schaden, ohne `Hurtbox` ist sie nicht zu treffen, ohne `MeleeAttack` schlägt sie nicht zu, ohne `Dash` dasht sie nicht, ohne `RangedAttack` schießt sie nicht, ohne `Inventory` hat sie nichts zu werfen, ohne `AmmoSelector` schießt sie wie vor M11a mit `bow.tres` kostenlos, ohne `Abilities` hat sie keine Fähigkeiten, ohne `Energy` kosten Fähigkeiten nichts, ohne `CharacterView` zeigt sie den Platzhalter, ohne `SlashEffect` oder `HitEffect` fehlt nur dieser Effekt, ohne `Interactor` bedient sie nichts mit E, ohne `Collector` läuft sie über Beute hinweg, ohne `TalkFacing` behält sie im Gespräch ihre Blickrichtung, ohne `Equipment` kämpft sie mit ihren Grundwerten.
 - Einen Zustandsautomaten als Baustein gibt es noch nicht: Der Dash bringt seinen Zeitablauf selbst mit, die Figur fragt nur `is_dashing`. Vorgesehen ist er für den ersten Gegner in M13.
 
 **Kampf im Einzelnen**
@@ -740,9 +812,10 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Ausrüstung zum Aufsammeln (M11): Unter `StartItems` liegen vier von Hand gelegte `Pickup` – `Broadsword` (192, 176), `Bow` (216, 176), `LeatherArmor` (240, 176), `RubyCharm` (264, 176).
 - Gegner (M13): `Caveman`, ein `caveman.tscn`, steht bei (776, 224) und patrouilliert mit `patrol_tiles` (0, 8,5), also 136 Pixel, bis (776, 360) – links der große Block, rechts der Pfeiler `PillarB`. Seine `Perception` hat hier `debug_draw` an. Er liegt vor dem `LootSpawner`.
 - Fernkämpferin (M14): `StoneThrower`, ein `stone_thrower.tscn`, steht bei (464, 320) und patrouilliert mit `patrol_tiles` (8, 0), also 128 Pixel, bis (592, 320) – in der freien Fläche unten in der Mitte, mit mindestens 5 Kacheln Platz zu jedem Block. Ihre `Perception` hat hier `debug_draw` an. Sie liegt hinter dem Höhlenmenschen und vor dem `LootSpawner`.
-- `InventoryWindow` (M11) und `Hud` (M12) hängen als letzte Kinder in der Kammer.
+- NPCs (M15): `Shaman`, ein `shaman.tscn`, steht bei (312, 120) rechts neben den Startpunkten; `Hunter`, ein `hunter.tscn`, bei (168, 136) links daneben. Beide blicken zu Beginn nach unten und liegen hinter der Steinwerferin, vor dem `LootSpawner`.
+- `InventoryWindow` (M11), `Hud` (M12) und `DialogWindow` (M15) hängen als letzte Kinder in der Kammer. `DialogWindow` steht ganz hinten: So hört es Tasten vor dem Inventarfenster und fängt Tab ab, solange ein Gespräch läuft.
 - `LootSpawner` (M9) liegt vor dem `PlayerSpawner`; so liegt Beute über dem Zerstörbaren und den Truhen, aber unter der Figur.
-- Die Puppen, `DamageZone`, `DamageStrip`, `InteractionCorner`, `DestructibleField`, `ChestSmall`, `ChestBig`, `StartItems`, `Caveman`, `StoneThrower`, `LootSpawner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair`, `DebugOverlay`, `InventoryWindow` und `Hud` sind eingehängt und lassen sich einzeln löschen.
+- Die Puppen, `DamageZone`, `DamageStrip`, `InteractionCorner`, `DestructibleField`, `ChestSmall`, `ChestBig`, `StartItems`, `Caveman`, `StoneThrower`, `Shaman`, `Hunter`, `LootSpawner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair`, `DebugOverlay`, `InventoryWindow`, `Hud` und `DialogWindow` sind eingehängt und lassen sich einzeln löschen.
 - `DebugOverlay` blendet hier „Maus“, „Kamera“ und „Raumzeit“ aus.
 - F2 und der Tod einer Figur laden die Szene neu, direkt in `test_chamber.gd`. Ab M18 übernimmt das der `SceneManager`.
 
@@ -848,6 +921,19 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
     4. Anderes Verhalten: in der Szene des Gegnertyps einen Zustand unter `Brain` ergänzen oder einem vorhandenen ein anderes Skript geben, das von `EnemyState` erbt.
 - Mehrspieler: Angriffe zielen auf den nächsten Spieler, den der Gegner bemerkt; Geschosse entstehen nur im `ProjectileSpawner`, über Schaden entscheidet `Health`.
 
+**NPCs und Dialog im Einzelnen (M15)**
+
+- Ablauf: E an einem NPC → `Interactable.interacted` → `Npc` bittet über `dialog_requested` das Dialogfenster der Figur mit ihrer `player_id`. Ist es frei, öffnet es sich, meldet `menu_changed` und `dialog_started` und zeigt die erste Zeile. Erst auf `dialog_started` sperrt der NPC sein E, dreht sich zur Figur und blendet die Blase aus. Ohne Dialogfenster im Level schreibt der NPC eine Warnung und bleibt bedienbar.
+- Blick: Der NPC dreht sich zur Figur; ihr Baustein `TalkFacing` dreht die Figur zum NPC, solange das Gespräch läuft – sie sehen sich an. Danach blickt die Figur wieder zur Maus (Nachbesserung nach dem Test, 21.11.2026).
+- Das Fenster (`ui/dialog/dialog_window.gd`) kennt den Weg durch das Gespräch über einen `DialogRunner` und entscheidet sonst nichts. Jede gezeigte Zeile meldet es über `dialog_line_shown`, am Ende `dialog_finished` und dann `menu_changed`.
+- Weg: Ohne Antworten folgt die nächste Zeile der Liste oder das Sprungziel `next`; mit Antworten das Ziel der gewählten Antwort, leer die Zeile nach der Frage. `end` beendet, ein unbekanntes Ziel beendet mit Warnung, leere Einträge werden übersprungen. Nach der letzten Zeile ist das Gespräch zu Ende.
+- Tasten, alle in `_input` und vor dem Inventarfenster: `dialog_next` zeigt den Text ganz, sonst geht es weiter – bei einer Frage tut die Taste nichts, ein Klick gehört dann den Kästchen. `dialog_choice_1` bis `3` wählen; läuft der Text noch, zeigen sie ihn erst ganz. `pause` bricht ab. `inventory` fängt es ab. Die Kästchen sind `Button` ohne Fokus; gewählt wird beim Loslassen der Maus.
+- Text: `Label` mit Umbruch an Wörtern und höchstens drei Zeilen; die Buchstaben erscheinen über `visible_ratio`, der Umbruch steht von Anfang an fest. Braucht ein Text mehr als drei Zeilen, steht eine Warnung im Ausgabefenster. Ohne Porträt zeigt das Fenster `DialogBox.png`, und der Text beginnt bei x 10 statt 54.
+- Thema `ui/dialog/dialog_theme.tres`: Schrift `ui/dialog/dialog_font.tres` – eine `FontVariation` von `NormalFont` mit `spacing_space` 3 –, Größe 9, Zeilenabstand 0; Text dunkel (20, 27, 27), Name weiß; Variante `DialogChoice` mit `ChoiceBox.png` (Ränder 5, Text ab 22 Pixeln) und `DialogFocus` mit `nine_path_focus.png` aus dem Holz-Thema.
+- `Npc`: `dialog` und `repeat_dialog`; `current_dialog()`, `has_news()`, `is_talking()`; Signale `talk_started`, `talk_finished`, `reward_given`. Zeilen mit `reward` gibt er je NPC einmal, bis der Raum neu lädt: Er würfelt die Liste und bestellt über `loot_requested` mit dem Ort der Figur als Absprung. Mit `marks_done` gilt er als erledigt. Seine Blase zeigt er, solange er nicht erledigt ist und nicht spricht.
+- Ein neuer NPC: im Editor „Neue geerbte Szene“ aus `entities/npcs/npc.tscn`, als `entities/npcs/<name>.tscn` speichern, beim Kind `CharacterView` einen Skin wählen und bei der Wurzel `dialog`, auf Wunsch `repeat_dialog` und `start_facing`. Ein Gespräch: eine Datei aus `data/dialogs/` kopieren und im Inspektor die Zeilen bearbeiten; einen Sprecher ebenso aus `data/dialogs/speakers/`.
+- Mehrspieler: Ein NPC spricht mit einer Figur zugleich; jede Figur hat ihr Fenster über ihre `player_id`. Über Beute und „erledigt“ entscheidet nur der NPC – später der Gastgeber. „Erledigt“ gilt für den NPC, noch nicht je Spieler.
+
 **HUD im Einzelnen (M12)**
 
 - `ui/hud/hud.tscn` ist ein `CanvasLayer` auf Ebene 90, unter der Debug-Anzeige (100), dem Inventarfenster (105) und dem Fadenkreuz (110). Einstellbar: `player_id` (1).
@@ -870,6 +956,17 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Im Editor zeigt die Testkammer nur die blauen Kollisionsflächen; Farben, Raster und Anzeige erscheinen erst im laufenden Spiel.
 
 ### Dateien je Modul
+
+**M15 – NPCs & Dialog**
+
+- Neu: `dialogs/` mit `dialog_data.gd`, `dialog_line.gd`, `dialog_choice.gd`, `dialog_speaker.gd`, `dialog_runner.gd`
+- Neu: `ui/dialog/` mit `dialog_window.tscn`, `dialog_window.gd`, `choice_button.tscn`, `choice_button.gd`, `dialog_settings.gd`, `dialog_theme.tres`, `dialog_font.tres`
+- Neu: `components/talk_bubble/` mit `talk_bubble.tscn`, `talk_bubble.gd`; `entities/npcs/` mit `npc.tscn`, `npc.gd`, `shaman.tscn`, `hunter.tscn`
+- Neu: `data/dialogs/shaman_intro.tres`, `shaman_repeat.tres`, `hunter_info.tres`, `speakers/shaman.tres`, `speakers/hunter.tres`; `data/skins/shaman.tres`, `cave_lion.tres`; `data/loot/shaman_gift.tres`; `data/ui/dialog.tres`
+- Geändert: `autoload/event_bus.gd` (vier Meldungen), `autoload/input_setup.gd` (`dialog_next`, `dialog_choice_1` bis `3`), `entities/player/player_input.gd` (zählt offene Menüs, wartet nach dem Schließen auf das Loslassen der Maustasten)
+- Geändert: `levels/test_chamber/test_chamber.tscn` (`Shaman`, `Hunter`, `DialogWindow`), `levels/test_chamber/test_chamber.gd` (nur der Kommentar), `README.md` (Ordner, Tasten), `docs/projekt_stand.md`, `docs/asset_katalog.md`
+- Nachbesserung am 21.11.2026 (`m15_nachbesserung.zip`): neu `components/talk_facing/` mit `talk_facing.tscn`, `talk_facing.gd`; geändert `entities/player/player.gd` (Blickziel `look_target`), `entities/player/player.tscn` (Knoten `TalkFacing`), `README.md` (Bausteine), `docs/projekt_stand.md`
+- Von Hand zu löschen: `components/windup_flash/` – ein Rest aus M13; `entities/npcs/.gitkeep` wird nicht mehr gebraucht
 
 **M14 – Gegnertypen**
 
@@ -1045,7 +1142,8 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 | Übungspuppen | `Actor/Monster/BambooYellow/` für die festen Puppen, `Bamboo/` für das bewegliche Ziel; 4 × 4 à 16 | beide geprüft, BambooYellow am 17.11.2026: orange, gleiches Raster wie Bamboo; eingebaut mit A1 |
 | Gegner | `Actor/Monster/<Name>/`, 4 × 4 à 16 | geprüft an Slime: Spalten wie bei den Figuren, Zeilen = Laufbilder |
 | Erster Gegner (M13) | `Actor/Character/Caveman2/SeparateAnim/` – Idle, Walk, Attack, Dead; `Ui/Emote/emote22.png` („!“) und `emote23.png` („?“); `FX/Attack/Claw/SpriteSheet.png`, 4 à 32; `Ui/Receptacle/LifeBarMiniUnder.png` und `LifeBarMiniProgress.png`, je 18 × 4 | geprüft am 18.11.2026; eingebaut mit M13 |
-| NPCs | `Actor/Character/<Name>/SpriteSheet.png`, 4 × 7 à 16, dazu `Faceset.png` | geprüft: Zeilen 1 bis 4 Laufen, 5 Angriff, 6 Sprung, 7 Tod, Gegenstand und zwei Sonderposen |
+| NPCs | `Actor/Character/<Name>/SpriteSheet.png`, 4 × 7 à 16, dazu `Faceset.png` | geprüft: Zeilen 1 bis 4 Laufen, 5 Angriff, 6 Sprung, 7 Tod, Gegenstand und zwei Sonderposen; eingebaut mit M15: `Shaman` und `CaveLion`, je `SeparateAnim/Idle.png` und `Walk.png` und das Porträt `Faceset.png`, 38 × 38 |
+| Dialogfeld (M15) | `Ui/Dialog/DialogBoxFaceset.png` und `DialogBox.png`, je 300 × 58; `ChoiceBox.png` 64 × 20, Ränder 5; `DialogInfo.png` 4 Blasen à 20 × 16; `Ui/Arrow.png` 13 × 13; `Ui/Input/Keyboard/Key1.png` bis `Key3.png` | geprüft am 21.11.2026; eingebaut mit M15. `YesButton.png` und `NoButton.png` tragen englische Wörter und bleiben ungenutzt |
 | Boden und Natur der Steinzeit | `Backgrounds/Tilesets/TilesetFloor.png`, `TilesetNature.png`, `TilesetRelief.png` | gesichtet; Regeln für Übergänge fehlen |
 | Wände der Testkammer | `Backgrounds/Tilesets/Interior/TilesetWallSimple.png` | gesichtet: vier Mauer-Rahmen |
 | Hebel, Druckplatte, Stacheln (M8) | `Backgrounds/Tilesets/TilesetDungeon.png`, Zellen als (Spalte, Zeile) à 16: Druckplatte oben (2,1) und gedrückt (3,1), Hebel rot (3,3) und blau (4,3), Stacheln oben (4,1) und unten (5,1) | geprüft am 17.11.2026; Hebel und Druckplatte eingebaut mit M8 |
@@ -1062,7 +1160,7 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 | Leben im HUD | `Ui/Receptacle/Heart.png`, 5 Bilder à 16 | geprüft: leer bis voll in Viertelschritten; eingebaut mit M12, ein Herz sind 20 Leben |
 | Energie und Ausdauer im HUD (M12) | `Ui/Receptacle/Receptacle Sphere/BackgroundRed.png` 32 × 32 mit der Füllung `ProgressMana.png` 22 × 22 bei (5, 5) und dem Glanzpunkt `Over.png`; `Ui/Receptacle/LifeBarMiniUnder.png` 18 × 4 als Rahmen der Ausdauer-Leiste | geprüft am 17.11.2026; eingebaut mit M12 |
 | Fähigkeits-Symbole | `Ui/Skill Icon/Spell/`, 24 × 24, dazu `Ui/Input/Keyboard/Key1.png` bis `Key3.png` | eingebaut mit M12: `Items & Weapon/Boot.png` für Schnelligkeit, `Spell/Camouflage.png` für Unsichtbarkeit, `Spell/BookThunder.png` für Stun, je mit grauer Fassung `…Disabled.png`; darunter die Tasten |
-| Schrift | `Ui/Font/NormalFont.ttf` | Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt; gebaut für 9 Pixel; mit A2 für die Schadenszahlen eingebaut |
+| Schrift | `Ui/Font/NormalFont.ttf` | Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt; gebaut für 9 Pixel; mit A2 für die Schadenszahlen eingebaut; im Dialog seit M15 mit 3 Pixeln mehr Wortabstand, weil ihr Leerzeichen nur 1 Pixel breit ist |
 | Geräusche | `Audio/Sounds/Whoosh & Slash/`, `Hit & Impact/`, `Magic & Skill/`, `Jump & Bounce/` | nur die Namen; anhören kann nur der Nutzer |
 | Musik | `Audio/Musics/`, 41 Stücke, etwa „2 - The Cave“ für die Steinzeit | nur die Namen |
 
@@ -1070,7 +1168,7 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 
 Gate G1 ist bestanden: Nach dem Test von A2 hat der Nutzer am 17.11.2026 geschrieben: „Alles getestet und alles funktioniert … lass uns weitermachen“. Claude wertet das als „die Spielfigur fühlt sich gut an“. Nachstellen lässt sich weiter alles ohne Code über die Werte-Dateien in `data/`. Der Ton fehlt noch; er kommt mit A3 fast am Ende des Projekts.
 
-Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & Beute, M11 – Inventar & Ausrüstung und M12 – HUD, zuletzt am 18.11.2026. A5 – Oberfläche ist dabei zweimal gewachsen: das Holz-Thema für Fenster, dann Herzen, Energie-Kugel, Ausdauer-Leiste und Symbole. Phase 3 hat begonnen: M13 – Erster Gegner ist fertig, am 18.11.2026 nach einer Nachbesserung; mit ihm hat A6 – Gegner, NPCs, Bosse begonnen, und die Welt erscheint seitdem mit Zoom 2. Im neuen Chat folgte M14 – Gegnertypen: ein Baukasten für viele Gegner, mit dem Höhlenmenschen als Nahkämpfer und der Steinwerferin als Fernkämpferin; fertig am 18.11.2026. Als Nächstes kommt M15 – NPCs & Dialog. Der Ton kommt erst mit A3.
+Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & Beute, M11 – Inventar & Ausrüstung und M12 – HUD, zuletzt am 18.11.2026. A5 – Oberfläche ist dabei zweimal gewachsen: das Holz-Thema für Fenster, dann Herzen, Energie-Kugel, Ausdauer-Leiste und Symbole. Phase 3 hat begonnen: M13 – Erster Gegner ist fertig, am 18.11.2026 nach einer Nachbesserung; mit ihm hat A6 – Gegner, NPCs, Bosse begonnen, und die Welt erscheint seitdem mit Zoom 2. Im neuen Chat folgte M14 – Gegnertypen: ein Baukasten für viele Gegner, mit dem Höhlenmenschen als Nahkämpfer und der Steinwerferin als Fernkämpferin; fertig am 18.11.2026. Am 21.11.2026 folgte M15 – NPCs & Dialog: ein Dialogfenster mit Antworten, der Schamane mit Geschenk und der Jäger, der nur Auskunft gibt; der Test ist bestanden bis auf einen Wunsch – die Spielfigur dreht sich jetzt im Gespräch zum NPC –; mit dem Abschluss von M15 ist Phase 3 fertig. Der Ton kommt erst mit A3.
 
 ## Hinweise aus der bisherigen Arbeit
 
@@ -1109,13 +1207,16 @@ Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & B
 - Knoten, die eine geerbte Szene überschreibt, nicht in ihrer Grundszene löschen – `Perception`, `CharacterView`, `Health` und `LootDropper` in `enemy.tscn`, `MeleeAttack` und `Attacks/Melee` in `melee_enemy.tscn`, `RangedAttack` und `Attacks/Ranged` in `ranged_enemy.tscn` –; das gibt Fehler in `caveman.tscn` und `stone_thrower.tscn`.
 - Ein neuer Gegner (M14): im Editor „Neue geerbte Szene“ aus `melee_enemy.tscn` oder `ranged_enemy.tscn`, als `entities/enemies/<name>.tscn` speichern, dann Skin, Werte-Dateien – Kopien aus `data/enemies/` –, Waffe und Beute wählen; ins Level instanzieren und `patrol_tiles` setzen. Mehr unter „Gegnertypen im Einzelnen (M14)“.
 - Einen Angriff abschalten, ohne ihn zu löschen: beim Knoten unter `Attacks` `enabled` aus.
-- Bildebenen der Oberfläche: HUD 90, Debug-Anzeige 100, Inventarfenster 105, Fadenkreuz 110. Ein neues Fenster gehört zwischen 100 und 110, eine neue Anzeige am Bildrand unter 100.
+- Bildebenen der Oberfläche: HUD 90, Debug-Anzeige 100, Inventarfenster 105, Dialogfenster 106, Fadenkreuz 110. Ein neues Fenster gehört zwischen 100 und 110, eine neue Anzeige am Bildrand unter 100.
+- Auch das Dialogfenster ist im Editor unsichtbar (`DialogWindow/Root` ist ausgeblendet). Zum Ansehen dort das Auge an- und danach wieder ausschalten.
+- Ein neues Menü, das die Figur anhalten soll, meldet `EventBus.menu_changed(player_id, true)` beim Öffnen und genau einmal `false` beim Schließen; `PlayerInput` zählt mit. Hört es Tasten, die auch die Figur nutzt, gehört es in der Szene hinter die anderen Fenster und fängt sie in `_input` ab.
+- Ein neuer NPC und ein neues Gespräch: siehe „NPCs und Dialog im Einzelnen (M15)“. Texte im Gespräch weiter ohne ß, unteres Anführungszeichen, Gedankenstrich und das Zeichen für drei Punkte.
 - Ein Commit mit dem Code eines Moduls, aber noch ohne die abschließende Stand-Datei, ist kein Problem: Die Stand-Datei kommt mit dem Abschluss-ZIP nach und wird einfach als eigener Commit hochgeladen.
 - Neue Splitter: eine Datei aus `data/effects/debris_*.tres` kopieren, Streifen und `piece_count` anpassen und sie einem `DebrisCue` geben. Die Streifen in `FX/Particle/` sind Bruchstücke nebeneinander, keine Animation; mit `tint` lässt sich ein Streifen einfärben.
 
 ## Offene Punkte
 
-- `components/windup_flash/` liegt noch im Repo, ein Rest aus der ersten Fassung von M13; nichts benutzt ihn. Der Nutzer löscht den Ordner, bevor er M14 hochlädt.
+- `components/windup_flash/` liegt noch im Repo (Commit `d09ce9a`), ein Rest aus der ersten Fassung von M13; nichts benutzt ihn. Der Nutzer löscht den Ordner beim Einspielen von M15.
 - Beim Bauen von M14 ergänzt: Die Debug-Anzeige zeigt je Gegner eine Zeile statt zwei, und sie verschwindet nach dem Tod; Chase zeigt, ob der Gegner verfolgt, abwartet oder zurückweicht; `ProjectileSkin` kann mit `first_frame` ein einzelnes Bild aus einem Streifen nehmen; ein Skin kennt den Wurf `shoot`. Mit dem Test vom Nutzer bestätigt.
 - Fernkämpfer: Steine lassen sich nicht abwehren oder zurückschlagen; die Steinwerferin zielt auf die Stelle, an der die Figur gerade steht, ohne vorzuhalten; beim Abwarten steht sie still, statt zur Seite auszuweichen. Zurückweichen in eine Ecke beendet sie nicht – dort bleibt sie stehen und wirft weiter.
 - Zoom: Gewünscht war „4x“; eingestellt ist 2, mit dem Test bestätigt. Andere Werte gehen ohne Code in `data/world/view.tres`; Abstände der Gegner und die faire Grenze passen sich an.
@@ -1131,7 +1232,9 @@ Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & B
 - Drei Dinge hat Claude in M9 selbst entschieden, der Nutzer hat sie mit dem Test bestätigt: keine Energie aus Zerstörbarem, Blätter je Hieb am Baum, der graugrüne Fels als Stein. Zurücknehmen ginge ohne Code: `feeds_attacker` an der Hurtbox anschalten, den Knoten `LeafHit` löschen, in `data/skins/rock.tres` eine andere Zelle wählen.
 - Zerstörtes kommt nicht wieder, Beute bleibt liegen, bis der Raum neu lädt. Ob Dinge später wiederkehren und ob Beute verschwindet, gehört zu M16.
 - Ein Kanal kennt nur ODER: Eine Tür ist offen, sobald einer ihrer Schalter an ist. Ein Tor, das zwei Hebel zugleich braucht, gibt es noch nicht.
-- M15 – NPCs & Dialog ist vorgeschlagen, noch nicht bestätigt: Schamane in der Testkammer, Dialogfenster aus `Ui/Dialog/` mit Porträt, Namen, Text Buchstabe für Buchstabe und bis zu drei Antworten, Gespräche als Werte-Dateien in `data/dialogs/`, Geschenke als Beute. Einzelheiten im Plan-Dokument unter Phase 3.
+- M15 – NPCs & Dialog: Test am 21.11.2026 bestanden bis auf einen Wunsch, nachgebessert; der Test der Nachbesserung steht aus. Beim Bauen hat Claude selbst entschieden, vom Nutzer mit dem Test bestätigt: der Jäger als NPC, der nur Auskunft gibt; Belohnung und „erledigt“ an einzelnen Zeilen statt am ganzen Gespräch, damit der Schamane erst nach dem Geschenk zu seinem kurzen Satz wechselt; der wippende Pfeil, wenn es weitergeht; der Rahmen über dem Kästchen unter der Maus; nach dem Schließen greift die Figur erst nach dem Loslassen der Maustaste an. Alles lässt sich ohne Code zurücknehmen oder ändern – in den Werte-Dateien und Szenen.
+- Nicht in M15: Händler, Schmied und Aufträge (M17); Antworten mit Bedingungen, etwa nur mit Schlüssel; Speichern, wer schon gesprochen hat (M16); „erledigt“ je Spieler; Ton (A3); NPCs, die umherlaufen; Gespräche, die von selbst beginnen, wenn man nah kommt.
+- Während eines Gesprächs läuft die Welt weiter: Ein Gegner kann die Figur dabei treffen. Ob ein Treffer das Gespräch abbrechen soll, ist noch offen.
 - Ton (A3): auf Wunsch des Nutzers verschoben, fast ans Ende des Projekts, mit Phase 7 – Feinschliff. Bis dahin hat kein Modul Ton; `SoundCue` und die Ton-Tabelle entstehen erst dann.
 - Der Hieb-Effekt richtet sich nicht von selbst nach der Trefferzone: Ändern sich `start_distance` oder `reach` in `data/player/sword.tres`, ist `distance` am Knoten `SlashEffect` der Spielfigur nachzuziehen. Heute ist es 8, also `start_distance` + 2.
 - Grafik, noch ungeprüft – Claude klärt das, bevor ein Schritt es braucht: Lage des Katanas über der Figur (erst wenn das Schwert sichtbar wird); Effekte, die im Katalog „unklar“ heißen (wenn ein Schritt sie braucht); alle Töne, bisher nur die Namen (A3); Übergangsregeln der Kacheln (A4); `TilesetFloor.png` mit 417 Pixeln Höhe, nicht durch 16 teilbar (A4).
@@ -1146,4 +1249,4 @@ Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & B
 - Tod & Speichern: Der Neustart des Raums ist vorläufig. Was beim Tod verloren geht und wo gespeichert wird, ist vor M16 zu entscheiden.
 - Stottert die Bewegung auf einem Monitor mit mehr als 60 Hz, gibt es dafür die Physik-Interpolation als Projekteinstellung. Sie ist bewusst noch aus.
 - Der Sicherungsordner `E:\GitHub\TT_alt` kann gelöscht werden, falls er noch existiert.
-- In `components/`, `levels/test_chamber/`, `entities/player/` und `data/` liegt noch je eine `.gitkeep`, die nicht mehr gebraucht wird.
+- In `components/`, `levels/test_chamber/`, `entities/player/`, `entities/npcs/` und `data/` liegt noch je eine `.gitkeep`, die nicht mehr gebraucht wird.

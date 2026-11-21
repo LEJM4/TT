@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="DialogData" format=3]
+
+[ext_resource type="Script" path="res://dialogs/dialog_data.gd" id="1_data"]
+[ext_resource type="Script" path="res://dialogs/dialog_line.gd" id="2_line"]
+[ext_resource type="Script" path="res://dialogs/dialog_choice.gd" id="3_choice"]
+[ext_resource type="Resource" path="res://data/dialogs/speakers/shaman.tres" id="4_speaker"]
+[ext_resource type="Resource" path="res://data/loot/shaman_gift.tres" id="5_gift"]
+
+[sub_resource type="Resource" id="Resource_choice_time"]
+script = ExtResource("3_choice")
+text = "Aus einer anderen Zeit."
+next = &"time"
+
+[sub_resource type="Resource" id="Resource_choice_gift"]
+script = ExtResource("3_choice")
+text = "Hast du etwas für mich?"
+next = &"gift"
+
+[sub_resource type="Resource" id="Resource_choice_bye"]
+script = ExtResource("3_choice")
+text = "Ich muss weiter."
+next = &"bye"
+
+[sub_resource type="Resource" id="Resource_greet"]
+script = ExtResource("2_line")
+id = &"greet"
+text = "Ein Fremder! Deine Kleider sind seltsam. Die Geister haben dich angekündigt."
+
+[sub_resource type="Resource" id="Resource_question"]
+script = ExtResource("2_line")
+id = &"question"
+text = "Was führt dich her?"
+choices = Array[ExtResource("3_choice")]([SubResource("Resource_choice_time"), SubResource("Resource_choice_gift"), SubResource("Resource_choice_bye")])
+
+[sub_resource type="Resource" id="Resource_time"]
+script = ExtResource("2_line")
+id = &"time"
+text = "Aus einer anderen Zeit? Dann bist du der Reisende aus den alten Liedern."
+
+[sub_resource type="Resource" id="Resource_time_more"]
+script = ExtResource("2_line")
+text = "Die Geister sagen, du suchst den Weg durch die Zeit. Frag mich ruhig weiter."
+next = &"question"
+
+[sub_resource type="Resource" id="Resource_gift"]
+script = ExtResource("2_line")
+id = &"gift"
+text = "Ein Reisender braucht Pfeile. Nimm diese hier, sie fliegen weit und treffen gut."
+reward = ExtResource("5_gift")
+marks_done = true
+
+[sub_resource type="Resource" id="Resource_blessing"]
+script = ExtResource("2_line")
+text = "Mögen die Geister über dich wachen."
+next = &"end"
+
+[sub_resource type="Resource" id="Resource_bye"]
+script = ExtResource("2_line")
+id = &"bye"
+text = "Geh nur. Die Geister sehen dich, wohin du auch gehst."
+
+[resource]
+script = ExtResource("1_data")
+speaker = ExtResource("4_speaker")
+lines = Array[ExtResource("2_line")]([SubResource("Resource_greet"), SubResource("Resource_question"), SubResource("Resource_time"), SubResource("Resource_time_more"), SubResource("Resource_gift"), SubResource("Resource_blessing"), SubResource("Resource_bye")])

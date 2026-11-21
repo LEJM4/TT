@@ -26,6 +26,10 @@ extends Node2D
 ##   StoneThrower    Fernkämpferin (M14): eine Steinwerferin patrouilliert in der
 ##                   freien Fläche unten in der Mitte; sie hält Abstand und wirft
 ##                   Steine; Sichtkegel und Hörkreis wie beim Höhlenmenschen
+##   Shaman          NPC mit Gespräch (M15): ein Schamane rechts neben den
+##                   Startpunkten; fragt, was dich herführt, gibt einmal 5 Pfeile
+##   Hunter          NPC, der nur Auskunft gibt (M15): ein Jäger links neben den
+##                   Startpunkten; warnt vor den Gegnern, ohne Antworten
 ##   LootSpawner     legt alle Beute hin (M9)
 ##   PlayerSpawner   erzeugt die Spielfiguren (M2)
 ##   ProjectileSpawner  erzeugt alle Geschosse (M6)
@@ -35,6 +39,8 @@ extends Node2D
 ##   DebugOverlay    Entwickler-Anzeige
 ##   InventoryWindow Inventarfenster auf Tab (M11)
 ##   Hud             Leben, Energie, Ausdauer, Fähigkeiten und Geschoss der Figur 1 (M12)
+##   DialogWindow    Dialogfenster der Figur 1 (M15); steht als Letztes in der Szene,
+##                   damit es Tasten vor dem Inventarfenster hört
 ## Alles außer Walls, Blocks und SpawnPoints lässt sich einzeln löschen,
 ## die Kammer läuft weiter.
 ##

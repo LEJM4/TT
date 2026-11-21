@@ -9,6 +9,9 @@ extends IntentSource
 ## damit sie im selben Bild die frischen Absichten liest.
 ## Ist ein Menü der Figur offen, etwa das Inventar (EventBus.menu_changed), meldet
 ## er keine Absichten: Die Figur bleibt stehen, die Welt läuft weiter (M11).
+## Er zählt die offenen Menüs, etwa Inventar und Gespräch (M15): Erst wenn alle zu
+## sind, geht es weiter. Hält der Spieler dann noch eine Maustaste - etwa vom
+## Klick, der ein Gespräch beendet -, greift die Figur erst nach dem Loslassen an.
 
 ## Näher als so viele Pixel an der Figur ändert die Maus die Zielrichtung nicht.
 const AIM_DEAD_ZONE := 1.0
@@ -20,6 +23,8 @@ var _ability_pressed := -1
 var _ammo_cycle := 0
 var _interact_pressed := false
 var _blocked := false
+var _open_menus := 0
+var _wait_for_release := false
 
 
 func _ready() -> void:
@@ -51,6 +56,12 @@ func _physics_process(_delta: float) -> void:
 	wants_sneak = Input.is_action_pressed("sneak")
 	wants_attack = Input.is_action_pressed("attack_primary")
 	wants_shoot = Input.is_action_pressed("attack_secondary")
+	if _wait_for_release:
+		if wants_attack or wants_shoot:
+			wants_attack = false
+			wants_shoot = false
+		else:
+			_wait_for_release = false
 	wants_dash = _dash_pressed
 	_dash_pressed = false
 	wants_ability = _ability_pressed
@@ -72,7 +83,14 @@ func _on_menu_changed(player_id: int, is_open: bool) -> void:
 	var owner_id: Variant = get_parent().get("player_id")
 	if owner_id == null or int(owner_id) != player_id:
 		return
-	_blocked = is_open
+	if is_open:
+		_open_menus += 1
+	else:
+		_open_menus = maxi(_open_menus - 1, 0)
+	var was_blocked := _blocked
+	_blocked = _open_menus > 0
+	if was_blocked and not _blocked:
+		_wait_for_release = true
 	_clear()
 
 

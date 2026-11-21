@@ -15,14 +15,15 @@
 | Ordner | Inhalt |
 | --- | --- |
 | `autoload/` | Globale Dienste: EventBus, Tastenbelegung, Spielstand, Szenenwechsel, Ton |
-| `components/` | Bausteine für alle: Bild, Effekte, Splitter, Leben, Lebensleiste, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion, Beute, Aufsammeln, Ausrüstung, Zustandsautomat, Sehen und Hören |
-| `entities/` | Figuren und Bewegliches: `player/`, `enemies/` – Grundszene, Gegnertypen (Nahkämpfer, Fernkämpfer), fertige Gegner, Angriffs-Module in `attacks/`, Zustände in `states/` –, `dummy/`, `projectile/`, `effect/`, `debris/`, `pickup/`; später `npcs/` |
+| `components/` | Bausteine für alle: Bild, Effekte, Splitter, Leben, Lebensleiste, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion, Beute, Aufsammeln, Ausrüstung, Zustandsautomat, Sehen und Hören, Sprechblase, Blick im Gespräch |
+| `entities/` | Figuren und Bewegliches: `player/`, `enemies/` – Grundszene, Gegnertypen (Nahkämpfer, Fernkämpfer), fertige Gegner, Angriffs-Module in `attacks/`, Zustände in `states/` –, `npcs/` – Grundszene und fertige NPCs –, `dummy/`, `projectile/`, `effect/`, `debris/`, `pickup/` |
 | `abilities/` | Fähigkeiten: Schnelligkeit, Unsichtbarkeit, Stun; der Dash ist ein Baustein in `components/dash/` |
 | `items/` | Baupläne für Gegenstände, Geschosse, Ausrüstung und Beute-Listen; die Gegenstände selbst liegen in `data/items/` – Geschosse, Materialien, Schlüssel, Ausrüstung –, die Listen in `data/loot/` |
+| `dialogs/` | Baupläne für Gespräche: Gespräch, Zeile, Antwort, Sprecher und der DialogRunner, der den Weg durch ein Gespräch kennt; die Gespräche selbst liegen in `data/dialogs/` |
 | `world/` | Dinge der Welt: `view/` die Ansicht – Zoom der Welt und die Kachel als Maß –, Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen |
 | `levels/` | `test_chamber/`, später die Level und die Zeitkapsel |
-| `ui/` | Oberfläche: `hud/` die Anzeige am Bildrand, `inventory/` das Inventarfenster, `theme/` das Holz-Thema für alle Fenster, `crosshair/`, `debug/` für Entwickler-Anzeigen; später Dialog, Menüs |
-| `data/` | Werte-Dateien (`.tres`): Balancing, Gegner, Skins, Gegenstände, Effekte, Beute, Oberfläche |
+| `ui/` | Oberfläche: `hud/` die Anzeige am Bildrand, `inventory/` das Inventarfenster, `theme/` das Holz-Thema für alle Fenster, `dialog/` das Dialogfenster mit eigenem Thema, `crosshair/`, `debug/` für Entwickler-Anzeigen; später Menüs |
+| `data/` | Werte-Dateien (`.tres`): Balancing, Gegner, Skins, Gegenstände, Effekte, Beute, Gespräche, Oberfläche |
 | `assets/` | Grafik und Ton – siehe `assets/README.md` |
 | `docs/` | Stand-Datei und Grafik-Katalog; von Godot ignoriert |
 | `tools/` | Hilfsskripte; von Godot ignoriert |
@@ -46,7 +47,15 @@ Sie steht in `autoload/input_setup.gd` und lässt sich dort ändern.
 | 1 2 3 | `ability_1`, `ability_2`, `ability_3` |
 | Tab | `inventory` |
 | M | `map` |
-| Esc | `pause` |
+| Esc | `pause` – schließt auch Inventar und Gespräch |
+
+**Im Gespräch** – die Figur nimmt dann keine Eingaben an, deshalb dürfen die Tasten doppelt belegt sein:
+
+| Eingabe | Aktion im Code | Wirkung |
+| --- | --- | --- |
+| E, Leertaste, Linksklick | `dialog_next` | Text ganz zeigen, dann weiter |
+| 1 2 3 | `dialog_choice_1`, `dialog_choice_2`, `dialog_choice_3` | Antwort wählen; die Maus geht auch |
+| Esc | `pause` | Gespräch abbrechen |
 
 **Entwickler-Tasten**
 

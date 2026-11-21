@@ -1,0 +1,34 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/dialog/choice_button.gd" id="1_choice"]
+
+[node name="ChoiceButton" type="Button"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 20.0
+focus_mode = 0
+theme_type_variation = &"DialogChoice"
+text = "Antwort"
+alignment = 0
+script = ExtResource("1_choice")
+
+[node name="Key" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 18.0
+offset_bottom = 17.0
+mouse_filter = 2
+
+[node name="Focus" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"DialogFocus"

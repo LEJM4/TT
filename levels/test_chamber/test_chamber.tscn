@@ -35,6 +35,9 @@
 [ext_resource type="PackedScene" path="res://entities/enemies/caveman.tscn" id="33_caveman"]
 [ext_resource type="Resource" path="res://data/world/view.tres" id="34_view"]
 [ext_resource type="PackedScene" path="res://entities/enemies/stone_thrower.tscn" id="35_stone_thrower"]
+[ext_resource type="PackedScene" path="res://entities/npcs/shaman.tscn" id="36_shaman"]
+[ext_resource type="PackedScene" path="res://entities/npcs/hunter.tscn" id="37_hunter"]
+[ext_resource type="PackedScene" path="res://ui/dialog/dialog_window.tscn" id="38_dialog_window"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
 size = Vector2(960, 16)
@@ -345,6 +348,12 @@ patrol_tiles = Vector2(8, 0)
 [node name="Perception" parent="StoneThrower"]
 debug_draw = true
 
+[node name="Shaman" parent="." instance=ExtResource("36_shaman")]
+position = Vector2(312, 120)
+
+[node name="Hunter" parent="." instance=ExtResource("37_hunter")]
+position = Vector2(168, 136)
+
 [node name="LootSpawner" parent="." instance=ExtResource("22_loot_spawner")]
 
 [node name="PlayerSpawner" parent="." unique_id=970808961 instance=ExtResource("4_spawner")]
@@ -363,3 +372,5 @@ hidden_keys = PackedStringArray("Kamera", "Raumzeit")
 [node name="InventoryWindow" parent="." instance=ExtResource("27_inventory_window")]
 
 [node name="Hud" parent="." instance=ExtResource("32_hud")]
+
+[node name="DialogWindow" parent="." instance=ExtResource("38_dialog_window")]

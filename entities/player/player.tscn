@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" path="res://components/collector/collector.tscn" id="37_collector"]
 [ext_resource type="PackedScene" path="res://components/equipment/equipment.tscn" id="38_equipment"]
 [ext_resource type="Resource" path="res://data/player/equipment.tres" id="39_equipment_stats"]
+[ext_resource type="PackedScene" path="res://components/talk_facing/talk_facing.tscn" id="40_talk_facing"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(12, 12)
@@ -128,6 +129,8 @@ use_direction = true
 stats = ExtResource("36_interactor_stats")
 
 [node name="Collector" parent="." instance=ExtResource("37_collector")]
+
+[node name="TalkFacing" parent="." instance=ExtResource("40_talk_facing")]
 
 [node name="Equipment" parent="." instance=ExtResource("38_equipment")]
 stats = ExtResource("39_equipment_stats")

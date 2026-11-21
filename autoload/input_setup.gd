@@ -4,6 +4,9 @@ extends Node
 ## Ändern: Einträge in KEY_BINDINGS oder MOUSE_BINDINGS anpassen.
 ## Neue Aktion: eine Zeile ergänzen, mehr ist nicht nötig.
 ## Später überschreibt das Optionen-Menü (M20) diese Standardwerte.
+## Im Gespräch (M15) gelten eigene Aktionen auf denselben Tasten: dialog_next
+## (E, Leertaste, Linksklick) und dialog_choice_1 bis 3 (1 2 3). Die Figur nimmt
+## dann keine Eingaben an, Doppelbelegungen stören also nicht.
 
 ## Aktion -> Tasten (Position auf der Tastatur, unabhängig vom Layout).
 const KEY_BINDINGS := {
@@ -22,6 +25,10 @@ const KEY_BINDINGS := {
 	"inventory": [KEY_TAB],
 	"map": [KEY_M],
 	"pause": [KEY_ESCAPE],
+	"dialog_next": [KEY_E, KEY_SPACE],
+	"dialog_choice_1": [KEY_1],
+	"dialog_choice_2": [KEY_2],
+	"dialog_choice_3": [KEY_3],
 	"debug_toggle_overlay": [KEY_F1],
 	"debug_restart_room": [KEY_F2],
 	"debug_cycle_zoom": [KEY_F3],
@@ -34,6 +41,7 @@ const MOUSE_BINDINGS := {
 	"dash": [MOUSE_BUTTON_XBUTTON1],
 	"ammo_next": [MOUSE_BUTTON_WHEEL_DOWN],
 	"ammo_previous": [MOUSE_BUTTON_WHEEL_UP],
+	"dialog_next": [MOUSE_BUTTON_LEFT],
 }
 
 
