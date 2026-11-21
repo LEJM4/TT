@@ -12,10 +12,10 @@ Er ist eine Richtlinie, kein Zwang. Was vorgezogen oder eingeschoben wird, steht
 | | |
 | --- | --- |
 | Stand vom | 21.11.2026 |
-| In Arbeit | M15 – NPCs & Dialog: am 21.11.2026 mit drei Änderungen des Nutzers bestätigt und gebaut (`m15_npcs_dialog.zip`); Test am selben Tag bestanden bis auf einen Wunsch – die Spielfigur soll sich im Gespräch zum NPC drehen. Nachgebessert als `m15_nachbesserung.zip`; deren Test steht aus |
-| Als Nächstes | Der Nutzer spielt `m15_nachbesserung.zip` ein (Godot vorher schließen) und prüft die Drehung der Figur. Danach schließt Claude M15 ab, und der Nutzer lädt M15 hoch – ohne den Ordner `components/windup_flash`, der noch im Repo liegt. Mit dem Abschluss ist Phase 3 fertig; Claude schlägt dann laut Fahrplan M16 – Speichern & Laden vor. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
-| Zuletzt abgeschlossen | M14 – Gegnertypen, am 18.11.2026: Test bestanden („Passt alles“). Davor am 18.11.2026 M13 – Erster Gegner nach einer Nachbesserung und M12 – HUD, damit war Phase 2 fertig; am 17.11.2026 M11 – Inventar & Ausrüstung, M10 – Truhen & Beute, M9 – Zerstörbares, M8 – Interaktion, A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
-| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 21.11.2026 vor dem Bau von M15: Commit `d09ce9a` „m14 simple npc“ mit M14 und der Stand-Datei aus `m14_abschluss.zip`, alles wie geliefert, dazu die `.uid`-Dateien. Noch im Repo liegt der Ordner `components/windup_flash` aus der ersten Fassung von M13; nichts benutzt ihn, der Nutzer löscht ihn beim Einspielen von M15. M15 baut auf `d09ce9a` auf. Davor `886f6f9` mit M13, `19e426c` mit M12, `1b7abfc` mit M9 bis M11, `e615355` mit M8, `e7909b2` mit A2, `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4` |
+| In Arbeit | M16 – Speichern & Laden: am 21.11.2026 mit Änderungen des Nutzers bestätigt – Tod wie vorgeschlagen, Spielstand löschen nur im Startmenü (F4 nur zum Testen), dazu seine Idee Portalstand und Levelstand. Claude hat die Idee geprüft und einen Umsetzungsplan geschrieben: „Plan für M16 – Speichern & Laden“. Gebaut wird auf Wunsch des Nutzers im neuen Chat |
+| Als Nächstes | Der Nutzer lädt diese Stand-Datei aus `m16_uebergabe.zip` hoch – `m15_abschluss.zip` entfällt – und beginnt einen neuen Chat mit der ersten Nachricht unter „Neuer Chat und Arbeitsweise“. Dort baut Claude M16 nach dem Plan. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
+| Zuletzt abgeschlossen | M15 – NPCs & Dialog, am 21.11.2026: Test bestanden („der Rest klappt“), dazu eine Nachbesserung auf Wunsch des Nutzers – die Spielfigur dreht sich im Gespräch zum NPC –, mit dem Hochladen bestätigt; damit ist Phase 3 fertig. Davor am 18.11.2026 M14 – Gegnertypen, M13 – Erster Gegner nach einer Nachbesserung und M12 – HUD, damit war Phase 2 fertig; am 17.11.2026 M11 – Inventar & Ausrüstung, M10 – Truhen & Beute, M9 – Zerstörbares, M8 – Interaktion, A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
+| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 21.11.2026 nach dem Hochladen von M15: Commit `985f098` „M15 NPCs & Dialog“ mit M15 samt Nachbesserung und der Stand-Datei aus `m15_nachbesserung.zip`, alle Dateien wie geliefert, dazu die `.uid`-Dateien; der Ordner `components/windup_flash` ist gelöscht. M16 baut auf `985f098` auf. Davor `d09ce9a` mit M14, `886f6f9` mit M13, `19e426c` mit M12, `1b7abfc` mit M9 bis M11, `e615355` mit M8, `e7909b2` mit A2, `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4` |
 
 ## Neuer Chat und Arbeitsweise
 
@@ -26,10 +26,18 @@ Ein neuer Chat hat keine Kopie früherer Lieferungen. Er kennt nur diese Datei, 
 1. Diese Datei lesen, dann im Plan-Dokument den Tab, um den es geht.
 2. Das Repo einmal klonen und den Code lesen. Fehlt dort etwas, das hier als fertig steht, bittet Claude den Nutzer, es hochzuladen, statt es aus dieser Datei nachzubauen.
 
+**Erste Nachricht für den neuen Chat nach M15** – vorbereitet am 21.11.2026, der Nutzer fügt sie dort ein:
+
+> Neuer Chat für TimeTraveller, weiter nach M15. Lies zuerst projekt_stand.md im Projektwissen – dort steht unter „Plan für M16 – Speichern & Laden“, was gebaut wird – und im Plan-Dokument den Tab „Plan & Status“, Phase 4. Klone dann das Repo https://github.com/LEJM4/TT und prüfe, dass M15 und die Stand-Datei vom 21.11.2026 drin sind. Danach baue M16 – Speichern & Laden nach diesem Plan.
+
+Der neue Chat baut M16 nach „Plan für M16 – Speichern & Laden“ weiter unten. Bevor er baut, liest er im Repo die Skripte, die der Plan nennt; weicht der Code vom Plan ab, gilt der Code, und Claude passt den Plan an.
+
 **Regeln für alle Gegner**
 
 - Seit M13: Abstände in Kacheln (`ViewSettings.tiles()`), Bemerken nur in der fairen Grenze von `Perception`, Schlag sofort mit dem ersten Bild der Hieb-Animation, kein Blinken beim Angriff; die Welt erscheint mit Zoom 2 aus `data/world/view.tres`.
 - Seit M14: Neue Gegner und Gegnertypen kommen als neue Dateien dazu – Aufbau unter „Gegnertypen im Einzelnen (M14)“. Der Nutzer will später viele weitere Typen.
+
+Die Übergabe vom 21.11.2026 nach M15 steht bereit: erste Nachricht oben, Plan unter „Plan für M16 – Speichern & Laden“.
 
 Die Übergabe vom 18.11.2026 nach M13 ist erledigt: M13 liegt im Repo (Commit `886f6f9`); der neue Chat hat das geprüft und auf Wunsch des Nutzers gleich M14 gebaut. Übrig war nur der Ordner `components/windup_flash`.
 
@@ -78,12 +86,12 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | | M12 HUD | fertig am 18.11.2026 – damit ist Phase 2 fertig |
 | 3 – Gegner & NPCs | M13 Erster Gegner | fertig am 18.11.2026 – nach einer Nachbesserung am selben Tag |
 | | M14 Gegnertypen | fertig am 18.11.2026 – Nahkämpfer und Fernkämpfer als Baukasten für viele weitere Typen |
-| | M15 NPCs & Dialog | im Test – vorgeschlagen am 18.11.2026, am 21.11.2026 mit drei Änderungen des Nutzers bestätigt und gebaut; Test bestanden bis auf die Drehung der Spielfigur, nachgebessert am selben Tag |
-| 4 – Spielrahmen | M16 Speichern & Laden | offen |
+| | M15 NPCs & Dialog | fertig am 21.11.2026 – mit drei Änderungen des Nutzers und einer Nachbesserung: Die Spielfigur dreht sich im Gespräch zum NPC. Damit ist Phase 3 fertig |
+| 4 – Spielrahmen | M16 Speichern & Laden | als Nächstes – am 21.11.2026 mit Änderungen bestätigt, Umsetzungsplan steht; gebaut wird im neuen Chat |
 | | M17 Missionen | offen |
-| | M18 Räume & Levelwechsel | offen |
+| | M18 Räume & Levelwechsel | offen – seit 21.11.2026 dazu: Zeitkapsel als Portal, die beim Abschluss den Levelstand übernimmt |
 | | M19 Freischaltungen | offen |
-| | M20 Menüs | offen |
+| | M20 Menüs | offen – seit 21.11.2026 dazu: „Level verlassen“ im Pausenmenü, mit Nachfrage; Spielstände löschen nur im Startmenü, mit der Maus |
 | 5 | Level 1 – Steinzeit | offen |
 | 6 | Zeitkapsel & weitere Level | offen |
 | 7 | Feinschliff & Veröffentlichung | offen |
@@ -99,7 +107,7 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | A3 Ton | `AudioManager` füllen, Baustein `SoundCue`, Ton-Tabelle als Werte-Datei, Musik in der Testkammer | fast am Ende des Projekts, mit Phase 7 – Feinschliff; am 17.11.2026 auf Wunsch des Nutzers verschoben | offen |
 | A4 Kacheln & Räume | Kachel-Sets mit Kollision, Testkammer mit Kacheln, Anleitung zum Malen im Editor | mit M8, spätestens vor Level 1 | offen |
 | A5 Oberfläche | Schrift und Thema, Herzen, Leisten, Fähigkeits- und Tastensymbole, Dialogfeld | mit M11, M12, M15 und M20 | in Arbeit – mit M11 das Holz-Thema für Fenster, mit M12 Herzen, Energie-Kugel, Ausdauer-Leiste, Fähigkeits- und Tastensymbole, mit M15 das Dialogfeld; es fehlen die Menüs (M20) |
-| A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | in Arbeit – mit M13 der Höhlenmensch `Caveman2` als erster Gegner, mit M14 die Steinwerferin `Cavegirl` und ihr Stein aus `FX/Particle/Rock.png`, mit M15 die NPCs `Shaman` und `CaveLion` mit Porträt |
+| A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | in Arbeit – mit M13 der Höhlenmensch `Caveman2` als erster Gegner, mit M14 die Steinwerferin `Cavegirl` und ihr Stein aus `FX/Particle/Rock.png`, mit M15 die NPCs `Shaman` und `CaveLion` mit Porträt; Bosse folgen mit den Leveln |
 
 Ab A1 bringt jedes neue Modul sein Bild gleich mit: M8 aus `TilesetDungeon`, `TilesetHouse` und `TilesetElement`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`, M11 aus `Ui/Theme/Theme Wood` und `Items/Weapons`, M12 aus `Ui/Receptacle`, `Ui/Skill Icon` und `Ui/Input/Keyboard`, M13 aus `Actor/Character/Caveman2`, `Ui/Emote` und `FX/Attack/Claw`, M14 aus `Actor/Character/Cavegirl` und `FX/Particle/Rock.png`, M15 aus `Actor/Character/Shaman`, `Actor/Character/CaveLion`, `Ui/Dialog`, `Ui/Arrow.png` und `Ui/Input/Keyboard`. Den Ton bekommen alle Module erst mit A3, fast am Ende des Projekts.
 
@@ -128,7 +136,8 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | 18.11.2026 | Wunsch des Nutzers nach dem ersten Test von M13: Sprites global größer („4x“); Fokus- und Angriffsabstand der Nahkämpfer in logischen Einheiten statt fester Pixel, fair und nicht einfach mit dem Faktor multipliziert; Schlag sofort mit dem ersten Bild der Hieb-Animation, weil sie nur ein Bild ohne Ausholen hat; kein rotes Blinken beim Angriff des Höhlenmenschen. Claude hat das als Nachbesserung von M13 gebaut – Zoom 2 statt 4, Begründung unter „Weltskalierung“. | eingebaut am 18.11.2026 als `m13_nachbesserung.zip`; Test bestanden („Alles passt“) |
 | 18.11.2026 | Neuer Chat. Wunsch des Nutzers: gleich mit M14 beginnen, als Gegnertypen erst Nahkampf und Fernkampf; später kommen viele weitere dazu, deshalb so modular und einfach erweiterbar wie möglich. Claude hat M14 ohne vorherigen Vorschlag gebaut; die Entscheidungen stehen unter „Festlegungen“ und im Plan-Dokument. Dafür ist die Grundszene der Gegner einmal umgebaut: Den Angriff bringt jetzt der Gegnertyp mit, nicht mehr die Grundszene. | gebaut am 18.11.2026 als `m14_gegnertypen.zip`; Test bestanden („Passt alles“) |
 | 21.11.2026 | Der Nutzer bestätigt den Vorschlag zu M15 mit drei Änderungen: Antworten wählt man nur mit 1 bis 3 oder mit der Maus, nicht mit W/S und E; eine Belohnung gibt es nur bei ausgewählten NPCs, die Beute springt dann vor der Figur auf den Boden; manche NPCs geben nur Auskunft – der Spieler antwortet nicht, der NPC sagt etwas, dann ist das Gespräch zu Ende. Claude hat M15 so gebaut, mit dem Jäger als zweitem NPC, der nur Auskunft gibt. Belohnung und „erledigt“ hängen deshalb an einzelnen Zeilen eines Gesprächs: Der Schamane sagt seinen kurzen Satz erst, nachdem er die Pfeile gegeben hat, nicht schon nach dem Abschied. | gebaut am 21.11.2026 als `m15_npcs_dialog.zip`; Test bestanden („der Rest klappt“) |
-| 21.11.2026 | Wunsch des Nutzers nach dem Test von M15: „wenn die beiden miteinander sprechen, dann dreht sich auch der Spieler selbst zu dem, zu dem er spricht“ – der Rest klappt. Claude hat das als Nachbesserung gebaut: Die Spielfigur hat ein Blickziel `look_target`; der neue Baustein `TalkFacing` an der Figur setzt es im Gespräch auf den Sprecher und nimmt es danach wieder weg. | gebaut am 21.11.2026 als `m15_nachbesserung.zip`; Test steht aus |
+| 21.11.2026 | Wunsch des Nutzers nach dem Test von M15: „wenn die beiden miteinander sprechen, dann dreht sich auch der Spieler selbst zu dem, zu dem er spricht“ – der Rest klappt. Claude hat das als Nachbesserung gebaut: Die Spielfigur hat ein Blickziel `look_target`; der neue Baustein `TalkFacing` an der Figur setzt es im Gespräch auf den Sprecher und nimmt es danach wieder weg. | gebaut am 21.11.2026 als `m15_nachbesserung.zip`; eingespielt und mit Commit `985f098` hochgeladen – gilt als bestanden |
+| 21.11.2026 | Antwort des Nutzers auf den Vorschlag zu M16: Tod wie vorgeschlagen; im Spiel lässt sich kein Spielstand löschen, nur später im Startmenü mit der Maus – F4 nur zum Testen; man soll ein Level verlassen können, der Fortschritt im Level geht dann verloren, dafür braucht es einen weiteren Speicherstand im Portal; Idee: Portalinventar und Levelinventar – das Inventar wird vor dem Level gesichert, im Level gespeichert und mit dem Abschluss ins Portalinventar übernommen. „Rest passt so.“ Auf seinen Wunsch hat Claude die Idee geprüft und einen Umsetzungsplan geschrieben; der Code entsteht im neuen Chat. | Plan fertig am 21.11.2026, siehe „Plan für M16 – Speichern & Laden“ |
 
 ## Festlegungen
 
@@ -150,7 +159,10 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Sprint und Schleichen | Solange die Taste gehalten wird, kein Umschalten | entschieden am 16.11.2026 |
 | Kamera | Bildmitte folgt der Figur auf ganzen Pixeln; Vorausschau ein Stück zur Maus und in Laufrichtung, weich nachgleitend; die Raumgrenzen meldet das Level | entschieden am 16.11.2026; die Werte bleiben einstellbar |
 | Pixelraster | „Snap 2D Transforms to Pixel“ ist an: Alles wird auf ganzen Pixeln gezeichnet | entschieden am 16.11.2026 |
-| Tod | Vorläufig: Stirbt eine Spielfigur, startet der Raum nach einer Sekunde neu. Die endgültige Regel folgt mit dem Speichern in M16. | vorläufig entschieden am 16.11.2026 |
+| Tod | Die Figur erwacht nach einer Sekunde am letzten Zeitanker mit vollem Leben, ohne einen am Landepunkt des Levels – in der Testkammer an den Startpunkten. Was sie gefunden, geöffnet oder erledigt hat, bleibt, wie in Hollow Knight; Gegner stehen wieder auf, Beute, die noch am Boden liegt, ist weg. Gebaut wird das mit M16; bis dahin startet der Raum nach einer Sekunde neu | vorgeschlagen am 21.11.2026; vom Nutzer am selben Tag bestätigt („dein Vorschlag passt“) |
+| Portalstand und Levelstand | Vor einem Level wird der ganze Fortschritt im Portal – der Zeitkapsel – gesichert: der Portalstand mit dem Portalinventar. Im Level ändert sich eine Kopie davon, der Levelstand mit dem Levelinventar; Zeitanker speichern ihn, Tod und Beenden des Spiels behalten ihn. Mit dem Abschluss des Levels wird er zum neuen Portalstand. „Level verlassen“ verwirft ihn: zurück zum Portalstand. Getrennt wird nicht nur das Inventar, sondern alles, was sich im Level ändern kann – Ausrüstung, Truhen, Zerstörtes, aufgesammelte Gegenstände, NPCs, später Missionen und Freischaltungen. Level 1 hat noch keine Zeitkapsel: Dort ist der Portalstand der Neubeginn, „Level verlassen“ beginnt Level 1 von vorn. Bei einem schon abgeschlossenen Level übernimmt jede Rückkehr in die Zeitkapsel den Levelstand | Idee des Nutzers am 21.11.2026 („Portalinventar und Levelinventar“); geprüft und ergänzt von Claude – alles statt nur des Inventars, Level 1, Rückkehr in abgeschlossene Level; gebaut wird mit M16, der Weg über die Zeitkapsel mit M18 |
+| Spielstand löschen | Im Spiel lässt sich kein Spielstand löschen. Das geht später nur im Startmenü, von Hand mit der Maus (M20). Zum Testen löscht F4 in der Testkammer den Spielstand – nur im Debug-Build, also nicht im fertigen Spiel | Wunsch des Nutzers am 21.11.2026 |
+| Level verlassen | Aus einem laufenden Level kommt man jederzeit zurück ins Portal; der Fortschritt im Level geht dabei verloren. Weil das nicht rückgängig zu machen ist, fragt das Spiel vorher nach. Im Pausenmenü kommt das mit M20, bis dahin in der Testkammer F7 | Wunsch des Nutzers am 21.11.2026; die Nachfrage hat Claude ergänzt |
 | Zuschlagen | Die Figur läuft weiter, während sie schlägt. Geschlagen wird stufenlos in Zielrichtung; die vier Blickrichtungen betreffen später nur das Bild. | entschieden am 16.11.2026 |
 | Mauszeiger | Im Spielfenster ersetzt ihn das Fadenkreuz | entschieden am 16.11.2026 |
 | Dash | In Laufrichtung, im Stehen in Blickrichtung; währenddessen unverwundbar und nicht lenkbar; neue Hiebe erst danach; begrenzt durch eine Abklingzeit, ohne Ausdauer-Kosten | von Claude gewählt; vom Nutzer nach dem Test am 16.11.2026 mit „Ja alles passt“ bestätigt |
@@ -185,17 +197,17 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Gegnertypen | Baukasten in drei Stufen geerbter Szenen: Die Grundszene `enemy.tscn` hat alles außer dem Angriff. Ein Gegnertyp bringt Waffe und Angriffs-Modul mit – `melee_enemy.tscn` (Nahkämpfer), `ranged_enemy.tscn` (Fernkämpfer). Ein fertiger Gegner erbt von seinem Typ und bringt Skin, Werte und Beute mit. Angriffs-Module (`EnemyAttack`) hängen unter `Attacks`: Der erste bestimmt, auf welchen Abstand der Gegner geht; eingesetzt wird der erste, der gerade passt. Ein Gegner kann mehrere haben. Neue Typen kommen als neue Dateien dazu, ohne bestehenden Code zu ändern | Wunsch des Nutzers am 18.11.2026: erst Nahkampf und Fernkampf, später viele mehr, so modular wie möglich; den Aufbau hat Claude gewählt; nach dem Test am 18.11.2026 mit „Passt alles“ bestätigt |
 | Fernkämpfer | Eine Steinwerferin (`Cavegirl`, grünes Haar) mit 20 Leben patrouilliert mit 30 Pixeln pro Sekunde. Sie sieht 7 Kacheln weit in einem Kegel von 90°; Hören, Schleichen, Unsichtbarkeit und faire Grenze wie beim Höhlenmenschen. Bemerkt sie die Figur – „!“, 0,4 s –, geht sie mit 50 Pixeln pro Sekunde bis auf 5 Kacheln heran und wirft, sobald nichts dazwischen ist: ein Stein, 10 Schaden, Tempo 120, höchstens 7 Kacheln Flug; er trifft nur Spielfiguren und endet an Wänden und Blöcken. Danach steht sie 0,3 s, frühestens nach 1,8 s kommt der nächste Wurf. Ist die Figur näher als 2,5 Kacheln, weicht sie mit 45 Pixeln pro Sekunde zurück und blickt sie dabei an; ist sie bereit, wirft sie auch aus der Nähe. Dazwischen wartet sie. Suchen, Rückweg, Überraschung, Stun, Lebensleiste und Tod wie beim Höhlenmenschen; Beute: 2 Steine, mit 50 % 3 Pfeile | von Claude gewählt am 18.11.2026 mit M14; nach dem Test am 18.11.2026 mit „Passt alles“ bestätigt |
 | NPCs | Feste Figuren, die nicht kämpfen: ein Körper wie ein Block – man läuft nicht hindurch, Geschosse enden an ihnen, verletzen lassen sie sich nicht. Kommt die Figur nah, erscheint wie bei Türen die Taste E über ihrem Kopf; E beginnt das Gespräch, der NPC dreht sich zur Figur. Solange er etwas Neues zu sagen hat, wippt über ihm eine Sprechblase mit ein, zwei, drei Punkten. In der Testkammer: der Schamane (`Shaman`) rechts neben den Startpunkten mit Frage, drei Antworten und einmal 5 Pfeilen; der Jäger (`CaveLion`) links daneben gibt nur Auskunft. Gemerkt wird bis zum Neustart des Raums, dauerhaft ab M16 | vorgeschlagen am 18.11.2026; vom Nutzer am 21.11.2026 bestätigt mit den Änderungen: Belohnung nur bei ausgewählten NPCs, manche NPCs geben nur Auskunft. Den Jäger hat Claude dafür ergänzt. Nach dem Test am 21.11.2026 bestätigt („der Rest klappt“) |
-| Dialog | Fenster unten in der Mitte, 300 × 58 Pixel aus `Ui/Dialog/`: im Reiter der Name, links das Porträt, rechts bis zu drei Zeilen Text in `NormalFont` mit 3 Pixeln mehr Wortabstand. Der Text erscheint mit 40 Buchstaben je Sekunde; E, Leertaste oder Linksklick zeigt ihn ganz, noch einmal geht es weiter – darauf wartet unten rechts ein wippender Pfeil. Bei einer Frage stehen bis zu drei Antworten in Kästchen über dem Fenster, rechts bündig, mit der Taste 1, 2 oder 3 davor; gewählt wird mit 1 bis 3 oder mit der Maus, die Maus über einem Kästchen zeigt einen Rahmen. Jede Antwort führt an eine eigene Stelle. Ohne Antworten spricht nur der NPC; nach der letzten Zeile ist das Gespräch zu Ende. Esc bricht ab. Solange das Fenster offen ist, steht die Figur still und greift nicht an, Tab öffnet kein Inventar; die Welt läuft weiter. NPC und Spielfigur sehen sich an, solange sie sprechen; danach blickt die Figur wieder zur Maus. Nach dem Schließen greift die Figur erst nach dem Loslassen der Maustaste an | vorgeschlagen am 18.11.2026; vom Nutzer am 21.11.2026 bestätigt mit der Änderung: Antworten nur mit 1 bis 3 oder der Maus. Pfeil und Rahmen hat Claude beim Bauen ergänzt. Nach dem Test am 21.11.2026 bestätigt („der Rest klappt“), mit dem Wunsch, dass sich auch die Spielfigur zum NPC dreht – nachgebessert, Test steht aus |
+| Dialog | Fenster unten in der Mitte, 300 × 58 Pixel aus `Ui/Dialog/`: im Reiter der Name, links das Porträt, rechts bis zu drei Zeilen Text in `NormalFont` mit 3 Pixeln mehr Wortabstand. Der Text erscheint mit 40 Buchstaben je Sekunde; E, Leertaste oder Linksklick zeigt ihn ganz, noch einmal geht es weiter – darauf wartet unten rechts ein wippender Pfeil. Bei einer Frage stehen bis zu drei Antworten in Kästchen über dem Fenster, rechts bündig, mit der Taste 1, 2 oder 3 davor; gewählt wird mit 1 bis 3 oder mit der Maus, die Maus über einem Kästchen zeigt einen Rahmen. Jede Antwort führt an eine eigene Stelle. Ohne Antworten spricht nur der NPC; nach der letzten Zeile ist das Gespräch zu Ende. Esc bricht ab. Solange das Fenster offen ist, steht die Figur still und greift nicht an, Tab öffnet kein Inventar; die Welt läuft weiter. NPC und Spielfigur sehen sich an, solange sie sprechen; danach blickt die Figur wieder zur Maus. Nach dem Schließen greift die Figur erst nach dem Loslassen der Maustaste an | vorgeschlagen am 18.11.2026; vom Nutzer am 21.11.2026 bestätigt mit der Änderung: Antworten nur mit 1 bis 3 oder der Maus. Pfeil und Rahmen hat Claude beim Bauen ergänzt. Nach dem Test am 21.11.2026 bestätigt („der Rest klappt“), mit dem Wunsch, dass sich auch die Spielfigur zum NPC dreht – nachgebessert und mit dem Hochladen am 21.11.2026 bestätigt |
 | Belohnung | Nur ausgewählte NPCs geben etwas: In ihrem Gespräch hat eine Zeile eine Beute-Liste. Erscheint die Zeile, würfelt der NPC die Liste, und die Beute springt vor der Figur auf den Boden – wie aus einer Truhe; aufgesammelt wird sie wie jede Beute. Jede solche Zeile gibt einmal je NPC, bis der Raum neu lädt. Eine Zeile kann den NPC auch als erledigt markieren: Dann verschwindet seine Sprechblase, und er spricht beim nächsten Mal sein kurzes Gespräch. Beim Schamanen sitzt beides an der Zeile mit den Pfeilen | Wunsch des Nutzers am 21.11.2026: „Nur bei ausgewählten NPC führt ein Dialog zu einer Belohnung. Die Beute springt dann vor mir auf den Boden.“ Die Umsetzung hat Claude gewählt; nach dem Test am 21.11.2026 bestätigt |
 | Gespräche als Daten | Ein Gespräch ist eine Werte-Datei in `data/dialogs/`: Zeilen nacheinander, jede mit Text, auf Wunsch eigenem Sprecher, bis zu drei Antworten, Sprungziel, Beute und dem Haken „erledigt“. Sprünge gehen über den Namen einer Zeile; `end` beendet das Gespräch. Sprecher – Name und Porträt – stehen in eigenen Dateien in `data/dialogs/speakers/`. Neue Gespräche entstehen im Inspektor, ohne Code; Fehler wie ein Sprung ins Leere stehen beim Start des Gesprächs im Ausgabefenster | vorgeschlagen am 18.11.2026; vom Nutzer am 21.11.2026 bestätigt; nach dem Test am selben Tag bestätigt |
 
-Noch offen, jeweils fällig vor dem genannten Schritt: Zauber (vorläufig gewählt, siehe oben), Tod & Speichern endgültig (M16), Story (Phase 5), Anzahl Level (Phase 6).
+Noch offen, jeweils fällig vor dem genannten Schritt: Zauber (vorläufig gewählt, siehe oben), Story (Phase 5), Anzahl Level (Phase 6).
 
 ## Prüfungen
 
 **M15 – NPCs & Dialog**
 
-- Geliefert am 21.11.2026 als `m15_npcs_dialog.zip`. Getestet hat der Nutzer am selben Tag in Godot. Rückmeldung: „der Rest klappt“ – die 13 Punkte der Prüfliste gelten als bestanden. Dazu ein Wunsch: Im Gespräch dreht sich auch die Spielfigur zu dem, mit dem sie spricht. Nachgebessert als `m15_nachbesserung.zip`; deren Test steht aus.
+- Geliefert am 21.11.2026 als `m15_npcs_dialog.zip`. Getestet hat der Nutzer am selben Tag in Godot. Rückmeldung: „der Rest klappt“ – die 13 Punkte der Prüfliste gelten als bestanden. Dazu ein Wunsch: Im Gespräch dreht sich auch die Spielfigur zu dem, mit dem sie spricht. Nachgebessert als `m15_nachbesserung.zip`. Die Nachbesserung hat der Nutzer eingespielt und M15 am 21.11.2026 hochgeladen (Commit `985f098`, „Alles hochgeladen“), ohne weitere Rückmeldung; Claude wertet das als bestandene Prüfliste zur Nachbesserung.
 - Die Nachbesserung hat Claude am Text geprüft wie M15, Grundlage war die eigene Lieferung `m15_npcs_dialog.zip` über Commit `d09ce9a`. Nachgerechnet: Die Figur rechnet ihren Blick in jedem Physik-Schritt einmal – aus der Zielrichtung oder, mit Blickziel, zum Sprecher –; ihr `CharacterView` liest ihn danach und zeigt die nächstliegende der vier Richtungen. Der NPC dreht sich zur Figur, die Figur zum NPC: Sie sehen sich an, aus jeder Richtung.
 - Claude hat die Dateien am Text geprüft – mit dem eigenen Prüfskript, weil Godot hier nicht läuft: Pfade aller Verweise in Szenen, Werte-Dateien und Themen, Kennungen von `ExtResource` und `SubResource`, Knotenpfade der geerbten Szenen `npc.tscn` → `shaman.tscn` und `hunter.tscn`, Namen der Werte in Skripten und `.tres`, Klassennamen, Einrückung nur mit Tabs. Grundlage war das Repo, Commit `d09ce9a`.
 - Nachgerechnet, nicht ausprobiert: Das Fenster hat Claude mit den Bildern des Pakets und der Schrift als Bild nachgestellt. Es liegt bei (90, 208) bis (390, 266) der Fläche 480 × 270; der Text mit Porträt reicht von x 54 bis 278 im Fenster, drei Zeilen à 12 Pixel ab Zeile 14, der Name sitzt mit den Großbuchstaben in den Zeilen 2 bis 7 des braunen Reiters. Der Wortabstand von `NormalFont` ist 1 Pixel (227 von 2048 Einheiten bei Größe 9), im Dialog 4. Alle Sätze der Testgespräche passen in zwei oder drei Zeilen, die längste Antwort „Hast du etwas für mich?“ braucht ein Kästchen von 156 Pixeln. Die Kästchen sind 20 Pixel hoch, 2 Pixel auseinander, rechts bündig bei x 388, das unterste 4 Pixel über dem Fenster. Der längste Satz erscheint in gut 2,5 Sekunden.
@@ -335,6 +347,80 @@ Prüfliste zur Nachbesserung von M15:
 - Repo gegengelesen, Stand Commit `8ed9ffb`: 4.374 Dateien, keine unter `.godot/`; Grafik-Paket vollständig laut Katalog, alle 2.104 Importe gültig.
 
 Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige echte Prüfung.
+
+## Plan für M16 – Speichern & Laden
+
+Bestätigt am 21.11.2026 mit den Änderungen des Nutzers; den Plan hat Claude auf seinen Wunsch geschrieben, gebaut wird im neuen Chat. Die Festlegungen dazu: Tod, Portalstand und Levelstand, Spielstand löschen, Level verlassen. Der Plan ist eine Richtlinie: Zeigt der Code im Repo etwas anderes, gilt der Code.
+
+**Prüfung der Idee „Portalinventar und Levelinventar“**
+
+- Trägt: Ein Level wird ein Ausflug mit Rückfahrkarte. Wer es verlässt, verliert nur, was im Level dazukam, nie etwas aus dem Portal; Beute lässt sich nicht doppeln, weil alles zusammen zurückgesetzt wird.
+- Ergänzt: Getrennt wird der ganze Fortschritt, nicht nur das Inventar. Sonst passt es nicht zusammen: Nach dem Verlassen wäre eine Truhe offen, ihr Inhalt aber weg – ein Pflicht-Schlüssel wäre für immer verloren.
+- Ergänzt: Tod und Beenden des Spiels behalten den Levelstand, nur „Level verlassen“ verwirft ihn. Das Spiel fragt vorher nach.
+- Ergänzt: Level 1 hat noch keine Zeitkapsel; dort ist der Portalstand der Neubeginn. In ein abgeschlossenes Level kann man zurück: Jede Rückkehr in die Zeitkapsel übernimmt den Levelstand, „Level verlassen“ verwirft ihn wie sonst auch.
+
+**Abläufe**
+
+| Ereignis | Was passiert |
+| --- | --- |
+| Neues Spiel | Portalstand = Startinhalt aus `data/player/inventory.tres` und `equipment.tres`; der erste Lauf beginnt, Levelstand = Kopie |
+| Level betreten (ab M18 aus der Zeitkapsel) | Portalstand sichern; Levelstand = Kopie; Rückkehrpunkt = Landepunkt |
+| Rasten am Zeitanker | Leben und Energie voll; dieser Zeitanker wird Rückkehrpunkt und leuchtet; Datei schreiben; „Gespeichert“ über dem Anker |
+| Tod | nach 1 s lädt der Raum neu; Levelstand bleibt, auch was nach dem letzten Rasten kam; Figur am Rückkehrpunkt mit vollem Leben; Gegner neu, Beute am Boden weg; Datei schreiben |
+| F2 (Testkammer) | Raum neu laden wie beim Tod, ohne Tod |
+| Fenster schließen | Datei schreiben; nächster Start: am Rückkehrpunkt im laufenden Level, sonst in der Zeitkapsel |
+| Level abschließen (ab M17 nach den Pflichtmissionen) | Portalstand = Levelstand; Level gilt als abgeschlossen; Datei schreiben; ab M18 weiter in die Zeitkapsel |
+| Level verlassen (ab M20 im Pausenmenü, mit Nachfrage) | Levelstand verwerfen; Datei schreiben; ab M18 zurück in die Zeitkapsel, in Level 1 Neubeginn |
+| Spielstand löschen | ab M20 nur im Startmenü mit der Maus; in der Testkammer F4, nur im Debug-Build |
+
+**Was der Stand enthält** – je Portalstand und Levelstand dasselbe
+
+- Je Spielfigur (`player_id`): Inventar – Plätze mit Gegenstand und Anzahl, der Gegenstand als Pfad seiner Werte-Datei, etwa `res://data/items/arrow.tres` – und Ausrüstung je Platz.
+- Je Level und Ding der Welt ein kleiner Eintrag: Truhe offen, Zerstörtes zerstört, von Hand gelegter Gegenstand aufgesammelt, Hebel an, Holztür offen, NPC erledigt samt gegebenen Belohnungen.
+- Abgeschlossene Level; je Level der aktive Zeitanker. Später Missionen (M17) und Freischaltungen (M19).
+- Nicht im Stand: Gegner, Beute am Boden, Leben und Energie – nach Rasten, Tod und Laden sind beide voll.
+- Datei: `user://saves/slot_1.json`, unter Windows `%APPDATA%\Godot\app_userdata\TimeTraveller\saves\slot_1.json`; lesbares JSON mit `version`, `portal`, `level` (leer außerhalb eines Laufs), `current_level` und `respawn`.
+
+**Bausteine und Dateien**
+
+1. `autoload/game_state.gd` füllen – die eine Stelle für Fortschritt: Portalstand, Levelstand, `current_level`, Rückkehrpunkt. `active()` liefert den Levelstand im Lauf, sonst den Portalstand; `begin_level(id)`, `complete_level()`, `leave_level()`; `get_object_state(id)` und `set_object_state(id, daten)`; `get_player_data(player_id)` und `set_player_data(player_id, daten)`; `set_respawn(level, anker)`, `is_level_completed(id)`.
+2. `autoload/save_manager.gd` füllen: `save()`, `load_game()`, `has_save()`, `delete_save()`. Schreibt beim Rasten, beim Tod, bei Abschluss und Verlassen und beim Schließen des Fensters – `get_tree().set_auto_accept_quit(false)`, auf `NOTIFICATION_WM_CLOSE_REQUEST` erst speichern, dann beenden. Ohne Datei: neues Spiel.
+3. Neue Meldungen im `EventBus`: `game_saved`, `respawn_changed(level_id, anchor_id)`, `level_run_changed` für Beginn, Abschluss und Verlassen.
+4. Neuer Baustein `components/persistent/`: ein Knoten, den Dinge der Welt als Kind tragen. Kennung = Level + Pfad des Dings in der Level-Szene. Beim Start holt er den Eintrag aus `GameState` und ruft beim Elternknoten `apply_saved_state(daten)`; auf dessen Signal (`save_signal`, Standard `state_changed`) speichert er `get_saved_state()`. Dinge ohne Besitzer in der Level-Szene – Beute aus dem `LootSpawner` – ignoriert er.
+5. Zwei kleine Methoden `get_saved_state()` und `apply_saved_state()` und ein Kind `Persistent` bekommen: `world/chest/` (offen – nutzt `start_open`), `world/destructible/` (zerstört, ohne Beute und Splitter), `entities/pickup/` (aufgesammelt – nur von Hand gelegte), `world/lever/` (an), `world/door/` (Holztür offen; Tore folgen ihren Schaltern), `entities/npcs/npc.gd` (erledigt, gegebene Belohnungen).
+6. Spielfigur: neuer Baustein `components/player_progress/` als Kind der Figur. Beim Erscheinen füllt er `Inventory` und `Equipment` aus `GameState` statt mit dem Startinhalt – dafür bekommen beide eine Methode zum Sichern und Wiederherstellen –; bei jeder Änderung schreibt er sie zurück.
+7. Zeitanker `world/time_anchor/` mit Szene, Skript und Skin `data/skins/time_anchor.tres` (`TilesetDungeon.png`, grau (3,2), blau (4,2)): fester Körper auf `world`, `Interactable`, `PropView`, Funkeln aus `data/effects/chest_sparkle.tres`, kurz „Gespeichert“ über dem Anker. E: `Health.reset()`, Energie voll, Rückkehrpunkt setzen, speichern. Er leuchtet, solange er der Rückkehrpunkt ist (`respawn_changed`). Gruppe `time_anchors`, damit der Spawner ihn findet.
+8. Rückkehr: `PlayerSpawner` setzt die Figur an den Zeitanker aus dem Rückkehrpunkt, sonst an die Startpunkte. Die Testkammer startet beim Tod wie bisher neu, speichert aber vorher.
+9. Testkammer: ein Zeitanker oberhalb der Startpunkte, etwa bei (240, 88). Test-Tasten in `test_chamber.gd`, nur im Debug-Build: F4 Spielstand löschen und neu beginnen, F6 „Level abschließen“, F7 „Level verlassen“ – je mit neuem Lauf in der Kammer; fängt der Editor eine dieser Tasten ab, nimmt der neue Chat eine andere. Neue Aktionen in `input_setup.gd`. Eine Debug-Zeile „Spielstand“: Lauf, Rückkehrpunkt, letzte Speicherung.
+
+**Reihenfolge im neuen Chat**
+
+1. Repo lesen; die Skripte aus Schritt 5 und 6 und `test_chamber.gd` genau ansehen.
+2. `GameState`, `SaveManager`, Meldungen – zuerst ohne Spielwelt, mit Debug-Zeile.
+3. `Persistent` und die Dinge der Welt.
+4. Spielfigur: Inventar und Ausrüstung.
+5. Zeitanker, Rückkehrpunkt, Spawner, Tod.
+6. Testkammer, Test-Tasten, README, Stand-Datei, Plan-Dokument, Prüfliste, ein ZIP.
+
+**Prüfliste – Entwurf**
+
+1. Erster Start ohne Datei: Figur an den Startpunkten, Startinhalt.
+2. Truhe öffnen, Topf zerschlagen, Goldschlüssel aufheben, Hebel umlegen, beim Schamanen die Pfeile holen; am Zeitanker rasten: Leben und Energie voll, „Gespeichert“, Anker blau.
+3. Danach noch eine Kiste zerschlagen und sterben: Erwachen am Zeitanker; alles aus 2 und die Kiste bleiben, Gegner stehen wieder, Beute am Boden ist weg.
+4. Fenster mit dem X schließen – nicht mit dem Stopp-Knopf des Editors, der beendet ohne Speichern –, neu starten: am Zeitanker, alles wie vorher.
+5. F7 „Level verlassen“: alles zurück auf den Portalstand – Truhe zu, Topf heil, Inventar wie zu Beginn.
+6. Etwas holen, F6 „Level abschließen“, dann F7: Das Geholte bleibt, weil der Abschluss es ins Portal übernommen hat.
+7. F4: Spielstand gelöscht, Neubeginn wie beim ersten Start.
+8. Die Datei unter `%APPDATA%\Godot\app_userdata\TimeTraveller\saves\` ist lesbar.
+9. Abschaltbar: ohne `SaveManager` startet alles wie bisher, nur ohne Datei; ohne Zeitanker gilt der Startpunkt.
+
+**Später**
+
+- M17 – Missionen: Abschluss erst nach den Pflichtmissionen.
+- M18 – Räume & Levelwechsel: Zeitkapsel als Portal; Level betreten sichert den Portalstand, Abschluss übernimmt den Levelstand; Landepunkt als Rückkehrpunkt ohne Zeitanker.
+- M20 – Menüs: „Level verlassen“ im Pausenmenü mit Nachfrage; im Startmenü Spielstand wählen und löschen, mit der Maus.
+- Phase 8 – Mehrspieler: Portal- und Levelstand führt der Gastgeber; ein Lauf gilt für alle Spieler, jede Figur hat ihr eigenes Inventar.
+- Offen: eine Strafe beim Tod, etwa Beute an der Todesstelle zurückholen; Gegner, die tot bleiben, etwa Bosse.
 
 ## Code-Übersicht
 
@@ -966,7 +1052,8 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Geändert: `autoload/event_bus.gd` (vier Meldungen), `autoload/input_setup.gd` (`dialog_next`, `dialog_choice_1` bis `3`), `entities/player/player_input.gd` (zählt offene Menüs, wartet nach dem Schließen auf das Loslassen der Maustasten)
 - Geändert: `levels/test_chamber/test_chamber.tscn` (`Shaman`, `Hunter`, `DialogWindow`), `levels/test_chamber/test_chamber.gd` (nur der Kommentar), `README.md` (Ordner, Tasten), `docs/projekt_stand.md`, `docs/asset_katalog.md`
 - Nachbesserung am 21.11.2026 (`m15_nachbesserung.zip`): neu `components/talk_facing/` mit `talk_facing.tscn`, `talk_facing.gd`; geändert `entities/player/player.gd` (Blickziel `look_target`), `entities/player/player.tscn` (Knoten `TalkFacing`), `README.md` (Bausteine), `docs/projekt_stand.md`
-- Von Hand zu löschen: `components/windup_flash/` – ein Rest aus M13; `entities/npcs/.gitkeep` wird nicht mehr gebraucht
+- Gelöscht vom Nutzer mit dem Hochladen: `components/windup_flash/`, ein Rest aus M13. `entities/npcs/.gitkeep` wird nicht mehr gebraucht
+- Abschluss: `m15_abschluss.zip` mit `docs/projekt_stand.md`
 
 **M14 – Gegnertypen**
 
@@ -976,7 +1063,7 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Geändert: `entities/enemies/enemy.gd` (Angriffs-Module, Zurückweichen, eine Debug-Zeile), `enemy.tscn` (ohne `MeleeAttack` und `ClawEffect`, dazu `Attacks`), `enemy_stats.gd` (`retreat_speed`, ohne `attack_recover`), `caveman.tscn` (erbt von `melee_enemy.tscn`), `states/chase_state.gd`, `states/attack_state.gd`, `states/enemy_state.gd` (nur der Kommentar); `data/enemies/caveman.tres`
 - Geändert: `components/character_view/character_view.gd` und `character_skin.gd` (Wurf `shoot`), `entities/projectile/projectile_skin.gd` und `projectile_view.gd` (`first_frame`)
 - Geändert: `levels/test_chamber/test_chamber.tscn` (`StoneThrower`), `levels/test_chamber/test_chamber.gd` (nur der Kommentar), `README.md` (Ordner), `docs/projekt_stand.md`, `docs/asset_katalog.md`
-- Von Hand zu löschen: `components/windup_flash/` – ein Rest aus M13
+- Von Hand zu löschen: `components/windup_flash/` – ein Rest aus M13; gelöscht mit M15
 - Abschluss: `m14_abschluss.zip` mit `docs/projekt_stand.md` und `docs/asset_katalog.md`
 
 **M13 – Erster Gegner**
@@ -1168,7 +1255,7 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 
 Gate G1 ist bestanden: Nach dem Test von A2 hat der Nutzer am 17.11.2026 geschrieben: „Alles getestet und alles funktioniert … lass uns weitermachen“. Claude wertet das als „die Spielfigur fühlt sich gut an“. Nachstellen lässt sich weiter alles ohne Code über die Werte-Dateien in `data/`. Der Ton fehlt noch; er kommt mit A3 fast am Ende des Projekts.
 
-Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & Beute, M11 – Inventar & Ausrüstung und M12 – HUD, zuletzt am 18.11.2026. A5 – Oberfläche ist dabei zweimal gewachsen: das Holz-Thema für Fenster, dann Herzen, Energie-Kugel, Ausdauer-Leiste und Symbole. Phase 3 hat begonnen: M13 – Erster Gegner ist fertig, am 18.11.2026 nach einer Nachbesserung; mit ihm hat A6 – Gegner, NPCs, Bosse begonnen, und die Welt erscheint seitdem mit Zoom 2. Im neuen Chat folgte M14 – Gegnertypen: ein Baukasten für viele Gegner, mit dem Höhlenmenschen als Nahkämpfer und der Steinwerferin als Fernkämpferin; fertig am 18.11.2026. Am 21.11.2026 folgte M15 – NPCs & Dialog: ein Dialogfenster mit Antworten, der Schamane mit Geschenk und der Jäger, der nur Auskunft gibt; der Test ist bestanden bis auf einen Wunsch – die Spielfigur dreht sich jetzt im Gespräch zum NPC –; mit dem Abschluss von M15 ist Phase 3 fertig. Der Ton kommt erst mit A3.
+Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & Beute, M11 – Inventar & Ausrüstung und M12 – HUD, zuletzt am 18.11.2026. A5 – Oberfläche ist dabei zweimal gewachsen: das Holz-Thema für Fenster, dann Herzen, Energie-Kugel, Ausdauer-Leiste und Symbole. Phase 3 ist fertig: M13 – Erster Gegner, am 18.11.2026 nach einer Nachbesserung; mit ihm hat A6 – Gegner, NPCs, Bosse begonnen, und die Welt erscheint seitdem mit Zoom 2. Im neuen Chat folgte M14 – Gegnertypen: ein Baukasten für viele Gegner, mit dem Höhlenmenschen als Nahkämpfer und der Steinwerferin als Fernkämpferin; fertig am 18.11.2026. Am 21.11.2026 folgte M15 – NPCs & Dialog: ein Dialogfenster mit Antworten, der Schamane mit Geschenk und der Jäger, der nur Auskunft gibt; nach einer Nachbesserung fertig am selben Tag – die Spielfigur dreht sich im Gespräch zum NPC. Als Nächstes kommt Phase 4 – Spielrahmen mit M16 – Speichern & Laden, mit den Änderungen des Nutzers bestätigt und geplant; gebaut wird im neuen Chat. Nach Phase 4 steht Gate G2 an: Alle Mechaniken laufen in der Testkammer zusammen und überstehen Speichern und Laden. Der Ton kommt erst mit A3.
 
 ## Hinweise aus der bisherigen Arbeit
 
@@ -1216,7 +1303,7 @@ Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & B
 
 ## Offene Punkte
 
-- `components/windup_flash/` liegt noch im Repo (Commit `d09ce9a`), ein Rest aus der ersten Fassung von M13; nichts benutzt ihn. Der Nutzer löscht den Ordner beim Einspielen von M15.
+- M16 – Speichern & Laden ist bestätigt und geplant, noch nicht gebaut: siehe „Plan für M16 – Speichern & Laden“. Gebaut wird im neuen Chat.
 - Beim Bauen von M14 ergänzt: Die Debug-Anzeige zeigt je Gegner eine Zeile statt zwei, und sie verschwindet nach dem Tod; Chase zeigt, ob der Gegner verfolgt, abwartet oder zurückweicht; `ProjectileSkin` kann mit `first_frame` ein einzelnes Bild aus einem Streifen nehmen; ein Skin kennt den Wurf `shoot`. Mit dem Test vom Nutzer bestätigt.
 - Fernkämpfer: Steine lassen sich nicht abwehren oder zurückschlagen; die Steinwerferin zielt auf die Stelle, an der die Figur gerade steht, ohne vorzuhalten; beim Abwarten steht sie still, statt zur Seite auszuweichen. Zurückweichen in eine Ecke beendet sie nicht – dort bleibt sie stehen und wirft weiter.
 - Zoom: Gewünscht war „4x“; eingestellt ist 2, mit dem Test bestätigt. Andere Werte gehen ohne Code in `data/world/view.tres`; Abstände der Gegner und die faire Grenze passen sich an.
@@ -1232,7 +1319,7 @@ Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & B
 - Drei Dinge hat Claude in M9 selbst entschieden, der Nutzer hat sie mit dem Test bestätigt: keine Energie aus Zerstörbarem, Blätter je Hieb am Baum, der graugrüne Fels als Stein. Zurücknehmen ginge ohne Code: `feeds_attacker` an der Hurtbox anschalten, den Knoten `LeafHit` löschen, in `data/skins/rock.tres` eine andere Zelle wählen.
 - Zerstörtes kommt nicht wieder, Beute bleibt liegen, bis der Raum neu lädt. Ob Dinge später wiederkehren und ob Beute verschwindet, gehört zu M16.
 - Ein Kanal kennt nur ODER: Eine Tür ist offen, sobald einer ihrer Schalter an ist. Ein Tor, das zwei Hebel zugleich braucht, gibt es noch nicht.
-- M15 – NPCs & Dialog: Test am 21.11.2026 bestanden bis auf einen Wunsch, nachgebessert; der Test der Nachbesserung steht aus. Beim Bauen hat Claude selbst entschieden, vom Nutzer mit dem Test bestätigt: der Jäger als NPC, der nur Auskunft gibt; Belohnung und „erledigt“ an einzelnen Zeilen statt am ganzen Gespräch, damit der Schamane erst nach dem Geschenk zu seinem kurzen Satz wechselt; der wippende Pfeil, wenn es weitergeht; der Rahmen über dem Kästchen unter der Maus; nach dem Schließen greift die Figur erst nach dem Loslassen der Maustaste an. Alles lässt sich ohne Code zurücknehmen oder ändern – in den Werte-Dateien und Szenen.
+- M15 – NPCs & Dialog ist fertig. Beim Bauen hat Claude selbst entschieden, vom Nutzer mit dem Test bestätigt: der Jäger als NPC, der nur Auskunft gibt; Belohnung und „erledigt“ an einzelnen Zeilen statt am ganzen Gespräch, damit der Schamane erst nach dem Geschenk zu seinem kurzen Satz wechselt; der wippende Pfeil, wenn es weitergeht; der Rahmen über dem Kästchen unter der Maus; nach dem Schließen greift die Figur erst nach dem Loslassen der Maustaste an. Alles lässt sich ohne Code zurücknehmen oder ändern – in den Werte-Dateien und Szenen.
 - Nicht in M15: Händler, Schmied und Aufträge (M17); Antworten mit Bedingungen, etwa nur mit Schlüssel; Speichern, wer schon gesprochen hat (M16); „erledigt“ je Spieler; Ton (A3); NPCs, die umherlaufen; Gespräche, die von selbst beginnen, wenn man nah kommt.
 - Während eines Gesprächs läuft die Welt weiter: Ein Gegner kann die Figur dabei treffen. Ob ein Treffer das Gespräch abbrechen soll, ist noch offen.
 - Ton (A3): auf Wunsch des Nutzers verschoben, fast ans Ende des Projekts, mit Phase 7 – Feinschliff. Bis dahin hat kein Modul Ton; `SoundCue` und die Ton-Tabelle entstehen erst dann.
@@ -1246,7 +1333,7 @@ Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & B
 - Dynamit trifft die Spielfigur nicht. Ob es später auch eigenen Schaden geben soll, entscheidet der Nutzer.
 - `data/player/ammo.tres` ist seit M11a nicht mehr eingehängt; `bow.tres` gilt nur noch ohne `AmmoSelector`. Beide bleiben vorerst liegen.
 - Die Debug-Anzeige stößt an ihre Grenze, seit M9 mit bis zu zwölf Zeilen. Seit M12 zeigt das HUD Leben, Energie, Ausdauer, Fähigkeiten und Geschoss; die Debug-Anzeige bleibt zum Nachprüfen und steht oben rechts.
-- Tod & Speichern: Der Neustart des Raums ist vorläufig. Was beim Tod verloren geht und wo gespeichert wird, ist vor M16 zu entscheiden.
+- Tod & Speichern: entschieden am 21.11.2026, siehe „Festlegungen“; bis M16 gebaut ist, startet der Raum beim Tod neu.
 - Stottert die Bewegung auf einem Monitor mit mehr als 60 Hz, gibt es dafür die Physik-Interpolation als Projekteinstellung. Sie ist bewusst noch aus.
 - Der Sicherungsordner `E:\GitHub\TT_alt` kann gelöscht werden, falls er noch existiert.
 - In `components/`, `levels/test_chamber/`, `entities/player/`, `entities/npcs/` und `data/` liegt noch je eine `.gitkeep`, die nicht mehr gebraucht wird.
