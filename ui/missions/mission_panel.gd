@@ -7,9 +7,9 @@ extends CanvasLayer
 ## Pflichtmissionen stehen oben. Mehr als max_missions passen nicht hinein, dann
 ## steht darunter etwa "+1 weitere". Erfüllte und nicht angenommene Missionen fehlen.
 ## J (Aktion mission_toggle) oder ein Klick auf die Überschrift klappt die Liste
-## ein und aus; eingeklappt steht nur "Missionen 3". Das gilt, bis das Spiel
-## endet - auch nach Tod und Neustart des Raums; dauerhaft gemerkt wird es mit
-## den Optionen (M20).
+## ein und aus; eingeklappt steht nur "Missionen 3". Das gilt für jede Anzeige,
+## auch nach Tod und Neustart des Raums, und seit M20 über das Ende des Spiels
+## hinaus: gemerkt in den Optionen (GameOptions, user://options.cfg).
 ## Beginnt eine Mission oder ist sie erfüllt, steht oben in der Mitte kurz
 ## "Neue Mission" oder "Mission erfüllt" mit ihrem Titel, mehrere nacheinander.
 ## Die erste Meldung nach dem Betreten des Levels gibt nur den Stand: Was aus dem
@@ -30,8 +30,10 @@ const DONE := "done"
 ## Abstand der Hinweise vom oberen Rand, in Pixeln.
 const NOTICE_TOP := 6.0
 
-## Ist die Liste eingeklappt? Gilt für jede Anzeige, bis das Spiel endet.
+## Ist die Liste eingeklappt? Gilt für jede Anzeige; beim ersten Mal gelesen aus
+## den Optionen, jede Änderung geht dorthin zurück (M20).
 static var collapsed := false
+static var _collapsed_read := false
 
 ## Werte-Datei: wie viele Missionen, wie lange ein Hinweis steht.
 @export var settings: MissionPanelSettings
@@ -63,6 +65,9 @@ func _ready() -> void:
 	if settings == null:
 		push_warning("MissionPanel: keine Werte-Datei gesetzt, nutze Standardwerte.")
 		settings = MissionPanelSettings.new()
+	if not _collapsed_read:
+		_collapsed_read = true
+		collapsed = GameOptions.is_missions_collapsed()
 	_list.visible = false
 	_notice.visible = false
 	_header.gui_input.connect(_on_header_input)
@@ -76,9 +81,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
-## Klappt die Liste ein oder aus.
+## Klappt die Liste ein oder aus und merkt es sich in den Optionen (M20).
 func toggle() -> void:
 	collapsed = not collapsed
+	GameOptions.set_value(GameOptions.MISSIONS_COLLAPSED, collapsed)
 	_rebuild()
 
 

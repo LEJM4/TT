@@ -5,11 +5,17 @@ extends Camera2D
 ## Figur + Versatz, beide auf das Raster gerundet. So zittert die Figur nicht
 ## gegen den Hintergrund. Der Versatz ist die Vorausschau - ein Stück Richtung
 ## Mauszeiger und ein Stück in Laufrichtung - und gleitet weich zu seinem Ziel.
-## Die Raumgrenzen meldet das Level über EventBus.camera_bounds_changed.
-## Hat das Level Räume (M18), gelten die Grenzen des Raums, in dem ihre Figur
-## ist: Der RoomWatcher meldet jeden Wechsel (room_changed), und die Kamera gleitet
-## in room_glide_time Sekunden in die Grenzen des neuen Raums. Den ersten Raum
-## nach dem Laden nimmt sie sofort.
+## Wie sie an Rändern folgt, sagt mode in der Werte-Datei (M20):
+##   FREE   Standard seit M20, Wunsch des Nutzers: Sie folgt immer der Figur,
+##          ohne Halt an Raum- und Levelrändern und ohne Gleiten beim Raumwechsel.
+##          Außerhalb des Levels ist outside_color zu sehen - die Farbe stellt sie
+##          beim Start als Hintergrund des Bildes ein.
+##   LEVEL  Sie bleibt in den Grenzen, die das Level über
+##          EventBus.camera_bounds_changed meldet, wie bis M17.
+##   ROOM   Sie bleibt im Raum ihrer Figur (M18): Der RoomWatcher meldet jeden
+##          Wechsel (room_changed), und die Kamera gleitet in room_glide_time
+##          Sekunden in die Grenzen des neuen Raums; den ersten nimmt sie sofort.
+## Grenzen und Räume merkt sie sich immer; so lässt sich mode auch im Spiel umstellen.
 ## Den Zoom nimmt sie aus der Ansicht data/world/view.tres (M13). Er vergrößert
 ## nur das Bild; die Welt rechnet weiter in Pixeln der Grafik. Bei Zoom 2 liegt
 ## das Raster auf halben Pixeln der Grafik. Ändert sich der Zoom im Spiel - F3 in
@@ -45,6 +51,8 @@ func _ready() -> void:
 		push_warning("PlayerCamera: keine Ansicht gesetzt, nutze Standardwerte.")
 		view = ViewSettings.new()
 	_apply_zoom()
+	# Hintergrund außerhalb des Levels (M20) - zu sehen, wenn sie frei folgt.
+	RenderingServer.set_default_clear_color(stats.outside_color)
 	EventBus.camera_bounds_changed.connect(_on_camera_bounds_changed)
 	EventBus.room_changed.connect(_on_room_changed)
 
@@ -104,10 +112,20 @@ func _wanted_offset() -> Vector2:
 
 
 func _clamp_to_bounds(center: Vector2) -> Vector2:
-	if not _has_bounds and not _has_room:
-		return center
-	# Mit Räumen gelten die Grenzen des Raums, sonst die des Levels (M18).
-	var limits := _room_bounds if _has_room else _bounds
+	var limits := Rect2()
+	match stats.mode:
+		CameraStats.Mode.ROOM:
+			# Mit Räumen gelten die Grenzen des Raums, sonst die des Levels (M18).
+			if not _has_bounds and not _has_room:
+				return center
+			limits = _room_bounds if _has_room else _bounds
+		CameraStats.Mode.LEVEL:
+			if not _has_bounds:
+				return center
+			limits = _bounds
+		_:
+			# Frei (M20): kein Halt an Rändern.
+			return center
 	var half := get_viewport_rect().size * 0.5 / zoom
 	var result := center
 	if limits.size.x <= half.x * 2.0:
@@ -130,8 +148,9 @@ func _on_camera_bounds_changed(bounds: Rect2) -> void:
 func _on_room_changed(player_id: int, _room_id: String, bounds: Rect2) -> void:
 	if player_id != follow_player_id:
 		return
-	# Den ersten Raum nach dem Laden nimmt sie sofort, jeden weiteren gleitend.
-	if _has_room and stats.room_glide_time > 0.0 and is_instance_valid(_target):
+	# Den ersten Raum nach dem Laden nimmt sie sofort, jeden weiteren gleitend -
+	# nur, wenn sie im Raum bleibt (ROOM).
+	if stats.mode == CameraStats.Mode.ROOM and _has_room and stats.room_glide_time > 0.0 and is_instance_valid(_target):
 		_glide_from = global_position
 		_glide_left = stats.room_glide_time
 	_room_bounds = bounds

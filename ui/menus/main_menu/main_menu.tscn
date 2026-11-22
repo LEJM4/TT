@@ -1,0 +1,121 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/menus/main_menu/main_menu.gd" id="1_main"]
+[ext_resource type="Theme" path="res://ui/menus/menu_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" path="res://assets/test_art/objects/time_capsule.png" id="3_capsule"]
+[ext_resource type="PackedScene" path="res://ui/menus/save_slots/save_slots.tscn" id="4_slots"]
+[ext_resource type="PackedScene" path="res://ui/menus/options_menu/options_menu.tscn" id="5_options"]
+
+[node name="MainMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 107
+script = ExtResource("1_main")
+open_on_start = true
+window_offset = Vector2i(0, 52)
+
+[node name="Root" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="Background" type="ColorRect" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07, 0.08, 0.11, 1)
+
+[node name="Decor" type="Control" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="Root/Decor"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_type_variation = &"MenuGameTitle"
+text = "TimeTraveller"
+horizontal_alignment = 1
+
+[node name="Capsule" type="TextureRect" parent="Root/Decor"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.0
+offset_top = 66.0
+offset_right = 33.0
+offset_bottom = 130.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("3_capsule")
+
+[node name="Window" type="PanelContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 11.0
+offset_right = 64.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Interior" type="PanelContainer" parent="Root/Window"]
+layout_mode = 2
+theme_type_variation = &"MenuInterior"
+
+[node name="Rows" type="VBoxContainer" parent="Root/Window/Interior"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Start" type="Button" parent="Root/Window/Interior/Rows"]
+custom_minimum_size = Vector2(104, 0)
+layout_mode = 2
+text = "Start"
+
+[node name="Options" type="Button" parent="Root/Window/Interior/Rows"]
+custom_minimum_size = Vector2(104, 0)
+layout_mode = 2
+text = "Optionen"
+
+[node name="Quit" type="Button" parent="Root/Window/Interior/Rows"]
+custom_minimum_size = Vector2(104, 0)
+layout_mode = 2
+text = "Beenden"
+
+[node name="Hint" type="Label" parent="Root"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -18.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"MenuInfo"
+text = "Pfeiltasten oder Maus - Enter wählt - Esc zurück"
+horizontal_alignment = 1
+
+[node name="SaveSlots" parent="." instance=ExtResource("4_slots")]
+
+[node name="OptionsMenu" parent="." instance=ExtResource("5_options")]

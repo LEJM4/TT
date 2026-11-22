@@ -3,7 +3,9 @@ extends Node
 ##
 ## Ändern: Einträge in KEY_BINDINGS oder MOUSE_BINDINGS anpassen.
 ## Neue Aktion: eine Zeile ergänzen, mehr ist nicht nötig.
-## Später überschreibt das Optionen-Menü (M20) diese Standardwerte.
+## Die Optionen zeigen die Belegung seit M20 an (ui/menus/key_list/); ändern lässt
+## sie sich dort noch nicht. Die Menüs nutzen dazu die eingebauten Aktionen ui_*
+## von Godot (Pfeile, Enter, Esc) und W A S D.
 ## Im Gespräch (M15) gelten eigene Aktionen auf denselben Tasten: dialog_next
 ## (E, Leertaste, Linksklick) und dialog_choice_1 bis 3 (1 2 3). Die Figur nimmt
 ## dann keine Eingaben an, Doppelbelegungen stören also nicht.

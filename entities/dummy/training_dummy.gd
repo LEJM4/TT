@@ -28,7 +28,8 @@ func _ready() -> void:
 
 func _on_died() -> void:
 	_show_color(defeated_color)
-	get_tree().create_timer(revive_delay).timeout.connect(_revive)
+	# Hält mit der Pause an (M20).
+	get_tree().create_timer(revive_delay, false).timeout.connect(_revive)
 
 
 func _revive() -> void:

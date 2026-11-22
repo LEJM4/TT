@@ -1,0 +1,214 @@
+[gd_resource type="Theme" format=3]
+
+[ext_resource type="FontVariation" path="res://ui/menus/menu_font.tres" id="1_font"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/nine_path_panel.png" id="2_frame"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/nine_path_panel_interior.png" id="3_interior"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/button_normal.png" id="4_button"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/button_hover.png" id="5_button_hover"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/button_pressed.png" id="6_button_pressed"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/button_disabled.png" id="7_button_disabled"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/nine_path_focus.png" id="8_focus"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/nine_path_bg.png" id="9_bg"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/slider_progress.png" id="10_fill"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/slider_progress_hover.png" id="11_fill_hover"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/h_slidder_grabber.png" id="12_grabber"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/h_slidder_grabber_hover.png" id="13_grabber_hover"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/h_slidder_grabber_disabled.png" id="14_grabber_disabled"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/checked.png" id="15_checked"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/unchecked.png" id="16_unchecked"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/checked_disabled.png" id="17_checked_disabled"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/unchecked_disabled.png" id="18_unchecked_disabled"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_frame"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+texture = ExtResource("2_frame")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_interior"]
+content_margin_left = 10.0
+content_margin_top = 6.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+texture = ExtResource("3_interior")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_button"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+texture = ExtResource("4_button")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_button_hover"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+texture = ExtResource("5_button_hover")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_button_pressed"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+texture = ExtResource("6_button_pressed")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_button_disabled"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+texture = ExtResource("7_button_disabled")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slot"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+texture = ExtResource("9_bg")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slot_hover"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+texture = ExtResource("6_button_pressed")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slider"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+texture = ExtResource("9_bg")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slider_fill"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+texture = ExtResource("10_fill")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slider_fill_hover"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+texture = ExtResource("11_fill_hover")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_check_focus"]
+content_margin_left = 2.0
+content_margin_top = 1.0
+content_margin_right = 4.0
+content_margin_bottom = 1.0
+texture = ExtResource("8_focus")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+draw_center = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_check"]
+content_margin_left = 2.0
+content_margin_top = 1.0
+content_margin_right = 4.0
+content_margin_bottom = 1.0
+
+[resource]
+default_font = ExtResource("1_font")
+default_font_size = 9
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.72, 0.64, 0.55, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("StyleBoxTexture_button_disabled")
+Button/styles/focus = SubResource("StyleBoxTexture_button_hover")
+Button/styles/hover = SubResource("StyleBoxTexture_button_hover")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_button_pressed")
+Button/styles/normal = SubResource("StyleBoxTexture_button")
+Button/styles/pressed = SubResource("StyleBoxTexture_button_pressed")
+CheckBox/colors/font_color = Color(1, 1, 1, 1)
+CheckBox/colors/font_focus_color = Color(1, 0.68, 0.33, 1)
+CheckBox/colors/font_hover_color = Color(1, 0.68, 0.33, 1)
+CheckBox/colors/font_hover_pressed_color = Color(1, 0.68, 0.33, 1)
+CheckBox/colors/font_pressed_color = Color(1, 1, 1, 1)
+CheckBox/constants/h_separation = 4
+CheckBox/icons/checked = ExtResource("15_checked")
+CheckBox/icons/checked_disabled = ExtResource("17_checked_disabled")
+CheckBox/icons/unchecked = ExtResource("16_unchecked")
+CheckBox/icons/unchecked_disabled = ExtResource("18_unchecked_disabled")
+CheckBox/styles/focus = SubResource("StyleBoxTexture_check_focus")
+CheckBox/styles/hover = SubResource("StyleBoxEmpty_check")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_check")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_check")
+CheckBox/styles/pressed = SubResource("StyleBoxEmpty_check")
+HSlider/icons/grabber = ExtResource("12_grabber")
+HSlider/icons/grabber_disabled = ExtResource("14_grabber_disabled")
+HSlider/icons/grabber_highlight = ExtResource("13_grabber_hover")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_slider_fill")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_slider_fill_hover")
+HSlider/styles/slider = SubResource("StyleBoxTexture_slider")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/constants/line_spacing = 0
+MenuGameTitle/base_type = &"Label"
+MenuGameTitle/colors/font_color = Color(1, 0.68, 0.33, 1)
+MenuGameTitle/colors/font_shadow_color = Color(0.29, 0.14, 0.09, 1)
+MenuGameTitle/constants/shadow_offset_x = 3
+MenuGameTitle/constants/shadow_offset_y = 3
+MenuGameTitle/font_sizes/font_size = 27
+MenuHeading/base_type = &"Label"
+MenuHeading/colors/font_color = Color(1, 0.68, 0.33, 1)
+MenuInfo/base_type = &"Label"
+MenuInfo/colors/font_color = Color(0.85, 0.78, 0.68, 1)
+MenuInterior/base_type = &"PanelContainer"
+MenuInterior/styles/panel = SubResource("StyleBoxTexture_interior")
+MenuTitle/base_type = &"Label"
+MenuTitle/colors/font_color = Color(1, 0.68, 0.33, 1)
+MenuTitle/font_sizes/font_size = 18
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_frame")
+SlotButton/base_type = &"Button"
+SlotButton/styles/focus = SubResource("StyleBoxTexture_slot_hover")
+SlotButton/styles/hover = SubResource("StyleBoxTexture_slot_hover")
+SlotButton/styles/hover_pressed = SubResource("StyleBoxTexture_slot_hover")
+SlotButton/styles/normal = SubResource("StyleBoxTexture_slot")
+SlotButton/styles/pressed = SubResource("StyleBoxTexture_slot_hover")

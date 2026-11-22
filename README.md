@@ -8,23 +8,24 @@
 ## Öffnen
 
 1. Godot 4.7 starten, im Projektmanager „Importieren“ wählen und diesen Ordner angeben.
-2. F5 startet die Startszene `levels/boot/boot.tscn`: Sie setzt das Spiel dort fort, wo es aufgehört hat – im laufenden Level, in der Zeitkapsel oder mit einem neuen Lauf in der Testkammer, dem Raum, in dem jede Mechanik zuerst ausprobiert wird.
+2. F5 startet die Startszene `levels/boot/boot.tscn` mit dem Hauptmenü: „Start“ öffnet die Spielstand-Auswahl mit drei Plätzen – ein leerer beginnt ein neues Spiel in der Testkammer, dem Raum, in dem jede Mechanik zuerst ausprobiert wird; ein belegter setzt dort fort, wo er aufgehört hat –, dazu „Optionen“ und „Beenden“.
 
 ## Ordner
 
 | Ordner | Inhalt |
 | --- | --- |
-| `autoload/` | Globale Dienste: EventBus, Tastenbelegung, Spielstand, Szenenwechsel, Ton |
+| `autoload/` | Globale Dienste: EventBus, Tastenbelegung, Spielstand mit drei Plätzen, Szenenwechsel, Ton |
 | `components/` | Bausteine für alle: Bild, Effekte, Splitter, Leben, Lebensleiste, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion, Beute, Aufsammeln, Ausrüstung, Zustandsautomat, Sehen und Hören, Sprechblase, Blick im Gespräch, Spielstand (`persistent/` für Dinge der Welt, `player_progress/` für die Spielfigur), Ereignisse für Missionen (`mission_cue/`), Gespräch mit Aktion (`talk_action/`), Sperre für Gesperrtes an der Spielfigur (`unlock_gate/`) |
 | `entities/` | Figuren und Bewegliches: `player/`, `enemies/` – Grundszene, Gegnertypen (Nahkämpfer, Fernkämpfer), fertige Gegner, Angriffs-Module in `attacks/`, Zustände in `states/` –, `npcs/` – Grundszene, fertige NPCs und Auftraggeber –, `dummy/`, `projectile/`, `effect/`, `debris/`, `pickup/` |
 | `abilities/` | Fähigkeiten: Schnelligkeit, Unsichtbarkeit, Stun; der Dash ist ein Baustein in `components/dash/` |
 | `items/` | Baupläne für Gegenstände, Geschosse, Ausrüstung und Beute-Listen; die Gegenstände selbst liegen in `data/items/` – Geschosse, Materialien, Schlüssel, Ausrüstung –, die Listen in `data/loot/` |
 | `dialogs/` | Baupläne für Gespräche: Gespräch, Zeile, Antwort, Sprecher und der DialogRunner, der den Weg durch ein Gespräch kennt; die Gespräche selbst liegen in `data/dialogs/` |
 | `unlocks/` | Baupläne für Freischaltungen – eine Freischaltung und die Liste aller; die Liste selbst steht in `data/unlocks/unlocks.tres` |
+| `options/` | Die Einstellungen des Spielers – `GameOptions`, statisch, ohne globalen Dienst – und der Bauplan ihrer Grundwerte; die Grundwerte stehen in `data/ui/options.tres`, die Einstellungen des Spielers in `user://options.cfg` |
 | `missions/` | Baupläne für Missionen – Missionen-Datei eines Levels, Mission, Ziele – und der `MissionTracker`, die eine Stelle für die Missionen eines Levels; die Missionen selbst liegen je Level in `data/missions/` |
 | `world/` | Dinge der Welt: `view/` die Ansicht – Zoom der Welt und die Kachel als Maß –, Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen, Zeitanker, Ausgang eines Levels, `room/` Räume und der `RoomWatcher`, `time_capsule/` die Zeitkapsel im Level, `time_console/` die Zeitsteuerung in der Zeitkapsel, `unlock_pickup/` Fundstücke, die eine Mechanik freischalten |
 | `levels/` | `boot/` die Startszene, `level.gd` die Grundlage der Level, `level_frame/` was jedes Level braucht, `test_chamber/` die Testkammer, `test_field/` das Testfeld, `time_capsule/` die Zeitkapsel innen; dazu die Baupläne der Reisedaten (`level_info.gd`, `travel_settings.gd`) – die Reisedaten selbst stehen in `data/world/travel.tres` |
-| `ui/` | Oberfläche: `hud/` die Anzeige am Bildrand, `inventory/` das Inventarfenster, `theme/` das Holz-Thema für alle Fenster, `dialog/` das Dialogfenster mit eigenem Thema, `missions/` die Missionsliste und die Hinweise, `crosshair/`, `debug/` für Entwickler-Anzeigen; später Menüs |
+| `ui/` | Oberfläche: `hud/` die Anzeige am Bildrand, `inventory/` das Inventarfenster, `theme/` das Holz-Thema für Fenster, `dialog/` das Dialogfenster mit eigenem Thema, `missions/` die Missionsliste und die Hinweise, `menus/` die Menüs – Hauptmenü, Spielstand-Auswahl, Optionen, Tastenbelegung, Pausenmenü, Nachfrage – mit eigenem Holz-Thema, `crosshair/`, `debug/` für Entwickler-Anzeigen |
 | `data/` | Werte-Dateien (`.tres`): Balancing, Gegner, Skins, Gegenstände, Effekte, Beute, Gespräche, Missionen, Freischaltungen, Oberfläche, Reisedaten |
 | `assets/` | Grafik und Ton – siehe `assets/README.md` |
 | `docs/` | Stand-Datei und Grafik-Katalog; von Godot ignoriert |
@@ -50,7 +51,9 @@ Sie steht in `autoload/input_setup.gd` und lässt sich dort ändern.
 | Tab | `inventory` |
 | M | `map` |
 | J | `mission_toggle` – Missionsliste ein- und ausklappen; ein Klick auf ihre Überschrift geht auch |
-| Esc | `pause` – schließt auch Inventar und Gespräch |
+| Esc | `pause` – öffnet und schließt das Pausenmenü; ist ein Inventar oder Gespräch offen, schließt Esc zuerst das |
+
+**In den Menüs** – Pfeiltasten oder W A S D wählen, Enter oder Leertaste drücken, Esc geht zurück; die Maus geht überall. Ein Schieberegler wird mit Pfeil links und rechts oder A und D verstellt. Das Lösch-Symbol der Spielstände geht nur mit der Maus. Die Tastenbelegung zeigen die Optionen an; ändern lässt sie sich dort noch nicht.
 
 **Im Gespräch** – die Figur nimmt dann keine Eingaben an, deshalb dürfen die Tasten doppelt belegt sein:
 
@@ -67,7 +70,7 @@ Sie steht in `autoload/input_setup.gd` und lässt sich dort ändern.
 | F1 | `debug_toggle_overlay` | Debug-Anzeige ein- und ausblenden |
 | F2 | `debug_restart_room` | Raum neu laden wie ein Tod ohne Tod |
 | F3 | `debug_cycle_zoom` | in der Testkammer: Zoom der Welt 1 bis 4 durchschalten; der Wert steht in `data/world/view.tres` |
-| F4 | `debug_delete_save` | nur im Debug-Build: Spielstand löschen, neues Spiel in der Testkammer |
+| F4 | `debug_delete_save` | nur im Debug-Build: Spielstand des offenen Platzes löschen, dort neues Spiel in der Testkammer |
 | Bild auf | `debug_complete_level` | nur im Debug-Build: Level abschließen ohne Nachfrage – wie „Einsteigen“ an der Zeitkapsel |
 | Bild ab | `debug_leave_level` | nur im Debug-Build: Reise abbrechen ohne Nachfrage – wie „Abbrechen“ an der Zeitkapsel |
 | Ende | `debug_quit_game` | nur im Debug-Build: Spiel beenden wie mit dem X am Fenster, mit Speichern |
@@ -79,9 +82,18 @@ F5 bis F8 sind im Godot-Editor belegt (Starten, Szene starten, Pause, Stopp); l�
 
 ## Spielstand
 
-- Die Datei liegt unter `user://saves/slot_1.json`, unter Windows in `%APPDATA%\Godot\app_userdata\TimeTraveller\saves\`. Sie ist lesbares JSON.
-- Gespeichert wird beim Rasten am Zeitanker, beim Tod, bei F2, beim Einsteigen in die Zeitkapsel und beim Abbrechen einer Reise, vor jeder Reise in ein Level und beim Schließen des Fensters. Der Stopp-Knopf des Editors beendet ohne Speichern.
-- Den Fortschritt führt `GameState`, in die Datei schreibt `SaveManager`. Ohne Datei beginnt ein neues Spiel.
+- Drei Plätze, je eine Datei: `user://saves/slot_1.json` bis `slot_3.json`, unter Windows in `%APPDATA%\Godot\app_userdata\TimeTraveller\saves\`. Sie sind lesbares JSON. Der Spielstand von vor M20 ist Platz 1.
+- Gewählt wird in der Spielstand-Auswahl des Hauptmenüs; dort zeigt jeder belegte Platz, wo es weitergeht, die Spielzeit und wann zuletzt gespeichert wurde. Löschen geht nur dort, mit der Maus und mit Nachfrage.
+- Gespeichert wird beim Rasten am Zeitanker, beim Tod, bei F2, beim Einsteigen in die Zeitkapsel und beim Abbrechen einer Reise, vor jeder Reise in ein Level, mit „Hauptmenü“ und „Spiel beenden“ im Pausenmenü und beim Schließen des Fensters. Im Hauptmenü wird nichts geschrieben. Der Stopp-Knopf des Editors beendet ohne Speichern.
+- Den Fortschritt und die Spielzeit führt `GameState`, in die Datei schreibt `SaveManager`. Ein leerer Platz beginnt ein neues Spiel.
+
+## Menüs und Optionen
+
+- Hauptmenü in der Startszene: „Start“ – Spielstand-Auswahl –, „Optionen“, „Beenden“ sofort, ohne Rückfrage.
+- Pausenmenü mit Esc in jedem Level und in der Zeitkapsel; im Einzelspiel hält die Welt an. „Weiter“, „Optionen“, „Reise abbrechen“ – nur in einem Level, mit derselben Frage wie an der Zeitkapsel –, „Hauptmenü“ und „Spiel beenden“, beide mit Speichern.
+- Optionen: Lautstärke für alles, Musik und Geräusche – zu hören erst mit dem Ton (A3) –, Vollbild und die Tastenbelegung zum Ansehen. Sie gelten sofort und stehen in `user://options.cfg`, dazu, ob die Missionsliste eingeklappt ist. Die Audio-Busse `Music` und `Sounds` stehen in `default_bus_layout.tres`.
+- Vollbild lässt Godot nicht umschalten, solange das Spiel im Editor eingebettet läuft; die Optionen zeigen dann einen Hinweis.
+- Ein neues Menü: eine Szene mit einem `CanvasLayer` und einem Skript, das von `ui/menus/menu_screen.gd` erbt, darin `Root` mit dem Thema `ui/menus/menu_theme.tres` und `Window`; Muster sind die Menüs in `ui/menus/`.
 
 ## Missionen
 
@@ -97,7 +109,7 @@ F5 bis F8 sind im Godot-Editor belegt (Starten, Szene starten, Pause, Stopp); l�
 - Innen ist die Zeitkapsel die Lobby (`levels/time_capsule/`): ausrüsten mit Tab, an der Zeitsteuerung das Ziel wählen. Es gibt sie, sobald ein Level abgeschlossen ist; vorher beginnt ein Abbruch das Level von vorn.
 - Szenenwechsel macht nur der `SceneManager`, mit Überblendung. Die Ziele stehen in `data/world/travel.tres`.
 - Ein neues Level: eine Szene mit dem Skript `levels/level.gd` an der Wurzel, Räume aus `world/room/room.tscn`, Wände, die Zeitkapsel, ein `MissionTracker` mit seiner Missionen-Datei und als letztes Kind `levels/level_frame/level_frame.tscn`; dazu ein Eintrag in `data/world/travel.tres` und eine Antwort an der Zeitsteuerung in `data/dialogs/time_console.tres`.
-- Räume: Ein Level besteht aus Räumen in seiner Szene. Die Kamera bleibt im Raum der Figur und gleitet beim Wechsel hinüber.
+- Räume: Ein Level besteht aus Räumen in seiner Szene. Die Kamera folgt seit M20 immer der Figur, auch über Raum- und Levelränder hinaus; außerhalb ist der dunkle Hintergrund zu sehen. Die Raumkamera aus M18 – im Raum bleiben, beim Wechsel hinübergleiten – lässt sich in `data/player/camera.tres` mit `mode` „ROOM“ zurückholen.
 
 ## Freischaltungen
 

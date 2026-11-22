@@ -21,4 +21,5 @@ levels = Array[ExtResource("2_info")]([SubResource("Resource_test_chamber"), Sub
 start_level = "test_chamber"
 capsule_scene = "res://levels/time_capsule/time_capsule.tscn"
 capsule_title = "Zeitkapsel"
+menu_scene = "res://levels/boot/boot.tscn"
 fade_time = 0.25

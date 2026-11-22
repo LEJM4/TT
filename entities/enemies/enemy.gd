@@ -282,7 +282,8 @@ func _on_died() -> void:
 	set_deferred("collision_mask", 0)
 	if _hurtbox != null:
 		_hurtbox.set_deferred("monitorable", false)
-	get_tree().create_timer(stats.remove_delay).timeout.connect(_remove)
+	# Hält mit der Pause an (M20).
+	get_tree().create_timer(stats.remove_delay, false).timeout.connect(_remove)
 
 
 # Nach dem Tod: aus dem Level und aus der Debug-Anzeige verschwinden.

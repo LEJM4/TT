@@ -6,8 +6,8 @@ extends Node
 ## einer eigenen Bildebene (120), über dem Fadenkreuz. Die Überblendung hängt
 ## nicht an der Pause. Ein Wechsel gilt für alle Spielfiguren.
 ## Die Ziele stehen in den Reisedaten data/world/travel.tres (TravelSettings):
-## die Level mit Kennung, Name und Szene, das Startlevel, die Zeitkapsel innen
-## und die Dauer der Überblendung.
+## die Level mit Kennung, Name und Szene, das Startlevel, die Zeitkapsel innen,
+## seit M20 die Startszene mit dem Hauptmenü und die Dauer der Überblendung.
 ##
 ## Wer einen Wechsel will, bittet über den EventBus darum:
 ##   level_exit_requested   Level abschließen: GameState.complete_level() - der
@@ -17,8 +17,10 @@ extends Node
 ##                          Level abgeschlossen, gibt es sie nicht: Das Level beginnt
 ##                          von vorn
 ##   travel_requested       in ein Level reisen, etwa von der Zeitsteuerung aus
-## Levels und Test-Tasten rufen direkt: reload_level() nach dem Tod und bei F2,
-## new_game() bei F4, start_game() aus der Startszene levels/boot/boot.tscn.
+## Levels, Menüs und Test-Tasten rufen direkt: reload_level() nach dem Tod und bei
+## F2, new_game() bei F4 und für ein neues Spiel aus der Spielstand-Auswahl,
+## start_game() für einen gewählten Spielstand (M20) - ohne Hauptmenü aus der
+## Startszene levels/boot/boot.tscn -, go_to_menu() aus dem Pausenmenü (M20).
 ## Ob die Figur gerade ankommt - ein neuer Lauf hat mit dieser Szene begonnen -,
 ## sagt is_arrival(); dann landet die Zeitkapsel.
 ## Abschluss, Abbruch und neues Spiel geschehen erst, wenn das Bild schwarz ist:
@@ -58,25 +60,33 @@ func _ready() -> void:
 	EventBus.level_run_changed.connect(_on_level_run_changed)
 
 
-## Beginnt das Spiel dort, wo es aufgehört hat - aufgerufen von der Startszene.
-## Läuft ein Level, geht es dorthin zurück; ist schon eins abgeschlossen, in die
-## Zeitkapsel; sonst beginnt ein neuer Lauf im Startlevel.
-func start_game() -> void:
+## Beginnt das Spiel dort, wo der Spielstand aufgehört hat - nach der Wahl in der
+## Spielstand-Auswahl (M20). Läuft ein Level, geht es dorthin zurück; ist schon
+## eins abgeschlossen, in die Zeitkapsel; sonst beginnt ein neuer Lauf im
+## Startlevel. Liefert, ob der Wechsel beginnt.
+func start_game() -> bool:
 	if _changing:
-		return
-	_cover()
+		return false
 	var state := _game_state()
 	if state != null and state.call("has_run"):
 		var running := String(state.get("current_level"))
 		var info := travel.find(running)
 		if info != null:
-			_change(info.scene, "fortgesetzt")
-			return
+			return _change(info.scene, "fortgesetzt")
 		push_warning("SceneManager: Das laufende Level \"%s\" steht nicht in %s - der Lauf wird abgebrochen." % [running, TRAVEL_PATH])
 		state.call("leave_level")
 	if has_capsule() and travel_to_capsule():
-		return
-	_go_to_start()
+		return true
+	return _go_to_start()
+
+
+## Zurück zum Startbildschirm mit dem Hauptmenü (M20), etwa aus dem Pausenmenü.
+## Gespeichert hat vorher, wer zurück will. Liefert, ob der Wechsel beginnt.
+func go_to_menu() -> bool:
+	if travel.menu_scene.is_empty():
+		push_warning("SceneManager: In %s ist kein Hauptmenü eingetragen." % TRAVEL_PATH)
+		return false
+	return _change(travel.menu_scene, "")
 
 
 ## Beginnt ein neues Spiel im Startlevel: Der Fortschritt in GameState ist weg,
@@ -283,7 +293,9 @@ func _report_place(note: String) -> void:
 		return
 	var path := scene.scene_file_path
 	var text := ""
-	if travel.is_capsule_scene(path):
+	if travel.is_menu_scene(path):
+		text = "Hauptmenü"
+	elif travel.is_capsule_scene(path):
 		text = travel.capsule_title
 	else:
 		var info := travel.find_by_scene(path)
@@ -306,11 +318,6 @@ func _build_fade() -> void:
 	_fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_fade_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
 	layer.add_child(_fade_rect)
-
-
-# Sofort schwarz, ohne Ausblenden - beim Start zeigt die Startszene ohnehin nichts.
-func _cover() -> void:
-	_fade_rect.color.a = 1.0
 
 
 func _fade_to(alpha: float) -> void:

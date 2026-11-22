@@ -1,0 +1,89 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/menus/pause_menu/pause_menu.gd" id="1_pause"]
+[ext_resource type="Theme" path="res://ui/menus/menu_theme.tres" id="2_theme"]
+[ext_resource type="Resource" path="res://data/dialogs/time_capsule_abort.tres" id="3_abort"]
+[ext_resource type="PackedScene" path="res://ui/menus/options_menu/options_menu.tscn" id="4_options"]
+[ext_resource type="PackedScene" path="res://ui/menus/confirm_window/confirm_window.tscn" id="5_confirm"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 107
+script = ExtResource("1_pause")
+abort_dialog = ExtResource("3_abort")
+
+[node name="Root" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="Dim" type="ColorRect" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="Window" type="PanelContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -66.0
+offset_right = 66.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Interior" type="PanelContainer" parent="Root/Window"]
+layout_mode = 2
+theme_type_variation = &"MenuInterior"
+
+[node name="Rows" type="VBoxContainer" parent="Root/Window/Interior"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="Root/Window/Interior/Rows"]
+layout_mode = 2
+theme_type_variation = &"MenuTitle"
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="Root/Window/Interior/Rows"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "Weiter"
+
+[node name="Options" type="Button" parent="Root/Window/Interior/Rows"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "Optionen"
+
+[node name="Abort" type="Button" parent="Root/Window/Interior/Rows"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "Reise abbrechen"
+
+[node name="MainMenu" type="Button" parent="Root/Window/Interior/Rows"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "Hauptmenü"
+
+[node name="Quit" type="Button" parent="Root/Window/Interior/Rows"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "Spiel beenden"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("4_options")]
+
+[node name="Confirm" parent="." instance=ExtResource("5_confirm")]

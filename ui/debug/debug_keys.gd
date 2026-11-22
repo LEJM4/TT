@@ -5,7 +5,9 @@ extends Node
 ##   F2       Raum neu laden wie ein Tod ohne Tod: speichern, dann über den
 ##            SceneManager neu laden - der Fortschritt bleibt
 ## Nur im Debug-Build, also nicht im fertigen Spiel:
-##   F4       Spielstand löschen und ein neues Spiel im Startlevel beginnen
+##   F4       Spielstand des offenen Platzes löschen und dort ein neues Spiel im
+##            Startlevel beginnen (seit M20 gibt es drei Plätze; im fertigen Spiel
+##            löscht nur die Spielstand-Auswahl im Hauptmenü)
 ##   Bild auf Level abschließen ohne Nachfrage - derselbe Weg wie "Einsteigen"
 ##            an der Zeitkapsel (level_exit_requested)
 ##   Bild ab  Reise abbrechen ohne Nachfrage - derselbe Weg wie "Abbrechen"
@@ -13,8 +15,9 @@ extends Node
 ##   Ende     Spiel beenden wie mit dem X am Fenster: Der SaveManager speichert
 ##   Pos1     alles freischalten (M19) - GameState.unlock_all()
 ## F3 (Zoom) bleibt in der Testkammer. F5 bis F8 fängt der Godot-Editor ab.
-## Dazu die Debug-Zeile "Spielstand": Lauf, Rückkehrpunkt und letzte Speicherung,
-## etwa "Lauf test_chamber · Landepunkt · 19:03:12 Rasten", und seit M19 die Zeile
+## Dazu die Debug-Zeile "Spielstand": seit M20 der Platz, dann Lauf, Rückkehrpunkt
+## und letzte Speicherung, etwa "Platz 1 · Lauf test_chamber · Landepunkt ·
+## 19:03:12 Rasten", und seit M19 die Zeile
 ## "Frei": was freigeschaltet ist, etwa "Dash, Stun", sonst "nichts" oder "alles".
 ## Ohne SceneManager laden F2, F4, Bild auf und Bild ab das Level direkt neu, wie vor M18.
 ##
@@ -132,6 +135,9 @@ func _report_save_state() -> void:
 	if saves == null:
 		text += " · ohne Datei"
 	else:
+		# Der offene Platz vorn (M20).
+		var slot := int(saves.get("active_slot"))
+		text = ("Platz %d · " % slot if slot > 0 else "kein Platz · ") + text
 		var saved_at := String(saves.get("last_saved_at"))
 		if saved_at.is_empty():
 			text += " · nicht gespeichert"

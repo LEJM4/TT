@@ -49,6 +49,7 @@
 [ext_resource type="PackedScene" path="res://world/room/room_watcher.tscn" id="48_room_watcher"]
 [ext_resource type="PackedScene" path="res://ui/debug/debug_keys.tscn" id="49_debug_keys"]
 [ext_resource type="PackedScene" path="res://world/unlock_pickup/unlock_pickup.tscn" id="50_unlock_pickup"]
+[ext_resource type="PackedScene" path="res://ui/menus/pause_menu/pause_menu.tscn" id="51_pause_menu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
 size = Vector2(960, 16)
@@ -468,3 +469,5 @@ hidden_keys = PackedStringArray("Kamera", "Raumzeit", "S1 Tempo", "S1 Ausdauer",
 [node name="MissionPanel" parent="." instance=ExtResource("42_mission_panel")]
 
 [node name="DialogWindow" parent="." instance=ExtResource("38_dialog_window")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("51_pause_menu")]

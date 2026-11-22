@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" path="res://ui/hud/hud.tscn" id="10_hud"]
 [ext_resource type="PackedScene" path="res://ui/missions/mission_panel.tscn" id="11_mission_panel"]
 [ext_resource type="PackedScene" path="res://ui/dialog/dialog_window.tscn" id="12_dialog_window"]
+[ext_resource type="PackedScene" path="res://ui/menus/pause_menu/pause_menu.tscn" id="13_pause_menu"]
 
 [node name="LevelFrame" type="Node2D"]
 
@@ -40,3 +41,5 @@ hidden_keys = PackedStringArray("Kamera", "Raumzeit", "S1 Tempo", "S1 Ausdauer",
 [node name="MissionPanel" parent="." instance=ExtResource("11_mission_panel")]
 
 [node name="DialogWindow" parent="." instance=ExtResource("12_dialog_window")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("13_pause_menu")]

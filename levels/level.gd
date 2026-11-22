@@ -72,4 +72,5 @@ func restart(reason := "Neustart") -> void:
 
 
 func _on_player_died(_player_id: int) -> void:
-	get_tree().create_timer(death_restart_delay).timeout.connect(restart.bind("Tod"))
+	# Hält mit der Pause an (M20): Erst wenn das Pausenmenü zu ist, lädt das Level neu.
+	get_tree().create_timer(death_restart_delay, false).timeout.connect(restart.bind("Tod"))

@@ -36,6 +36,11 @@ extends Node
 ## frei ist, sagt is_unlocked(); frei wird es nur hier, mit unlock() - wer etwas
 ## freischalten will, Fundstück, Mission oder Gespräch, bittet darum mit
 ## EventBus.unlock_requested.
+## Spielzeit (M20): play_time zählt die Sekunden im Spiel - nur solange ein Level
+## oder die Zeitkapsel läuft, nicht im Hauptmenü und nicht, solange das
+## Pausenmenü die Welt anhält. Sie steht im Spielstand, nicht im Kapsel- oder
+## Levelstand: Ein Abbruch nimmt keine Zeit zurück. Ein neues Spiel beginnt bei 0,
+## ebenso ein Spielstand aus der Zeit vor M20.
 ##
 ## Abschalten: in den Projekteinstellungen unter Autoload den Eintrag GameState
 ## entfernen - die Welt läuft wie vor M16 und vergisst alles beim Neustart des Raums.
@@ -53,6 +58,8 @@ var level := {}
 var current_level := ""
 ## Rückkehrpunkt: {"level": ..., "anchor": ...}. Leer: der Landepunkt des Levels.
 var respawn := {}
+## Spielzeit in Sekunden (M20); zählt nur in einem Level oder in der Zeitkapsel.
+var play_time := 0.0
 
 var _unlock_settings: UnlockSettings
 var _unlock_settings_loaded := false
@@ -64,6 +71,12 @@ func _init() -> void:
 
 func _ready() -> void:
 	EventBus.unlock_requested.connect(_on_unlock_requested)
+
+
+func _process(delta: float) -> void:
+	# Hält das Pausenmenü die Welt an, läuft dieser Dienst nicht - die Zeit steht.
+	if _counts_play_time():
+		play_time += delta
 
 
 ## Der Stand, der gerade gilt: im Lauf der Levelstand, sonst der Portalstand.
@@ -78,12 +91,13 @@ func has_run() -> bool:
 	return not current_level.is_empty()
 
 
-## Neues Spiel: kein Fortschritt, kein Lauf, kein Rückkehrpunkt.
+## Neues Spiel: kein Fortschritt, kein Lauf, kein Rückkehrpunkt, Spielzeit 0.
 func new_game() -> void:
 	portal = _empty_state()
 	level = {}
 	current_level = ""
 	respawn = {}
+	play_time = 0.0
 	EventBus.level_run_changed.emit("", "new_game")
 	EventBus.respawn_changed.emit("", "")
 
@@ -318,10 +332,16 @@ func object_id_of(node: Node) -> String:
 	return String(root.get_path_to(node))
 
 
+## Die Spielzeit in ganzen Sekunden (M20).
+func get_play_time() -> int:
+	return int(play_time)
+
+
 ## Alles für die Datei, als einfache Werte für JSON.
 func to_save_data() -> Dictionary:
 	return {
 		"version": FORMAT_VERSION,
+		"play_time": get_play_time(),
 		"current_level": current_level,
 		"respawn": respawn.duplicate(true),
 		"portal": portal.duplicate(true),
@@ -347,6 +367,9 @@ func from_save_data(data: Dictionary) -> bool:
 	if not has_run():
 		level = {}
 	respawn = {}
+	# Spielzeit (M20): Spielstände von vorher haben keine, sie beginnen bei 0.
+	var played: Variant = data.get("play_time")
+	play_time = maxf(float(played), 0.0) if (played is float or played is int) else 0.0
 	var loaded_respawn: Variant = data.get("respawn")
 	if loaded_respawn is Dictionary:
 		var anchor := _text(loaded_respawn.get("anchor"))
@@ -359,6 +382,13 @@ func from_save_data(data: Dictionary) -> bool:
 
 func _on_unlock_requested(_player_id: int, unlock_id: StringName) -> void:
 	unlock(unlock_id)
+
+
+# Läuft gerade ein Level oder die Zeitkapsel? Daran erkennt die Spielzeit, dass
+# gespielt wird: Jede Level-Szene hat level_id, die Startszene mit dem Hauptmenü nicht.
+func _counts_play_time() -> bool:
+	var scene := get_tree().current_scene
+	return scene != null and scene.get("level_id") != null
 
 
 func _find_unlock(unlock_id: StringName) -> UnlockInfo:

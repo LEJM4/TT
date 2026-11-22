@@ -153,7 +153,8 @@ func _draw() -> void:
 func _on_player_died(_player_id: int) -> void:
 	# Tod (M16): nach einer Sekunde neu laden - die Figur erwacht am Rückkehrpunkt,
 	# der Fortschritt bleibt, auch was nach dem letzten Rasten kam.
-	get_tree().create_timer(death_restart_delay).timeout.connect(_restart_room.bind("Tod"))
+	# Hält mit der Pause an (M20): Erst wenn das Pausenmenü zu ist, lädt die Kammer neu.
+	get_tree().create_timer(death_restart_delay, false).timeout.connect(_restart_room.bind("Tod"))
 
 
 # Neu laden (M18): über den SceneManager mit Überblendung; ohne ihn direkt wie bisher.
