@@ -18,7 +18,9 @@ extends Node
 ##              {"state": "active", "progress": [1, 0]}; ohne Eintrag ist sie
 ##              noch nicht angenommen
 ##   completed  die abgeschlossenen Level
-## Später kommen Freischaltungen (M19) dazu. Nicht im Stand:
+##   unlocks    die Freischaltungen, die im Spiel dazukamen (M19), etwa ["dash"];
+##              sie gelten für alle Spielfiguren
+## Nicht im Stand:
 ## Gegner, Beute am Boden, Leben und Energie - nach Rasten, Tod und Laden sind
 ## beide voll.
 ## Daneben gilt ein Rückkehrpunkt (respawn): der Zeitanker, an dem die Figur nach
@@ -30,12 +32,18 @@ extends Node
 ## to_save_data(). Ohne SaveManager gilt der Fortschritt, bis das Spiel endet.
 ## Im Online-Spiel gilt ein Lauf für alle Spieler; jede Figur hat ihr eigenes
 ## Inventar unter players.
+## Freischaltungen (M19): Was gesperrt sein kann, steht in UNLOCKS_PATH. Ob etwas
+## frei ist, sagt is_unlocked(); frei wird es nur hier, mit unlock() - wer etwas
+## freischalten will, Fundstück, Mission oder Gespräch, bittet darum mit
+## EventBus.unlock_requested.
 ##
 ## Abschalten: in den Projekteinstellungen unter Autoload den Eintrag GameState
 ## entfernen - die Welt läuft wie vor M16 und vergisst alles beim Neustart des Raums.
 
 ## Version des Formats; der SaveManager schreibt sie in die Datei.
 const FORMAT_VERSION := 1
+## Werte-Datei mit allen Freischaltungen (M19).
+const UNLOCKS_PATH := "res://data/unlocks/unlocks.tres"
 
 ## Portalstand: der Fortschritt, gesichert im Portal, bevor das Level begann.
 var portal := {}
@@ -46,9 +54,16 @@ var current_level := ""
 ## Rückkehrpunkt: {"level": ..., "anchor": ...}. Leer: der Landepunkt des Levels.
 var respawn := {}
 
+var _unlock_settings: UnlockSettings
+var _unlock_settings_loaded := false
+
 
 func _init() -> void:
 	portal = _empty_state()
+
+
+func _ready() -> void:
+	EventBus.unlock_requested.connect(_on_unlock_requested)
 
 
 ## Der Stand, der gerade gilt: im Lauf der Levelstand, sonst der Portalstand.
@@ -195,6 +210,67 @@ func set_mission_state(level_id: String, mission_id: String, data: Dictionary) -
 		in_level[mission_id] = data.duplicate(true)
 
 
+## Ist diese Freischaltung frei (M19)? Ja auch, wenn die Kennung leer ist, die
+## Werte-Datei sie nicht kennt oder sie von Anfang an frei ist.
+func is_unlocked(unlock_id: StringName) -> bool:
+	if unlock_id == &"":
+		return true
+	var info := _find_unlock(unlock_id)
+	if info == null or info.unlocked_at_start:
+		return true
+	return _list(active(), "unlocks").has(String(unlock_id))
+
+
+## Schaltet frei (M19) und meldet es: unlocks_changed und ein Hinweis oben in der
+## Mitte. Gilt im Lauf erst im Levelstand: Ein Abbruch verwirft es, der Abschluss
+## übernimmt es. Liefert false, wenn es nichts freizuschalten gab - schon frei
+## oder unbekannt.
+func unlock(unlock_id: StringName) -> bool:
+	if unlock_id == &"":
+		return false
+	var info := _find_unlock(unlock_id)
+	if info == null:
+		push_warning("GameState: Die Freischaltung \"%s\" steht nicht in %s." % [unlock_id, UNLOCKS_PATH])
+		return false
+	if is_unlocked(unlock_id):
+		return false
+	_list(active(), "unlocks").append(String(unlock_id))
+	EventBus.unlocks_changed.emit(unlock_id, "unlock")
+	EventBus.notice_requested.emit(_unlock_settings.notice_kind, info.get_notice_title())
+	return true
+
+
+## Schaltet alles frei, was noch gesperrt ist - Pos1 im Debug-Build (M19).
+## Liefert, wie viele es waren.
+func unlock_all() -> int:
+	var settings := _get_unlock_settings()
+	if settings == null:
+		return 0
+	var count := 0
+	for info in settings.unlocks:
+		if info != null and info.id != &"" and not is_unlocked(info.id):
+			_list(active(), "unlocks").append(String(info.id))
+			count += 1
+	if count > 0:
+		EventBus.unlocks_changed.emit(&"", "all")
+		EventBus.notice_requested.emit(settings.notice_kind, settings.notice_all)
+	return count
+
+
+## Die Namen der Freischaltungen in der Reihenfolge der Werte-Datei, etwa
+## ["Dash", "Stun"]: mit free die freien, sonst die gesperrten - für die
+## Debug-Anzeige (M19).
+func get_unlock_titles(free: bool) -> PackedStringArray:
+	var titles := PackedStringArray()
+	var settings := _get_unlock_settings()
+	if settings == null:
+		return titles
+	for info in settings.unlocks:
+		if info != null and info.id != &"" and is_unlocked(info.id) == free:
+			titles.append(info.title)
+	return titles
+
+
 ## Gibt es gemerkte Daten zu dieser Spielfigur? Ohne sie beginnt sie mit dem Startinhalt.
 func has_player_data(player_id: int) -> bool:
 	return _dict(active(), "players").get(str(player_id)) is Dictionary
@@ -281,6 +357,31 @@ func from_save_data(data: Dictionary) -> bool:
 	return true
 
 
+func _on_unlock_requested(_player_id: int, unlock_id: StringName) -> void:
+	unlock(unlock_id)
+
+
+func _find_unlock(unlock_id: StringName) -> UnlockInfo:
+	var settings := _get_unlock_settings()
+	if settings == null:
+		return null
+	return settings.find(unlock_id)
+
+
+# Liest die Werte-Datei der Freischaltungen beim ersten Bedarf.
+func _get_unlock_settings() -> UnlockSettings:
+	if not _unlock_settings_loaded:
+		_unlock_settings_loaded = true
+		if ResourceLoader.exists(UNLOCKS_PATH):
+			_unlock_settings = load(UNLOCKS_PATH) as UnlockSettings
+		if _unlock_settings == null:
+			push_warning("GameState: %s fehlt - nichts ist gesperrt." % UNLOCKS_PATH)
+		else:
+			for problem in _unlock_settings.check():
+				push_warning("GameState: %s: %s" % [UNLOCKS_PATH, problem])
+	return _unlock_settings
+
+
 func _end_run(level_id: String, event: String) -> void:
 	level = {}
 	current_level = ""
@@ -290,7 +391,7 @@ func _end_run(level_id: String, event: String) -> void:
 
 
 func _empty_state() -> Dictionary:
-	return {"players": {}, "objects": {}, "missions": {}, "completed": []}
+	return {"players": {}, "objects": {}, "missions": {}, "completed": [], "unlocks": []}
 
 
 # Das Dictionary unter key; legt es an, wenn es fehlt.

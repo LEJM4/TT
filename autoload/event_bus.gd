@@ -146,3 +146,22 @@ signal travel_requested(player_id: int, level_id: String)
 ## die Kamera dieser Figur gleitet in die Grenzen des neuen Raums.
 @warning_ignore("unused_signal")
 signal room_changed(player_id: int, room_id: String, bounds: Rect2)
+
+## Etwas möchte eine Mechanik freischalten (M19): ein Fundstück, die Belohnung
+## einer Mission, eine Zeile im Gespräch. unlock_id ist die Kennung aus
+## data/unlocks/unlocks.tres, etwa "dash". Ob sie frei wird, entscheidet GameState;
+## Freischaltungen gelten für alle Spielfiguren.
+@warning_ignore("unused_signal")
+signal unlock_requested(player_id: int, unlock_id: StringName)
+
+## Die Freischaltungen haben sich geändert (M19): unlock_id ist frei geworden
+## (reason "unlock"), oder alles auf einmal (unlock_id leer, reason "all").
+## Gemeldet von GameState; Spielfiguren und HUD fragen dann neu nach.
+@warning_ignore("unused_signal")
+signal unlocks_changed(unlock_id: StringName, reason: String)
+
+## Ein Hinweis soll kurz oben in der Mitte stehen (M19), etwa "Neu freigeschaltet"
+## und darunter "Dash (Leertaste)". Gezeigt von der Anzeige der Missionen, die
+## seit M17 die Hinweise oben in der Mitte bringt.
+@warning_ignore("unused_signal")
+signal notice_requested(kind: String, title: String)

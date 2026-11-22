@@ -1,6 +1,6 @@
 class_name MissionData
 extends Resource
-## MissionData - eine Mission: Name, Titel, Ziele und Belohnung (M17).
+## MissionData - eine Mission: Name, Titel, Ziele und Belohnung (M17), seit M19 auch Freischaltungen.
 ##
 ## Steht in der Missionen-Datei eines Levels (MissionList). Spielstand und
 ## Gespräche nennen sie über ihren Namen id, nicht über einen Dateipfad - so
@@ -33,6 +33,9 @@ const UNKNOWN_CHARACTERS: Array[String] = ["ß", "„", "–", "…"]
 @export var objectives: Array[MissionObjective] = []
 ## Belohnung: Sie springt vor der Spielfigur auf den Boden. Leer: keine.
 @export var reward: LootTable
+## Freischaltungen als Belohnung (M19), etwa "haste" - die Kennungen stehen in
+## data/unlocks/unlocks.tres. Ob sie frei werden, entscheidet GameState. Leer: keine.
+@export var reward_unlocks: Array[StringName] = []
 
 
 ## Hat die Mission ein Ziel, das Gegenstände zählt?

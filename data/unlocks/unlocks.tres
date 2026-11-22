@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="UnlockSettings" format=3]
+
+[ext_resource type="Script" path="res://unlocks/unlock_settings.gd" id="1_settings"]
+[ext_resource type="Script" path="res://unlocks/unlock_info.gd" id="2_info"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Skill Icon/Items & Weapon/Arrow.png" id="3_arrow"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Skill Icon/Spell/BookThunder.png" id="4_stun"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Skill Icon/Spell/Camouflage.png" id="5_invisibility"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Skill Icon/Items & Weapon/Boot.png" id="6_haste"]
+
+[sub_resource type="Resource" id="Resource_ranged"]
+script = ExtResource("2_info")
+id = &"ranged"
+title = "Fernkampf"
+key_hint = "Rechtsklick"
+icon = ExtResource("3_arrow")
+
+[sub_resource type="Resource" id="Resource_dash"]
+script = ExtResource("2_info")
+id = &"dash"
+title = "Dash"
+key_hint = "Leertaste"
+
+[sub_resource type="Resource" id="Resource_sneak"]
+script = ExtResource("2_info")
+id = &"sneak"
+title = "Schleichen"
+key_hint = "Strg"
+
+[sub_resource type="Resource" id="Resource_stun"]
+script = ExtResource("2_info")
+id = &"stun"
+title = "Stun"
+key_hint = "Taste 3"
+icon = ExtResource("4_stun")
+
+[sub_resource type="Resource" id="Resource_invisibility"]
+script = ExtResource("2_info")
+id = &"invisibility"
+title = "Unsichtbarkeit"
+key_hint = "Taste 2"
+icon = ExtResource("5_invisibility")
+
+[sub_resource type="Resource" id="Resource_haste"]
+script = ExtResource("2_info")
+id = &"haste"
+title = "Schnelligkeit"
+key_hint = "Taste 1"
+icon = ExtResource("6_haste")
+
+[resource]
+script = ExtResource("1_settings")
+unlocks = Array[ExtResource("2_info")]([SubResource("Resource_ranged"), SubResource("Resource_dash"), SubResource("Resource_sneak"), SubResource("Resource_stun"), SubResource("Resource_invisibility"), SubResource("Resource_haste")])
+notice_kind = "Neu freigeschaltet"
+notice_all = "Alles"

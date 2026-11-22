@@ -4,3 +4,4 @@
 
 [node name="Haste" type="Node"]
 script = ExtResource("1_haste")
+unlock_id = &"haste"

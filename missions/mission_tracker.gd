@@ -9,7 +9,8 @@ extends Node
 ## Er zählt Ereignisse (EventBus.mission_event) und die Gegenstände in den
 ## Inventaren der Spielfiguren, entscheidet, wann eine Mission bereit oder
 ## erfüllt ist, und gibt die Belohnung: Sie springt über den LootSpawner vor die
-## Spielfigur. Gesprächszeilen bitten über den EventBus, eine Mission zu starten
+## Spielfigur; um Freischaltungen bittet er GameState (unlock_requested, M19).
+## Gesprächszeilen bitten über den EventBus, eine Mission zu starten
 ## oder abzugeben. Jeden Wechsel meldet er (mission_changed), die ganze Liste für
 ## die Anzeige ebenso (mission_list_changed).
 ## Sind alle Pflichtmissionen erfüllt, meldet er seinen Kanal unlock_channel als
@@ -219,6 +220,13 @@ func _is_open(mission: MissionData) -> bool:
 
 
 func _give_reward(mission: MissionData, player: Node2D) -> void:
+	# Freischaltungen (M19): Darum bittet der Tracker nur, frei schaltet GameState.
+	var player_id := 1
+	if player != null:
+		player_id = int(player.get("player_id"))
+	for unlock_id in mission.reward_unlocks:
+		if unlock_id != &"":
+			EventBus.unlock_requested.emit(player_id, unlock_id)
 	if mission.reward == null:
 		return
 	if player == null:

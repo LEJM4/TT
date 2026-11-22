@@ -31,7 +31,7 @@
 
 [node name="DebugOverlay" parent="." instance=ExtResource("8_overlay")]
 show_mouse = false
-hidden_keys = PackedStringArray("Kamera", "Raumzeit", "S1 Tempo", "S1 Ausdauer", "S1 Leben", "S1 Dash", "S1 Energie", "S1 Fähigkeiten")
+hidden_keys = PackedStringArray("Kamera", "Raumzeit", "S1 Tempo", "S1 Ausdauer", "S1 Leben", "S1 Dash", "S1 Energie", "S1 Fähigkeiten", "S1 Geschoss")
 
 [node name="InventoryWindow" parent="." instance=ExtResource("9_inventory_window")]
 

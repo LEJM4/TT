@@ -1,0 +1,34 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/unlock_pickup/unlock_pickup.gd" id="1_pickup"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Items/Scroll/Scroll.png" id="2_scroll"]
+[ext_resource type="PackedScene" path="res://components/interactable/interactable.tscn" id="3_interactable"]
+[ext_resource type="PackedScene" path="res://components/effect_cue/effect_cue.tscn" id="4_effect_cue"]
+[ext_resource type="Resource" path="res://data/effects/unlock_twinkle.tres" id="5_twinkle"]
+[ext_resource type="PackedScene" path="res://components/persistent/persistent.tscn" id="6_persistent"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_area"]
+size = Vector2(16, 16)
+
+[node name="UnlockPickup" type="Node2D"]
+script = ExtResource("1_pickup")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("2_scroll")
+centered = false
+offset = Vector2(-7, -7)
+
+[node name="Interactable" parent="." instance=ExtResource("3_interactable")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_area")
+
+[node name="Sparkle" parent="." instance=ExtResource("4_effect_cue")]
+position = Vector2(3, -10)
+effect = ExtResource("5_twinkle")
+signal_name = "sparkled"
+
+[node name="Persistent" parent="." instance=ExtResource("6_persistent")]
+save_signal = "taken"

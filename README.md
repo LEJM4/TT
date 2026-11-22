@@ -15,16 +15,17 @@
 | Ordner | Inhalt |
 | --- | --- |
 | `autoload/` | Globale Dienste: EventBus, Tastenbelegung, Spielstand, Szenenwechsel, Ton |
-| `components/` | Bausteine für alle: Bild, Effekte, Splitter, Leben, Lebensleiste, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion, Beute, Aufsammeln, Ausrüstung, Zustandsautomat, Sehen und Hören, Sprechblase, Blick im Gespräch, Spielstand (`persistent/` für Dinge der Welt, `player_progress/` für die Spielfigur), Ereignisse für Missionen (`mission_cue/`), Gespräch mit Aktion (`talk_action/`) |
+| `components/` | Bausteine für alle: Bild, Effekte, Splitter, Leben, Lebensleiste, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion, Beute, Aufsammeln, Ausrüstung, Zustandsautomat, Sehen und Hören, Sprechblase, Blick im Gespräch, Spielstand (`persistent/` für Dinge der Welt, `player_progress/` für die Spielfigur), Ereignisse für Missionen (`mission_cue/`), Gespräch mit Aktion (`talk_action/`), Sperre für Gesperrtes an der Spielfigur (`unlock_gate/`) |
 | `entities/` | Figuren und Bewegliches: `player/`, `enemies/` – Grundszene, Gegnertypen (Nahkämpfer, Fernkämpfer), fertige Gegner, Angriffs-Module in `attacks/`, Zustände in `states/` –, `npcs/` – Grundszene, fertige NPCs und Auftraggeber –, `dummy/`, `projectile/`, `effect/`, `debris/`, `pickup/` |
 | `abilities/` | Fähigkeiten: Schnelligkeit, Unsichtbarkeit, Stun; der Dash ist ein Baustein in `components/dash/` |
 | `items/` | Baupläne für Gegenstände, Geschosse, Ausrüstung und Beute-Listen; die Gegenstände selbst liegen in `data/items/` – Geschosse, Materialien, Schlüssel, Ausrüstung –, die Listen in `data/loot/` |
 | `dialogs/` | Baupläne für Gespräche: Gespräch, Zeile, Antwort, Sprecher und der DialogRunner, der den Weg durch ein Gespräch kennt; die Gespräche selbst liegen in `data/dialogs/` |
+| `unlocks/` | Baupläne für Freischaltungen – eine Freischaltung und die Liste aller; die Liste selbst steht in `data/unlocks/unlocks.tres` |
 | `missions/` | Baupläne für Missionen – Missionen-Datei eines Levels, Mission, Ziele – und der `MissionTracker`, die eine Stelle für die Missionen eines Levels; die Missionen selbst liegen je Level in `data/missions/` |
-| `world/` | Dinge der Welt: `view/` die Ansicht – Zoom der Welt und die Kachel als Maß –, Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen, Zeitanker, Ausgang eines Levels, `room/` Räume und der `RoomWatcher`, `time_capsule/` die Zeitkapsel im Level, `time_console/` die Zeitsteuerung in der Zeitkapsel |
+| `world/` | Dinge der Welt: `view/` die Ansicht – Zoom der Welt und die Kachel als Maß –, Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen, Zeitanker, Ausgang eines Levels, `room/` Räume und der `RoomWatcher`, `time_capsule/` die Zeitkapsel im Level, `time_console/` die Zeitsteuerung in der Zeitkapsel, `unlock_pickup/` Fundstücke, die eine Mechanik freischalten |
 | `levels/` | `boot/` die Startszene, `level.gd` die Grundlage der Level, `level_frame/` was jedes Level braucht, `test_chamber/` die Testkammer, `test_field/` das Testfeld, `time_capsule/` die Zeitkapsel innen; dazu die Baupläne der Reisedaten (`level_info.gd`, `travel_settings.gd`) – die Reisedaten selbst stehen in `data/world/travel.tres` |
 | `ui/` | Oberfläche: `hud/` die Anzeige am Bildrand, `inventory/` das Inventarfenster, `theme/` das Holz-Thema für alle Fenster, `dialog/` das Dialogfenster mit eigenem Thema, `missions/` die Missionsliste und die Hinweise, `crosshair/`, `debug/` für Entwickler-Anzeigen; später Menüs |
-| `data/` | Werte-Dateien (`.tres`): Balancing, Gegner, Skins, Gegenstände, Effekte, Beute, Gespräche, Missionen, Oberfläche, Reisedaten |
+| `data/` | Werte-Dateien (`.tres`): Balancing, Gegner, Skins, Gegenstände, Effekte, Beute, Gespräche, Missionen, Freischaltungen, Oberfläche, Reisedaten |
 | `assets/` | Grafik und Ton – siehe `assets/README.md` |
 | `docs/` | Stand-Datei und Grafik-Katalog; von Godot ignoriert |
 | `tools/` | Hilfsskripte; von Godot ignoriert |
@@ -70,8 +71,9 @@ Sie steht in `autoload/input_setup.gd` und lässt sich dort ändern.
 | Bild auf | `debug_complete_level` | nur im Debug-Build: Level abschließen ohne Nachfrage – wie „Einsteigen“ an der Zeitkapsel |
 | Bild ab | `debug_leave_level` | nur im Debug-Build: Reise abbrechen ohne Nachfrage – wie „Abbrechen“ an der Zeitkapsel |
 | Ende | `debug_quit_game` | nur im Debug-Build: Spiel beenden wie mit dem X am Fenster, mit Speichern |
+| Pos1 | `debug_unlock_all` | nur im Debug-Build: alles freischalten |
 
-F2, F4, Bild auf, Bild ab und Ende gelten seit M18 in jedem Level und in der Zeitkapsel; sie liegen im Knoten `DebugKeys`.
+F2, F4, Bild auf, Bild ab, Ende und Pos1 gelten in jedem Level und in der Zeitkapsel; sie liegen im Knoten `DebugKeys`.
 
 F5 bis F8 sind im Godot-Editor belegt (Starten, Szene starten, Pause, Stopp); läuft das Spiel im Editor eingebettet, kämen sie nicht im Spiel an.
 
@@ -96,6 +98,14 @@ F5 bis F8 sind im Godot-Editor belegt (Starten, Szene starten, Pause, Stopp); l�
 - Szenenwechsel macht nur der `SceneManager`, mit Überblendung. Die Ziele stehen in `data/world/travel.tres`.
 - Ein neues Level: eine Szene mit dem Skript `levels/level.gd` an der Wurzel, Räume aus `world/room/room.tscn`, Wände, die Zeitkapsel, ein `MissionTracker` mit seiner Missionen-Datei und als letztes Kind `levels/level_frame/level_frame.tscn`; dazu ein Eintrag in `data/world/travel.tres` und eine Antwort an der Zeitsteuerung in `data/dialogs/time_console.tres`.
 - Räume: Ein Level besteht aus Räumen in seiner Szene. Die Kamera bleibt im Raum der Figur und gleitet beim Wechsel hinüber.
+
+## Freischaltungen
+
+- Fernkampf, Dash, Schleichen, Stun, Unsichtbarkeit und Schnelligkeit sind zu Beginn gesperrt; die Taste bewirkt dann nichts, und das HUD zeigt nur, was frei ist. Laufen, Sprinten, Nahkampf, Zerstören, E und Inventar sind immer frei.
+- Alle Freischaltungen stehen in `data/unlocks/unlocks.tres`: Kennung, Name, Taste für den Hinweis, Symbol, von Anfang an frei oder nicht.
+- Frei schaltet nur `GameState`. Darum bitten ein Fundstück (`world/unlock_pickup/`, E daran), die Belohnung einer Mission (`reward_unlocks`) und eine Gesprächszeile (`unlock`). Oben in der Mitte steht dann „Neu freigeschaltet“.
+- Freischaltungen gelten für alle Spielfiguren und stehen im Spielstand wie alles andere: Tod und Beenden behalten sie, ein Abbruch der Reise verwirft, was im Level dazukam.
+- An der Spielfigur fragt der Baustein `Unlocks` (`components/unlock_gate/`), was frei ist; eine Fähigkeit nennt ihre Freischaltung selbst (`unlock_id`).
 
 ## Regeln
 

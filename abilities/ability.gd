@@ -8,7 +8,8 @@ extends Node
 ## hängen und im Inspektor eine Werte-Datei wählen. Der Platz unter "Abilities"
 ## bestimmt die Taste: das erste Kind liegt auf Fähigkeit 1.
 ## Bezahlt wird aus dem Kind der Figur mit dem Namen aus supply_name (ein Supply).
-## Die Abklingzeit beginnt, wenn die Wirkung endet.
+## Die Abklingzeit beginnt, wenn die Wirkung endet. Ist sie noch nicht
+## freigeschaltet (unlock_id, M19), setzt die Figur sie nicht ein.
 ##
 ## Abschalten: Knoten löschen - die Figur hat diese Fähigkeit dann nicht mehr.
 
@@ -21,6 +22,10 @@ signal finished
 @export var stats: AbilityStats
 ## Name des Kindes der Figur, das die Fähigkeit bezahlt. Leer: Sie ist kostenlos.
 @export var supply_name := "Energy"
+## Freischaltung, die die Fähigkeit braucht (M19), etwa "haste" - die Kennungen
+## stehen in data/unlocks/unlocks.tres. Gefragt wird am Kind Unlocks der Figur;
+## gesperrt bewirkt die Taste nichts. Leer: immer frei.
+@export var unlock_id: StringName = &""
 
 ## Wirkt die Fähigkeit gerade?
 var is_active := false

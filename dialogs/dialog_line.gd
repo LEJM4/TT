@@ -5,7 +5,8 @@ extends Resource
 ## Ohne Antworten geht es mit E weiter - zur nächsten Zeile der Liste oder zum
 ## Sprungziel next. Mit Antworten (choices) wählt die Spielfigur, und jede
 ## Antwort führt an ihre eigene Stelle. Was eine Zeile bewirkt - Beute (reward),
-## erledigt (marks_done), eine Mission starten oder abgeben (M17) -, meldet der
+## erledigt (marks_done), eine Mission starten oder abgeben (M17), eine
+## Freischaltung (unlock, M19) -, meldet der
 ## NPC, sobald das Fenster sie zeigt. Eine Aktion (action, M18) führen Dinge wie
 ## die Zeitkapsel aus, wenn das Gespräch nach dieser Zeile endet.
 ## Teil eines Gesprächs (DialogData).
@@ -44,6 +45,11 @@ const MAX_CHOICES := 3
 ## gehen die verlangten Gegenstände aus dem Inventar, und die Belohnung springt
 ## vor die Spielfigur. Leer: keine.
 @export var hand_in_mission: StringName = &""
+## Kennung einer Freischaltung, um die der NPC bittet, sobald die Zeile erscheint
+## (M19), etwa "sneak" - die Kennungen stehen in data/unlocks/unlocks.tres. Ob sie
+## frei wird, entscheidet GameState; was schon frei ist, bleibt es ohne neuen
+## Hinweis. Leer: keine.
+@export var unlock: StringName = &""
 ## Name einer Aktion, die der Sprecher ausführt, wenn das Gespräch nach dieser
 ## Zeile zu Ende geht (M18): an der Zeitkapsel "board" (einsteigen) oder "abort"
 ## (abbrechen), an der Zeitsteuerung die Kennung des Ziels, etwa "test_field".

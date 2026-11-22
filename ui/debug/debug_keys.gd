@@ -11,9 +11,11 @@ extends Node
 ##   Bild ab  Reise abbrechen ohne Nachfrage - derselbe Weg wie "Abbrechen"
 ##            an der Zeitkapsel (level_leave_requested)
 ##   Ende     Spiel beenden wie mit dem X am Fenster: Der SaveManager speichert
+##   Pos1     alles freischalten (M19) - GameState.unlock_all()
 ## F3 (Zoom) bleibt in der Testkammer. F5 bis F8 fängt der Godot-Editor ab.
 ## Dazu die Debug-Zeile "Spielstand": Lauf, Rückkehrpunkt und letzte Speicherung,
-## etwa "Lauf test_chamber · Landepunkt · 19:03:12 Rasten".
+## etwa "Lauf test_chamber · Landepunkt · 19:03:12 Rasten", und seit M19 die Zeile
+## "Frei": was freigeschaltet ist, etwa "Dash, Stun", sonst "nichts" oder "alles".
 ## Ohne SceneManager laden F2, F4, Bild auf und Bild ab das Level direkt neu, wie vor M18.
 ##
 ## Abschalten: Knoten löschen - die Test-Tasten wirken nicht, alles andere läuft.
@@ -26,6 +28,7 @@ func _ready() -> void:
 	EventBus.game_saved.connect(_on_save_state_changed.unbind(1))
 	EventBus.respawn_changed.connect(_on_save_state_changed.unbind(2))
 	EventBus.level_run_changed.connect(_on_save_state_changed.unbind(2))
+	EventBus.unlocks_changed.connect(_on_save_state_changed.unbind(2))
 	# Erst melden, wenn die Debug-Anzeige bereit ist und zuhört.
 	_report_save_state.call_deferred()
 
@@ -54,6 +57,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Wie das X am Fenster: Der SaveManager speichert und beendet.
 		get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 		get_tree().quit()
+	elif event.is_action_pressed("debug_unlock_all"):
+		get_viewport().set_input_as_handled()
+		var state := _game_state()
+		if state != null:
+			state.call("unlock_all")
 
 
 func _restart(reason: String) -> void:
@@ -106,6 +114,7 @@ func _report_save_state() -> void:
 	var state := _game_state()
 	if state == null:
 		EventBus.debug_value_changed.emit("Spielstand", "aus")
+		EventBus.debug_value_changed.emit("Frei", "alles")
 		return
 	var run := String(state.get("current_level"))
 	var text := "kein Lauf"
@@ -129,6 +138,16 @@ func _report_save_state() -> void:
 		else:
 			text += " · %s %s" % [saved_at.get_slice(" ", 1), String(saves.get("last_reason"))]
 	EventBus.debug_value_changed.emit("Spielstand", text)
+	# Freischaltungen (M19): ohne die Werte-Datei ist alles frei.
+	if state.has_method("get_unlock_titles"):
+		var free: PackedStringArray = state.call("get_unlock_titles", true)
+		var locked: PackedStringArray = state.call("get_unlock_titles", false)
+		var line := ", ".join(free)
+		if locked.is_empty():
+			line = "alles"
+		elif free.is_empty():
+			line = "nichts"
+		EventBus.debug_value_changed.emit("Frei", line)
 
 
 func _scene_manager() -> Node:

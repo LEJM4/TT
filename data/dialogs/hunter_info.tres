@@ -11,9 +11,14 @@ text = "Gut, dass du da bist! Rechts streift ein Höhlenmensch umher, und unten 
 [sub_resource type="Resource" id="Resource_tip"]
 script = ExtResource("2_line")
 text = "Die Steinwerferin hält Abstand. Hinter einem Block treffen dich ihre Steine nicht."
+
+[sub_resource type="Resource" id="Resource_sneak"]
+script = ExtResource("2_line")
+text = "Und noch ein Rat von mir: Halte Strg gedrückt, dann schleichst du. So hören dich die Gegner nicht."
 marks_done = true
+unlock = &"sneak"
 
 [resource]
 script = ExtResource("1_data")
 speaker = ExtResource("3_speaker")
-lines = Array[ExtResource("2_line")]([SubResource("Resource_warning"), SubResource("Resource_tip")])
+lines = Array[ExtResource("2_line")]([SubResource("Resource_warning"), SubResource("Resource_tip"), SubResource("Resource_sneak")])

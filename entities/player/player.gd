@@ -1,5 +1,5 @@
 extends CharacterBody2D
-## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten, A1: Bild, M11a: Inventar, M8: Interaktion, M9: Aufsammeln, M11: Ausrüstung, M13: Schleichen für Gegner, M15: Blick im Gespräch, M16: Spielstand).
+## Player - die Spielfigur (M2: Bewegung, M4: Zielen und Nahkampf, M5: Dash, M6: Fernkampf, M7: Fähigkeiten, A1: Bild, M11a: Inventar, M8: Interaktion, M9: Aufsammeln, M11: Ausrüstung, M13: Schleichen für Gegner, M15: Blick im Gespräch, M16: Spielstand, M19: Freischaltungen).
 ##
 ## Die Figur führt nur Absichten aus. Woher sie kommen, bestimmt das Kind
 ## "PlayerInput" (ein IntentSource): Tasten, später Gamepad oder Netz.
@@ -18,6 +18,8 @@ extends CharacterBody2D
 ## Equipment; es ändert die Werte von Schwert, Geschossen und Leben (M11).
 ## Inventar und Ausrüstung holt ihr Kind PlayerProgress beim Erscheinen aus dem
 ## Spielstand und schreibt jede Änderung dorthin zurück (M16).
+## Dash, Fernkampf, Schleichen und Fähigkeiten wirken erst, wenn sie
+## freigeschaltet sind; das fragt sie ihr Kind Unlocks (M19).
 ## Die Zahlen stehen in data/player/: movement.tres, stamina.tres,
 ## health.tres, sword.tres, dash.tres, bow.tres, energy.tres, inventory.tres, interactor.tres und equipment.tres;
 ## die Werte der Fähigkeiten in data/abilities/, die der Geschosse in data/items/.
@@ -42,6 +44,7 @@ extends CharacterBody2D
 ##   TalkFacing    Blick im Gespräch - ohne: Sie behält im Gespräch ihre Blickrichtung (M15).
 ##   Equipment     Ausrüstung   - ohne: Sie kämpft mit ihren Grundwerten (M11).
 ##   PlayerProgress Spielstand  - ohne: Sie beginnt jedes Mal mit dem Startinhalt (M16).
+##   Unlocks       Freischaltungen - ohne: Dash, Fernkampf, Schleichen und alle Fähigkeiten sind frei (M19).
 ##
 ## Stirbt die Figur, bleibt sie stehen und meldet es über den EventBus
 ## (player_died); ihr Bild zeigt den Tod, der Platzhalter wird grau.
@@ -93,6 +96,7 @@ var look_target: Node2D
 @onready var _abilities := get_node_or_null("Abilities")
 @onready var _energy := get_node_or_null("Energy") as Supply
 @onready var _interactor := get_node_or_null("Interactor") as Interactor
+@onready var _unlocks := get_node_or_null("Unlocks") as UnlockGate
 
 
 func _ready() -> void:
@@ -127,6 +131,11 @@ func _physics_process(delta: float) -> void:
 		wanted_ammo_cycle = _intent.wants_ammo_cycle
 		wants_interact = _intent.wants_interact
 		look = _intent.aim_direction
+	# Was noch nicht freigeschaltet ist, bleibt ohne Wirkung (M19).
+	if _unlocks != null:
+		wants_dash = wants_dash and _unlocks.can_dash()
+		wants_shoot = wants_shoot and _unlocks.can_shoot()
+		wants_sneak = wants_sneak and _unlocks.can_sneak()
 	# Mit Blickziel, etwa dem NPC im Gespräch, blickt die Figur dorthin (M15).
 	if is_instance_valid(look_target):
 		look = look_target.global_position - global_position
@@ -162,7 +171,9 @@ func _physics_process(delta: float) -> void:
 ## Schleicht die Figur gerade - die Taste gehalten, ob sie läuft oder steht?
 ## Gegner hören sie dann nicht und sehen sie nur auf kürzere Entfernung (M13).
 func is_sneaking() -> bool:
-	return _intent != null and _intent.wants_sneak and move_state != MoveState.DASH
+	if _intent == null or not _intent.wants_sneak or move_state == MoveState.DASH:
+		return false
+	return _unlocks == null or _unlocks.can_sneak()
 
 
 func _draw() -> void:
@@ -203,8 +214,11 @@ func _use_ability(index: int) -> void:
 	if _abilities == null or index >= _abilities.get_child_count():
 		return
 	var ability := _abilities.get_child(index) as Ability
-	if ability != null:
-		ability.try_activate()
+	if ability == null:
+		return
+	if _unlocks != null and not _unlocks.can_use(ability):
+		return
+	ability.try_activate()
 
 
 func _pick_state(direction: Vector2, wants_sprint: bool, wants_sneak: bool, delta: float) -> MoveState:

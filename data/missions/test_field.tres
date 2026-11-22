@@ -15,10 +15,11 @@ count = 3
 script = ExtResource("2_mission")
 id = &"pots"
 title = "Die drei Töpfe"
-description = "Auf dem Testfeld stehen drei Töpfe. Zerschlage sie, dann ist die Zeitkapsel bereit."
+description = "Auf dem Testfeld stehen drei Töpfe. Zerschlage sie, dann ist die Zeitkapsel bereit. Zum Lohn lernst du Schnelligkeit."
 required = true
 starts_with_level = true
 objectives = Array[ExtResource("3_objective")]([SubResource("Resource_pots_goal")])
+reward_unlocks = Array[StringName]([&"haste"])
 
 [resource]
 script = ExtResource("1_list")

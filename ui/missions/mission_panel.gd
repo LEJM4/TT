@@ -14,6 +14,8 @@ extends CanvasLayer
 ## "Neue Mission" oder "Mission erfüllt" mit ihrem Titel, mehrere nacheinander.
 ## Die erste Meldung nach dem Betreten des Levels gibt nur den Stand: Was aus dem
 ## Spielstand kommt, bringt keinen Hinweis.
+## Andere Module bringen ihre Hinweise mit EventBus.notice_requested hierher, etwa
+## "Neu freigeschaltet" (M19); sie reihen sich hinter die der Missionen.
 ## Nur die Überschrift nimmt Klicks an - liegt die Maus darauf, greift die Figur
 ## nicht an (PlayerInput); alles andere lässt die Maus durch.
 ## Die Anzeige entscheidet nichts. Ohne MissionTracker im Level bleibt sie unsichtbar.
@@ -65,6 +67,7 @@ func _ready() -> void:
 	_notice.visible = false
 	_header.gui_input.connect(_on_header_input)
 	EventBus.mission_list_changed.connect(_on_list_changed)
+	EventBus.notice_requested.connect(_add_notice)
 
 
 func _unhandled_input(event: InputEvent) -> void:

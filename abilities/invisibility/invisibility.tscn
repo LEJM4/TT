@@ -4,3 +4,4 @@
 
 [node name="Invisibility" type="Node"]
 script = ExtResource("1_invisibility")
+unlock_id = &"invisibility"

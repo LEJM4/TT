@@ -43,6 +43,7 @@ const KEY_BINDINGS := {
 	"debug_complete_level": [KEY_PAGEUP],
 	"debug_leave_level": [KEY_PAGEDOWN],
 	"debug_quit_game": [KEY_END],
+	"debug_unlock_all": [KEY_HOME],
 }
 
 ## Aktion -> Maustasten; das Mausrad zählt als Taste.

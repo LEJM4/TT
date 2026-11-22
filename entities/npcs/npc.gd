@@ -18,7 +18,8 @@ extends StaticBody2D
 ## ein Gespräch ohne Antworten.
 ## Startet eine Zeile eine Mission oder gibt sie eine ab (M17), meldet er das über
 ## den EventBus (mission_start_requested, mission_hand_in_requested); entscheiden
-## tut der MissionTracker des Levels. Der Auftraggeber (QuestGiver) erbt von ihm.
+## tut der MissionTracker des Levels. Bringt eine Zeile eine Freischaltung (M19),
+## bittet er GameState darum (unlock_requested). Der Auftraggeber (QuestGiver) erbt von ihm.
 ## Gemerkt wird all das im Spielstand, über sein Kind "Persistent" (M16): ob er
 ## erledigt ist und welche Zeilen ihre Beute schon gegeben haben.
 ##
@@ -151,6 +152,9 @@ func _on_dialog_line_shown(player_id: int, source_id: int, line: Resource) -> vo
 		EventBus.mission_start_requested.emit(player_id, dialog_line.start_mission)
 	if dialog_line.hand_in_mission != &"":
 		EventBus.mission_hand_in_requested.emit(player_id, dialog_line.hand_in_mission)
+	# Freischaltungen (M19): Frei schaltet GameState; was schon frei ist, bleibt es.
+	if dialog_line.unlock != &"":
+		EventBus.unlock_requested.emit(player_id, dialog_line.unlock)
 
 
 func _on_dialog_finished(_player_id: int, source_id: int, completed: bool) -> void:
