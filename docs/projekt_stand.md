@@ -11,11 +11,11 @@ Er ist eine Richtlinie, kein Zwang. Was vorgezogen oder eingeschoben wird, steht
 
 | | |
 | --- | --- |
-| Stand vom | 21.11.2026 |
-| In Arbeit | M17 – Missionen: am 21.11.2026 vorgeschlagen; der Nutzer wünscht eine Missionsliste zum Ein- und Ausklappen und je Level eine Missionen-Datei. Claude hat die Idee geprüft und einen Umsetzungsplan geschrieben: „Plan für M17 – Missionen“. Gebaut wird nach „weiter“ |
-| Als Nächstes | Der Nutzer lädt diese Stand-Datei aus `m17_plan.zip` hoch – `m16_abschluss.zip` entfällt – und gibt mit „weiter“ den Bau von M17 frei. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
-| Zuletzt abgeschlossen | M16 – Speichern & Laden, am 21.11.2026: Test bestanden („Okay also ich habe jetzt alles getestet und es funktioniert“), hochgeladen mit Commit `76bd2bf`. Davor am selben Tag M15 – NPCs & Dialog: Test bestanden („der Rest klappt“), dazu eine Nachbesserung auf Wunsch des Nutzers – die Spielfigur dreht sich im Gespräch zum NPC –, mit dem Hochladen bestätigt; damit ist Phase 3 fertig. Davor am 18.11.2026 M14 – Gegnertypen, M13 – Erster Gegner nach einer Nachbesserung und M12 – HUD, damit war Phase 2 fertig; am 17.11.2026 M11 – Inventar & Ausrüstung, M10 – Truhen & Beute, M9 – Zerstörbares, M8 – Interaktion, A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
-| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; gelesen am 21.11.2026 nach dem Hochladen von M16: Commit `76bd2bf` „spielstand speichern“ mit M16 und der Stand-Datei aus `m16_speichern_laden.zip`, alle 34 Dateien wie geliefert, dazu die `.uid`-Dateien der drei neuen Skripte. M17 baut auf `76bd2bf` auf. Davor `064a29e` mit der Übergabe nach M15, `985f098` mit M15, `d09ce9a` mit M14, `886f6f9` mit M13, `19e426c` mit M12, `1b7abfc` mit M9 bis M11, `e615355` mit M8, `e7909b2` mit A2, `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4` |
+| Stand vom | 22.11.2026 |
+| In Arbeit | M18 – Räume & Levelwechsel: am 22.11.2026 geplant, mit dem Wunsch des Nutzers zur Zeitkapsel – kein Portal, sondern eine Zeitkapsel, die im Level steht. Der Umsetzungsplan steht unter „Plan für M18 – Räume & Levelwechsel“; gebaut wird auf Wunsch des Nutzers im neuen Chat |
+| Als Nächstes | Der Nutzer entpackt `m17_abschluss.zip` nach `E:\GitHub\TT` – nur diese Stand-Datei und den Grafik-Katalog –, committet und pusht M17 samt dem Bild `assets/test_art/objects/zeitkapsel.jpg` und beginnt einen neuen Chat für M18; die erste Nachricht steht unter „Neuer Chat und Arbeitsweise“. A4 – Kacheln & Räume spätestens vor Level 1; A3 – Ton auf Wunsch des Nutzers erst fast am Ende des Projekts |
+| Zuletzt abgeschlossen | M17 – Missionen, am 22.11.2026: Test bestanden („Alles klappt!“); hochgeladen wird es vor dem neuen Chat. Davor am 21.11.2026 M16 – Speichern & Laden: Test bestanden („Okay also ich habe jetzt alles getestet und es funktioniert“), hochgeladen mit Commit `76bd2bf`. Davor am selben Tag M15 – NPCs & Dialog: Test bestanden („der Rest klappt“), dazu eine Nachbesserung auf Wunsch des Nutzers – die Spielfigur dreht sich im Gespräch zum NPC –, mit dem Hochladen bestätigt; damit ist Phase 3 fertig. Davor am 18.11.2026 M14 – Gegnertypen, M13 – Erster Gegner nach einer Nachbesserung und M12 – HUD, damit war Phase 2 fertig; am 17.11.2026 M11 – Inventar & Ausrüstung, M10 – Truhen & Beute, M9 – Zerstörbares, M8 – Interaktion, A2 – Kampf-Bilder und damit Gate G1, M11a – Inventar-Logik, A1 – Figuren-Bild und A0 – Sichtung & Auswahl, am 16.11.2026 M7 – Fähigkeiten |
+| Repo | https://github.com/LEJM4/TT – öffentlich, Zweig `main`; zuletzt gelesen am 22.11.2026 nach dem Test von M17: noch Commit `8fd3b22` „vorbereitung fuer m17“ mit der Stand-Datei aus `m17_plan.zip`, wie geliefert – M17 und das Bild der Zeitkapsel sind dort noch nicht. M17 baut auf `8fd3b22` auf, M18 auf dem Commit mit M17. Davor `76bd2bf` „spielstand speichern“ mit M16 und der Stand-Datei aus `m16_speichern_laden.zip`, alle 34 Dateien wie geliefert, dazu die `.uid`-Dateien der drei neuen Skripte; `064a29e` mit der Übergabe nach M15, `985f098` mit M15, `d09ce9a` mit M14, `886f6f9` mit M13, `19e426c` mit M12, `1b7abfc` mit M9 bis M11, `e615355` mit M8, `e7909b2` mit A2, `369a648` mit A1 und M11a und `9b6d28a` mit M0 bis M7 und den Übergabe-Dateien unter `docs/`; alle Commits unter `LEJM4` |
 
 ## Neuer Chat und Arbeitsweise
 
@@ -30,6 +30,20 @@ Ein neuer Chat hat keine Kopie früherer Lieferungen. Er kennt nur diese Datei, 
 
 - Seit M13: Abstände in Kacheln (`ViewSettings.tiles()`), Bemerken nur in der fairen Grenze von `Perception`, Schlag sofort mit dem ersten Bild der Hieb-Animation, kein Blinken beim Angriff; die Welt erscheint mit Zoom 2 aus `data/world/view.tres`.
 - Seit M14: Neue Gegner und Gegnertypen kommen als neue Dateien dazu – Aufbau unter „Gegnertypen im Einzelnen (M14)“. Der Nutzer will später viele weitere Typen.
+
+**Übergabe vom 22.11.2026 nach M17**
+
+Der Nutzer macht M18 – Räume & Levelwechsel in einem neuen Chat. Vorher lädt er M17 hoch: den Code aus `m17_missionen.zip`, diese Stand-Datei und den Grafik-Katalog aus `m17_abschluss.zip` und das Bild `assets/test_art/objects/zeitkapsel.jpg`.
+
+Erste Nachricht für den neuen Chat:
+
+> Neuer Chat für TimeTraveller, weiter nach M17. M17 ist getestet und hochgeladen, samt dem Bild der Zeitkapsel unter assets/test_art/objects/. Lies zuerst die Stand-Datei und das Repo, dann bau M18 – Räume & Levelwechsel nach dem „Plan für M18“.
+
+Was der neue Chat darüber hinaus zuerst tut:
+
+1. Im Repo prüfen, ob M17 wie geliefert angekommen ist – die 40 Dateien aus `m17_missionen.zip`, aufgezählt unter „Dateien je Modul“, dazu die `.uid`-Dateien der neuen Skripte – und ob das Bild der Zeitkapsel dort liegt. Fehlt etwas, bittet er den Nutzer darum.
+2. Das Bild ansehen: Größe, Hintergrund, Lage der Tür. Daraus folgen Größe in der Welt, Körper, Startpunkte und Bedienfeld der Zeitkapsel – siehe „Bild der Zeitkapsel“ im Plan.
+3. M18 nach dem Plan bauen, zuerst mit Godot ohne Fenster prüfen, dann mit Bild.
 
 Die Übergabe vom 21.11.2026 nach M15 ist erledigt: Der neue Chat hat M15 und die Stand-Datei im Repo geprüft (Commit `064a29e`) und M16 nach dem Plan gebaut.
 
@@ -57,7 +71,7 @@ Die Übergabe vom 17.11.2026 ist erledigt: Der Nutzer hat M3 bis M7 hochgeladen 
 | Commit-Identität | `LEJM4` mit der privaten GitHub-Adresse (`…@users.noreply.github.com`) |
 | So liest Claude das Repo | per `git clone` über den Link, nur lesend – Dateien wörtlich, Grafiken als Bild |
 | So liefert Claude Dateien | als ZIP zum Entpacken nach `E:\GitHub\TT`; bis M4 zusätzlich jede Datei einzeln, seit M5 auf Wunsch des Nutzers nur das ZIP |
-| So prüft Claude | am Text mit einem eigenen Prüfskript; seit M16 zusätzlich mit der Linux-Fassung von Godot 4.7.2 ohne Fenster, aus dem offiziellen Release auf GitHub: Import, Laden aller Szenen und Skripte und Abläufe mit einem eigenen Prüf-Autoload, der nur in Claudes Arbeitskopie liegt. Das ersetzt nicht den Test des Nutzers – Bild, Gefühl und Bedienung sieht nur er |
+| So prüft Claude | am Text mit einem eigenen Prüfskript; seit M16 zusätzlich mit der Linux-Fassung von Godot 4.7.2 ohne Fenster, aus dem offiziellen Release auf GitHub: Import, Laden aller Szenen und Skripte und Abläufe mit einem eigenen Prüf-Autoload, der nur in Claudes Arbeitskopie liegt; seit M17 auch mit Bild: Godot zeichnet mit einem virtuellen Bildschirm (Xvfb, Renderer `gl_compatibility`), und Claude sieht sich die Bilder aus dem Spiel an. Das ersetzt nicht den Test des Nutzers – Gefühl und Bedienung mit Maus und Tastatur sieht nur er |
 
 ## Fahrplan in Kurzform
 
@@ -82,11 +96,11 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | 3 – Gegner & NPCs | M13 Erster Gegner | fertig am 18.11.2026 – nach einer Nachbesserung am selben Tag |
 | | M14 Gegnertypen | fertig am 18.11.2026 – Nahkämpfer und Fernkämpfer als Baukasten für viele weitere Typen |
 | | M15 NPCs & Dialog | fertig am 21.11.2026 – mit drei Änderungen des Nutzers und einer Nachbesserung: Die Spielfigur dreht sich im Gespräch zum NPC. Damit ist Phase 3 fertig |
-| 4 – Spielrahmen | M16 Speichern & Laden | fertig am 21.11.2026 – mit Zeitanker, Portalstand und Levelstand; gebaut im neuen Chat |
-| | M17 Missionen | als Nächstes – vorgeschlagen am 21.11.2026 |
-| | M18 Räume & Levelwechsel | offen – seit 21.11.2026 dazu: Zeitkapsel als Portal, die beim Abschluss den Levelstand übernimmt |
+| 4 – Spielrahmen | M16 Speichern & Laden | fertig am 21.11.2026 – mit Zeitanker, Kapselstand und Levelstand; gebaut im neuen Chat |
+| | M17 Missionen | fertig am 22.11.2026 – je Level eine Missionen-Datei, Liste zum Ein- und Ausklappen, Auftraggeber; Test bestanden („Alles klappt!“) |
+| | M18 Räume & Levelwechsel | als Nächstes – geplant am 22.11.2026 mit dem Wunsch des Nutzers: kein Portal, sondern eine Zeitkapsel, die im Level steht – Landepunkt, Rückreise nach den Pflichtmissionen, sonst Reise abbrechen; innen die Lobby. Die einfache Karte rückt zu M20. Gebaut wird im neuen Chat |
 | | M19 Freischaltungen | offen |
-| | M20 Menüs | offen – seit 21.11.2026 dazu: „Level verlassen“ im Pausenmenü, mit Nachfrage; Spielstände löschen nur im Startmenü, mit der Maus |
+| | M20 Menüs | offen – seit 21.11.2026 dazu: Spielstände löschen nur im Startmenü, mit der Maus; seit 22.11.2026 die einfache Karte aus M18. „Level verlassen“ geht ab M18 über die Zeitkapsel – ob zusätzlich im Pausenmenü, entscheidet der Nutzer mit M20 |
 | 5 | Level 1 – Steinzeit | offen |
 | 6 | Zeitkapsel & weitere Level | offen |
 | 7 | Feinschliff & Veröffentlichung | offen |
@@ -101,10 +115,10 @@ Status: offen · als Nächstes · in Arbeit · im Test · fertig
 | A2 Kampf-Bilder | Hieb-Effekt, Effekte für Treffer, Tod und Stun; Baustein `EffectCue`; Pixel-Schrift für Schadenszahlen. Die Bilder der Geschosse kamen mit M11a. | vor Phase 2, nach M11a | fertig am 17.11.2026 |
 | A3 Ton | `AudioManager` füllen, Baustein `SoundCue`, Ton-Tabelle als Werte-Datei, Musik in der Testkammer | fast am Ende des Projekts, mit Phase 7 – Feinschliff; am 17.11.2026 auf Wunsch des Nutzers verschoben | offen |
 | A4 Kacheln & Räume | Kachel-Sets mit Kollision, Testkammer mit Kacheln, Anleitung zum Malen im Editor | mit M8, spätestens vor Level 1 | offen |
-| A5 Oberfläche | Schrift und Thema, Herzen, Leisten, Fähigkeits- und Tastensymbole, Dialogfeld | mit M11, M12, M15 und M20 | in Arbeit – mit M11 das Holz-Thema für Fenster, mit M12 Herzen, Energie-Kugel, Ausdauer-Leiste, Fähigkeits- und Tastensymbole, mit M15 das Dialogfeld; es fehlen die Menüs (M20) |
-| A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | in Arbeit – mit M13 der Höhlenmensch `Caveman2` als erster Gegner, mit M14 die Steinwerferin `Cavegirl` und ihr Stein aus `FX/Particle/Rock.png`, mit M15 die NPCs `Shaman` und `CaveLion` mit Porträt; Bosse folgen mit den Leveln |
+| A5 Oberfläche | Schrift und Thema, Herzen, Leisten, Fähigkeits- und Tastensymbole, Dialogfeld | mit M11, M12, M15, M17 und M20 | in Arbeit – mit M11 das Holz-Thema für Fenster, mit M12 Herzen, Energie-Kugel, Ausdauer-Leiste, Fähigkeits- und Tastensymbole, mit M15 das Dialogfeld, mit M17 Missionsliste und Hinweise; es fehlen die Menüs (M20) |
+| A6 Gegner, NPCs, Bosse | Skins für Monster, einfache Figuren und Bosse | mit M13 bis M15 | in Arbeit – mit M13 der Höhlenmensch `Caveman2` als erster Gegner, mit M14 die Steinwerferin `Cavegirl` und ihr Stein aus `FX/Particle/Rock.png`, mit M15 die NPCs `Shaman` und `CaveLion` mit Porträt, mit M17 die Sammlerin `Cavegirl2`; Bosse folgen mit den Leveln |
 
-Ab A1 bringt jedes neue Modul sein Bild gleich mit: M8 aus `TilesetDungeon`, `TilesetHouse` und `TilesetElement`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`, M11 aus `Ui/Theme/Theme Wood` und `Items/Weapons`, M12 aus `Ui/Receptacle`, `Ui/Skill Icon` und `Ui/Input/Keyboard`, M13 aus `Actor/Character/Caveman2`, `Ui/Emote` und `FX/Attack/Claw`, M14 aus `Actor/Character/Cavegirl` und `FX/Particle/Rock.png`, M15 aus `Actor/Character/Shaman`, `Actor/Character/CaveLion`, `Ui/Dialog`, `Ui/Arrow.png` und `Ui/Input/Keyboard`. Den Ton bekommen alle Module erst mit A3, fast am Ende des Projekts.
+Ab A1 bringt jedes neue Modul sein Bild gleich mit: M8 aus `TilesetDungeon`, `TilesetHouse` und `TilesetElement`, M9 aus `TilesetElement`, M10 aus `Items/Treasure`, M11 aus `Ui/Theme/Theme Wood` und `Items/Weapons`, M12 aus `Ui/Receptacle`, `Ui/Skill Icon` und `Ui/Input/Keyboard`, M13 aus `Actor/Character/Caveman2`, `Ui/Emote` und `FX/Attack/Claw`, M14 aus `Actor/Character/Cavegirl` und `FX/Particle/Rock.png`, M15 aus `Actor/Character/Shaman`, `Actor/Character/CaveLion`, `Ui/Dialog`, `Ui/Arrow.png` und `Ui/Input/Keyboard`, M16 aus `TilesetDungeon`, M17 aus `Actor/Character/Cavegirl2`, `Ui/Theme/Theme Wood`, `Ui/Arrow.png`, `Ui/Input/Keyboard` und `TilesetElement`. Den Ton bekommen alle Module erst mit A3, fast am Ende des Projekts.
 
 **Gates**
 
@@ -134,7 +148,9 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | 21.11.2026 | Wunsch des Nutzers nach dem Test von M15: „wenn die beiden miteinander sprechen, dann dreht sich auch der Spieler selbst zu dem, zu dem er spricht“ – der Rest klappt. Claude hat das als Nachbesserung gebaut: Die Spielfigur hat ein Blickziel `look_target`; der neue Baustein `TalkFacing` an der Figur setzt es im Gespräch auf den Sprecher und nimmt es danach wieder weg. | gebaut am 21.11.2026 als `m15_nachbesserung.zip`; eingespielt und mit Commit `985f098` hochgeladen – gilt als bestanden |
 | 21.11.2026 | Antwort des Nutzers auf den Vorschlag zu M16: Tod wie vorgeschlagen; im Spiel lässt sich kein Spielstand löschen, nur später im Startmenü mit der Maus – F4 nur zum Testen; man soll ein Level verlassen können, der Fortschritt im Level geht dann verloren, dafür braucht es einen weiteren Speicherstand im Portal; Idee: Portalinventar und Levelinventar – das Inventar wird vor dem Level gesichert, im Level gespeichert und mit dem Abschluss ins Portalinventar übernommen. „Rest passt so.“ Auf seinen Wunsch hat Claude die Idee geprüft und einen Umsetzungsplan geschrieben; der Code entsteht im neuen Chat. | Plan fertig am 21.11.2026; gebaut im neuen Chat, siehe nächste Zeile und „Spielstand im Einzelnen (M16)“ |
 | 21.11.2026 | Neuer Chat. Claude hat M15 und die Stand-Datei im Repo geprüft (Commit `064a29e`) und M16 nach dem Plan gebaut. Abweichend vom Plan: Test-Tasten Bild auf („Level abschließen“) und Bild ab („Level verlassen“) statt F6 und F7 – Godot 4.7.2 leitet F5 bis F8 an den Editor weiter, solange das Spiel eingebettet läuft –, dazu Ende: beendet das Spiel wie das X am Fenster, weil das eingebettete Spiel kein X hat. Ein Rückkehrpunkt für das ganze Spiel statt eines Zeitankers je Level. Die Meldung `save_requested`, damit niemand den SaveManager direkt aufruft. Den Ablauf hat Claude zusätzlich mit Godot 4.7.2 ohne Fenster durchgespielt, siehe „Prüfungen“ | gebaut am 21.11.2026 als `m16_speichern_laden.zip`; Test bestanden („alles getestet und es funktioniert“), hochgeladen mit Commit `76bd2bf` |
-| 21.11.2026 | Antwort des Nutzers auf den Vorschlag zu M17: Die Missionsliste links unter den Herzen soll sich ein- und ausklappen lassen; Idee: „pro Level eine Missionen-Datei“. Auf seinen Wunsch hat Claude die Idee geprüft und einen Umsetzungsplan geschrieben; ergänzt: J oder ein Klick auf die Überschrift klappt um, ohne dass die Figur zuschlägt | Plan fertig am 21.11.2026, siehe „Plan für M17 – Missionen“; gebaut wird nach „weiter“ |
+| 21.11.2026 | Antwort des Nutzers auf den Vorschlag zu M17: Die Missionsliste links unter den Herzen soll sich ein- und ausklappen lassen; Idee: „pro Level eine Missionen-Datei“. Auf seinen Wunsch hat Claude die Idee geprüft und einen Umsetzungsplan geschrieben; ergänzt: J oder ein Klick auf die Überschrift klappt um, ohne dass die Figur zuschlägt | Plan fertig am 21.11.2026; gebaut am 22.11.2026, siehe nächste Zeile und „Missionen im Einzelnen (M17)“ |
+| 22.11.2026 | Auf „weiter“ hat Claude M17 nach dem Plan gebaut. Abweichend oder ergänzt: Die Sammlerin heißt im Code `gatherer`, nicht `collector` – `Collector` ist schon der Baustein zum Aufsammeln. Die Anzeige bekommt ihre Liste über eine eigene Meldung `mission_list_changed`, damit sie nichts selbst nachschlägt; die Hinweise erkennt sie am Vergleich zweier Listen. Vor der Abgabe fragt die Sammlerin – „Hier, bitte.“ oder „Noch nicht.“ –, vor dem Annehmen ebenso. Ohne offene Mission steht „Keine offenen Missionen“ in der Liste. Die Anzeige hat ein eigenes Thema mit 3 Pixeln mehr Wortabstand wie der Dialog. Die Belohnung heißt `data/loot/mission_branches.tres`. Den Ablauf hat Claude ohne Fenster durchgespielt und die Anzeige zum ersten Mal mit Bild angesehen, siehe „Prüfungen“ | gebaut am 22.11.2026 als `m17_missionen.zip`; Test bestanden („Alles klappt!“) |
+| 22.11.2026 | Wunsch des Nutzers nach dem Test von M17: „die Zeitkapsel für später soll kein Portal sein sondern eine Zeitkapsel“ – das Bild liegt vorerst unter `assets/test_art/objects/zeitkapsel.jpg`. Sie steht dauerhaft im Level: Die Figur erscheint dort; nach allen Missionen geht es mit ihr zurück; ist der Spieler noch nicht fertig, kann er dort die Mission vorzeitig abbrechen. M18 macht der Nutzer in einem neuen Chat. Claude hat den Wunsch in den Plan für M18 eingebaut: „alle Missionen“ als alle Pflichtmissionen gelesen, wie beim Tor aus M17; vor Rückreise und Abbruch fragt die Zeitkapsel nach, weil der Abbruch nicht rückgängig zu machen ist; „Portalstand“ heißt jetzt „Kapselstand“, im Code bleibt `portal`; die einfache Karte rückt zu M20 | geplant am 22.11.2026, siehe „Plan für M18 – Räume & Levelwechsel“; gebaut wird im neuen Chat |
 
 ## Festlegungen
 
@@ -156,14 +172,16 @@ Hier steht, was vorgezogen, eingeschoben oder neu gewünscht wurde.
 | Sprint und Schleichen | Solange die Taste gehalten wird, kein Umschalten | entschieden am 16.11.2026 |
 | Kamera | Bildmitte folgt der Figur auf ganzen Pixeln; Vorausschau ein Stück zur Maus und in Laufrichtung, weich nachgleitend; die Raumgrenzen meldet das Level | entschieden am 16.11.2026; die Werte bleiben einstellbar |
 | Pixelraster | „Snap 2D Transforms to Pixel“ ist an: Alles wird auf ganzen Pixeln gezeichnet | entschieden am 16.11.2026 |
-| Tod | Die Figur erwacht nach einer Sekunde am letzten Zeitanker mit vollem Leben, ohne einen am Landepunkt des Levels – in der Testkammer an den Startpunkten. Was sie gefunden, geöffnet oder erledigt hat, bleibt, wie in Hollow Knight – auch was nach dem letzten Rasten kam; Gegner stehen wieder auf, Beute, die noch am Boden liegt, ist weg. Dabei wird gespeichert | vorgeschlagen am 21.11.2026; vom Nutzer am selben Tag bestätigt („dein Vorschlag passt“); gebaut mit M16; nach dem Test am 21.11.2026 bestätigt |
-| Portalstand und Levelstand | Vor einem Level wird der ganze Fortschritt im Portal – der Zeitkapsel – gesichert: der Portalstand mit dem Portalinventar. Im Level ändert sich eine Kopie davon, der Levelstand mit dem Levelinventar; Zeitanker speichern ihn, Tod und Beenden des Spiels behalten ihn. Mit dem Abschluss des Levels wird er zum neuen Portalstand. „Level verlassen“ verwirft ihn: zurück zum Portalstand. Getrennt wird nicht nur das Inventar, sondern alles, was sich im Level ändern kann – Ausrüstung, Truhen, Zerstörtes, aufgesammelte Gegenstände, NPCs, später Missionen und Freischaltungen. Level 1 hat noch keine Zeitkapsel: Dort ist der Portalstand der Neubeginn, „Level verlassen“ beginnt Level 1 von vorn. Bei einem schon abgeschlossenen Level übernimmt jede Rückkehr in die Zeitkapsel den Levelstand | Idee des Nutzers am 21.11.2026 („Portalinventar und Levelinventar“); geprüft und ergänzt von Claude – alles statt nur des Inventars, Level 1, Rückkehr in abgeschlossene Level; gebaut mit M16 – in der Testkammer mit Bild auf und Bild ab –, der Weg über die Zeitkapsel mit M18; nach dem Test am 21.11.2026 bestätigt |
+| Tod | Die Figur erwacht nach einer Sekunde am letzten Zeitanker mit vollem Leben, ohne einen am Landepunkt des Levels – bis M18 in der Testkammer an den Startpunkten, ab M18 vor der Zeitkapsel. Was sie gefunden, geöffnet oder erledigt hat, bleibt, wie in Hollow Knight – auch was nach dem letzten Rasten kam; Gegner stehen wieder auf, Beute, die noch am Boden liegt, ist weg. Dabei wird gespeichert | vorgeschlagen am 21.11.2026; vom Nutzer am selben Tag bestätigt („dein Vorschlag passt“); gebaut mit M16; nach dem Test am 21.11.2026 bestätigt |
+| Kapselstand und Levelstand | Vor einem Level wird der ganze Fortschritt in der Zeitkapsel gesichert: der Kapselstand mit dem Kapselinventar. Im Level ändert sich eine Kopie davon, der Levelstand mit dem Levelinventar; Zeitanker speichern ihn, Tod und Beenden des Spiels behalten ihn. Mit dem Abschluss des Levels wird er zum neuen Kapselstand. „Level verlassen“ verwirft ihn: zurück zum Kapselstand. Getrennt wird nicht nur das Inventar, sondern alles, was sich im Level ändern kann – Ausrüstung, Truhen, Zerstörtes, aufgesammelte Gegenstände, NPCs, später Missionen und Freischaltungen. Level 1 hat noch keine Zeitkapsel: Dort ist der Kapselstand der Neubeginn, „Level verlassen“ beginnt Level 1 von vorn. Bei einem schon abgeschlossenen Level übernimmt jede Rückkehr in die Zeitkapsel den Levelstand. Bis 22.11.2026 hießen sie Portalstand und Portalinventar; im Code heißt der Kapselstand weiter `portal` | Idee des Nutzers am 21.11.2026 („Portalinventar und Levelinventar“); geprüft und ergänzt von Claude – alles statt nur des Inventars, Level 1, Rückkehr in abgeschlossene Level; gebaut mit M16 – in der Testkammer mit Bild auf und Bild ab –, der Weg über die Zeitkapsel mit M18; nach dem Test am 21.11.2026 bestätigt; „Kapselstand“ seit dem Wunsch des Nutzers vom 22.11.2026 – kein Portal, sondern eine Zeitkapsel |
 | Spielstand löschen | Im Spiel lässt sich kein Spielstand löschen. Das geht später nur im Startmenü, von Hand mit der Maus (M20). Zum Testen löscht F4 in der Testkammer den Spielstand – nur im Debug-Build, also nicht im fertigen Spiel | Wunsch des Nutzers am 21.11.2026; gebaut mit M16; nach dem Test am 21.11.2026 bestätigt |
-| Level verlassen | Aus einem laufenden Level kommt man jederzeit zurück ins Portal; der Fortschritt im Level geht dabei verloren. Weil das nicht rückgängig zu machen ist, fragt das Spiel vorher nach. Im Pausenmenü kommt das mit M20, bis dahin in der Testkammer Bild ab, ohne Nachfrage | Wunsch des Nutzers am 21.11.2026; die Nachfrage hat Claude ergänzt; gebaut mit M16 – die Taste Bild ab statt F7, weil der Editor F7 abfängt; nach dem Test am 21.11.2026 bestätigt |
+| Level verlassen | Aus einem laufenden Level kommt man jederzeit zurück in die Zeitkapsel; der Fortschritt im Level geht dabei verloren. Weil das nicht rückgängig zu machen ist, fragt das Spiel vorher nach. Ab M18 geht das an der Zeitkapsel im Level: Sind die Pflichtmissionen noch offen, fragt sie, ob man die Reise abbricht. Ob das Pausenmenü (M20) es zusätzlich anbietet, ist offen; bis M18 in der Testkammer Bild ab, ohne Nachfrage | Wunsch des Nutzers am 21.11.2026; die Nachfrage hat Claude ergänzt; gebaut mit M16 – die Taste Bild ab statt F7, weil der Editor F7 abfängt; nach dem Test am 21.11.2026 bestätigt; über die Zeitkapsel Wunsch des Nutzers am 22.11.2026, gebaut wird mit M18 |
 | Zeitanker | Ein Sockel mit Kugel aus `TilesetDungeon.png` – grau, bis die Figur dort rastet, blau, solange er Rückkehrpunkt ist; es leuchtet nur einer. E rastet: Leben und Energie voll, er wird Rückkehrpunkt, das Spiel speichert, es funkelt, und kurz steht „Gespeichert“ über ihm. Die Figur erwacht 16 Pixel vor ihm. In der Testkammer steht er bei (240, 88) über den Startpunkten | vorgeschlagen am 21.11.2026 mit M16, vom Nutzer bestätigt („Rest passt so“); gebaut mit M16; nach dem Test am 21.11.2026 bestätigt |
 | Spielstand-Datei | Ein Platz: `user://saves/slot_1.json`, unter Windows `%APPDATA%\Godot\app_userdata\TimeTraveller\saves\slot_1.json`; lesbares JSON. Geschrieben wird beim Rasten, beim Tod, bei F2, beim Abschluss und Verlassen eines Levels und beim Schließen des Fensters; der Stopp-Knopf des Editors beendet ohne Speichern. Gemerkt werden Inventar und Ausrüstung je Spielfigur, je Ding der Welt sein Zustand, die abgeschlossenen Level und der Rückkehrpunkt – nicht Gegner, Beute am Boden, Leben und Energie | vorgeschlagen am 21.11.2026 mit M16, vom Nutzer bestätigt; gebaut mit M16; nach dem Test am 21.11.2026 bestätigt |
-| Missionen | Jede Mission hat einen Namen, Titel, Pflicht oder Neben, ein bis drei Ziele – „Ereignis“ oder „Gegenstand“ – und eine Belohnung als Beute-Liste. Je Level eine Datei mit allen seinen Missionen. Pflichtmissionen beginnen mit dem Level und sind erfüllt, sobald ihre Ziele erfüllt sind; Nebenmissionen gibt ein Auftraggeber im Gespräch, abgegeben werden sie bei ihm. Sind alle Pflichtmissionen erfüllt, öffnet sich der Weg zur Zeitkapsel. Gemerkt im Levelstand | vorgeschlagen am 21.11.2026; die Datei je Level ist die Idee des Nutzers; gebaut wird mit M17 |
-| Missions-Anzeige | Links unter den Herzen: je Mission Titel und Ziele mit Stand, Pflicht zuerst, höchstens drei; mit J oder einem Klick auf die Überschrift ein- und ausklappbar. Neue und erfüllte Missionen stehen kurz oben in der Mitte | vorgeschlagen am 21.11.2026; Ein- und Ausklappen Wunsch des Nutzers am selben Tag; gebaut wird mit M17 |
+| Missionen | Jede Mission hat einen Namen, Titel, Pflicht oder Neben, ein bis drei Ziele – „Ereignis“ oder „Gegenstand“ – und eine Belohnung als Beute-Liste. Je Level eine Datei mit allen seinen Missionen. Pflichtmissionen beginnen mit dem Level und sind erfüllt, sobald ihre Ziele erfüllt sind; Nebenmissionen gibt ein Auftraggeber im Gespräch, abgegeben werden sie bei ihm. Sind alle Pflichtmissionen erfüllt, meldet der `MissionTracker` den Kanal `missions_done` als an: In M17 öffnet das in der Testkammer ein Gittertor oben rechts, dahinter eine Luke als Ausgang; ab M18 macht es die Zeitkapsel bereit zur Rückreise. Gemerkt im Levelstand: Tod, F2 und Beenden behalten die Missionen, „Level verlassen“ verwirft sie, der Abschluss bringt sie in die Zeitkapsel | vorgeschlagen am 21.11.2026; die Datei je Level ist die Idee des Nutzers; gebaut mit M17 am 22.11.2026; nach dem Test am 22.11.2026 bestätigt („Alles klappt!“) |
+| Missions-Anzeige | Links unter den Herzen: je Mission Titel und Ziele mit Stand, Pflicht zuerst, höchstens drei; mit J oder einem Klick auf die Überschrift ein- und ausklappbar; eingeklappt steht nur die Überschrift mit der Zahl, etwa „Missionen 2“. Der Klick auf die Überschrift löst keinen Schlag aus. Neue und erfüllte Missionen stehen 2,5 Sekunden oben in der Mitte, mehrere nacheinander; was aus dem Spielstand kommt, bringt keinen Hinweis | vorgeschlagen am 21.11.2026; Ein- und Ausklappen Wunsch des Nutzers am selben Tag; gebaut mit M17 am 22.11.2026; nach dem Test am 22.11.2026 bestätigt |
+| Auftraggeber | Ein NPC, der eine Mission vergibt und abnimmt: Er bietet sie an, solange sie nicht angenommen ist, erinnert daran, solange sie läuft, nimmt sie ab, sobald sie bereit ist, und bedankt sich danach. Seine Sprechblase zeigt er, solange er anbietet oder abnehmen kann. Abgegebene Gegenstände gehen aus dem Inventar, die Belohnung springt vor die Figur. In der Testkammer: die Sammlerin (`Cavegirl2`, violettes Haar) rechts vom Baum unten links – zwei Äste gegen 5 Kunai | vorgeschlagen am 21.11.2026 mit M17; die Fragen vor Annehmen und Abgabe hat Claude beim Bauen ergänzt; nach dem Test am 22.11.2026 bestätigt |
+| Zeitkapsel | Kein Portal, sondern eine Zeitkapsel. Sie steht dauerhaft im Level am Landepunkt: Dort erscheint die Figur bei der Ankunft und nach dem Tod ohne Zeitanker; kommt die Figur gerade an, landet die Zeitkapsel. E an der Zeitkapsel: Sind alle Pflichtmissionen erfüllt, fragt sie, ob es zurückgeht – „Einsteigen“ schließt das Level ab und übernimmt den Levelstand. Sonst fragt sie, ob man die Reise abbricht; dann geht der Fortschritt im Level verloren. Bereit ist sie, sobald der Kanal `missions_done` an ist, den der `MissionTracker` meldet. Innen ist sie die Lobby: ausrüsten, reisen; es gibt sie, sobald ein Level abgeschlossen ist – vorher beginnt ein Abbruch das Level von vorn. Bild vorerst `assets/test_art/objects/zeitkapsel.jpg` | Wunsch des Nutzers am 22.11.2026; „alle Missionen“ hat Claude als alle Pflichtmissionen gelesen, die Nachfragen ergänzt; gebaut wird mit M18 |
 | Zuschlagen | Die Figur läuft weiter, während sie schlägt. Geschlagen wird stufenlos in Zielrichtung; die vier Blickrichtungen betreffen später nur das Bild. | entschieden am 16.11.2026 |
 | Mauszeiger | Im Spielfenster ersetzt ihn das Fadenkreuz | entschieden am 16.11.2026 |
 | Dash | In Laufrichtung, im Stehen in Blickrichtung; währenddessen unverwundbar und nicht lenkbar; neue Hiebe erst danach; begrenzt durch eine Abklingzeit, ohne Ausdauer-Kosten | von Claude gewählt; vom Nutzer nach dem Test am 16.11.2026 mit „Ja alles passt“ bestätigt |
@@ -206,6 +224,30 @@ Noch offen, jeweils fällig vor dem genannten Schritt: Zauber (vorläufig gewäh
 
 ## Prüfungen
 
+**M17 – Missionen**
+
+- Getestet hat der Nutzer am 22.11.2026 in Godot. Rückmeldung: „Alles klappt!“ – die elf Punkte der Prüfliste gelten als bestanden. Hochgeladen wird M17 vor dem neuen Chat.
+- Gebaut am 22.11.2026 nach dem Umsetzungsplan vom 21.11.2026 – er steht im Plan-Dokument unter Phase 4 –, geliefert als `m17_missionen.zip`. Grundlage war das Repo, Commit `8fd3b22`.
+- Godot 4.7.2 ohne Fenster: Import und Start der Testkammer ohne Fehler und Warnungen. Mit allen Warnungen als Fehler meldet keine neue oder geänderte Datei etwas – nur die bekannten in Dateien vor M17: Ganzzahl-Teilungen, ein verdeckter Name in `energy_orb.gd`, zwei Signale in `enemy.gd`, die nur über ihren Namen gesendet werden.
+- Abläufe mit einem eigenen Prüf-Autoload, der nicht zur Lieferung gehört – 91 Prüfpunkte in drei Läufen, alle bestanden. Neues Spiel: zwei Pflichtmissionen laufen, zwei Hinweise nacheinander, Tor zu, Debug-Zeile; J und ein Klick auf die Überschrift klappen um, beim Klick kein Schlag, daneben schon. Sammlerin: Angebot, „Mach ich.“, „Äste 0/2“, dann 1/2, 2/2 bereit, zurück auf 1/2, wieder bereit; die Abgabe nimmt genau 2 von 4 Ästen, 5 Kunai springen heraus, danach Dank und keine zweite Abgabe. Höhlenmensch, grosse Truhe, Tor offen, „Keine offenen Missionen“, Abschnitt `missions` in der Datei. Laden aus der Datei ohne Hinweise und ohne Wechsel, F2, Ausgang – abgeschlossen, Tor bleibt offen –, F4, Bild ab, Bild auf, ein Spielstand ohne Abschnitt `missions` und kaputte Einträge. Ohne `MissionPanel`, ohne `MissionTracker`, „+1 weitere“ bei mehr Missionen, als die Liste zeigt.
+- Ohne `GameState` und `SaveManager`: 8 Prüfpunkte, alle bestanden – die Sammlerin folgt dann den Meldungen. Die Prüfläufe von M16 laufen unverändert durch: 77 Prüfpunkte.
+- Neu: Claude hat die Testkammer mit Bild laufen lassen – Godot mit virtuellem Bildschirm – und sich die Bilder angesehen: Liste aus- und eingeklappt, Hinweise, Sammlerin mit Sprechblase und Porträt im Gespräch, Nische mit Tor zu und offen, Figur auf der Luke. Dabei gefunden und behoben: Das Leerzeichen von `NormalFont` ist nur 1 Pixel breit – die Anzeige nutzt deshalb wie der Dialog 3 Pixel mehr Wortabstand. Der Pfeil drehte sich beim Einklappen nicht, weil Container die Drehung ihrer Kinder zurücksetzen – er sitzt jetzt in einem eigenen Knoten.
+- Nicht geprüft: Gefühl und Bedienung mit echter Maus und Tastatur, die Anzeige im Fenster unter Windows.
+
+Prüfliste M17 – zum Abhaken in Godot:
+
+1. Godot schließen, `m17_missionen.zip` nach `E:\GitHub\TT` entpacken und vorhandene Dateien ersetzen. Godot öffnen, F5: keine roten Fehler. Dann F4 – ein alter Spielstand kann die grosse Truhe schon offen und den Baum schon gefällt haben.
+2. Nach F4: Links unter den Herzen „Missionen“ mit Pfeil und Taste J, darunter in Orange „Der Höhlenmensch“ und „Die grosse Truhe“, je ein leeres Kästchen mit „0/1“. Oben in der Mitte nacheinander „Neue Mission – Der Höhlenmensch“ und „Neue Mission – Die grosse Truhe“. Oben rechts in einer Nische ein geschlossenes Gittertor, dahinter eine Luke mit Treppe. Debug-Zeile „Missionen: Pflicht 0/2 · Neben 0/1 · Tor zu“.
+3. J klappt die Liste ein – nur „Missionen 2“, der Pfeil zeigt nach rechts – und wieder aus. Ein Klick auf die Überschrift ebenso, ohne dass die Figur zuschlägt; ein Klick daneben in die Welt schlägt wie immer. Eingeklappt F2: Die Liste bleibt eingeklappt.
+4. Die Sammlerin mit violettem Haar steht rechts vom Baum unten links und trägt eine Sprechblase. E: Sie friert und bittet um zwei Äste; „Mach ich.“ (Taste 1 oder Maus). Oben „Neue Mission – Holz für das Feuer“, in der Liste unter den Pflichtmissionen in Weiß „Holz für das Feuer“ mit „Äste 0/2“. Ihre Sprechblase ist weg; noch einmal E: Sie erinnert nur.
+5. Den Baum fällen und die Äste aufsammeln: „Äste 2/2“ mit Kreuz im Kästchen, die Sammlerin trägt wieder ihre Sprechblase. E, „Hier, bitte.“: Die Äste sind aus dem Inventar weg, 5 Kunai springen vor die Figur, oben „Mission erfüllt – Holz für das Feuer“, die Mission verschwindet aus der Liste. Danach bedankt sie sich nur noch.
+6. Den Höhlenmenschen besiegen: „Mission erfüllt – Der Höhlenmensch“.
+7. Den Goldschlüssel hinter der Holztür holen und die grosse Truhe öffnen: „Mission erfüllt – Die grosse Truhe“, das Gittertor oben rechts geht auf. In der Liste „Keine offenen Missionen“, Debug-Zeile „Pflicht 2/2 · Neben 1/1 · Tor offen“.
+8. Sterben, etwa im Schadensfeld, dann F2, dann mit Ende beenden und mit F5 neu starten: Missionen und Tor bleiben, wie sie waren, und es erscheinen keine neuen Hinweise.
+9. Durch das Tor zur Luke, E: Das Level ist abgeschlossen – die Figur steht an den Startpunkten, die Debug-Zeile „Spielstand“ zeigt „(abgeschlossen)“. Die Missionen bleiben erfüllt, das Tor bleibt offen.
+10. F4, dann bei der Sammlerin die Mission annehmen und Bild ab: Alles beginnt von vorn – zwei Hinweise „Neue Mission“, die Sammlerin bietet wieder an.
+11. Abschaltbar: in der Testkammer `MissionPanel` löschen – die Missionen zählen weiter, zu sehen in der Debug-Zeile; `MissionTracker` löschen – keine Liste, das Tor bleibt zu, die Sammlerin bietet an, aber nichts beginnt; die Kammer läuft ohne Fehler. Beides mit Strg+Z zurückholen und speichern.
+
 **M16 – Speichern & Laden**
 
 - Getestet hat der Nutzer am 21.11.2026 in Godot. Rückmeldung: „Okay also ich habe jetzt alles getestet und es funktioniert“ – die elf Punkte der Prüfliste gelten als bestanden. Hochgeladen hat er M16 mit Commit `76bd2bf`; alle Dateien wie geliefert. Geliefert war M16 am selben Tag als `m16_speichern_laden.zip`.
@@ -225,7 +267,7 @@ Prüfliste M16 – zum Abhaken in Godot:
 5. Spiel mit dem X am Spielfenster beenden – läuft es im Editor eingebettet, mit der Taste Ende –, nicht mit dem Stopp-Knopf des Editors: Der beendet ohne Speichern. F5: Die Figur steht vor dem Anker, alles wie vorher; Debug-Zeile mit „Beenden“.
 6. Die Datei `%APPDATA%\Godot\app_userdata\TimeTraveller\saves\slot_1.json` mit dem Editor öffnen: lesbar, darin etwa `"ChestSmall": {"open": true}`.
 7. Bild ab – Level verlassen: alles auf Anfang. Truhe zu, Topf und Kiste heil, Schlüssel wieder hinter der Holztür, Inventar wie beim Start mit dem Katana, Schamane mit Blase, Figur an den Startpunkten, Anker grau.
-8. Kleine Truhe öffnen und ihre Pfeile aufsammeln, dann Bild auf – Level abschließen: Die Figur steht an den Startpunkten, die Truhe bleibt offen, Debug-Zeile mit „(abgeschlossen)“. Dann Bild ab: Truhe offen und Pfeile im Inventar bleiben – der Abschluss hat sie ins Portal übernommen.
+8. Kleine Truhe öffnen und ihre Pfeile aufsammeln, dann Bild auf – Level abschließen: Die Figur steht an den Startpunkten, die Truhe bleibt offen, Debug-Zeile mit „(abgeschlossen)“. Dann Bild ab: Truhe offen und Pfeile im Inventar bleiben – der Abschluss hat sie in den Kapselstand übernommen.
 9. F4: Spielstand gelöscht, Neubeginn wie beim ersten Start – Truhe zu, Startinhalt, ohne „(abgeschlossen)“, Debug-Zeile „nicht gespeichert“.
 10. F2 lädt den Raum neu wie ein Tod ohne Tod: Was offen oder zerstört war, bleibt; die Figur erscheint am Rückkehrpunkt.
 11. Abschaltbar: in der Testkammer den Knoten `TimeAnchor` zum Test löschen – die Kammer startet ohne Fehler, die Figur erwacht an den Startpunkten; war er Rückkehrpunkt, steht dazu eine Warnung im Ausgabefenster. In `entities/player/player.tscn` den Knoten `PlayerProgress` löschen – die Figur beginnt jedes Mal mit dem Startinhalt. Beides mit Strg+Z zurückholen und speichern.
@@ -371,86 +413,96 @@ Prüfliste zur Nachbesserung von M15:
 - Getestet hat der Nutzer am 15.11.2026: alle sechs Punkte bestanden.
 - Repo gegengelesen, Stand Commit `8ed9ffb`: 4.374 Dateien, keine unter `.godot/`; Grafik-Paket vollständig laut Katalog, alle 2.104 Importe gültig.
 
-Claude selbst kann Godot nicht starten; der Test des Nutzers ist die einzige echte Prüfung.
+Claude startet Godot nur ohne Fenster oder mit virtuellem Bildschirm, nie mit echter Maus und Tastatur; der Test des Nutzers ist die einzige echte Prüfung.
 
-## Plan für M17 – Missionen
+## Plan für M18 – Räume & Levelwechsel
 
-Vorgeschlagen am 21.11.2026; der Nutzer hat zwei Änderungen gewünscht – die Missionsliste lässt sich ein- und ausklappen, je Level eine Missionen-Datei – und den Umsetzungsplan. Gebaut wird nach „weiter“. Der Plan ist eine Richtlinie: Zeigt der Code im Repo etwas anderes, gilt der Code. Der Vorschlag steht im Plan-Dokument unter Phase 4.
+Geplant am 22.11.2026 mit dem Wunsch des Nutzers zur Zeitkapsel; gebaut wird im neuen Chat. Der Plan ist eine Richtlinie: Zeigt der Code im Repo etwas anderes, gilt der Code. Der Vorschlag steht im Plan-Dokument unter Phase 4.
 
-**Prüfung der Idee „eine Missionen-Datei je Level“**
+**Der Wunsch und wie er eingebaut ist**
 
-- Trägt: Alle Missionen eines Levels stehen in einer Datei, etwa `data/missions/test_chamber.tres`. Das Level braucht nur diese eine Datei, und wer ein Level baut, sieht seine Missionen auf einen Blick. Die Namen der Missionen müssen nur im Level eindeutig sein.
-- Ergänzt: Jede Mission bleibt in der Datei ein eigener Eintrag mit Namen (`id`). Gespräche und Spielstand nennen sie über diesen Namen, nicht über einen Dateipfad – so bleibt ein Spielstand gültig, wenn die Datei umgebaut wird, solange die Namen bleiben.
-- Ergänzt: Beim Start prüft das Level seine Datei – doppelte oder leere Namen, Ziele ohne Ereignis oder Gegenstand – und schreibt Fehler ins Ausgabefenster, wie bei den Gesprächen.
-- Ergänzt: Missionen, die zu keinem Level gehören, etwa in der Zeitkapsel (M18), bekommen später eine eigene Datei im selben Format.
+- Wunsch des Nutzers: „die Zeitkapsel für später soll kein Portal sein sondern eine Zeitkapsel“. Sie steht dauerhaft im Level, die Figur erscheint bei ihr; sind alle Missionen erledigt, geht es mit ihr zurück; ist der Spieler noch nicht fertig, kann er dort die Mission vorzeitig abbrechen. Bild: `assets/test_art/objects/zeitkapsel.jpg`.
+- Eingebaut: Die Zeitkapsel ist ein Ding der Welt, `world/time_capsule/`, und steht am Landepunkt jedes Levels. Ihre Startpunkte ersetzen die alten; nach dem Tod ohne Zeitanker erwacht die Figur vor ihr. Kommt die Figur gerade an, landet sie mit einem kurzen Effekt.
+- „Alle Missionen“ heißt alle Pflichtmissionen – wie beim Tor aus M17. Nebenmissionen halten die Rückreise nicht auf.
+- Ergänzt: Vor dem Abbruch fragt sie nach, weil er nicht rückgängig zu machen ist; vor der Rückreise ebenso, damit niemand aus Versehen einsteigt.
+- Ergänzt: Innen ist die Zeitkapsel die Lobby, eine eigene Szene. Es gibt sie, sobald ein Level abgeschlossen ist; vorher beginnt ein Abbruch das Level von vorn – die Regel für Level 1 aus M16.
+- Ergänzt: Die Zeitkapsel hört wie ein Tor auf den Kanal `missions_done`, den der `MissionTracker` meldet; sie kennt die Missionen nicht selbst. Die Nische mit Tor und Luke aus M17 fällt in der Testkammer weg; `world/level_exit/` bleibt als Baustein, etwa für Level 1.
+- Ergänzt: „Portal“ verschwindet aus Plan und Stand-Datei, der Portalstand heißt Kapselstand. Im Code bleibt `portal` in `GameState` und in der Datei, damit Spielstände gültig bleiben.
+- Verschoben: Die einfache Karte rückt zu M20 – Menüs, wo das Konzept die Karte führt. M18 bleibt bei Räumen, Leveln und der Zeitkapsel.
 
 **Abläufe**
 
 | Ereignis | Was passiert |
 | --- | --- |
-| Level betreten | Pflichtmissionen, die mit dem Level beginnen und noch nicht laufen, beginnen; oben in der Mitte nacheinander „Neue Mission“ mit Titel. Was schon läuft oder erfüllt ist, kommt still aus dem Spielstand |
-| Ein Ereignis, etwa ein Gegner fällt | `MissionCue` meldet `mission_event(name, anzahl)`; jedes Ziel einer laufenden Mission mit diesem Ereignis zählt weiter, höchstens bis zu seiner Zahl |
-| Inventar ändert sich | Ziele „Gegenstand“ zählen, was die Spielfiguren tragen; sinkt es, sinkt der Stand mit, solange die Mission nicht abgegeben ist |
-| Alle Ziele erfüllt | ohne Abgabe: erfüllt – die Belohnung springt vor die Figur, „Mission erfüllt“; mit Abgabe: bereit – der Auftraggeber zeigt seine Sprechblase |
-| Gespräch: eine Zeile startet eine Mission | `mission_start_requested`; der `MissionTracker` startet sie, wenn sie noch nicht läuft |
-| Gespräch: eine Zeile gibt eine Mission ab | `mission_hand_in_requested`; ist sie bereit, nimmt der `MissionTracker` die Gegenstände aus dem Inventar dieser Figur, die Belohnung springt vor sie, „Mission erfüllt“ |
-| Alle Pflichtmissionen erfüllt | Der `MissionTracker` meldet seinen Kanal `missions_done` als an: Das Gittertor öffnet sich, auch nach dem Laden |
-| E am Ausgang | `level_exit_requested`; die Testkammer schließt das Level ab wie Bild auf, ab M18 geht es in die Zeitkapsel |
-| Tod, F2, Beenden | Die Missionen bleiben, wie sie sind – sie liegen im Levelstand |
-| Level verlassen | Levelstand verworfen: Pflichtmissionen beginnen von vorn, Nebenmissionen sind nicht angenommen |
-| Level abschließen | Die Missionen kommen mit dem Levelstand ins Portal; bei einer Rückkehr ins Level sind sie erfüllt, das Tor ist offen |
-| J oder Klick auf die Überschrift | Liste ein- oder ausklappen; der Zustand bleibt bis zum Beenden des Spiels |
-
-**Was im Stand steht** – je Portalstand und Levelstand
-
-- `missions`: je Level und Mission `{"state": "active" | "ready" | "done", "progress": [Zahl je Ziel]}`; ohne Eintrag ist die Mission noch nicht angenommen. `progress` zählt die Ereignisse; Ziele „Gegenstand“ zählen jedes Mal neu aus dem Inventar.
+| Spiel starten | Die neue Startszene `boot.tscn` fragt den SceneManager: Läuft ein Level, geht es dorthin; ist schon eins abgeschlossen, in die Zeitkapsel; sonst ins Startlevel – bis Level 1 die Testkammer |
+| Ankunft im Level | Überblendung, ein neuer Lauf beginnt wie bisher mit `enter_level()`. Die Zeitkapsel landet, die Figur steht davor |
+| E an der Zeitkapsel, Pflicht offen | Gespräch „Zeitkapsel“: „Noch sind nicht alle Pflichtmissionen erfüllt.“ – „Reise abbrechen? Was du hier erreicht hast, geht verloren.“ Abbrechen: `level_leave_requested`; Weitermachen: nichts |
+| E an der Zeitkapsel, Pflicht erfüllt | „Alle Pflichtmissionen sind erfüllt. Zurück in die Zeitkapsel?“ Einsteigen: `level_exit_requested`; Noch nicht: nichts. Solange sie bereit ist, funkelt sie |
+| `level_exit_requested` | Der SceneManager ruft `GameState.complete_level()` – Levelstand → Kapselstand, Speichern – und blendet in die Zeitkapsel über |
+| `level_leave_requested` | Der SceneManager ruft `GameState.leave_level()` und blendet in die Zeitkapsel über; ist noch kein Level abgeschlossen, beginnt das Level von vorn |
+| Zeitsteuerung in der Zeitkapsel | E: „Wohin soll die Reise gehen?“ – bis zu drei Antworten, vorerst Testkammer, Testfeld und Hierbleiben; `travel_requested`, der SceneManager reist |
+| Rückkehr in ein abgeschlossenes Level | Ein neuer Lauf aus dem Kapselstand: Die Missionen sind erfüllt, die Zeitkapsel ist gleich bereit; die Rückreise übernimmt, was dazukam |
+| In einen anderen Raum | Die Figur geht durch einen Durchgang; der `RoomWatcher` meldet `room_changed`, die Kamera gleitet in 0,35 s in die Grenzen des neuen Raums |
+| Tod, F2 | wie bisher, nur über den SceneManager mit Überblendung: Das Level lädt neu, die Figur erwacht am Rückkehrpunkt, ohne ihn vor der Zeitkapsel |
+| Beenden und neu starten | Die Startszene bringt die Figur dorthin zurück, wo sie war: ins laufende Level oder in die Zeitkapsel |
+| Bild auf, Bild ab | nur im Debug-Build: senden `level_exit_requested` und `level_leave_requested` ohne Nachfrage – derselbe Weg wie an der Zeitkapsel |
 
 **Bausteine und Dateien**
 
-1. `missions/` – Baupläne wie bei den Gesprächen: `mission_list.gd` (`MissionList`: die Datei eines Levels mit `missions`, `find(id)`, `check()`), `mission_data.gd` (`MissionData`: `id`, `title`, `description`, `required` – Pflicht –, `starts_with_level`, `hand_in`, `objectives`, `reward`), `mission_objective.gd` (`MissionObjective`: `text`, `count`), `event_objective.gd` (`EventObjective`: `event`), `item_objective.gd` (`ItemObjective`: `item`, `take_on_hand_in`).
-2. `missions/mission_tracker.tscn` und `.gd` – die eine Stelle für Missionen im Level, wie `LootSpawner` und `ProjectileSpawner`: `missions` (die Datei des Levels), `unlock_channel` (Standard `missions_done`). Startet, zählt, entscheidet über bereit und erfüllt, gibt Belohnungen über `loot_requested`, meldet `mission_changed`, öffnet über `switch_changed` den Weg. Liest und schreibt den Stand über `GameState`. Debug-Zeile „Missionen“, etwa „Pflicht 1/2 · Neben 0/1 · Tor zu“.
-3. `autoload/game_state.gd`: `get_mission_state(level, id)`, `set_mission_state(level, id, daten)`, Abschnitt `missions` im Stand.
-4. `autoload/event_bus.gd`: `mission_event(event, amount)`, `mission_changed(level_id, mission_id, state)`, `mission_start_requested(player_id, mission_id)`, `mission_hand_in_requested(player_id, mission_id)`, `level_exit_requested(player_id)`.
-5. `components/mission_cue/` – Baustein wie `LootDropper`: hört auf ein Signal eines Geschwisters (`source_name`, `signal_name`, Standard `Health` und `died`) und meldet `mission_event(event, amount)`. Eingehängt in `entities/enemies/caveman.tscn` (Ereignis `caveman_defeated`) und in der Testkammer an `ChestBig` (Signal `opened`, Ereignis `chest_big_opened`).
-6. Gespräche: `dialogs/dialog_line.gd` bekommt in der Gruppe „Wirkung“ `start_mission` und `hand_in_mission` – Namen einer Mission. `entities/npcs/npc.gd` meldet sie, wenn die Zeile erscheint, wie Beute und „erledigt“ – an genau einer Stelle.
-7. Auftraggeber: `entities/npcs/quest_giver.gd` (`QuestGiver` erbt von `Npc`) mit `mission_id` und vier Gesprächen – `offer_dialog` (Angebot), `waiting_dialog` (läuft), `ready_dialog` (Abgabe), `done_dialog` (danach). Er wählt das Gespräch nach dem Stand der Mission in `GameState` und zeigt die Sprechblase, solange er etwas anbietet oder die Mission bereit ist. Die Sammlerin: `entities/npcs/collector.tscn` (erbt von `npc.tscn`, Skript `quest_giver.gd`), Skin `data/skins/cavegirl2.tres` (violettes Haar), Sprecher `data/dialogs/speakers/collector.tres`, Gespräche `data/dialogs/collector_*.tres`, Belohnung `data/loot/collector_reward.tres` (5 Kunai).
-8. Anzeige: `ui/missions/mission_panel.tscn` und `.gd`, eigene Szene, ein `CanvasLayer` auf Ebene 90 wie das HUD. Links unter den Herzen ab (4, 40): Überschrift „Missionen“ mit Pfeil (`Ui/Arrow.png`) und Taste J (`Ui/Input/Keyboard/KeyJ.png`); je Mission der Titel – Pflicht orange, Neben weiß –, darunter die Ziele mit Kästchen aus dem Holz-Thema (`checked.png`, `unchecked.png`) und Stand, etwa „Äste 1/2“; höchstens drei Missionen, Pflicht zuerst, sonst „+1 weitere“; `NormalFont` 9 auf dunklem Grund. Eingeklappt nur „Missionen 3“. J (`mission_toggle`, neu in `input_setup.gd`) oder ein Klick auf die Überschrift klappt um; der Zustand bleibt bis zum Beenden des Spiels, gemerkt wird er mit den Optionen in M20. Hinweise „Neue Mission“ und „Mission erfüllt“ mit Titel oben in der Mitte, je 2,5 s, nacheinander.
-9. Klick ohne Schlag: `entities/player/player_input.gd` greift nicht an, solange die Maus über einem Bedienelement liegt, das Klicks annimmt (`get_viewport().gui_get_hovered_control()`; in Godot 4.7.2 vorhanden). Alle anderen Teile des HUD lassen die Maus wie bisher durch, das Fadenkreuz ist kein Bedienelement.
-10. Weg zur Zeitkapsel: in der Testkammer oben rechts eine kleine Nische – innen x 896 bis 944, y 16 bis 64 – mit einem Gittertor auf dem Kanal `missions_done` bei (920, 72) und dem Ausgang `world/level_exit/` bei (920, 40): eine offene Luke mit Treppe aus `TilesetElement.png` (6,11); E meldet `level_exit_requested`, die Testkammer schließt dann ab wie Bild auf.
-11. Testkammer: `MissionTracker` mit `data/missions/test_chamber.tres`, `MissionPanel`, die Sammlerin bei (232, 420) neben dem Baum, Nische mit Tor und Ausgang, `MissionCue` an `ChestBig`. Die Missionen der Testkammer:
-    - `caveman` – „Der Höhlenmensch“, Pflicht, beginnt mit dem Level: „Besiege den Höhlenmenschen“ (Ereignis `caveman_defeated`, 1).
-    - `big_chest` – „Die grosse Truhe“, Pflicht, beginnt mit dem Level: „Öffne die grosse Truhe“ (Ereignis `chest_big_opened`, 1).
-    - `branches` – „Holz für das Feuer“, Neben, Abgabe bei der Sammlerin: „Äste“ (Gegenstand Ast, 2, werden abgegeben); Belohnung 5 Kunai.
+1. `autoload/scene_manager.gd` – füllen. Die eine Stelle für Szenenwechsel: `start_game()`, `new_game()`, `travel_to_level(level_id)`, `travel_to_capsule()`, `reload_level(grund)`, `is_arrival()`. Überblendung mit einem eigenen `CanvasLayer` auf Ebene 120, über dem Fadenkreuz; sie hängt nicht an der Pause. Hört auf `level_exit_requested`, `level_leave_requested` und `travel_requested`; meldet nach jedem Wechsel die Debug-Zeile „Ort“, etwa „Zeitkapsel“ oder „Lauf test_field“. Eine Reise gilt für alle Spielfiguren. Ohne SceneManager laden Level neu wie bisher.
+2. `levels/level_info.gd` (`LevelInfo`: `id`, `title`, `scene`) und `levels/travel_settings.gd` (`TravelSettings`: `levels`, `start_level`, `capsule_scene`, `fade_time`); Werte in `data/world/travel.tres` – Testkammer, Testfeld, Zeitkapsel, Überblendung 0,25 s. Der SceneManager lädt die Datei über einen festen Pfad.
+3. `levels/boot/boot.tscn` und `boot.gd` – die neue Hauptszene: ruft `start_game()` auf und zeigt sonst nichts; mit M20 kommt dort das Startmenü dazu. Die Hauptszene stellt der Nutzer per Klick-Anleitung um, `project.godot` liefert Claude nicht.
+4. `levels/level.gd` (`Level`) – Grundlage neuer Level: `level_id`, `starts_run` (an; in der Zeitkapsel aus), Größe, `death_restart_delay`, `view`; meldet sich in `_enter_tree()` bei `GameState`, meldet seine Grenzen und lädt nach dem Tod über den SceneManager neu. Die Testkammer behält ihr eigenes Skript.
+5. `ui/debug/debug_keys.tscn` und `.gd` (`DebugKeys`) – die Test-Tasten F2, F4, Bild auf, Bild ab und Ende an einer Stelle, damit sie in jedem Level und in der Zeitkapsel gelten; F4 bis Ende weiter nur im Debug-Build. Sie ziehen aus `test_chamber.gd` um; F3 bleibt in der Testkammer.
+6. `levels/level_frame/level_frame.tscn` – was jedes Level braucht, in der Reihenfolge der Testkammer: `LootSpawner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `RoomWatcher`, `DebugKeys`, `Crosshair`, `DebugOverlay`, `InventoryWindow`, `Hud`, `MissionPanel`, `DialogWindow`. Neue Level hängen es als letztes Kind ein; den `MissionTracker` mit seiner Missionen-Datei bringt jedes Level selbst mit. Die Testkammer behält ihre einzelnen Knoten.
+7. `world/time_capsule/` – `time_capsule.tscn` und `.gd` (`TimeCapsule`): `StaticBody2D` auf `world`; Kinder `CollisionShape2D`, `PlaceholderView`, `View` (das Bild, auf eine feste Größe in der Welt gebracht – Vorschlag 48 × 48 Pixel, endgültig nach dem Bild), `Interactable` vor der Tür, `Spawn1` und `Spawn2` (Gruppe `player_spawn`), `ArriveEffect` und `ReadyEffect` (je ein `EffectCue`; Effekte aus `FX/`, beim Bauen am Bild gewählt). Einstellbar: `unlock_channel` (`missions_done`; leer heißt immer bereit), `ready_dialog`, `abort_dialog`, `display_size`. Merkt sich wie eine Tür, welche Schalter auf dem Kanal an sind. Die Wahl im Gespräch führt sie erst nach dessen Ende aus; Esc bricht ohne Folgen ab, ohne Dialogfenster geschieht nichts – mit Warnung. Bei der Ankunft – `is_arrival()` – blendet ihr Bild in 0,5 s ein. Debug-Zeile „Zeitkapsel“: „bereit“ oder „Pflicht offen“.
+8. Gespräche: `data/dialogs/time_capsule_ready.tres`, `time_capsule_abort.tres`, `data/dialogs/speakers/time_capsule.tres` – „Zeitkapsel“, vorerst ohne Porträt. `dialogs/dialog_line.gd` bekommt in der Gruppe „Wirkung“ `action`: den Namen einer Aktion, die der Sprecher nach dem Gespräch ausführt – an der Zeitkapsel `board` (einsteigen) oder `abort` (abbrechen), an der Zeitsteuerung die Kennung des Ziels. NPCs übergehen sie.
+9. `levels/time_capsule/time_capsule.tscn` – die Zeitkapsel innen: ein kleiner Raum, etwa 20 × 12 Kacheln, mit `Level` (`level_id` `time_capsule`, `starts_run` aus), einem Startpunkt, der Zeitsteuerung und `LevelFrame`. Ausrüsten mit Tab wie bisher; was sich hier ändert, gilt im Kapselstand. Gespeichert wird beim Einsteigen, beim Abbrechen, vor jeder Reise und beim Beenden.
+10. `world/time_console/` – `time_console.tscn` und `.gd` (`TimeConsole`): ein Pult mit `PropView` – etwa der Kristall (7,3) aus `TilesetDungeon.png` – und `Interactable`. E öffnet `data/dialogs/time_console.tres`; die gewählte Zeile nennt mit `action` das Ziel, gesendet wird `travel_requested(player_id, level_id)`. Gesperrte Level und die Zeitkarte kommen später.
+11. Räume: `world/room/room.tscn` und `room.gd` (`Room`): `room_id`, `title`, `size` in Pixeln ab seinem Ort, auf Wunsch Boden und Raster; Gruppe `rooms`. `world/room/room_watcher.tscn` und `.gd` (`RoomWatcher`): je Spielfigur und Physik-Schritt der Raum, in dem ihre Mitte liegt; bei einem Wechsel `room_changed(player_id, room_id, bounds)` und die Debug-Zeile „S1 Raum“. `entities/player/player_camera.gd` folgt `room_changed` ihrer Figur und gleitet in `room_glide_time` hinüber – neu in `CameraStats` und `data/player/camera.tres`, 0,35 s; ohne Räume gilt wie bisher `camera_bounds_changed`. Räume liegen in der Szene ihres Levels: So bleiben Spielfigur, Missionen und die Kennungen von `Persistent` unverändert, und jede Figur kann in einem anderen Raum sein.
+12. `autoload/event_bus.gd`: `level_leave_requested(player_id)`, `travel_requested(player_id, level_id)`, `room_changed(player_id, room_id, bounds)`. `GameState` bleibt, wie er ist: `complete_level()`, `leave_level()`, `is_level_completed()` und `current_level` reichen.
+13. Testkammer: `TimeCapsule` statt `SpawnPoints` – Vorschlag links vom Jäger bei etwa (88, 120), die Startpunkte davor –; die Nische `ExitNiche` mit Tor und Luke fällt weg. `Rooms` mit `MainRoom` (0, 0, 960 × 544, „Halle“) und `EastRoom` (960, 176, 320 × 192, „Ostraum“) hinter einem Durchgang von 32 Pixeln in der rechten Wand bei y 256 bis 288; die Wand `Right` wird dafür zwei Formen. Im Ostraum ein Topf und eine kleine Truhe, um zu sehen, dass sich Dinge auch dort merken. Dazu `RoomWatcher` und `DebugKeys`; der `PlayerSpawner` rückt auf eine freie Stelle, etwa (240, 136), damit die Figur ohne Zeitkapsel nicht in der Wand erscheint. `test_chamber.gd`: Tod über den SceneManager; der Empfänger für `level_exit_requested` aus M17 und die Test-Tasten fallen weg – das machen jetzt SceneManager und `DebugKeys`; die Debug-Zeile „Spielstand“ sagt „Landepunkt“ statt „Startpunkt“.
+14. Testfeld: `levels/test_field/test_field.tscn` mit `Level` (`level_id` `test_field`), einem kleinen Raum mit Zeitkapsel, drei Töpfen mit je einem `MissionCue`, einer kleinen Truhe und `LevelFrame`; `data/missions/test_field.tres` mit einer Pflichtmission „Die drei Töpfe“ – Ziel „Zerschlage die Töpfe“, Ereignis `test_field_pot`, 3.
+15. README, Stand-Datei, Plan-Dokument, Grafik-Katalog – dort das Bild der Zeitkapsel mit Größe und Hintergrund.
+
+**Bild der Zeitkapsel**
+
+- Liegt beim Nutzer unter `assets/test_art/objects/zeitkapsel.jpg`, im Repo erst nach dem Hochladen. Claude hat es am 22.11.2026 nicht gesehen: Größe, Hintergrund und Tür sind ungeprüft.
+- JPG kennt keine Durchsichtigkeit. Hat das Bild einen Hintergrund, steht im Spiel ein Kasten um die Kapsel; dann braucht es eine PNG-Fassung mit durchsichtigem Rand, am besten gleich in der Größe, in der sie im Spiel erscheint.
+- Ein großes Bild, klein gezeichnet, flimmert mit dem Filter „Nearest“. Dann am Knoten `View` „Linear“ mit Mipmaps wählen und beim Import „Mipmaps“ anschalten – als Klick-Anleitung für den Nutzer.
+- Nach der Regel „Dateinamen englisch“ hieße es `time_capsule.jpg`; umbenennen am besten vor dem Hochladen, sonst bleibt der Name, den das Repo hat.
 
 **Reihenfolge**
 
-1. Repo lesen; `npc.gd`, `dialog_line.gd`, `hud.tscn`, `player_input.gd` und `test_chamber.tscn` genau ansehen.
-2. Baupläne, Datei der Testkammer, `GameState`, Meldungen.
-3. `MissionTracker` mit Debug-Zeile; die Abläufe zuerst mit Godot ohne Fenster prüfen.
-4. `MissionCue`, Höhlenmensch, grosse Truhe.
-5. Gesprächszeilen, `QuestGiver`, Sammlerin.
-6. Anzeige mit Ein- und Ausklappen, Hinweise, Klick ohne Schlag.
-7. Nische, Tor, Ausgang; README, Stand-Datei, Plan-Dokument, Prüfliste, ein ZIP.
+1. Repo lesen, M17 und das Bild prüfen; `test_chamber.gd`, `player_camera.gd`, `player_spawner.gd`, `game_state.gd`, `npc.gd`, `door.gd` und `dialog_window.gd` genau ansehen.
+2. SceneManager, Reisedaten, Startszene, `DebugKeys`; Tod und F2 der Testkammer über den SceneManager. Zuerst mit Godot ohne Fenster prüfen.
+3. Zeitkapsel außen mit ihren Gesprächen und `action`; in der Testkammer statt Startpunkten und Nische.
+4. Zeitkapsel innen mit Zeitsteuerung, `Level`, `LevelFrame`.
+5. Räume, `RoomWatcher`, Kamera; der Ostraum.
+6. Testfeld mit Mission.
+7. Mit Bild ansehen; README, Stand-Datei, Plan-Dokument, Prüfliste, ein ZIP.
 
 **Prüfliste – Entwurf**
 
-1. F4 zuerst – ein alter Spielstand kann die grosse Truhe schon offen haben. F5: Links unter den Herzen „Missionen“ mit „Der Höhlenmensch“ und „Die grosse Truhe“, je ein leeres Kästchen und 0/1; oben in der Mitte nacheinander zweimal „Neue Mission“. Das Gittertor oben rechts ist zu.
-2. J klappt die Liste ein – nur „Missionen 2“ – und wieder aus; ein Klick auf die Überschrift auch, ohne dass die Figur zuschlägt.
-3. Die Sammlerin beim Baum trägt eine Sprechblase. E: Sie bittet um 2 Äste; „Mach ich.“ – „Neue Mission: Holz für das Feuer“, in der Liste unter den Pflichtmissionen „Äste 0/2“.
-4. Den Baum fällen und beide Äste aufsammeln: „Äste 2/2“ mit Haken; die Sammlerin zeigt wieder ihre Sprechblase. E: Sie nimmt die Äste – im Inventar sind sie weg –, 5 Kunai springen vor die Figur, „Mission erfüllt: Holz für das Feuer“. Danach bedankt sie sich nur noch.
-5. Den Höhlenmenschen besiegen: „Mission erfüllt: Der Höhlenmensch“.
-6. Goldschlüssel holen, grosse Truhe öffnen: „Mission erfüllt: Die grosse Truhe“ – das Gittertor oben rechts öffnet sich. Debug-Zeile „Missionen: Pflicht 2/2 · Neben 1/1 · Tor offen“.
-7. Sterben, F2, mit Ende beenden und neu starten: Missionen und Tor bleiben, wie sie waren.
-8. Hinter dem Tor E an der Luke: Das Level ist abgeschlossen, die Figur steht an den Startpunkten, Debug-Zeile „(abgeschlossen)“; die Missionen bleiben erfüllt, das Tor bleibt offen.
-9. F4, dann eine Mission beginnen und Bild ab: Die Missionen beginnen von vorn, die Nebenmission ist nicht angenommen.
-10. Abschaltbar: `MissionPanel` löschen – die Missionen zählen weiter, zu sehen in der Debug-Zeile; `MissionTracker` löschen – keine Missionen, das Tor bleibt zu, die Kammer läuft ohne Fehler. Danach mit Strg+Z zurückholen und speichern.
+1. Godot schließen, ZIP entpacken. Hauptszene umstellen: im Dateisystem-Dock Rechtsklick auf `levels/boot/boot.tscn` → „Als Hauptszene festlegen“ – oder Projekt → Projekteinstellungen → Allgemein → Anwendung → Ausführen → Hauptszene. F5, dann F4: Die Zeitkapsel landet in der Testkammer, die Figur steht davor; keine roten Fehler.
+2. Die kleine Truhe unter dem langen Balken öffnen, dann E an der Zeitkapsel: „Reise abbrechen?“ – „Weitermachen“ ändert nichts. „Abbrechen“: Überblendung, das Level beginnt von vorn, die Truhe ist zu – noch ist kein Level abgeschlossen.
+3. Beide Pflichtmissionen erfüllen: Die Zeitkapsel funkelt. E, „Einsteigen“: Überblendung in die Zeitkapsel innen, Debug-Zeile „Ort: Zeitkapsel“.
+4. Innen öffnet Tab das Inventar, die Ausrüstung lässt sich wechseln. E an der Zeitsteuerung, „Testkammer“: Ankunft vor der Zeitkapsel, die Missionen sind erfüllt, sie ist gleich bereit, die Truhe bleibt offen.
+5. Nach rechts durch den Durchgang: Die Kamera gleitet in den Ostraum, Debug-Zeile „S1 Raum: Ostraum“. Topf zerschlagen, Truhe öffnen; F2 – beides bleibt, wie es ist; zurück in die Halle gleitet die Kamera wieder.
+6. Sterben, ohne vorher am Zeitanker gerastet zu haben, etwa im Schadensfeld: Die Figur erwacht vor der Zeitkapsel; diesmal landet die Zeitkapsel nicht.
+7. Einsteigen, dann „Testfeld“: Ankunft vor dessen Zeitkapsel, oben „Neue Mission – Die drei Töpfe“. Einen Topf zerschlagen, abbrechen, wieder hinreisen: Der Topf ist heil, die Mission beginnt von vorn. Alle drei zerschlagen, einsteigen: Das Testfeld ist abgeschlossen, die Testkammer bleibt es auch.
+8. Im Testfeld mit Ende beenden, F5: Die Figur ist wieder im Testfeld, nicht in der Testkammer. In der Zeitkapsel beenden, F5: wieder in der Zeitkapsel.
+9. Bild auf und Bild ab gehen denselben Weg ohne Nachfrage, auch im Testfeld; F4 beginnt ein neues Spiel in der Testkammer.
+10. Abschaltbar: `TimeCapsule` aus der Testkammer löschen – die Figur erscheint am Ort des `PlayerSpawner`, die Kammer läuft; `RoomWatcher` löschen – die Kamera nimmt die Grenzen der ganzen Kammer. Mit Strg+Z zurückholen und speichern.
 
 **Später**
 
-- M18 – Räume & Levelwechsel: Der Ausgang führt in die Zeitkapsel; die Zeitkapsel bekommt eine eigene Missionen-Datei.
-- M19 – Freischaltungen: Missionen schalten Fähigkeiten frei; Erfahrung und Stufen laut Konzept.
-- M20 – Menüs: ein Fenster mit allen Missionen; der Zustand der Liste wird mit den Optionen gemerkt.
-- Offen: Ziele „Ort erreichen“ – ein Bereich mit `MissionCue` –, Missionen, die sich verzweigen oder scheitern können, Wegweiser, Missionen je Spieler im Mehrspieler.
+- Ein Porträt für das Gespräch der Zeitkapsel; ein eigener Ton für die Zeitreise (A3).
+- Gegner in Räumen ohne Spielfigur anhalten; Musik je Raum (A3).
+- Die Karte auf M mit den Räumen eines Levels (M20); die Zeitkarte mit allen Epochen statt des Gesprächs an der Zeitsteuerung (Phase 6); Lagerkiste, Werkbank und Händler in der Zeitkapsel.
+- Offen für Phase 5: Steht die Zeitkapsel auch in Level 1? Laut Konzept hat Level 1 noch keine; bis dahin gilt dort die Regel „Abbruch beginnt das Level von vorn“, als Ausgang ginge `world/level_exit/`.
+- Offen für M20: ob das Pausenmenü zusätzlich „Level verlassen“ anbietet.
+- Mehrspieler: Eine Reise gilt für alle; jede Kamera folgt dem Raum ihrer Figur. Über Abschluss und Abbruch entscheidet später der Gastgeber.
 
 ## Code-Übersicht
 
@@ -470,9 +522,9 @@ Vorgeschlagen am 21.11.2026; der Nutzer hat zwei Änderungen gewünscht – die 
 
 | Name | Datei | Stand |
 | --- | --- | --- |
-| `EventBus` | `autoload/event_bus.gd` | aktiv, 16 Meldungen |
+| `EventBus` | `autoload/event_bus.gd` | aktiv, 22 Meldungen |
 | `InputSetup` | `autoload/input_setup.gd` | aktiv; legt die Aktionen an, `all_actions()` liefert ihre Namen |
-| `GameState` | `autoload/game_state.gd` | aktiv seit M16: der Fortschritt – Portalstand, Levelstand, Lauf, Rückkehrpunkt; M17 und M19 kommen dazu |
+| `GameState` | `autoload/game_state.gd` | aktiv seit M16: der Fortschritt – Kapselstand (im Code `portal`), Levelstand, Lauf, Rückkehrpunkt; seit M17 die Missionen (`get_mission_state`, `set_mission_state`); M19 kommt dazu |
 | `SaveManager` | `autoload/save_manager.gd` | aktiv seit M16: schreibt und liest `user://saves/slot_1.json` |
 | `SceneManager` | `autoload/scene_manager.gd` | leer, wird in M18 gefüllt |
 | `AudioManager` | `autoload/audio_manager.gd` | leer, wird mit A3 – Ton gefüllt, fast am Ende des Projekts |
@@ -497,6 +549,12 @@ Vorgeschlagen am 21.11.2026; der Nutzer hat zwei Änderungen gewünscht – die 
 | `game_saved` | `reason: String` | Der Spielstand steht in der Datei; der Zeitanker, an dem gerade gerastet wurde, zeigt dann „Gespeichert“ (M16) |
 | `respawn_changed` | `level_id: String`, `anchor_id: String` | Der Rückkehrpunkt hat sich geändert; leer heißt Landepunkt. Zeitanker leuchten danach (M16) |
 | `level_run_changed` | `level_id: String`, `event: String` | Ein Lauf hat begonnen („begin“), ist abgeschlossen („complete“) oder verlassen („leave“), wurde geladen („load“), oder ein neues Spiel beginnt („new_game“) (M16) |
+| `mission_event` | `event: StringName`, `amount: int` | Etwas ist geschehen, das Missionen zählen, etwa „caveman_defeated“; gemeldet von `MissionCue`, gezählt vom `MissionTracker` (M17) |
+| `mission_start_requested` | `player_id: int`, `mission_id: StringName` | Eine Gesprächszeile möchte eine Mission starten; ob sie beginnt, entscheidet der `MissionTracker` (M17) |
+| `mission_hand_in_requested` | `player_id: int`, `mission_id: StringName` | Eine Gesprächszeile möchte eine Mission abgeben; ist sie bereit, nimmt der Tracker die Gegenstände dieser Figur und gibt die Belohnung (M17) |
+| `mission_changed` | `level_id: String`, `mission_id: StringName`, `state: String` | Eine Mission hat ihren Stand gewechselt: „active“, „ready“ oder „done“; gemeldet, nachdem der Stand in `GameState` liegt. Der Auftraggeber frischt daran seine Sprechblase auf (M17) |
+| `mission_list_changed` | `level_id: String`, `entries: Array` | Alle Missionen des Levels für die Anzeige, je Mission `id`, `title`, `required`, `hand_in`, `state` und `objectives`; die erste Meldung nach dem Betreten ist der Stand aus dem Spielstand (M17) |
+| `level_exit_requested` | `player_id: int` | Eine Figur möchte das Level durch den Ausgang verlassen; was dann geschieht, entscheidet das Level (M17) |
 
 ### Debug-Werte, die Module melden
 
@@ -516,8 +574,9 @@ Vorgeschlagen am 21.11.2026; der Nutzer hat zwei Änderungen gewünscht – die 
 | `Kamera` | Kamera | Bildmitte in der Welt |
 | `Zoom` | Testkammer (M13) | Zoom der Welt und sichtbare Kacheln, etwa „2 - 15.0 x 8.4 Kacheln (F3)“ |
 | `Caveman`, `StoneThrower` | Gegner (M13; seit M14 eine Zeile je Gegner) | Zustand und Leben, etwa „Verfolgen · Leben 30/30“. Zustände: Patrouille, Entdeckt, Verfolgen, Abwarten, Zurückweichen, Angriff, Suchen, Zurück, Betäubt, Tot. Der Schlüssel ist der Name des Knotens; nach dem Tod verschwindet die Zeile |
-| `Shaman`, `Hunter` | NPCs (M15), eine Zeile je NPC | „wartet · hat Neues“, „spricht mit S1“ oder „wartet · erledigt“; der Schlüssel ist der Name des Knotens |
+| `Shaman`, `Hunter`, `Gatherer` | NPCs (M15; seit M17 auch die Sammlerin), eine Zeile je NPC | „wartet · hat Neues“, „spricht mit S1“ oder „wartet · erledigt“; der Schlüssel ist der Name des Knotens |
 | `Spielstand` | Testkammer (M16) | Lauf, Rückkehrpunkt und letzte Speicherung, etwa „Lauf test_chamber · Anker TimeAnchor · 19:03:12 Rasten“; „(abgeschlossen)“ nach dem Abschluss, „nicht gespeichert“ ohne Datei, „ohne Datei“ ohne SaveManager |
+| `Missionen` | `MissionTracker` (M17) | erfüllte und alle Pflicht- und Nebenmissionen und das Tor, etwa „Pflicht 1/2 · Neben 0/1 · Tor zu“ |
 
 Der Hinweis „Neustart: F2“ ist mit M4 entfallen; F2 gilt weiter. In der Testkammer sind seit M7 die Zeilen „Maus“, „Kamera“ und „Raumzeit“ ausgeblendet, damit die Anzeige bei elf Zeilen bleibt; seit M9 kommt „S1 Beute“ dazu, sobald etwas aufgesammelt wurde. Einschalten lassen sie sich im Inspektor des Knotens `DebugOverlay` über `show_mouse` und `hidden_keys`.
 
@@ -537,6 +596,7 @@ Der Hinweis „Neustart: F2“ ist mit M4 entfallen; F2 gilt weiter. In der Test
 | `ability_1`, `ability_2`, `ability_3` | 1, 2, 3 |
 | `inventory` | Tab |
 | `map` | M |
+| `mission_toggle` | J – Missionsliste ein- und ausklappen (M17) |
 | `pause` | Esc |
 | `debug_toggle_overlay` | F1 |
 | `debug_restart_room` | F2 |
@@ -548,7 +608,7 @@ Der Hinweis „Neustart: F2“ ist mit M4 entfallen; F2 gilt weiter. In der Test
 | `debug_leave_level` | Bild ab – ebenso: Level verlassen (M16) |
 | `debug_quit_game` | Ende – ebenso: Spiel beenden wie mit dem X am Fenster, mit Speichern (M16) |
 
-Genutzt werden bisher: die vier Laufrichtungen, `sprint`, `sneak`, `attack_primary`, `attack_secondary`, `dash`, `ability_1` bis `ability_3`, `ammo_next`, `ammo_previous`, `interact` (M8), `inventory` (Tab, M11), `pause` (Esc schließt das Inventarfenster, M11, und bricht seit M15 ein Gespräch ab), `dialog_next` und `dialog_choice_1` bis `dialog_choice_3` (M15) und die Entwickler-Tasten. Die Aktionen des Gesprächs liegen auf denselben Tasten wie andere; das stört nicht, weil die Figur im Gespräch keine Eingaben annimmt und das Dialogfenster die Tasten zuerst hört.
+Genutzt werden bisher: die vier Laufrichtungen, `sprint`, `sneak`, `attack_primary`, `attack_secondary`, `dash`, `ability_1` bis `ability_3`, `ammo_next`, `ammo_previous`, `interact` (M8), `inventory` (Tab, M11), `pause` (Esc schließt das Inventarfenster, M11, und bricht seit M15 ein Gespräch ab), `dialog_next` und `dialog_choice_1` bis `dialog_choice_3` (M15), `mission_toggle` (M17) und die Entwickler-Tasten. Die Aktionen des Gesprächs liegen auf denselben Tasten wie andere; das stört nicht, weil die Figur im Gespräch keine Eingaben annimmt und das Dialogfenster die Tasten zuerst hört.
 
 ### Kollisions-Ebenen
 
@@ -569,7 +629,7 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | Gruppe | Mitglieder | Wer sie nutzt |
 | --- | --- | --- |
 | `player_spawn` | Startpunkte im Level (`Marker2D`) | `PlayerSpawner` |
-| `players` | jede Spielfigur | `PlayerCamera`, `InventoryWindow` (M11), `Hud` (M12), `Perception` der Gegner (M13), `Npc` als Rückfall, wenn er die Figur sonst nicht kennt (M15) |
+| `players` | jede Spielfigur | `PlayerCamera`, `InventoryWindow` (M11), `Hud` (M12), `Perception` der Gegner (M13), `Npc` als Rückfall, wenn er die Figur sonst nicht kennt (M15), `MissionTracker` – er zählt Gegenstände in ihren Inventaren (M17) |
 | `invisible` | Figuren, solange ihre Unsichtbarkeit wirkt | `Perception` der Gegner: Unsichtbare bemerken sie nicht (M13) |
 | `stunnable` | jeder Baustein `Stunnable`; ein toter Gegner tritt aus | die Fähigkeit Stun |
 | `time_anchors` | jeder Zeitanker (M16) | `PlayerSpawner`: Er sucht dort den Rückkehrpunkt |
@@ -651,17 +711,27 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `EnemyRangedAttack` | `entities/enemies/attacks/enemy_ranged_attack.gd` | Angriffs-Modul Fernkampf: löst `RangedAttack` aus (M14) |
 | `ViewSettings` | `world/view/view_settings.gd` | Bauplan der Ansicht: Zoom der Welt, faire Grenze für Gegner und die Kachel als Maß – `TILE_SIZE`, `tiles(anzahl)` (M13) |
 | `DialogData` | `dialogs/dialog_data.gd` | Bauplan eines Gesprächs: Sprecher und Zeilen; `find_line(name)`, `speaker_of(zeile)`, `check()` liefert Fehler als Sätze (M15) |
-| `DialogLine` | `dialogs/dialog_line.gd` | eine Zeile: `id`, `speaker`, `text`, `choices`, `next`, `reward`, `marks_done`; `get_choices()`, `has_choices()`; `END` ist das Sprungziel „end“ (M15) |
+| `DialogLine` | `dialogs/dialog_line.gd` | eine Zeile: `id`, `speaker`, `text`, `choices`, `next`, `reward`, `marks_done`, seit M17 `start_mission` und `hand_in_mission`; `get_choices()`, `has_choices()`; `END` ist das Sprungziel „end“ (M15) |
 | `DialogChoice` | `dialogs/dialog_choice.gd` | eine Antwort: `text`, `next` (M15) |
 | `DialogSpeaker` | `dialogs/dialog_speaker.gd` | wer spricht: `display_name`, `portrait` (M15) |
 | `DialogRunner` | `dialogs/dialog_runner.gd` | geht ein Gespräch durch: `start()`, `current()`, `advance()`, `choose(nummer)`, `stop()`; kein Knoten, sondern ein `RefCounted` (M15) |
 | `DialogSettings` | `ui/dialog/dialog_settings.gd` | Bauplan der Werte-Datei des Dialogfensters: Buchstaben je Sekunde, Wippen des Pfeils (M15) |
-| `Npc` | `entities/npcs/npc.gd` | ein NPC: Gespräch, kurzes Gespräch, Blickrichtung; entscheidet über Beute und „erledigt“ (M15) |
+| `Npc` | `entities/npcs/npc.gd` | ein NPC: Gespräch, kurzes Gespräch, Blickrichtung; entscheidet über Beute und „erledigt“ (M15); seit M17 meldet er Missionen und hat `get_dialogs()` |
 | `TalkBubble` | `components/talk_bubble/talk_bubble.gd` | Baustein Sprechblase (M15) |
 | `TalkFacing` | `components/talk_facing/talk_facing.gd` | Baustein: die Figur blickt im Gespräch zum Sprecher (M15, Nachbesserung) |
 | `Persistent` | `components/persistent/persistent.gd` | Baustein: merkt sich den Zustand seines Elternknotens im Spielstand (M16) |
 | `PlayerProgress` | `components/player_progress/player_progress.gd` | Baustein: Inventar und Ausrüstung der Spielfigur aus dem Spielstand und zurück (M16) |
 | `TimeAnchor` | `world/time_anchor/time_anchor.gd` | Zeitanker: Rasten, Rückkehrpunkt, Speichern (M16) |
+| `MissionList` | `missions/mission_list.gd` | Bauplan der Missionen-Datei eines Levels: `missions`, `find(name)`, `check()` (M17) |
+| `MissionData` | `missions/mission_data.gd` | Bauplan einer Mission: `id`, `title`, `description`, `required`, `starts_with_level`, `hand_in`, `objectives`, `reward`; `has_item_objectives()`, `check()` (M17) |
+| `MissionObjective` | `missions/mission_objective.gd` | Bauplan eines Ziels: `text`, `count`; `counts_event()`, `get_item()`, `takes_items()`, `check()` (M17) |
+| `EventObjective` | `missions/event_objective.gd` | erweitert `MissionObjective`: ein Ereignis, `event` (M17) |
+| `ItemObjective` | `missions/item_objective.gd` | erweitert `MissionObjective`: Gegenstände im Inventar, `item`, `take_on_hand_in` (M17) |
+| `MissionTracker` | `missions/mission_tracker.gd` | die eine Stelle für die Missionen eines Levels: `start(name)`, `hand_in(name, player_id)`, `get_state(name)`, `are_required_done()`, `get_level_id()`; Stände `ACTIVE`, `READY`, `DONE` (M17) |
+| `MissionCue` | `components/mission_cue/mission_cue.gd` | Baustein: meldet auf ein Signal ein Ereignis für Missionen (M17) |
+| `QuestGiver` | `entities/npcs/quest_giver.gd` | erweitert `Npc`: Auftraggeber mit `mission_id` und vier Gesprächen; `mission_state()` (M17) |
+| `LevelExit` | `world/level_exit/level_exit.gd` | Ausgang eines Levels: E meldet `level_exit_requested` (M17) |
+| `MissionPanelSettings` | `ui/missions/mission_panel_settings.gd` | Bauplan der Werte-Datei der Missionsanzeige: `max_missions`, `notice_time`, `notice_fade` (M17) |
 
 ### Werte-Dateien – `data/`
 
@@ -718,6 +788,13 @@ Trefferzonen sind `Area2D`: Eine `Hurtbox` liegt auf ihrer Ebene und sucht selbs
 | `data/loot/shaman_gift.tres` | `LootTable` | 5 Pfeile immer – das Geschenk des Schamanen (M15) |
 | `data/skins/shaman.tres`, `cave_lion.tres` | `CharacterSkin` | NPCs (M15): Blätter von `Shaman` und `CaveLion`, Bild 16 × 16, `offset` (0, −2), Schatten bei (0, 5), `walk_reference_speed` 50; Stehen 1 Bild, Laufen 4 à 8/s |
 | `data/ui/dialog.tres` | `DialogSettings` | `characters_per_second` 40, `arrow_bob_rate` 2 (M15) |
+| `data/missions/test_chamber.tres` | `MissionList` | Missionen der Testkammer (M17): `caveman` „Der Höhlenmensch“ – Pflicht, beginnt mit dem Level, „Besiege den Höhlenmenschen“, Ereignis `caveman_defeated`, 1 –; `big_chest` „Die grosse Truhe“ – Pflicht, beginnt mit dem Level, „Öffne die grosse Truhe“, `chest_big_opened`, 1 –; `branches` „Holz für das Feuer“ – Neben, Abgabe, „Äste“: 2 Äste, werden abgegeben, Belohnung `mission_branches.tres` |
+| `data/loot/mission_branches.tres` | `LootTable` | 5 Kunai immer – Belohnung der Mission „Holz für das Feuer“ (M17) |
+| `data/dialogs/gatherer_offer.tres`, `gatherer_waiting.tres`, `gatherer_ready.tres`, `gatherer_done.tres` | `DialogData` | Gespräche der Sammlerin (M17): Angebot mit Frage – „Mach ich.“ startet `branches`, „Jetzt nicht.“ –, Erinnerung, Abgabe mit Frage – „Hier, bitte.“ gibt ab, „Noch nicht.“ –, Dank |
+| `data/dialogs/speakers/gatherer.tres` | `DialogSpeaker` | „Sammlerin“ mit `Actor/Character/Cavegirl2/Faceset.png` (M17) |
+| `data/skins/cavegirl2.tres` | `CharacterSkin` | die Sammlerin (M17): Blätter von `Cavegirl2`, sonst wie `cave_lion.tres` |
+| `data/skins/level_exit.tres` | `PropSkin` | Ausgang (M17): `TilesetElement.png`, aus und an (6,11) – die offene Luke mit Treppe |
+| `data/ui/missions.tres` | `MissionPanelSettings` | `max_missions` 3, `notice_time` 2,5, `notice_fade` 0,2 (M17) |
 | `data/skins/caveman_brown.tres` | `CharacterSkin` | wie `caveman.tres`, mit den Blättern von `Caveman2` und `walk_reference_speed` 60 (M13) |
 | `data/effects/claw.tres` | `EffectData` | `FX/Attack/Claw/SpriteSheet.png`, 4 à 32, 16 Bilder je Sekunde (M13) |
 | `data/effects/emote_alert.tres`, `emote_search.tres` | `EffectData` | `Ui/Emote/emote22.png` („!“) 0,8 s und `emote23.png` („?“) 1 s, je 14 × 13, 24 Pixel über der Mitte (M13) |
@@ -793,6 +870,7 @@ Tempo in Pixeln pro Sekunde, Strecken in Pixeln, Zeiten in Sekunden; „4 à 8/s
 | `LifeBar` | `components/life_bar/` | Kleine Lebensleiste über einer Figur aus zwei gleich großen Bildern: leere Leiste und Füllung von links, der Rand bleibt. Erscheint ab dem ersten Schaden, verschwindet beim Tod. Hört auf `Health` (M13). | `texture_under`, `texture_progress`, `border`, `hide_when_full`, `health_name` |
 | `TalkBubble` | `components/talk_bubble/` | `Sprite2D` mit `Ui/Dialog/DialogInfo.png` in 4 Bildern: spielt eine Sprechblase mit ein, zwei, drei Punkten ab, Ebene 40. Ob sie zu sehen ist, entscheidet der Elternknoten (M15). | `fps` (3), `cycle` (1, 2, 3) |
 | `TalkFacing` | `components/talk_facing/` | Hört auf `dialog_started` und `dialog_finished` mit der `player_id` seiner Figur: setzt ihren Wert `look_target` auf den Sprecher – den Knoten mit `source_id` – und nimmt ihn am Ende wieder weg. Die Figur blickt dann zum Sprecher statt zur Maus (M15, Nachbesserung). | – |
+| `MissionCue` | `components/mission_cue/` | Meldet auf ein Signal eines Geschwisters ein Ereignis für Missionen: `mission_event(event, amount)`; welche Mission es zählt, entscheidet der `MissionTracker`. Meldet `cued(event)`. Aufbau wie `LootDropper` (M17). | `event`, `amount` (1), `source_name` (Standard `Health`), `signal_name` (Standard `died`) |
 | `Persistent` | `components/persistent/` | Merkt sich den Zustand seines Elternknotens in `GameState`: Sobald das Ding bereit ist, holt er den gemerkten Zustand und gibt ihn an `apply_saved_state(daten)`; sendet das Ding danach sein Signal `save_signal`, legt er `get_saved_state()` ab. Kennung: Level und Pfad des Dings in der Level-Szene. Dinge, die erst im Spiel entstehen, etwa Beute, merkt er sich nicht. Entscheidet nichts (M16) | `save_signal` (Standard `state_changed`) |
 | `PlayerProgress` | `components/player_progress/` | Letztes Kind der Spielfigur: füllt beim Erscheinen `Inventory` und `Equipment` aus `GameState` unter ihrer `player_id`, danach ist das Leben voll; ohne gemerkte Daten merkt er den Startinhalt. Jede Änderung legt er zurück (M16) | `inventory_name`, `equipment_name`, `health_name` |
 | `Collector` | `components/collector/` | `Area2D` an der Figur, Kreis 6 Pixel, Maske `pickup`. Nimmt aus jedem bereiten `Pickup` im Kreis so viel, wie das Geschwister `Inventory` annimmt; der Rest bleibt liegen. Meldet `collected`, `rejected` und schreibt „S1 Beute“ in die Debug-Anzeige (M9). | – |
@@ -822,7 +900,7 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 | `entities/enemies/enemy.tscn` | `enemy.gd` | Grundszene eines Gegners mit allen Bausteinen außer dem Angriff, dem leeren Knoten `Attacks` und dem Zustandsautomaten `Brain` (M13; seit M14 ohne Angriff) |
 | `entities/enemies/melee_enemy.tscn` | – (erbt von `enemy.tscn`) | Gegnertyp Nahkämpfer: Waffe `MeleeAttack`, Effekt `ClawEffect`, Angriffs-Modul `Attacks/Melee` (M14) |
 | `entities/enemies/ranged_enemy.tscn` | – (erbt von `enemy.tscn`) | Gegnertyp Fernkämpfer: Waffe `RangedAttack` mit `projectile.tscn`, Angriffs-Modul `Attacks/Ranged` (M14) |
-| `entities/enemies/caveman.tscn` | – (erbt seit M14 von `melee_enemy.tscn`) | der Höhlenmensch: Skin, Werte, Faust, Beute (M13) |
+| `entities/enemies/caveman.tscn` | – (erbt seit M14 von `melee_enemy.tscn`) | der Höhlenmensch: Skin, Werte, Faust, Beute (M13); seit M17 ein `MissionCue` mit `caveman_defeated` |
 | `entities/enemies/stone_thrower.tscn` | – (erbt von `ranged_enemy.tscn`) | die Steinwerferin: Skin, Werte, Wurf, Beute (M14) |
 | `components/state_machine/state_machine.tscn`, `components/perception/perception.tscn`, `components/life_bar/life_bar.tscn` | je ein Skript daneben | Bausteine, siehe oben (M13) |
 | `entities/npcs/npc.tscn` | `npc.gd` | Grundszene eines NPC: `StaticBody2D` auf `world`, Körper 12 × 12, Kinder `CollisionShape2D`, `PlaceholderView`, `CharacterView`, `Interactable` (Kreis 10), `TalkBubble` 19 Pixel über der Mitte (M15) |
@@ -834,6 +912,11 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 | `components/persistent/persistent.tscn` | `persistent.gd` | Baustein, siehe oben (M16); hängt in `chest.tscn`, `destructible.tscn`, `pickup.tscn` (Signal `taken`), `lever.tscn`, `door.tscn` und `npc.tscn` (Signal `progress_changed`) |
 | `components/player_progress/player_progress.tscn` | `player_progress.gd` | Baustein, siehe oben (M16) |
 | `world/time_anchor/time_anchor.tscn` | `time_anchor.gd` | Zeitanker (M16): `StaticBody2D` auf `world` in der Gruppe `time_anchors`; Kinder `CollisionShape2D` (14 × 10, 2 Pixel tiefer), `PlaceholderView`, `PropView`, `Interactable` (16 × 16), `RestEffect` (ein `EffectCue`, Funkeln), `SavedLabel` (`Label` „Gespeichert“, `NormalFont` 9, 14 bis 26 Pixel über der Mitte) |
+| `missions/mission_tracker.tscn` | `mission_tracker.gd` | die eine Stelle für die Missionen eines Levels; ein `Node` (M17) |
+| `ui/missions/mission_panel.tscn` | `mission_panel.gd` | Missionsliste und Hinweise; `CanvasLayer` auf Ebene 90 mit `List` (`PanelContainer`, darin `Rows` mit `Header` – `Arrow` mit `Icon`, `Title`, `Key` –, `Missions` und `More`) und `Notice` (`PanelContainer` mit `Interior` und `Rows`: `Kind`, `Title`); Thema `ui/missions/mission_theme.tres` (M17) |
+| `entities/npcs/gatherer.tscn` | `quest_giver.gd` – erbt von `npc.tscn` | die Sammlerin, Auftraggeberin der Mission `branches` (M17) |
+| `world/level_exit/level_exit.tscn` | `level_exit.gd` | Ausgang; Kinder `PropView` und `Interactable` (16 × 16) (M17) |
+| `components/mission_cue/mission_cue.tscn` | `mission_cue.gd` | Baustein, siehe oben (M17) |
 | `world/damage_zone/damage_zone.tscn` | keins; die Szene erbt von `hitbox.tscn` | Schadensfeld |
 | `world/door/door.tscn` | `door.gd` | Tür oder Gittertor; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView`, `Interactable`, `DoorwaySensor` (M8) |
 | `world/lever/lever.tscn` | `lever.gd` | Hebel; Kinder `CollisionShape2D`, `PlaceholderView`, `PropView`, `Interactable` (M8) |
@@ -951,10 +1034,11 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Fernkämpferin (M14): `StoneThrower`, ein `stone_thrower.tscn`, steht bei (464, 320) und patrouilliert mit `patrol_tiles` (8, 0), also 128 Pixel, bis (592, 320) – in der freien Fläche unten in der Mitte, mit mindestens 5 Kacheln Platz zu jedem Block. Ihre `Perception` hat hier `debug_draw` an. Sie liegt hinter dem Höhlenmenschen und vor dem `LootSpawner`.
 - NPCs (M15): `Shaman`, ein `shaman.tscn`, steht bei (312, 120) rechts neben den Startpunkten; `Hunter`, ein `hunter.tscn`, bei (168, 136) links daneben. Beide blicken zu Beginn nach unten und liegen hinter der Steinwerferin, vor dem `LootSpawner`.
 - Zeitanker (M16): `TimeAnchor` bei (240, 88), 48 Pixel über den Startpunkten; die Figur erwacht bei (240, 104). Er liegt hinter dem Jäger, vor dem `LootSpawner`.
+- Missionen (M17): `MissionTracker` mit `data/missions/test_chamber.tres`, vor dem `LootSpawner`; an `ChestBig` hängt ein `MissionCue` (Signal `opened`, Ereignis `chest_big_opened`). Die Sammlerin `Gatherer`, eine `gatherer.tscn`, steht bei (232, 420), 56 Pixel rechts vom Fuß des Baums. Die Nische `ExitNiche` mit Ursprung (880, 16) oben rechts: `NicheWalls` – links 16 × 64 ab (880, 16), unten je 16 × 16 bei (896, 64) und (928, 64) –, innen x 896 bis 944, y 16 bis 64; `MissionGate`, ein Gittertor auf dem Kanal `missions_done`, bei (920, 72); `LevelExit` bei (920, 40). E an der Luke schließt das Level ab wie Bild auf.
 - Test-Tasten (M16), nur im Debug-Build: F4 löscht Datei und Fortschritt und lädt neu; Bild auf schließt das Level ab, Bild ab verlässt es – je mit neuem Lauf an den Startpunkten; Ende schickt dem Spiel die Bitte zum Schließen wie das X am Fenster – der `SaveManager` speichert und beendet. Die Debug-Zeile „Spielstand“ zeigt Lauf, Rückkehrpunkt und letzte Speicherung.
-- `InventoryWindow` (M11), `Hud` (M12) und `DialogWindow` (M15) hängen als letzte Kinder in der Kammer. `DialogWindow` steht ganz hinten: So hört es Tasten vor dem Inventarfenster und fängt Tab ab, solange ein Gespräch läuft.
+- `InventoryWindow` (M11), `Hud` (M12), `MissionPanel` (M17) und `DialogWindow` (M15) hängen als letzte Kinder in der Kammer. `DialogWindow` steht ganz hinten: So hört es Tasten vor dem Inventarfenster und fängt Tab ab, solange ein Gespräch läuft.
 - `LootSpawner` (M9) liegt vor dem `PlayerSpawner`; so liegt Beute über dem Zerstörbaren und den Truhen, aber unter der Figur.
-- Die Puppen, `DamageZone`, `DamageStrip`, `InteractionCorner`, `DestructibleField`, `ChestSmall`, `ChestBig`, `StartItems`, `Caveman`, `StoneThrower`, `Shaman`, `Hunter`, `TimeAnchor`, `LootSpawner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair`, `DebugOverlay`, `InventoryWindow`, `Hud` und `DialogWindow` sind eingehängt und lassen sich einzeln löschen.
+- Die Puppen, `DamageZone`, `DamageStrip`, `InteractionCorner`, `DestructibleField`, `ChestSmall`, `ChestBig`, `StartItems`, `Caveman`, `StoneThrower`, `Shaman`, `Hunter`, `TimeAnchor`, `Gatherer`, `ExitNiche`, `MissionTracker`, `LootSpawner`, `PlayerSpawner`, `ProjectileSpawner`, `PlayerCamera`, `Crosshair`, `DebugOverlay`, `InventoryWindow`, `Hud`, `MissionPanel` und `DialogWindow` sind eingehängt und lassen sich einzeln löschen.
 - `DebugOverlay` blendet hier „Maus“, „Kamera“ und „Raumzeit“ aus.
 - F2 und der Tod einer Figur laden die Szene neu, direkt in `test_chamber.gd`, seit M16 nach einer Bitte ums Speichern; der Fortschritt bleibt. Ab M18 übernimmt das der `SceneManager`.
 
@@ -1076,11 +1160,11 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 
 **Spielstand im Einzelnen (M16)**
 
-- `GameState` hält den Fortschritt an genau einer Stelle: `portal` (Portalstand), `level` (Levelstand, leer ohne Lauf), `current_level` (Level des Laufs, leer ohne) und `respawn` (Rückkehrpunkt: Level und Zeitanker, leer heißt Landepunkt). `active()` liefert im Lauf den Levelstand, sonst den Portalstand. Ein Stand ist ein Dictionary mit `players` (je `player_id` als Text: `inventory`, `equipment`), `objects` (je Level und Pfad ein kleiner Eintrag) und `completed` (abgeschlossene Level).
-- Ein Level meldet sich in `_enter_tree()` mit `enter_level(level_id)`: Läuft dort schon ein Lauf, geht er weiter, sonst beginnt einer – `begin_level()`: Levelstand = Kopie des Portalstands, Rückkehrpunkt = Landepunkt. `_enter_tree()`, weil die Dinge der Welt den Stand in ihrem `_ready()` brauchen, und das der Kinder kommt vor dem des Levels.
+- `GameState` hält den Fortschritt an genau einer Stelle: `portal` (Kapselstand, bis 22.11.2026 „Portalstand“), `level` (Levelstand, leer ohne Lauf), `current_level` (Level des Laufs, leer ohne) und `respawn` (Rückkehrpunkt: Level und Zeitanker, leer heißt Landepunkt). `active()` liefert im Lauf den Levelstand, sonst den Kapselstand. Ein Stand ist ein Dictionary mit `players` (je `player_id` als Text: `inventory`, `equipment`), `objects` (je Level und Pfad ein kleiner Eintrag) und `completed` (abgeschlossene Level).
+- Ein Level meldet sich in `_enter_tree()` mit `enter_level(level_id)`: Läuft dort schon ein Lauf, geht er weiter, sonst beginnt einer – `begin_level()`: Levelstand = Kopie des Kapselstands, Rückkehrpunkt = Landepunkt. `_enter_tree()`, weil die Dinge der Welt den Stand in ihrem `_ready()` brauchen, und das der Kinder kommt vor dem des Levels.
 - Der `SaveManager` lädt die Datei deshalb schon in seinem `_enter_tree()`: Globale Dienste betreten den Baum vor dem ersten Level, ihr `_ready()` kommt aber erst nach dessen `_enter_tree()`. Mit `_ready()` hätte er den Lauf überschrieben – der Prüflauf ohne Fenster hat das gezeigt.
-- `complete_level()`: Levelstand → Portalstand, das Level kommt in `completed`, der Lauf endet, Bitte ums Speichern. `leave_level()`: Levelstand verwerfen, der Lauf endet, Bitte ums Speichern. In der Testkammer beginnt danach ein neuer Lauf; ab M18 geht es in die Zeitkapsel.
-- Ohne gemerkte Daten einer Spielfigur gilt der Startinhalt aus `data/player/inventory.tres` und `equipment.tres`; `PlayerProgress` merkt ihn beim ersten Erscheinen im Levelstand. Der Portalstand eines neuen Spiels ist deshalb leer – das ist derselbe Neubeginn.
+- `complete_level()`: Levelstand → Kapselstand, das Level kommt in `completed`, der Lauf endet, Bitte ums Speichern. `leave_level()`: Levelstand verwerfen, der Lauf endet, Bitte ums Speichern. In der Testkammer beginnt danach ein neuer Lauf; ab M18 geht es in die Zeitkapsel.
+- Ohne gemerkte Daten einer Spielfigur gilt der Startinhalt aus `data/player/inventory.tres` und `equipment.tres`; `PlayerProgress` merkt ihn beim ersten Erscheinen im Levelstand. Der Kapselstand eines neuen Spiels ist deshalb leer – das ist derselbe Neubeginn.
 - Ein Rückkehrpunkt für das ganze Spiel (`respawn`) statt eines Zeitankers je Level wie im Plan: Es läuft immer nur ein Lauf, und Beginn, Abschluss und Verlassen setzen ihn auf den Landepunkt zurück.
 - Datei: `user://saves/slot_1.json`, mit Tabs eingerückt, Schlüssel sortiert: `version` (1), `saved_at`, `reason`, `current_level`, `respawn`, `portal`, `level`. Geschrieben wird erst `slot_1.json.tmp`, dann umbenannt – bricht das Schreiben ab, bleibt der alte Stand. Eine unlesbare Datei wird als `slot_1.bad.json` gesichert, dann beginnt ein neues Spiel.
 - Gespeichert wird auf `EventBus.save_requested`: Zeitanker („Rasten“), Testkammer beim Tod („Tod“) und bei F2 („Neustart“), `GameState` bei Abschluss und Verlassen; beim Schließen des Fensters der `SaveManager` selbst („Beenden“) – `set_auto_accept_quit(false)`, auf `NOTIFICATION_WM_CLOSE_REQUEST` erst speichern, dann beenden. `get_tree().quit()` allein speichert nicht.
@@ -1090,6 +1174,29 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Zeitanker: `rest(figur)` füllt `Health` und `Energy` der Figur, setzt `GameState.set_respawn()`, sendet `rested` (Funkeln) und bittet ums Speichern; kommt dabei `game_saved`, steigt „Gespeichert“ 1,2 Sekunden lang 4 Pixel auf und verblasst. Er leuchtet über `respawn_changed`. Seine Kennung ist sein Pfad im Level.
 - Abschalten: ohne `SaveManager` alles wie bisher, nur ohne Datei und ohne „Gespeichert“; ohne `GameState` wie vor M16; ohne `Persistent` an einem Ding vergisst es seinen Zustand; ohne `PlayerProgress` Startinhalt; ohne Zeitanker der Startpunkt.
 - Mehrspieler: Den Fortschritt führt später der Gastgeber; ein Lauf gilt für alle, jede Figur hat ihr Inventar unter ihrer `player_id`.
+
+**Missionen im Einzelnen (M17)**
+
+- Idee des Nutzers, geprüft: je Level eine Missionen-Datei (`MissionList`), etwa `data/missions/test_chamber.tres`; jede Mission ist darin ein Eintrag mit Namen (`id`). Gespräche und Spielstand nennen sie über diesen Namen, nicht über einen Dateipfad – ein Spielstand bleibt gültig, wenn die Datei umgebaut wird, solange die Namen bleiben. Missionen ohne Level, etwa in der Zeitkapsel (M18), bekommen eine eigene Datei im selben Format.
+- Baupläne in `missions/`: `MissionList`, `MissionData`, `MissionObjective` mit den Arten `EventObjective` und `ItemObjective`. Eine neue Art von Ziel – etwa „Ort erreichen“ – erbt von `MissionObjective` und beantwortet `counts_event()` oder `get_item()`. `check()` findet doppelte oder leere Namen, Missionen ohne Titel oder Ziele, Ziele ohne Text, Ereignis oder Gegenstand und Zeichen, die `NormalFont` nicht kennt; der `MissionTracker` schreibt das beim Start ins Ausgabefenster.
+- `MissionTracker` (`missions/mission_tracker.tscn`) ist die eine Stelle für Missionen im Level, wie der `LootSpawner` für Beute. Er beginnt einen Augenblick nach dem Start, wenn Anzeige, Auftraggeber und Tore zuhören: Zuerst meldet er den Stand aus dem Spielstand, dann zählt er die Gegenstände neu, dann beginnen die Missionen mit `starts_with_level`, die noch nicht angenommen sind.
+- Stände: nicht angenommen – kein Eintrag –, `active` (läuft), `ready` (alle Ziele erfüllt, wartet auf die Abgabe), `done` (erfüllt). Ohne Abgabe ist eine Mission erfüllt, sobald alle Ziele erfüllt sind; mit `hand_in` wird sie bereit und fällt zurück auf „läuft“, wenn Gegenstände wieder fehlen.
+- Ereignis-Ziele zählen `mission_event` – nur bei laufenden Missionen, höchstens bis `count`. Gegenstand-Ziele zählen bei jeder Änderung eines Inventars neu, was die Figur mit den meisten davon trägt; abgeben kann nur, wer alles trägt. Der Tracker hört auf `changed` am `Inventory` jeder Figur der Gruppe `players`, auch wenn sie erst später erscheint.
+- Starten und Abgeben: Erscheint eine Gesprächszeile mit `start_mission` oder `hand_in_mission`, meldet der NPC `mission_start_requested` oder `mission_hand_in_requested`; der Tracker entscheidet. Bei der Abgabe ist die Mission zuerst erfüllt, dann nimmt er die Gegenstände aus dem Inventar der Figur – so fällt sie dabei nicht auf „läuft“ zurück –, dann bestellt er die Belohnung über `loot_requested` am Ort der Figur. Ohne Abgabe springt sie vor die Figur mit der kleinsten Nummer.
+- Jeder Wechsel geht zuerst in `GameState` (`set_mission_state`), dann kommt `mission_changed`, dann die ganze Liste für die Anzeige (`mission_list_changed`), je Ziel mit `text`, `current`, `count` und `done`. Die Liste geht nur hinaus, wenn sie sich geändert hat.
+- Weg aus dem Level: Sind alle Pflichtmissionen erfüllt, meldet der Tracker `switch_changed` auf seinem Kanal `unlock_channel` (`missions_done`) als an – wie ein Hebel. Beim Start meldet er den Stand einmal, damit ein Tor ihn auch nach dem Laden kennt. Ohne Pflichtmissionen ist der Weg von Anfang an frei.
+- Spielstand: im Abschnitt `missions` je Level und Mission `{"state": …, "progress": [Zahl je Ziel]}`; bei Gegenstand-Zielen steht dort der zuletzt gezählte Stand, gerechnet wird mit dem Inventar. Beim Laden fallen unbekannte Stände weg, Zahlen werden auf 0 bis `count` begrenzt. Ein Spielstand aus M16 ohne den Abschnitt lädt; die Missionen beginnen dann neu. Tod, F2 und Beenden behalten die Missionen, „Level verlassen“ verwirft sie, der Abschluss bringt sie in die Zeitkapsel – bei einer Rückkehr ins Level sind sie erfüllt und das Tor ist offen.
+- `MissionCue` hängt im Höhlenmenschen (`caveman_defeated`) und in der Testkammer an `ChestBig` (Signal `opened`, `chest_big_opened`). Eine Truhe, die aus dem Spielstand offen dasteht, meldet nichts – deshalb im Test zuerst F4.
+- Auftraggeber `QuestGiver`: `mission_id` und vier Gespräche – `offer_dialog`, `waiting_dialog`, `ready_dialog`, `done_dialog`. Er liest den Stand seiner Mission in `GameState` und wählt danach; ohne `GameState` folgt er den Meldungen. Fehlt ein Gespräch, spricht er wie ein gewöhnlicher NPC. `Npc` hat dafür `get_dialogs()` – alle Gespräche für den Spielstand, der Auftraggeber ergänzt seine –, und die Warnung „kein Gespräch gesetzt“ fragt jetzt `current_dialog()`.
+- Die Sammlerin heißt im Code `gatherer`, weil `Collector` schon der Baustein zum Aufsammeln ist: `entities/npcs/gatherer.tscn` erbt von `npc.tscn` und trägt das Skript `quest_giver.gd`.
+- Anzeige `ui/missions/mission_panel.tscn`, ein `CanvasLayer` auf Ebene 90 wie das HUD. Liste bei (4, 40) unter den Herzen: nur laufende und bereite Missionen, Pflicht zuerst – orange, Neben weiß –, je Mission der Titel und darunter die Ziele mit Kästchen und „Stand/Zahl“; mehr als `max_missions` – „+1 weitere“; keine – „Keine offenen Missionen“. Ohne Meldung eines Trackers bleibt sie unsichtbar. Thema `ui/missions/mission_theme.tres`: `NormalFont` 9 mit 3 Pixeln mehr Wortabstand (`mission_font.tres`), Grund `nine_path_bg_2.png` zu 75 % deckend, Kästchen `checked.png` und `unchecked.png` auf 14 × 14 beschnitten.
+- Ein- und Ausklappen: J (`mission_toggle`) oder ein Linksklick auf die Überschrift. Der Zustand ist eine statische Variable (`collapsed`) und überlebt das Neuladen des Raums bis zum Ende des Spiels; gemerkt wird er mit den Optionen (M20). Ausgeklappt reicht die Überschrift über die ganze Breite der Liste.
+- Hinweise: Die Anzeige vergleicht jede Liste mit der vorigen – „Neue Mission“, wenn eine angenommen wurde, „Mission erfüllt“, wenn eine erfüllt ist; die erste Liste nach dem Betreten ist nur der Ausgang. Je Hinweis 2,5 Sekunden mit Ein- und Ausblenden, mehrere nacheinander, oben in der Mitte im Holz-Rahmen.
+- Klick ohne Schlag: Nur die Überschrift nimmt Klicks an (`mouse_filter` „Stop“). `PlayerInput` fragt `get_viewport().gui_get_hovered_control()`: Liegt die Maus auf einem Bedienelement mit „Stop“, greift die Figur nicht an und schießt nicht, bis die Taste wieder los ist. Der Rest der Anzeige lässt die Maus durch.
+- Ausgang `LevelExit`: ein `Node2D` mit `PropView` und `Interactable`; E meldet `level_exit_requested` mit der Nummer der Figur, die Testkammer schließt dann das Level ab. Die Figur läuft über die Luke hinweg.
+- Mehrspieler: Die Missionen gelten für alle Figuren eines Laufs; entscheiden tut der Tracker, später der Gastgeber. Missionen je Spieler sind offen.
+- Abschalten: ohne `MissionPanel` zählen die Missionen weiter, zu sehen in der Debug-Zeile; ohne `MissionTracker` gibt es keine Missionen, keine Liste, das Tor bleibt zu, die Sammlerin bietet an, aber nichts beginnt; ohne `MissionCue` zählt das Ding nicht; ohne `GameState` gelten die Missionen bis zum Neustart des Raums.
+- Eine neue Mission: in der Missionen-Datei des Levels im Inspektor einen Eintrag anlegen – Name, Titel, Pflicht oder nicht, Ziele, Belohnung. Ein neues Ereignis: `components/mission_cue/mission_cue.tscn` an das Ding hängen und `event` wählen. Ein neuer Auftraggeber: „Neue geerbte Szene“ aus `entities/npcs/npc.tscn`, als Skript `quest_giver.gd`, dazu `mission_id` und die vier Gespräche.
 
 **HUD im Einzelnen (M12)**
 
@@ -1113,6 +1220,16 @@ Eine neue Fähigkeit ist ein Ordner mit Szene, Skript und Werte-Datei; das Skrip
 - Im Editor zeigt die Testkammer nur die blauen Kollisionsflächen; Farben, Raster und Anzeige erscheinen erst im laufenden Spiel.
 
 ### Dateien je Modul
+
+**M17 – Missionen**
+
+- Neu: `missions/` mit `mission_list.gd`, `mission_data.gd`, `mission_objective.gd`, `event_objective.gd`, `item_objective.gd`, `mission_tracker.gd`, `mission_tracker.tscn`
+- Neu: `components/mission_cue/` mit `mission_cue.tscn`, `mission_cue.gd`; `entities/npcs/quest_giver.gd`, `entities/npcs/gatherer.tscn`; `world/level_exit/` mit `level_exit.tscn`, `level_exit.gd`
+- Neu: `ui/missions/` mit `mission_panel.tscn`, `mission_panel.gd`, `mission_panel_settings.gd`, `mission_theme.tres`, `mission_font.tres`
+- Neu: `data/missions/test_chamber.tres`; `data/loot/mission_branches.tres`; `data/dialogs/gatherer_offer.tres`, `gatherer_waiting.tres`, `gatherer_ready.tres`, `gatherer_done.tres`, `speakers/gatherer.tres`; `data/skins/cavegirl2.tres`, `level_exit.tres`; `data/ui/missions.tres`
+- Geändert: `autoload/event_bus.gd` (sechs Meldungen), `autoload/game_state.gd` (Missionen), `autoload/input_setup.gd` (`mission_toggle`), `dialogs/dialog_line.gd` (`start_mission`, `hand_in_mission`), `entities/npcs/npc.gd` (meldet Missionen, `get_dialogs()`), `entities/player/player_input.gd` (kein Schlag über Bedienelementen), `entities/enemies/caveman.tscn` (`MissionCue`)
+- Geändert: `levels/test_chamber/test_chamber.tscn` (`Gatherer`, `ExitNiche`, `MissionTracker`, `MissionPanel`, `MissionCue` an `ChestBig`), `levels/test_chamber/test_chamber.gd` (Ausgang), `README.md` (Ordner, Taste J, Missionen), `docs/projekt_stand.md`, `docs/asset_katalog.md`
+- Abschluss: `m17_abschluss.zip` mit `docs/projekt_stand.md` und `docs/asset_katalog.md`
 
 **M16 – Speichern & Laden**
 
@@ -1310,13 +1427,15 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 | Übungspuppen | `Actor/Monster/BambooYellow/` für die festen Puppen, `Bamboo/` für das bewegliche Ziel; 4 × 4 à 16 | beide geprüft, BambooYellow am 17.11.2026: orange, gleiches Raster wie Bamboo; eingebaut mit A1 |
 | Gegner | `Actor/Monster/<Name>/`, 4 × 4 à 16 | geprüft an Slime: Spalten wie bei den Figuren, Zeilen = Laufbilder |
 | Erster Gegner (M13) | `Actor/Character/Caveman2/SeparateAnim/` – Idle, Walk, Attack, Dead; `Ui/Emote/emote22.png` („!“) und `emote23.png` („?“); `FX/Attack/Claw/SpriteSheet.png`, 4 à 32; `Ui/Receptacle/LifeBarMiniUnder.png` und `LifeBarMiniProgress.png`, je 18 × 4 | geprüft am 18.11.2026; eingebaut mit M13 |
-| NPCs | `Actor/Character/<Name>/SpriteSheet.png`, 4 × 7 à 16, dazu `Faceset.png` | geprüft: Zeilen 1 bis 4 Laufen, 5 Angriff, 6 Sprung, 7 Tod, Gegenstand und zwei Sonderposen; eingebaut mit M15: `Shaman` und `CaveLion`, je `SeparateAnim/Idle.png` und `Walk.png` und das Porträt `Faceset.png`, 38 × 38 |
+| NPCs | `Actor/Character/<Name>/SpriteSheet.png`, 4 × 7 à 16, dazu `Faceset.png` | geprüft: Zeilen 1 bis 4 Laufen, 5 Angriff, 6 Sprung, 7 Tod, Gegenstand und zwei Sonderposen; eingebaut mit M15: `Shaman` und `CaveLion`, je `SeparateAnim/Idle.png` und `Walk.png` und das Porträt `Faceset.png`, 38 × 38; mit M17 `Cavegirl2` als Sammlerin, Porträt 37 × 38 |
 | Dialogfeld (M15) | `Ui/Dialog/DialogBoxFaceset.png` und `DialogBox.png`, je 300 × 58; `ChoiceBox.png` 64 × 20, Ränder 5; `DialogInfo.png` 4 Blasen à 20 × 16; `Ui/Arrow.png` 13 × 13; `Ui/Input/Keyboard/Key1.png` bis `Key3.png` | geprüft am 21.11.2026; eingebaut mit M15. `YesButton.png` und `NoButton.png` tragen englische Wörter und bleiben ungenutzt |
 | Boden und Natur der Steinzeit | `Backgrounds/Tilesets/TilesetFloor.png`, `TilesetNature.png`, `TilesetRelief.png` | gesichtet; Regeln für Übergänge fehlen |
 | Wände der Testkammer | `Backgrounds/Tilesets/Interior/TilesetWallSimple.png` | gesichtet: vier Mauer-Rahmen |
 | Hebel, Druckplatte, Stacheln (M8) | `Backgrounds/Tilesets/TilesetDungeon.png`, Zellen als (Spalte, Zeile) à 16: Druckplatte oben (2,1) und gedrückt (3,1), Hebel rot (3,3) und blau (4,3), Stacheln oben (4,1) und unten (5,1) | geprüft am 17.11.2026; Hebel und Druckplatte eingebaut mit M8 |
 | Türen (M8) | `Backgrounds/Tilesets/TilesetHouse.png` Zelle (2,3): Holztür; `TilesetElement.png` Zelle (1,11): Gittertor | geprüft am 17.11.2026: nur geschlossen – ein Bild der offenen Tür hat das Paket nicht; eingebaut mit M8 |
 | Taste E (M8) | `Ui/Input/Keyboard/KeyE.png`, 13 × 13 | geprüft am 17.11.2026; eingebaut mit M8 |
+| Missionsliste (M17) | `Ui/Theme/Theme Wood/checked.png` und `unchecked.png` 16 × 16, beschnitten auf 14 × 14; `nine_path_bg_2.png` als Grund; `nine_path_panel.png` mit `nine_path_panel_interior.png` für die Hinweise; `Ui/Arrow.png` – eingeklappt gedreht –; `Ui/Input/Keyboard/KeyJ.png` | geprüft am 22.11.2026; eingebaut mit M17 und in Godot gezeichnet angesehen |
+| Ausgang (M17) | `Backgrounds/Tilesets/TilesetElement.png` Zelle (6,11): offene Luke mit Treppe, beige | geprüft am 22.11.2026; eingebaut mit M17 |
 | Kiste und Topf (M9) | `Backgrounds/Tilesets/TilesetElement.png`, Zellen als (Spalte, Zeile) à 16: Kiste (0,0), Topf (1,0), Fass (4,0) | geprüft am 17.11.2026; Kiste und Topf eingebaut mit M9 |
 | Baum, Stumpf und Stein (M9) | `Backgrounds/Tilesets/TilesetNature.png`: Baum 32 × 32 aus (0,0) bis (1,1), Stumpf 32 × 32 aus (2,8) bis (3,9), Stein (17,17) graugrün | geprüft am 17.11.2026; eingebaut mit M9. Beim Bauen hat Claude den Stein (17,17) statt (11,13) gewählt: Er passt zum Symbol des Gegenstands Stein, (11,13) sieht eher nach Schneeball aus |
 | Splitter und Funke (M9) | `FX/Particle/`: `Wood.png` 6 à 16, `Vase.png` 6 à 14, `Leaf.png` 6 à 12 × 7, `RockGray.png` 5 à 16, `Spark.png` 7 à 10 × 8 | geprüft am 17.11.2026: Bruchstücke nebeneinander; nur `Spark.png` ist eine Bildfolge, ein Funke, der wächst und vergeht; eingebaut mit M9 |
@@ -1328,7 +1447,8 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 | Leben im HUD | `Ui/Receptacle/Heart.png`, 5 Bilder à 16 | geprüft: leer bis voll in Viertelschritten; eingebaut mit M12, ein Herz sind 20 Leben |
 | Energie und Ausdauer im HUD (M12) | `Ui/Receptacle/Receptacle Sphere/BackgroundRed.png` 32 × 32 mit der Füllung `ProgressMana.png` 22 × 22 bei (5, 5) und dem Glanzpunkt `Over.png`; `Ui/Receptacle/LifeBarMiniUnder.png` 18 × 4 als Rahmen der Ausdauer-Leiste | geprüft am 17.11.2026; eingebaut mit M12 |
 | Fähigkeits-Symbole | `Ui/Skill Icon/Spell/`, 24 × 24, dazu `Ui/Input/Keyboard/Key1.png` bis `Key3.png` | eingebaut mit M12: `Items & Weapon/Boot.png` für Schnelligkeit, `Spell/Camouflage.png` für Unsichtbarkeit, `Spell/BookThunder.png` für Stun, je mit grauer Fassung `…Disabled.png`; darunter die Tasten |
-| Schrift | `Ui/Font/NormalFont.ttf` | Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt; gebaut für 9 Pixel; mit A2 für die Schadenszahlen eingebaut; im Dialog seit M15 mit 3 Pixeln mehr Wortabstand, weil ihr Leerzeichen nur 1 Pixel breit ist |
+| Schrift | `Ui/Font/NormalFont.ttf` | Probe gerendert: Ziffern, Großbuchstaben und Umlaute da, das ß fehlt; gebaut für 9 Pixel; mit A2 für die Schadenszahlen eingebaut; im Dialog seit M15 und in der Missionsanzeige seit M17 mit 3 Pixeln mehr Wortabstand, weil ihr Leerzeichen nur 1 Pixel breit ist |
+| Zeitkapsel (M18) | eigenes Bild des Nutzers, nicht aus dem Paket: `res://assets/test_art/objects/zeitkapsel.jpg` | ungeprüft – am 22.11.2026 noch nicht im Repo; der neue Chat sieht es sich an, bevor er M18 baut |
 | Geräusche | `Audio/Sounds/Whoosh & Slash/`, `Hit & Impact/`, `Magic & Skill/`, `Jump & Bounce/` | nur die Namen; anhören kann nur der Nutzer |
 | Musik | `Audio/Musics/`, 41 Stücke, etwa „2 - The Cave“ für die Steinzeit | nur die Namen |
 
@@ -1336,7 +1456,7 @@ Der vollständige Plan steht im Plan-Dokument im Tab „Grafik & Assets“. Die 
 
 Gate G1 ist bestanden: Nach dem Test von A2 hat der Nutzer am 17.11.2026 geschrieben: „Alles getestet und alles funktioniert … lass uns weitermachen“. Claude wertet das als „die Spielfigur fühlt sich gut an“. Nachstellen lässt sich weiter alles ohne Code über die Werte-Dateien in `data/`. Der Ton fehlt noch; er kommt mit A3 fast am Ende des Projekts.
 
-Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & Beute, M11 – Inventar & Ausrüstung und M12 – HUD, zuletzt am 18.11.2026. A5 – Oberfläche ist dabei zweimal gewachsen: das Holz-Thema für Fenster, dann Herzen, Energie-Kugel, Ausdauer-Leiste und Symbole. Phase 3 ist fertig: M13 – Erster Gegner, am 18.11.2026 nach einer Nachbesserung; mit ihm hat A6 – Gegner, NPCs, Bosse begonnen, und die Welt erscheint seitdem mit Zoom 2. Im neuen Chat folgte M14 – Gegnertypen: ein Baukasten für viele Gegner, mit dem Höhlenmenschen als Nahkämpfer und der Steinwerferin als Fernkämpferin; fertig am 18.11.2026. Am 21.11.2026 folgte M15 – NPCs & Dialog: ein Dialogfenster mit Antworten, der Schamane mit Geschenk und der Jäger, der nur Auskunft gibt; nach einer Nachbesserung fertig am selben Tag – die Spielfigur dreht sich im Gespräch zum NPC. Phase 4 – Spielrahmen hat begonnen: M16 – Speichern & Laden ist fertig, am 21.11.2026 im neuen Chat nach dem Plan gebaut und vom Nutzer getestet – mit Zeitanker, Portalstand und Levelstand. Als Nächstes kommt M17 – Missionen, vorgeschlagen am selben Tag. Nach Phase 4 steht Gate G2 an: Alle Mechaniken laufen in der Testkammer zusammen und überstehen Speichern und Laden. Der Ton kommt erst mit A3.
+Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & Beute, M11 – Inventar & Ausrüstung und M12 – HUD, zuletzt am 18.11.2026. A5 – Oberfläche ist dabei zweimal gewachsen: das Holz-Thema für Fenster, dann Herzen, Energie-Kugel, Ausdauer-Leiste und Symbole. Phase 3 ist fertig: M13 – Erster Gegner, am 18.11.2026 nach einer Nachbesserung; mit ihm hat A6 – Gegner, NPCs, Bosse begonnen, und die Welt erscheint seitdem mit Zoom 2. Im neuen Chat folgte M14 – Gegnertypen: ein Baukasten für viele Gegner, mit dem Höhlenmenschen als Nahkämpfer und der Steinwerferin als Fernkämpferin; fertig am 18.11.2026. Am 21.11.2026 folgte M15 – NPCs & Dialog: ein Dialogfenster mit Antworten, der Schamane mit Geschenk und der Jäger, der nur Auskunft gibt; nach einer Nachbesserung fertig am selben Tag – die Spielfigur dreht sich im Gespräch zum NPC. Phase 4 – Spielrahmen hat begonnen: M16 – Speichern & Laden ist fertig, am 21.11.2026 im neuen Chat nach dem Plan gebaut und vom Nutzer getestet – mit Zeitanker, Kapselstand und Levelstand. M17 – Missionen ist fertig, am 22.11.2026 nach dem Plan gebaut und vom Nutzer getestet: je Level eine Missionen-Datei, eine Liste zum Ein- und Ausklappen, die Sammlerin als Auftraggeberin und ein Tor vor dem Ausgang. Als Nächstes kommt M18 – Räume & Levelwechsel mit der Zeitkapsel, die im Level steht – geplant am selben Tag, gebaut im neuen Chat. Nach Phase 4 steht Gate G2 an: Alle Mechaniken laufen in der Testkammer zusammen und überstehen Speichern und Laden. Der Ton kommt erst mit A3.
 
 ## Hinweise aus der bisherigen Arbeit
 
@@ -1375,7 +1495,7 @@ Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & B
 - Knoten, die eine geerbte Szene überschreibt, nicht in ihrer Grundszene löschen – `Perception`, `CharacterView`, `Health` und `LootDropper` in `enemy.tscn`, `MeleeAttack` und `Attacks/Melee` in `melee_enemy.tscn`, `RangedAttack` und `Attacks/Ranged` in `ranged_enemy.tscn` –; das gibt Fehler in `caveman.tscn` und `stone_thrower.tscn`.
 - Ein neuer Gegner (M14): im Editor „Neue geerbte Szene“ aus `melee_enemy.tscn` oder `ranged_enemy.tscn`, als `entities/enemies/<name>.tscn` speichern, dann Skin, Werte-Dateien – Kopien aus `data/enemies/` –, Waffe und Beute wählen; ins Level instanzieren und `patrol_tiles` setzen. Mehr unter „Gegnertypen im Einzelnen (M14)“.
 - Einen Angriff abschalten, ohne ihn zu löschen: beim Knoten unter `Attacks` `enabled` aus.
-- Bildebenen der Oberfläche: HUD 90, Debug-Anzeige 100, Inventarfenster 105, Dialogfenster 106, Fadenkreuz 110. Ein neues Fenster gehört zwischen 100 und 110, eine neue Anzeige am Bildrand unter 100.
+- Bildebenen der Oberfläche: HUD und Missionsanzeige 90, Debug-Anzeige 100, Inventarfenster 105, Dialogfenster 106, Fadenkreuz 110. Ein neues Fenster gehört zwischen 100 und 110, eine neue Anzeige am Bildrand unter 100.
 - Auch das Dialogfenster ist im Editor unsichtbar (`DialogWindow/Root` ist ausgeblendet). Zum Ansehen dort das Auge an- und danach wieder ausschalten.
 - Ein neues Menü, das die Figur anhalten soll, meldet `EventBus.menu_changed(player_id, true)` beim Öffnen und genau einmal `false` beim Schließen; `PlayerInput` zählt mit. Hört es Tasten, die auch die Figur nutzt, gehört es in der Szene hinter die anderen Fenster und fängt sie in `_input` ab.
 - Ein neuer NPC und ein neues Gespräch: siehe „NPCs und Dialog im Einzelnen (M15)“. Texte im Gespräch weiter ohne ß, unteres Anführungszeichen, Gedankenstrich und das Zeichen für drei Punkte.
@@ -1387,12 +1507,21 @@ Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & B
 - Ein neues Level bekommt eine `level_id` und meldet sich in `_enter_tree()` bei `GameState` – Muster in `levels/test_chamber/test_chamber.gd`. Ein Zeitanker: `world/time_anchor/time_anchor.tscn` instanzieren.
 - F5 bis F8 fängt der Godot-Editor ab, solange das Spiel eingebettet läuft – neue Entwickler-Tasten nicht dorthin legen.
 - Claude kann seit M16 die Linux-Fassung von Godot 4.7.2 ohne Fenster nutzen, um Szenen und Skripte zu laden und Abläufe durchzuspielen. Die `.uid`-Dateien, die Godot dabei anlegt, liefert es nicht mit.
+- Seit M17 lässt Claude die Testkammer auch mit Bild laufen: Godot mit einem virtuellen Bildschirm (Xvfb) und dem Renderer `gl_compatibility`; die Bilder kommen aus dem Spiel in 480 × 270. Ob es sich gut anfühlt, sieht weiter nur der Nutzer.
+- Container setzen Lage, Größe und Drehung ihrer Kinder. Soll sich ein Bild in einem Container drehen, liegt es in einem eigenen `Control` – so der Pfeil der Missionsliste.
+- Statische Variablen (`static var`) überleben in Godot 4.7 das Neuladen der Szene, bis das Spiel endet; so merkt sich die Missionsliste, ob sie eingeklappt ist.
+- Ein Bedienelement auf der Oberfläche, das Klicks annehmen soll, bekommt `mouse_filter` „Stop“; liegt die Maus darauf, greift die Figur nicht an (seit M17). Alles, was nur zeigt, bekommt „Ignore“.
+- Eine neue Mission, ein neues Ereignis oder ein neuer Auftraggeber: siehe „Missionen im Einzelnen (M17)“. Titel und Ziele weiter ohne ß, unteres Anführungszeichen, Gedankenstrich und das Zeichen für drei Punkte – `check()` meldet sie.
 
 ## Offene Punkte
 
-- M17 – Missionen ist geplant, noch nicht gebaut: siehe „Plan für M17 – Missionen“. Wer M17 testet, beginnt mit F4: Eine schon geöffnete grosse Truhe aus einem alten Spielstand lässt sich nicht noch einmal öffnen.
+- M18 – Räume & Levelwechsel ist geplant, noch nicht gebaut: siehe „Plan für M18 – Räume & Levelwechsel“. Offen dabei: das Bild der Zeitkapsel – noch ungeprüft –, ob in Level 1 eine Zeitkapsel steht (Phase 5) und ob das Pausenmenü „Level verlassen“ zusätzlich anbietet (M20).
+- M17 – Missionen ist fertig, mit dem Test am 22.11.2026 bestätigt – auch, was Claude beim Bauen ergänzt hat: die Fragen der Sammlerin vor Annehmen und Abgabe, „Keine offenen Missionen“, der breitere Wortabstand der Anzeige. Wer M17 nachtestet, beginnt mit F4: Eine schon geöffnete grosse Truhe aus einem alten Spielstand lässt sich nicht noch einmal öffnen, ein gefällter Baum gibt keine Äste mehr.
+- Nicht in M17, laut Plan später: Ab M18 übernimmt die Zeitkapsel im Level die Aufgabe von Tor und Luke; Missionen in der Zeitkapsel selbst bekämen eine eigene Datei im selben Format; Missionen schalten Fähigkeiten frei, Erfahrung und Stufen laut Konzept (M19); ein Fenster mit allen Missionen und ihren Beschreibungen, der Zustand der Liste wird mit den Optionen gemerkt (M20). Offen: Ziele „Ort erreichen“, Missionen, die sich verzweigen oder scheitern können, Wegweiser, Missionen je Spieler im Mehrspieler.
+- Die ausgeklappte Missionsliste deckt oben links einen Teil der Welt ab – mit drei Missionen etwa 195 × 75 Pixel der Fläche 480 × 270. Dafür gibt es J; kürzere Texte der Ziele machen sie schmaler.
+- Eine Truhe oder ein Ding, das schon vor einer Mission geöffnet oder zerstört war, meldet sein Ereignis nicht mehr. Im Level gilt deshalb: Pflichtmissionen an Dinge hängen, die erst während der Mission erreichbar werden.
 - Beute am Boden ist nach dem Tod weg – auch das Geschenk eines NPCs oder ein Schlüssel aus einer Truhe, solange die Figur sie nicht aufgehoben hat. Pflicht-Gegenstände in Leveln deshalb von Hand als `Pickup` legen, nicht nur als Beute – oder eine eigene Regel dafür, zusammen mit der offenen Strafe beim Tod.
-- Nicht in M16: mehrere Spielstände und das Startmenü (M20), die Zeitkapsel als Portal (M18), Missionen (M17), eine Strafe beim Tod, Gegner, die tot bleiben, etwa Bosse.
+- Nicht in M16: mehrere Spielstände und das Startmenü (M20), die Zeitkapsel (M18), eine Strafe beim Tod, Gegner, die tot bleiben, etwa Bosse. Die Missionen kamen mit M17.
 - Beenden über `get_tree().quit()` speichert nicht von selbst; ein Knopf „Beenden“ im Menü (M20) bittet vorher über `save_requested` ums Speichern.
 - In `project.godot` im Repo fehlt „Snap 2D Transforms to Pixel“ (`rendering/2d/snap/snap_2d_transforms_to_pixel`), das laut M3 gesetzt ist; die Datei ist seit M1 unverändert. Bei Gelegenheit in den Projekteinstellungen nachsehen.
 - Beim Bauen von M14 ergänzt: Die Debug-Anzeige zeigt je Gegner eine Zeile statt zwei, und sie verschwindet nach dem Tod; Chase zeigt, ob der Gegner verfolgt, abwartet oder zurückweicht; `ProjectileSkin` kann mit `first_frame` ein einzelnes Bild aus einem Streifen nehmen; ein Skin kennt den Wurf `shoot`. Mit dem Test vom Nutzer bestätigt.
@@ -1411,7 +1540,7 @@ Phase 2 ist fertig: M8 – Interaktion, M9 – Zerstörbares, M10 – Truhen & B
 - Seit M16: Zerstörtes kommt nicht wieder, auch nicht nach F2, Tod oder Laden; Beute am Boden ist danach weg. Ob Dinge in Leveln später nachwachsen, etwa Töpfe, ist offen.
 - Ein Kanal kennt nur ODER: Eine Tür ist offen, sobald einer ihrer Schalter an ist. Ein Tor, das zwei Hebel zugleich braucht, gibt es noch nicht.
 - M15 – NPCs & Dialog ist fertig. Beim Bauen hat Claude selbst entschieden, vom Nutzer mit dem Test bestätigt: der Jäger als NPC, der nur Auskunft gibt; Belohnung und „erledigt“ an einzelnen Zeilen statt am ganzen Gespräch, damit der Schamane erst nach dem Geschenk zu seinem kurzen Satz wechselt; der wippende Pfeil, wenn es weitergeht; der Rahmen über dem Kästchen unter der Maus; nach dem Schließen greift die Figur erst nach dem Loslassen der Maustaste an. Alles lässt sich ohne Code zurücknehmen oder ändern – in den Werte-Dateien und Szenen.
-- Nicht in M15: Händler, Schmied und Aufträge (M17); Antworten mit Bedingungen, etwa nur mit Schlüssel; „erledigt“ je Spieler; Ton (A3); NPCs, die umherlaufen; Gespräche, die von selbst beginnen, wenn man nah kommt.
+- Nicht in M15: Händler und Schmied – Aufträge kamen mit M17, der Auftraggeber `QuestGiver` –; Antworten mit Bedingungen, etwa nur mit Schlüssel; „erledigt“ je Spieler; Ton (A3); NPCs, die umherlaufen; Gespräche, die von selbst beginnen, wenn man nah kommt.
 - Während eines Gesprächs läuft die Welt weiter: Ein Gegner kann die Figur dabei treffen. Ob ein Treffer das Gespräch abbrechen soll, ist noch offen.
 - Ton (A3): auf Wunsch des Nutzers verschoben, fast ans Ende des Projekts, mit Phase 7 – Feinschliff. Bis dahin hat kein Modul Ton; `SoundCue` und die Ton-Tabelle entstehen erst dann.
 - Der Hieb-Effekt richtet sich nicht von selbst nach der Trefferzone: Ändern sich `start_distance` oder `reach` in `data/player/sword.tres`, ist `distance` am Knoten `SlashEffect` der Spielfigur nachzuziehen. Heute ist es 8, also `start_distance` + 2.

@@ -15,15 +15,16 @@
 | Ordner | Inhalt |
 | --- | --- |
 | `autoload/` | Globale Dienste: EventBus, Tastenbelegung, Spielstand, Szenenwechsel, Ton |
-| `components/` | Bausteine für alle: Bild, Effekte, Splitter, Leben, Lebensleiste, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion, Beute, Aufsammeln, Ausrüstung, Zustandsautomat, Sehen und Hören, Sprechblase, Blick im Gespräch, Spielstand (`persistent/` für Dinge der Welt, `player_progress/` für die Spielfigur) |
-| `entities/` | Figuren und Bewegliches: `player/`, `enemies/` – Grundszene, Gegnertypen (Nahkämpfer, Fernkämpfer), fertige Gegner, Angriffs-Module in `attacks/`, Zustände in `states/` –, `npcs/` – Grundszene und fertige NPCs –, `dummy/`, `projectile/`, `effect/`, `debris/`, `pickup/` |
+| `components/` | Bausteine für alle: Bild, Effekte, Splitter, Leben, Lebensleiste, Trefferzonen, Angriffe, Dash, Vorräte, Inventar, Geschoss-Wahl, Interaktion, Beute, Aufsammeln, Ausrüstung, Zustandsautomat, Sehen und Hören, Sprechblase, Blick im Gespräch, Spielstand (`persistent/` für Dinge der Welt, `player_progress/` für die Spielfigur), Ereignisse für Missionen (`mission_cue/`) |
+| `entities/` | Figuren und Bewegliches: `player/`, `enemies/` – Grundszene, Gegnertypen (Nahkämpfer, Fernkämpfer), fertige Gegner, Angriffs-Module in `attacks/`, Zustände in `states/` –, `npcs/` – Grundszene, fertige NPCs und Auftraggeber –, `dummy/`, `projectile/`, `effect/`, `debris/`, `pickup/` |
 | `abilities/` | Fähigkeiten: Schnelligkeit, Unsichtbarkeit, Stun; der Dash ist ein Baustein in `components/dash/` |
 | `items/` | Baupläne für Gegenstände, Geschosse, Ausrüstung und Beute-Listen; die Gegenstände selbst liegen in `data/items/` – Geschosse, Materialien, Schlüssel, Ausrüstung –, die Listen in `data/loot/` |
 | `dialogs/` | Baupläne für Gespräche: Gespräch, Zeile, Antwort, Sprecher und der DialogRunner, der den Weg durch ein Gespräch kennt; die Gespräche selbst liegen in `data/dialogs/` |
-| `world/` | Dinge der Welt: `view/` die Ansicht – Zoom der Welt und die Kachel als Maß –, Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen, Zeitanker |
+| `missions/` | Baupläne für Missionen – Missionen-Datei eines Levels, Mission, Ziele – und der `MissionTracker`, die eine Stelle für die Missionen eines Levels; die Missionen selbst liegen je Level in `data/missions/` |
+| `world/` | Dinge der Welt: `view/` die Ansicht – Zoom der Welt und die Kachel als Maß –, Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen, Zeitanker, Ausgang eines Levels |
 | `levels/` | `test_chamber/`, später die Level und die Zeitkapsel |
-| `ui/` | Oberfläche: `hud/` die Anzeige am Bildrand, `inventory/` das Inventarfenster, `theme/` das Holz-Thema für alle Fenster, `dialog/` das Dialogfenster mit eigenem Thema, `crosshair/`, `debug/` für Entwickler-Anzeigen; später Menüs |
-| `data/` | Werte-Dateien (`.tres`): Balancing, Gegner, Skins, Gegenstände, Effekte, Beute, Gespräche, Oberfläche |
+| `ui/` | Oberfläche: `hud/` die Anzeige am Bildrand, `inventory/` das Inventarfenster, `theme/` das Holz-Thema für alle Fenster, `dialog/` das Dialogfenster mit eigenem Thema, `missions/` die Missionsliste und die Hinweise, `crosshair/`, `debug/` für Entwickler-Anzeigen; später Menüs |
+| `data/` | Werte-Dateien (`.tres`): Balancing, Gegner, Skins, Gegenstände, Effekte, Beute, Gespräche, Missionen, Oberfläche |
 | `assets/` | Grafik und Ton – siehe `assets/README.md` |
 | `docs/` | Stand-Datei und Grafik-Katalog; von Godot ignoriert |
 | `tools/` | Hilfsskripte; von Godot ignoriert |
@@ -47,6 +48,7 @@ Sie steht in `autoload/input_setup.gd` und lässt sich dort ändern.
 | 1 2 3 | `ability_1`, `ability_2`, `ability_3` |
 | Tab | `inventory` |
 | M | `map` |
+| J | `mission_toggle` – Missionsliste ein- und ausklappen; ein Klick auf ihre Überschrift geht auch |
 | Esc | `pause` – schließt auch Inventar und Gespräch |
 
 **Im Gespräch** – die Figur nimmt dann keine Eingaben an, deshalb dürfen die Tasten doppelt belegt sein:
@@ -76,6 +78,13 @@ F5 bis F8 sind im Godot-Editor belegt (Starten, Szene starten, Pause, Stopp); l�
 - Die Datei liegt unter `user://saves/slot_1.json`, unter Windows in `%APPDATA%\Godot\app_userdata\TimeTraveller\saves\`. Sie ist lesbares JSON.
 - Gespeichert wird beim Rasten am Zeitanker, beim Tod, bei F2, beim Abschluss und Verlassen eines Levels und beim Schließen des Fensters. Der Stopp-Knopf des Editors beendet ohne Speichern.
 - Den Fortschritt führt `GameState`, in die Datei schreibt `SaveManager`. Ohne Datei beginnt ein neues Spiel.
+
+## Missionen
+
+- Je Level eine Datei mit allen seinen Missionen, etwa `data/missions/test_chamber.tres`; das Level trägt sie beim Knoten `MissionTracker` ein. Jede Mission hat einen Namen, einen Titel, Ziele – ein Ereignis oder Gegenstände – und auf Wunsch eine Belohnung.
+- Ein Ereignis meldet der Baustein `components/mission_cue/`, etwa am Höhlenmenschen „caveman_defeated“, wenn er fällt.
+- Gesprächszeilen starten oder übergeben eine Mission (`start_mission`, `hand_in_mission`); ein Auftraggeber ist ein NPC mit dem Skript `entities/npcs/quest_giver.gd`.
+- Sind alle Pflichtmissionen erfüllt, öffnet sich das Tor auf dem Kanal `missions_done`; dahinter liegt der Ausgang.
 
 ## Regeln
 

@@ -16,6 +16,9 @@ extends StaticBody2D
 ## nichts Neues mehr: Die Sprechblase verschwindet, und beim nächsten Mal spricht
 ## er repeat_dialog - ohne das wieder dialog. Ein NPC, der nur Auskunft gibt, hat
 ## ein Gespräch ohne Antworten.
+## Startet eine Zeile eine Mission oder gibt sie eine ab (M17), meldet er das über
+## den EventBus (mission_start_requested, mission_hand_in_requested); entscheiden
+## tut der MissionTracker des Levels. Der Auftraggeber (QuestGiver) erbt von ihm.
 ## Gemerkt wird all das im Spielstand, über sein Kind "Persistent" (M16): ob er
 ## erledigt ist und welche Zeilen ihre Beute schon gegeben haben.
 ##
@@ -56,7 +59,7 @@ var _given := {}
 func _ready() -> void:
 	if start_facing != Vector2.ZERO:
 		facing = start_facing.normalized()
-	if dialog == null:
+	if current_dialog() == null:
 		push_warning("Npc %s: kein Gespräch gesetzt - E bewirkt nichts." % name)
 	if _interactable != null:
 		_interactable.interacted.connect(_on_interacted)
@@ -73,6 +76,17 @@ func current_dialog() -> DialogData:
 	if is_done and repeat_dialog != null:
 		return repeat_dialog
 	return dialog
+
+
+## Alle Gespräche, die er führen kann - für den Spielstand. Ein NPC mit weiteren
+## Gesprächen, etwa der Auftraggeber (M17), ergänzt seine.
+func get_dialogs() -> Array[DialogData]:
+	var result: Array[DialogData] = []
+	for source in [dialog, repeat_dialog]:
+		var talk := source as DialogData
+		if talk != null and not result.has(talk):
+			result.append(talk)
+	return result
 
 
 ## Hat er etwas Neues zu sagen?
@@ -114,7 +128,7 @@ func _on_dialog_started(player_id: int, source_id: int) -> void:
 	talk_started.emit(_partner)
 
 
-func _on_dialog_line_shown(_player_id: int, source_id: int, line: Resource) -> void:
+func _on_dialog_line_shown(player_id: int, source_id: int, line: Resource) -> void:
 	if source_id != get_instance_id():
 		return
 	var dialog_line := line as DialogLine
@@ -132,6 +146,11 @@ func _on_dialog_line_shown(_player_id: int, source_id: int, line: Resource) -> v
 		changed = true
 	if changed:
 		progress_changed.emit()
+	# Missionen (M17): Starten und Abgeben entscheidet der MissionTracker.
+	if dialog_line.start_mission != &"":
+		EventBus.mission_start_requested.emit(player_id, dialog_line.start_mission)
+	if dialog_line.hand_in_mission != &"":
+		EventBus.mission_hand_in_requested.emit(player_id, dialog_line.hand_in_mission)
 
 
 func _on_dialog_finished(_player_id: int, source_id: int, completed: bool) -> void:
@@ -164,7 +183,7 @@ func apply_saved_state(data: Dictionary) -> void:
 	is_done = data.get("done") == true
 	var given: Variant = data.get("given")
 	if given is Array:
-		for source in [dialog, repeat_dialog]:
+		for source in get_dialogs():
 			var talk := source as DialogData
 			if talk == null:
 				continue
@@ -188,7 +207,7 @@ func _give(table: LootTable) -> void:
 
 # Kennung einer Zeile für den Spielstand: Gespräch und Name der Zeile, ohne Namen ihre Nummer.
 func _line_key(line: DialogLine) -> String:
-	for source in [dialog, repeat_dialog]:
+	for source in get_dialogs():
 		var talk := source as DialogData
 		if talk == null:
 			continue

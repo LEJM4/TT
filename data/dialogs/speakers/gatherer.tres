@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogSpeaker" format=3]
+
+[ext_resource type="Script" path="res://dialogs/dialog_speaker.gd" id="1_speaker"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Actor/Character/Cavegirl2/Faceset.png" id="2_portrait"]
+
+[resource]
+script = ExtResource("1_speaker")
+display_name = "Sammlerin"
+portrait = ExtResource("2_portrait")

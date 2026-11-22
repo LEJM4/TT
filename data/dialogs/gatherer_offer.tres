@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="DialogData" format=3]
+
+[ext_resource type="Script" path="res://dialogs/dialog_data.gd" id="1_data"]
+[ext_resource type="Script" path="res://dialogs/dialog_line.gd" id="2_line"]
+[ext_resource type="Script" path="res://dialogs/dialog_choice.gd" id="3_choice"]
+[ext_resource type="Resource" path="res://data/dialogs/speakers/gatherer.tres" id="4_speaker"]
+
+[sub_resource type="Resource" id="Resource_choice_accept"]
+script = ExtResource("3_choice")
+text = "Mach ich."
+next = &"accept"
+
+[sub_resource type="Resource" id="Resource_choice_decline"]
+script = ExtResource("3_choice")
+text = "Jetzt nicht."
+next = &"decline"
+
+[sub_resource type="Resource" id="Resource_greet"]
+script = ExtResource("2_line")
+id = &"greet"
+text = "Brr, ist das kalt! Mein Feuer geht gleich aus, und mir fehlt das Holz."
+
+[sub_resource type="Resource" id="Resource_ask"]
+script = ExtResource("2_line")
+id = &"ask"
+text = "Bringst du mir zwei Äste? Der Baum dort drüben hat welche."
+choices = Array[ExtResource("3_choice")]([SubResource("Resource_choice_accept"), SubResource("Resource_choice_decline")])
+
+[sub_resource type="Resource" id="Resource_accept"]
+script = ExtResource("2_line")
+id = &"accept"
+text = "Danke! Schlag ein paar Mal gegen den Baum, dann fallen Äste herunter."
+next = &"end"
+start_mission = &"branches"
+
+[sub_resource type="Resource" id="Resource_decline"]
+script = ExtResource("2_line")
+id = &"decline"
+text = "Schade. Komm wieder, wenn du Zeit hast."
+
+[resource]
+script = ExtResource("1_data")
+speaker = ExtResource("4_speaker")
+lines = Array[ExtResource("2_line")]([SubResource("Resource_greet"), SubResource("Resource_ask"), SubResource("Resource_accept"), SubResource("Resource_decline")])

@@ -14,8 +14,11 @@ extends Node
 ## den Portalstand. Ein Stand ist ein Dictionary:
 ##   players    je Spielfigur ("1", "2" ...) Inventar und Ausrüstung
 ##   objects    je Level und Ding der Welt ein kleiner Eintrag, etwa {"open": true}
+##   missions   je Level und Mission ihr Stand (M17), etwa
+##              {"state": "active", "progress": [1, 0]}; ohne Eintrag ist sie
+##              noch nicht angenommen
 ##   completed  die abgeschlossenen Level
-## Später kommen Missionen (M17) und Freischaltungen (M19) dazu. Nicht im Stand:
+## Später kommen Freischaltungen (M19) dazu. Nicht im Stand:
 ## Gegner, Beute am Boden, Leben und Energie - nach Rasten, Tod und Laden sind
 ## beide voll.
 ## Daneben gilt ein Rückkehrpunkt (respawn): der Zeitanker, an dem die Figur nach
@@ -167,6 +170,31 @@ func set_object_state(level_id: String, object_id: String, data: Dictionary) -> 
 		in_level[object_id] = data.duplicate(true)
 
 
+## Der Stand einer Mission im Level (M17), als Kopie: {"state": "active" | "ready"
+## | "done", "progress": [Zahl je Ziel]}; leer, wenn sie noch nicht angenommen ist.
+## Lesen darf jeder, schreiben nur der MissionTracker des Levels.
+func get_mission_state(level_id: String, mission_id: String) -> Dictionary:
+	var in_level: Variant = _dict(active(), "missions").get(level_id)
+	if not in_level is Dictionary:
+		return {}
+	var data: Variant = (in_level as Dictionary).get(mission_id)
+	if not data is Dictionary:
+		return {}
+	return (data as Dictionary).duplicate(true)
+
+
+## Merkt sich den Stand einer Mission (M17); ein leerer Stand löscht den Eintrag -
+## die Mission gilt dann als nicht angenommen.
+func set_mission_state(level_id: String, mission_id: String, data: Dictionary) -> void:
+	if level_id.is_empty() or mission_id.is_empty():
+		return
+	var in_level := _dict(_dict(active(), "missions"), level_id)
+	if data.is_empty():
+		in_level.erase(mission_id)
+	else:
+		in_level[mission_id] = data.duplicate(true)
+
+
 ## Gibt es gemerkte Daten zu dieser Spielfigur? Ohne sie beginnt sie mit dem Startinhalt.
 func has_player_data(player_id: int) -> bool:
 	return _dict(active(), "players").get(str(player_id)) is Dictionary
@@ -262,7 +290,7 @@ func _end_run(level_id: String, event: String) -> void:
 
 
 func _empty_state() -> Dictionary:
-	return {"players": {}, "objects": {}, "completed": []}
+	return {"players": {}, "objects": {}, "missions": {}, "completed": []}
 
 
 # Das Dictionary unter key; legt es an, wenn es fehlt.

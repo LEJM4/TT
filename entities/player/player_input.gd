@@ -12,6 +12,9 @@ extends IntentSource
 ## Er zählt die offenen Menüs, etwa Inventar und Gespräch (M15): Erst wenn alle zu
 ## sind, geht es weiter. Hält der Spieler dann noch eine Maustaste - etwa vom
 ## Klick, der ein Gespräch beendet -, greift die Figur erst nach dem Loslassen an.
+## Liegt die Maus auf einem Bedienelement, das Klicks annimmt - etwa der
+## Überschrift der Missionsliste (M17) -, greift sie nicht an und schießt nicht,
+## bis die Taste wieder los ist.
 
 ## Näher als so viele Pixel an der Figur ändert die Maus die Zielrichtung nicht.
 const AIM_DEAD_ZONE := 1.0
@@ -56,6 +59,9 @@ func _physics_process(_delta: float) -> void:
 	wants_sneak = Input.is_action_pressed("sneak")
 	wants_attack = Input.is_action_pressed("attack_primary")
 	wants_shoot = Input.is_action_pressed("attack_secondary")
+	if (wants_attack or wants_shoot) and _pointer_on_control():
+		# Der Klick gehört dem Bedienelement (M17).
+		_wait_for_release = true
 	if _wait_for_release:
 		if wants_attack or wants_shoot:
 			wants_attack = false
@@ -92,6 +98,12 @@ func _on_menu_changed(player_id: int, is_open: bool) -> void:
 	if was_blocked and not _blocked:
 		_wait_for_release = true
 	_clear()
+
+
+# Liegt die Maus auf einem Bedienelement, das Klicks annimmt (M17)?
+func _pointer_on_control() -> bool:
+	var hovered := get_viewport().gui_get_hovered_control()
+	return hovered != null and hovered.mouse_filter == Control.MOUSE_FILTER_STOP
 
 
 # Keine Absichten: stehen, nicht angreifen, nichts drücken. Die Zielrichtung bleibt.

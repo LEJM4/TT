@@ -1,0 +1,112 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/missions/mission_panel.gd" id="1_panel"]
+[ext_resource type="Theme" path="res://ui/missions/mission_theme.tres" id="2_theme"]
+[ext_resource type="Resource" path="res://data/ui/missions.tres" id="3_settings"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Arrow.png" id="4_arrow"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Input/Keyboard/KeyJ.png" id="5_key"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/checked.png" id="6_checked"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/unchecked.png" id="7_unchecked"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_checked"]
+atlas = ExtResource("6_checked")
+region = Rect2(1, 1, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unchecked"]
+atlas = ExtResource("7_unchecked")
+region = Rect2(1, 1, 14, 14)
+
+[node name="MissionPanel" type="CanvasLayer"]
+layer = 90
+script = ExtResource("1_panel")
+settings = ExtResource("3_settings")
+checked_icon = SubResource("AtlasTexture_checked")
+unchecked_icon = SubResource("AtlasTexture_unchecked")
+
+[node name="List" type="PanelContainer" parent="."]
+visible = false
+offset_left = 4.0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 60.0
+mouse_filter = 2
+theme = ExtResource("2_theme")
+theme_type_variation = &"MissionList"
+
+[node name="Rows" type="VBoxContainer" parent="List"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Header" type="HBoxContainer" parent="List/Rows"]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/separation = 3
+
+[node name="Arrow" type="Control" parent="List/Rows/Header"]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="List/Rows/Header/Arrow"]
+layout_mode = 0
+offset_right = 13.0
+offset_bottom = 13.0
+mouse_filter = 2
+texture = ExtResource("4_arrow")
+pivot_offset = Vector2(6.5, 6.5)
+
+[node name="Title" type="Label" parent="List/Rows/Header"]
+layout_mode = 2
+theme_type_variation = &"MissionHeader"
+text = "Missionen"
+vertical_alignment = 1
+
+[node name="Key" type="TextureRect" parent="List/Rows/Header"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_key")
+stretch_mode = 3
+
+[node name="Missions" type="VBoxContainer" parent="List/Rows"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="More" type="Label" parent="List/Rows"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"MissionHint"
+text = "+1 weitere"
+
+[node name="Notice" type="PanelContainer" parent="."]
+visible = false
+offset_left = 180.0
+offset_top = 6.0
+offset_right = 300.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme = ExtResource("2_theme")
+theme_type_variation = &"NoticeFrame"
+
+[node name="Interior" type="PanelContainer" parent="Notice"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"NoticeInterior"
+
+[node name="Rows" type="VBoxContainer" parent="Notice/Interior"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Kind" type="Label" parent="Notice/Interior/Rows"]
+layout_mode = 2
+theme_type_variation = &"NoticeKind"
+text = "Neue Mission"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="Notice/Interior/Rows"]
+layout_mode = 2
+theme_type_variation = &"NoticeTitle"
+text = "Holz für das Feuer"
+horizontal_alignment = 1

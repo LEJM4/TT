@@ -5,7 +5,8 @@ extends Resource
 ## Ohne Antworten geht es mit E weiter - zur nächsten Zeile der Liste oder zum
 ## Sprungziel next. Mit Antworten (choices) wählt die Spielfigur, und jede
 ## Antwort führt an ihre eigene Stelle. Was eine Zeile bewirkt - Beute (reward),
-## erledigt (marks_done) -, entscheidet der NPC, sobald das Fenster sie zeigt.
+## erledigt (marks_done), eine Mission starten oder abgeben (M17) -, meldet der
+## NPC, sobald das Fenster sie zeigt.
 ## Teil eines Gesprächs (DialogData).
 
 ## Sprungziel, das das Gespräch beendet. Keine Zeile darf so heißen.
@@ -34,6 +35,14 @@ const MAX_CHOICES := 3
 ## Ab dieser Zeile hat der NPC nichts Neues mehr: Seine Sprechblase verschwindet,
 ## und beim nächsten Mal spricht er sein kurzes Gespräch.
 @export var marks_done := false
+## Name einer Mission aus der Missionen-Datei des Levels, die mit dieser Zeile
+## beginnt, etwa "branches" (M17). Leer: keine. Ob sie beginnt, entscheidet der
+## MissionTracker - eine Mission, die schon läuft, beginnt nicht noch einmal.
+@export var start_mission: StringName = &""
+## Name einer Mission, die mit dieser Zeile abgegeben wird (M17): Ist sie bereit,
+## gehen die verlangten Gegenstände aus dem Inventar, und die Belohnung springt
+## vor die Spielfigur. Leer: keine.
+@export var hand_in_mission: StringName = &""
 
 
 ## Die Antworten, die das Fenster zeigt: ohne leere Einträge, höchstens drei.

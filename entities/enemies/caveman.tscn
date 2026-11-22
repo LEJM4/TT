@@ -8,6 +8,7 @@
 [ext_resource type="Resource" path="res://data/enemies/caveman_punch.tres" id="6_punch"]
 [ext_resource type="Resource" path="res://data/loot/caveman.tres" id="7_loot"]
 [ext_resource type="Resource" path="res://data/enemies/caveman_attack.tres" id="8_attack"]
+[ext_resource type="PackedScene" path="res://components/mission_cue/mission_cue.tscn" id="9_mission_cue"]
 
 [node name="Caveman" instance=ExtResource("1_base")]
 stats = ExtResource("2_stats")
@@ -29,3 +30,6 @@ stats = ExtResource("8_attack")
 
 [node name="MeleeAttack" parent="."]
 stats = ExtResource("6_punch")
+
+[node name="MissionCue" parent="." instance=ExtResource("9_mission_cue")]
+event = &"caveman_defeated"

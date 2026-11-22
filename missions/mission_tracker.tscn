@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://missions/mission_tracker.gd" id="1_tracker"]
+
+[node name="MissionTracker" type="Node"]
+script = ExtResource("1_tracker")

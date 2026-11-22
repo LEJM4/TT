@@ -1,0 +1,67 @@
+[gd_resource type="Theme" format=3]
+
+[ext_resource type="FontVariation" path="res://ui/missions/mission_font.tres" id="1_font"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/nine_path_bg_2.png" id="2_list_bg"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/nine_path_panel.png" id="3_frame"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/nine_path_panel_interior.png" id="4_interior"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_list"]
+content_margin_left = 4.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 4.0
+texture = ExtResource("2_list_bg")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+modulate_color = Color(1, 1, 1, 0.75)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_frame"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+texture = ExtResource("3_frame")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_interior"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+texture = ExtResource("4_interior")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[resource]
+default_font = ExtResource("1_font")
+default_font_size = 9
+Label/colors/font_color = Color(1, 1, 1, 1)
+MissionHeader/base_type = &"Label"
+MissionHeader/colors/font_color = Color(1, 1, 1, 1)
+MissionHint/base_type = &"Label"
+MissionHint/colors/font_color = Color(0.7, 0.66, 0.6, 1)
+MissionList/base_type = &"PanelContainer"
+MissionList/styles/panel = SubResource("StyleBoxTexture_list")
+MissionObjective/base_type = &"Label"
+MissionObjective/colors/font_color = Color(0.88, 0.85, 0.8, 1)
+MissionObjectiveRow/base_type = &"HBoxContainer"
+MissionObjectiveRow/constants/separation = 2
+MissionRequired/base_type = &"Label"
+MissionRequired/colors/font_color = Color(1, 0.68, 0.33, 1)
+MissionSide/base_type = &"Label"
+MissionSide/colors/font_color = Color(1, 1, 1, 1)
+NoticeFrame/base_type = &"PanelContainer"
+NoticeFrame/styles/panel = SubResource("StyleBoxTexture_frame")
+NoticeInterior/base_type = &"PanelContainer"
+NoticeInterior/styles/panel = SubResource("StyleBoxTexture_interior")
+NoticeKind/base_type = &"Label"
+NoticeKind/colors/font_color = Color(1, 0.68, 0.33, 1)
+NoticeTitle/base_type = &"Label"
+NoticeTitle/colors/font_color = Color(1, 1, 1, 1)

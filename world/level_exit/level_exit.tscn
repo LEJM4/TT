@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/level_exit/level_exit.gd" id="1_exit"]
+[ext_resource type="PackedScene" path="res://components/prop_view/prop_view.tscn" id="2_prop_view"]
+[ext_resource type="Resource" path="res://data/skins/level_exit.tres" id="3_skin"]
+[ext_resource type="PackedScene" path="res://components/interactable/interactable.tscn" id="4_interactable"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reach"]
+size = Vector2(16, 16)
+
+[node name="LevelExit" type="Node2D"]
+script = ExtResource("1_exit")
+
+[node name="PropView" parent="." instance=ExtResource("2_prop_view")]
+skin = ExtResource("3_skin")
+
+[node name="Interactable" parent="." instance=ExtResource("4_interactable")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("RectangleShape2D_reach")

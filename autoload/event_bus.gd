@@ -89,3 +89,40 @@ signal respawn_changed(level_id: String, anchor_id: String)
 ## oder "new_game" (neues Spiel, level_id leer).
 @warning_ignore("unused_signal")
 signal level_run_changed(level_id: String, event: String)
+
+## Etwas ist geschehen, das Missionen zählen (M17), etwa "caveman_defeated": Ein
+## Höhlenmensch ist gefallen. Melden tun es Bausteine wie MissionCue; welche
+## Mission es zählt, entscheidet der MissionTracker des Levels. amount ist meist 1.
+@warning_ignore("unused_signal")
+signal mission_event(event: StringName, amount: int)
+
+## Eine Gesprächszeile möchte eine Mission starten (M17). player_id ist die
+## Spielfigur im Gespräch, mission_id der Name der Mission in der Missionen-Datei
+## des Levels. Ob sie beginnt, entscheidet der MissionTracker.
+@warning_ignore("unused_signal")
+signal mission_start_requested(player_id: int, mission_id: StringName)
+
+## Eine Gesprächszeile möchte eine Mission abgeben (M17). Ist sie bereit, nimmt
+## der MissionTracker die verlangten Gegenstände aus dem Inventar dieser Figur
+## und gibt die Belohnung.
+@warning_ignore("unused_signal")
+signal mission_hand_in_requested(player_id: int, mission_id: StringName)
+
+## Eine Mission hat ihren Stand gewechselt (M17). state ist "active" (läuft),
+## "ready" (bereit zur Abgabe) oder "done" (erfüllt). Gemeldet vom MissionTracker,
+## nachdem er den Stand in GameState abgelegt hat.
+@warning_ignore("unused_signal")
+signal mission_changed(level_id: String, mission_id: StringName, state: String)
+
+## Alle Missionen eines Levels für die Anzeige (M17), je Mission ein Dictionary:
+## id, title, required (Pflicht), hand_in, state - leer heißt: nicht angenommen -
+## und objectives, je Ziel text, current, count und done. Die erste Meldung nach
+## dem Betreten zeigt den Stand aus dem Spielstand; was danach beginnt oder
+## erfüllt wird, kommt mit den folgenden Meldungen.
+@warning_ignore("unused_signal")
+signal mission_list_changed(level_id: String, entries: Array)
+
+## Eine Spielfigur möchte das Level durch seinen Ausgang verlassen (M17). Was dann
+## geschieht, entscheidet das Level; ab M18 geht es in die Zeitkapsel.
+@warning_ignore("unused_signal")
+signal level_exit_requested(player_id: int)

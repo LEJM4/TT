@@ -32,6 +32,15 @@ extends Node2D
 ##                   Startpunkten; warnt vor den Gegnern, ohne Antworten
 ##   TimeAnchor      Zeitanker über den Startpunkten (M16): E rastet - Leben und
 ##                   Energie voll, hier erwacht die Figur wieder, das Spiel speichert
+##   Gatherer        Auftraggeberin (M17): die Sammlerin neben dem Baum unten links;
+##                   bittet um zwei Äste und gibt dafür 5 Kunai
+##   ExitNiche       Nische oben rechts (M17): ein Gittertor auf dem Kanal
+##                   missions_done, dahinter der Ausgang (LevelExit) - E dort
+##                   schließt das Level ab wie Bild auf
+##   MissionTracker  Missionen der Kammer aus data/missions/test_chamber.tres (M17):
+##                   Höhlenmensch und grosse Truhe als Pflicht - dafür meldet die
+##                   grosse Truhe ihr Öffnen mit einem MissionCue -, die Äste als
+##                   Nebenmission; sind beide Pflichtmissionen erfüllt, geht das Tor auf
 ##   LootSpawner     legt alle Beute hin (M9)
 ##   PlayerSpawner   erzeugt die Spielfiguren (M2)
 ##   ProjectileSpawner  erzeugt alle Geschosse (M6)
@@ -41,6 +50,8 @@ extends Node2D
 ##   DebugOverlay    Entwickler-Anzeige
 ##   InventoryWindow Inventarfenster auf Tab (M11)
 ##   Hud             Leben, Energie, Ausdauer, Fähigkeiten und Geschoss der Figur 1 (M12)
+##   MissionPanel    Missionsliste links unter den Herzen, J klappt sie ein und aus,
+##                   dazu die Hinweise oben in der Mitte (M17)
 ##   DialogWindow    Dialogfenster der Figur 1 (M15); steht als Letztes in der Szene,
 ##                   damit es Tasten vor dem Inventarfenster hört
 ## Alles außer Walls, Blocks und SpawnPoints lässt sich einzeln löschen,
@@ -54,6 +65,8 @@ extends Node2D
 ## Zoom ausprobieren: Aktion "debug_cycle_zoom" (F3) schaltet 1 bis 4 durch (M13);
 ## Kamera und Gegner folgen sofort, die Datei view.tres bleibt, wie sie ist.
 ##
+## Ausgang (M17): Meldet eine Figur am Ausgang level_exit_requested, schließt die
+## Kammer das Level ab wie mit Bild auf; ab M18 geht es in die Zeitkapsel.
 ## Spielstand (M16): Beim Betreten meldet sich die Kammer bei GameState als Level
 ## level_id - ein laufender Lauf geht weiter, sonst beginnt einer. Zum Testen,
 ## nur im Debug-Build: F4 löscht den Spielstand, Bild auf schließt das Level ab,
@@ -101,6 +114,7 @@ func _ready() -> void:
 	EventBus.game_saved.connect(_on_save_state_changed.unbind(1))
 	EventBus.respawn_changed.connect(_on_save_state_changed.unbind(2))
 	EventBus.level_run_changed.connect(_on_save_state_changed.unbind(2))
+	EventBus.level_exit_requested.connect(_on_level_exit_requested)
 	_report_zoom()
 	_report_save_state()
 
@@ -151,6 +165,15 @@ func _restart_room(reason := "Neustart") -> void:
 	EventBus.save_requested.emit(reason)
 	# Ab M18 läuft der Szenenwechsel über den SceneManager.
 	get_tree().reload_current_scene()
+
+
+# Ausgang (M17): Das Level ist geschafft. Ab M18 geht es von hier in die Zeitkapsel.
+func _on_level_exit_requested(_player_id: int) -> void:
+	var state := get_node_or_null("/root/GameState")
+	if state == null:
+		_reload_for_new_run()
+	elif state.call("complete_level"):
+		_reload_for_new_run()
 
 
 # Test-Tasten für den Spielstand (M16), nur im Debug-Build.

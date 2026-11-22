@@ -39,6 +39,12 @@
 [ext_resource type="PackedScene" path="res://entities/npcs/hunter.tscn" id="37_hunter"]
 [ext_resource type="PackedScene" path="res://ui/dialog/dialog_window.tscn" id="38_dialog_window"]
 [ext_resource type="PackedScene" path="res://world/time_anchor/time_anchor.tscn" id="39_time_anchor"]
+[ext_resource type="PackedScene" path="res://missions/mission_tracker.tscn" id="40_mission_tracker"]
+[ext_resource type="Resource" path="res://data/missions/test_chamber.tres" id="41_missions"]
+[ext_resource type="PackedScene" path="res://ui/missions/mission_panel.tscn" id="42_mission_panel"]
+[ext_resource type="PackedScene" path="res://entities/npcs/gatherer.tscn" id="43_gatherer"]
+[ext_resource type="PackedScene" path="res://world/level_exit/level_exit.tscn" id="44_level_exit"]
+[ext_resource type="PackedScene" path="res://components/mission_cue/mission_cue.tscn" id="45_mission_cue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
 size = Vector2(960, 16)
@@ -96,6 +102,12 @@ size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_room_side"]
 size = Vector2(16, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_niche_side"]
+size = Vector2(16, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_niche_corner"]
+size = Vector2(16, 16)
 
 [node name="TestChamber" type="Node2D" unique_id=242313944]
 script = ExtResource("1_chamber")
@@ -317,6 +329,11 @@ position = Vector2(616, 488)
 [node name="ChestBig" parent="." instance=ExtResource("24_chest_big")]
 position = Vector2(680, 488)
 
+[node name="MissionCue" parent="ChestBig" instance=ExtResource("45_mission_cue")]
+event = &"chest_big_opened"
+source_name = ""
+signal_name = "opened"
+
 [node name="StartItems" type="Node2D" parent="."]
 
 [node name="Broadsword" parent="StartItems" instance=ExtResource("25_pickup")]
@@ -358,6 +375,43 @@ position = Vector2(168, 136)
 [node name="TimeAnchor" parent="." instance=ExtResource("39_time_anchor")]
 position = Vector2(240, 88)
 
+[node name="Gatherer" parent="." instance=ExtResource("43_gatherer")]
+position = Vector2(232, 420)
+
+[node name="ExitNiche" type="Node2D" parent="."]
+position = Vector2(880, 16)
+
+[node name="NicheWalls" type="StaticBody2D" parent="ExitNiche"]
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionShape2D" parent="ExitNiche/NicheWalls"]
+position = Vector2(8, 32)
+shape = SubResource("RectangleShape2D_niche_side")
+
+[node name="WallBottomLeft" type="CollisionShape2D" parent="ExitNiche/NicheWalls"]
+position = Vector2(24, 56)
+shape = SubResource("RectangleShape2D_niche_corner")
+
+[node name="WallBottomRight" type="CollisionShape2D" parent="ExitNiche/NicheWalls"]
+position = Vector2(56, 56)
+shape = SubResource("RectangleShape2D_niche_corner")
+
+[node name="PlaceholderView" parent="ExitNiche/NicheWalls" instance=ExtResource("2_view")]
+color = Color(0.36, 0.4, 0.5, 1)
+
+[node name="MissionGate" parent="ExitNiche" instance=ExtResource("14_door")]
+position = Vector2(40, 56)
+channel = &"missions_done"
+
+[node name="PropView" parent="ExitNiche/MissionGate"]
+skin = ExtResource("17_gate_skin")
+
+[node name="LevelExit" parent="ExitNiche" instance=ExtResource("44_level_exit")]
+position = Vector2(40, 24)
+
+[node name="MissionTracker" parent="." instance=ExtResource("40_mission_tracker")]
+missions = ExtResource("41_missions")
+
 [node name="LootSpawner" parent="." instance=ExtResource("22_loot_spawner")]
 
 [node name="PlayerSpawner" parent="." unique_id=970808961 instance=ExtResource("4_spawner")]
@@ -376,5 +430,7 @@ hidden_keys = PackedStringArray("Kamera", "Raumzeit")
 [node name="InventoryWindow" parent="." instance=ExtResource("27_inventory_window")]
 
 [node name="Hud" parent="." instance=ExtResource("32_hud")]
+
+[node name="MissionPanel" parent="." instance=ExtResource("42_mission_panel")]
 
 [node name="DialogWindow" parent="." instance=ExtResource("38_dialog_window")]

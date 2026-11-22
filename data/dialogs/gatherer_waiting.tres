@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogData" format=3]
+
+[ext_resource type="Script" path="res://dialogs/dialog_data.gd" id="1_data"]
+[ext_resource type="Script" path="res://dialogs/dialog_line.gd" id="2_line"]
+[ext_resource type="Resource" path="res://data/dialogs/speakers/gatherer.tres" id="3_speaker"]
+
+[sub_resource type="Resource" id="Resource_reminder"]
+script = ExtResource("2_line")
+text = "Zwei Äste, mehr brauche ich nicht. Der Baum steht gleich dort drüben."
+
+[resource]
+script = ExtResource("1_data")
+speaker = ExtResource("3_speaker")
+lines = Array[ExtResource("2_line")]([SubResource("Resource_reminder")])

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MissionPanelSettings" format=3]
+
+[ext_resource type="Script" path="res://ui/missions/mission_panel_settings.gd" id="1_settings"]
+
+[resource]
+script = ExtResource("1_settings")
+max_missions = 3
+notice_time = 2.5
+notice_fade = 0.2

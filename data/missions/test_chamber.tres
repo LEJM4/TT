@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="MissionList" format=3]
+
+[ext_resource type="Script" path="res://missions/mission_list.gd" id="1_list"]
+[ext_resource type="Script" path="res://missions/mission_data.gd" id="2_mission"]
+[ext_resource type="Script" path="res://missions/mission_objective.gd" id="3_objective"]
+[ext_resource type="Script" path="res://missions/event_objective.gd" id="4_event"]
+[ext_resource type="Script" path="res://missions/item_objective.gd" id="5_item"]
+[ext_resource type="Resource" path="res://data/items/branch.tres" id="6_branch"]
+[ext_resource type="Resource" path="res://data/loot/mission_branches.tres" id="7_reward"]
+
+[sub_resource type="Resource" id="Resource_caveman_goal"]
+script = ExtResource("4_event")
+event = &"caveman_defeated"
+text = "Besiege den Höhlenmenschen"
+count = 1
+
+[sub_resource type="Resource" id="Resource_caveman"]
+script = ExtResource("2_mission")
+id = &"caveman"
+title = "Der Höhlenmensch"
+description = "Rechts in der Kammer streift ein Höhlenmensch umher. Besiege ihn."
+required = true
+starts_with_level = true
+objectives = Array[ExtResource("3_objective")]([SubResource("Resource_caveman_goal")])
+
+[sub_resource type="Resource" id="Resource_big_chest_goal"]
+script = ExtResource("4_event")
+event = &"chest_big_opened"
+text = "Öffne die grosse Truhe"
+count = 1
+
+[sub_resource type="Resource" id="Resource_big_chest"]
+script = ExtResource("2_mission")
+id = &"big_chest"
+title = "Die grosse Truhe"
+description = "Die grosse Truhe unten rechts ist verschlossen. Hinter der Holztür liegt der Goldschlüssel."
+required = true
+starts_with_level = true
+objectives = Array[ExtResource("3_objective")]([SubResource("Resource_big_chest_goal")])
+
+[sub_resource type="Resource" id="Resource_branches_goal"]
+script = ExtResource("5_item")
+item = ExtResource("6_branch")
+take_on_hand_in = true
+text = "Äste"
+count = 2
+
+[sub_resource type="Resource" id="Resource_branches"]
+script = ExtResource("2_mission")
+id = &"branches"
+title = "Holz für das Feuer"
+description = "Die Sammlerin braucht zwei Äste für ihr Feuer. Der Baum unten links hat welche."
+hand_in = true
+objectives = Array[ExtResource("3_objective")]([SubResource("Resource_branches_goal")])
+reward = ExtResource("7_reward")
+
+[resource]
+script = ExtResource("1_list")
+missions = Array[ExtResource("2_mission")]([SubResource("Resource_caveman"), SubResource("Resource_big_chest"), SubResource("Resource_branches")])
