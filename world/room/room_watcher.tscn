@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/room/room_watcher.gd" id="1_watcher"]
+
+[node name="RoomWatcher" type="Node"]
+process_physics_priority = 5
+script = ExtResource("1_watcher")

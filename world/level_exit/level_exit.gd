@@ -4,8 +4,9 @@ extends Node2D
 ##
 ## Eine offene Luke mit Treppe im Boden; die Figur kann darüber laufen. E (Kind
 ## "Interactable") meldet über den EventBus level_exit_requested mit der Nummer
-## der Figur. Was dann geschieht, entscheidet das Level: Die Testkammer schließt
-## sich ab wie mit Bild auf, ab M18 geht es in die Zeitkapsel.
+## der Figur. Seit M18 schließt der SceneManager das Level dann ab und bringt alle
+## in die Zeitkapsel - derselbe Weg wie "Einsteigen" an der Zeitkapsel. Gedacht
+## für Level ohne Zeitkapsel; in der Testkammer übernimmt sie seit M18 diese Aufgabe.
 ## Den Weg zum Ausgang versperrt meist ein Tor, das sich öffnet, wenn alle
 ## Pflichtmissionen erfüllt sind (Kanal missions_done des MissionTracker).
 ## Das Bild zeigt PropView mit data/skins/level_exit.tres.

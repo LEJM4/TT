@@ -6,6 +6,10 @@ extends Camera2D
 ## gegen den Hintergrund. Der Versatz ist die Vorausschau - ein Stück Richtung
 ## Mauszeiger und ein Stück in Laufrichtung - und gleitet weich zu seinem Ziel.
 ## Die Raumgrenzen meldet das Level über EventBus.camera_bounds_changed.
+## Hat das Level Räume (M18), gelten die Grenzen des Raums, in dem ihre Figur
+## ist: Der RoomWatcher meldet jeden Wechsel (room_changed), und die Kamera gleitet
+## in room_glide_time Sekunden in die Grenzen des neuen Raums. Den ersten Raum
+## nach dem Laden nimmt sie sofort.
 ## Den Zoom nimmt sie aus der Ansicht data/world/view.tres (M13). Er vergrößert
 ## nur das Bild; die Welt rechnet weiter in Pixeln der Grafik. Bei Zoom 2 liegt
 ## das Raster auf halben Pixeln der Grafik. Ändert sich der Zoom im Spiel - F3 in
@@ -25,6 +29,12 @@ var _target: Node2D
 var _look_offset := Vector2.ZERO
 var _bounds := Rect2()
 var _has_bounds := false
+# Grenzen des Raums, in dem die Figur ist (M18); sie gehen den Grenzen des Levels vor.
+var _room_bounds := Rect2()
+var _has_room := false
+# Gleiten in einen neuen Raum (M18): von hier, noch so viele Sekunden.
+var _glide_from := Vector2.ZERO
+var _glide_left := 0.0
 
 
 func _ready() -> void:
@@ -36,6 +46,7 @@ func _ready() -> void:
 		view = ViewSettings.new()
 	_apply_zoom()
 	EventBus.camera_bounds_changed.connect(_on_camera_bounds_changed)
+	EventBus.room_changed.connect(_on_room_changed)
 
 
 func _physics_process(delta: float) -> void:
@@ -45,12 +56,19 @@ func _physics_process(delta: float) -> void:
 		if _target == null:
 			return
 		_look_offset = Vector2.ZERO
+		_glide_left = 0.0
 	var wanted := _wanted_offset()
 	var gap := _look_offset.distance_to(wanted)
 	var speed := maxf(stats.min_speed, gap / maxf(stats.smooth_time, 0.001))
 	_look_offset = _look_offset.move_toward(wanted, speed * delta)
 	var center := _snap(_target.global_position) + _snap(_look_offset)
-	global_position = _snap(_clamp_to_bounds(center))
+	var goal := _clamp_to_bounds(center)
+	if _glide_left > 0.0:
+		# Beim Wechsel des Raums gleitet das Bild weich hinüber (M18).
+		_glide_left = maxf(_glide_left - delta, 0.0)
+		var progress := 1.0 - _glide_left / maxf(stats.room_glide_time, 0.001)
+		goal = _glide_from.lerp(goal, smoothstep(0.0, 1.0, progress))
+	global_position = _snap(goal)
 	var place := "%d, %d" % [roundi(global_position.x), roundi(global_position.y)]
 	EventBus.debug_value_changed.emit("Kamera", place)
 
@@ -86,21 +104,35 @@ func _wanted_offset() -> Vector2:
 
 
 func _clamp_to_bounds(center: Vector2) -> Vector2:
-	if not _has_bounds:
+	if not _has_bounds and not _has_room:
 		return center
+	# Mit Räumen gelten die Grenzen des Raums, sonst die des Levels (M18).
+	var limits := _room_bounds if _has_room else _bounds
 	var half := get_viewport_rect().size * 0.5 / zoom
 	var result := center
-	if _bounds.size.x <= half.x * 2.0:
-		result.x = _bounds.position.x + _bounds.size.x * 0.5
+	if limits.size.x <= half.x * 2.0:
+		result.x = limits.position.x + limits.size.x * 0.5
 	else:
-		result.x = clampf(center.x, _bounds.position.x + half.x, _bounds.end.x - half.x)
-	if _bounds.size.y <= half.y * 2.0:
-		result.y = _bounds.position.y + _bounds.size.y * 0.5
+		result.x = clampf(center.x, limits.position.x + half.x, limits.end.x - half.x)
+	if limits.size.y <= half.y * 2.0:
+		result.y = limits.position.y + limits.size.y * 0.5
 	else:
-		result.y = clampf(center.y, _bounds.position.y + half.y, _bounds.end.y - half.y)
+		result.y = clampf(center.y, limits.position.y + half.y, limits.end.y - half.y)
 	return result
 
 
 func _on_camera_bounds_changed(bounds: Rect2) -> void:
 	_bounds = bounds
 	_has_bounds = true
+
+
+# Die Figur dieser Kamera ist in einen anderen Raum gegangen (M18).
+func _on_room_changed(player_id: int, _room_id: String, bounds: Rect2) -> void:
+	if player_id != follow_player_id:
+		return
+	# Den ersten Raum nach dem Laden nimmt sie sofort, jeden weiteren gleitend.
+	if _has_room and stats.room_glide_time > 0.0 and is_instance_valid(_target):
+		_glide_from = global_position
+		_glide_left = stats.room_glide_time
+	_room_bounds = bounds
+	_has_room = true

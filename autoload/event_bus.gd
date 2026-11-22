@@ -122,7 +122,27 @@ signal mission_changed(level_id: String, mission_id: StringName, state: String)
 @warning_ignore("unused_signal")
 signal mission_list_changed(level_id: String, entries: Array)
 
-## Eine Spielfigur möchte das Level durch seinen Ausgang verlassen (M17). Was dann
-## geschieht, entscheidet das Level; ab M18 geht es in die Zeitkapsel.
+## Eine Spielfigur möchte das Level abschließen und zurück in die Zeitkapsel (M17):
+## am Ausgang, seit M18 mit "Einsteigen" an der Zeitkapsel oder mit Bild auf. Der
+## SceneManager schließt das Level ab - der Levelstand wird zum Kapselstand - und
+## bringt alle in die Zeitkapsel (M18).
 @warning_ignore("unused_signal")
 signal level_exit_requested(player_id: int)
+
+## Eine Spielfigur möchte die Reise abbrechen (M18): mit "Abbrechen" an der
+## Zeitkapsel oder mit Bild ab. Der SceneManager verwirft den Levelstand und bringt
+## alle in die Zeitkapsel; ist noch kein Level abgeschlossen, beginnt das Level von vorn.
+@warning_ignore("unused_signal")
+signal level_leave_requested(player_id: int)
+
+## Eine Spielfigur möchte verreisen (M18), etwa an der Zeitsteuerung in der
+## Zeitkapsel. level_id ist das Ziel aus data/world/travel.tres, etwa "test_field";
+## reisen tut der SceneManager - die Reise gilt für alle Spielfiguren.
+@warning_ignore("unused_signal")
+signal travel_requested(player_id: int, level_id: String)
+
+## Eine Spielfigur ist in einen anderen Raum gegangen (M18). room_id ist die
+## Kennung des Raums, bounds seine Fläche in der Welt. Gemeldet vom RoomWatcher;
+## die Kamera dieser Figur gleitet in die Grenzen des neuen Raums.
+@warning_ignore("unused_signal")
+signal room_changed(player_id: int, room_id: String, bounds: Rect2)

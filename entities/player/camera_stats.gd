@@ -22,3 +22,8 @@ extends Resource
 @export var smooth_time := 0.2
 ## Mindesttempo des Nachgleitens in Pixeln pro Sekunde; verhindert langes Nachkriechen.
 @export var min_speed := 24.0
+
+@export_group("Räume")
+## Zeit in Sekunden, in der die Kamera beim Wechsel des Raums in die Grenzen des
+## neuen Raums gleitet (M18). 0: Sie springt.
+@export var room_glide_time := 0.35

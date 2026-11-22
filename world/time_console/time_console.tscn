@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/time_console/time_console.gd" id="1_console"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="2_view"]
+[ext_resource type="PackedScene" path="res://components/prop_view/prop_view.tscn" id="3_prop_view"]
+[ext_resource type="Resource" path="res://data/skins/time_console.tres" id="4_skin"]
+[ext_resource type="PackedScene" path="res://components/interactable/interactable.tscn" id="5_interactable"]
+[ext_resource type="PackedScene" path="res://components/talk_action/talk_action.tscn" id="6_talk_action"]
+[ext_resource type="Resource" path="res://data/dialogs/time_console.tres" id="7_dialog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(14, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reach"]
+size = Vector2(16, 16)
+
+[node name="TimeConsole" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_console")
+dialog = ExtResource("7_dialog")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="PlaceholderView" parent="." instance=ExtResource("2_view")]
+color = Color(0.55, 0.8, 0.72, 1)
+
+[node name="PropView" parent="." instance=ExtResource("3_prop_view")]
+skin = ExtResource("4_skin")
+
+[node name="Interactable" parent="." instance=ExtResource("5_interactable")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("RectangleShape2D_reach")
+
+[node name="TalkAction" parent="." instance=ExtResource("6_talk_action")]

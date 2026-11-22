@@ -1,0 +1,81 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://world/room/room.tscn" id="2_room"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="3_view"]
+[ext_resource type="PackedScene" path="res://world/time_capsule/time_capsule.tscn" id="4_capsule"]
+[ext_resource type="PackedScene" path="res://world/destructible/pot.tscn" id="5_pot"]
+[ext_resource type="PackedScene" path="res://components/mission_cue/mission_cue.tscn" id="6_mission_cue"]
+[ext_resource type="PackedScene" path="res://world/chest/chest_small.tscn" id="7_chest_small"]
+[ext_resource type="PackedScene" path="res://missions/mission_tracker.tscn" id="8_mission_tracker"]
+[ext_resource type="Resource" path="res://data/missions/test_field.tres" id="9_missions"]
+[ext_resource type="PackedScene" path="res://levels/level_frame/level_frame.tscn" id="10_frame"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
+size = Vector2(384, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical"]
+size = Vector2(16, 224)
+
+[node name="TestField" type="Node2D"]
+script = ExtResource("1_level")
+level_id = "test_field"
+level_size = Vector2i(384, 256)
+
+[node name="Field" parent="." instance=ExtResource("2_room")]
+room_id = "field"
+title = "Feld"
+size = Vector2i(384, 256)
+draw_floor = true
+floor_color = Color(0.15, 0.21, 0.17, 1)
+
+[node name="Walls" type="StaticBody2D" parent="Field"]
+collision_mask = 0
+
+[node name="Top" type="CollisionShape2D" parent="Field/Walls"]
+position = Vector2(192, 8)
+shape = SubResource("RectangleShape2D_horizontal")
+
+[node name="Bottom" type="CollisionShape2D" parent="Field/Walls"]
+position = Vector2(192, 248)
+shape = SubResource("RectangleShape2D_horizontal")
+
+[node name="Left" type="CollisionShape2D" parent="Field/Walls"]
+position = Vector2(8, 128)
+shape = SubResource("RectangleShape2D_vertical")
+
+[node name="Right" type="CollisionShape2D" parent="Field/Walls"]
+position = Vector2(376, 128)
+shape = SubResource("RectangleShape2D_vertical")
+
+[node name="PlaceholderView" parent="Field/Walls" instance=ExtResource("3_view")]
+color = Color(0.4, 0.46, 0.38, 1)
+
+[node name="TimeCapsule" parent="Field" instance=ExtResource("4_capsule")]
+position = Vector2(160, 128)
+
+[node name="PotA" parent="Field" instance=ExtResource("5_pot")]
+position = Vector2(248, 72)
+
+[node name="MissionCue" parent="Field/PotA" instance=ExtResource("6_mission_cue")]
+event = &"test_field_pot"
+
+[node name="PotB" parent="Field" instance=ExtResource("5_pot")]
+position = Vector2(304, 128)
+
+[node name="MissionCue" parent="Field/PotB" instance=ExtResource("6_mission_cue")]
+event = &"test_field_pot"
+
+[node name="PotC" parent="Field" instance=ExtResource("5_pot")]
+position = Vector2(248, 184)
+
+[node name="MissionCue" parent="Field/PotC" instance=ExtResource("6_mission_cue")]
+event = &"test_field_pot"
+
+[node name="ChestSmall" parent="Field" instance=ExtResource("7_chest_small")]
+position = Vector2(336, 200)
+
+[node name="MissionTracker" parent="." instance=ExtResource("8_mission_tracker")]
+missions = ExtResource("9_missions")
+
+[node name="LevelFrame" parent="." instance=ExtResource("10_frame")]

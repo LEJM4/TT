@@ -1,0 +1,56 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://world/room/room.tscn" id="2_room"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="3_view"]
+[ext_resource type="PackedScene" path="res://world/time_console/time_console.tscn" id="4_console"]
+[ext_resource type="PackedScene" path="res://levels/level_frame/level_frame.tscn" id="5_frame"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
+size = Vector2(320, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical"]
+size = Vector2(16, 128)
+
+[node name="TimeCapsuleInside" type="Node2D"]
+script = ExtResource("1_level")
+level_id = "time_capsule"
+starts_run = false
+level_size = Vector2i(320, 160)
+
+[node name="Inside" parent="." instance=ExtResource("2_room")]
+room_id = "capsule"
+title = "Zeitkapsel"
+size = Vector2i(320, 160)
+draw_floor = true
+floor_color = Color(0.16, 0.19, 0.25, 1)
+
+[node name="Walls" type="StaticBody2D" parent="Inside"]
+collision_mask = 0
+
+[node name="Top" type="CollisionShape2D" parent="Inside/Walls"]
+position = Vector2(160, 8)
+shape = SubResource("RectangleShape2D_horizontal")
+
+[node name="Bottom" type="CollisionShape2D" parent="Inside/Walls"]
+position = Vector2(160, 152)
+shape = SubResource("RectangleShape2D_horizontal")
+
+[node name="Left" type="CollisionShape2D" parent="Inside/Walls"]
+position = Vector2(8, 80)
+shape = SubResource("RectangleShape2D_vertical")
+
+[node name="Right" type="CollisionShape2D" parent="Inside/Walls"]
+position = Vector2(312, 80)
+shape = SubResource("RectangleShape2D_vertical")
+
+[node name="PlaceholderView" parent="Inside/Walls" instance=ExtResource("3_view")]
+color = Color(0.42, 0.48, 0.58, 1)
+
+[node name="TimeConsole" parent="Inside" instance=ExtResource("4_console")]
+position = Vector2(160, 72)
+
+[node name="Spawn" type="Marker2D" parent="Inside" groups=["player_spawn"]]
+position = Vector2(160, 120)
+
+[node name="LevelFrame" parent="." instance=ExtResource("5_frame")]

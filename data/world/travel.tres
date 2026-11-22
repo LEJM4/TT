@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TravelSettings" format=3]
+
+[ext_resource type="Script" path="res://levels/travel_settings.gd" id="1_travel"]
+[ext_resource type="Script" path="res://levels/level_info.gd" id="2_info"]
+
+[sub_resource type="Resource" id="Resource_test_chamber"]
+script = ExtResource("2_info")
+id = "test_chamber"
+title = "Testkammer"
+scene = "res://levels/test_chamber/test_chamber.tscn"
+
+[sub_resource type="Resource" id="Resource_test_field"]
+script = ExtResource("2_info")
+id = "test_field"
+title = "Testfeld"
+scene = "res://levels/test_field/test_field.tscn"
+
+[resource]
+script = ExtResource("1_travel")
+levels = Array[ExtResource("2_info")]([SubResource("Resource_test_chamber"), SubResource("Resource_test_field")])
+start_level = "test_chamber"
+capsule_scene = "res://levels/time_capsule/time_capsule.tscn"
+capsule_title = "Zeitkapsel"
+fade_time = 0.25

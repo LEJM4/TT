@@ -7,10 +7,11 @@ extends Node
 ## Im Gespräch (M15) gelten eigene Aktionen auf denselben Tasten: dialog_next
 ## (E, Leertaste, Linksklick) und dialog_choice_1 bis 3 (1 2 3). Die Figur nimmt
 ## dann keine Eingaben an, Doppelbelegungen stören also nicht.
-## Spielstand testen (M16), nur in der Testkammer und nur im Debug-Build: F4
-## löscht ihn, Bild auf schließt das Level ab, Bild ab verlässt es, Ende beendet
-## das Spiel wie das X am Fenster. F5 bis F8 sind im Editor belegt (Starten,
-## Pause, Stopp) und kämen beim eingebetteten Spiel nicht an.
+## Spielstand testen (M16), nur im Debug-Build, seit M18 in jedem Level und in
+## der Zeitkapsel (DebugKeys): F4 löscht ihn, Bild auf schließt das Level ab, Bild
+## ab bricht die Reise ab, Ende beendet das Spiel wie das X am Fenster. F5 bis F8
+## sind im Editor belegt (Starten, Pause, Stopp) und kämen beim eingebetteten
+## Spiel nicht an.
 ## J klappt die Missionsliste ein und aus (M17).
 
 ## Aktion -> Tasten (Position auf der Tastatur, unabhängig vom Layout).

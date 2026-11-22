@@ -1,0 +1,69 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/time_capsule/time_capsule.gd" id="1_capsule"]
+[ext_resource type="PackedScene" path="res://components/placeholder_view/placeholder_view.tscn" id="2_view"]
+[ext_resource type="PackedScene" path="res://components/prop_view/prop_view.tscn" id="3_prop_view"]
+[ext_resource type="Resource" path="res://data/skins/time_capsule.tres" id="4_skin"]
+[ext_resource type="PackedScene" path="res://components/interactable/interactable.tscn" id="5_interactable"]
+[ext_resource type="PackedScene" path="res://components/talk_action/talk_action.tscn" id="6_talk_action"]
+[ext_resource type="PackedScene" path="res://components/effect_cue/effect_cue.tscn" id="7_effect_cue"]
+[ext_resource type="Resource" path="res://data/effects/capsule_dust.tres" id="8_dust"]
+[ext_resource type="Resource" path="res://data/effects/capsule_ready.tres" id="9_sparkle"]
+[ext_resource type="Resource" path="res://data/dialogs/time_capsule_ready.tres" id="10_ready_dialog"]
+[ext_resource type="Resource" path="res://data/dialogs/time_capsule_abort.tres" id="11_abort_dialog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_base"]
+size = Vector2(48, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upper"]
+size = Vector2(30, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
+size = Vector2(32, 12)
+
+[node name="TimeCapsule" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_capsule")
+ready_dialog = ExtResource("10_ready_dialog")
+abort_dialog = ExtResource("11_abort_dialog")
+land_time = 0.7
+land_height = 28.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_base")
+
+[node name="UpperShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -33)
+shape = SubResource("RectangleShape2D_upper")
+
+[node name="PlaceholderView" parent="." instance=ExtResource("2_view")]
+color = Color(0.7, 0.76, 0.84, 1)
+
+[node name="View" parent="." instance=ExtResource("3_prop_view")]
+skin = ExtResource("4_skin")
+
+[node name="Interactable" parent="." instance=ExtResource("5_interactable")]
+position = Vector2(-12, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("RectangleShape2D_door")
+
+[node name="TalkAction" parent="." instance=ExtResource("6_talk_action")]
+
+[node name="Spawn1" type="Marker2D" parent="." groups=["player_spawn"]]
+position = Vector2(-24, 9)
+
+[node name="Spawn2" type="Marker2D" parent="." groups=["player_spawn"]]
+position = Vector2(-8, 17)
+
+[node name="ArriveEffect" parent="." instance=ExtResource("7_effect_cue")]
+position = Vector2(0, 4)
+effect = ExtResource("8_dust")
+signal_name = "landed"
+follow = false
+
+[node name="ReadyEffect" parent="." instance=ExtResource("7_effect_cue")]
+position = Vector2(-12, -17)
+effect = ExtResource("9_sparkle")
+signal_name = "sparkled"

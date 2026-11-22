@@ -43,8 +43,11 @@
 [ext_resource type="Resource" path="res://data/missions/test_chamber.tres" id="41_missions"]
 [ext_resource type="PackedScene" path="res://ui/missions/mission_panel.tscn" id="42_mission_panel"]
 [ext_resource type="PackedScene" path="res://entities/npcs/gatherer.tscn" id="43_gatherer"]
-[ext_resource type="PackedScene" path="res://world/level_exit/level_exit.tscn" id="44_level_exit"]
 [ext_resource type="PackedScene" path="res://components/mission_cue/mission_cue.tscn" id="45_mission_cue"]
+[ext_resource type="PackedScene" path="res://world/time_capsule/time_capsule.tscn" id="46_time_capsule"]
+[ext_resource type="PackedScene" path="res://world/room/room.tscn" id="47_room"]
+[ext_resource type="PackedScene" path="res://world/room/room_watcher.tscn" id="48_room_watcher"]
+[ext_resource type="PackedScene" path="res://ui/debug/debug_keys.tscn" id="49_debug_keys"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
 size = Vector2(960, 16)
@@ -56,7 +59,10 @@ size = Vector2(960, 16)
 size = Vector2(16, 512)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_right"]
-size = Vector2(16, 512)
+size = Vector2(16, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_lower"]
+size = Vector2(16, 240)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_square"]
 size = Vector2(32, 32)
@@ -103,16 +109,54 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_room_side"]
 size = Vector2(16, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_niche_side"]
-size = Vector2(16, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_east_horizontal"]
+size = Vector2(320, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_niche_corner"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_east_side"]
+size = Vector2(16, 160)
 
 [node name="TestChamber" type="Node2D" unique_id=242313944]
 script = ExtResource("1_chamber")
 room_size = Vector2i(960, 544)
 view = ExtResource("34_view")
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="MainRoom" parent="Rooms" instance=ExtResource("47_room")]
+room_id = "main"
+title = "Halle"
+size = Vector2i(960, 544)
+
+[node name="EastRoom" parent="Rooms" instance=ExtResource("47_room")]
+position = Vector2(960, 176)
+room_id = "east"
+title = "Ostraum"
+size = Vector2i(320, 192)
+draw_floor = true
+
+[node name="EastWalls" type="StaticBody2D" parent="Rooms/EastRoom"]
+collision_mask = 0
+
+[node name="Top" type="CollisionShape2D" parent="Rooms/EastRoom/EastWalls"]
+position = Vector2(160, 8)
+shape = SubResource("RectangleShape2D_east_horizontal")
+
+[node name="Bottom" type="CollisionShape2D" parent="Rooms/EastRoom/EastWalls"]
+position = Vector2(160, 184)
+shape = SubResource("RectangleShape2D_east_horizontal")
+
+[node name="Right" type="CollisionShape2D" parent="Rooms/EastRoom/EastWalls"]
+position = Vector2(312, 96)
+shape = SubResource("RectangleShape2D_east_side")
+
+[node name="PlaceholderView" parent="Rooms/EastRoom/EastWalls" instance=ExtResource("2_view")]
+color = Color(0.36, 0.4, 0.5, 1)
+
+[node name="Pot" parent="Rooms/EastRoom" instance=ExtResource("18_pot")]
+position = Vector2(120, 48)
+
+[node name="ChestSmall" parent="Rooms/EastRoom" instance=ExtResource("23_chest_small")]
+position = Vector2(232, 128)
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=547463599]
 collision_mask = 0
@@ -130,8 +174,12 @@ position = Vector2(8, 272)
 shape = SubResource("RectangleShape2D_left")
 
 [node name="Right" type="CollisionShape2D" parent="Walls" unique_id=544585972]
-position = Vector2(952, 272)
+position = Vector2(952, 136)
 shape = SubResource("RectangleShape2D_right")
+
+[node name="RightLower" type="CollisionShape2D" parent="Walls"]
+position = Vector2(952, 408)
+shape = SubResource("RectangleShape2D_right_lower")
 
 [node name="PlaceholderView" parent="Walls" unique_id=105046374 instance=ExtResource("2_view")]
 color = Color(0.36, 0.4, 0.5, 1)
@@ -182,13 +230,8 @@ shape = SubResource("RectangleShape2D_square_c")
 [node name="PlaceholderView" parent="Blocks" unique_id=657745153 instance=ExtResource("2_view")]
 color = Color(0.62, 0.5, 0.36, 1)
 
-[node name="SpawnPoints" type="Node2D" parent="." unique_id=577282793]
-
-[node name="Spawn1" type="Marker2D" parent="SpawnPoints" unique_id=717606394 groups=["player_spawn"]]
-position = Vector2(216, 136)
-
-[node name="Spawn2" type="Marker2D" parent="SpawnPoints" unique_id=44068127 groups=["player_spawn"]]
-position = Vector2(264, 136)
+[node name="TimeCapsule" parent="." instance=ExtResource("46_time_capsule")]
+position = Vector2(240, 152)
 
 [node name="DummyA" parent="." instance=ExtResource("6_dummy")]
 position = Vector2(440, 72)
@@ -337,19 +380,19 @@ signal_name = "opened"
 [node name="StartItems" type="Node2D" parent="."]
 
 [node name="Broadsword" parent="StartItems" instance=ExtResource("25_pickup")]
-position = Vector2(192, 176)
+position = Vector2(120, 176)
 item = ExtResource("28_broadsword")
 
 [node name="Bow" parent="StartItems" instance=ExtResource("25_pickup")]
-position = Vector2(216, 176)
+position = Vector2(144, 176)
 item = ExtResource("29_bow")
 
 [node name="LeatherArmor" parent="StartItems" instance=ExtResource("25_pickup")]
-position = Vector2(240, 176)
+position = Vector2(168, 176)
 item = ExtResource("30_leather_armor")
 
 [node name="RubyCharm" parent="StartItems" instance=ExtResource("25_pickup")]
-position = Vector2(264, 176)
+position = Vector2(192, 176)
 item = ExtResource("31_ruby_charm")
 
 [node name="Caveman" parent="." instance=ExtResource("33_caveman")]
@@ -373,41 +416,10 @@ position = Vector2(312, 120)
 position = Vector2(168, 136)
 
 [node name="TimeAnchor" parent="." instance=ExtResource("39_time_anchor")]
-position = Vector2(240, 88)
+position = Vector2(112, 120)
 
 [node name="Gatherer" parent="." instance=ExtResource("43_gatherer")]
 position = Vector2(232, 420)
-
-[node name="ExitNiche" type="Node2D" parent="."]
-position = Vector2(880, 16)
-
-[node name="NicheWalls" type="StaticBody2D" parent="ExitNiche"]
-collision_mask = 0
-
-[node name="WallLeft" type="CollisionShape2D" parent="ExitNiche/NicheWalls"]
-position = Vector2(8, 32)
-shape = SubResource("RectangleShape2D_niche_side")
-
-[node name="WallBottomLeft" type="CollisionShape2D" parent="ExitNiche/NicheWalls"]
-position = Vector2(24, 56)
-shape = SubResource("RectangleShape2D_niche_corner")
-
-[node name="WallBottomRight" type="CollisionShape2D" parent="ExitNiche/NicheWalls"]
-position = Vector2(56, 56)
-shape = SubResource("RectangleShape2D_niche_corner")
-
-[node name="PlaceholderView" parent="ExitNiche/NicheWalls" instance=ExtResource("2_view")]
-color = Color(0.36, 0.4, 0.5, 1)
-
-[node name="MissionGate" parent="ExitNiche" instance=ExtResource("14_door")]
-position = Vector2(40, 56)
-channel = &"missions_done"
-
-[node name="PropView" parent="ExitNiche/MissionGate"]
-skin = ExtResource("17_gate_skin")
-
-[node name="LevelExit" parent="ExitNiche" instance=ExtResource("44_level_exit")]
-position = Vector2(40, 24)
 
 [node name="MissionTracker" parent="." instance=ExtResource("40_mission_tracker")]
 missions = ExtResource("41_missions")
@@ -415,17 +427,22 @@ missions = ExtResource("41_missions")
 [node name="LootSpawner" parent="." instance=ExtResource("22_loot_spawner")]
 
 [node name="PlayerSpawner" parent="." unique_id=970808961 instance=ExtResource("4_spawner")]
+position = Vector2(240, 136)
 
 [node name="ProjectileSpawner" parent="." instance=ExtResource("11_projectiles")]
 
 [node name="PlayerCamera" parent="." instance=ExtResource("5_camera")]
 position = Vector2(240, 135)
 
+[node name="RoomWatcher" parent="." instance=ExtResource("48_room_watcher")]
+
+[node name="DebugKeys" parent="." instance=ExtResource("49_debug_keys")]
+
 [node name="Crosshair" parent="." instance=ExtResource("8_crosshair")]
 
 [node name="DebugOverlay" parent="." unique_id=2130183334 instance=ExtResource("3_overlay")]
 show_mouse = false
-hidden_keys = PackedStringArray("Kamera", "Raumzeit")
+hidden_keys = PackedStringArray("Kamera", "Raumzeit", "S1 Tempo", "S1 Ausdauer", "S1 Leben", "S1 Dash", "S1 Energie", "S1 Fähigkeiten", "Shaman", "Hunter", "Gatherer")
 
 [node name="InventoryWindow" parent="." instance=ExtResource("27_inventory_window")]
 

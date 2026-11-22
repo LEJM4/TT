@@ -13,17 +13,19 @@ extends Node
 ## oder abzugeben. Jeden Wechsel meldet er (mission_changed), die ganze Liste für
 ## die Anzeige ebenso (mission_list_changed).
 ## Sind alle Pflichtmissionen erfüllt, meldet er seinen Kanal unlock_channel als
-## an, wie ein Hebel: Ein Tor auf diesem Kanal öffnet sich, auch nach dem Laden.
+## an, wie ein Hebel: Ein Tor auf diesem Kanal öffnet sich, auch nach dem Laden;
+## seit M18 wird die Zeitkapsel im Level damit bereit zur Rückreise.
 ## Ohne Pflichtmissionen ist der Weg von Anfang an frei.
 ## Gegenstand-Ziele zählen, was die Figur mit den meisten davon trägt; abgeben
 ## kann nur, wer alles trägt. Die Belohnung einer Mission ohne Abgabe springt vor
 ## die Figur mit der kleinsten Nummer. Im Online-Spiel entscheidet hier später
 ## der Gastgeber.
 ## Ohne GameState merkt er sich den Stand nur, bis der Raum neu startet.
-## Debug-Zeile "Missionen", etwa "Pflicht 1/2 · Neben 0/1 · Tor zu".
+## Debug-Zeile "Missionen", etwa "Pflicht 1/2 · Neben 0/1 · Weg zu" - der Weg
+## aus dem Level, seit M18 über die Zeitkapsel.
 ##
 ## Abschalten: Knoten löschen - das Level hat keine Missionen; ein Tor auf seinem
-## Kanal bleibt zu.
+## Kanal bleibt zu, die Zeitkapsel wird nicht bereit.
 
 ## Stand: Die Mission läuft.
 const ACTIVE := "active"
@@ -328,7 +330,7 @@ func _announce(force := false) -> void:
 	_report()
 
 
-# Debug-Zeile, etwa "Pflicht 1/2 · Neben 0/1 · Tor zu".
+# Debug-Zeile, etwa "Pflicht 1/2 · Neben 0/1 · Weg zu".
 func _report() -> void:
 	var required_done := 0
 	var required_all := 0
@@ -344,7 +346,7 @@ func _report() -> void:
 			side_done += int(done)
 	var text := "Pflicht %d/%d · Neben %d/%d" % [required_done, required_all, side_done, side_all]
 	if unlock_channel != &"":
-		text += " · Tor offen" if _unlocked else " · Tor zu"
+		text += " · Weg frei" if _unlocked else " · Weg zu"
 	if text != _last_report:
 		_last_report = text
 		EventBus.debug_value_changed.emit("Missionen", text)

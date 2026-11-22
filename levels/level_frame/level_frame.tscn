@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://entities/pickup/loot_spawner.tscn" id="1_loot_spawner"]
+[ext_resource type="PackedScene" path="res://entities/player/player_spawner.tscn" id="2_player_spawner"]
+[ext_resource type="PackedScene" path="res://entities/projectile/projectile_spawner.tscn" id="3_projectile_spawner"]
+[ext_resource type="PackedScene" path="res://entities/player/player_camera.tscn" id="4_camera"]
+[ext_resource type="PackedScene" path="res://world/room/room_watcher.tscn" id="5_room_watcher"]
+[ext_resource type="PackedScene" path="res://ui/debug/debug_keys.tscn" id="6_debug_keys"]
+[ext_resource type="PackedScene" path="res://ui/crosshair/crosshair.tscn" id="7_crosshair"]
+[ext_resource type="PackedScene" path="res://ui/debug/debug_overlay.tscn" id="8_overlay"]
+[ext_resource type="PackedScene" path="res://ui/inventory/inventory_window.tscn" id="9_inventory_window"]
+[ext_resource type="PackedScene" path="res://ui/hud/hud.tscn" id="10_hud"]
+[ext_resource type="PackedScene" path="res://ui/missions/mission_panel.tscn" id="11_mission_panel"]
+[ext_resource type="PackedScene" path="res://ui/dialog/dialog_window.tscn" id="12_dialog_window"]
+
+[node name="LevelFrame" type="Node2D"]
+
+[node name="LootSpawner" parent="." instance=ExtResource("1_loot_spawner")]
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("2_player_spawner")]
+
+[node name="ProjectileSpawner" parent="." instance=ExtResource("3_projectile_spawner")]
+
+[node name="PlayerCamera" parent="." instance=ExtResource("4_camera")]
+
+[node name="RoomWatcher" parent="." instance=ExtResource("5_room_watcher")]
+
+[node name="DebugKeys" parent="." instance=ExtResource("6_debug_keys")]
+
+[node name="Crosshair" parent="." instance=ExtResource("7_crosshair")]
+
+[node name="DebugOverlay" parent="." instance=ExtResource("8_overlay")]
+show_mouse = false
+hidden_keys = PackedStringArray("Kamera", "Raumzeit", "S1 Tempo", "S1 Ausdauer", "S1 Leben", "S1 Dash", "S1 Energie", "S1 Fähigkeiten")
+
+[node name="InventoryWindow" parent="." instance=ExtResource("9_inventory_window")]
+
+[node name="Hud" parent="." instance=ExtResource("10_hud")]
+
+[node name="MissionPanel" parent="." instance=ExtResource("11_mission_panel")]
+
+[node name="DialogWindow" parent="." instance=ExtResource("12_dialog_window")]

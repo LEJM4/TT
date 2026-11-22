@@ -10,3 +10,4 @@ move_look_seconds = 0.12
 move_look_max = 24.0
 smooth_time = 0.2
 min_speed = 24.0
+room_glide_time = 0.35

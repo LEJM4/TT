@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DialogData" format=3]
+
+[ext_resource type="Script" path="res://dialogs/dialog_data.gd" id="1_data"]
+[ext_resource type="Script" path="res://dialogs/dialog_line.gd" id="2_line"]
+[ext_resource type="Script" path="res://dialogs/dialog_choice.gd" id="3_choice"]
+[ext_resource type="Resource" path="res://data/dialogs/speakers/time_capsule.tres" id="4_speaker"]
+
+[sub_resource type="Resource" id="Resource_choice_board"]
+script = ExtResource("3_choice")
+text = "Einsteigen"
+next = &"board"
+
+[sub_resource type="Resource" id="Resource_choice_stay"]
+script = ExtResource("3_choice")
+text = "Noch nicht"
+next = &"end"
+
+[sub_resource type="Resource" id="Resource_question"]
+script = ExtResource("2_line")
+id = &"question"
+text = "Alle Pflichtmissionen sind erfüllt. Zurück in die Zeitkapsel?"
+choices = Array[ExtResource("3_choice")]([SubResource("Resource_choice_board"), SubResource("Resource_choice_stay")])
+
+[sub_resource type="Resource" id="Resource_board"]
+script = ExtResource("2_line")
+id = &"board"
+text = "Die Luke schliesst sich. Die Zeitkapsel startet."
+next = &"end"
+action = &"board"
+
+[resource]
+script = ExtResource("1_data")
+speaker = ExtResource("4_speaker")
+lines = Array[ExtResource("2_line")]([SubResource("Resource_question"), SubResource("Resource_board")])

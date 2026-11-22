@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DialogSpeaker" format=3]
+
+[ext_resource type="Script" path="res://dialogs/dialog_speaker.gd" id="1_speaker"]
+
+[resource]
+script = ExtResource("1_speaker")
+display_name = "Zeitkapsel"

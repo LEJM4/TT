@@ -6,7 +6,8 @@ extends Resource
 ## Sprungziel next. Mit Antworten (choices) wählt die Spielfigur, und jede
 ## Antwort führt an ihre eigene Stelle. Was eine Zeile bewirkt - Beute (reward),
 ## erledigt (marks_done), eine Mission starten oder abgeben (M17) -, meldet der
-## NPC, sobald das Fenster sie zeigt.
+## NPC, sobald das Fenster sie zeigt. Eine Aktion (action, M18) führen Dinge wie
+## die Zeitkapsel aus, wenn das Gespräch nach dieser Zeile endet.
 ## Teil eines Gesprächs (DialogData).
 
 ## Sprungziel, das das Gespräch beendet. Keine Zeile darf so heißen.
@@ -43,6 +44,11 @@ const MAX_CHOICES := 3
 ## gehen die verlangten Gegenstände aus dem Inventar, und die Belohnung springt
 ## vor die Spielfigur. Leer: keine.
 @export var hand_in_mission: StringName = &""
+## Name einer Aktion, die der Sprecher ausführt, wenn das Gespräch nach dieser
+## Zeile zu Ende geht (M18): an der Zeitkapsel "board" (einsteigen) oder "abort"
+## (abbrechen), an der Zeitsteuerung die Kennung des Ziels, etwa "test_field".
+## Bricht der Spieler mit Esc ab, geschieht nichts. Leer: keine. NPCs übergehen sie.
+@export var action: StringName = &""
 
 
 ## Die Antworten, die das Fenster zeigt: ohne leere Einträge, höchstens drei.
