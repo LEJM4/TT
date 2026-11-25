@@ -31,3 +31,4 @@ Bilder, die nicht aus dem Paket stammen und vorerst für spätere Pixelgrafik st
 
 - `objects/time_capsule.jpg` – das Original der Zeitkapsel, 2048 × 2048; bis M18 hieß es `zeitkapsel.jpg`. Das Schachbrett im Hintergrund ist Teil des Bildes, nicht durchsichtig; im Spiel wird es nicht benutzt.
 - `objects/time_capsule.png` – die Zeitkapsel im Spiel (seit M18) und seit M20 auf dem Startbildschirm über dem Hauptmenü, 66 × 64 Pixel mit durchsichtigem Rand: aus dem Original gewonnen, verkleinert und gespiegelt, damit die Tür links liegt. Ein neues Bild in derselben Größe ersetzt sie ohne weitere Änderung; die Lage steht in `data/skins/time_capsule.tres`.
+- `objects/time_capsule_icon.png` – die Zeitkapsel als kleines Bild für die Karte auf M (seit M20b), 16 × 16 Pixel, aus `time_capsule.png` verkleinert. Ein anderes Bild trägt man in `data/ui/map.tres` bei `capsule_icon` ein.

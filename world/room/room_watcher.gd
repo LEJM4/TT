@@ -5,12 +5,14 @@ extends Node
 ## In jedem Physik-Schritt - nach den Figuren, vor der Kamera - prüft er für jede
 ## Figur der Gruppe "players", in welchem Raum der Gruppe "rooms" ihre Mitte liegt.
 ## Wechselt sie den Raum, meldet er room_changed(player_id, room_id, bounds) über
-## den EventBus; die Kamera dieser Figur gleitet dann in die Grenzen des neuen
-## Raums. Liegt die Mitte in keinem Raum, bleibt der alte. Jede Figur kann in
+## den EventBus: Mit der Kamera-Einstellung ROOM gleitet die Kamera dieser Figur
+## dann in die Grenzen des neuen Raums, seit M20b legt der RoomExplorer ihn für
+## die Karte als erkundet ab. Liegt die Mitte in keinem Raum, bleibt der alte. Jede Figur kann in
 ## einem anderen Raum sein. Er entscheidet nichts über die Welt.
 ## Debug-Zeile je Figur, etwa "S1 Raum: Ostraum".
 ##
-## Abschalten: Knoten löschen - die Kamera nimmt die Grenzen, die das Level meldet.
+## Abschalten: Knoten löschen - mit ROOM nimmt die Kamera die Grenzen, die das
+## Level meldet; die Karte erfährt von keinem neuen Raum.
 
 # Raum je Spielfigur: player_id -> Room.
 var _rooms := {}

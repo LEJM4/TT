@@ -20,6 +20,9 @@ extends Node
 ##   completed  die abgeschlossenen Level
 ##   unlocks    die Freischaltungen, die im Spiel dazukamen (M19), etwa ["dash"];
 ##              sie gelten für alle Spielfiguren
+##   rooms      je Level die Räume, die schon betreten wurden (M20b), etwa
+##              {"test_chamber": ["main", "east"]} - für die Karte; sie gelten
+##              für alle Spielfiguren
 ## Nicht im Stand:
 ## Gegner, Beute am Boden, Leben und Energie - nach Rasten, Tod und Laden sind
 ## beide voll.
@@ -36,6 +39,10 @@ extends Node
 ## frei ist, sagt is_unlocked(); frei wird es nur hier, mit unlock() - wer etwas
 ## freischalten will, Fundstück, Mission oder Gespräch, bittet darum mit
 ## EventBus.unlock_requested.
+## Erkundete Räume (M20b): Betritt eine Figur einen Raum, bittet der RoomExplorer
+## mit visit_room() darum, ihn abzulegen; die Karte fragt get_visited_rooms().
+## Wie alles im Stand behalten Tod und Beenden sie, ein Abbruch verwirft, was im
+## Lauf dazukam, der Abschluss übernimmt es für die nächste Reise in das Level.
 ## Spielzeit (M20): play_time zählt die Sekunden im Spiel - nur solange ein Level
 ## oder die Zeitkapsel läuft, nicht im Hauptmenü und nicht, solange das
 ## Pausenmenü die Welt anhält. Sie steht im Spielstand, nicht im Kapsel- oder
@@ -285,6 +292,45 @@ func get_unlock_titles(free: bool) -> PackedStringArray:
 	return titles
 
 
+## Ist dieser Raum des Levels schon betreten worden (M20b)?
+func is_room_visited(level_id: String, room_id: String) -> bool:
+	return get_visited_rooms(level_id).has(room_id)
+
+
+## Die Räume eines Levels, die schon betreten wurden (M20b), in der Reihenfolge,
+## in der sie dazukamen, etwa ["main", "east"].
+func get_visited_rooms(level_id: String) -> PackedStringArray:
+	var result := PackedStringArray()
+	var in_level: Variant = _dict(active(), "rooms").get(level_id)
+	if not in_level is Array:
+		return result
+	for room_id: Variant in in_level:
+		var text := _text(room_id)
+		if not text.is_empty() and not result.has(text):
+			result.append(text)
+	return result
+
+
+## Merkt sich einen betretenen Raum (M20b) und meldet ihn mit room_visited -
+## im Lauf erst im Levelstand. Liefert false, wenn er schon bekannt war.
+func visit_room(level_id: String, room_id: String) -> bool:
+	if level_id.is_empty() or room_id.is_empty() or is_room_visited(level_id, room_id):
+		return false
+	_list(_dict(active(), "rooms"), level_id).append(room_id)
+	EventBus.room_visited.emit(level_id, room_id)
+	return true
+
+
+## Merkt sich mehrere Räume auf einmal (M20b), etwa alle mit Pos1 im Debug-Build.
+## Liefert, wie viele davon neu waren.
+func visit_rooms(level_id: String, room_ids: PackedStringArray) -> int:
+	var count := 0
+	for room_id in room_ids:
+		if visit_room(level_id, room_id):
+			count += 1
+	return count
+
+
 ## Gibt es gemerkte Daten zu dieser Spielfigur? Ohne sie beginnt sie mit dem Startinhalt.
 func has_player_data(player_id: int) -> bool:
 	return _dict(active(), "players").get(str(player_id)) is Dictionary
@@ -421,7 +467,7 @@ func _end_run(level_id: String, event: String) -> void:
 
 
 func _empty_state() -> Dictionary:
-	return {"players": {}, "objects": {}, "missions": {}, "completed": [], "unlocks": []}
+	return {"players": {}, "objects": {}, "missions": {}, "completed": [], "unlocks": [], "rooms": {}}
 
 
 # Das Dictionary unter key; legt es an, wenn es fehlt.

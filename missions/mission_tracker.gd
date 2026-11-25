@@ -12,7 +12,8 @@ extends Node
 ## Spielfigur; um Freischaltungen bittet er GameState (unlock_requested, M19).
 ## Gesprächszeilen bitten über den EventBus, eine Mission zu starten
 ## oder abzugeben. Jeden Wechsel meldet er (mission_changed), die ganze Liste für
-## die Anzeige ebenso (mission_list_changed).
+## die Anzeige ebenso (mission_list_changed) - seit M20b mit der Beschreibung
+## jeder Mission für das Missionsfenster.
 ## Sind alle Pflichtmissionen erfüllt, meldet er seinen Kanal unlock_channel als
 ## an, wie ein Hebel: Ein Tor auf diesem Kanal öffnet sich, auch nach dem Laden;
 ## seit M18 wird die Zeitkapsel im Level damit bereit zur Rückreise.
@@ -318,6 +319,8 @@ func _entries() -> Array:
 		result.append({
 			"id": String(mission.id),
 			"title": mission.title,
+			# Seit M20b für das Missionsfenster auf M.
+			"description": mission.description,
 			"required": mission.required,
 			"hand_in": mission.hand_in,
 			"state": state,

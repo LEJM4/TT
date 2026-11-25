@@ -115,8 +115,8 @@ signal mission_hand_in_requested(player_id: int, mission_id: StringName)
 signal mission_changed(level_id: String, mission_id: StringName, state: String)
 
 ## Alle Missionen eines Levels für die Anzeige (M17), je Mission ein Dictionary:
-## id, title, required (Pflicht), hand_in, state - leer heißt: nicht angenommen -
-## und objectives, je Ziel text, current, count und done. Die erste Meldung nach
+## id, title, seit M20b description, required (Pflicht), hand_in, state - leer
+## heißt: nicht angenommen - und objectives, je Ziel text, current, count und done. Die erste Meldung nach
 ## dem Betreten zeigt den Stand aus dem Spielstand; was danach beginnt oder
 ## erfüllt wird, kommt mit den folgenden Meldungen.
 @warning_ignore("unused_signal")
@@ -143,9 +143,17 @@ signal travel_requested(player_id: int, level_id: String)
 
 ## Eine Spielfigur ist in einen anderen Raum gegangen (M18). room_id ist die
 ## Kennung des Raums, bounds seine Fläche in der Welt. Gemeldet vom RoomWatcher;
-## die Kamera dieser Figur gleitet in die Grenzen des neuen Raums.
+## mit der Kamera-Einstellung ROOM gleitet die Kamera dieser Figur in die Grenzen
+## des neuen Raums (seit M20 folgt sie sonst frei). Seit M20b bittet der
+## RoomExplorer GameState, den Raum für die Karte als erkundet abzulegen.
 @warning_ignore("unused_signal")
 signal room_changed(player_id: int, room_id: String, bounds: Rect2)
+
+## Ein Raum ist zum ersten Mal betreten worden (M20b). Gemeldet von GameState,
+## nachdem er ihn im Stand abgelegt hat; erkundete Räume gelten für alle
+## Spielfiguren. Die Karte zeigt ihn dann.
+@warning_ignore("unused_signal")
+signal room_visited(level_id: String, room_id: String)
 
 ## Etwas möchte eine Mechanik freischalten (M19): ein Fundstück, die Belohnung
 ## einer Mission, eine Zeile im Gespräch. unlock_id ist die Kennung aus

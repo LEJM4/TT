@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MapSettings" format=3]
+
+[ext_resource type="Script" path="res://ui/menus/map_window/map_settings.gd" id="1_settings"]
+[ext_resource type="Texture2D" path="res://assets/test_art/objects/time_capsule_icon.png" id="2_capsule"]
+
+[resource]
+script = ExtResource("1_settings")
+padding = 6
+room_color = Color(0.25, 0.22, 0.18, 1)
+room_border_color = Color(0.62, 0.55, 0.45, 1)
+current_room_color = Color(0.42, 0.31, 0.22, 1)
+current_room_border_color = Color(1, 0.68, 0.33, 1)
+room_label_color = Color(0.93, 0.86, 0.74, 1)
+player_colors = Array[Color]([Color(0.98, 0.84, 0.35, 1), Color(0.45, 0.8, 0.95, 1), Color(0.55, 0.88, 0.5, 1), Color(0.95, 0.55, 0.75, 1)])
+marker_outline_color = Color(0.07, 0.08, 0.11, 1)
+capsule_icon = ExtResource("2_capsule")
+scroll_step = 24
+done_alpha = 0.6

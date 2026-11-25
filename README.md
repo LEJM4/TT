@@ -23,9 +23,9 @@
 | `unlocks/` | Baupläne für Freischaltungen – eine Freischaltung und die Liste aller; die Liste selbst steht in `data/unlocks/unlocks.tres` |
 | `options/` | Die Einstellungen des Spielers – `GameOptions`, statisch, ohne globalen Dienst – und der Bauplan ihrer Grundwerte; die Grundwerte stehen in `data/ui/options.tres`, die Einstellungen des Spielers in `user://options.cfg` |
 | `missions/` | Baupläne für Missionen – Missionen-Datei eines Levels, Mission, Ziele – und der `MissionTracker`, die eine Stelle für die Missionen eines Levels; die Missionen selbst liegen je Level in `data/missions/` |
-| `world/` | Dinge der Welt: `view/` die Ansicht – Zoom der Welt und die Kachel als Maß –, Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen, Zeitanker, Ausgang eines Levels, `room/` Räume und der `RoomWatcher`, `time_capsule/` die Zeitkapsel im Level, `time_console/` die Zeitsteuerung in der Zeitkapsel, `unlock_pickup/` Fundstücke, die eine Mechanik freischalten |
+| `world/` | Dinge der Welt: `view/` die Ansicht – Zoom der Welt und die Kachel als Maß –, Schadensfeld, Türen, Hebel, Druckplatten, Zerstörbares, Truhen, Zeitanker, Ausgang eines Levels, `room/` Räume, der `RoomWatcher` und der `RoomExplorer` für die Karte, `time_capsule/` die Zeitkapsel im Level, `time_console/` die Zeitsteuerung in der Zeitkapsel, `unlock_pickup/` Fundstücke, die eine Mechanik freischalten |
 | `levels/` | `boot/` die Startszene, `level.gd` die Grundlage der Level, `level_frame/` was jedes Level braucht, `test_chamber/` die Testkammer, `test_field/` das Testfeld, `time_capsule/` die Zeitkapsel innen; dazu die Baupläne der Reisedaten (`level_info.gd`, `travel_settings.gd`) – die Reisedaten selbst stehen in `data/world/travel.tres` |
-| `ui/` | Oberfläche: `hud/` die Anzeige am Bildrand, `inventory/` das Inventarfenster, `theme/` das Holz-Thema für Fenster, `dialog/` das Dialogfenster mit eigenem Thema, `missions/` die Missionsliste und die Hinweise, `menus/` die Menüs – Hauptmenü, Spielstand-Auswahl, Optionen, Tastenbelegung, Pausenmenü, Nachfrage – mit eigenem Holz-Thema, `crosshair/`, `debug/` für Entwickler-Anzeigen |
+| `ui/` | Oberfläche: `hud/` die Anzeige am Bildrand, `inventory/` das Inventarfenster, `theme/` das Holz-Thema für Fenster, `dialog/` das Dialogfenster mit eigenem Thema, `missions/` die Missionsliste und die Hinweise, `menus/` die Menüs – Hauptmenü, Spielstand-Auswahl, Optionen, Tastenbelegung, Pausenmenü, Nachfrage, das Fenster mit Karte und Missionen – mit eigenem Holz-Thema, `crosshair/`, `debug/` für Entwickler-Anzeigen |
 | `data/` | Werte-Dateien (`.tres`): Balancing, Gegner, Skins, Gegenstände, Effekte, Beute, Gespräche, Missionen, Freischaltungen, Oberfläche, Reisedaten |
 | `assets/` | Grafik und Ton – siehe `assets/README.md` |
 | `docs/` | Stand-Datei und Grafik-Katalog; von Godot ignoriert |
@@ -49,11 +49,11 @@ Sie steht in `autoload/input_setup.gd` und lässt sich dort ändern.
 | Q | `use_potion` |
 | 1 2 3 | `ability_1`, `ability_2`, `ability_3` |
 | Tab | `inventory` |
-| M | `map` |
+| M | `map` – Fenster mit Karte und Missionen; M oder Esc schließt es |
 | J | `mission_toggle` – Missionsliste ein- und ausklappen; ein Klick auf ihre Überschrift geht auch |
 | Esc | `pause` – öffnet und schließt das Pausenmenü; ist ein Inventar oder Gespräch offen, schließt Esc zuerst das |
 
-**In den Menüs** – Pfeiltasten oder W A S D wählen, Enter oder Leertaste drücken, Esc geht zurück; die Maus geht überall. Ein Schieberegler wird mit Pfeil links und rechts oder A und D verstellt. Das Lösch-Symbol der Spielstände geht nur mit der Maus. Die Tastenbelegung zeigen die Optionen an; ändern lässt sie sich dort noch nicht.
+**In den Menüs** – Pfeiltasten oder W A S D wählen, Enter oder Leertaste drücken, Esc geht zurück; die Maus geht überall. Ein Schieberegler wird mit Pfeil links und rechts oder A und D verstellt. Das Lösch-Symbol der Spielstände geht nur mit der Maus. Die Tastenbelegung zeigen die Optionen an; ändern lässt sie sich dort noch nicht. Im Fenster auf M wechseln A und D, Pfeil links und rechts oder Tab die Seite, W und S blättern.
 
 **Im Gespräch** – die Figur nimmt dann keine Eingaben an, deshalb dürfen die Tasten doppelt belegt sein:
 
@@ -74,7 +74,7 @@ Sie steht in `autoload/input_setup.gd` und lässt sich dort ändern.
 | Bild auf | `debug_complete_level` | nur im Debug-Build: Level abschließen ohne Nachfrage – wie „Einsteigen“ an der Zeitkapsel |
 | Bild ab | `debug_leave_level` | nur im Debug-Build: Reise abbrechen ohne Nachfrage – wie „Abbrechen“ an der Zeitkapsel |
 | Ende | `debug_quit_game` | nur im Debug-Build: Spiel beenden wie mit dem X am Fenster, mit Speichern |
-| Pos1 | `debug_unlock_all` | nur im Debug-Build: alles freischalten |
+| Pos1 | `debug_unlock_all` | nur im Debug-Build: alles freischalten und alle Räume auf der Karte aufdecken |
 
 F2, F4, Bild auf, Bild ab, Ende und Pos1 gelten in jedem Level und in der Zeitkapsel; sie liegen im Knoten `DebugKeys`.
 
@@ -93,6 +93,7 @@ F5 bis F8 sind im Godot-Editor belegt (Starten, Szene starten, Pause, Stopp); l�
 - Pausenmenü mit Esc in jedem Level und in der Zeitkapsel; im Einzelspiel hält die Welt an. „Weiter“, „Optionen“, „Reise abbrechen“ – nur in einem Level, mit derselben Frage wie an der Zeitkapsel –, „Hauptmenü“ und „Spiel beenden“, beide mit Speichern.
 - Optionen: Lautstärke für alles, Musik und Geräusche – zu hören erst mit dem Ton (A3) –, Vollbild und die Tastenbelegung zum Ansehen. Sie gelten sofort und stehen in `user://options.cfg`, dazu, ob die Missionsliste eingeklappt ist. Die Audio-Busse `Music` und `Sounds` stehen in `default_bus_layout.tres`.
 - Vollbild lässt Godot nicht umschalten, solange das Spiel im Editor eingebettet läuft; die Optionen zeigen dann einen Hinweis.
+- Karte und Missionen auf M, in jedem Level und in der Zeitkapsel (`ui/menus/map_window/`): Die Karte zeigt die Räume, die schon betreten wurden, dazu die Figuren und die Zeitkapsel; die zweite Seite alle angenommenen Missionen mit Beschreibung und Zielen. Die Welt läuft dabei weiter, nur die Figur bleibt stehen. Was erkundet ist, merkt `GameState` wie offene Truhen; Werte in `data/ui/map.tres`.
 - Ein neues Menü: eine Szene mit einem `CanvasLayer` und einem Skript, das von `ui/menus/menu_screen.gd` erbt, darin `Root` mit dem Thema `ui/menus/menu_theme.tres` und `Window`; Muster sind die Menüs in `ui/menus/`.
 
 ## Missionen

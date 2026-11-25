@@ -21,6 +21,7 @@ const ROWS := [
 	["Bedienen", [&"interact"]],
 	["Inventar", [&"inventory"]],
 	["Missionen", [&"mission_toggle"]],
+	["Karte", [&"map"]],
 	["Pause", [&"pause"]],
 ]
 ## Ordner der Tastenbilder, je Taste Key<Name>.png.

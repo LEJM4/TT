@@ -1,0 +1,142 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/menus/map_window/map_window.gd" id="1_window"]
+[ext_resource type="Theme" path="res://ui/menus/menu_theme.tres" id="2_theme"]
+[ext_resource type="Resource" path="res://data/ui/map.tres" id="3_settings"]
+[ext_resource type="Resource" path="res://data/world/travel.tres" id="4_travel"]
+[ext_resource type="Script" path="res://ui/menus/map_window/map_view.gd" id="5_view"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/checked.png" id="6_checked"]
+[ext_resource type="Texture2D" path="res://assets/ninja_adventure/Ui/Theme/Theme Wood/unchecked.png" id="7_unchecked"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_checked"]
+atlas = ExtResource("6_checked")
+region = Rect2(1, 1, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unchecked"]
+atlas = ExtResource("7_unchecked")
+region = Rect2(1, 1, 14, 14)
+
+[node name="MapWindow" type="CanvasLayer"]
+process_mode = 3
+layer = 107
+script = ExtResource("1_window")
+settings = ExtResource("3_settings")
+travel = ExtResource("4_travel")
+checked_icon = SubResource("AtlasTexture_checked")
+unchecked_icon = SubResource("AtlasTexture_unchecked")
+
+[node name="Root" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="Dim" type="ColorRect" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.35)
+
+[node name="Window" type="PanelContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -118.0
+offset_right = 210.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Interior" type="PanelContainer" parent="Root/Window"]
+layout_mode = 2
+theme_type_variation = &"MenuInterior"
+
+[node name="Rows" type="VBoxContainer" parent="Root/Window/Interior"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Top" type="HBoxContainer" parent="Root/Window/Interior/Rows"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Tabs" type="HBoxContainer" parent="Root/Window/Interior/Rows/Top"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="MapTab" type="Button" parent="Root/Window/Interior/Rows/Top/Tabs"]
+custom_minimum_size = Vector2(52, 0)
+layout_mode = 2
+theme_type_variation = &"MenuTab"
+toggle_mode = true
+button_pressed = true
+text = "Karte"
+
+[node name="MissionsTab" type="Button" parent="Root/Window/Interior/Rows/Top/Tabs"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_type_variation = &"MenuTab"
+toggle_mode = true
+text = "Missionen"
+
+[node name="Place" type="Label" parent="Root/Window/Interior/Rows/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_type_variation = &"MenuHeading"
+text = "Testkammer - Halle"
+horizontal_alignment = 2
+clip_text = true
+
+[node name="Pages" type="Control" parent="Root/Window/Interior/Rows"]
+custom_minimum_size = Vector2(388, 172)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MapPage" type="PanelContainer" parent="Root/Window/Interior/Rows/Pages"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"MenuMapPanel"
+
+[node name="MapView" type="Control" parent="Root/Window/Interior/Rows/Pages/MapPage"]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("5_view")
+settings = ExtResource("3_settings")
+
+[node name="MissionsPage" type="ScrollContainer" parent="Root/Window/Interior/Rows/Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Missions" type="VBoxContainer" parent="Root/Window/Interior/Rows/Pages/MissionsPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Hint" type="Label" parent="Root/Window/Interior/Rows"]
+layout_mode = 2
+theme_type_variation = &"MenuInfo"
+text = "M oder Esc: zurück - A und D: Seite wechseln - W und S: blättern"
+horizontal_alignment = 1

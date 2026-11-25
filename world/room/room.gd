@@ -5,20 +5,24 @@ extends Node2D
 ## Ein Level besteht aus Räumen in seiner eigenen Szene, etwa die Halle und der
 ## Ostraum der Testkammer. Ein Raum ist eine Fläche: size Pixel ab seinem Ort,
 ## nach rechts und unten. Der RoomWatcher des Levels merkt, in welchem Raum die
-## Mitte einer Spielfigur liegt, und die Kamera dieser Figur bleibt in seinen
-## Grenzen; beim Wechsel gleitet sie hinüber.
+## Mitte einer Spielfigur liegt. Mit der Kamera-Einstellung ROOM bleibt die
+## Kamera dieser Figur in seinen Grenzen und gleitet beim Wechsel hinüber; seit
+## M20 folgt sie sonst frei. Seit M20b zeigt die Karte auf M die Räume, die schon
+## betreten wurden (RoomExplorer), mit ihrem Namen title.
 ## Auf Wunsch malt der Raum seinen Boden und ein Raster (draw_floor). Wände,
 ## Blöcke und Dinge eines Raums liegen am besten als seine Kinder: Sie stehen
 ## dann relativ zu seinem Ort, und sein Boden liegt unter ihnen. Dinge, die sich
 ## ihren Zustand merken (Persistent), behalten ihn über ihren Pfad im Level.
 ## Steht in der Gruppe "rooms".
 ##
-## Abschalten: Knoten löschen - die Fläche gehört dann zu keinem Raum; die Kamera
-## nimmt dort die Grenzen des Raums, in dem die Figur zuletzt war.
+## Abschalten: Knoten löschen - die Fläche gehört dann zu keinem Raum: Die Karte
+## zeigt sie nicht, und mit ROOM nimmt die Kamera dort die Grenzen des Raums, in
+## dem die Figur zuletzt war.
 
 ## Kennung des Raums, etwa "east". Leer: der Name des Knotens.
 @export var room_id := ""
-## Name im Spiel, etwa "Ostraum" - für die Debug-Zeile "S1 Raum". Leer: die Kennung.
+## Name im Spiel, etwa "Ostraum" - für die Debug-Zeile "S1 Raum" und seit M20b
+## für die Karte. Leer: die Kennung.
 @export var title := ""
 ## Größe des Raums in Pixeln, ab seinem Ort nach rechts und unten.
 @export var size := Vector2i(320, 192)

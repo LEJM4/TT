@@ -13,7 +13,8 @@ extends Node
 ##   Bild ab  Reise abbrechen ohne Nachfrage - derselbe Weg wie "Abbrechen"
 ##            an der Zeitkapsel (level_leave_requested)
 ##   Ende     Spiel beenden wie mit dem X am Fenster: Der SaveManager speichert
-##   Pos1     alles freischalten (M19) - GameState.unlock_all()
+##   Pos1     alles freischalten (M19) - GameState.unlock_all(); seit M20b deckt
+##            es auch alle Räume des Levels auf der Karte auf (visit_rooms)
 ## F3 (Zoom) bleibt in der Testkammer. F5 bis F8 fängt der Godot-Editor ab.
 ## Dazu die Debug-Zeile "Spielstand": seit M20 der Platz, dann Lauf, Rückkehrpunkt
 ## und letzte Speicherung, etwa "Platz 1 · Lauf test_chamber · Landepunkt ·
@@ -65,6 +66,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		var state := _game_state()
 		if state != null:
 			state.call("unlock_all")
+			# Seit M20b: auch alle Räume auf der Karte.
+			state.call("visit_rooms", state.call("level_id_of", self), _room_ids())
+
+
+# Die Kennungen aller Räume im Level (M20b).
+func _room_ids() -> PackedStringArray:
+	var ids := PackedStringArray()
+	for node in get_tree().get_nodes_in_group("rooms"):
+		var room_id: Variant = node.get("room_id")
+		if room_id is String and not (room_id as String).is_empty():
+			ids.append(room_id)
+	return ids
 
 
 func _restart(reason: String) -> void:

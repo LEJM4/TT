@@ -51,9 +51,11 @@ extends Node2D
 ##                   seinem Ort (240, 136)
 ##   ProjectileSpawner  erzeugt alle Geschosse (M6)
 ##   PlayerCamera    folgt der Spielfigur (M3); die Grenzen meldet dieses Skript, mit
-##                   Räumen gelten die des Raums (M18); den Zoom liest sie aus
+##                   Räumen gelten die des Raums (M18) - seit M20 nur mit der
+##                   Einstellung ROOM, sonst folgt sie frei; den Zoom liest sie aus
 ##                   data/world/view.tres (M13)
 ##   RoomWatcher     merkt, in welchem Raum die Figur ist (M18)
+##   RoomExplorer    legt betretene Räume für die Karte in GameState ab (M20b)
 ##   DebugKeys       Test-Tasten F2, F4, Bild auf, Bild ab, Ende und die Debug-Zeile
 ##                   "Spielstand" (M18; vorher in diesem Skript)
 ##   Crosshair       Fadenkreuz am Mauszeiger (M4)
@@ -62,8 +64,10 @@ extends Node2D
 ##   Hud             Leben, Energie, Ausdauer, Fähigkeiten und Geschoss der Figur 1 (M12)
 ##   MissionPanel    Missionsliste links unter den Herzen, J klappt sie ein und aus,
 ##                   dazu die Hinweise oben in der Mitte (M17)
-##   DialogWindow    Dialogfenster der Figur 1 (M15); steht als Letztes in der Szene,
-##                   damit es Tasten vor dem Inventarfenster hört
+##   DialogWindow    Dialogfenster der Figur 1 (M15); steht hinter dem Inventarfenster,
+##                   damit es Tasten vor ihm hört
+##   MapWindow       das Fenster auf M mit Karte und Missionen (M20b)
+##   PauseMenu       das Pausenmenü auf Esc (M20)
 ## Alles außer Walls und Blocks lässt sich einzeln löschen, die Kammer läuft weiter.
 ## Neue Level bauen nicht auf dieser Kammer auf, sondern auf levels/level.gd mit
 ## dem LevelFrame (M18); die Kammer behält ihre einzelnen Knoten.
